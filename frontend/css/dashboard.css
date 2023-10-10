@@ -1,8 +1,8 @@
 :root {
     --primary-color: #095371;
-    --text-white: #ffffff;
+    --text-white: #fff;
     --text-white-dim: #d9d9d9;
-    --main-db-bg-color: #f3f3f3;
+    --main-db-bg-color: #EAE7D6;
     --bg-orange: #DB9354;
     --border: #b1b1b1;
 }
@@ -46,7 +46,7 @@ body {
 
 /* MindSight Logo */
 #logo {
-    margin: 10px 0px;
+    margin: 10px 0;
     height: 50px;
     width: 100%;
     margin-right: unset !important;
@@ -86,6 +86,7 @@ body {
     color: white;
     align-items: center;
     text-decoration: none;
+    transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
 .sidebar a:hover {
@@ -111,7 +112,7 @@ body {
 }
 
 .overview p, .account p {
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
     font-size: 16px;
     padding-left: 24px;
     color: var(--text-white-dim);
