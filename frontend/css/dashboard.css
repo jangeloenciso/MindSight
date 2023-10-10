@@ -86,6 +86,7 @@ body {
     color: white;
     align-items: center;
     text-decoration: none;
+    transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
 .sidebar a:hover {
