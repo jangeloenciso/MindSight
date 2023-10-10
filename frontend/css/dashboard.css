@@ -1,0 +1,137 @@
+:root {
+    --primary-color: #095371;
+    --text-white: #ffffff;
+    --text-white-dim: #d9d9d9;
+    --main-db-bg-color: #f3f3f3;
+    --bg-orange: #DB9354;
+    --border: #b1b1b1;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: Lexend;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+
+    /* overflow: hidden; */
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-db-bg-color);
+}
+
+
+
+
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100%;
+}
+
+.sidebar .profile {
+    margin-top: auto;
+}
+
+
+/* MindSight Logo */
+#logo {
+    margin: 10px 0px;
+    height: 50px;
+    width: 100%;
+    margin-right: unset !important;
+}
+
+.logo {
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+
+.sidebar ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    display: flex;
+}
+
+
+
+/* dashboard logo */
+.sidebar img {
+    width: 25px;
+    aspect-ratio: 1 / 1;
+    margin-right: 12px;
+}
+
+.sidebar a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 20px 24px;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: var(--bg-orange);
+}
+
+
+
+/* section margins */
+.overview {
+    margin-top: 24px;
+}
+
+.account {
+    margin-top: 24px;
+}
+
+
+
+/* font sizes */
+.overview span, .account span {
+    font-size: 20px;
+}
+
+.overview p, .account p {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    padding-left: 24px;
+    color: var(--text-white-dim);
+}
+
+
+/* user profile */
+.profile {
+    border-top: 1px solid #b1b1b1;
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 20px 24px;
+}
+
+.profile img {
+    width: 40px;
+}
+
+.profile span {
+    color: var(--text-white);
+    font-weight: bold;
+}
