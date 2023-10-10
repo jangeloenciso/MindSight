@@ -14,7 +14,5 @@ function checkFields() {
         btn.onclick = function() {
             modal.style.display = "block";
         }
-
     }
-
 }
