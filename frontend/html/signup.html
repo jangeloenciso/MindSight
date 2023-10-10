@@ -6,19 +6,18 @@
     <link href="/frontend/css/signup.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/media/images/EYE LOGO.svg">
     <link href="https://fonts.googleapis.com/css2?family=Lexend">
-    <script type="text/javascript" src="/frontend/javascript/signup.js"></script>
     <title>Mind Sight: Sign up</title>
 </head>
 <body>
     <div class="container">
         <img class="full_logo" src="/media/images/MINDSIGHT LOGO.svg">
         <h1>Sign up</h1>
-        <form class="textarea">
+        <form class="textarea" onsubmit="return check()">
             <div class="inputs">
                 <input class="username" id="username" type="text" placeholder="Username" required>
                 <input class="password" id="password" type="password" placeholder="Password" required>
                 <input class="confirm" id="confirm" type="password" placeholder="Confirm Password" required>
-                <button class="signup" id="btn-popup" onclick="checkFields()" type="submit">SIGN UP</button>
+                <button class="signup" id="btn-popup" type="submit">SIGN UP</button>
             </div>
             <div class="account">
                 <p>Already have an account?</p>
@@ -31,11 +30,34 @@
     <div class="modal" id="popup">
         <div class="modal-content">
           <p>Awesome</p>
-          <p>Account created <br> Successfullu</p>
-          <a href="/frontend/html/login.html">
-            <input class="go-to-login" type="button" value="LOG IN">
+          <p>Account created <br> Successfully</p>
+            <a href="/frontend/html/login.html">
+                <input class="go-to-login" type="button" value="LOG IN">
             </a>
         </div>
     </div>
 </body>
+<script>
+    //Modal
+    var modal = document.getElementById("popup");
+
+    //Opens modal
+    var btn = document.getElementById("btn-popup");
+
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var confirmPass = document.getElementById("confirm").value;
+
+   if (username !== "" || password !== "" || confirmPass !== "") 
+        if (password == confirmPass) {
+            //When click sign up, modal opens
+            btn.onclick = function check() {
+                modal.style.display = "block";
+            }
+        }
+
+        else {
+            alert("Your password are not same");
+        }
+</script>
 </html>
