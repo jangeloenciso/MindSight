@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="signup.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/media/images/EYE LOGO.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend">
+    <script type="javascript" src="signup.js"></script>
+    <title>Mind Sight</title>
+</head>
+<body>
+    <div class="container">
+        <img class="full_logo" src="/media/images/MINDSIGHT LOGO.svg">
+        <h1>Sign up</h1>
+        <form class="textarea">
+            <div class="inputs">
+                <input class="username" id="username" type="text" placeholder="Username" required>
+                <input class="password" id="password" type="password" placeholder="Password" required>
+                <input class="confirm" id="confirm" type="password" placeholder="Confirm Password" required>
+                <button class="signup" id="btn-popup" formaction="checkFields()" type="submit">SIGN UP</button>
+            </div>
+            <div class="account">
+                <p>Already have an account?</p>
+                <a href="login.html">
+                <input class="login" type="button" value="Log in now!">
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="modal" id="popup">
+        <div class="modal-content">
+          <p>Awesome</p>
+          <p>Account created <br> Successfullu</p>
+          <a href="login.html">
+            <input class="go-to-login" type="button" value="LOG IN">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
