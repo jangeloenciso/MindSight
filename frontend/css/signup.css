@@ -6,7 +6,7 @@
 }
 
 * {
-    font-family: 'Lexend', sans-serif;
+    font-family: Lexend;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -124,7 +124,7 @@ input {
     color: var(--main-bg-color);
     text-align: center;
     font-size: 15px;
-    font-style: normal;
+    font-style: bold;
     font-weight: 800;
     line-height: normal;
     margin-bottom: 22px;
@@ -156,6 +156,7 @@ input {
     background-color: none;
     color: var(--primary-color);
     font-size: 15px;
+    font-family: 'Lexend', sans-serif;
     font-style: normal;
     font-weight: 700;
     line-height: normal;

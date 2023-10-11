@@ -3,10 +3,13 @@
   --main-bg-color: #EAE7D6;
   --hover-color: #DB9354;
   --bg-color: #f4f4f4;
+  --border: #b1b1b1;
+  --text-white: #fff;
+  --text-white-dim: #d9d9d9;
 }
 
 * {
-  font-family: 'Lexend', sans-serif;
+  font-family: Lexend;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -19,7 +22,7 @@ body, html {
 }
 
 body {
-  background: var(--bg-color);
+  background: var(--main-bg-color);
   width: 100vw;
   height: 100vh;
   /* background-image: url(/media/images/sidelogo.png);
@@ -31,39 +34,134 @@ body {
   margin: auto; */
 }
 
-.sidelogo {
-  width: 125px;
-  height: 128px;
-  margin-left: 0;
-  margin-top: 0;
+/* Sidebar */
+.sidebar {
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100%;
 }
 
-ul {
-  
-  list-style-type: none;
-  margin-top: 0;
+.sidebar .profile {
+  margin-top: auto;
+}
+
+
+/* MindSight Logo */
+#logo {
+  margin: 10px 0;
+  height: 50px;
+  width: 100%;
+  margin-right: unset !important;
+}
+
+.logo {
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+
+
+.sidebar ul {
+  width: 100%;
+  margin: 0;
   padding: 0;
-  width: 125px;
-  height: 100vh;
-  flex-shrink: 0;
-  border-radius: 10px 10px 10px 0px;
-  background: #347893;
 }
 
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
+.sidebar li {
+  display: flex;
+}
+
+
+
+/* dashboard logo */
+.sidebar img {
+  width: 25px;
+  aspect-ratio: 1 / 1;
+  margin-right: 12px;
+}
+
+.sidebar a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 20px 0 20px 24px;
+  color: white;
+  align-items: center;
   text-decoration: none;
+  transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
-/* Change the link color on hover */
-li a:hover {
-  background-color: #555;
-  color: white;
+.sidebar a:hover {
+  background-color: var(--hover-color);
 }
 
-.active {
-  background-color: #04AA6D;
-  color: white;
+
+
+/* section margins */
+.overview {
+  margin-top: 24px;
+}
+
+.account {
+  margin-top: 24px;
+}
+
+
+
+/* font sizes */
+.overview span, .account span {
+  font-size: 20px;
+}
+
+.overview p, .account p {
+  margin: 0 0 5px;
+  font-size: 16px;
+  padding-left: 24px;
+  color: var(--text-white-dim);
+}
+
+
+/* user profile */
+.profile {
+  border-top: 1px solid var(--border);
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 20px 24px;
+}
+
+.profile img {
+  width: 40px;
+}
+
+.profile span {
+  color: var(--text-white);
+  font-weight: bold;
+}
+
+/* content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.logo {
+
+}
+
+.tag-line {
+
 }
