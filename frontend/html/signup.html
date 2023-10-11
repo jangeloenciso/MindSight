@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/frontend/css/signup.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/media/images/EYE LOGO.svg">
+    <link rel="icon" type="image/x-icon" href="/media/images//SVG/EYE LOGO.svg">
     <link href="https://fonts.googleapis.com/css2?family=Lexend">
     <title>Mind Sight: Sign up</title>
 </head>
 <body>
     <div class="container">
-        <img class="full_logo" src="/media/images/MINDSIGHT LOGO.svg">
+        <img class="full_logo" src="/media/images/SVG/MINDSIGHT LOGO.svg">
         <h1>Sign up</h1>
-        <form class="textarea" onsubmit="return check()">
+        <!-- <form class="textarea" onsubmit="return check()"> -->
             <div class="inputs">
                 <input class="username" id="username" type="text" placeholder="Username" required>
                 <input class="password" id="password" type="password" placeholder="Password" required>
@@ -27,10 +27,13 @@
             </div>
         </form>
     </div>
-    <div class="modal" id="popup">
+    <div class="modal-container" id="popup">
         <div class="modal-content">
-          <p>Awesome</p>
-          <p>Account created <br> Successfully</p>
+            <img class="popup-logo" src="/media/images/popup.png">
+            <div class="popup-message">
+                <p class="awesome">Awesome!</p>
+                <p class="acc-created">Account created <br> Successfully</p>
+            </div>
             <a href="/frontend/html/login.html">
                 <input class="go-to-login" type="button" value="LOG IN">
             </a>
@@ -48,16 +51,17 @@
     var password = document.getElementById("password").value;
     var confirmPass = document.getElementById("confirm").value;
 
-   if (username !== "" || password !== "" || confirmPass !== "") 
-        if (password == confirmPass) {
+    // if (username !== "" || password !== "" || confirmPass !== "") {
+    //     if (password == confirmPass) {
             //When click sign up, modal opens
             btn.onclick = function check() {
                 modal.style.display = "block";
             }
-        }
+    //     }
 
-        else {
-            alert("Your password are not same");
-        }
+    //     else {
+    //         alert("Your password are not same");
+    //     }
+    // }
 </script>
 </html>
