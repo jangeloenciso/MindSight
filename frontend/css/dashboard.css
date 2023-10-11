@@ -5,6 +5,7 @@
     --main-db-bg-color: #EAE7D6;
     --bg-orange: #DB9354;
     --border: #b1b1b1;
+    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
 
@@ -29,20 +30,34 @@ body {
 
 
 
-
 /* Sidebar */
 .sidebar {
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 73px;
     height: 100%;
+    transition: var(--smooth-transition)
 }
+
+.sidebar:hover {
+    width: 250px;
+}
+
+
 
 .sidebar .profile {
     margin-top: auto;
 }
 
+.sidebar span, .sidebar p {
+    opacity: 0;
+    transition: var(--smooth-transition);
+}
+
+.sidebar:hover span, .sidebar:hover p {
+    opacity: 1;
+}
 
 /* MindSight Logo */
 #logo {
@@ -50,11 +65,36 @@ body {
     height: 50px;
     width: 100%;
     margin-right: unset !important;
+    transition: var(--smooth-transition);
+    display: none;
 }
 
+.sidebar:hover #logo {
+    display: block;
+}
+
+
+#logo-initial {
+    display: block;
+    margin: 10px 0;
+    height: 50px;
+    width: 100%;
+    transform: scale(1.5);
+    transition: var(--smooth-transition);
+
+}
+
+.sidebar:hover #logo-initial {
+    display: none;
+}
+
+
+/* Logo container */
 .logo {
+    display: flex;
     padding: 0 24px;
     border-bottom: 1px solid var(--border);
+    justify-content: center;
 }
 
 
@@ -86,7 +126,7 @@ body {
     color: white;
     align-items: center;
     text-decoration: none;
-    transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
+    transition: var(--smooth-transition);
 }
 
 .sidebar a:hover {
@@ -116,6 +156,7 @@ body {
     font-size: 16px;
     padding-left: 24px;
     color: var(--text-white-dim);
+
 }
 
 
@@ -129,7 +170,8 @@ body {
 }
 
 .profile img {
-    width: 40px;
+    width: 25px;
+    aspect-ratio: 1 / 1;
 }
 
 .profile span {
