@@ -1,18 +1,21 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import MySQLdb.cursors, re, hashlib
 
 app = Flask(__name__)
 
+mindisight = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="",
+  database="mindsight"
+)
 
-@app.route('/')
-def acc():
-    return render_template("login.html")
+@app.route('/login-form', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html', msg='')
 
-accounts = {'jowjie':'jowjie_dev',
-          'tin':'tin_dev',
-          'joker':'joker_dev',
-          'tet' : 'tet_UI',
-          'matt' : 'matt_UI'
-          }
 
 @app.route('/login-form', methods = ['POST','GET'])
 def login():
