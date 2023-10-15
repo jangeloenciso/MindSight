@@ -36,8 +36,10 @@ body {
     display: flex;
     flex-direction: column;
     width: 73px;
-    height: 100%;
-    transition: var(--smooth-transition)
+    min-height: 100%;
+    /* height: auto; */
+    transition: var(--smooth-transition);
+    overflow: hidden;
 }
 
 .sidebar:hover {
@@ -81,7 +83,6 @@ body {
     width: 100%;
     transform: scale(1.5);
     transition: var(--smooth-transition);
-
 }
 
 .sidebar:hover #logo-initial {
