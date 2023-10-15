@@ -36,7 +36,10 @@ def signup():
             acc = cur.fetchone()
 
             if acc:
-                prmpt = "Sorry, but the username is already taken"
+                msg1 = 'Sorry, but the username "'
+                msg2 = (_username)
+                msg3 = '" is already taken'
+                prmpt = (msg1 + msg2 + msg3)
             
             elif not re.match(r'[A-Za-z0-9]+', _username):
                 prmpt = "Sorry, but username must contain only characters and numbers"
