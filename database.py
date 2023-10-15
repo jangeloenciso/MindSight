@@ -1,27 +1,24 @@
-import mysql.connector
+from flask import Flask,render_template, request
+from flask_mysqldb import MySQL
+ 
+app = Flask(__name__)
+ 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'mindsight'
+ 
+mysql = MySQL(app)
+ 
+@app.route('/')
+def form():
+    cur = mysql.connection.cursor()
+    cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Marithe', 'dela Cruz', 'tet', 'tet_UI' )''')
+    cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Matthew', 'Bautista', 'matt', 'matt_UI' )''')
+    cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Justin Marley', 'Fontanilla', 'tin', 'tin_dev' )''')
+    cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Joseph Angelo', 'Enciso', 'joker', 'joker_dev' )''')
+    cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Jorge Robert', 'Velarde', 'jowjie', 'jowjie_dev' )''')
+    return 'done'
 
-
-mindisight = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  database="mindsight"
-)
-
-
-cursor = mindisight.cursor()
-
-sql = "INSERT INTO developers (id, fname, lname, username, password) VALUES (%s, %s, %s, %s, %s)"
-val = [
-  ('', 'Marithe', 'dela Cruz', 'tet', 'tet_UI'),
-  ('', 'Justin Marley', 'Fontanilla', 'tin', 'tin_dev'),
-  ('', 'Matthew', 'Bautista', 'matt', 'matt_UI'),
-  ('', 'Joseph Angelo', 'Enciso', 'joker', 'joker_dev'),
-  ('', 'Jorge Robert', 'Velarde', 'jowjie', 'jowjie_dev')
-]
-
-cursor.executemany(sql, val)
-
-mindisight.commit()
-
-print(cursor.rowcount, "data was inserted.")
+if __name__ == '__main__':
+    app.run(host='localhost', port=5000)

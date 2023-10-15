@@ -11,24 +11,28 @@
 </head>
 <body>
     <div class="container">
-        <img class="full_logo" src="/media/images/SVG/MINDSIGHT LOGO.svg">
+        <img class="full_logo" src="/static/SVG/MINDSIGHT LOGO.svg">
         <h1>Sign up</h1>
-        <form>
+        <form action="signup-form" method="POST">
             <div class="inputs">
-                <input class="username" id="username" type="text" placeholder="Username">
-                <input class="password" id="password" type="password" placeholder="Password">
-                <input class="confirm" id="confirm" type="password" placeholder="Confirm Password">
+                <input class="fname" id="fname" name="fname" type="text" placeholder="First Name">
+                <input class="lname" id="lname" name="lname" type="text" placeholder="Last Name">
+                <input class="username" id="username" name="username" type="text" placeholder="Username">
+                <input class="email" id="email" name="email" type="text" placeholder="Email">
+                <input class="password" id="password" name="password" type="password" placeholder="Password">
+                <input class="confirm" id="confirm" name="confirm" type="password" placeholder="Confirm Password">
+                <div class="prmpt">{{ prmpt }}</div>
                 <button class="signup" id="btn-popup" type="submit">SIGN UP</button>
             </div>
             <div class="account">
                 <p>Already have an account?</p>
-                <a href="/templates/login.html">
+                <a href="{{ url_for('login') }}">
                 <input class="login" type="button" value="Log in now!">
                 </a>
             </div>
         </form>
     </div>
-    <div class="modal-container" id="popup">
+    <!-- <div class="modal-container" id="popup">
         <div class="modal-content">
             <img class="popup-logo" src="/media/images/popup.png">
             <div class="popup-message">
@@ -39,9 +43,9 @@
                 <input class="go-to-login" type="button" value="LOG IN">
             </a>
         </div>
-    </div>
+    </div> -->
 </body>
-<script>
+<!-- <script>
     //Modal
     var modal = document.getElementById("popup");
 
@@ -64,5 +68,5 @@
     //         alert("Your password are not same");
     //     }
     // }
-</script>
+</script> -->
 </html>

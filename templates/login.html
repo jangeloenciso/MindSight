@@ -10,18 +10,19 @@
 </head>
 <body>
     <div class="container">
-        <img class="full_logo" src="/media/images/SVG/MINDSIGHT LOGO.svg">
+        <img class="full_logo" src="/static/SVG/MINDSIGHT LOGO.svg">
         <h1>Log in</h1>
-        <form action="/login-form" method="POST">
+        <form action="login-form" method="POST">
             <div class="inputs">
                 <input class="username" type="text" name="username" placeholder="Username" required>
                 <input class="password" type="password" name="password" placeholder="Password" required>
                 <input class="forgot" type="button" value="Forgot Password?">
+                <div class="prmpt">{{ prmpt }}</div>
                 <button class="login" type="submit">LOG IN</button>
             </div>
             <div class="account">
                 <p>Don't have an account?</p>
-               <a href="/templates/signup.html">
+               <a href="{{ url_for('signup') }}">
                 <input class="signup" type="button" value="Sign up!">
                </a>
             </div>
