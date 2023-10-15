@@ -15,12 +15,12 @@
         <h1>Sign up</h1>
         <form action="signup-form" method="POST">
             <div class="inputs">
-                <input class="fname" id="fname" name="fname" type="text" placeholder="First Name">
-                <input class="lname" id="lname" name="lname" type="text" placeholder="Last Name">
-                <input class="username" id="username" name="username" type="text" placeholder="Username">
-                <input class="email" id="email" name="email" type="text" placeholder="Email">
-                <input class="password" id="password" name="password" type="password" placeholder="Password">
-                <input class="confirm" id="confirm" name="confirm" type="password" placeholder="Confirm Password">
+                <input class="fname" id="fname" name="fname" type="text" placeholder="First Name" required>
+                <input class="lname" id="lname" name="lname" type="text" placeholder="Last Name" required>
+                <input class="username" id="username" name="username" type="text" placeholder="Username" required>
+                <input class="email" id="email" name="email" type="text" placeholder="Email" required>
+                <input class="password" id="password" name="password" type="password" placeholder="Password" required>
+                <input class="confirm" id="confirm" name="confirm" type="password" placeholder="Confirm Password" required>
                 <div class="prmpt">{{ prmpt }}</div>
                 <button class="signup" id="btn-popup" type="submit">SIGN UP</button>
             </div>

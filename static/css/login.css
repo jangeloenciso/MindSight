@@ -22,13 +22,14 @@ body {
     background: var(--bg-color);
     width: 100vw;
     height: 100vh;
-    /* background-image: url(/media/images/sidelogo.png);
+    /* background-image: url(/static/SVG/EYE\ LOGO.svg);
+    background-color: var(--main-bg-color);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 600px;
     height: 560px;
-    margin: auto; */
+    margin: auto;  */
 }
 
 
@@ -90,6 +91,11 @@ input {
 
 .password {
     margin-bottom: 1px;
+}
+
+.prmpt {
+    font-size: 12px;
+    margin: auto;
 }
 
 .inputs {

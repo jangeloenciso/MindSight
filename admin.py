@@ -48,9 +48,9 @@ def signup():
                 prmpt = 'Please fill out the form.'
 
             else:
-                hash = _password + app.secret_key
-                hash = hashlib.sha1(hash.encode())
-                _password = hash.hexdigest()
+                encrypt = _password + app.secret_key
+                encrypt = hashlib.sha1(encrypt.encode())
+                _password = encrypt.hexdigest()
 
                 cur.execute('''INSERT INTO admins (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
                 mysql.connection.commit()
@@ -58,9 +58,6 @@ def signup():
                 
         else:
             prmpt = "Passwords are not the same"
-
-    else:
-        prmpt = 'Please fill out the form.'
         
     return render_template('signup.html', prmpt=prmpt)
 
@@ -72,9 +69,9 @@ def login():
         _username = request.form['username']
         _password = request.form['password']
 
-        hash = _password + app.secret_key
-        hash = hashlib.sha1(hash.encode())
-        _password = hash.hexdigest()
+        encrypt = _password + app.secret_key
+        encrypt = hashlib.sha1(encrypt.encode())
+        _password = encrypt.hexdigest()
 
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM admins WHERE username = %s AND password = %s', [_username, _password])
@@ -86,12 +83,13 @@ def login():
             session['id'] = acc[0]
             session['username'] = acc[3]
             return redirect(url_for('dashboard'))
+        
         else:
             prmpt = 'Incorrect username/password!'
        
     return render_template('login.html', prmpt=prmpt)
 
-@app.route('/mindsight/logout')
+@app.route('/logout')
 def logout():
    session.pop('loggedin', None)
    session.pop('id', None)
