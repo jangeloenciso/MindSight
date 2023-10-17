@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #095371;
+    --text-white: #fff;
+    --text-white-dim: #d9d9d9;
+    --bg-white: #FFF;
+    --main-db-bg-color: #EAE7D6;
+    --bg-orange: #DB9354;
+    --border: #b1b1b1;
+    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: Lexend;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+
+    /* overflow: hidden; */
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-db-bg-color);
+    display: flex;
+}
+
+
+
+/* left side */
+.left-main {
+    width: 50%;
+    background-color: var(--bg-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lsub-container {
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lsub-container .lsub-top {
+    position: relative;
+    bottom: 100px;
+}
+
+
+.welcome-msg {
+    width: 350px;
+    padding-left: 20px;
+    font-size: 1.4em;
+    color: var(--text-white);
+}
+
+.logo-img {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/* text on top of button */
+.btn-header {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-white);
+    margin-bottom: 20px;
+}
+
+.btn-header span {
+    font-weight: bold;
+    letter-spacing: 0.9px;
+}
+
+.btn-signup {
+    width: 100%;
+    height: 45px;
+    font-weight: bold;
+    letter-spacing: 0.9px;
+    border-radius: 200px;
+    color: var(--text-white);
+    border: 2px solid #FFF;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/* SVGs */
+.svg-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 25%;
+}
+
+.svg-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40%;
+}
+
+
+
+
+
+.right-main {
+    width: 50%;
+    background-color: var(--bg-white);
+}
