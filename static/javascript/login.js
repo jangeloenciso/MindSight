@@ -8,8 +8,6 @@ togglePassword.addEventListener("click", function () {
   passwordInput.setAttribute("type", type);
 });
 
-
-
 // switches the images upon toggle
 const image = document.getElementById("eye-image");
 const imageSources = [
