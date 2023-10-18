@@ -49,9 +49,10 @@ body {
     align-items: center;
 }
 
+/* MINDSIGHT logo offset */
 .lsub-container .lsub-top {
     position: relative;
-    bottom: 100px;
+    bottom: 45px;
 }
 
 
@@ -63,7 +64,7 @@ body {
 }
 
 .logo-img {
-    width: 350px;
+    width: 490px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,6 +76,7 @@ body {
 .btn-header {
     width: auto;
     display: flex;
+    font-size: 1.4em;
     flex-direction: column;
     align-items: center;
     color: var(--text-white);
