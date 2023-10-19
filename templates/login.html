@@ -1,32 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/css/login.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lexend"
+    />
+    <link rel="stylesheet" href="../static/css/login.css" />
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">
-    <title>Mind Sight: Log in</title>
-</head>
-<body>
-    <div class="container">
-        <img class="full_logo" src="/static/SVG/MINDSIGHT LOGO.svg">
-        <h1>Log in</h1>
+    <title>Mindsight | Login</title>
+  </head>
+  <body>
+    <!-- left -->
+    <section class="left-main">
+      <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+      <div class="lsub-container">
+        <div class="lsub-top">
+          <div class="welcome-msg">Welcome to</div>
+          <img
+            src="../static/MINDSIGHT LOGO (WHITE).png"
+            class="logo-img"
+            alt="Mindsight logo"
+          />
+        </div>
+        <div>
+          <div class="btn-header">
+            <span>New Here?</span>Have an account with us!
+          </div>
+          <a href="{{ url_for('signup') }}">
+          <button class="btn-signup">SIGN UP</button>
+          </a>
+        </div>
+      </div>
+      <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
+    </section>
+
+    <!-- right -->
+    <section class="right-main">
+      <div class="rsub-container">
         <form action="login-form" method="POST">
-            <div class="inputs">
-                <input class="username" type="text" name="username" placeholder="Username" required>
-                <input class="password" type="password" name="password" placeholder="Password" required>
-                <input class="forgot" type="button" value="Forgot Password?">
-                <div class="prmpt">{{ prmpt }}</div>
-                <button class="login" type="submit">LOG IN</button>
+        <div>
+          <p>Log in</p>
+              <input
+                type="text"
+                placeholder="username"
+                name="username"
+                id="username"
+                required
+              />
+        </div>
+        <div class="password-div">
+            <div class="password-input-container">
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                id="password"
+                required
+              />
+              <i class="togglepass" id="togglePassword"
+                ><img
+                  id="eye-image"
+                  src="../static/SVG/eyehidden.svg"
+                  alt="show/hide"
+                  onclick="toggleImage()"
+              /></i>
             </div>
-            <div class="account">
-                <p>Don't have an account?</p>
-               <a href="{{ url_for('signup') }}">
-                <input class="signup" type="button" value="Sign up!">
-               </a>
-            </div>
+            <div class="forgot-pw-container"><a href="">Forgot Password?</a></div>
+        </div>
+
+        <div class="login-btn-container">
+          <div class="prmpt">{{ prmpt }}</div>
+          <button type="submit" class="login-button">LOG IN</button>
+        </div>
         </form>
-    </div>
-</body>
+      </div>
+    </section>
+
+    <script src="../static/javascript/login.js"></script>
+  </body>
 </html>
