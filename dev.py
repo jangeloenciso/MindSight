@@ -15,6 +15,36 @@ app.config["MYSQL_DB"] = "mindsight"
 mysql = MySQL(app)
 
 @app.route('/')
+@app.route('/login-form', methods=['POST', 'GET'])
+def login():
+    prmpt = ''
+
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        _username = request.form['username']
+        _password = request.form['password']
+
+        encrypt = _password + app.secret_key
+        encrypt = hashlib.sha1(encrypt.encode())
+        _password = encrypt.hexdigest()
+
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM developers WHERE username = %s AND password = %s', [_username, _password])
+
+        acc = cur.fetchone()
+
+        if acc:
+            session['loggedin'] = True
+            session['id'] = acc[0]
+            session['username'] = acc[3]
+            session['fname'] = acc[1]
+            session['lname'] = acc[2]
+            return redirect(url_for('dashboard'))
+        
+        else:
+            prmpt = 'Your username/password is incorrect'
+       
+    return render_template('login.html', prmpt = prmpt)
+
 @app.route('/signup-form', methods = ['POST', 'GET'])
 def signup():
     prmpt = ''
@@ -64,34 +94,6 @@ def signup():
         
     return render_template('signup.html', prmpt=prmpt)
 
-@app.route('/login-form', methods=['POST', 'GET'])
-def login():
-    prmpt = ''
-
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        _username = request.form['username']
-        _password = request.form['password']
-
-        encrypt = _password + app.secret_key
-        encrypt = hashlib.sha1(encrypt.encode())
-        _password = encrypt.hexdigest()
-
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM developers WHERE username = %s AND password = %s', [_username, _password])
-
-        acc = cur.fetchone()
-
-        if acc:
-            session['loggedin'] = True
-            session['id'] = acc[0]
-            session['username'] = acc[3]
-            return redirect(url_for('dashboard'))
-        
-        else:
-            prmpt = 'Your username/password is incorrect'
-       
-    return render_template('login.html', prmpt = prmpt)
-
 @app.route('/logout')
 def logout():
    session.pop('loggedin', None)
@@ -103,9 +105,29 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
-        return render_template('dashboard.html', username = session['username'])
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
     
     return redirect(url_for('login'))
+
+@app.route('/developers')
+def devs():
+   return render_template('devs.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/admin')
+def admin():
+   return render_template('admin.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/analytics')
+def analytics():
+   return render_template('analytics.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/student')
+def stud():
+   return render_template('stud.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/settings')
+def sett():
+   return render_template('sett.html', fname = session['fname'], lname = session['lname'])
 
 if __name__ == '__main__':
     app.run(debug=True, host='localhost', port=5000)

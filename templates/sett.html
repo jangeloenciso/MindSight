@@ -16,8 +16,9 @@
       type="image/x-icon"
       href="/static/SVG/EYE LOGO.svg"
     />
-    <link rel="stylesheet" href="/static/css/dashboard.css" />
-    <title>MindSight: Dashboard</title>
+    <link rel="stylesheet" href="/static/css/sett.css" />
+    <script src="/static/javascript/signup.js"></script>
+    <title>MindSight: Settings</title>
   </head>
   <body>
     <nav class="sidebar">
@@ -92,5 +93,46 @@
         >
       </div>
     </nav>
+    <main>
+      <div class="slide-in from-right">
+        <div class="personal-content">
+          <h1>Personal</h1>
+            <p class="desc">Update your personal details and photo here.</p>
+            <hr>
+            <label class="fname">First name</label>
+            <input id="fname" type="text" placeholder="Enter your new First name"> 
+            <label class="lname">Last name</label>
+            <input id="lname" type="text" placeholder="Enter your new Last name">
+            <hr>
+            <div class="for-photo">
+              <p class="your-photo">Your Photo</p>
+              <p class="desc">This will displayed on your profile</p>
+              <img class="pic" src="/static/profile.png">
+              <button class="cancel" type="button">Cancel</button>
+              <button class="update" type="button">Update</button>
+            </div>
+        </div>
+        <div class="account-content">
+          <h1>Account</h1>
+            <p class="desc">Update your account here.</p>
+            <hr>
+            <label class="username">Username</label>
+            <input id="username" type="text" placeholder="Enter your new username"> 
+            <label class="email">Email Address</label>
+            <input id="email" type="text" placeholder="Enter your new email address">
+            <label class="password">Password</label>
+            <input id="password" type="text" placeholder="Enter your new password">
+            <hr>
+            <div class="-update-cancel-button">
+              <button class="cancel" type="button">Cancel</button>
+              <button class="update" type="button">Update</button>
+            </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="personal" type="button">Personal</button>
+        <button class="account" type="button">Account</button>
+      </div>
+    </main>
   </body>
 </html>

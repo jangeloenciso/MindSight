@@ -40,7 +40,6 @@ body {
     /* height: auto; */
     transition: var(--smooth-transition);
     overflow: hidden;
-    z-index: 999;
 }
 
 .sidebar:hover {

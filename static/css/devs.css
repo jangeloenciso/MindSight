@@ -17,7 +17,7 @@
 body, html {
     margin: 0;
     padding: 0;
-
+    
     /* overflow: hidden; */
 }
 
@@ -40,13 +40,11 @@ body {
     /* height: auto; */
     transition: var(--smooth-transition);
     overflow: hidden;
-    z-index: 999;
 }
 
 .sidebar:hover {
     width: 250px;
 }
-
 
 
 .sidebar .profile {
@@ -179,4 +177,133 @@ body {
 .profile span {
     color: var(--text-white);
     font-weight: bold;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame {
+    width: 1380px;
+    height: 670px;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0 10px 0 15px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.desc {
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.title {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+
+.name {
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+hr {
+    width: 1315px;
+    height: 2px;
+    border: none;
+    background-color: var(--bg-orange);
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #095371;
+    text-align: center;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.box {
+    width: 240px;
+    height: 495px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: 0.25s;
+}
+
+.pic {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+    transition: filter 0.25s;
+}
+
+.socmed {
+    margin-top: 25px;
+}
+
+.socmed img {
+    width: 25px;
+    aspect-ratio: 1 / 1;
+    margin: 0 10px 0 10px;
+}
+
+/* #fb-hover {
+    display: none;
+    transition: 0.25s;
+}
+
+#ig-hover {
+    display: none;
+    transition: 0.25s;
+}
+
+#fb-hover:hover {
+    display: block;
+}
+
+#ig-hover:hover {
+    display: block;
+} */
+
+.box:hover {
+    transform: scale(1.1);
+}
+
+.box:hover .pic {
+    filter: grayscale(0);
 }

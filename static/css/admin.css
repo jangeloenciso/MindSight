@@ -1,0 +1,370 @@
+:root {
+    --primary-color: #095371;
+    --text-white: #fff;
+    --text-white-dim: #d9d9d9;
+    --main-db-bg-color: #EAE7D6;
+    --bg-orange: #DB9354;
+    --border: #b1b1b1;
+    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: Lexend;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    
+    /* overflow: hidden; */
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-db-bg-color);
+}
+
+
+
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    width: 73px;
+    min-height: 100%;
+    /* height: auto; */
+    transition: var(--smooth-transition);
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+
+.sidebar .profile {
+    margin-top: auto;
+}
+
+.sidebar span, .sidebar p {
+    opacity: 0;
+    transition: var(--smooth-transition);
+}
+
+.sidebar:hover span, .sidebar:hover p {
+    opacity: 1;
+}
+
+/* MindSight Logo */
+#logo {
+    margin: 10px 0;
+    height: 50px;
+    width: 100%;
+    margin-right: unset !important;
+    transition: var(--smooth-transition);
+    display: none;
+}
+
+.sidebar:hover #logo {
+    display: block;
+}
+
+
+#logo-initial {
+    display: block;
+    margin: 10px 0;
+    height: 50px;
+    width: 100%;
+    transform: scale(1.5);
+    transition: var(--smooth-transition);
+}
+
+.sidebar:hover #logo-initial {
+    display: none;
+}
+
+
+/* Logo container */
+.logo {
+    display: flex;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+}
+
+
+
+.sidebar ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    display: flex;
+}
+
+
+
+/* dashboard logo */
+.sidebar img {
+    width: 25px;
+    aspect-ratio: 1 / 1;
+    margin-right: 12px;
+}
+
+.sidebar a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 20px 24px;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--smooth-transition);
+}
+
+.sidebar a:hover {
+    background-color: var(--bg-orange);
+}
+
+
+
+/* section margins */
+.overview {
+    margin-top: 24px;
+}
+
+.account {
+    margin-top: 24px;
+}
+
+
+
+/* font sizes */
+.overview span, .account span {
+    font-size: 20px;
+}
+
+.overview p, .account p {
+    margin: 0 0 5px;
+    font-size: 16px;
+    padding-left: 24px;
+    color: var(--text-white-dim);
+
+}
+
+
+/* user profile */
+.profile {
+    border-top: 1px solid #b1b1b1;
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 20px 24px;
+}
+
+.profile img {
+    width: 25px;
+    aspect-ratio: 1 / 1;
+}
+
+.profile span {
+    color: var(--text-white);
+    font-weight: bold;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin-bottom: 25px;
+}
+
+.name, .title {
+    color: var(--text-white);
+    padding: 0;
+    margin: 5px;
+}
+
+.name {
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#direct {
+    font-size: 25px;
+    text-align: right;
+}
+
+#direct-title {
+    font-size: 20px;
+    text-align: right;
+}
+
+#asst-direct {
+    font-size: 25px;
+    text-align: left;
+}
+
+#asst-direct-title {
+    font-size: 20px;
+    text-align: left;
+}
+
+.frame {
+    width: 1380px;
+    height: 670px;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 45px 15px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.directors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.container-director {
+    width: 1000px;
+    height: 80px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 65px;
+}
+
+.circle1 {
+    position: absolute;
+    top: 23.5%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+}
+
+.circle2 {
+    position: absolute;
+    top: 39%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+}
+
+.facilitators {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.iris-russel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.jake-lizelle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 13px;
+}
+
+.container-facilitator {
+    width: 490px;
+    height: 65px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 50px;
+    margin: 5px 10px;
+}
+
+#iris, #jake {
+    font-size: 18px;
+    text-align: left;
+}
+
+#iris-title, #jake-title {
+    font-size: 14px;
+    text-align: left;
+}
+
+#russel, #lizelle {
+    font-size: 18px;
+    text-align: right;
+}
+
+#russel-title, #lizelle-title {
+    font-size: 14px;
+    text-align: right;
+}
+
+.circle3 {
+    position: absolute;
+    top: 69.5%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+}
+
+.circle4 {
+    position: absolute;
+    top: 69.5%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+}
+
+.circle5 {
+    position: absolute;
+    top: 84.6%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+}
+
+.circle6 {
+    position: absolute;
+    top: 84.6%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+}

@@ -15,6 +15,36 @@ app.config["MYSQL_DB"] = "mindsight"
 mysql = MySQL(app)
 
 @app.route('/')
+@app.route('/login-form', methods=['POST', 'GET'])
+def login():
+    prmpt = ''
+
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        _username = request.form['username']
+        _password = request.form['password']
+
+        encrypt = _password + app.secret_key
+        encrypt = hashlib.sha1(encrypt.encode())
+        _password = encrypt.hexdigest()
+
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM admin WHERE username = %s AND password = %s', [_username, _password])
+
+        acc = cur.fetchone()
+
+        if acc:
+            session['loggedin'] = True
+            session['id'] = acc[0]
+            session['username'] = acc[3]
+            session['fname'] = acc[1]
+            session['lname'] = acc[2]
+            return redirect(url_for('dashboard'))
+        
+        else:
+            prmpt = 'Incorrect username/password!'
+       
+    return render_template('login.html', prmpt=prmpt)
+
 @app.route('/signup-form', methods = ['POST', 'GET'])
 def signup():
     prmpt = ''
@@ -31,7 +61,7 @@ def signup():
         if _confirm == _password:
 
             cur = mysql.connection.cursor()
-            cur.execute('''SELECT * FROM admins WHERE username = %s''', [_username])
+            cur.execute('''SELECT * FROM admin WHERE username = %s''', [_username])
             
             acc = cur.fetchone()
 
@@ -52,7 +82,7 @@ def signup():
                 encrypt = hashlib.sha1(encrypt.encode())
                 _password = encrypt.hexdigest()
 
-                cur.execute('''INSERT INTO admins (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
+                cur.execute('''INSERT INTO admin (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
                 mysql.connection.commit()
                 prmpt = "You have successfully sign up!"
                 
@@ -60,34 +90,6 @@ def signup():
             prmpt = "Passwords are not the same"
         
     return render_template('signup.html', prmpt=prmpt)
-
-@app.route('/login-form', methods=['POST', 'GET'])
-def login():
-    prmpt = ''
-
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        _username = request.form['username']
-        _password = request.form['password']
-
-        encrypt = _password + app.secret_key
-        encrypt = hashlib.sha1(encrypt.encode())
-        _password = encrypt.hexdigest()
-
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM admins WHERE username = %s AND password = %s', [_username, _password])
-
-        acc = cur.fetchone()
-
-        if acc:
-            session['loggedin'] = True
-            session['id'] = acc[0]
-            session['username'] = acc[3]
-            return redirect(url_for('dashboard'))
-        
-        else:
-            prmpt = 'Incorrect username/password!'
-       
-    return render_template('login.html', prmpt=prmpt)
 
 @app.route('/logout')
 def logout():
@@ -100,9 +102,29 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
-        return render_template('dashboard.html', username = session['username'])
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
     
     return redirect(url_for('login'))
+
+@app.route('/developers')
+def devs():
+   return render_template('devs.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/admin')
+def admin():
+   return render_template('admin.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/analytics')
+def analytics():
+   return render_template('analytics.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/student')
+def stud():
+   return render_template('stud.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/settings')
+def sett():
+   return render_template('sett.html', fname = session['fname'], lname = session['lname'])
 
 if __name__ == '__main__':
     app.run(debug=True, host='localhost', port=5000)
