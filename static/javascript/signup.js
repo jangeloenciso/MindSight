@@ -1,33 +1,47 @@
+// Password toggle JavaScript code
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
 
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value; 
-    confirmPass = document.getElementById("confirm").value; 
+togglePassword.addEventListener("click", function () {
+  const type =
+    passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
+});
 
-    if (username == '')
-        alert("Please enter username");
-    // If password not entered 
-    else if (password == '') 
-        alert ("Please enter Password"); 
-          
-    // If confirm password not entered 
-    else if (confirmPass == '') 
-        alert ("Please enter confirm password"); 
-          
-    // If Not same return False.     
-    else if (password != confirmPass) { 
-        alert ("\nPassword did not match: Please try again...") 
-        return false; 
-    } 
+// switches the images upon toggle
+const image = document.getElementById("eye-image");
+const imageSources = [
+  "../static/SVG/eyehidden.svg",
+  "../static/SVG/eyeshow.svg",
+];
+let currentIndex = 0;
 
-    // If same return True. 
-    else{ 
-        // Get the modal
-        var modal = document.getElementById("popup");
-    
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        document.getElementById("btn-popup").addEventListener("click", checkFields);
-        return true; 
-    } 
+function toggleImage() {
+  currentIndex = (currentIndex + 1) % 2;
+  image.src = imageSources[currentIndex];
+}
+
+// Password toggle JavaScript code (confirm)
+const passwordInputConfirm = document.getElementById("password-confirm");
+const togglePasswordConfirm = document.getElementById("togglePassword-confirm");
+
+togglePasswordConfirm.addEventListener("click", function () {
+  const type =
+    passwordInputConfirm.getAttribute("type") === "password"
+      ? "text"
+      : "password";
+  passwordInputConfirm.setAttribute("type", type);
+});
+
+// switches the images upon toggle (confirm)
+const imageConfirm = document.getElementById("eye-image-confirm");
+const imageSourcesConfirm = [
+  "../static/SVG/eyehidden.svg",
+  "../static/SVG/eyeshow.svg",
+];
+let currentIndexConfirm = 0;
+
+function toggleImageConfirm() {
+  currentIndexConfirm = (currentIndexConfirm + 1) % 2;
+  imageConfirm.src = imageSourcesConfirm[currentIndexConfirm];
+}
