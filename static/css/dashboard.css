@@ -180,3 +180,9 @@ body {
     color: var(--text-white);
     font-weight: bold;
 }
+
+.identity {
+    position: absolute;
+    top: 70%;
+    right: 10%;
+}
