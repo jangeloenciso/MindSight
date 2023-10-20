@@ -1,245 +1,262 @@
 :root {
     --primary-color: #095371;
-    --main-bg-color: #EAE7D6;
-    --hover-color: #DB9354;
-    --bg-color: #f4f4f4;
+    --text-white: #fff;
+    --text-white-dim: #d9d9d9;
+    --bg-white: #FFF;
+    --main-db-bg-color: #EAE7D6;
+    --bg-orange: #DB9354;
+    --border: #b1b1b1;
+    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
+
 * {
-    font-family: Lexend;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: Lexend;
 }
 
 body, html {
     margin: 0;
     padding: 0;
+
+    /* overflow: hidden; */
 }
 
 body {
-    background: var(--bg-color);
     width: 100vw;
     height: 100vh;
-    /* background-image: url(/static/SVG/EYE\ LOGO.svg);
-    background-color: var(--main-bg-color);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 600px;
-    height: 560px;
-    margin: auto; */
+    background-color: var(--main-db-bg-color);
+    display: flex;
 }
 
-.container {
-    width: 700px;
-    height: 615px;
-    border-radius: 60px;
-    border: 1px solid var(--main-bg-color);
-    background: rgba(255, 255, 255, 0.20);
-    /* box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40); */
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    /* backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); */
-    background-color: var(--main-bg-color);
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+
+/* left side */
+.left-main {
+    width: 50%;
+    background-color: var(--bg-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lsub-container {
+    width: 75%;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.full_logo {
-    width: 500px;
-    height: 150px;
-    margin-bottom: 15px;
+/* MINDSIGHT logo offset */
+.lsub-container .lsub-top {
+    position: relative;
+    bottom: 45px;
 }
 
-h1 {
+
+.welcome-msg {
+    width: 350px;
+    padding-left: 20px;
+    font-size: 1.4em;
+    color: var(--text-white);
+}
+
+.logo-img {
+    width: 490px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/* text on top of button */
+.btn-header {
+    width: auto;
+    display: flex;
+    font-size: 1.4em;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-white);
+    margin-bottom: 20px;
+}
+
+.btn-header span {
+    font-weight: bold;
+    letter-spacing: 0.9px;
+}
+
+.btn-login {
+    width: 100%;
+    height: 45px;
+    font-size: 1.3em;
+    font-weight: bold;
+    letter-spacing: 0.9px;
+    border-radius: 200px;
+    color: var(--text-white);
+    border: 2px solid #FFF;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/* SVGs */
+.svg-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 25%;
+}
+
+.svg-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40%;
+}
+
+
+
+
+/* login side (right side) */
+.right-main {
+    width: 50%;
+    background-color: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rsub-container {
+    width: 65%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* login text */
+.rsub-container p {
     color: var(--primary-color);
-    text-align: center;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    margin-bottom: 23px;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-input {
-    width: 270px;
-    height: 30px;
-    border-radius: 10px;
-    border: 3px solid var(--primary-color);
-    background: var(--main-bg-color);
-    color: var(--primary-color);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    padding-left: 15px;
-}
-
-.fname, .lname, .username, .email, .password {
-    margin-bottom: 13px;
-}
-
-.confirm {
-    margin-bottom: 13px;
-}
-
-.prmpt {
-    font-size: 15px;
+/* sets the gap between the input boxes */
+.rsub-container input:not(#password-confirm) {
     margin-bottom: 10px;
 }
 
-.inputs {
+
+/* forgot password styles */
+.forgot-pw-container {
+    margin-top: 11px;
     display: flex;
-    flex-direction: column;
-    color: var(--primary-color);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    text-decoration: underline;
+    color: #7FA4B1;
 }
 
-::placeholder {
-    color: var(--primary-color);
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    opacity: 0.75;
+.forgot-pw-container a:visited {
+    color: #7FA4B1;
 }
 
-.signup {
-    width: 270px;
-    height: 30px;
-    background: var(--primary-color);
-    color: var(--main-bg-color);
+.forgot-pw-container a:active {
+    color: var(--primary-color);
+}
+
+
+
+/* username and password input box */
+input[type="text"], input[type="password"] {
+    padding: 8px 17px;
+    border: 2px solid var(--primary-color);
+    outline-color: var(--primary-color);
     border-radius: 10px;
-    border: 3px solid var(--primary-color);
-    justify-content: center;
-    align-items: center;
-    color: var(--main-bg-color);
-    text-align: center;
-    font-size: 12px;
-    font-style: bold;
-    font-weight: 800;
-    line-height: normal;
-    margin-bottom: 11px;
-}
-
-.signup:hover {
-    background: var(--hover-color);
-    border: 3px solid var(--hover-color);
-}
-
-.account {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     color: var(--primary-color);
-    text-align: center;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: 1.4em;
+    font-weight: 300;
+    width: 100%;
+    letter-spacing: 2px;
+    transition: cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s, transform 1s ease-out;
 }
 
-.login {
-    width: 95px;
-    margin-top: 1px;
-    padding: 5px;
-    border: none;
-    background-color: none;
-    color: var(--primary-color);
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.login:hover {
-    color: var(--hover-color);
-}
-
-.modal-container {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* eye icon */
+.password-input-container .togglepass img {
+    width: 25px;
+    aspect-ratio: 1 / 1;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px;
-    height: 500px;
-    border-radius: 60px;
-    border: 1px solid var(--main-bg-color);
-    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(10px);
-    /* background: var(--main-bg-color); */
-}
-
-.modal-content {
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-message {
-    margin: 10px;
-}
-
-.popup-logo {
-    width: 85px;
-    height: 85px;
-}
-
-.awesome {
-    color: var(--primary-color);
-    text-align: center;
-    font-size: 34px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-}
-
-.acc-created {
-    color: var(--hover-color);
-    text-align: center;
-    font-size: 34px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-}
-
-.go-to-login {
-    width: 161px;
-    height: 56px;
-    border-radius: 10px;
-    border: none;
-    background: var(--primary-color);
-    color: var(--main-bg-color);
-    text-align: center;
+    right: 13px;
+    transform: translateY(-50%);
+    cursor: pointer;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
+    color: #6C8FB8;
 }
 
-.go-to-login:hover {
-    background: var(--hover-color);
+/* vertical line in password box */
+.password-input-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    height: 75%;
+    width: 1px;
+    background-color: #6C8FB8;
+}
+
+/* placeholder color */
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #377185;
+}
+
+/* outline color on focus */
+input[type="text"]:focus, input[type="password"]:focus {
+    outline-color: #377185;
+
+}
+
+/* Autofill color */
+input:-webkit-autofill {
+    -webkit-text-fill-color: #377185 !important;
+}
+
+/* username and password container */
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container #password {
+    padding-right: 50px;
+}
+
+/* login button */
+.login-btn-container {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+}
+
+.login-btn-container button {
+    width: 100%;
+    height: auto;
+    font-size: 1.4em;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: Lexend;
+    color: #FEFEFE;
     border: none;
-    color: var(--main-bg-color);
+    cursor: pointer;
+}
+
+.login-btn-container button:hover {
+    background-color: #0E2E5E;
 }

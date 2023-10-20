@@ -1,63 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/css/signup.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">
-    <title>Mind Sight: Sign up</title>
-</head>
-<body>
-    <div class="container">
-        <img class="full_logo" src="/static/SVG/MINDSIGHT LOGO.svg">
-        <h1>Sign up</h1>
-        <form action="signup-form" method="POST">
-            <div class="inputs">
-                <input class="fname" id="fname" name="fname" type="text" placeholder="First Name" required>
-                <input class="lname" id="lname" name="lname" type="text" placeholder="Last Name" required>
-                <input class="username" id="username" name="username" type="text" placeholder="Username" required>
-                <input class="email" id="email" name="email" type="text" placeholder="Email" required>
-                <input class="password" id="password" name="password" type="password" placeholder="Password" required>
-                <input class="confirm" id="confirm" name="confirm" type="password" placeholder="Confirm Password" required>
-                
-                <button class="signup" id="btn-popup" type="submit" data-bs-toggle="modal" data-bs-target="#myModal">SIGN UP</button>
-            </div>
-            <div class="account">
-                <p>Already have an account?</p>
-                <a href="{{ url_for('login') }}">
-                <input class="login" type="button" value="Log in now!">
-                </a>
-            </div>
-        </form>
-    </div>
-
-     <!-- The Modal -->
-     <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="modal-body">
-              {{ prmpt }}
-            </div>
-      
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-      
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lexend"
+    />
+    <link rel="stylesheet" href="../static/css/signup.css" />
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+    <title>Mindsight | Signup</title>
+  </head>
+  <body>
+    <!-- left -->
+    <section class="left-main">
+      <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+      <div class="lsub-container">
+        <div class="lsub-top">
+          <div class="welcome-msg">Welcome to</div>
+          <img
+            src="../static/MINDSIGHT LOGO (WHITE).png"
+            class="logo-img"
+            alt="Mindsight logo"
+          />
+        </div>
+        <div>
+          <div class="btn-header">
+            <span>Already a member?</span>Welcome back!
           </div>
+          <a href="{{ url_for('signup') }}">
+            <button class="btn-login">LOG IN</button>
+          </a>
         </div>
       </div>
-  
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
+    </section>
+
+    <!-- right -->
+    <section class="right-main">
+      <div class="rsub-container">
+        <form action="login-form" method="POST">
+          <p>Sign up</p>
+          <!-- firstname -->
+          <input
+            type="text"
+            placeholder="firstname"
+            name="firstname"
+            id="input"
+            required
+          />
+
+          <!-- lastname -->
+          <input
+            type="text"
+            placeholder="lastname"
+            name="lastname"
+            id="input"
+            required
+          />
+
+          <!-- username -->
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            id="input"
+            required
+          />
+
+          <!-- email -->
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            id="input"
+            required
+          />
+
+          <!-- password -->
+          <div class="password-div">
+            <div class="password-input-container">
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                id="password"
+                required
+              />
+              <i class="togglepass" id="togglePassword"
+                ><img
+                  id="eye-image"
+                  src="../static/SVG/eyehidden.svg"
+                  alt="show/hide"
+                  onclick="toggleImage()"
+              /></i>
+            </div>
+          </div>
+          <!-- confirm -->
+          <div class="password-div">
+            <div class="password-input-container">
+              <input
+                type="password"
+                placeholder="confirm password"
+                name="password-confirm"
+                id="password-confirm"
+                required
+              />
+              <i class="togglepass" id="togglePassword-confirm"
+                ><img
+                  id="eye-image-confirm"
+                  src="../static/SVG/eyehidden.svg"
+                  alt="show/hide"
+                  onclick="toggleImageConfirm()"
+              /></i>
+            </div>
+          </div>
+
+          <div class="login-btn-container">
+            <div class="prmpt">{{ prmpt }}</div>
+            <button type="submit" class="signup-button">SIGN UP</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script src="../static/javascript/signup.js"></script>
+  </body>
 </html>
