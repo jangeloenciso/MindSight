@@ -131,7 +131,7 @@ body {
 
 .rsub-container {
     width: 65%;
-    height: 35%;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -227,10 +227,6 @@ input:-webkit-autofill {
 /* username and password container */
 .password-input-container {
     position: relative;
-}
-
-.user-pass-container #username {
-    margin-bottom: 11px;
 }
 
 .password-input-container #password {
