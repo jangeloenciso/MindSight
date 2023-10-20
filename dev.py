@@ -76,6 +76,9 @@ def signup():
             
             elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
                 prmpt = 'Sorry, Invalid email address'
+            
+            elif len(_password) < 8:
+                prmpt = "Make sure your password is at lest 8 letters"
 
             elif not _username or not _password or not _email:
                 prmpt = 'Please fill out the form.'

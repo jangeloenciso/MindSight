@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/css/signup.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">
     <title>Mind Sight: Sign up</title>
@@ -20,8 +21,8 @@
                 <input class="email" id="email" name="email" type="text" placeholder="Email" required>
                 <input class="password" id="password" name="password" type="password" placeholder="Password" required>
                 <input class="confirm" id="confirm" name="confirm" type="password" placeholder="Confirm Password" required>
-                <div class="prmpt">{{ prmpt }}</div>
-                <button class="signup" id="btn-popup" type="submit">SIGN UP</button>
+                
+                <button class="signup" id="btn-popup" type="submit" data-bs-toggle="modal" data-bs-target="#myModal">SIGN UP</button>
             </div>
             <div class="account">
                 <p>Already have an account?</p>
@@ -31,41 +32,32 @@
             </div>
         </form>
     </div>
-    <!-- <div class="modal-container" id="popup">
-        <div class="modal-content">
-            <img class="popup-logo" src="/media/images/popup.png">
-            <div class="popup-message">
-                <p class="awesome">Awesome!</p>
-                <p class="acc-created">Account created <br> Successfully</p>
+
+     <!-- The Modal -->
+     <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <a href="/templates/login.html">
-                <input class="go-to-login" type="button" value="LOG IN">
-            </a>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              {{ prmpt }}
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
         </div>
-    </div> -->
+      </div>
+  
 </body>
-<!-- <script>
-    //Modal
-    var modal = document.getElementById("popup");
-
-    //Opens modal
-    var btn = document.getElementById("btn-popup");
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var confirmPass = document.getElementById("confirm").value;
-
-    // if (username !== "" || password !== "" || confirmPass !== "") {
-    //     if (password == confirmPass) {
-            //When click sign up, modal opens
-            btn.onclick = function check() {
-                modal.style.display = "block";
-            }
-    //     }
-
-    //     else {
-    //         alert("Your password are not same");
-    //     }
-    // }
-</script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
