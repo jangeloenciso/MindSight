@@ -6,15 +6,16 @@ import pandas as pd
 import json
 import plotly
 import plotly.express as px
+import config
 
 
 # TODO: Create Config File
-app.secret_key = 'm1nd$16ht2023'
+app.secret_key = app.config["SECRET_KEY"]
 
-app.config["DB_USERNAME"]
-app.config["DB_HOST"]
-app.config["DB_NAME"]
-app.config["DB_PASSWORD"]
+app.config["MYSQL_USER"]
+app.config["MYSQL_HOST"]
+app.config["MYSQL_DB"]
+app.config["MYSQL_PASSWORD"]
 
 mysql = MySQL(app)
 

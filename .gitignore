@@ -4,3 +4,5 @@ ignore/
 documentation/
 __pycache__/
 notes
+legacy_files/
+.flaskenv

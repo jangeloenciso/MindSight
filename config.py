@@ -2,7 +2,8 @@
 class Config(object):
     DEBUG = True
     TESTING = True
-    DB_USERNAME = "root"
-    DB_HOST = "localhost"
-    DB_NAME = "mindsight"
-    DB_PASSWORD = "m1nd$16ht"
+    MYSQL_USER = "root"
+    MYSQL_HOST = "localhost"
+    MYSQL_DB = "mindsight"
+    MYSQL_PASSWORD = "admin"
+    SECRET_KEY = "m1nd$16ht2023"
