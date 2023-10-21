@@ -229,7 +229,7 @@ input:-webkit-autofill {
     position: relative;
 }
 
-.password-input-container #password {
+.password-input-container #password, .password-input-container #password-confirm {
     padding-right: 50px;
 }
 
