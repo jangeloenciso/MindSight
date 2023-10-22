@@ -1,3 +1,5 @@
+/* TODO: Remove repetitive CSS thingies. Create 1 main.css file that has all the common styling properties */
+
 :root {
     --primary-color: #095371;
     --text-white: #fff;
