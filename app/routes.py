@@ -113,20 +113,33 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
+
+        # TODO: Modular. Apply blueprints maybe
        
-       # Reading the tips.csv file
-        data = pd.read_csv('identity.csv')
+        # Reading the tips.csv file
+        data = pd.read_csv('test_data/dummy_data.csv')
 
 
         fig = px.pie(data, names='Gender', 
-             height=300, width=600, 
-             title='IDENTITY',
-             color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
-        
+                height=300, width=600, 
+                title='IDENTITY',
+                color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
+
         rs = plt.plot(fig, include_plotlyjs=False, output_type='div')
 
-        return render_template('dashboard.html', rs = rs, fname = session['fname'], lname = session['lname'])
-    
+        data_test = pd.read_csv('test_data/dummy_data.csv')
+
+
+        average_scores = data_test.groupby("Religion")["Mental Health Score"].mean().reset_index()
+
+        fig2 = px.bar (
+            average_scores, x="Religion", y="Mental Health Score", height=600, width=1200, 
+            title='Data Test',
+            color="Religion", color_discrete_sequence=['#DB9050', '#095371', '#6092C0', 'teal'])
+        rs2 = plt.plot(fig2, include_plotlyjs=False, output_type='div')
+
+        return render_template('dashboard.html', rs = rs, fname = session['fname'], lname = session['lname'], rs2=rs2)
+
     return redirect(url_for('login'))
 
 @app.route('/developers')
