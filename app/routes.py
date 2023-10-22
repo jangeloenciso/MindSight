@@ -116,8 +116,9 @@ def dashboard():
     if 'loggedin' in session:
 
         bar_graph = generate_bar_graph()
+        scatter_plot = generate_scatter_plot()
 
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph)
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph, scatter_plot = scatter_plot)
 
     return redirect(url_for('login'))
 
