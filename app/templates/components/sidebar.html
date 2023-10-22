@@ -1,0 +1,78 @@
+<nav class="sidebar">
+    <div class="logo">
+      <img
+        id="logo"
+        src="/static/MINDSIGHT LOGO (WHITE).png"
+        alt="MindSight logo"
+      />&nbsp;<img
+        id="logo-initial"
+        src="/static/SVG/EYE LOGO.svg"
+        alt="MindSight logo-eye"
+      />
+    </div>
+    <div class="sidebar-buttons">
+      <div class="overview">
+        <p>Overview</p>
+        <ul>
+          <li>
+            <a href="{{ url_for('dashboard') }}"
+              ><img src="/static/SVG/dashboard.svg" /><span
+                >Dashboard</span
+              ></a
+            >
+          </li>
+          <li class="admin-container">
+            <div id="admin-main-menu">
+              <img src="/static/SVG/admin.svg" /><span class="admin-expand"
+                ><span>Admin</span>
+                <img
+                  id="expand-img"
+                  src="../static/SVG/expand arrow.svg"
+                  alt="expand"
+              /></span>
+            </div>
+            <ul class="sub-menu" id="admin-submenu">
+              <li><a href="{{ url_for('admin') }}">Admin</a></li>
+              <li><a href="#">Developers</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{ url_for('analytics') }}"
+              ><img src="/static/SVG/analytics.svg" /><span
+                >Analytics</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="{{ url_for('stud') }}"
+              ><img src="/static/SVG/students.svg" /><span>Students</span></a
+            >
+          </li>
+        </ul>
+      </div>
+  
+      <div class="account">
+        <p>Account</p>
+        <ul>
+          <li>
+            <a href="{{ url_for('sett') }}"
+              ><img src="/static/SVG/settings.svg" /><span>Settings</span></a
+            >
+          </li>
+  
+          <li>
+            <a href="{{ url_for('logout') }}"
+              ><img src="/static/SVG/log-out.svg" /><span
+                >Log&nbsp;out</span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="profile">
+      <img class="profile-image" src="/static/profile.png" /><span
+        >{{ fname }} {{ "" }} {{ lname }}</span
+      >
+    </div>
+  </nav>
