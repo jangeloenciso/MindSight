@@ -115,11 +115,9 @@ def dashboard():
 
     if 'loggedin' in session:
 
-        pie_graph = generate_pie_graph();
+        bar_graph = generate_bar_graph()
 
-        bar_graph = generate_bar_graph();
-
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph, bar_graph = bar_graph)
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph)
 
     return redirect(url_for('login'))
 
@@ -133,7 +131,10 @@ def admin():
 
 @app.route('/analytics')
 def analytics():
-   return render_template('analytics.html', fname = session['fname'], lname = session['lname'])
+   
+   pie_graph = generate_pie_graph()
+
+   return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph)
 
 @app.route('/student')
 def stud():

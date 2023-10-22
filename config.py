@@ -5,5 +5,5 @@ class Config(object):
     MYSQL_USER = "root"
     MYSQL_HOST = "localhost"
     MYSQL_DB = "mindsight"
-    MYSQL_PASSWORD = "admin"
+    MYSQL_PASSWORD = "m1nd$16ht"
     SECRET_KEY = "m1nd$16ht2023"

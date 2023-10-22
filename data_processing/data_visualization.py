@@ -12,7 +12,10 @@ def generate_bar_graph():
         average_scores, x="Religion", y="Mental Health Score", height=600, width=1200, 
         title='Data Test',
         color="Religion", color_discrete_sequence=['#DB9050', '#095371', '#6092C0', 'teal'])
-    result = plt.plot(fig, include_plotlyjs=False, output_type='div')
+    
+    fig.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        
+    result = fig.to_html(include_plotlyjs=False)
 
     return result
 
@@ -25,6 +28,8 @@ def generate_pie_graph():
             title='IDENTITY',
             color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
 
-    result = plt.plot(fig, include_plotlyjs=False, output_type='div')
+    fig.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        
+    result = fig.to_html(include_plotlyjs=False)
 
     return result
