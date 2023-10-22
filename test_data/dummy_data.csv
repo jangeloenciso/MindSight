@@ -1,0 +1,51 @@
+Age,Gender,Religion,Ethnicity,Socioeconomic Status,Mental Health Score,GPA,Course,Course Failure Rate,Attendance Rate,History of Past Mental Health Cases,Type of Past Interventions,Outcome of Past Interventions
+20,Male,Catholic,Tagalog,High,75,3.4,Math,2%,95%,Yes,Counseling,Improved
+22,Female,Islam,Visayan,Middle,82,3.2,English,1%,92%,Yes,Therapy,No Change
+19,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Science,5%,85%,No,N/A,N/A
+21,Female,Catholic,Tagalog,Middle,74,3.6,History,0%,96%,Yes,Counseling,Worsened
+23,Male,Islam,Visayan,High,68,3.0,Art,3%,88%,Yes,Counseling,Improved
+20,Female,Iglesia ni Cristo,Ilocano,High,90,3.8,Physical Education,0%,97%,No,N/A,N/A
+24,Male,Other Christian Denominations,Tagalog,Low,72,2.9,Music,4%,87%,No,N/A,N/A
+18,Female,Catholic,Visayan,Middle,78,3.5,Geography,1%,94%,Yes,Therapy,Improved
+22,Male,Islam,Ilocano,Middle,84,3.4,Health,1%,95%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Tagalog,High,88,3.7,Computer Science,0%,97%,No,N/A,N/A
+25,Male,Catholic,Visayan,Low,63,2.7,Physics,6%,83%,Yes,Support Groups,Improved
+21,Female,Islam,Ilocano,Middle,76,3.1,Chemistry,3%,89%,Yes,Therapy,No Change
+19,Male,Other Christian Denominations,Tagalog,High,70,2.8,Biology,2%,86%,No,N/A,N/A
+20,Female,Catholic,Visayan,Middle,92,3.9,Physical Education,0%,99%,No,N/A,N/A
+23,Male,Islam,Ilocano,Low,69,3.0,English,4%,87%,Yes,Counseling,Worsened
+18,Female,Iglesia ni Cristo,Tagalog,Low,60,2.5,Math,8%,80%,No,N/A,N/A
+22,Male,Other Christian Denominations,Visayan,Middle,86,3.5,Science,0%,96%,No,N/A,N/A
+20,Female,Catholic,Ilocano,Middle,81,3.3,Art,1%,93%,Yes,Therapy,Improved
+24,Male,Islam,Tagalog,Low,73,2.9,Music,3%,88%,Yes,Counseling,No Change
+21,Female,Iglesia ni Cristo,Visayan,Middle,79,3.4,History,1%,95%,No,N/A,N/A
+25,Male,Catholic,Ilocano,High,71,3.2,Physical Education,2%,90%,Yes,Counseling,No Change
+20,Female,Islam,Tagalog,High,89,3.7,Geography,0%,97%,No,N/A,N/A
+24,Male,Other Christian Denominations,Visayan,Low,64,2.7,Computer Science,5%,84%,Yes,Support Groups,Worsened
+22,Female,Catholic,Ilocano,Middle,75,3.1,Health,4%,88%,Yes,Therapy,Improved
+19,Male,Islam,Tagalog,Middle,67,2.8,English,3%,86%,No,N/A,N/A
+21,Female,Iglesia ni Cristo,Visayan,High,94,4.0,Chemistry,0%,100%,No,N/A,N/A
+23,Male,Other Christian Denominations,Ilocano,Low,70,3.0,Math,6%,82%,Yes,Counseling,Worsened
+18,Female,Catholic,Tagalog,Low,59,2.5,History,7%,79%,No,N/A,N/A
+22,Male,Islam,Visayan,Middle,85,3.5,Science,0%,95%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Ilocano,Middle,83,3.4,Art,1%,92%,No,N/A,N/A
+24,Male,Other Christian Denominations,Tagalog,Low,68,2.9,Physical Education,4%,87%,No,N/A,N/A
+19,Female,Catholic,Visayan,Low,62,2.6,Music,5%,83%,Yes,Therapy,Improved
+21,Male,Islam,Ilocano,High,77,3.2,English,2%,91%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Visayan,High,87,3.8,Geography,0%,97%,No,N/A,N/A
+25,Male,Other Christian Denominations,Tagalog,Low,66,2.9,Computer Science,5%,84%,Yes,Counseling,Worsened
+22,Female,Catholic,Ilocano,Middle,74,3.0,Health,3%,88%,Yes,Therapy,No Change
+18,Male,Islam,Visayan,Middle,79,3.3,Math,1%,93%,No,N/A,N/A
+23,Female,Iglesia ni Cristo,Tagalog,High,90,3.7,Science,0%,98%,No,N/A,N/A
+24,Male,Other Christian Denominations,Ilocano,Low,70,2.8,Art,5%,85%,Yes,Support Groups,Improved
+21,Female,Catholic,Visayan,Middle,76,3.1,History,3%,89%,Yes,Counseling,No Change
+22,Male,Islam,Tagalog,High,81,3.4,Physical Education,1%,95%,No,N/A,N/A
+20,Female,Iglesia ni Cristo,Ilocano,Middle,88,3.6,Music,0%,97%,No,N/A,N/A
+23,Male,Other Christian Denominations,Visayan,Low,67,2.7,Chemistry,6%,83%,Yes,Counseling,Worsened
+19,Female,Catholic,Ilocano,Middle,75,3.2,English,4%,88%,No,N/A,N/A
+24,Male,Islam,Tagalog,Middle,80,3.3,Geography,1%,94%,Yes,Therapy,Improved
+20,Female,Iglesia ni Cristo,Visayan,High,88,3.7,Science,0%,97%,Yes,Counseling,Improved
+25,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Art,5%,85%,No,N/A,N/A
+21,Female,Catholic,Tagalog,Low,63,2.6,Physical Education,7%,81%,Yes,Counseling,Worsened
+22,Male,Islam,Visayan,Middle,86,3.5,History,1%,94%,No,N/A,N/A
+19,LGBTQ,Iglesia ni Cristo,Ilocano,Middle,91,3.9,Music,0%,98%,No,N/A,N/A

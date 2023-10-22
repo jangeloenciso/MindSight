@@ -11,6 +11,7 @@ if __name__ == '__main__':
             db=app.config["MYSQL_DB"]
         )
         print("Connected to MySQL successfully!")
+        
     except MySQLdb.Error as e:
         print(f"Error: {e}")
 

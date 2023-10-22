@@ -4,9 +4,10 @@ from flask_mysqldb import MySQL
 import re, hashlib
 import pandas as pd
 import json
-import plotly
+import plotly.offline as plt
 import plotly.express as px
 import config
+from data_processing.data_visualization import *
 
 
 # TODO: Create Config File
@@ -95,7 +96,7 @@ def signup():
 
                 cur.execute('''INSERT INTO developers (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
                 mysql.connection.commit()
-                prmpt = "You have successfully sign up!"
+                prmpt = "You have successfully signed up!"
                 
         else:
             prmpt = "Passwords are not the same"
@@ -113,19 +114,11 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
-        # # Reading the tips.csv file
-        # data = pd.read_csv('identity.csv')
 
+        bar_graph = generate_bar_graph()
 
-        # fig = px.pie(data, names='Gender', 
-        #      height=300, width=600, 
-        #      title='IDENTITY',
-        #      color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
-        
-        # fig.savefig('/mindsight/identity.png')
-        
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
-    
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph)
+
     return redirect(url_for('login'))
 
 @app.route('/developers')
@@ -138,7 +131,10 @@ def admin():
 
 @app.route('/analytics')
 def analytics():
-   return render_template('analytics.html', fname = session['fname'], lname = session['lname'])
+   
+   pie_graph = generate_pie_graph()
+
+   return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph)
 
 @app.route('/student')
 def stud():

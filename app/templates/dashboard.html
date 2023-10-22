@@ -11,8 +11,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lexend"
     />
-    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
-    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/SVG/EYE LOGO.svg"
+    />
+    <link rel="stylesheet" href="/static/css/dashboard.css" 
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>MindSight: Dashboard</title>
   </head>
   <body>
@@ -94,7 +100,8 @@
         >
       </div>
     </nav>
-    <div class="identity">{{ fig }}</div>
+    <div class="identity">{{ pie_graph | safe }}</div>
+    <div class="">{{ bar_graph | safe }}</div>
   </body>
   <script src="../static/javascript/sidebar.js"></script>
 </html>

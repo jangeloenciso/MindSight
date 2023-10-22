@@ -16,7 +16,9 @@
       type="image/x-icon"
       href="/static/SVG/EYE LOGO.svg"
     />
-    <link rel="stylesheet" href="/static/css/analytics.css" />
+    <link rel="stylesheet" href="/static/css/analytics.css" 
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>MindSight: Dashboard</title>
   </head>
   <body>
@@ -92,5 +94,6 @@
         >
       </div>
     </nav>
+    <div class="identity">{{ pie_graph | safe }}</div>
   </body>
 </html>
