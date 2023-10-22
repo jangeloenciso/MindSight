@@ -1,16 +1,21 @@
-from flask import Flask, render_template, request, url_for, session, redirect
+from app import app
+from flask import render_template, url_for, session, redirect, request
 from flask_mysqldb import MySQL
 import re, hashlib
+import pandas as pd
+import json
+import plotly
+import plotly.express as px
+import config
 
-app = Flask(__name__)
 
-app.secret_key = 'm1nd$16ht2023'
+# TODO: Create Config File
+app.secret_key = app.config["SECRET_KEY"]
 
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "m1nd$16ht"
-app.config["MYSQL_DB"] = "mindsight"
-
+app.config["MYSQL_USER"]
+app.config["MYSQL_HOST"]
+app.config["MYSQL_DB"]
+app.config["MYSQL_PASSWORD"]
 
 mysql = MySQL(app)
 
@@ -28,7 +33,7 @@ def login():
         _password = encrypt.hexdigest()
 
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM admin WHERE username = %s AND password = %s', [_username, _password])
+        cur.execute('SELECT * FROM developers WHERE username = %s AND password = %s', [_username, _password])
 
         acc = cur.fetchone()
 
@@ -41,9 +46,9 @@ def login():
             return redirect(url_for('dashboard'))
         
         else:
-            prmpt = 'Incorrect username/password!'
+            prmpt = 'Your username/password is incorrect'
        
-    return render_template('login.html', prmpt=prmpt)
+    return render_template('login.html', prmpt = prmpt)
 
 @app.route('/signup-form', methods = ['POST', 'GET'])
 def signup():
@@ -61,18 +66,24 @@ def signup():
         if _confirm == _password:
 
             cur = mysql.connection.cursor()
-            cur.execute('''SELECT * FROM admin WHERE username = %s''', [_username])
+            cur.execute('''SELECT * FROM developers WHERE username = %s''', [_username])
             
             acc = cur.fetchone()
 
             if acc:
-                prmpt = "Sorry, but the username is already taken"
+                msg1 = 'Sorry, but the username "'
+                msg2 = (_username)
+                msg3 = '" is already taken'
+                prmpt = (msg1 + msg2 + msg3)
             
             elif not re.match(r'[A-Za-z0-9]+', _username):
                 prmpt = "Sorry, but username must contain only characters and numbers"
             
             elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
                 prmpt = 'Sorry, Invalid email address'
+            
+            elif len(_password) < 8:
+                prmpt = "Make sure your password is at lest 8 letters"
 
             elif not _username or not _password or not _email:
                 prmpt = 'Please fill out the form.'
@@ -82,7 +93,7 @@ def signup():
                 encrypt = hashlib.sha1(encrypt.encode())
                 _password = encrypt.hexdigest()
 
-                cur.execute('''INSERT INTO admin (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
+                cur.execute('''INSERT INTO developers (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
                 mysql.connection.commit()
                 prmpt = "You have successfully sign up!"
                 
@@ -102,6 +113,17 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
+        # # Reading the tips.csv file
+        # data = pd.read_csv('identity.csv')
+
+
+        # fig = px.pie(data, names='Gender', 
+        #      height=300, width=600, 
+        #      title='IDENTITY',
+        #      color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
+        
+        # fig.savefig('/mindsight/identity.png')
+        
         return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
     
     return redirect(url_for('login'))

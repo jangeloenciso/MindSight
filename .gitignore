@@ -3,3 +3,6 @@ data/
 ignore/
 documentation/
 __pycache__/
+notes
+__legacy_files/
+.flaskenv
