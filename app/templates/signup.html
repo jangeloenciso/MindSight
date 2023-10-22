@@ -28,7 +28,7 @@
           <div class="btn-header">
             <span>Already a member?</span>Welcome back!
           </div>
-          <a href="{{ url_for('signup') }}">
+          <a href="{{ url_for('login') }}">
             <button class="btn-login">LOG IN</button>
           </a>
         </div>
@@ -39,13 +39,13 @@
     <!-- right -->
     <section class="right-main">
       <div class="rsub-container">
-        <form action="login-form" method="POST">
+        <form action="signup-form" method="POST">
           <p>Sign up</p>
           <!-- firstname -->
           <input
             type="text"
             placeholder="firstname"
-            name="firstname"
+            name="fname"
             id="input"
             required
           />
@@ -54,7 +54,7 @@
           <input
             type="text"
             placeholder="lastname"
-            name="lastname"
+            name="lname"
             id="input"
             required
           />
@@ -102,7 +102,7 @@
               <input
                 type="password"
                 placeholder="confirm password"
-                name="password-confirm"
+                name="confirm"
                 id="password-confirm"
                 required
               />
