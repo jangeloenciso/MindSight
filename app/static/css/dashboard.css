@@ -17,8 +17,6 @@
 body, html {
     margin: 0;
     padding: 0;
-
-    /* overflow: hidden; */
 }
 
 body {
@@ -30,14 +28,13 @@ body {
 
 
 
-/* Sidebar */
+/* sidebar */
 .sidebar {
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     width: 73px;
     min-height: 100%;
-    /* height: auto; */
     transition: var(--smooth-transition);
     overflow: hidden;
     z-index: 999;
@@ -62,7 +59,7 @@ body {
     opacity: 1;
 }
 
-/* MindSight Logo */
+/* mindSight Logo */
 #logo {
     margin: 10px 0;
     height: 50px;
@@ -91,7 +88,7 @@ body {
 }
 
 
-/* Logo container */
+/* logo container */
 .logo {
     display: flex;
     padding: 0 24px;
@@ -111,7 +108,17 @@ body {
     display: flex;
 }
 
+/* overflow control and button area height setter. */
+.sidebar-buttons {
+    height: calc(100vh - (65px + 70.8px));
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 
+/* show scrollbar when sidebar is hovered */
+.sidebar-buttons:hover {
+    overflow-y: auto;
+}
 
 /* dashboard logo */
 .sidebar img {
@@ -120,7 +127,7 @@ body {
     margin-right: 12px;
 }
 
-.sidebar a {
+.sidebar a, .sidebar #admin-main-menu {
     display: flex;
     width: 100%;
     height: 100%;
@@ -129,6 +136,28 @@ body {
     align-items: center;
     text-decoration: none;
     transition: var(--smooth-transition);
+}
+
+.sidebar .admin-container {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* "Admin" and "Developers" sub menu */
+.sidebar .admin-container li a {
+    padding-left: 60px;
+    font-size: 20px;
+    color: #d7d7db;
+    display: none;
+}
+
+
+/* admin expand container */
+.admin-expand {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .sidebar a:hover {
@@ -158,7 +187,6 @@ body {
     font-size: 16px;
     padding-left: 24px;
     color: var(--text-white-dim);
-
 }
 
 
@@ -167,7 +195,7 @@ body {
     border-top: 1px solid #b1b1b1;
     display: flex;
     width: 100%;
-    height: auto;
+    height: 65px;
     padding: 20px 24px;
 }
 
