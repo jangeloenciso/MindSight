@@ -16,7 +16,9 @@
       type="image/x-icon"
       href="/static/SVG/EYE LOGO.svg"
     />
-    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <link rel="stylesheet" href="/static/css/dashboard.css" 
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>MindSight: Dashboard</title>
   </head>
   <body>
@@ -92,6 +94,6 @@
         >
       </div>
     </nav>
-    <div class="identity">{{ fig }}</div>
+    <div class="identity">{{ rs | safe }}</div>
   </body>
 </html>

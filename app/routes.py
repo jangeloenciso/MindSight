@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 import re, hashlib
 import pandas as pd
 import json
-import plotly
+import plotly.offline as plt
 import plotly.express as px
 import config
 
@@ -113,18 +113,19 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
-        # # Reading the tips.csv file
-        # data = pd.read_csv('identity.csv')
+       
+       # Reading the tips.csv file
+        data = pd.read_csv('identity.csv')
 
 
-        # fig = px.pie(data, names='Gender', 
-        #      height=300, width=600, 
-        #      title='IDENTITY',
-        #      color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
+        fig = px.pie(data, names='Gender', 
+             height=300, width=600, 
+             title='IDENTITY',
+             color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
         
-        # fig.savefig('/mindsight/identity.png')
-        
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
+        rs = plt.plot(fig, include_plotlyjs=False, output_type='div')
+
+        return render_template('dashboard.html', rs = rs, fname = session['fname'], lname = session['lname'])
     
     return redirect(url_for('login'))
 
