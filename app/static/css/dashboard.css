@@ -17,8 +17,6 @@
 body, html {
     margin: 0;
     padding: 0;
-
-    /* overflow: hidden; */
 }
 
 body {
@@ -30,14 +28,13 @@ body {
 
 
 
-/* Sidebar */
+/* sidebar */
 .sidebar {
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     width: 73px;
     min-height: 100%;
-    /* height: auto; */
     transition: var(--smooth-transition);
     overflow: hidden;
     z-index: 999;
@@ -62,7 +59,7 @@ body {
     opacity: 1;
 }
 
-/* MindSight Logo */
+/* mindSight Logo */
 #logo {
     margin: 10px 0;
     height: 50px;
@@ -91,7 +88,7 @@ body {
 }
 
 
-/* Logo container */
+/* logo container */
 .logo {
     display: flex;
     padding: 0 24px;
@@ -111,11 +108,16 @@ body {
     display: flex;
 }
 
-/* Overflow control and button area height setter. */
+/* overflow control and button area height setter. */
 .sidebar-buttons {
     height: calc(100vh - (65px + 70.8px));
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
+}
+
+/* show scrollbar when sidebar is hovered */
+.sidebar-buttons:hover {
+    overflow-y: auto;
 }
 
 /* dashboard logo */
@@ -139,6 +141,7 @@ body {
 .sidebar .admin-container {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 /* "Admin" and "Developers" sub menu */
@@ -149,14 +152,6 @@ body {
     display: none;
 }
 
-/* admin drop down (will update soon to beb click-trigger */
-.sidebar .admin-container:hover li a {
-    display: block;
-}
-
-.sidebar .admin-container:hover .admin-expand img {
-    transform: rotate(270deg);
-}
 
 /* admin expand container */
 .admin-expand {
