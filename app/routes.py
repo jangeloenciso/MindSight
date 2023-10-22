@@ -95,7 +95,7 @@ def signup():
 
                 cur.execute('''INSERT INTO developers (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
                 mysql.connection.commit()
-                prmpt = "You have successfully sign up!"
+                prmpt = "You have successfully signed up!"
                 
         else:
             prmpt = "Passwords are not the same"
