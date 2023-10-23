@@ -4,10 +4,10 @@ import plotly.offline as plt
 
 # idk man maybe add arguments to each generator? like,, generate_bar_graph(arg1, arg2)? this is for the flexibility and customization of the data vis
 
-def generate_bar_graph():
-    data_test = pd.read_csv('test_data/dummy_data.csv')
+data = pd.read_csv('test_data/dummy_data.csv')
 
-    average_scores = data_test.groupby("Religion")["Mental Health Score"].mean().reset_index()
+def generate_bar_graph():
+    average_scores = data.groupby("Religion")["Mental Health Score"].mean().reset_index()
 
     fig = px.bar (
         average_scores, x="Religion", y="Mental Health Score", height=600, width=1200, 
@@ -21,8 +21,6 @@ def generate_bar_graph():
     return result
 
 def generate_pie_graph():
-    data = pd.read_csv('test_data/dummy_data.csv')
-
     fig = px.pie(data, names='Gender', 
             height=300, width=600, 
             title='IDENTITY',
@@ -35,15 +33,13 @@ def generate_pie_graph():
     return result
 
 def generate_scatter_plot():
-    data = pd.read_csv('test_data/dummy_data.csv')
-
     fig = px.scatter(
         data, 
         x="Mental Health Score", 
         y="GPA",
         color="GPA",
         color_continuous_scale=['#DB9050', '#095371', '#6092C0', 'lime'],
-        height=450, width=900, 
+        height=300, width=900, 
     )
 
     result = fig.to_html(include_plotlyjs=False)
