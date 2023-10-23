@@ -115,10 +115,10 @@ def dashboard():
 
     if 'loggedin' in session:
 
-        bar_graph = generate_bar_graph()
-        scatter_plot = generate_scatter_plot()
+        college_summary = generate_bar_graph(data_religion=data_religion, data_college_summary=data_college_summary)
 
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph, scatter_plot = scatter_plot)
+
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph=college_summary)
 
     return redirect(url_for('login'))
 
@@ -132,10 +132,12 @@ def admin():
 
 @app.route('/analytics')
 def analytics():
-   
-   pie_graph = generate_pie_graph()
+    
+    bar_graph = generate_bar_graph()
+    scatter_plot = generate_scatter_plot()
+    pie_graph = generate_pie_graph()
 
-   return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph)
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph, bar_graph = bar_graph, scatter_plot = scatter_plot)
 
 @app.route('/student')
 def stud():

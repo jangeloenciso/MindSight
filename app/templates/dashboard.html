@@ -57,7 +57,7 @@
               </div>
               <ul class="sub-menu" id="admin-submenu">
                 <li><a href="{{ url_for('admin') }}">Admin</a></li>
-                <li><a href="#">Developers</a></li>
+                <li><a href="{{ url_for('devs') }}">Developers</a></li>
               </ul>
             </li>
             <li>
@@ -100,8 +100,7 @@
         >
       </div>
     </nav>
-    <div class="">{{ scatter_plot | safe }}!</div>
-    <div class="">{{ bar_graph | safe }}</div>
+    <div class="college_summary">{{ bar_graph | safe }}</div>
   </body>
   <script src="../static/javascript/sidebar.js"></script>
 </html>
