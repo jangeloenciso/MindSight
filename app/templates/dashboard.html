@@ -1,156 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lexend"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/static/SVG/EYE LOGO.svg"
-    />
-    <link rel="stylesheet" href="/static/css/dashboard.css" 
-    />
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>MindSight: Dashboard</title>
-  </head>
-  <body>
-    <nav class="sidebar">
-      <div class="logo">
-        <img
-          id="logo"
-          src="/static/MINDSIGHT LOGO (WHITE).png"
-          alt="MindSight logo"
-        />&nbsp;<img
-          id="logo-initial"
-          src="/static/SVG/EYE LOGO.svg"
-          alt="MindSight logo-eye"
-        />
-      </div>
-      <div class="sidebar-buttons">
-        <div class="overview">
-          <p>Overview</p>
-          <ul>
-            <li>
-              <a href="{{ url_for('dashboard') }}"
-                ><img src="/static/SVG/dashboard.svg" /><span
-                  >Dashboard</span
-                ></a
-              >
-            </li>
-            <li class="admin-container">
-              <div id="admin-main-menu">
-                <img src="/static/SVG/admin.svg" /><span class="admin-expand"
-                  ><span>Admin</span>
-                  <img
-                    id="expand-img"
-                    src="../static/SVG/expand arrow.svg"
-                    alt="expand"
-                /></span>
-              </div>
-              <ul class="sub-menu" id="admin-submenu">
-                <li><a href="{{ url_for('admin') }}">Admin</a></li>
-                <li><a href="{{ url_for('devs') }}">Developers</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="{{ url_for('analytics') }}"
-                ><img src="/static/SVG/analytics.svg" /><span
-                  >Analytics</span
-                ></a
-              >
-            </li>
-            <li>
-              <a href="{{ url_for('stud') }}"
-                ><img src="/static/SVG/students.svg" /><span>Students</span></a
-              >
-            </li>
-          </ul>
-        </div>
+{% extends "components/base.html" %}
+{% block title %} MindSight: Dashboard{% endblock %}
 
-        <div class="account">
-          <p>Account</p>
-          <ul>
-            <li>
-              <a href="{{ url_for('sett') }}"
-                ><img src="/static/SVG/settings.svg" /><span>Settings</span></a
-              >
-            </li>
+{% block styles %}     
+<link rel="stylesheet" href="/static/css/dashboard.css"/> 
+{% endblock %}
 
-            <li>
-              <a href="{{ url_for('logout') }}"
-                ><img src="/static/SVG/log-out.svg" /><span
-                  >Log&nbsp;out</span
-                ></a
-              >
-            </li>
-          </ul>
+{% block content %}
+  <div class="nature-college-container">
+    <div class="nature-concern">
+      <h1>Nature of Concerns</h1>
+    </div>
+    <hr id="nature-college-hr">
+    <div class="college-summary">
+      {{ result_college_summary | safe }}
+    </div>
+  </div>
+  <div class="campus-clinic-container">
+    <div class="campus-counselor">
+      <div class="campus">
+        {{ result_campus | safe }}
+      </div>
+      <hr id="campus-counselor-hr">
+      <div class="counselor">
+        <h1>Counselors</h1>
+        <div class="counselor1">
+          <p>Counselor 1</p>
+        </div>
+        <div class="counselor2">
+          <p>Counselor 2</p>
+        </div>
+        <div class="counselor3">
+          <p>Counselor 3</p>
+        </div>
+        <div class="counselor4">
+          <p>Counselor 4</p>
         </div>
       </div>
-      <div class="profile">
-        <img class="profile-image" src="/static/profile.png" /><span
-          >{{ fname }} {{ "" }} {{ lname }}</span
-        >
+    </div>
+    <div class="clinic-container">
+      <h1>Clinic's Activities</h1>
+      <div class="seminar">
+        <p>Seminar: Mental Health</p>
       </div>
-    </nav>
-    <main>
-      <div class="title">
-        <h1>Case Overview</h1>
+      <div class="community">
+        <p>Community Service</p>
       </div>
-      <div class="content">
-        <div class="nature-college-container">
-          <div class="nature-concern">
-            <h1>Nature of Concerns</h1>
-          </div>
-          <!-- <hr id="nature-college-hr"> -->
-          <div class="college-summary">
-            {{ result_college_summary | safe }}
-          </div>
-        </div>
-        <div class="campus-clinic-container">
-          <div class="campus-counselor">
-            <div class="campus">
-              {{ result_campus | safe }}
-            </div>
-            <!-- <hr id="campus-counselor-hr"> -->
-            <div class="counselor">
-              <h1>Counselors</h1>
-              <div class="counselor1">
-                <p>Counselor 1</p>
-              </div>
-              <div class="counselor2">
-                <p>Counselor 2</p>
-              </div>
-              <div class="counselor3">
-                <p>Counselor 3</p>
-              </div>
-              <div class="counselor4">
-                <p>Counselor 4</p>
-              </div>
-            </div>
-          </div>
-          <div class="clinic-container">
-            <h1>Clinic's Activities</h1>
-            <div class="seminar">
-              <p>Seminar: Mental Health</p>
-            </div>
-            <div class="community">
-              <p>Community Service</p>
-            </div>
-            <div class="consultation">
-              <p>Consultation</p>
-            </div>
-          </div>
-        </div>
+      <div class="consultation">
+        <p>Consultation</p>
       </div>
-    </main>
-  </body>
-  <script src="../static/javascript/sidebar.js"></script>
-</html>
+    </div>
+  </div>
+{% endblock %}
