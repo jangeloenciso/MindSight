@@ -33,7 +33,7 @@
             </div>
             <ul class="sub-menu" id="admin-submenu">
               <li><a href="{{ url_for('admin') }}">Admin</a></li>
-              <li><a href="#">Developers</a></li>
+              <li><a href="{{ url_for('developers') }}">Developers</a></li>
             </ul>
           </li>
           <li>
@@ -44,7 +44,7 @@
             >
           </li>
           <li>
-            <a href="{{ url_for('stud') }}"
+            <a href="{{ url_for('students') }}"
               ><img src="/static/SVG/students.svg" /><span>Students</span></a
             >
           </li>
@@ -55,7 +55,7 @@
         <p>Account</p>
         <ul>
           <li>
-            <a href="{{ url_for('sett') }}"
+            <a href="{{ url_for('settings') }}"
               ><img src="/static/SVG/settings.svg" /><span>Settings</span></a
             >
           </li>
