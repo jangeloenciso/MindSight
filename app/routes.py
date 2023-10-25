@@ -116,7 +116,7 @@ def dashboard():
     if 'loggedin' in session:
 
         result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-
+    
         return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], result_college_summary=result_college_summary, result_campus=result_campus)
 
     return redirect(url_for('login'))
