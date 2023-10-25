@@ -22,9 +22,9 @@
 <body>
 {% include "components/sidebar.html" %}
 
-<main>
-{% block content %} {% endblock %}
-</main>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
 </body>
 <script src="../static/javascript/sidebar.js"></script>
 </html>

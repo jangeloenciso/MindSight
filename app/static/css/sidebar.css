@@ -6,7 +6,9 @@
     min-height: 100%;
     transition: var(--smooth-transition);
     overflow: hidden;
-    z-index: 999;
+    z-index: 1;
+    position: absolute;
+    left: 0;
 }
 
 .sidebar:hover {
@@ -120,8 +122,3 @@
     color: #d7d7db;
     display: none;
 }
-
-.sidebar a:hover {
-    background-color: var(--bg-orange);
-}
-
