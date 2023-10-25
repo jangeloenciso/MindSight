@@ -1,289 +1,51 @@
-Age,Gender,Religion,Ethnicity,Socioeconomic Status,Mental Health Score,GPA,Course,Course Failure Rate,Attendance Rate,History of Past Mental Health Cases,Type of Past Interventions,Outcome of Past Interventions,Campus
-20,Male,Catholic,Tagalog,High,75,3.4,Math,2%,95%,Yes,Counseling,Improved,Boni
-22,Female,Islam,Visayan,Middle,82,3.2,English,1%,92%,Yes,Therapy,No Change,Pasig
-19,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Science,5%,85%,No,N/A,N/A,Boni
-21,Female,Catholic,Tagalog,Middle,74,3.6,History,0%,96%,Yes,Counseling,Worsened,Pasig
-23,Male,Islam,Visayan,High,68,3.0,Art,3%,88%,Yes,Counseling,Improved,Boni
-20,Female,Iglesia ni Cristo,Ilocano,High,90,3.8,Physical Education,0%,97%,No,N/A,N/A,Boni
-24,Male,Other Christian Denominations,Tagalog,Low,72,2.9,Music,4%,87%,No,N/A,N/A,Pasig
-18,Female,Catholic,Visayan,Middle,78,3.5,Geography,1%,94%,Yes,Therapy,Improved,Pasig
-22,Male,Islam,Ilocano,Middle,84,3.4,Health,1%,95%,Yes,Counseling,No Change,Boni
-20,Female,Iglesia ni Cristo,Tagalog,High,88,3.7,Computer Science,0%,97%,No,N/A,N/A,Boni
-25,Male,Catholic,Visayan,Low,63,2.7,Physics,6%,83%,Yes,Support Groups,Improved,Boni
-21,Female,Islam,Ilocano,Middle,76,3.1,Chemistry,3%,89%,Yes,Therapy,No Change,Boni
-19,Male,Other Christian Denominations,Tagalog,High,70,2.8,Biology,2%,86%,No,N/A,N/A,Boni
-20,Female,Catholic,Visayan,Middle,92,3.9,Physical Education,0%,99%,No,N/A,N/A,Boni
-23,Male,Islam,Ilocano,Low,69,3.0,English,4%,87%,Yes,Counseling,Worsened,Boni
-18,Female,Iglesia ni Cristo,Tagalog,Low,60,2.5,Math,8%,80%,No,N/A,N/A,Boni
-22,Male,Other Christian Denominations,Visayan,Middle,86,3.5,Science,0%,96%,No,N/A,N/A,Boni
-20,Female,Catholic,Ilocano,Middle,81,3.3,Art,1%,93%,Yes,Therapy,Improved,Boni
-24,Male,Islam,Tagalog,Low,73,2.9,Music,3%,88%,Yes,Counseling,No Change,Pasig
-21,Female,Iglesia ni Cristo,Visayan,Middle,79,3.4,History,1%,95%,No,N/A,N/A,Pasig
-25,Male,Catholic,Ilocano,High,71,3.2,Physical Education,2%,90%,Yes,Counseling,No Change,Pasig
-20,Female,Islam,Tagalog,High,89,3.7,Geography,0%,97%,No,N/A,N/A,Pasig
-24,Male,Other Christian Denominations,Visayan,Low,64,2.7,Computer Science,5%,84%,Yes,Support Groups,Worsened,Pasig
-22,Female,Catholic,Ilocano,Middle,75,3.1,Health,4%,88%,Yes,Therapy,Improved,Pasig
-19,Male,Islam,Tagalog,Middle,67,2.8,English,3%,86%,No,N/A,N/A,Pasig
-21,Female,Iglesia ni Cristo,Visayan,High,94,4.0,Chemistry,0%,100%,No,N/A,N/A,Pasig
-23,Male,Other Christian Denominations,Ilocano,Low,70,3.0,Math,6%,82%,Yes,Counseling,Worsened,Pasig
-18,Female,Catholic,Tagalog,Low,59,2.5,History,7%,79%,No,N/A,N/A,Pasig
-22,Male,Islam,Visayan,Middle,85,3.5,Science,0%,95%,Yes,Counseling,No Change,Pasig
-20,Female,Iglesia ni Cristo,Ilocano,Middle,83,3.4,Art,1%,92%,No,N/A,N/A,Pasig
-24,Male,Other Christian Denominations,Tagalog,Low,68,2.9,Physical Education,4%,87%,No,N/A,N/A,Boni
-19,Female,Catholic,Visayan,Low,62,2.6,Music,5%,83%,Yes,Therapy,Improved,Boni
-21,Male,Islam,Ilocano,High,77,3.2,English,2%,91%,Yes,Counseling,No Change,Boni
-20,Female,Iglesia ni Cristo,Visayan,High,87,3.8,Geography,0%,97%,No,N/A,N/A,Boni
-25,Male,Other Christian Denominations,Tagalog,Low,66,2.9,Computer Science,5%,84%,Yes,Counseling,Worsened,Boni
-22,Female,Catholic,Ilocano,Middle,74,3.0,Health,3%,88%,Yes,Therapy,No Change,Boni
-18,Male,Islam,Visayan,Middle,79,3.3,Math,1%,93%,No,N/A,N/A,Boni
-23,Female,Iglesia ni Cristo,Tagalog,High,90,3.7,Science,0%,98%,No,N/A,N/A,Boni
-24,Male,Other Christian Denominations,Ilocano,Low,70,2.8,Art,5%,85%,Yes,Support Groups,Improved,Boni
-21,Female,Catholic,Visayan,Middle,76,3.1,History,3%,89%,Yes,Counseling,No Change,Boni
-22,Male,Islam,Tagalog,High,81,3.4,Physical Education,1%,95%,No,N/A,N/A,Boni
-20,Female,Iglesia ni Cristo,Ilocano,Middle,88,3.6,Music,0%,97%,No,N/A,N/A,Boni
-23,Male,Other Christian Denominations,Visayan,Low,67,2.7,Chemistry,6%,83%,Yes,Counseling,Worsened,Boni
-19,Female,Catholic,Ilocano,Middle,75,3.2,English,4%,88%,No,N/A,N/A,Boni
-24,Male,Islam,Tagalog,Middle,80,3.3,Geography,1%,94%,Yes,Therapy,Improved,Boni
-20,Female,Iglesia ni Cristo,Visayan,High,88,3.7,Science,0%,97%,Yes,Counseling,Improved,Boni
-25,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Art,5%,85%,No,N/A,N/A,Boni
-21,Female,Catholic,Tagalog,Low,63,2.6,Physical Education,7%,81%,Yes,Counseling,Worsened,Boni
-22,Male,Islam,Visayan,Middle,86,3.5,History,1%,94%,No,N/A,N/A,Boni
-19,LGBTQ,Iglesia ni Cristo,Ilocano,Middle,91,3.9,Music,0%,98%,No,N/A,N/A,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,No,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,2.9,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.6,History,0.3,78,Yes,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,3.7,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,2.8,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,2.5,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,2.6,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.7,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.6,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,3.3,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.8,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.5,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.8,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,2.9,History,0.3,78,Yes,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.2,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,3.2,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,3.4,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,2.6,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,3.7,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,2.8,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,2.7,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,3.6,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.5,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.7,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,3.8,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,3.4,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,2.8,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,3.3,History,0.3,78,Yes,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,3.2,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,2.5,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,3.7,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,3.6,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,2.9,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,2.5,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.6,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.2,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,3.7,Business,0.2,88,No,N/A,N/A,Pasig
-27,Female,Buddhism,Chinese,High,36.4,2.8,Mathematics,0.3,80,Yes,Counseling,Worsened,Pasig
-32,Male,Christianity,Filipino,Low,72.3,2.7,Chemistry,0.1,92,No,N/A,N/A,Pasig
-29,Female,Islam,Malay,Low,88.7,3.3,Environmental Science,0.18,89,Yes,Support Groups,Improved,Pasig
-28,Male,Hinduism,Indian,Middle,55.6,3.4,History,0.3,78,Yes,N/A,N/A,Pasig
-26,Female,Christianity,Filipino,Middle,42.2,2.8,English,0.35,75,Yes,Therapy,No Change,Pasig
-34,Male,Buddhism,Chinese,High,75.8,2.9,Economics,0.12,93,Yes,Counseling,Improved,Pasig
-31,Female,Christianity,Latino,High,54.6,3.6,Physics,0.28,85,No,N/A,N/A,Pasig
-24,Male,Islam,Malay,Low,81.7,2.5,Political Science,0.08,96,Yes,Support Groups,Improved,Pasig
-26,Female,Christianity,Filipino,Low,38.9,3.7,Art,0.4,72,Yes,Counseling,No Change,Pasig
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Pasig
-29,Male,Buddhism,Chinese,Middle,78.2,3.7,Psychology,0.05,95,No,N/A,N/A,Pasig
-26,Male,Islam,Malay,High,42.9,2.8,Computer Science,0.25,85,Yes,Therapy,No Change,Pasig
-33,Male,Hinduism,Indian,Low,90.1,3.9,Medicine,0.1,98,Yes,Support Groups,Improved,Pasig
-25,Female,Christianity,Latino,Middle,59.7,2.9,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.5,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.6,Chemistry,0.1,92,Yes,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.4,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.7,History,0.3,78,Yes,Counseling,No Change,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.3,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.8,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.5,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,2.2,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,3.2,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,2.6,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,3.6,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.5,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,3.3,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,2.8,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.5,Chemistry,0.1,92,Yes,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,3.8,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,2.9,History,0.3,78,Yes,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.8,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.4,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,3.7,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,2.6,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,3.7,Art,0.4,72,Yes,Counseling,No Change,Boni
-28,Male,Christianity,Filipino,Low,65.5,2.9,Engineering,0.15,90,Yes,Counseling,Improved,Boni
-29,Male,Buddhism,Chinese,Middle,78.2,2.5,Psychology,0.05,95,No,N/A,N/A,Boni
-26,Male,Islam,Malay,High,42.9,3.6,Computer Science,0.25,85,Yes,Therapy,No Change,Boni
-33,Male,Hinduism,Indian,Low,90.1,3.6,Medicine,0.1,98,Yes,Support Groups,Improved,Boni
-25,Female,Christianity,Latino,Middle,59.7,2.7,Business,0.2,88,No,N/A,N/A,Boni
-27,Female,Buddhism,Chinese,High,36.4,3.8,Mathematics,0.3,80,Yes,Counseling,Worsened,Boni
-32,Male,Christianity,Filipino,Low,72.3,3.4,Chemistry,0.1,92,Yes,N/A,N/A,Boni
-29,Female,Islam,Malay,Low,88.7,2.8,Environmental Science,0.18,89,Yes,Support Groups,Improved,Boni
-28,Male,Hinduism,Indian,Middle,55.6,3.4,History,0.3,78,Yes,N/A,N/A,Boni
-26,Female,Christianity,Filipino,Middle,42.2,2.8,English,0.35,75,Yes,Therapy,No Change,Boni
-34,Male,Buddhism,Chinese,High,75.8,3.2,Economics,0.12,93,Yes,Counseling,Improved,Boni
-31,Female,Christianity,Latino,High,54.6,2.6,Physics,0.28,85,No,N/A,N/A,Boni
-24,Male,Islam,Malay,Low,81.7,3.7,Political Science,0.08,96,Yes,Support Groups,Improved,Boni
-26,Female,Christianity,Filipino,Low,38.9,3.7,Art,0.4,72,Yes,Counseling,No Change,Boni
+Age,Gender,Religion,Ethnicity,Socioeconomic Status,Mental Health Score,GPA,Course,Course Failure Rate,Attendance Rate,History of Past Mental Health Cases,Type of Past Interventions,Outcome of Past Interventions
+20,Male,Catholic,Tagalog,High,75,3.4,Math,2%,95%,Yes,Counseling,Improved
+22,Female,Islam,Visayan,Middle,82,3.2,English,1%,92%,Yes,Therapy,No Change
+19,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Science,5%,85%,No,N/A,N/A
+21,Female,Catholic,Tagalog,Middle,74,3.6,History,0%,96%,Yes,Counseling,Worsened
+23,Male,Islam,Visayan,High,68,3.0,Art,3%,88%,Yes,Counseling,Improved
+20,Female,Iglesia ni Cristo,Ilocano,High,90,3.8,Physical Education,0%,97%,No,N/A,N/A
+24,Male,Other Christian Denominations,Tagalog,Low,72,2.9,Music,4%,87%,No,N/A,N/A
+18,Female,Catholic,Visayan,Middle,78,3.5,Geography,1%,94%,Yes,Therapy,Improved
+22,Male,Islam,Ilocano,Middle,84,3.4,Health,1%,95%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Tagalog,High,88,3.7,Computer Science,0%,97%,No,N/A,N/A
+25,Male,Catholic,Visayan,Low,63,2.7,Physics,6%,83%,Yes,Support Groups,Improved
+21,Female,Islam,Ilocano,Middle,76,3.1,Chemistry,3%,89%,Yes,Therapy,No Change
+19,Male,Other Christian Denominations,Tagalog,High,70,2.8,Biology,2%,86%,No,N/A,N/A
+20,Female,Catholic,Visayan,Middle,92,3.9,Physical Education,0%,99%,No,N/A,N/A
+23,Male,Islam,Ilocano,Low,69,3.0,English,4%,87%,Yes,Counseling,Worsened
+18,Female,Iglesia ni Cristo,Tagalog,Low,60,2.5,Math,8%,80%,No,N/A,N/A
+22,Male,Other Christian Denominations,Visayan,Middle,86,3.5,Science,0%,96%,No,N/A,N/A
+20,Female,Catholic,Ilocano,Middle,81,3.3,Art,1%,93%,Yes,Therapy,Improved
+24,Male,Islam,Tagalog,Low,73,2.9,Music,3%,88%,Yes,Counseling,No Change
+21,Female,Iglesia ni Cristo,Visayan,Middle,79,3.4,History,1%,95%,No,N/A,N/A
+25,Male,Catholic,Ilocano,High,71,3.2,Physical Education,2%,90%,Yes,Counseling,No Change
+20,Female,Islam,Tagalog,High,89,3.7,Geography,0%,97%,No,N/A,N/A
+24,Male,Other Christian Denominations,Visayan,Low,64,2.7,Computer Science,5%,84%,Yes,Support Groups,Worsened
+22,Female,Catholic,Ilocano,Middle,75,3.1,Health,4%,88%,Yes,Therapy,Improved
+19,Male,Islam,Tagalog,Middle,67,2.8,English,3%,86%,No,N/A,N/A
+21,Female,Iglesia ni Cristo,Visayan,High,94,4.0,Chemistry,0%,100%,No,N/A,N/A
+23,Male,Other Christian Denominations,Ilocano,Low,70,3.0,Math,6%,82%,Yes,Counseling,Worsened
+18,Female,Catholic,Tagalog,Low,59,2.5,History,7%,79%,No,N/A,N/A
+22,Male,Islam,Visayan,Middle,85,3.5,Science,0%,95%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Ilocano,Middle,83,3.4,Art,1%,92%,No,N/A,N/A
+24,Male,Other Christian Denominations,Tagalog,Low,68,2.9,Physical Education,4%,87%,No,N/A,N/A
+19,Female,Catholic,Visayan,Low,62,2.6,Music,5%,83%,Yes,Therapy,Improved
+21,Male,Islam,Ilocano,High,77,3.2,English,2%,91%,Yes,Counseling,No Change
+20,Female,Iglesia ni Cristo,Visayan,High,87,3.8,Geography,0%,97%,No,N/A,N/A
+25,Male,Other Christian Denominations,Tagalog,Low,66,2.9,Computer Science,5%,84%,Yes,Counseling,Worsened
+22,Female,Catholic,Ilocano,Middle,74,3.0,Health,3%,88%,Yes,Therapy,No Change
+18,Male,Islam,Visayan,Middle,79,3.3,Math,1%,93%,No,N/A,N/A
+23,Female,Iglesia ni Cristo,Tagalog,High,90,3.7,Science,0%,98%,No,N/A,N/A
+24,Male,Other Christian Denominations,Ilocano,Low,70,2.8,Art,5%,85%,Yes,Support Groups,Improved
+21,Female,Catholic,Visayan,Middle,76,3.1,History,3%,89%,Yes,Counseling,No Change
+22,Male,Islam,Tagalog,High,81,3.4,Physical Education,1%,95%,No,N/A,N/A
+20,Female,Iglesia ni Cristo,Ilocano,Middle,88,3.6,Music,0%,97%,No,N/A,N/A
+23,Male,Other Christian Denominations,Visayan,Low,67,2.7,Chemistry,6%,83%,Yes,Counseling,Worsened
+19,Female,Catholic,Ilocano,Middle,75,3.2,English,4%,88%,No,N/A,N/A
+24,Male,Islam,Tagalog,Middle,80,3.3,Geography,1%,94%,Yes,Therapy,Improved
+20,Female,Iglesia ni Cristo,Visayan,High,88,3.7,Science,0%,97%,Yes,Counseling,Improved
+25,Male,Other Christian Denominations,Ilocano,Low,65,2.8,Art,5%,85%,No,N/A,N/A
+21,Female,Catholic,Tagalog,Low,63,2.6,Physical Education,7%,81%,Yes,Counseling,Worsened
+22,Male,Islam,Visayan,Middle,86,3.5,History,1%,94%,No,N/A,N/A
+19,LGBTQ,Iglesia ni Cristo,Ilocano,Middle,91,3.9,Music,0%,98%,No,N/A,N/A

@@ -1,89 +1,167 @@
-{% extends "components/base.html" %}
-{% block title %} MindSight: Admin{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/admin.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">
+    <title>Mind Sight: Admin</title>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo">
+      <img
+        id="logo"
+        src="/static/MINDSIGHT LOGO (WHITE).png"
+        alt="MindSight logo"
+      />&nbsp;<img
+        id="logo-initial"
+        src="/static/SVG/EYE LOGO.svg"
+        alt="MindSight logo-eye"
+      />
+    </div>
 
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/admin.css" /> 
-{% endblock %}
+    <div class="overview">
+      <p>Overview</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('dashboard') }}"
+            ><img src="/static/SVG/dashboard.svg" /><span
+              >Dashboard</span
+            ></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('admin') }}"
+            ><img src="/static/SVG/admin.svg" /><span>Admin</span></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('analytics') }}"
+            ><img src="/static/SVG/analytics.svg" /><span
+              >Analytics</span
+            ></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('stud') }}"
+            ><img src="/static/SVG/students.svg" /><span
+              >Students</span
+            ></a
+          >
+        </li>
+      </ul>
+    </div>
 
-{% block content %}
-  <div class="frame">
-      <h1>Guidance Advocates</h1>
-        <div class="content">
-            <div class="directors">
-              <svg class="circle1" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
-                <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-              </svg>
-              <svg class="circle2" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
-                <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-              </svg>
-                <div class="container-director">
-                  <p id="direct" class="name">
-                    Asst. Prof. Emmanuelle A. Santiago
-                  </p>
-                  <p id="direct-title" class="title">
-                    Director
-                  </p>
-                </div>
-                <div class="container-director">
-                    <p id="asst-direct" class="name">
-                      Instr. Emeraldo M. Sabit
+    <div class="account">
+      <p>Account</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('sett') }}"
+            ><img src="/static/SVG/settings.svg" /><span
+              >Settings</span
+            ></a
+          >
+        </li>
+
+        <li>
+          <a href="{{ url_for('logout') }}"
+            ><img src="/static/SVG/log-out.svg" /><span
+              >Log&nbsp;out</span
+            ></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile">
+      <img class="profile-image" src="/static/profile.png" /><span
+        >{{ fname }} {{ "" }} {{ lname }}</span
+      >
+    </div>
+  </nav>
+  <main>
+    <div class="frame">
+        <h1>Guidance Advocates</h1>
+          <div class="content">
+              <div class="directors">
+                <svg class="circle1" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
+                  <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                </svg>
+                <svg class="circle2" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
+                  <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                </svg>
+                  <div class="container-director">
+                    <p id="direct" class="name">
+                      Asst. Prof. Emmanuelle A. Santiago
                     </p>
-                    <p id="asst-direct-title" class="title">
-                      Assistant Director
-                    </p>
-                </div>
-            </div>
-            <div class="facilitators">
-              <h1>Peer Facilitators</h1>
-                <div class="iris-russel">
-                  <svg class="circle3" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <svg class="circle4" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <div class="container-facilitator">
-                    <p id="iris" class="name">
-                      Instr. Iris Cristelle D. Destura
-                    </p>
-                    <p id="iris-title" class="title">
-                      Head, Testing and Assessment
-                    </p>
-                  </div>
-                  <div class="container-facilitator">
-                    <p id="russel" class="name">
-                      Asst. Prof. Russel Ane A. Dela Cruz
-                    </p>
-                    <p id="russel-title" class="title">
-                      Head, Counseling and Wellness
+                    <p id="direct-title" class="title">
+                      Director
                     </p>
                   </div>
+                  <div class="container-director">
+                      <p id="asst-direct" class="name">
+                        Instr. Emeraldo M. Sabit
+                      </p>
+                      <p id="asst-direct-title" class="title">
+                        Assistant Director
+                      </p>
                   </div>
-                <div class="jake-lizelle">
-                  <svg class="circle5" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <svg class="circle6" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>  
-                  <div class="container-facilitator">
-                    <p id="jake" class="name">
-                      Instr. Jake Jason Queddeng
-                    </p>
-                    <p id="jake-title" class="title">
-                      GCSC Personal - Pasig
-                    </p>
+              </div>
+              <div class="facilitators">
+                <h1>Peer Facilitators</h1>
+                  <div class="iris-russel">
+                    <svg class="circle3" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
+                      <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                    </svg>
+                    <svg class="circle4" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
+                      <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                    </svg>
+                    <div class="container-facilitator">
+                      <p id="iris" class="name">
+                        Instr. Iris Cristelle D. Destura
+                      </p>
+                      <p id="iris-title" class="title">
+                        Head, Testing and Assessment
+                      </p>
+                    </div>
+                    <div class="container-facilitator">
+                      <p id="russel" class="name">
+                        Asst. Prof. Russel Ane A. Dela Cruz
+                      </p>
+                      <p id="russel-title" class="title">
+                        Head, Counseling and Wellness
+                      </p>
+                    </div>
+                    </div>
+                  <div class="jake-lizelle">
+                    <svg class="circle5" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
+                      <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                    </svg>
+                    <svg class="circle6" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
+                      <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
+                    </svg>  
+                    <div class="container-facilitator">
+                      <p id="jake" class="name">
+                        Instr. Jake Jason Queddeng
+                      </p>
+                      <p id="jake-title" class="title">
+                        GCSC Personal - Pasig
+                      </p>
+                    </div>
+                    <div class="container-facilitator">
+                      <p id="lizelle" class="name">
+                        Instr. Lizelle Anne Marie O. Manabat
+                      </p>
+                      <p id="lizelle-title" class="title">
+                        Registered Guidance Counselor/Psychometrician
+                      </p>
+                    </div>
                   </div>
-                  <div class="container-facilitator">
-                    <p id="lizelle" class="name">
-                      Instr. Lizelle Anne Marie O. Manabat
-                    </p>
-                    <p id="lizelle-title" class="title">
-                      Registered Guidance Counselor/Psychometrician
-                    </p>
-                  </div>
-                </div>
-            </div>
-        </div>
-  </div>
-{% endblock %}
+              </div>
+          </div>
+    </div>
+  </main>
+</body>
+</html>
