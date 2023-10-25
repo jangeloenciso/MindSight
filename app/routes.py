@@ -138,9 +138,9 @@ def analytics():
 
     return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot)
 
-@app.route('/student')
-def student():
-   return render_template('student.html', fname = session['fname'], lname = session['lname'])
+@app.route('/students')
+def students():
+   return render_template('students.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/settings')
 def settings():
