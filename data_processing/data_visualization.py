@@ -55,6 +55,8 @@ def generate_bar_graph(data, data_college_summary):
 
 
 def generate_pie_graph():
+
+    # Identity
     fig = px.pie (
         data, 
         names='Gender', 
