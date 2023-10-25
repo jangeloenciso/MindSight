@@ -115,15 +115,15 @@ def dashboard():
 
     if 'loggedin' in session:
 
-        result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
+        bar_graph = generate_bar_graph()
 
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], result_college_summary=result_college_summary, result_campus=result_campus)
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], bar_graph = bar_graph)
 
     return redirect(url_for('login'))
 
 @app.route('/developers')
-def developers():
-   return render_template('developers.html', fname = session['fname'], lname = session['lname'])
+def devs():
+   return render_template('devs.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/admin')
 def admin():
@@ -131,20 +131,18 @@ def admin():
 
 @app.route('/analytics')
 def analytics():
-    
-    result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-    scatter_plot = generate_scatter_plot()
-    pie_graph = generate_pie_graph()
+   
+   pie_graph = generate_pie_graph()
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot)
+   return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph=pie_graph)
 
-@app.route('/students')
-def students():
-   return render_template('students.html', fname = session['fname'], lname = session['lname'])
+@app.route('/student')
+def stud():
+   return render_template('stud.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/settings')
-def settings():
-   return render_template('settings.html', fname = session['fname'], lname = session['lname'])
+def sett():
+   return render_template('sett.html', fname = session['fname'], lname = session['lname'])
 
 if __name__ == '__main__':
     app.run(debug=True, host='localhost', port=5000)

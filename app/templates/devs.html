@@ -1,11 +1,86 @@
-{% extends "components/base.html" %}
-{% block title %} MindSight: Developers{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="devs.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">
+    <title>Mind Sight: Developers</title>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo">
+      <img
+        id="logo"
+        src="/static/MINDSIGHT LOGO (WHITE).png"
+        alt="MindSight logo"
+      />&nbsp;<img
+        id="logo-initial"
+        src="/static/SVG/EYE LOGO.svg"
+        alt="MindSight logo-eye"
+      />
+    </div>
 
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/developers.css"/> 
-{% endblock %}
+    <div class="overview">
+      <p>Overview</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('dashboard') }}"
+            ><img src="/static/SVG/dashboard.svg" /><span
+              >Dashboard</span
+            ></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('admin') }}"
+            ><img src="/static/SVG/admin.svg" /><span>Admin</span></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('analytics') }}"
+            ><img src="/static/SVG/analytics.svg" /><span
+              >Analytics</span
+            ></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('stud') }}"
+            ><img src="/static/SVG/students.svg" /><span
+              >Students</span
+            ></a
+          >
+        </li>
+      </ul>
+    </div>
 
-{% block content %}
+    <div class="account">
+      <p>Account</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('sett') }}"
+            ><img src="/static/SVG/settings.svg" /><span
+              >Settings</span
+            ></a
+          >
+        </li>
+
+        <li>
+          <a href="{{ url_for('logout') }}"
+            ><img src="/static/SVG/log-out.svg" /><span
+              >Log&nbsp;out</span
+            ></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile">
+      <img class="profile-image" src="/static/profile.png" /><span
+        >{{ fname }} {{ "" }} {{ lname }}</span
+      >
+    </div>
+  </nav>
   <main>
     <div class="frame">
         <h1>Developers</h1>
@@ -17,8 +92,8 @@
                 <p class="title">Back-end Developer</p>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisl urna. Suspendisse vel nibh id ligula semper gravida. Donec euismod, tortor at bibendum laoreet, sem ante vehicula tortor, quis placerat est ex vel lacus. Donec eu convallis dui. Nulla id vehicula risus, at congue massa. Cras in neque orci. Mauris vitae venenatis arcu, in dictum arcu. </p>
                 <div class="socmed">
-                    <img id="fb" src="/static/Devs/fb.svg">
-                    <img id="ig" src="/static/Devs/insta.svg">&nbsp;
+                    <img id="fb" src="/static/Devs/fb.png">
+                    <img id="ig" src="/static/Devs/insta.png">&nbsp;
                     <!-- <img id="fb-hover" src="/static/Devs/fb-hover.png">
                     <img id="ig-hover" src="/static/Devs/insta-hover.png"> -->
                 </div>
@@ -29,8 +104,8 @@
                 <p class="title">Back-end Developer</p>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisl urna. Suspendisse vel nibh id ligula semper gravida. Donec euismod, tortor at bibendum laoreet, sem ante vehicula tortor, quis placerat est ex vel lacus. Donec eu convallis dui. Nulla id vehicula risus, at congue massa. Cras in neque orci. Mauris vitae venenatis arcu, in dictum arcu. </p>
                 <div class="socmed">
-                  <img id="fb" src="/static/Devs/fb.svg">
-                  <img id="ig" src="/static/Devs/insta.svg">
+                  <img id="fb" src="/static/Devs/fb.png">
+                  <img id="ig" src="/static/Devs/insta.png">
                 </div>
             </div>
             <div class="box">
@@ -39,8 +114,8 @@
                 <p class="title">Lead UX/UI Designer</p>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisl urna. Suspendisse vel nibh id ligula semper gravida. Donec euismod, tortor at bibendum laoreet, sem ante vehicula tortor, quis placerat est ex vel lacus. Donec eu convallis dui. Nulla id vehicula risus, at congue massa. Cras in neque orci. Mauris vitae venenatis arcu, in dictum arcu. </p>
                 <div class="socmed">
-                  <img id="fb" src="/static/Devs/fb.svg">
-                  <img id="ig" src="/static/Devs/insta.svg">
+                  <img id="fb" src="/static/Devs/fb.png">
+                  <img id="ig" src="/static/Devs/insta.png">
                 </div>
             </div>
             <div class="box">
@@ -49,8 +124,8 @@
                 <p class="title">Front-end Developer</p>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisl urna. Suspendisse vel nibh id ligula semper gravida. Donec euismod, tortor at bibendum laoreet, sem ante vehicula tortor, quis placerat est ex vel lacus. Donec eu convallis dui. Nulla id vehicula risus, at congue massa. Cras in neque orci. Mauris vitae venenatis arcu, in dictum arcu. </p>
                 <div class="socmed">
-                  <img id="fb" src="/static/Devs/fb.svg">
-                  <img id="ig" src="/static/Devs/insta.svg">
+                  <img id="fb" src="/static/Devs/fb.png">
+                  <img id="ig" src="/static/Devs/insta.png">
                 </div>
             </div>
             <div class="box">
@@ -59,10 +134,12 @@
                 <p class="title">UI/Graphic Designer</p>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nisl urna. Suspendisse vel nibh id ligula semper gravida. Donec euismod, tortor at bibendum laoreet, sem ante vehicula tortor, quis placerat est ex vel lacus. Donec eu convallis dui. Nulla id vehicula risus, at congue massa. Cras in neque orci. Mauris vitae venenatis arcu, in dictum arcu. </p>
                 <div class="socmed">
-                  <img id="fb" src="/static/Devs/fb.svg">
-                  <img id="ig" src="/static/Devs/insta.svg">
+                  <img id="fb" src="/static/Devs/fb.png">
+                  <img id="ig" src="/static/Devs/insta.png">
                 </div>
             </div>
           </div>
     </div>
-{% endblock %}
+  </main>
+</body>
+</html>
