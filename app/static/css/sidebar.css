@@ -125,3 +125,8 @@
     background-color: var(--bg-orange);
 }
 
+.admin-expand {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
