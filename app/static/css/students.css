@@ -137,6 +137,7 @@ body {
     border: none;
     font-weight: bold;
     transition: var(--smooth-transition);
+    cursor: pointer;
 }
 
 
