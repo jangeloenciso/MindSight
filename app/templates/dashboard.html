@@ -1,50 +1,53 @@
 {% extends "components/base.html" %}
 {% block title %} MindSight: Dashboard{% endblock %}
+
+{% block styles %}     
+<link rel="stylesheet" href="/static/css/dashboard.css"/> 
+{% endblock %}
+
 {% block content %}
-  <main>
-    <div class="nature-college-container">
-      <div class="nature-concern">
-        <h1>Nature of Concerns!!</h1>
-      </div>
-      <hr id="nature-college-hr">
-      <div class="college-summary">
-        {{ result_college_summary | safe }}
-      </div>
+  <div class="nature-college-container">
+    <div class="nature-concern">
+      <h1>Nature of Concerns</h1>
     </div>
-    <div class="campus-clinic-container">
-      <div class="campus-counselor">
-        <div class="campus">
-          {{ result_campus | safe }}
-        </div>
-        <hr id="campus-counselor-hr">
-        <div class="counselor">
-          <h1>Counselors</h1>
-          <div class="counselor1">
-            <p>Counselor 1</p>
-          </div>
-          <div class="counselor2">
-            <p>Counselor 2</p>
-          </div>
-          <div class="counselor3">
-            <p>Counselor 3</p>
-          </div>
-          <div class="counselor4">
-            <p>Counselor 4</p>
-          </div>
-        </div>
+    <hr id="nature-college-hr">
+    <div class="college-summary">
+      {{ result_college_summary | safe }}
+    </div>
+  </div>
+  <div class="campus-clinic-container">
+    <div class="campus-counselor">
+      <div class="campus">
+        {{ result_campus | safe }}
       </div>
-      <div class="clinic-container">
-        <h1>Clinic's Activities</h1>
-        <div class="seminar">
-          <p>Seminar: Mental Health</p>
+      <hr id="campus-counselor-hr">
+      <div class="counselor">
+        <h1>Counselors</h1>
+        <div class="counselor1">
+          <p>Counselor 1</p>
         </div>
-        <div class="community">
-          <p>Community Service</p>
+        <div class="counselor2">
+          <p>Counselor 2</p>
         </div>
-        <div class="consultation">
-          <p>Consultation</p>
+        <div class="counselor3">
+          <p>Counselor 3</p>
+        </div>
+        <div class="counselor4">
+          <p>Counselor 4</p>
         </div>
       </div>
     </div>
-  </main>
+    <div class="clinic-container">
+      <h1>Clinic's Activities</h1>
+      <div class="seminar">
+        <p>Seminar: Mental Health</p>
+      </div>
+      <div class="community">
+        <p>Community Service</p>
+      </div>
+      <div class="consultation">
+        <p>Consultation</p>
+      </div>
+    </div>
+  </div>
 {% endblock %}
