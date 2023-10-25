@@ -1,6 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lexend"
+    />
+    <link
+        rel="stylesheet"
+        href="/static/css/dashboard.css"
+    />
+    <link
+        rel="stylesheet"
+        href="/static/css/sidebar.css"
+    />
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="/static/SVG/EYE LOGO.svg"
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>{% block title %}MindSight: Test{% endblock %}</title>
+    {% block styles %}{% endblock %}
+</head>
+<body>
 
-    {% include "components/sidebar.html" %}
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+{% block content %} {% endblock %}
 
+</body>
+<script src="../static/javascript/sidebar.js"></script>
+</html>
