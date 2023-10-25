@@ -17,7 +17,9 @@ def generate_bar_graph(data, data_college_summary):
         color='Religion',
         color_discrete_sequence=['#DB9050','#095371', '#6092C0', 'teal'])
     
+    fig1.update_traces(showlegend=False)
     fig1.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+
     result_religion = fig1.to_html(include_plotlyjs=False)
 
 
@@ -30,6 +32,7 @@ def generate_bar_graph(data, data_college_summary):
         color='Colleges',
         color_discrete_sequence=['#095371'])
     
+    fig2.update_traces(showlegend=False)
     fig2.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
 
     result_college_summary = fig2.to_html(include_plotlyjs=False)
@@ -43,6 +46,7 @@ def generate_bar_graph(data, data_college_summary):
         color='Campus',
         color_discrete_sequence=['#095371','#DB9354'])
     
+    fig3.update_traces(showlegend=False)
     fig3.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
 
     result_campus = fig3.to_html(include_plotlyjs=False)
@@ -54,7 +58,7 @@ def generate_pie_graph():
     fig = px.pie (
         data, 
         names='Gender', 
-        height=300, width=600, 
+        height=300, width=300, 
         title='IDENTITY',
         color_discrete_sequence=['#DB9050', '#095371', '#6092C0'])
 

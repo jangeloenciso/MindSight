@@ -181,11 +181,22 @@ body {
     font-weight: bold;
 }
 
-.identity {
+main {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 53%;
     transform: translate(-50%, -50%);
+    padding: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.identity {
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+}
+
+.college-summary {
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
 }
