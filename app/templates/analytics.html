@@ -16,4 +16,12 @@
 <div class="identity">
   {{ pie_graph | safe }}
 </div>
+
+<div class="upload-form">
+  <form method = "POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.file() }}
+    {{ form.submit() }}
+  </form>
+</div>
 {% endblock %}
