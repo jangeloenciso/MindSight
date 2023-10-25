@@ -6,11 +6,15 @@
 {% endblock %}
 
 {% block content %}
+<div class="title">
+  <h1>Case Overview</h1>
+</div>
+<div class="content">
   <div class="nature-college-container">
     <div class="nature-concern">
       <h1>Nature of Concerns</h1>
     </div>
-    <hr id="nature-college-hr">
+    <!-- <hr id="nature-college-hr"> -->
     <div class="college-summary">
       {{ result_college_summary | safe }}
     </div>
@@ -20,7 +24,7 @@
       <div class="campus">
         {{ result_campus | safe }}
       </div>
-      <hr id="campus-counselor-hr">
+      <!-- <hr id="campus-counselor-hr"> -->
       <div class="counselor">
         <h1>Counselors</h1>
         <div class="counselor1">
@@ -50,4 +54,6 @@
       </div>
     </div>
   </div>
+</div>
+</main>
 {% endblock %}

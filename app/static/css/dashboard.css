@@ -27,17 +27,6 @@ body {
 
 
 
-
-/* sidebar */
-
-/* admin expand container */
-.admin-expand {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-
 /* section margins */
 .overview {
     margin-top: 24px;
