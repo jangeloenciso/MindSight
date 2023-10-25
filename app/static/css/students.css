@@ -27,12 +27,6 @@ body {
     background-color: var(--main-db-bg-color);
 }
 
-
-
-
-/* Sidebar */
-
-
 /* section margins */
 .overview {
     margin-top: 24px;
@@ -75,4 +69,122 @@ body {
 .profile span {
     color: var(--text-white);
     font-weight: bold;
+}
+
+
+
+
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bg-orange);
+    display: flex;
+}
+
+
+
+/* buttons */
+.main-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    gap: 20px;
+}
+
+.main-buttons button {
+    border-radius: 20px;
+    color: white;
+    font-size: 2em;
+    background-color: var(--primary-color);
+    border: none;
+    font-weight: bold;
+    transition: var(--smooth-transition);
+}
+
+
+.cea {
+    width: 20%;
+    height: 100%;
+}
+
+/* group of 4 buttons */
+.buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 100%;
+    gap: 20px;
+}
+
+.buttons-group button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+}
+
+
+/* hover states */
+.main-buttons button:hover {
+    color: black;
+}
+
+.cea:hover {
+    background-color: #db9050;
+}
+
+.cbea:hover {
+    background-color: #dbcd50;
+}
+
+.cas:hover {
+    background-color: #429f39;
+}
+
+.ced:hover {
+    background-color: #264f80;
+}
+
+.ihk:hover {
+    background-color: #db508a;
 }
