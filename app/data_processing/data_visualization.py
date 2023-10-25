@@ -1,11 +1,16 @@
-from flask import request, Blueprint
+import os
 import pandas as pd
 import plotly.express as px
 
 # idk man maybe add arguments to each generator? like,, generate_bar_graph(arg1, arg2)? this is for the flexibility and customization of the data vis
 
-data = pd.read_csv('test_data/dummy_data.csv')
-data_college_summary = pd.read_csv('test_data/collegesum.csv')
+data_directory = os.path.join(os.path.dirname(__file__), 'data')
+
+dummy_data = os.path.join(data_directory, 'dummy_data.csv')
+collegesum = os.path.join(data_directory, 'collegesum.csv')
+
+data = pd.read_csv(dummy_data)
+data_college_summary = pd.read_csv(collegesum)
 
 def generate_bar_graph(data, data_college_summary):
 

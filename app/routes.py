@@ -5,12 +5,10 @@ from werkzeug.utils import secure_filename
 from flask_mysqldb import MySQL
 import re, hashlib
 import pandas as pd
-import json
 import plotly.offline as plt
 import plotly.express as px
-import config
 from .data_processing import *
-from .uploads import *
+from .forms import *
 
 
 mysql = MySQL(app)
@@ -109,7 +107,7 @@ def logout():
 def dashboard():
 
     if 'loggedin' in session:
-
+    
         result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
     
         return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], result_college_summary=result_college_summary, result_campus=result_campus)
@@ -124,16 +122,21 @@ def developers():
 def admin():
    return render_template('admin.html', fname = session['fname'], lname = session['lname'])
 
-@app.route('/analytics', methods=['POST'])
+@app.route('/analytics', methods=['GET', 'POST'])
 def analytics():
-    
+
+    form = UploadFileForm()
+
     result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
     scatter_plot = generate_scatter_plot()
     pie_graph = generate_pie_graph()
 
-    
+    if form.validate_on_submit():
+        file = form.file.data
+        print(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER']))
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot)
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot, form=form)
 
 @app.route('/students')
 def students():
