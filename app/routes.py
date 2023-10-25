@@ -122,8 +122,8 @@ def dashboard():
     return redirect(url_for('login'))
 
 @app.route('/developers')
-def devs():
-   return render_template('devs.html', fname = session['fname'], lname = session['lname'])
+def developers():
+   return render_template('developers.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/admin')
 def admin():
@@ -139,12 +139,12 @@ def analytics():
     return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot)
 
 @app.route('/student')
-def stud():
-   return render_template('stud.html', fname = session['fname'], lname = session['lname'])
+def student():
+   return render_template('student.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/settings')
-def sett():
-   return render_template('sett.html', fname = session['fname'], lname = session['lname'])
+def settings():
+   return render_template('settings.html', fname = session['fname'], lname = session['lname'])
 
 if __name__ == '__main__':
     app.run(debug=True, host='localhost', port=5000)
