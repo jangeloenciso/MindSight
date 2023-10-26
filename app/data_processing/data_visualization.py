@@ -2,8 +2,6 @@ import os
 import pandas as pd
 import plotly.express as px
 
-# idk man maybe add arguments to each generator? like,, generate_bar_graph(arg1, arg2)? this is for the flexibility and customization of the data vis
-
 data_directory = os.path.join(os.path.dirname(__file__), 'data')
 
 dummy_data = os.path.join(data_directory, 'dummy_data.csv')
@@ -12,12 +10,14 @@ collegesum = os.path.join(data_directory, 'collegesum.csv')
 data = pd.read_csv(dummy_data)
 data_college_summary = pd.read_csv(collegesum)
 
-data_json = data.to_dict(orient='records')
 
+def process_data():
+    data = pd.read_csv(dummy_data)
+    average_scores = data.groupby('Religion')['Mental Health Score'].mean().reset_index()
+    data_average = average_scores.to_dict(orient='records')
 
-average_scores = data.groupby('Religion')['Mental Health Score'].mean().reset_index()
+    return data_average
 
-data_average = average_scores.to_dict(orient='records')
 
 def generate_bar_graph(data, data_college_summary):
 

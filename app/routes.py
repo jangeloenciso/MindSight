@@ -131,7 +131,13 @@ def analytics():
         file = form.file.data
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data_average=data_average)
+        data = process_data()
+
+        return render_template('analytics.html', fname=session['fname'], lname=session['lname'], form=form, data=data)
+    
+    data = process_data()
+
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data=data)
 
 @app.route('/students')
 def students():
