@@ -110,22 +110,8 @@ main {
     margin-bottom: 40px;
 }
 
-/* #nature-college-hr, #campus-counselor-hr {
-    -moz-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-    height: 1px;
-    width: 300px;
-    border: none;
-    background-color: var(--bg-orange);
-    padding: 0;
-    margin: 0;
-}  */
-
-#campus-counselor-hr {
-    width: 200px;
+.nature-concern span {
+    border-bottom: 2px solid var(--bg-orange);
 }
 
 .campus-counselor {

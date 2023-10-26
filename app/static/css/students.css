@@ -115,6 +115,7 @@ body {
     font-weight: bold;
     border-bottom: 2px solid var(--bg-orange);
     display: flex;
+    padding-bottom: 10px;
 }
 
 
