@@ -127,15 +127,11 @@ def analytics():
 
     form = UploadFileForm()
 
-    result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-    scatter_plot = generate_scatter_plot()
-    pie_graph = generate_pie_graph()
-
     if form.validate_on_submit():
         file = form.file.data
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot, form=form)
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data_average=data_average)
 
 @app.route('/students')
 def students():

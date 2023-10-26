@@ -12,6 +12,13 @@ collegesum = os.path.join(data_directory, 'collegesum.csv')
 data = pd.read_csv(dummy_data)
 data_college_summary = pd.read_csv(collegesum)
 
+data_json = data.to_dict(orient='records')
+
+
+average_scores = data.groupby('Religion')['Mental Health Score'].mean().reset_index()
+
+data_average = average_scores.to_dict(orient='records')
+
 def generate_bar_graph(data, data_college_summary):
 
     # Religion
