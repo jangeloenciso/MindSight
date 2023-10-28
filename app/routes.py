@@ -1,6 +1,6 @@
 import os
 from app import app
-from flask import render_template, url_for, session, redirect, request
+from flask import render_template, url_for, session, redirect, request, jsonify
 from werkzeug.utils import secure_filename
 from flask_mysqldb import MySQL
 import re, hashlib
@@ -108,9 +108,8 @@ def dashboard():
 
     if 'loggedin' in session:
     
-        result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-    
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], result_college_summary=result_college_summary, result_campus=result_campus)
+
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
 
     return redirect(url_for('login'))
 
@@ -127,15 +126,17 @@ def analytics():
 
     form = UploadFileForm()
 
-    result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-    scatter_plot = generate_scatter_plot()
-    pie_graph = generate_pie_graph()
-
     if form.validate_on_submit():
         file = form.file.data
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], pie_graph = pie_graph, result_religion = result_religion, scatter_plot = scatter_plot, form=form)
+        data = process_data()
+
+        return render_template('analytics.html', fname=session['fname'], lname=session['lname'], form=form, data=data)
+    
+    data = process_data("GPA", "Mental Health Score")
+
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data=data)
 
 @app.route('/students')
 def students():
@@ -144,3 +145,11 @@ def students():
 @app.route('/settings')
 def settings():
    return render_template('settings.html', fname = session['fname'], lname = session['lname'])
+
+# API endpoints
+
+@app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
+def get_data(first_metric, second_metric):
+    data = process_data(first_metric, second_metric)
+    return jsonify(data)
+
