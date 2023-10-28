@@ -11,7 +11,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: Lexend;
+    font-family: Lexend-Regular;
 }
 
 body, html {
@@ -147,17 +147,11 @@ body {
 }
 
 
-
-.cea {
+/* cea button */
+.cea, #cea {
     width: 20%;
     height: 100%;
 }
-
-#cea {
-    width: 20%;
-    height: 100%;
-}
-
 
 
 /* group of 4 buttons */
@@ -175,8 +169,10 @@ body {
     align-items: center;
     flex-grow: 1;
     flex-basis: calc(50% - 10px);
+    text-decoration: none;
 }
 
+/* expand button to entire <a> container */
 .buttons-group button {
     height: 100% !important;
     width: 100% !important;
@@ -184,10 +180,6 @@ body {
 
 
 /* hover states */
-.main-buttons button:hover {
-    color: black;
-}
-
 .cea:hover {
     background-color: #db9050;
 }
