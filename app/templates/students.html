@@ -17,12 +17,12 @@
       </p>
     </div>
     <div class="main-buttons">
-      <button class="cea">CEA</button>
+      <a href="{{ url_for ('cea') }}"> <button class="cea">CEA</button></a>
       <div class="buttons-group">
-        <button class="cbea">CBEA</button>
-        <button class="cas">CAS</button>
-        <button class="ced">CED</button>
-        <button class="ihk">IHK</button>
+        <a href="{{ url_for ('cbea') }}"> <button class="cbea">CBEA</button></a>
+        <a href="{{ url_for ('cas') }}"> <button class="cas">CAS</button></a>
+        <a href="{{ url_for ('ced') }}"> <button class="ced">CED</button></a>
+        <a href="{{ url_for ('ihk') }}"> <button class="ihk">IHK</button></a>
       </div>
     </div>
   </div>

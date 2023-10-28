@@ -142,6 +142,31 @@ def analytics():
 def students():
    return render_template('students.html', fname = session['fname'], lname = session['lname'])
 
+
+# Student components
+
+@app.route('/students/cas.html')
+def cas():
+   return render_template('students/cas.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/students/cbea.html')
+def cbea():
+   return render_template('students/cbea.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/students/cea.html')
+def cea():
+   return render_template('students/cea.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/students/ced.html')
+def ced():
+   return render_template('students/ced.html', fname = session['fname'], lname = session['lname'])
+
+@app.route('/students/ihk.html')
+def ihk():
+   return render_template('students/ihk.html', fname = session['fname'], lname = session['lname'])
+
+
+
 @app.route('/settings')
 def settings():
    return render_template('settings.html', fname = session['fname'], lname = session['lname'])
