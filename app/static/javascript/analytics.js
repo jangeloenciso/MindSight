@@ -1,27 +1,51 @@
+let chartGenerated = false;
+let chart;
+var ctx = document.getElementById('myChart').getContext('2d');
 
-fetch('/get_data')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        generateBarGraph(data);
+document.addEventListener('DOMContentLoaded', function() {
+    fetchAndGenerateChart();
+
+    const firstMetricDropdown = document.getElementById('firstMetricDropdown');
+    const secondMetricDropdown = document.getElementById('secondMetricDropdown');
+
+    firstMetricDropdown.addEventListener('change', function() {
+        fetchAndGenerateChart();
     });
 
-function generateBarGraph(data) {
-    var ctx = document.getElementById('myChart').getContext('2d');
+    secondMetricDropdown.addEventListener('change', function() {
+        fetchAndGenerateChart();
+    });
+});
 
-    var labels = data.map(item => item.Religion);
-    var values = data.map(item => item['Mental Health Score']);
+function fetchAndGenerateChart() {
+    const selectedFirstMetric = document.getElementById('firstMetricDropdown').value;
+    const selectedSecondMetric = document.getElementById('secondMetricDropdown').value;
 
-    new Chart(ctx, {
+    fetch(`/get_data/${selectedFirstMetric}/${selectedSecondMetric}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            generateBarGraph(data, selectedFirstMetric, selectedSecondMetric);
+        });
+}
+
+function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
+    if (chart) {
+        chart.destroy();
+    }
+
+    var labels = data.map(item => item[selectedFirstMetric]);
+    var values = data.map(item => item[selectedSecondMetric]);
+
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: 'Mental Health Score',
+                label: selectedFirstMetric,
                 data: values,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
             }]
         },
         options: {
@@ -33,7 +57,6 @@ function generateBarGraph(data) {
         }
     });
 }
-
-if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
 }

@@ -108,9 +108,8 @@ def dashboard():
 
     if 'loggedin' in session:
     
-        result_religion, result_college_summary, result_campus = generate_bar_graph(data, data_college_summary)
-    
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'], result_college_summary=result_college_summary, result_campus=result_campus)
+
+        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
 
     return redirect(url_for('login'))
 
@@ -135,7 +134,7 @@ def analytics():
 
         return render_template('analytics.html', fname=session['fname'], lname=session['lname'], form=form, data=data)
     
-    data = process_data()
+    data = process_data("GPA", "Mental Health Score")
 
     return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data=data)
 
@@ -149,7 +148,8 @@ def settings():
 
 # API endpoints
 
-@app.route('/get_data', methods=['GET'])
-def get_data():
-    data = process_data()
+@app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
+def get_data(first_metric, second_metric):
+    data = process_data(first_metric, second_metric)
     return jsonify(data)
+

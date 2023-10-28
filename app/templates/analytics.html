@@ -20,7 +20,27 @@
   </form>
 </div>
 
-<canvas id="myChart" style="width: 800px; height: 400px;"></canvas>
+<select id="firstMetricDropdown">
+  <option value="Mental Health Score">Mental Health Score</option>
+  <option value="GPA">GPA</option>
+  <option value="Religion">Religion</option>
+  <option value="Ethnicity">Ethnicity</option>
+  <option value="Socioeconomic Status">Socioeconomic Status</option>
+  <option value="College">College</option>
+  <option value="Course">Course</option>
+  <option value="History of Past Mental Health Cases">History of Past Mental Health Cases</option>
+  <option value="Type of Past Interventions">Type of Past Interventions</option>
+  <option value="Outcome of Past">Outcome of Past</option>
+</select>
+<select id="secondMetricDropdown">
+  <option value="GPA">GPA</option>
+  <option value="Mental Health Score">Mental Health Score</option>
+  <option value="Course Failure Rate">Course Failure Rate</option>
+  <option value="Attendance Rate">Attendance Rate</option>
+  <option value="Age">Age</option>
+
+</select>
+<canvas id="myChart" width="800" height="400"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 <script src="/static/javascript/analytics.js"> </script>
