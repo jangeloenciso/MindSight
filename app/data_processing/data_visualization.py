@@ -13,6 +13,7 @@ data_college_summary = pd.read_csv(collegesum)
 
 def process_data():
     data = pd.read_csv(dummy_data)
+    # calculates average mental health score for every religion
     average_scores = data.groupby('Religion')['Mental Health Score'].mean().reset_index()
     data_average = average_scores.to_dict(orient='records')
 

@@ -1,6 +1,6 @@
 import os
 from app import app
-from flask import render_template, url_for, session, redirect, request
+from flask import render_template, url_for, session, redirect, request, jsonify
 from werkzeug.utils import secure_filename
 from flask_mysqldb import MySQL
 import re, hashlib
@@ -146,3 +146,10 @@ def students():
 @app.route('/settings')
 def settings():
    return render_template('settings.html', fname = session['fname'], lname = session['lname'])
+
+# API endpoints
+
+@app.route('/get_data', methods=['GET'])
+def get_data():
+    data = process_data()
+    return jsonify(data)

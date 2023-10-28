@@ -1,6 +1,7 @@
 {% extends "components/base.html" %}
 {% block title %} MindSight: Analytics{% endblock %}
 
+
 {% block styles %}     
 <link rel="stylesheet" href="/static/css/analytics.css"/> 
 {% endblock %}
@@ -9,12 +10,6 @@
 <div class="experience-container">
   <h1>Experiences</h1>
   <hr id="experience-hr">
-</div>
-<div class="college-summary">
-  {{ result_college_summary | safe }}
-</div>
-<div class="identity">
-  {{ pie_graph | safe }}
 </div>
 
 <div class="upload-form">
@@ -28,42 +23,5 @@
 <canvas id="myChart" style="width: 800px; height: 400px;"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-<script> 
-  const chartData = {{ data | tojson }};
-  console.log(chartData)
-
-var ctx = document.getElementById('myChart').getContext('2d');
-
-var data = chartData;
-
-var labels = data.map(item => item.Religion);
-var values = data.map(item => item['Mental Health Score']);
-
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Mental Health Score',
-            data: values,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
-
-<script>
-  if ( window.history.replaceState ) {
-      window.history.replaceState( null, null, window.location.href );
-  }
-</script>
+<script src="/static/javascript/analytics.js"> </script>
 {% endblock %}
