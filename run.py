@@ -1,20 +1,10 @@
-from app import app
-import MySQLdb
+from app import app, db  # Import the app and the existing SQLAlchemy instance
 
 if __name__ == '__main__':
-
-    try:
-        conn = MySQLdb.connect(
-            user=app.config["MYSQL_USER"], 
-            passwd=app.config["MYSQL_PASSWORD"], 
-            host=app.config["MYSQL_HOST"], 
-            db=app.config["MYSQL_DB"]
-        )
-        print("Connected to MySQL successfully!")
-        
-    except MySQLdb.Error as e:
-        print(f"Error: {e}")
-
+    with app.app_context():
+        db.create_all()
 
     app.run(debug=True, host='localhost', port=5000)
+
+
 

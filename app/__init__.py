@@ -1,24 +1,13 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.config.from_object("config.Config")
 
 from app import routes
 
-
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = ''
-# app.config['MYSQL_DB'] = 'mindsight'
- 
-# mysql = MySQL(app)
- 
-# @app.route('/')
-# def form():
-#     cur = mysql.connection.cursor()
-#     cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Marithe', 'dela Cruz', 'tet', 'tet_UI' )''')
-#     cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Matthew', 'Bautista', 'matt', 'matt_UI' )''')
-#     cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Justin Marley', 'Fontanilla', 'tin', 'tin_dev' )''')
-#     cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Joseph Angelo', 'Enciso', 'joker', 'joker_dev' )''')
-#     cur.execute('''INSERT INTO developers (fname, lname, username, password) VALUES ('Jorge Robert', 'Velarde', 'jowjie', 'jowjie_dev' )''')
-#     return 'done'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+bcrypt = Bcrypt(app)
