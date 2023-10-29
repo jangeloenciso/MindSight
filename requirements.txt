@@ -3,7 +3,7 @@ click==8.1.7
 colorama==0.4.6
 contourpy==1.1.1
 cycler==0.12.1
-Flask==3.0.0
+Flask==2.3.0
 Flask-MySQL==1.5.2
 Flask-MySQLdb==2.0.0
 Flask-WTF==1.2.1
@@ -33,6 +33,6 @@ six==1.16.0
 statsmodels==0.14.0
 tenacity==8.2.3
 tzdata==2023.3
-Werkzeug==3.0.0
+Werkzeug==2.3.0
 WTForms==3.1.0
 zipp==3.17.0
