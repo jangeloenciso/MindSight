@@ -89,13 +89,15 @@ def analytics():
         file = form.file.data
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-        data = process_data()
+        data_past = process_data_past()
+        data_new = process_data_new()
 
-        return render_template('analytics.html', fname=session['fname'], lname=session['lname'], form=form, data=data)
+        return render_template('analytics.html', fname=session['fname'], lname=session['lname'], form=form, data_past=data_past, data_new=data_new)
     
-    data = process_data("GPA", "Mental Health Score")
+    data_past = process_data_past("GPA", "Mental Health Score")
+    data_new = process_data_new("GPA", "Mental Health Score")
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data=data)
+    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data_past=data_past, data_new=data_new)
 
 @app.route('/students')
 @login_required
@@ -139,8 +141,13 @@ def settings():
 
 # API endpoints
 
-@app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
-def get_data(first_metric, second_metric):
-    data = process_data(first_metric, second_metric)
-    return jsonify(data)
+@app.route('/get_data_past/<first_metric>/<second_metric>', methods=['GET'])
+def get_data_past(first_metric, second_metric):
+    past_data = process_data_past(first_metric, second_metric)
+    return jsonify(past_data)
+
+@app.route('/get_data_new/<first_metric>/<second_metric>', methods=['GET'])
+def get_data_new(first_metric, second_metric):
+    new_data = process_data_new(first_metric, second_metric)
+    return jsonify(new_data)
 
