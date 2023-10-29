@@ -3,9 +3,6 @@ main {
     top: 50%;
     left: 53%;
     transform: translate(-50%, -50%);
-    padding: 0;
-    display: grid;
-    gap: 16px;
 }
 
 .canvas-content {
@@ -13,9 +10,4 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-#myChart1 {
-    width: 800px;
-    height: 500px;
 }

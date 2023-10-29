@@ -58,7 +58,6 @@ function generateBarGraph(data1, data2, selectedFirstMetric, selectedSecondMetri
             }]
         },
         options: {
-            responsive: true,
             plugins: {
                 legend: {
                     display: false
