@@ -124,6 +124,7 @@
 
 .sidebar a:hover {
     background-color: var(--bg-orange);
+    transition: var(--smooth-transition);
 }
 
 .admin-expand {
