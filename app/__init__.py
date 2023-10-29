@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import bcrypt
 from flask_migrate import Migrate
-from flask_bcrypt import Bcrypt
+
 
 app = Flask(__name__)
-app.config.from_object("config.Config")
-
-from app import routes
+app.config.from_object('config.Config')  # Load your app configuration
 
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-bcrypt = Bcrypt(app)
+migrate = Migrate(app, db)  # Initialize Flask-Migrate
+
+from app.models import User  # Import the User model after initializing db
