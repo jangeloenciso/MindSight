@@ -10,7 +10,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: Lexend;
+    font-family: Lexend-Regular;
 }
 
 body, html {
@@ -251,7 +251,6 @@ input:-webkit-autofill {
     border-radius: 10px;
     font-weight: 700;
     letter-spacing: 1px;
-    font-family: Lexend;
     color: #FEFEFE;
     border: none;
     cursor: pointer;
