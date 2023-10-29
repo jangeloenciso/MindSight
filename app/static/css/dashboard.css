@@ -109,3 +109,19 @@ p {
     padding: 0;
     margin: 0;
 }
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #dashboard-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#dashboard-container img, #dashboard-container span {
+    transform: translateX(-7px);
+}

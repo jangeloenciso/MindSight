@@ -11,3 +11,18 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+/* Sidebar active indicator */
+.sidebar-buttons #analytics-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#analytics-container img, #analytics-container span {
+    transform: translateX(-7px);
+}
