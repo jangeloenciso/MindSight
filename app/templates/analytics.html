@@ -8,8 +8,7 @@
 
 {% block content %}
 <div class="experience-container">
-  <h1>Experiences</h1>
-  <hr id="experience-hr">
+  <h1>Compare Trends</h1>
 </div>
 
 <div class="upload-form">
@@ -40,8 +39,11 @@
   <option value="Age">Age</option>
 
 </select>
-<canvas id="myChart" width="800" height="400"></canvas>
+
+<div class="canvas-content">
+    <canvas id="myChart1"></canvas>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-<script src="/static/javascript/analytics.js"> </script>
+<script src="../static/javascript/analytics.js"> </script>
 {% endblock %}
