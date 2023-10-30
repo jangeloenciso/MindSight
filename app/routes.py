@@ -17,7 +17,7 @@ from app.forms.login import LoginForm
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()  # Create an instance of the LoginForm
+    form = LoginForm()
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -72,12 +72,12 @@ def dashboard():
 @app.route('/developers')
 @login_required
 def developers():
-   return render_template('developers.html', fname = session['fname'], lname = session['lname'])
+   return render_template('developers.html')
 
 @app.route('/admin')
 @login_required
 def admin():
-   return render_template('admin.html', fname = session['fname'], lname = session['lname'])
+   return render_template('admin.html')
 
 @app.route('/analytics', methods=['GET', 'POST'])
 @login_required
@@ -97,12 +97,12 @@ def analytics():
     data_past = process_data_past("GPA", "Mental Health Score")
     data_new = process_data_new("GPA", "Mental Health Score")
 
-    return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data_past=data_past, data_new=data_new)
+    return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new)
 
 @app.route('/students')
 @login_required
 def students():
-   return render_template('students.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students.html')
 
 
 # Student components
@@ -110,34 +110,34 @@ def students():
 @app.route('/students/cas.html')
 @login_required
 def cas():
-   return render_template('students/cas.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students/cas.html')
 
 @app.route('/students/cbea.html')
 @login_required
 def cbea():
-   return render_template('students/cbea.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students/cbea.html')
 
 @app.route('/students/cea.html')
 @login_required
 def cea():
-   return render_template('students/cea.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students/cea.html')
 
 @app.route('/students/ced.html')
 @login_required
 def ced():
-   return render_template('students/ced.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students/ced.html')
 
 @app.route('/students/ihk.html')
 @login_required
 def ihk():
-   return render_template('students/ihk.html', fname = session['fname'], lname = session['lname'])
+   return render_template('students/ihk.html')
 
 
 
 @app.route('/settings')
 @login_required
 def settings():
-   return render_template('settings.html', fname = session['fname'], lname = session['lname'])
+   return render_template('settings.html')
 
 # API endpoints
 
