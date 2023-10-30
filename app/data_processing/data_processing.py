@@ -40,7 +40,9 @@ def process_data(first_metric, second_metric):
             'gender': personal_information.gender,
             'religion': personal_information.religion,
             'nationality': personal_information.nationality,
-            'student_idd': personal_information.student_id
+            'learning_styles': psychological_assessments.learning_styles,
+            'personality_test': psychological_assessments.personality_test,
+            'iq_test': psychological_assessments.iq_test
         })
 
     df = pd.DataFrame(data_list)
