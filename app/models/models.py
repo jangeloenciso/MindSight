@@ -57,6 +57,8 @@ class Course(db.Model):
 class StudentInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.String(20), unique=True, nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    first_name = db.Column(db.String(50), nullable=False)
     course = db.Column(db.String(100), nullable=False)
     year_level = db.Column(db.String(20))
     gpa = db.Column(db.Float)
