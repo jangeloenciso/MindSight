@@ -64,10 +64,10 @@ def logout():
 @login_required
 def dashboard():
 
-    data_college_sum = process_data_college_sum()
-    query_student_information()
+    # data_college_sum = process_data_college_sum()
+    # query_student_information()
 
-    return render_template('dashboard.html', data_college_sum=data_college_sum)
+    return render_template('dashboard.html')
 
 @app.route('/developers')
 @login_required

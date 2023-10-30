@@ -32,7 +32,6 @@ course_names = [
     "Bachelor of Science in Statistics (Boni Campus)",
     "Bachelor of Science in Biology (Boni Campus)",
     "Bachelor of Science in Astronomy",
-    "Institute of Human Kinetics",
     "Bachelor of Science in Physical Education (Boni Campus)"
 ]
 
