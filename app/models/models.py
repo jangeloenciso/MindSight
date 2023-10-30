@@ -106,6 +106,10 @@ class FamilyBackground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     father_age = db.Column(db.Integer)
     mother_age = db.Column(db.Integer)
+    father_last_name = db.Column(db.String(50))
+    mother_last_name = db.Column(db.String(50))
+    father_first_name = db.Column(db.String(50))
+    mother_first_name = db.Column(db.String(50))
     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
 
 class HealthInformation(db.Model):
