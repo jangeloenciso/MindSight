@@ -20,6 +20,8 @@ with app.app_context():
 
     fake = Faker()
 
+    
+
     def random_date(start_date, end_date):
         return start_date + timedelta(days=random.randint(0, (end_date - start_date).days))
     
@@ -31,9 +33,10 @@ with app.app_context():
         return student_id
 
     for _ in range(200):
+        family_name = fake.last_name()
         student = StudentInformation(
             student_id=generate_student_id(),
-            last_name = fake.last_name(),
+            last_name = family_name,
             first_name = fake.first_name(),
             course = fake.random_element(elements=course_names),
             year_level=str(random.randint(1, 4)),
@@ -55,10 +58,14 @@ with app.app_context():
             residence=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
             student=student
         )
-
+    
         family_background = FamilyBackground(
             father_age=random.randint(35, 60),
             mother_age=random.randint(35, 60),
+            father_first_name=fake.name(),
+            father_last_name=family_name,
+            mother_first_name=fake.name(),
+            mother_last_name=family_name,
             student=student
         )
 

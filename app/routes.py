@@ -85,7 +85,7 @@ def analytics():
 
     process_data("gpa", "age")
 
-    return render_template('analytics.html', data=data)
+    return render_template('analytics.html')
 
 @app.route('/students')
 @login_required
