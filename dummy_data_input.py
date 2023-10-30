@@ -35,3 +35,21 @@ course_names = [
     "Institute of Human Kinetics",
     "Bachelor of Science in Physical Education (Boni Campus)"
 ]
+
+religion_names = [
+    "Roman Catholicism",
+    "Islam",
+    "Philippine Independent Church (Aglipayan)",
+    "Iglesia ni Cristo",
+    "Seventh-day Adventist",
+    "Evangelical Christianity",
+    "Latter-day Saints (Mormonism)",
+    "Orthodox Christianity",
+    "Other Christian Denominations",
+    "Indigenous Beliefs and Animistic Religions",
+    "Buddhism",
+]
+
+strands = [
+    "STEM", "ABM", "HUMSS", "GAS", "Arts and Design", "TVL", "Sports"
+]

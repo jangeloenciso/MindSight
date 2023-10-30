@@ -5,7 +5,7 @@ from datetime import date, timedelta
 from faker import Faker
 from app import db, app
 from app.models import StudentInformation, PersonalInformation, FamilyBackground, HealthInformation, EducationalBackground, PsychologicalAssessments
-from dummy_data_input import course_names
+from dummy_data_input import course_names, religion_names, strands
 
 
 with app.app_context():
@@ -35,7 +35,7 @@ with app.app_context():
             student_id=generate_student_id(),
             course = fake.random_element(elements=course_names),
             year_level=str(random.randint(1, 4)),
-            gpa=random.uniform(1.0, 5.0)
+            gpa=round(random.uniform(1.0, 5.0), 2)
         )
 
         db.session.add(student)
@@ -44,7 +44,7 @@ with app.app_context():
             age=random.randint(18, 30),
             sex=fake.random_element(elements=("Male", "Female")),
             gender=fake.random_element(elements=("Male", "Female", "LGBTQ")),
-            religion=fake.random_element(elements=("Catholic", "Islam", "Buddhism", "Muslim")),
+            religion=fake.random_element(elements=religion_names),
             date_of_birth=random_date(date(1990, 1, 1), date(2005, 1, 1)),
             place_of_birth=fake.city(),
             nationality=fake.random_element(elements=("Filipino", "Non-Filipino")),
@@ -72,7 +72,7 @@ with app.app_context():
 
         edu_background = EducationalBackground(
             senior_high_school=fake.random_element(elements=("SHS A", "SHS B", "SHS C")),
-            shs_strand=fake.random_element(elements=("STEM", "ABM", "HUMSS", "GAS", "Arts and Design", "TVL", "Sports")),
+            shs_strand=fake.random_element(elements=(strands)),
             shs_graduation_year=random.randint(2018, 2023),
             junior_high_school=fake.random_element(elements=("JHS X", "JHS Y", "JHS Z")),
             jhs_graduation_year=random.randint(2018, 2022),
