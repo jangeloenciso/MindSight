@@ -8,38 +8,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function fetchAndGenerateChart() {
 
-    fetch(`/get_data_pie`)
+    fetch(`/get_data_college_sum`)
         .then(response => response.json())
         .then(data => {
             generateBarGraph(data);
-
         });
     
 }
 
-function generateBarGraph() {
+function generateBarGraph(data) {
     if (chart) {
         chart.destroy();
     }
 
-    var labels = data.map(item => item.label);
-    var values = data.map(item => item.values);
+    var labels = data.map(item => item.Colleges);
+    var values = data.map(item => item.Students);
 
     chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: '',
-                data: values1,
+                data: values,
                 backgroundColor: 'rgba(9, 83, 113, 1)' 
             }]
         },
         options: {
+            responsive: true,
             plugins: {
                 legend: {
                     display: false
-                },
+                }
             },
             scales: {
                 y: {

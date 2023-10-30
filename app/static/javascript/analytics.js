@@ -55,13 +55,14 @@ function generateBarGraph(data1, data2, selectedFirstMetric, selectedSecondMetri
                 label: 'Latest Data',
                 data: values2,
                 backgroundColor: 'rgba(160, 216, 224, 1)' 
-            }]
+            }],
         },
         options: {
+            responsive: true,
             plugins: {
                 legend: {
-                    display: false
-                },
+                    display: true
+                }
             },
             scales: {
                 y: {

@@ -10,6 +10,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1.5em;
+}
+
+#myChart1 {
+    width: 900px;
+    height: 600px;
 }
 
 /* Sidebar active indicator */

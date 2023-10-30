@@ -9,11 +9,11 @@ dummy_data_past = os.path.join(data_directory, 'dummy_data.csv')
 dummy_data_new= os.path.join(data_directory, 'new_data.csv')
 
 # Dashboard
-dummy_data_db= os.path.join(data_directory, 'college_count.csv')
+dummy_data_college_sum= os.path.join(data_directory, 'college_count.csv')
 
 data_past = pd.read_csv(dummy_data_past)
 data_new = pd.read_csv(dummy_data_new)
-data_db = pd.read_csv(dummy_data_db)
+data_college_sum = pd.read_csv(dummy_data_college_sum)
 
 def process_data_past(first_metric, second_metric):
     data = pd.read_csv(dummy_data_past)
@@ -35,10 +35,10 @@ def process_data_new(first, second):
 
     return data_average
 
-def process_data_pie():
-    data = pd.read_csv(dummy_data_db)
+def process_data_college_sum():
+    data = pd.read_csv(dummy_data_college_sum)
 
-    average_scores = data.groupby('Colleges')['Students'].mean.reset_index()
+    average_scores = data.groupby('Colleges')['Students'].mean().reset_index()
     data_average = average_scores.to_dict(orient='records')
 
     return data_average

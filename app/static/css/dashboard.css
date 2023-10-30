@@ -110,6 +110,17 @@ p {
     margin: 0;
 }
 
+.canvas-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#myChart1 {
+    width: 350px;
+    height: 250px;
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #dashboard-container::before {

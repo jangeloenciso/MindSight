@@ -67,7 +67,10 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+
+    data_college_sum = process_data_college_sum()
+
+    return render_template('dashboard.html', data_college_sum=data_college_sum)
 
 @app.route('/developers')
 @login_required
@@ -151,3 +154,7 @@ def get_data_new(first_metric, second_metric):
     new_data = process_data_new(first_metric, second_metric)
     return jsonify(new_data)
 
+@app.route('/get_data_college_sum', methods=['GET'])
+def get_data_college_sum():
+    college_data = process_data_college_sum()
+    return jsonify(college_data)
