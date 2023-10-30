@@ -39,54 +39,65 @@
     <!-- right -->
     <section class="right-main">
       <div class="rsub-container">
+        <!-- ... Previous HTML content ... -->
+
         <form action="{{ url_for('signup') }}" method="POST">
           {{ form.hidden_tag() }}
-      
+
           <p>Sign up</p>
-      
-          <!-- First Name -->
+
           <input type="text" placeholder="First Name" name="first_name" required>
-      
-          <!-- Last Name -->
+          {% for error in form.first_name.errors %}
+              <div class="error-message">{{ error }}</div>
+          {% endfor %}
+
           <input type="text" placeholder="Last Name" name="last_name" required>
-      
-          <!-- Username -->
+          {% for error in form.last_name.errors %}
+              <div class="error-message">{{ error }}</div>
+          {% endfor %}
+
           <input type="text" placeholder="Username" name="username" required>
-      
-          <!-- Email -->
+          {% for error in form.username.errors %}
+              <div class="error-message">{{ error }}</div>
+          {% endfor %}
+
           <div class="input-container">
-            <input type="text" class="styled-input" placeholder="Email" name="email" required>
+              <input type="text" class="styled-input" placeholder="Email" name="email" required>
+              {% for error in form.email.errors %}
+                  <div class="error-message">{{ error }}</div>
+              {% endfor %}
           </div>
 
-      
-          <!-- Password -->
           <div class="password-div">
               <div class="password-input-container">
                   <input type="password" placeholder="Password" name="password" required>
+                  {% for error in form.password.errors %}
+                      <div class="error-message">{{ error }}</div>
+                  {% endfor %}
                   <i class="togglepass" id="togglePassword">
                       <img id="eye-image" src="../static/SVG/eyehidden.svg" alt="show/hide" onclick="toggleImage()">
                   </i>
               </div>
           </div>
-      
-          <!-- Confirm Password -->
+
           <div class="password-div">
               <div class="password-input-container">
                   <input type="password" placeholder="Confirm Password" name="confirm" required>
+                  {% for error in form.confirm.errors %}
+                      <div class="error-message">{{ error }}</div>
+                  {% endfor %}
                   <i class="togglepass" id="togglePassword-confirm">
                       <img id="eye-image-confirm" src="../static/SVG/eyehidden.svg" alt="show/hide" onclick="toggleImageConfirm()">
                   </i>
               </div>
           </div>
-      
+
           <div class="login-btn-container">
-            <div class="prmpt">{{ prmpt }}</div>
-            <button type="submit" class="signup-button">SIGN UP</button>
-        </div>
-        
-      </form>
-      
-      </div>
+              <button type="submit" class="signup-button">SIGN UP</button>
+          </div>
+        </form>
+
+    </div>
     </section>
 
     <script src="../static/javascript/signup.js"></script>
