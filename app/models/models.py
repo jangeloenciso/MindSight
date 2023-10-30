@@ -69,13 +69,7 @@ class StudentInformation(db.Model):
         if not re.match(r'^20\d{2}-\d{6}$', value):
             raise ValueError("Student ID must be in the format 20xx-xxxxxx")
         return value
-    
-    def set_course_college(self):
-        course_to_college = courses.course_names
-        college_name = course_to_college.get(self.course)
 
-        if college_name:
-            self.college = College.query.filter_by(name=college_name).first()
 
     personal_information = db.relationship('PersonalInformation', backref='student', uselist=False)
 
