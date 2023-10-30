@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lexend"
+      type="text/css"
+      href="/static/fonts/custom-fonts.css"
     />
-    <link rel="stylesheet" href="../static/css/login.css" />
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
-    <title>Mindsight | Login</title>
+    <link rel="stylesheet" href="../static/css/login.css" />
+    <title>Mindsight - Login</title>
   </head>
   <body>
     <!-- left -->
@@ -26,7 +26,7 @@
         </div>
         <div>
           <div class="btn-header">
-            <span>New Here?</span>Have an account with us!
+            <span>New Here?</span> Have an account with us!
           </div>
           <a href="{{ url_for('signup') }}">
             <button class="btn-signup">SIGN UP</button>
@@ -39,26 +39,15 @@
     <!-- right -->
     <section class="right-main">
       <div class="rsub-container">
-        <form action="login-form" method="POST">
+        <form action="{{ url_for('login') }}" method="POST">
+          {{ form.hidden_tag() }}
           <div>
             <p>Log in</p>
-            <input
-              type="text"
-              placeholder="username"
-              name="username"
-              id="username"
-              required
-            />
+            {{ form.username(placeholder="username", id="username", required=true) }}
           </div>
           <div class="password-div">
             <div class="password-input-container">
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                id="password"
-                required
-              />
+              {{ form.password(placeholder="password", id="password", required=true) }}
               <i class="togglepass" id="togglePassword"
                 ><img
                   id="eye-image"
@@ -73,10 +62,10 @@
           </div>
 
           <div class="login-btn-container">
-            <div class="prmpt">{{ prmpt }}</div>
             <button type="submit" class="login-button">LOG IN</button>
           </div>
         </form>
+        <div class="prmpt">{{ prmpt }}</div>
       </div>
     </section>
 

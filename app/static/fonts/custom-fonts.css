@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'Lexend-Black';
+    src: url('Lexend-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Bold';
+    src: url('Lexend-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-ExtraBold';
+    src: url('Lexend-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-ExtraLight';
+    src: url('Lexend-ExtraLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Light';
+    src: url('Lexend-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Medium';
+    src: url('Lexend-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Regular';
+    src: url('Lexend-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-SemiBold';
+    src: url('Lexend-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Thin';
+    src: url('Lexend-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

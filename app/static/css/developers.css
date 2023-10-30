@@ -1,83 +1,3 @@
-:root {
-    --primary-color: #095371;
-    --text-white: #fff;
-    --text-white-dim: #d9d9d9;
-    --main-db-bg-color: #EAE7D6;
-    --bg-orange: #DB9354;
-    --border: #b1b1b1;
-    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
-}
-
-
-* {
-    box-sizing: border-box;
-    font-family: Lexend;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    
-    /* overflow: hidden; */
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--main-db-bg-color);
-}
-
-
-
-
-/* Sidebar */
-
-
-
-/* section margins */
-.overview {
-    margin-top: 24px;
-}
-
-.account {
-    margin-top: 24px;
-}
-
-
-
-/* font sizes */
-.overview span, .account span {
-    font-size: 20px;
-}
-
-.overview p, .account p {
-    margin: 0 0 5px;
-    font-size: 16px;
-    padding-left: 24px;
-    color: var(--text-white-dim);
-
-}
-
-
-/* user profile */
-.profile {
-    border-top: 1px solid #b1b1b1;
-    display: flex;
-    width: 100%;
-    height: 65px;
-    padding: 20px 24px;
-}
-
-.profile img {
-    width: 25px;
-    aspect-ratio: 1 / 1;
-}
-
-.profile span {
-    color: var(--text-white);
-    font-weight: bold;
-}
-
 main {
     position: absolute;
     top: 50%;
@@ -103,7 +23,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px 0 5px 0;
+    padding: 5px 0;
 }
 
 .main-header span {
@@ -182,7 +102,7 @@ main {
 .socmed img {
     width: 25px;
     aspect-ratio: 1 / 1;
-    margin: 0 10px 0 10px;
+    margin: 0 10px;
 }
 
 /* #fb-hover {
@@ -209,4 +129,20 @@ main {
 
 .box:hover .pic {
     filter: grayscale(0);
+}
+
+
+/* Sidebar active indicator */
+.sidebar-buttons .admin-indicator::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+.admin-indicator img, .admin-indicator span {
+    transform: translateX(-7px);
 }

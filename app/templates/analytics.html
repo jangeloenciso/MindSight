@@ -1,5 +1,6 @@
 {% extends "components/base.html" %}
-{% block title %} MindSight: Analytics{% endblock %}
+{% block title %} Mindsight - Analytics{% endblock %}
+
 
 {% block styles %}     
 <link rel="stylesheet" href="/static/css/analytics.css"/> 
@@ -7,14 +8,7 @@
 
 {% block content %}
 <div class="experience-container">
-  <h1>Experiences</h1>
-  <hr id="experience-hr">
-</div>
-<div class="college-summary">
-  {{ result_college_summary | safe }}
-</div>
-<div class="identity">
-  {{ pie_graph | safe }}
+  <h1>Compare Trends</h1>
 </div>
 
 <div class="upload-form">
@@ -25,9 +19,31 @@
   </form>
 </div>
 
-<script>
-  if ( window.history.replaceState ) {
-      window.history.replaceState( null, null, window.location.href );
-  }
-</script>
+<select id="firstMetricDropdown">
+  <option value="Mental Health Score">Mental Health Score</option>
+  <option value="GPA">GPA</option>
+  <option value="Religion">Religion</option>
+  <option value="Ethnicity">Ethnicity</option>
+  <option value="Socioeconomic Status">Socioeconomic Status</option>
+  <option value="College">College</option>
+  <option value="Course">Course</option>
+  <option value="History of Past Mental Health Cases">History of Past Mental Health Cases</option>
+  <option value="Type of Past Interventions">Type of Past Interventions</option>
+  <option value="Outcome of Past">Outcome of Past</option>
+</select>
+<select id="secondMetricDropdown">
+  <option value="GPA">GPA</option>
+  <option value="Mental Health Score">Mental Health Score</option>
+  <option value="Course Failure Rate">Course Failure Rate</option>
+  <option value="Attendance Rate">Attendance Rate</option>
+  <option value="Age">Age</option>
+
+</select>
+
+<div class="canvas-content">
+    <canvas id="myChart1" width="800" height="500"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="../static/javascript/analytics.js"> </script>
 {% endblock %}

@@ -1,78 +1,74 @@
 <nav class="sidebar">
-    <div class="logo">
-      <img
-        id="logo"
-        src="/static/MINDSIGHT LOGO (WHITE).png"
-        alt="MindSight logo"
-      />&nbsp;<img
-        id="logo-initial"
-        src="/static/SVG/EYE LOGO.svg"
-        alt="MindSight logo-eye"
-      />
+  <div class="logo">
+    <img
+      id="logo"
+      src="/static/MINDSIGHT LOGO (WHITE).png"
+      alt="MindSight logo"
+    />&nbsp;<img
+      id="logo-initial"
+      src="/static/SVG/EYE LOGO.svg"
+      alt="MindSight logo-eye"
+    />
+  </div>
+  <div class="sidebar-buttons">
+    <div class="overview">
+      <p>Overview</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('dashboard') }}" id="dashboard-container"
+            ><img src="/static/SVG/dashboard.svg" /><span>Dashboard</span></a
+          >
+        </li>
+        <li class="admin-container">
+          <div id="admin-main-menu" class="admin-indicator">
+            <img src="/static/SVG/admin.svg" /><span class="admin-expand"
+              ><span>Admin</span>
+              <img
+                id="expand-img"
+                src="../static/SVG/expand arrow.svg"
+                alt="expand"
+            /></span>
+          </div>
+          <ul class="sub-menu" id="admin-submenu">
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            <li><a href="{{ url_for('developers') }}">Developers</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{{ url_for('analytics') }}" id="analytics-container"
+            ><img src="/static/SVG/analytics.svg" /><span>Analytics</span></a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('students') }}" id="students-container"
+            ><img src="/static/SVG/students.svg" /><span>Students</span></a
+          >
+        </li>
+      </ul>
     </div>
-    <div class="sidebar-buttons">
-      <div class="overview">
-        <p>Overview</p>
-        <ul>
-          <li>
-            <a href="{{ url_for('dashboard') }}"
-              ><img src="/static/SVG/dashboard.svg" /><span
-                >Dashboard</span
-              ></a
-            >
-          </li>
-          <li class="admin-container">
-            <div id="admin-main-menu">
-              <img src="/static/SVG/admin.svg" /><span class="admin-expand"
-                ><span>Admin</span>
-                <img
-                  id="expand-img"
-                  src="../static/SVG/expand arrow.svg"
-                  alt="expand"
-              /></span>
-            </div>
-            <ul class="sub-menu" id="admin-submenu">
-              <li><a href="{{ url_for('admin') }}">Admin</a></li>
-              <li><a href="{{ url_for('developers') }}">Developers</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="{{ url_for('analytics') }}"
-              ><img src="/static/SVG/analytics.svg" /><span
-                >Analytics</span
-              ></a
-            >
-          </li>
-          <li>
-            <a href="{{ url_for('students') }}"
-              ><img src="/static/SVG/students.svg" /><span>Students</span></a
-            >
-          </li>
-        </ul>
-      </div>
-  
-      <div class="account">
-        <p>Account</p>
-        <ul>
-          <li>
-            <a href="{{ url_for('settings') }}"
-              ><img src="/static/SVG/settings.svg" /><span>Settings</span></a
-            >
-          </li>
-  
-          <li>
-            <a href="{{ url_for('logout') }}"
-              ><img src="/static/SVG/log-out.svg" /><span
-                >Log&nbsp;out</span
-              ></a
-            >
-          </li>
-        </ul>
-      </div>
+
+    <div class="account">
+      <p>Account</p>
+      <ul>
+        <li>
+          <a href="{{ url_for('settings') }}" id="settings-container"
+            ><img src="/static/SVG/settings.svg" /><span>Settings</span></a
+          >
+        </li>
+
+        <li>
+          <a href="{{ url_for('logout') }}"
+            ><img src="/static/SVG/log-out.svg" /><span>Log&nbsp;out</span></a
+          >
+        </li>
+      </ul>
     </div>
-    <div class="profile">
-      <img class="profile-image" src="/static/profile.png" /><span
-        >{{ fname }} {{ "" }} {{ lname }}</span
-      >
-    </div>
-  </nav>
+  </div>
+  <div class="profile">
+    <img class="profile-image" src="/static/profile.png" /><span
+      >{{ fname }} {{ "" }} {{ lname }}</span
+    >
+  </div>
+</nav>
+
+<div class="dim"></div>
