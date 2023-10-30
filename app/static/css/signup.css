@@ -139,14 +139,15 @@ body {
     color: var(--primary-color);
     font-size: 1.4em;
     font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* sets the gap between the input boxes */
-.rsub-container input:not(#password-confirm) {
     margin-bottom: 10px;
 }
 
+/* sets the gap between the input boxes */
+.rsub-container form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
 
 /* forgot password styles */
 .forgot-pw-container {
