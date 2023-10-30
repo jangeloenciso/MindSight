@@ -33,6 +33,8 @@ with app.app_context():
     for _ in range(200):
         student = StudentInformation(
             student_id=generate_student_id(),
+            last_name = fake.last_name(),
+            first_name = fake.first_name(),
             course = fake.random_element(elements=course_names),
             year_level=str(random.randint(1, 4)),
             gpa=round(random.uniform(1.0, 5.0), 2),
@@ -41,7 +43,7 @@ with app.app_context():
 
         db.session.add(student)
 
-        personal_info = PersonalInformation(
+        personal_information = PersonalInformation(
             age=random.randint(18, 30),
             sex=fake.random_element(elements=("Male", "Female")),
             gender=fake.random_element(elements=("Male", "Female", "LGBTQ")),
@@ -60,7 +62,7 @@ with app.app_context():
             student=student
         )
 
-        health_info = HealthInformation(
+        health_information = HealthInformation(
             height=random.uniform(150, 190),
             weight=random.uniform(45, 120),
             sight=fake.random_element(elements=("With Glasses", "Without Glasses")),
@@ -71,7 +73,7 @@ with app.app_context():
             student=student
         )
 
-        edu_background = EducationalBackground(
+        educational_background = EducationalBackground(
             senior_high_school=fake.random_element(elements=("SHS A", "SHS B", "SHS C")),
             shs_strand=fake.random_element(elements=(strands)),
             shs_graduation_year=random.randint(2018, 2023),
@@ -89,10 +91,10 @@ with app.app_context():
             student=student
         )
 
-        db.session.add(personal_info)
+        db.session.add(personal_information)
         db.session.add(family_background)
-        db.session.add(health_info)
-        db.session.add(edu_background)
+        db.session.add(health_information)
+        db.session.add(educational_background)
         db.session.add(psychological_assessments)
 
         db.session.commit()

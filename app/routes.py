@@ -65,6 +65,7 @@ def logout():
 def dashboard():
 
     data_college_sum = process_data_college_sum()
+    query_student_information()
 
     return render_template('dashboard.html', data_college_sum=data_college_sum)
 
@@ -82,21 +83,9 @@ def admin():
 @login_required
 def analytics():
 
-    form = UploadFileForm()
+    process_data("gpa", "age")
 
-    if form.validate_on_submit():
-        file = form.file.data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
-
-        data_past = process_data_past()
-        data_new = process_data_new()
-
-        return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new)
-    
-    data_past = process_data_past("GPA", "Mental Health Score")
-    data_new = process_data_new("GPA", "Mental Health Score")
-
-    return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new)
+    return render_template('analytics.html', data=data)
 
 @app.route('/students')
 @login_required
@@ -140,17 +129,7 @@ def settings():
 
 # API endpoints
 
-@app.route('/get_data_past/<first_metric>/<second_metric>', methods=['GET'])
-def get_data_past(first_metric, second_metric):
-    past_data = process_data_past(first_metric, second_metric)
-    return jsonify(past_data)
-
-@app.route('/get_data_new/<first_metric>/<second_metric>', methods=['GET'])
-def get_data_new(first_metric, second_metric):
-    new_data = process_data_new(first_metric, second_metric)
+@app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
+def get_data(first_metric, second_metric):
+    new_data = process_data(first_metric, second_metric)
     return jsonify(new_data)
-
-@app.route('/get_data_college_sum', methods=['GET'])
-def get_data_college_sum():
-    college_data = process_data_college_sum()
-    return jsonify(college_data)

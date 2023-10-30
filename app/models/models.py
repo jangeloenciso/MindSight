@@ -77,14 +77,13 @@ class StudentInformation(db.Model):
         if college_name:
             self.college = College.query.filter_by(name=college_name).first()
 
-
-    personal_info = db.relationship('PersonalInformation', backref='student', uselist=False)
+    personal_information = db.relationship('PersonalInformation', backref='student', uselist=False)
 
     family_background = db.relationship('FamilyBackground', backref='student', uselist=False)
 
-    health_info = db.relationship('HealthInformation', backref='student', uselist=False)
+    health_information = db.relationship('HealthInformation', backref='student', uselist=False)
 
-    edu_background = db.relationship('EducationalBackground', backref='student', uselist=False)
+    educational_background = db.relationship('EducationalBackground', backref='student', uselist=False)
 
     psychological_assessments = db.relationship('PsychologicalAssessments', backref='student', uselist=False)
 

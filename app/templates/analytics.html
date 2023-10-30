@@ -11,32 +11,19 @@
   <h1>Compare Trends</h1>
 </div>
 
-<div class="upload-form">
-  <form method = "POST" enctype="multipart/form-data">
-    {{ form.hidden_tag() }}
-    {{ form.file() }}
-    {{ form.submit() }}
-  </form>
-</div>
 
 <select id="firstMetricDropdown">
-  <option value="Mental Health Score">Mental Health Score</option>
-  <option value="GPA">GPA</option>
-  <option value="Religion">Religion</option>
-  <option value="Ethnicity">Ethnicity</option>
-  <option value="Socioeconomic Status">Socioeconomic Status</option>
-  <option value="College">College</option>
-  <option value="Course">Course</option>
-  <option value="History of Past Mental Health Cases">History of Past Mental Health Cases</option>
-  <option value="Type of Past Interventions">Type of Past Interventions</option>
-  <option value="Outcome of Past">Outcome of Past</option>
+  <option value="religion">Religion</option>
+  <option value="gpa">GPA</option>
+  <option value="college">College</option>
+  <option value="course">Course</option>
 </select>
 <select id="secondMetricDropdown">
-  <option value="GPA">GPA</option>
-  <option value="Mental Health Score">Mental Health Score</option>
-  <option value="Course Failure Rate">Course Failure Rate</option>
-  <option value="Attendance Rate">Attendance Rate</option>
-  <option value="Age">Age</option>
+  <option value="gpa">GPA</option>
+  <option value="religion">Religion</option>
+  <option value="age">Age</option>
+  <option value="college">College</option>
+  <option value="course">Course</option>
 
 </select>
 

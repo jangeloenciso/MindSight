@@ -21,40 +21,29 @@ function fetchAndGenerateChart() {
     const selectedFirstMetric = document.getElementById('firstMetricDropdown').value;
     const selectedSecondMetric = document.getElementById('secondMetricDropdown').value;
 
-    fetch(`/get_data_past/${selectedFirstMetric}/${selectedSecondMetric}`)
+    fetch(`/get_data/${selectedFirstMetric}/${selectedSecondMetric}`)
         .then(response => response.json())
-        .then(data1 => {
-            // Fetch data for the second dataset
-            fetch(`/get_data_new/${selectedFirstMetric}/${selectedSecondMetric}`)
-                .then(response => response.json())
-                .then(data2 => {
-                    generateBarGraph(data1, data2, selectedFirstMetric, selectedSecondMetric);
-                });
+        .then(data => {
+            generateBarGraph(data, selectedFirstMetric, selectedSecondMetric);
         });
-    
 }
 
-function generateBarGraph(data1, data2, selectedFirstMetric, selectedSecondMetric) {
+function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
     if (chart) {
         chart.destroy();
     }
 
-    var labels = data1.map(item => item[selectedFirstMetric]);
-    var values1 = data1.map(item => item[selectedSecondMetric]);
-    var values2 = data2.map(item => item[selectedSecondMetric]);
+    var labels = data.map(item => item[selectedFirstMetric]);
+    var values = data.map(item => item[selectedSecondMetric]);
 
     chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: 'Past Data',
-                data: values1,
-                backgroundColor: 'rgba(9, 83, 113, 1)' 
-            }, {
-                label: 'Latest Data',
-                data: values2,
-                backgroundColor: 'rgba(160, 216, 224, 1)' 
+                label: 'Data',
+                data: values,
+                backgroundColor: 'rgba(9, 83, 113, 1)'
             }],
         },
         options: {
@@ -70,7 +59,7 @@ function generateBarGraph(data1, data2, selectedFirstMetric, selectedSecondMetri
                 }
             }
         }
-    })
+    });
 }
 
 if (window.history.replaceState) {
