@@ -4,7 +4,7 @@ import random
 from datetime import date, timedelta
 from faker import Faker
 from app import db, app
-from app.models import StudentInformation, PersonalInformation, FamilyBackground, HealthInformation, EducationalBackground, PsychologicalAssessments
+from app.models.models import StudentInformation, PersonalInformation, FamilyBackground, HealthInformation, EducationalBackground, PsychologicalAssessments
 from dummy_data_input import course_names, religion_names, strands
 
 
@@ -35,7 +35,8 @@ with app.app_context():
             student_id=generate_student_id(),
             course = fake.random_element(elements=course_names),
             year_level=str(random.randint(1, 4)),
-            gpa=round(random.uniform(1.0, 5.0), 2)
+            gpa=round(random.uniform(1.0, 5.0), 2),
+            campus=fake.random_element(elements=["Boni", "Pasig"])
         )
 
         db.session.add(student)

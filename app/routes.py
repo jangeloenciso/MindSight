@@ -1,16 +1,12 @@
 import os
-from app import app, db
-from app.models import User
-from flask import render_template, url_for, session, redirect, request, jsonify, flash
+from app import app, db, bcrypt
+from app.models.models import User
+from flask import render_template, url_for, redirect, jsonify, flash
 from flask_login import login_user, logout_user, login_required
 from werkzeug.utils import secure_filename
-from flask_mysqldb import MySQL
 from .data_processing import *
 from .forms import *
 from flask_login import login_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from app import db, bcrypt
-from app.models import User
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 

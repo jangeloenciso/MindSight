@@ -19,7 +19,6 @@ def process_data_past(first_metric, second_metric):
     data = pd.read_csv(dummy_data_past)
 
     # calculates the mean
-    # TODO: nag eerror sa mga percentage and non-numerical value
     average_scores = data.groupby(first_metric)[second_metric].mean().reset_index()
     data_average = average_scores.to_dict(orient='records')
 

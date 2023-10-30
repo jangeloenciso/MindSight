@@ -3,6 +3,7 @@ from app import db
 import re
 from sqlalchemy import event
 from sqlalchemy.orm import validates
+from . import courses
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -35,19 +36,45 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+    
+
+
+class College(db.Model):
+    __tablename__ = 'colleges'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    courses = db.relationship('Course', backref='college', lazy=True)
+
+class Course(db.Model):
+    __tablename__ = 'courses'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    college_id = db.Column(db.Integer, db.ForeignKey('colleges.id'))
+
 
 class StudentInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.String(20), unique=True, nullable=False)
-    course = db.Column(db.String(100))
+    course = db.Column(db.String(100), nullable=False)
     year_level = db.Column(db.String(20))
     gpa = db.Column(db.Float)
+    campus = db.Column(db.String(20), nullable=False)
 
     @validates('student_id')
     def validate_student_id(self, key, value):
         if not re.match(r'^20\d{2}-\d{6}$', value):
             raise ValueError("Student ID must be in the format 20xx-xxxxxx")
         return value
+    
+    def set_course_college(self):
+        course_to_college = courses.course_names
+        college_name = course_to_college.get(self.course)
+
+        if college_name:
+            self.college = College.query.filter_by(name=college_name).first()
+
 
     personal_info = db.relationship('PersonalInformation', backref='student', uselist=False)
 
@@ -78,7 +105,6 @@ class FamilyBackground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     father_age = db.Column(db.Integer)
     mother_age = db.Column(db.Integer)
-    # Add other fields for father, mother, and siblings
     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
 
 class HealthInformation(db.Model):
@@ -89,7 +115,7 @@ class HealthInformation(db.Model):
     hearing = db.Column(db.String(20))
     speech = db.Column(db.String(20))
     general_health = db.Column(db.String(100))
-    experienced_sickness = db.Column(db.String(3))  # Yes or No
+    experienced_sickness = db.Column(db.String(3))
     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
 
 class EducationalBackground(db.Model):
