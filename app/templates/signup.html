@@ -70,7 +70,7 @@
 
           <div class="password-div">
               <div class="password-input-container">
-                  <input type="password" placeholder="Password" name="password" required>
+                  <input type="password" placeholder="Password" name="password" id="password" required>
                   {% for error in form.password.errors %}
                       <div class="error-message">{{ error }}</div>
                   {% endfor %}
@@ -82,7 +82,7 @@
 
           <div class="password-div">
               <div class="password-input-container">
-                  <input type="password" placeholder="Confirm Password" name="confirm" required>
+                  <input type="password" placeholder="Confirm Password" name="confirm" id="password-confirm" required>
                   {% for error in form.confirm.errors %}
                       <div class="error-message">{{ error }}</div>
                   {% endfor %}
