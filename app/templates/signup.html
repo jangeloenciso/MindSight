@@ -39,88 +39,53 @@
     <!-- right -->
     <section class="right-main">
       <div class="rsub-container">
-        <form action="signup-form" method="POST">
+        <form action="{{ url_for('signup') }}" method="POST">
+          {{ form.hidden_tag() }}
+      
           <p>Sign up</p>
-          <!-- firstname -->
-          <input
-            type="text"
-            placeholder="firstname"
-            name="fname"
-            id="input"
-            required
-          />
-
-          <!-- lastname -->
-          <input
-            type="text"
-            placeholder="lastname"
-            name="lname"
-            id="input"
-            required
-          />
-
-          <!-- username -->
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            id="input"
-            required
-          />
-
-          <!-- email -->
-          <input
-            type="text"
-            placeholder="email"
-            name="email"
-            id="input"
-            required
-          />
-
-          <!-- password -->
-          <div class="password-div">
-            <div class="password-input-container">
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                id="password"
-                required
-              />
-              <i class="togglepass" id="togglePassword"
-                ><img
-                  id="eye-image"
-                  src="../static/SVG/eyehidden.svg"
-                  alt="show/hide"
-                  onclick="toggleImage()"
-              /></i>
-            </div>
-          </div>
-          <!-- confirm -->
-          <div class="password-div">
-            <div class="password-input-container">
-              <input
-                type="password"
-                placeholder="confirm password"
-                name="confirm"
-                id="password-confirm"
-                required
-              />
-              <i class="togglepass" id="togglePassword-confirm"
-                ><img
-                  id="eye-image-confirm"
-                  src="../static/SVG/eyehidden.svg"
-                  alt="show/hide"
-                  onclick="toggleImageConfirm()"
-              /></i>
-            </div>
+      
+          <!-- First Name -->
+          <input type="text" placeholder="First Name" name="first_name" required>
+      
+          <!-- Last Name -->
+          <input type="text" placeholder="Last Name" name="last_name" required>
+      
+          <!-- Username -->
+          <input type="text" placeholder="Username" name="username" required>
+      
+          <!-- Email -->
+          <div class="input-container">
+            <input type="text" class="styled-input" placeholder="Email" name="email" required>
           </div>
 
+      
+          <!-- Password -->
+          <div class="password-div">
+              <div class="password-input-container">
+                  <input type="password" placeholder="Password" name="password" required>
+                  <i class="togglepass" id="togglePassword">
+                      <img id="eye-image" src="../static/SVG/eyehidden.svg" alt="show/hide" onclick="toggleImage()">
+                  </i>
+              </div>
+          </div>
+      
+          <!-- Confirm Password -->
+          <div class="password-div">
+              <div class="password-input-container">
+                  <input type="password" placeholder="Confirm Password" name="confirm" required>
+                  <i class="togglepass" id="togglePassword-confirm">
+                      <img id="eye-image-confirm" src="../static/SVG/eyehidden.svg" alt="show/hide" onclick="toggleImageConfirm()">
+                  </i>
+              </div>
+          </div>
+      
           <div class="login-btn-container">
             <div class="prmpt">{{ prmpt }}</div>
             <button type="submit" class="signup-button">SIGN UP</button>
-          </div>
-        </form>
+        </div>
+        
+      </form>
+      
       </div>
     </section>
 

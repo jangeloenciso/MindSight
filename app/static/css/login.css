@@ -143,10 +143,9 @@ body {
 }
 
 /* sets the gap between the input boxes */
-.rsub-container div:first-child {
-    margin-bottom: 10px;
+.rsub-container .password-input-container{
+    margin-top: 10px;
 }
-
 
 /* forgot password styles */
 .forgot-pw-container {

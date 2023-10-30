@@ -1,127 +1,86 @@
 import os
-from app import app
-from flask import render_template, url_for, session, redirect, request, jsonify
+from app import app, db
+from app.models import User
+from flask import render_template, url_for, session, redirect, request, jsonify, flash
+from flask_login import login_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 from flask_mysqldb import MySQL
-import re, hashlib
-import pandas as pd
-import plotly.offline as plt
-import plotly.express as px
 from .data_processing import *
 from .forms import *
-
-
-mysql = MySQL(app)
+from flask_login import login_user
+from werkzeug.security import generate_password_hash, check_password_hash
+from app import db, bcrypt
+from app.models import User
+from app.forms.signup import SignupForm
+from app.forms.login import LoginForm
 
 @app.route('/')
-@app.route('/login-form', methods=['POST', 'GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    prmpt = ''
+    form = LoginForm()  # Create an instance of the LoginForm
 
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        _username = request.form['username']
-        _password = request.form['password']
-
-        encrypt = _password + app.secret_key
-        encrypt = hashlib.sha1(encrypt.encode())
-        _password = encrypt.hexdigest()
-
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM developers WHERE username = %s AND password = %s', [_username, _password])
-
-        acc = cur.fetchone()
-
-        if acc:
-            session['loggedin'] = True
-            session['id'] = acc[0]
-            session['username'] = acc[3]
-            session['fname'] = acc[1]
-            session['lname'] = acc[2]
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
+            flash('Login successful!', 'success')
             return redirect(url_for('dashboard'))
-        
         else:
-            prmpt = 'Your username/password is incorrect'
-       
-    return render_template('login.html', prmpt = prmpt)
+            flash('Login failed. Please check your username and password.', 'danger')
 
-@app.route('/signup-form', methods = ['POST', 'GET'])
+    return render_template('login.html', form=form)
+
+
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
-    prmpt = ''
+    form = SignupForm()
 
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+    if form.validate_on_submit(): 
 
-        _fname = request.form['fname']
-        _lname = request.form['lname']
-        _username = request.form['username']
-        _email = request.form['email']
-        _password = request.form['password']
-        _confirm = request.form['confirm']
+        _username = form.username.data
+        _password = form.password.data
 
-        if _confirm == _password:
-
-            cur = mysql.connection.cursor()
-            cur.execute('''SELECT * FROM developers WHERE username = %s''', [_username])
-            
-            acc = cur.fetchone()
-
-            if acc:
-                msg1 = 'Sorry, but the username "'
-                msg2 = (_username)
-                msg3 = '" is already taken'
-                prmpt = (msg1 + msg2 + msg3)
-            
-            elif not re.match(r'[A-Za-z0-9]+', _username):
-                prmpt = "Sorry, but username must contain only characters and numbers"
-            
-            elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
-                prmpt = 'Sorry, Invalid email address'
-            
-            elif len(_password) < 8:
-                prmpt = "Make sure your password is at lest 8 letters"
-
-            elif not _username or not _password or not _email:
-                prmpt = 'Please fill out the form.'
-
-            else:
-                encrypt = _password + app.secret_key
-                encrypt = hashlib.sha1(encrypt.encode())
-                _password = encrypt.hexdigest()
-
-                cur.execute('''INSERT INTO developers (fname, lname, username, email, password) VALUES (%s, %s, %s, %s, %s)''', [_fname, _lname, _username, _email, _password])
-                mysql.connection.commit()
-                prmpt = "You have successfully signed up!"
-                
+        user = User.query.filter_by(username=_username).first()
+        if user:
+            prmpt = f'Sorry, but the username "{_username}" is already taken'
         else:
-            prmpt = "Passwords are not the same"
-        
-    return render_template('signup.html', prmpt=prmpt)
+            hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
+            new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            return redirect(url_for('dashboard'))
+    else:
+        prmpt = 'Please correct the form errors.'
+
+    return render_template('signup.html', form=form, prmpt=prmpt)
 
 @app.route('/logout')
+@login_required
 def logout():
-   session.pop('loggedin', None)
-   session.pop('id', None)
-   session.pop('username', None)
-   return redirect(url_for('login'))
-
-@app.route('/dashboard')
-def dashboard():
-
-    if 'loggedin' in session:
-    
-
-        return render_template('dashboard.html', fname = session['fname'], lname = session['lname'])
-
+    logout_user()
+    flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
+# Pages
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route('/developers')
+@login_required
 def developers():
    return render_template('developers.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/admin')
+@login_required
 def admin():
    return render_template('admin.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/analytics', methods=['GET', 'POST'])
+@login_required
 def analytics():
 
     form = UploadFileForm()
@@ -141,6 +100,7 @@ def analytics():
     return render_template('analytics.html', fname = session['fname'], lname = session['lname'], form=form, data_past=data_past, data_new=data_new)
 
 @app.route('/students')
+@login_required
 def students():
    return render_template('students.html', fname = session['fname'], lname = session['lname'])
 
@@ -148,28 +108,34 @@ def students():
 # Student components
 
 @app.route('/students/cas.html')
+@login_required
 def cas():
    return render_template('students/cas.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/students/cbea.html')
+@login_required
 def cbea():
    return render_template('students/cbea.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/students/cea.html')
+@login_required
 def cea():
    return render_template('students/cea.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/students/ced.html')
+@login_required
 def ced():
    return render_template('students/ced.html', fname = session['fname'], lname = session['lname'])
 
 @app.route('/students/ihk.html')
+@login_required
 def ihk():
    return render_template('students/ihk.html', fname = session['fname'], lname = session['lname'])
 
 
 
 @app.route('/settings')
+@login_required
 def settings():
    return render_template('settings.html', fname = session['fname'], lname = session['lname'])
 
