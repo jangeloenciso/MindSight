@@ -7,7 +7,7 @@
     transition: var(--smooth-transition);
     overflow: hidden;
     z-index: 5;
-    position: absolute;
+    position: fixed;
     left: 0;
 }
 
