@@ -9,21 +9,16 @@ main {
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 0;
     margin: 0;
 }
 
-.title h1 {
-    color: var(--primary-color);
+.title {
     font-size: 25px;
+    color: var(--primary-color);
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     line-height: normal;
-    text-align: left;
-    margin-bottom: 11px;
-    padding: 0;
 }
 
 .nature-college-container {
@@ -35,11 +30,7 @@ main {
     align-items: center;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-bottom: 40px;
-}
-
-.nature-concern span {
-    border-bottom: 2px solid var(--bg-orange);
+    margin: 15px 0 40px 0;
 }
 
 .campus-counselor {
@@ -51,7 +42,7 @@ main {
     align-items: center;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-right: 20px;
+    margin: 15px 20px 0 0;
 }
 
 .campus-clinic-container {
@@ -75,16 +66,20 @@ main {
     padding: 5px 0 5px 15px;
 }
 
+.clinic-title {
+    margin-left: 20px;
+}
+
 .clinic-container {
     width: 670px;
     height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-left: 20px;
-    padding: 15px;
+    margin-top: 15px;
 }
 
 h1 {
@@ -110,16 +105,22 @@ p {
     margin: 0;
 }
 
-.canvas-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#myChart1, #myChart2 {
+    width: 400px;
+    height: 400px;
 }
 
-#myChart1 {
+#myChart3 {
     width: 350px;
-    height: 250px;
+    height: 300px;
+}
+
+.campus {
+    margin-right: 5.5em;
+}
+
+.nature-concern {
+    margin-right: 5.5em;
 }
 
 /* Sidebar active indicator */

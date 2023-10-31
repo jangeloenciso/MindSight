@@ -6,54 +6,62 @@
 {% endblock %}
 
 {% block content %}
-<div class="title">
-  <h1>Case Overview</h1>
-</div>
 <div class="content">
-  <div class="nature-college-container">
-    <div class="nature-concern">
-      <span>Nature of Concerns</span>
-    </div>
-    <div class="canvas-content">
-      <canvas id="myChart1" width="400" height="300"></canvas>
+  <div class="nature-college-frame">
+    <span class="title">Case Overview</span>
+    <div class="nature-college-container">
+      <div class="nature-concern">
+        <h1>Nature of Concerns</h1>
+        <div class="canvas-content">
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
+      <div class="canvas-content">
+        <h1>College Summaries</h1>
+        <canvas id="myChart1"></canvas>
+      </div>
     </div>
   </div>
   <div class="campus-clinic-container">
-    <div class="campus-counselor">
-      <div class="campus">
-        {{ result_campus | safe }}
-      </div>
-      <div class="counselor">
-        <h1>Counselors</h1>
-        <div class="counselor1">
-          <p>Counselor 1</p>
+    <div class="campus-title">
+      <span class="title">Campus</span>
+      <div class="campus-counselor">
+        <div class="campus">
+          <canvas id="myChart3"></canvas>
         </div>
-        <div class="counselor2">
-          <p>Counselor 2</p>
-        </div>
-        <div class="counselor3">
-          <p>Counselor 3</p>
-        </div>
-        <div class="counselor4">
-          <p>Counselor 4</p>
+        <div class="counselor">
+          <h1>Counselors</h1>
+          <div class="counselor1">
+            <p>Counselor 1</p>
+          </div>
+          <div class="counselor2">
+            <p>Counselor 2</p>
+          </div>
+          <div class="counselor3">
+            <p>Counselor 3</p>
+          </div>
+          <div class="counselor4">
+            <p>Counselor 4</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="clinic-container">
-      <h1>Clinic's Activities</h1>
-      <div class="seminar">
-        <p>Seminar: Mental Health</p>
+    <div class="clinic-title">
+      <span class="title">Clinic's Activities</span>
+      <div class="clinic-container">
+        <div class="seminar">
+          <p>Seminar: Mental Health</p>
+        </div>
+        <div class="community">
+          <p>Community Service</p>
+        </div>
+        <div class="consultation">
+          <p>Consultation</p>
+        </div>
       </div>
-      <div class="community">
-        <p>Community Service</p>
-      </div>
-      <div class="consultation">
-        <p>Consultation</p>
-      </div>
-    </div>
+    </div>  
   </div>
 </div>
-</main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../static/javascript/dashboard.js"> </script>

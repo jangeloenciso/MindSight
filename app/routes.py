@@ -69,8 +69,10 @@ def logout():
 def dashboard():
 
     data_college_sum = process_data_college_sum()
+    data_concern = process_data_concern()
+    data_campus = process_data_campus()
 
-    return render_template('dashboard.html', data_college_sum=data_college_sum)
+    return render_template('dashboard.html', data_college_sum=data_college_sum, data_concern=data_concern, data_campus=data_campus)
 
 @app.route('/developers')
 @login_required
@@ -142,8 +144,8 @@ def ihk():
 def settings():
    return render_template('settings.html')
 
-# API endpoints
 
+# API endpoints
 @app.route('/get_data_past/<first_metric>/<second_metric>', methods=['GET'])
 def get_data_past(first_metric, second_metric):
     past_data = process_data_past(first_metric, second_metric)
@@ -158,3 +160,13 @@ def get_data_new(first_metric, second_metric):
 def get_data_college_sum():
     college_data = process_data_college_sum()
     return jsonify(college_data)
+
+@app.route('/get_data_concern', methods=['GET'])
+def get_data_concern():
+    concern_data = process_data_concern()
+    return jsonify(concern_data)
+
+@app.route('/get_data_identity', methods=['GET'])
+def get_data_identity():
+    campus_data = process_data_campus()
+    return jsonify(campus_data)
