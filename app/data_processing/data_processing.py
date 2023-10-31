@@ -4,7 +4,6 @@ import plotly.express as px
 
 from app import app, db
 from app.models.models import *
-from flask import jsonify
 from sqlalchemy.orm import joinedload
 
 
@@ -19,7 +18,6 @@ def process_data(first_metric, second_metric):
             .options(joinedload(StudentInformation.psychological_assessments))
             .all()
         )
-        count = 0
         data_list = []
         for record in data:
             personal_information = record.personal_information

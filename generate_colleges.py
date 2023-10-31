@@ -3,13 +3,10 @@ from app.models.models import *
 
 with app.app_context():
 
-    # db.session.query(College).delete()
-    # db.session.query(Course).delete()
-    # db.session.commit()
+    db.session.query(Course).delete()
+    db.session.query(College).delete()
+    db.session.commit()
 
-    # Create college instances
-    # Import necessary libraries and models
-    # Define the list of colleges and courses
     college_courses = {
         "College of Engineering and Architecture": [
             "Bachelor of Science in Mechanical Engineering",
@@ -57,7 +54,6 @@ with app.app_context():
         ],
     }
 
-    # Iterate through the list of colleges and courses and add them to the database
     for college_name, course_names in college_courses.items():
         college = College(name=college_name)
         db.session.add(college)
@@ -67,7 +63,6 @@ with app.app_context():
         for course_name in course_names:
             course = Course(name=course_name, college_id=college_id)
             db.session.add(course)
-
-    # Commit the changes to the database
+            
     db.session.commit()
 
