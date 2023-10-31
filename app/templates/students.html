@@ -1,11 +1,7 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Students{% endblock %}
-
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/students.css"/> 
-{% endblock %}
-
-{% block content %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Students{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/students.css" />
+{% endblock %} {% block content %}
 
 <div class="right">
   <div class="main">
@@ -17,12 +13,49 @@
       </p>
     </div>
     <div class="main-buttons">
-      <a href="{{ url_for ('cea') }}" id="cea"> <button class="cea">CEA</button></a>
+      <a href="{{ url_for ('cea') }}" id="cea">
+        <button class="cea">
+          <img src="/static/students/cea.png" />
+          <span>College of Engineering and Architecture <br />CEA </span>
+        </button></a
+      >
       <div class="buttons-group">
-        <a href="{{ url_for ('cbea') }}"> <button class="cbea">CBEA</button></a>
-        <a href="{{ url_for ('cas') }}"> <button class="cas">CAS</button></a>
-        <a href="{{ url_for ('ced') }}"> <button class="ced">CED</button></a>
-        <a href="{{ url_for ('ihk') }}"> <button class="ihk">IHK</button></a>
+        <a href="{{ url_for ('cbea') }}">
+          <button class="cbea">
+            <img src="/static/students/cbea.png" />
+            <span
+              >College of Business Economics and Accounting <br />
+              CBEA</span
+            >
+          </button></a
+        >
+        <a href="{{ url_for ('cas') }}">
+          <button class="cas">
+            <img src="/static/students/cas.png" />
+            <span
+              >College of Arts and Sciences <br />
+              CAS</span
+            >
+          </button></a
+        >
+        <a href="{{ url_for ('ced') }}">
+          <button class="ced">
+            <img src="/static/students/ced.png" />
+            <span
+              >College of Education <br />
+              CED</span
+            >
+          </button></a
+        >
+        <a href="{{ url_for ('ihk') }}">
+          <button class="ihk">
+            <img src="/static/students/ihk.png" />
+            <span
+              >Institute of Human Kinetics <br />
+              IHK</span
+            >
+          </button></a
+        >
       </div>
     </div>
   </div>
