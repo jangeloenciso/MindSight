@@ -69,7 +69,6 @@ function generateBarGraph(data, chartNumber) {
                 datasets: [{
                     data: values,
                     backgroundColor: 'rgba(48, 127, 226, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)',
                     borderSkipped: false,
                     borderRadius: 15,
                     barPercentage: 0.8,
@@ -100,9 +99,9 @@ function generateBarGraph(data, chartNumber) {
                             display: false,
                             drawBorder: false
                         },
-                        // ticks: {
-                        //     display: false
-                        // }
+                        ticks: {
+                            display: true
+                        }
                     }
                 }
             },

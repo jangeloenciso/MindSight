@@ -52,11 +52,6 @@ main {
     align-items: center;
 }
 
-.college-summary, .nature-concern, .campus, .counselor {
-    margin: 0;
-    padding: 0;
-}
-
 .counselor1, .counselor2, .counselor3, .counselor4 {
     width: 180px;
     height: 30px;
@@ -115,12 +110,30 @@ p {
     height: 300px;
 }
 
-.campus {
+.nature-content {
     margin-right: 5.5em;
 }
 
-.nature-concern {
-    margin-right: 5.5em;
+.college-content {
+    margin-left: 5.5em;
+}
+
+.campus-content {
+    margin-right: 2.5em;
+}
+
+.counselor-content {
+    margin-left: 2.5em;
+}
+
+.campus-counselor-vl {
+    border-left: 2px solid var(--bg-orange);
+    height: 210px;
+}
+
+.nature-college-vl {
+    border-left: 2px solid var(--bg-orange);
+    height: 310px;
 }
 
 /* Sidebar active indicator */

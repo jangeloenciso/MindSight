@@ -3,19 +3,112 @@ main {
     top: 50%;
     left: 53%;
     transform: translate(-50%, -50%);
+    /* overflow: hidden; */
 }
 
-.canvas-content {
+/* .canvas-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 1.5em;
-}
+} */
 
 #myChart1 {
     width: 900px;
     height: 600px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.experience-container {
+    width: 400px;
+    height: 670px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+}
+
+.college-container {
+    width: 440px;
+    height: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin: 0 2.0em 2.0em 0;
+}
+
+.nature-container {
+    width: 440px;
+    height: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-bottom: 2.0em;
+}
+
+.campus-container, .religion-container {
+    width: 205px;
+    height: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+}
+
+.identity-container {
+    width: 440px;
+    height: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+}
+
+.column2-container, .column3-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row2-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.title span {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    border-bottom: 2px solid var(--bg-orange);
+    width: 1315px;
+    padding-bottom: 15px;
 }
 
 /* Sidebar active indicator */
