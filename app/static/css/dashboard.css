@@ -30,13 +30,15 @@
 /* case overview container (main) */
 .nature-college-frame {
     width: 100%;
-    height: 50%;
+    height: 60%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .nature-college-container {
     display: flex;
+    height: 100%;
     flex-direction: row;
     justify-content: space-around;
     border-radius: 20px;
@@ -44,6 +46,18 @@
     align-items: center;
     margin-top: 10px;
 }
+
+.nature-content, .college-content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+
 
 .campus-counselor {
     height: 100%;
@@ -57,7 +71,7 @@
     margin-top: 10px;
 }
 
-/* campus and clinic activities container (main) */
+/* campus and clinic activities container (inner) */
 .campus-clinic-container {
     width: 100%;
     height: 40%;
@@ -90,14 +104,17 @@ p {
     margin: 0;
 }
 
+
+
+/* to be fixed (cant properly fit inside the div's original size. Goes beyond the div) */
 #myChart1, #myChart2 {
-    width: 400px;
-    height: 400px;
+    width: 100px !important;
+    height: 100px !important;
 }
 
 #myChart3 {
-    width: 350px;
-    height: 300px;
+    width: auto;
+    height: auto;
 }
 
 
