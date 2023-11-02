@@ -91,6 +91,7 @@
     margin: 2px 0;
     border-radius: 10px;
     background: #BECDD3;
+    color: var(--primary-color);
 }
 
 
@@ -113,17 +114,10 @@ p {
 
 
 
-/* to be fixed (cant properly fit inside the div's original size. Goes beyond the div) */
-#myChart1, #myChart2 {
+#myChart1, #myChart2, #myChart3 {
     width: auto;
     height: auto;
 }
-
-#myChart3 {
-    width: auto;
-    height: auto;
-}
-
 
 
 /* container for "Campus" */
@@ -166,6 +160,7 @@ p {
     border-radius: 12px;
     padding: 15px 20px;
     background: #75ACC1;
+    color: var(--primary-color);
 }
 
 /* Sidebar active indicator */
