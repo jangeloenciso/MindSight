@@ -1,52 +1,144 @@
-let chartGenerated = false;
-let chart;
-var ctx = document.getElementById('myChart1').getContext('2d');
+let chart1, chart2, chart3;
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetchAndGenerateChart();
+    fetchAndGenerateChart(1);
+    fetchAndGenerateChart(2);
+    fetchAndGenerateChart(3);
 });
 
-function fetchAndGenerateChart() {
-
-    fetch(`/get_data_college_sum`)
-        .then(response => response.json())
-        .then(data => {
-            generateBarGraph(data);
-        });
-    
-}
-
-function generateBarGraph(data) {
-    if (chart) {
-        chart.destroy();
+function fetchAndGenerateChart(chartNumber) {
+    let dataEndpoint = chartNumber === 1 ? '/get_data_college_sum' : '/get_data_concern';
+    if (chartNumber === 3) {
+        dataEndpoint = '/get_data_identity'; 
     }
 
-    var labels = data.map(item => item.Colleges);
-    var values = data.map(item => item.Students);
+    fetch(dataEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            generateBarGraph(data, chartNumber);
+        });
+}
 
-    chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                data: values,
-                backgroundColor: 'rgba(9, 83, 113, 1)' 
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
+function generateBarGraph(data, chartNumber) {
+    let chartContainer = chartNumber === 1 ? 'myChart1' : (chartNumber === 2 ? 'myChart2' : 'myChart3');
+    let ctx = document.getElementById(chartContainer).getContext('2d');
+
+    if (chartNumber === 1) {
+        if (chart1) {
+            chart1.destroy();
+        }
+
+        var labels = data.map(item => item.Colleges);
+        var values = data.map(item => item.Students);
+
+        chart1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: 'rgba(9, 83, 113, 1)'
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
                 }
             }
+        });
+    } else if (chartNumber === 2) {
+        if (chart2) {
+            chart2.destroy();
         }
-    })
+
+        var labels = data.map(item => item.Concern);
+        var values = data.map(item => item.Students);
+
+        chart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: 'rgba(48, 127, 226, 1)',
+                    borderSkipped: false,
+                    borderRadius: 15,
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.8,
+            }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: true
+                        }
+                    }
+                }
+            },
+        });
+    } else if (chartNumber === 3) {
+        if (chart3) {
+            chart3.destroy();
+        }
+
+        var labels = data.map(item => item.Campus); 
+        var values = data.map(item => item.Students); 
+
+        chart3 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: ['rgba(9, 83, 113, 1)',
+                                    'rgba(219, 147, 84, 1)']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
 }
 
 if (window.history.replaceState) {

@@ -7,7 +7,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="experience-container">
+
+<div class="canvas-content">
+  <canvas id="myChart1" height='800' width='2000'></canvas>
+</div>
+<!-- <div class="experience-container">
   <h1>Compare Trends</h1>
 </div>
 
@@ -30,9 +34,7 @@
 
 </select>
 
-<div class="canvas-content">
-    <canvas id="myChart1" height='800' width='2000'></canvas>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../static/javascript/analytics.js"> </script>

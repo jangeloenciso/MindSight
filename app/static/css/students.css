@@ -57,7 +57,7 @@
 .main-buttons button, .main-buttons a {
     border-radius: 20px;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     background-color: var(--primary-color);
     border: none;
     font-weight: bold;
@@ -68,13 +68,30 @@
 .main-buttons button {
     height: 100% !important;
     width: 100% !important;
+    background-color: transparent;
 }
+
+
+/* button icons */
+.main-buttons img {
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 20px;
+}
+
 
 
 /* cea button */
 .cea, #cea {
     width: 20%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
 }
 
 
@@ -94,6 +111,7 @@
     flex-grow: 1;
     flex-basis: calc(50% - 10px);
     text-decoration: none;
+    flex-direction: column;
 }
 
 /* expand button to entire <a> container */
@@ -103,26 +121,44 @@
 }
 
 
-/* hover states */
-.cea:hover {
-    background-color: #db9050;
+/* buttom borders */
+.main-buttons a {
+    border: 3px solid var(--white);
+    transition: var(--smooth-transition);
 }
 
-.cbea:hover {
-    background-color: #dbcd50;
+.main-buttons a:hover {
+    border: 3px dashed var(--white);
+    background-color: #073f55;
+    transition: var(--smooth-transition);
+
+    /* transform: scale(1.03); */
 }
 
-.cas:hover {
-    background-color: #429f39;
+
+/* button text initial position */
+.main-buttons span {
+    transition: var(--smooth-transition);
+    transform: translateY(10px);
 }
 
-.ced:hover {
-    background-color: #264f80;
+/* button text hover animation */
+.main-buttons a:hover span {
+    transform: translateY(0);
 }
 
-.ihk:hover {
-    background-color: #db508a;
+
+/* button icon initial position */
+.main-buttons img {
+    transition: var(--smooth-transition);
+    transform: translateY(0);
 }
+
+/* button icon hover animation */
+.main-buttons a:hover img {
+    transform: translateY(5px);
+}
+
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {

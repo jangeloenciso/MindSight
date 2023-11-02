@@ -64,10 +64,11 @@ def logout():
 @login_required
 def dashboard():
 
-    # data_college_sum = process_data_college_sum()
-    # query_student_information()
+    data_college_sum = process_data_college_sum()
+    data_concern = process_data_concern()
+    data_campus = process_data_campus()
 
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', data_college_sum=data_college_sum, data_concern=data_concern, data_campus=data_campus)
 
 @app.route('/developers')
 @login_required
@@ -127,7 +128,6 @@ def ihk():
 def settings():
    return render_template('settings.html')
 
-# API endpoints
 
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
