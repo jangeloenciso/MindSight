@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function fetchAndGenerateChart(chartNumber) {
     let dataEndpoint = chartNumber === 1 ? '/get_data_college_sum' : '/get_data_concern';
     if (chartNumber === 3) {
-        dataEndpoint = '/get_data_identity'; 
+        dataEndpoint = '/get_data_campus'; 
     }
 
     fetch(dataEndpoint)
@@ -48,9 +48,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
                         beginAtZero: true,
-                    }
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });
@@ -132,9 +147,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
-                        beginAtZero: true
-                    }
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });

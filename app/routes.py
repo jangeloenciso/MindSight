@@ -97,8 +97,10 @@ def analytics():
         data_past = process_data_past()
         data_new = process_data_new()
         data_college_sum = process_data_college_sum()
+        data_identity = process_data_identity()
+        data_religion = process_data_religion()
 
-        return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new, data_college_sum=data_college_sum)
+        return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new, data_college_sum=data_college_sum, data_identity=data_identity, data_religion=data_religion)
     
     data_past = process_data_past("GPA", "Mental Health Score")
     data_new = process_data_new("GPA", "Mental Health Score")
@@ -167,7 +169,17 @@ def get_data_concern():
     concern_data = process_data_concern()
     return jsonify(concern_data)
 
-@app.route('/get_data_identity', methods=['GET'])
-def get_data_identity():
+@app.route('/get_data_campus', methods=['GET'])
+def get_data_campus():
     campus_data = process_data_campus()
     return jsonify(campus_data)
+
+@app.route('/get_data_identity', methods=['GET'])
+def get_data_identity():
+    identity_data = process_data_identity()
+    return jsonify(identity_data)
+
+@app.route('/get_data_religion', methods=['GET'])
+def get_data_religion():
+    religion_data = process_data_religion()
+    return jsonify(religion_data)

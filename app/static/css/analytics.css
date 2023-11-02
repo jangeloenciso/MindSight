@@ -14,14 +14,9 @@ main {
     margin-top: 1.5em;
 } */
 
-#myChart1 {
-    width: 900px;
-    height: 600px;
-}
-
-#myChart2 {
-    width: 380px;
-    height: 400px;
+#myChart1, #myChart2, #myChart3, #myChart4, #myChart5 {
+    width: auto;
+    height: auto;
 }
 
 .main-content {
@@ -35,6 +30,7 @@ main {
     width: 400px;
     height: 670px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -59,7 +55,7 @@ main {
     width: 440px;
     height: 320px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -71,7 +67,7 @@ main {
     width: 205px;
     height: 320px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -83,7 +79,7 @@ main {
     width: 440px;
     height: 320px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;

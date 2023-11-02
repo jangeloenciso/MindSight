@@ -1,7 +1,7 @@
-Colleges,Students,Campus,Concern
-CAS,100,Boni,Academic
-CBEA,160,Boni,Academic
-CEA,310,Pasig,Academic
-CoED,190,Boni,Social
-IHK,110,Pasig,Career
-CED,210,Boni,Personal
+Colleges,Students,Campus,Concern,Identity,Religion
+CAS,100,Boni,Academic,LGBTQ,Roman Catholic
+CBEA,160,Boni,Academic,Male,Iglesia ni Cristo
+CEA,310,Pasig,Academic,Female,Islam
+CoED,190,Boni,Social,Male,Roman Catholic
+IHK,110,Pasig,Career,Female,Iglesia ni Cristo
+CED,210,Boni,Personal,Female,Roman Catholic
