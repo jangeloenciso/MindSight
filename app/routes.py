@@ -3,7 +3,6 @@ from app import app, db, bcrypt
 from app.models.models import User
 from flask import render_template, url_for, redirect, jsonify, flash
 from flask_login import login_user, logout_user, login_required
-from werkzeug.utils import secure_filename
 from .data_processing import *
 from .forms import *
 from flask_login import login_user

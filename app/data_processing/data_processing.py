@@ -15,6 +15,7 @@ def process_data():
             .options(joinedload(StudentInformation.health_information))
             .options(joinedload(StudentInformation.educational_background))
             .options(joinedload(StudentInformation.psychological_assessments))
+            .options(joinedload(StudentInformation.visits))
             .all()
         )
         data_list = []
@@ -24,10 +25,13 @@ def process_data():
             health_information = record.health_information
             educational_background = record.educational_background
             psychological_assessments = record.psychological_assessments
+            student_visits = record.visits
 
             course_name = record.course
             college = Course.query.filter_by(name=course_name).first()
             college_name = college.college.name if college else None 
+
+            nature_of_concern = [visit.nature_of_concern for visit in record.visits]
 
             data_list.append({
                 'student_id': record.student_id,
@@ -42,11 +46,13 @@ def process_data():
                 'nationality': personal_information.nationality,
                 'learning_styles': psychological_assessments.learning_styles,
                 'personality_test': psychological_assessments.personality_test,
-                'iq_test': psychological_assessments.iq_test
+                'iq_test': psychological_assessments.iq_test,
+                'nature_of_concern': nature_of_concern,  # Include visits in the data
             })
 
         df = pd.DataFrame(data_list)
         return df
+
 
     
 def data_analytics(first_metric, second_metric):

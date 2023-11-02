@@ -81,6 +81,8 @@ class StudentInformation(db.Model):
 
     psychological_assessments = db.relationship('PsychologicalAssessments', backref='student', uselist=False)
 
+    visits = db.relationship('StudentVisits', backref='student')
+
 
 class PersonalInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -133,4 +135,14 @@ class PsychologicalAssessments(db.Model):
     learning_styles = db.Column(db.String(100))
     personality_test = db.Column(db.String(100))
     iq_test = db.Column(db.String(100))
+    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+
+
+class StudentVisits(db.Model):
+    __tablename__ = 'student_visits'
+
+    visit_id = db.Column(db.Integer, primary_key=True)
+    date_of_visit = db.Column(db.Date, nullable=False)
+    nature_of_concern = db.Column(db.String(100))
+
     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))

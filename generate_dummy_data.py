@@ -4,7 +4,7 @@ import random
 from datetime import date, timedelta
 from faker import Faker
 from app import db, app
-from app.models.models import StudentInformation, PersonalInformation, FamilyBackground, HealthInformation, EducationalBackground, PsychologicalAssessments
+from app.models.models import *
 from dummy_data_input import course_names, religion_names, strands
 
 
@@ -15,6 +15,7 @@ with app.app_context():
     db.session.query(HealthInformation).delete()
     db.session.query(EducationalBackground).delete()
     db.session.query(PsychologicalAssessments).delete()
+    db.session.query(StudentVisits).delete()
     db.session.query(StudentInformation).delete()
     db.session.commit()
 
@@ -31,6 +32,14 @@ with app.app_context():
         student_id = str(year) + "-" + str(student_number)
         print(f"Generated Student ID: {student_id}")
         return student_id
+
+    def generate_fake_student_visit(student):
+        visit = StudentVisits(
+        student=student,
+        date_of_visit=random_date(date(2020, 1, 1), date(2023, 12, 31)),
+        nature_of_concern=fake.random_element(elements=["Academic", "Career", "Personal", "Social"])
+        )
+        db.session.add(visit)
 
     for _ in range(200):
         family_name = fake.last_name()
@@ -97,6 +106,11 @@ with app.app_context():
             iq_test=fake.random_int(min=70, max=150),
             student=student
         )
+
+
+        # num_visits = random.randint(1)
+        for _ in range(1):
+            generate_fake_student_visit(student)
 
         db.session.add(personal_information)
         db.session.add(family_background)

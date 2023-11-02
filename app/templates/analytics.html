@@ -7,33 +7,41 @@
 {% endblock %}
 
 {% block content %}
-<div class="experience-container">
-  <h1>Compare Trends</h1>
+
+
+<div class="main-content">
+  <div class="experience-container">
+    <span class="title" id="experience">Experiences</span>
+    <!-- <canvas id="myChart1"></canvas> -->
+  </div>
+  <div class="column2-container">
+    <div class="college-container">
+      <span class="title" id="college">College Summaries</span>
+      <canvas id="myChart2"></canvas>
+    </div>  
+    <div class="row2-container">
+      <div class="campus-container">
+        <span class="title" id="campus">Campus</span>
+        <canvas id="myChart3"></canvas>
+      </div>
+      <div class="religion-container">
+        <span class="title" id="religion">Religion</span>
+        <canvas id="myChart4"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="column3-container">
+    <div class="nature-container">
+      <span class="title" id="nature">Nature of Concerns</span>
+      <canvas id="myChart5"></canvas>
+    </div>
+    <div class="identity-container">
+      <span class="title" id="identity">Identity</span>
+      <canvas id="myChart6"></canvas>
+    </div>
+  </div>
 </div>
 
-
-<select id="firstMetricDropdown">
-  <option value="course">Course</option>
-  <option value="college">College</option>
-  <option value="religion">Religion</option>
-  <option value="gpa">GPA</option>
-  <option value="learning_styles">Learning Style</option>
-  <option value="personality_test">Personality Type</option>
-  <option value="iq_test">IQ</option>
-</select>
-<select id="secondMetricDropdown">
-  <option value="gpa">GPA</option>
-  <option value="religion">Religion</option>
-  <option value="age">Age</option>
-  <option value="college">College</option>
-  <option value="course">Course</option>
-
-</select>
-
-<div class="canvas-content">
-    <canvas id="myChart1" height='800' width='2000'></canvas>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script src="../static/javascript/analytics.js"> </script>
 {% endblock %}

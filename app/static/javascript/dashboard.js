@@ -48,9 +48,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
                         beginAtZero: true,
-                    }
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });
@@ -60,7 +75,7 @@ function generateBarGraph(data, chartNumber) {
         }
 
         var labels = data.map(item => item.Concern);
-        var values = data.map(item => item.Students);
+        var values = data.map(item => item.student_count);
 
         chart2 = new Chart(ctx, {
             type: 'bar',
@@ -132,9 +147,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
-                        beginAtZero: true
-                    }
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });
