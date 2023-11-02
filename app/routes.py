@@ -57,15 +57,12 @@ def logout():
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
+
 # Pages
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
-
-    # data_college_sum = process_data_college_sum()
-    # query_student_information()
-
     return render_template('dashboard.html')
 
 @app.route('/developers')
@@ -81,9 +78,6 @@ def admin():
 @app.route('/analytics', methods=['GET', 'POST'])
 @login_required
 def analytics():
-
-    # process_data("gpa", "age")
-
     return render_template('analytics.html')
 
 @app.route('/students')
@@ -119,12 +113,11 @@ def ced():
 def ihk():
    return render_template('students/ihk.html')
 
-
-
 @app.route('/settings')
 @login_required
 def settings():
    return render_template('settings.html')
+
 
 # API endpoints
 
@@ -138,15 +131,3 @@ def get_college_count(data_to_count):
     data = data_count(data_to_count)
     print(data)
     return jsonify(data)
-
-# @app.route('/get_data/campus_count', methods=['GET'])
-# def get_campus_count():
-#     data = data_count('campus')
-#     print(data)
-#     return jsonify(data)
-
-# @app.route('/get_data/religion_count', methods=['GET'])
-# def get_religion_count():
-#     data = data_count('religion')
-#     print(data)
-#     return jsonify(data)
