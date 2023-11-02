@@ -134,13 +134,20 @@ def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
     return jsonify(data)
 
-@app.route('/get_data/college_count', methods=['GET'])
-def get_college_count():
-    data = college_count()
-    return jsonify(data)
-
-@app.route('/get_data/campus_count', methods=['GET'])
-def get_campus_count():
-    data = campus_count()
+@app.route('/get_data/<data_to_count>', methods=['GET'])
+def get_college_count(data_to_count):
+    data = data_count(data_to_count)
     print(data)
     return jsonify(data)
+
+# @app.route('/get_data/campus_count', methods=['GET'])
+# def get_campus_count():
+#     data = data_count('campus')
+#     print(data)
+#     return jsonify(data)
+
+# @app.route('/get_data/religion_count', methods=['GET'])
+# def get_religion_count():
+#     data = data_count('religion')
+#     print(data)
+#     return jsonify(data)

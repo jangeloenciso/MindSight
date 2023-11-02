@@ -57,22 +57,13 @@ def data_analytics(first_metric, second_metric):
 
     return data_dict
 
-def college_count():
+
+def data_count(query):
     df = process_data()
 
-    college_count = df['college'].value_counts().reset_index()
-    college_count.columns = ['college', 'student_count']
+    data_count = df[query].value_counts().reset_index()
+    data_count.columns = [query, 'student_count']
 
-    data_dict = college_count.to_dict(orient='records')
-    print(data_dict)
-    return data_dict
-
-def campus_count():
-    df = process_data()
-
-    campus_count = df['campus'].value_counts().reset_index()
-    campus_count.columns = ['campus', 'student_count']
-
-    data_dict = campus_count.to_dict(orient='records')
+    data_dict = data_count.to_dict(orient='records')
     print(data_dict)
     return data_dict

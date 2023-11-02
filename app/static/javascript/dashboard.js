@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchAndGenerateChart(chartNumber) {
-    let dataEndpoint = chartNumber === 1 ? '/get_data/college_count' : '/get_data_concern';
+    let dataEndpoint = chartNumber === 1 ? '/get_data/college' : '/get_data_concern';
     if (chartNumber === 3) {
-        dataEndpoint = '/get_data/campus_count'; 
+        dataEndpoint = '/get_data/campus'; 
     }
 
     fetch(dataEndpoint)
