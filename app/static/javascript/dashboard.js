@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchAndGenerateChart(chartNumber) {
-    let dataEndpoint = chartNumber === 1 ? '/get_data/college' : '/get_data_concern';
+    let dataEndpoint = chartNumber === 1 ? '/get_data/college' : '/get_data/nature_of_concern';
     if (chartNumber === 3) {
         dataEndpoint = '/get_data/campus'; 
     }
@@ -74,7 +74,7 @@ function generateBarGraph(data, chartNumber) {
             chart2.destroy();
         }
 
-        var labels = data.map(item => item.Concern);
+        var labels = data.map(item => item.nature_of_concern);
         var values = data.map(item => item.student_count);
 
         chart2 = new Chart(ctx, {
