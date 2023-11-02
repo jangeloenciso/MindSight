@@ -64,11 +64,10 @@ def logout():
 @login_required
 def dashboard():
 
-    data_college_sum = process_data_college_sum()
-    data_concern = process_data_concern()
-    data_campus = process_data_campus()
+    # data_college_sum = process_data_college_sum()
+    # query_student_information()
 
-    return render_template('dashboard.html', data_college_sum=data_college_sum, data_concern=data_concern, data_campus=data_campus)
+    return render_template('dashboard.html')
 
 @app.route('/developers')
 @login_required
@@ -84,7 +83,7 @@ def admin():
 @login_required
 def analytics():
 
-    process_data("gpa", "age")
+    # process_data("gpa", "age")
 
     return render_template('analytics.html')
 
@@ -128,8 +127,20 @@ def ihk():
 def settings():
    return render_template('settings.html')
 
+# API endpoints
 
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
-    new_data = process_data(first_metric, second_metric)
-    return jsonify(new_data)
+    data = data_analytics(first_metric, second_metric)
+    return jsonify(data)
+
+@app.route('/get_data/college_count', methods=['GET'])
+def get_college_count():
+    data = college_count()
+    return jsonify(data)
+
+@app.route('/get_data/campus_count', methods=['GET'])
+def get_campus_count():
+    data = campus_count()
+    print(data)
+    return jsonify(data)

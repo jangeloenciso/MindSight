@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchAndGenerateChart(chartNumber) {
-    let dataEndpoint = chartNumber === 1 ? '/get_data_college_sum' : '/get_data_concern';
+    let dataEndpoint = chartNumber === 1 ? '/get_data/college_count' : '/get_data_concern';
     if (chartNumber === 3) {
-        dataEndpoint = '/get_data_identity'; 
+        dataEndpoint = '/get_data/campus_count'; 
     }
 
     fetch(dataEndpoint)
@@ -28,8 +28,8 @@ function generateBarGraph(data, chartNumber) {
             chart1.destroy();
         }
 
-        var labels = data.map(item => item.Colleges);
-        var values = data.map(item => item.Students);
+        var labels = data.map(item => item.college);
+        var values = data.map(item => item.student_count);
 
         chart1 = new Chart(ctx, {
             type: 'bar',
@@ -111,8 +111,8 @@ function generateBarGraph(data, chartNumber) {
             chart3.destroy();
         }
 
-        var labels = data.map(item => item.Campus); 
-        var values = data.map(item => item.Students); 
+        var labels = data.map(item => item.campus); 
+        var values = data.map(item => item.student_count); 
 
         chart3 = new Chart(ctx, {
             type: 'bar',

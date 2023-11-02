@@ -6,8 +6,7 @@ from app import app, db
 from app.models.models import *
 from sqlalchemy.orm import joinedload
 
-
-def process_data(first_metric, second_metric):
+def process_data():
     with app.app_context():
         data = (
             StudentInformation.query
@@ -47,7 +46,33 @@ def process_data(first_metric, second_metric):
             })
 
         df = pd.DataFrame(data_list)
-        data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
-        data_dict = data_mean.to_dict(orient='records')
+        return df
 
-        return data_dict
+    
+def data_analytics(first_metric, second_metric):
+    df = process_data()
+    print(process_data)
+    data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
+    data_dict = data_mean.to_dict(orient='records')
+
+    return data_dict
+
+def college_count():
+    df = process_data()
+
+    college_count = df['college'].value_counts().reset_index()
+    college_count.columns = ['college', 'student_count']
+
+    data_dict = college_count.to_dict(orient='records')
+    print(data_dict)
+    return data_dict
+
+def campus_count():
+    df = process_data()
+
+    campus_count = df['campus'].value_counts().reset_index()
+    campus_count.columns = ['campus', 'student_count']
+
+    data_dict = campus_count.to_dict(orient='records')
+    print(data_dict)
+    return data_dict

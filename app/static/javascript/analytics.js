@@ -1,10 +1,25 @@
+let chartGenerated = false;
 let chart;
+var ctx = document.getElementById('myChart1').getContext('2d');
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchAndGenerateChart();
+
+    const firstMetricDropdown = document.getElementById('firstMetricDropdown');
+    const secondMetricDropdown = document.getElementById('secondMetricDropdown');
+
+    firstMetricDropdown.addEventListener('change', function() {
+        fetchAndGenerateChart();
+    });
+
+    secondMetricDropdown.addEventListener('change', function() {
+        fetchAndGenerateChart();
+    });
 });
 
 function fetchAndGenerateChart() {
+    const selectedFirstMetric = document.getElementById('firstMetricDropdown').value;
+    const selectedSecondMetric = document.getElementById('secondMetricDropdown').value;
 
     fetch(`/get_data/${selectedFirstMetric}/${selectedSecondMetric}`)
         .then(response => response.json())
@@ -12,8 +27,6 @@ function fetchAndGenerateChart() {
             generateBarGraph(data, selectedFirstMetric, selectedSecondMetric);
         });
 }
-function generateBarGraph(data) {
-    let ctx = document.getElementById('myChart2').getContext('2d');
 
 function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
     if (chart) {
@@ -23,7 +36,7 @@ function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
     var labels = data.map(item => item[selectedFirstMetric]);
     var values = data.map(item => item[selectedSecondMetric]);
 
-    chart1 = new Chart(ctx, {
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
@@ -37,12 +50,12 @@ function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
             responsive: true,
             plugins: {
                 legend: {
-                    display: false
+                    display: true
                 }
             },
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: true
                 }
             }
         }
@@ -51,4 +64,4 @@ function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
 
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
-}}
+}

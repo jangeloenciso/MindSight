@@ -1,5 +1,5 @@
 course_names = {
-        "College of Engineering and Architecture": [
+        "CEA": [
             "Bachelor of Science in Mechanical Engineering",
             "Bachelor of Science in Architecture (Boni Campus)",
             "Bachelor of Science in Civil Engineering",
@@ -11,7 +11,7 @@ course_names = {
             "Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)",
             "Bachelor of Science in Mechatronics",
         ],
-        "College of Business, Entrepreneurship and Accountancy": [
+        "CBEA": [
             "Bachelor of Science in Accountancy",
             "Bachelor of Science in Entrepreneurship",
             "Bachelor of Science in Office Administration",
@@ -20,7 +20,7 @@ course_names = {
             "Bachelor of Science in Business Administration major in Financial Management",
             "Bachelor of Science in Business Administration major in Human Resource Management",
         ],
-        "College of Education": [
+        "COE": [
             "Bachelor of Secondary Education major in English",
             "Bachelor of Secondary Education major in Math",
             "Bachelor of Secondary Education major in Science (Boni Campus)",
@@ -33,14 +33,14 @@ course_names = {
             "Bachelor or Technical-Vocational Teacher Education Major in Electronics Technology",
             "Bachelor or Technical-Vocational Teacher Education Major in Welding and Fabrications Technology",
         ],
-        "College of Arts and Sciences": [
+        "CAS": [
             "Bachelor of Science in Psychology",
             "Bachelor of Arts in Political Science",
             "Bachelor of Science in Statistics (Boni Campus)",
             "Bachelor of Science in Biology (Boni Campus)",
             "Bachelor of Science in Astronomy",
         ],
-        "Institute of Human Kinetics": [
+        "IHK": [
             "Bachelor of Science in Physical Education (Boni Campus)",
         ],
 }
