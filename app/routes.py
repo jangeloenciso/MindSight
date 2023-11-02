@@ -96,8 +96,9 @@ def analytics():
 
         data_past = process_data_past()
         data_new = process_data_new()
+        data_college_sum = process_data_college_sum()
 
-        return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new)
+        return render_template('analytics.html', form=form, data_past=data_past, data_new=data_new, data_college_sum=data_college_sum)
     
     data_past = process_data_past("GPA", "Mental Health Score")
     data_new = process_data_new("GPA", "Mental Health Score")

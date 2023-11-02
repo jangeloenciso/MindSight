@@ -19,6 +19,11 @@ main {
     height: 600px;
 }
 
+#myChart2 {
+    width: 380px;
+    height: 400px;
+}
+
 .main-content {
     display: flex;
     flex-direction: row;
@@ -30,7 +35,6 @@ main {
     width: 400px;
     height: 670px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -42,11 +46,12 @@ main {
     width: 440px;
     height: 320px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
+    padding: 0 1.5em;
     margin: 0 2.0em 2.0em 0;
 }
 
@@ -99,16 +104,33 @@ main {
     align-items: center;
 }
 
-.title span {
+.title {
     color: var(--primary-color);
     text-align: center;
-    font-size: 45px;
+    font-size: 25px;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
+    text-align: left;
     border-bottom: 2px solid var(--bg-orange);
-    width: 1315px;
     padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+#college, #nature {
+    width: 410px;
+}
+
+#campus, #religion {
+    width: 175px;
+}
+
+#identity {
+    width: 410px;
+}
+
+#experience {
+    width: 370px;
 }
 
 /* Sidebar active indicator */
