@@ -146,3 +146,5 @@ class StudentVisits(db.Model):
     nature_of_concern = db.Column(db.String(100))
 
     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+
+    # Plan of action, recommendation, if for follow up or not,

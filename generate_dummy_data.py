@@ -41,7 +41,7 @@ with app.app_context():
         )
         db.session.add(visit)
 
-    for _ in range(200):
+    for _ in range(50):
         family_name = fake.last_name()
         student = StudentInformation(
             student_id=generate_student_id(),

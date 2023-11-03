@@ -38,9 +38,10 @@ with app.app_context():
             "Bachelor of Technical-Vocational Teacher Education major in Animation",
             "Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing",
             "Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design",
-            "Bachelor or Technical-Vocational Teacher Education Major in Garments Fashion and Design",
-            "Bachelor or Technical-Vocational Teacher Education Major in Electronics Technology",
-            "Bachelor or Technical-Vocational Teacher Education Major in Welding and Fabrications Technology",
+            "Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design",
+            "Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology",
+            "Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology",
+            "Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design"
         ],
         "CAS": [
             "Bachelor of Science in Psychology",

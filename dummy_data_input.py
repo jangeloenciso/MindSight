@@ -1,6 +1,6 @@
 course_names = [
     "Bachelor of Science in Mechanical Engineering",
-    "Bachelor of Science in Architecture",
+    "Bachelor of Science in Architecture (Boni Campus)",
     "Bachelor of Science in Civil Engineering",
     "Bachelor of Science in Electrical Engineering",
     "Bachelor of Science in Electronics Engineering",
