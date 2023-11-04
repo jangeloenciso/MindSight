@@ -8,12 +8,9 @@ endblock %} {% block styles %}
     <!-- CAS page -->
     {% for student in data %}
       <p>{{ student['student_id'] }}</p>
-      <p>{{ student['last_name'] }}</p>
-      <p>{{ student['first_name'] }}</p>
-      <p>{{ student['course'] }}</p>
-      <p>{{ student['year_level'] }}</p>
-      <p>{{ student['campus'] }}</p>
+      <p>{{ student['last_name'] }}, {{ student['first_name'] }}
       <p>{{ student['college'] }}</p>
+      <p>{{ student['course'] }}</p>
       <hr>
     {% endfor %}
   </div>
