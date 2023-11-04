@@ -91,7 +91,9 @@ def students():
 @app.route('/students/cas.html')
 @login_required
 def cas():
-   return render_template('students/cas.html')
+   data = data_to_dict()
+   
+   return render_template('students/cas.html', data=data)
 
 @app.route('/students/cbea.html')
 @login_required

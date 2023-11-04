@@ -75,6 +75,11 @@ def process_data():
         df = pd.DataFrame(data_list)
         return df
 
+def data_to_dict():
+    data_df = process_data()
+    data = data_df.to_dict(orient='records')
+
+    return data
 
     
 def data_analytics(first_metric, second_metric):
