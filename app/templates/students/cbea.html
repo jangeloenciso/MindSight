@@ -1,12 +1,71 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - CBEA{%
+{% extends "components/base.html" %} {% block title %} Mindsight - CAS{%
 endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/students.css" />
+<link rel="stylesheet" href="/static/css/colleges-main.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
   <div class="main">
-    <!-- CBEA page -->
+    <div class="main-header">
+      <span>CBEA: COLLEGE OF BUSINESS ECONOMICS AND ACCOUNTING</span>
+      <p>
+        Please click on the following <b>DEPARTMENTS</b> to view the
+        corresponding records:
+      </p>
+    </div>
+    <div class="department">
+      <div class="department-row">
+        <div class="department-name">Department of Accountancy</div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Entrepreneurship</div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Office Administration</div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Business Administration</div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 {% endblock %}
+
+<!-- block template -->
+
+<!-- <div class="department-row">
+    <div class="department-name">#</div>
+    <div class="year-level">
+      <button class="year-button">1</button>
+      <button class="year-button">2</button>
+      <button class="year-button">3</button>
+      <button class="year-button">4</button>
+    </div>
+  </div> -->

@@ -1,12 +1,53 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - CED{%
+{% extends "components/base.html" %} {% block title %} Mindsight - CAS{%
 endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/students.css" />
+<link rel="stylesheet" href="/static/css/colleges-main.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
   <div class="main">
-    <!-- CED page -->
+    <div class="main-header">
+      <span>CED: COLLEGE OF EDUCATION</span>
+      <p>
+        Please click on the following <b>DEPARTMENTS</b> to view the
+        corresponding records:
+      </p>
+    </div>
+    <div class="department">
+      <div class="department-row">
+        <div class="department-name">Department of Secondary Education</div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">
+          Department of Technical-Vocational Teacher Education
+        </div>
+        <div class="year-level">
+          <button class="year-button">1</button>
+          <button class="year-button">2</button>
+          <button class="year-button">3</button>
+          <button class="year-button">4</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 {% endblock %}
+
+<!-- block template -->
+
+<!-- <div class="department-row">
+    <div class="department-name">#</div>
+    <div class="year-level">
+      <button class="year-button">1</button>
+      <button class="year-button">2</button>
+      <button class="year-button">3</button>
+      <button class="year-button">4</button>
+    </div>
+  </div> -->
