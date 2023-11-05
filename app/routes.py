@@ -119,6 +119,10 @@ def ihk():
 def settings():
    return render_template('settings.html')
 
+@app.route('/students/departments.html')
+@login_required
+def departments():
+   return render_template('students/departments.html')
 
 # API endpoints
 
