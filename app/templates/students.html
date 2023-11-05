@@ -11,7 +11,20 @@ endblock %} {% block styles %}
         Please click on the following <b>COLLEGES</b> to view the corresponding
         records:
       </p>
+      <!-- search -->
+      <div class="search-container">
+        <form>
+          <div class="search-bar">
+            <input type="text" placeholder="Search" name="search" />
+            <button type="submit">
+              <img src="/static/students/search.png" alt="search" />
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+
+    <!-- directory buttons -->
     <div class="main-buttons">
       <a href="{{ url_for ('cea') }}" id="cea">
         <button class="cea">
