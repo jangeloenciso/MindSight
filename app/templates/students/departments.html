@@ -1,0 +1,29 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Departments{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/departments.css" />
+{% endblock %} {% block content %}
+
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+      <span>DEPARTMENT OF xxx</span>
+      <p>The records below are for <b>xxx - YEAR.</b></p>
+      <div class="search-container">
+        <form>
+          <div class="search-bar">
+            <input type="text" placeholder="Search" name="search" />
+            <button type="submit">
+              <img src="/static/students/search.png" alt="search" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+    <!-- code -->
+  </div>
+</div>
+
+{% endblock %}
