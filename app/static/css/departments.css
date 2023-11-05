@@ -32,6 +32,7 @@
     width: 100%;
     height: auto;
     color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
 .main-header span {
@@ -57,17 +58,17 @@
 
 /* search input */
 .search-bar input[type="text"] {
-    color: #095371;
+    color: var(--primary-color);
     flex: 1;
     border-radius: 40px;
-    border: 2px solid #095371;
+    border: 2px solid var(--primary-color);
     padding: 15px 65px 15px 15px;
     background-color: transparent;
 }
 
 /* placeholder color */
 .search-bar input[type="text"]::placeholder {
-    color: #095371;
+    color: var(--primary-color);
 }
 
 .search-bar button {
@@ -86,10 +87,87 @@
 }
 
 
+.delete-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.delete-button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    margin: 10px 20px 10px 0;
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: var(--smooth-transition);
+}
+
+.delete-button:hover {
+    background-color: #C70000;
+    transform: scale(1.1);
+}
 
 
+/* grid rows */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #c6cfc6;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.grid-header {
+    display: flex;
+    background-color: #c6cfc6;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.grid-row {
+    display: flex;
+    background-color: #eae7d6;
+    color: var(--primary-color);
+    padding: 10px;
+    justify-content: space-between;
+}
 
 
+/* individual sizes per column */
+.grid-checkbox {
+    flex-basis: 1%;
+}
+
+.grid-section {
+    flex-basis: 19%;
+}
+
+.grid-name {
+    flex-basis: 70%;
+}
+
+.grid-row:nth-child(even) {
+    background-color: #c6cfc6;
+}
+
+/* checkbox in odd rows */
+.grid-row input[type="checkbox"] {
+    transform: scale(1.7);
+    border-radius: 20px;
+    accent-color: var(--primary-color);
+}
+
+/* checkbox in even rows */
+.grid-row:nth-child(even) input[type="checkbox"] {
+    border-radius: 20px;
+    accent-color: var(--bg-orange);
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
