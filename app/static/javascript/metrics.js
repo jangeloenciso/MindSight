@@ -4,58 +4,63 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchAndGenerateChart();
-
-    const firstMetricDropdown = document.getElementById('firstMetricDropdown');
-    const secondMetricDropdown = document.getElementById('secondMetricDropdown');
-
-    firstMetricDropdown.addEventListener('change', function() {
-        fetchAndGenerateChart();
-    });
-
-    secondMetricDropdown.addEventListener('change', function() {
-        fetchAndGenerateChart();
-    });
 });
 
 function fetchAndGenerateChart() {
-    const selectedFirstMetric = document.getElementById('firstMetricDropdown').value;
-    const selectedSecondMetric = document.getElementById('secondMetricDropdown').value;
+    let dataEndpoint = '/get_data/religion';
 
-    fetch(`/get_data/${selectedFirstMetric}/${selectedSecondMetric}`)
+    fetch(dataEndpoint)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            generateBarGraph(data, selectedFirstMetric, selectedSecondMetric);
+            generateBarGraph(data);
         });
 }
 
-function generateBarGraph(data, selectedFirstMetric, selectedSecondMetric) {
-    if (chart) {
-        chart.destroy();
-    }
+function generateBarGraph(data) {
 
-    var labels = data.map(item => item[selectedFirstMetric]);
-    var values = data.map(item => item[selectedSecondMetric]);
+        var labels = data.map(item => item.religion); 
+        var values = data.map(item => item.student_count); 
 
-    chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: selectedFirstMetric,
-                data: values,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+        chart4 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: 'rgba(9, 83, 113, 1)',
+                    borderColor: 'rgba(160, 216, 224, 1)'
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
-        }
-    });
+        });
 }
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

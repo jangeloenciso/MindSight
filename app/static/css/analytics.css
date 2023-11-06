@@ -79,11 +79,11 @@ select, .metrics {
     border: none;
 }
 
-#myChart1, #myChart2, #myChart3,
+/* #myChart1, #myChart2, #myChart3,
 #myChart4, #myChart5, #myChart6 {
-    width: auto;
-    height: auto;
-}
+    width: 50px;
+    height: 50px;
+} */
 
 .row-container {
     margin-top: 20px;
@@ -122,8 +122,8 @@ select, .metrics {
     padding: 0.8em;
 }
 
-.nature-container {
-    flex-grow: 1;
+.nature-container, .identity-container {
+    width: 31%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -133,17 +133,7 @@ select, .metrics {
 }
 
 .religion-container {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.identity-container {
-    flex-grow: 1;
+    width: 38%;
     height: 100%;
     display: flex;
     flex-direction: column;

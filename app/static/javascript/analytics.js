@@ -1,6 +1,7 @@
-let chart2, chart3, chart4, chart5, chart6;
+let chart1, chart2, chart3, chart4, chart5, chart6;
 
 document.addEventListener('DOMContentLoaded', function() {
+    fetchAndGenerateChart(1);
     fetchAndGenerateChart(2);
     fetchAndGenerateChart(3);
     fetchAndGenerateChart(4);
@@ -11,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function fetchAndGenerateChart(chartNumber) {
 
     let dataEndpoint;
-    if (chartNumber === 2 ) {
+    if (chartNumber === 1){
+        dataEndpoint = '/get_data/religion'; 
+    } else if (chartNumber === 2 ) {
         dataEndpoint = '/get_data/college'; 
     } else if (chartNumber === 3) {
         dataEndpoint = '/get_data/campus'; 
@@ -34,7 +37,56 @@ function generateBarGraph(data, chartNumber) {
     let chartContainer = `myChart${chartNumber}`;
     let ctx = document.getElementById(chartContainer).getContext('2d');
 
-    if (chartNumber === 2) {
+    if (chartNumber === 1) {
+        if (chart1) {
+            chart1.destroy();
+        }
+
+        var labels = data.map(item => item.religion); 
+        var values = data.map(item => item.student_count); 
+
+        chart1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: 'rgba(9, 83, 113, 1)',
+                    borderColor: 'rgba(160, 216, 224, 1)'
+            }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
+                }
+            }
+        });
+
+    } else if (chartNumber === 2) {
         if (chart2) {
             chart2.destroy();
         }
@@ -59,9 +111,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
                         beginAtZero: true,
-                    }
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });
@@ -91,9 +158,24 @@ function generateBarGraph(data, chartNumber) {
                     }
                 },
                 scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
+                    },
                     y: {
                         beginAtZero: true,
-                    }
+                        ticks: {
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        }
+                    }, 
                 }
             }
         });
@@ -125,24 +207,23 @@ function generateBarGraph(data, chartNumber) {
                 },
                 scales: {
                     x: {
-                        grid: {
-                            display: true,
-                            drawBorder: true
-                        },
                         ticks: {
-                            display: true
-                        }
+                            color: 'rgba(9, 83, 113, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
+                        },
+                        borderSkipped: false
                     },
                     y: {
                         beginAtZero: true,
-                        grid: {
-                            display: true,
-                            drawBorder: true
-                        },
                         ticks: {
-                            display: true
+                            color: 'rgba(219, 147, 84, 1)'
+                        },
+                        grid: {
+                            color: 'rgba(190, 205, 211, 1)'
                         }
-                    }
+                    }, 
                 }
             }
         });
@@ -167,8 +248,7 @@ function generateBarGraph(data, chartNumber) {
             }]
             },
             options: {
-                maintainAspectRatio: true,
-                aspectRatio: 1,
+                maintainAspectRatio: false,
                 responsive: true,
                 plugins: {
                     legend: {
@@ -197,8 +277,7 @@ function generateBarGraph(data, chartNumber) {
                 }]
             },
             options: {
-                maintainAspectRatio: true,
-                aspectRatio: 1,
+                maintainAspectRatio: false,
                 responsive: true,
                 plugins: {
                     legend: {
