@@ -14,23 +14,20 @@
 .main-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
+    row-gap: 10px;
 }
 
 .semester-content {
+    height: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.2em;
-}
-
-#analytics {
-    margin-bottom: 0.5em;
 }
 
 .title {
     color: var(--primary-color);
-    text-align: center;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: bold;
@@ -41,14 +38,21 @@
     margin-bottom: 0.3em;
 }
 
-
-.first-semester, .compare, .second-semester {
-    margin: 0 1em;
+.semester-left {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 20px;
+    align-items: center;
 }
 
 .metrics-button {
-    float: right;
-    margin-left: 10em;
+    margin-left: auto;
+}
+
+
+#analytics{
+    font-size: 25px !important;
+    height: 5%;
 }
 
 #analytics, #compare {
@@ -66,7 +70,8 @@ select, .metrics {
     color: #FFF;
     border: none;
     border-radius: 10px;
-    padding: 0.5em;
+    padding: 10px;
+    transition: var(--smooth-transition);
 }
 
 .metrics:hover {
@@ -74,9 +79,8 @@ select, .metrics {
     border: none;
 }
 
-
-#myChart1, #myChart2, #myChart3, 
-#myChart4, #myChart5 , #myChart6{
+#myChart1, #myChart2, #myChart3,
+#myChart4, #myChart5, #myChart6 {
     width: auto;
     height: auto;
 }
@@ -84,30 +88,19 @@ select, .metrics {
 .column1, .column2 {
     display: flex;
     flex-direction: row;
-    margin: 1.0em 0;
+    justify-content: space-around;
+    column-gap: 10px;
     width: 100%;
     height: 45%;
 }
 
-.experience-container {
+.experience-container, .college-container {
     width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
-    padding: 0.8em;   
-}
-
-.college-container {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
     padding: 0.8em;
 }
 
@@ -122,29 +115,27 @@ select, .metrics {
 }
 
 .nature-container {
-    width: 32.5%;
+    flex-grow: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
     padding: 0.8em;
 }
 
 .religion-container {
-    width: 35%;
+    flex-grow: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
     padding: 0.8em;
 }
 
 .identity-container {
-    width: 32.5%;
+    flex-grow: 1;
     height: 100%;
     display: flex;
     flex-direction: column;

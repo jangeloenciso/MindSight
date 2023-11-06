@@ -1,16 +1,12 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Analytics{% endblock %}
-
-
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/analytics.css"/> 
-{% endblock %}
-
-{% block content %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/analytics.css" />
+{% endblock %} {% block content %}
 <div class="right">
   <div class="main-content">
-      <span id="analytics">Analytics</span>
-      <div class="semester-content">
+    <span id="analytics">Analytics</span>
+    <div class="semester-content">
+      <div class="semester-left">
         <div class="first-Semester">
           <select id="first-semester">
             <option value="1">First Semester</option>
@@ -38,12 +34,13 @@
             <option value="2023">2023</option>
           </select>
         </div>
-        <div class="metrics-button">
-          <a href="{{ url_for ('metrics') }}">
-            <button class="metrics">Choose Metrics to Compare</button>
-          </a>
-        </div>
       </div>
+      <div class="metrics-button">
+        <a href="{{ url_for ('metrics') }}">
+          <button class="metrics">Choose Metrics to Compare</button>
+        </a>
+      </div>
+    </div>
 
     <div class="column1">
       <!-- Experiences -->
@@ -55,13 +52,13 @@
       <div class="college-container">
         <span class="title" id="college">College Summaries</span>
         <canvas id="myChart2"></canvas>
-      </div>  
+      </div>
       <!--Campus-->
       <div class="campus-container">
         <span class="title" id="campus">Campus</span>
         <canvas id="myChart3"></canvas>
       </div>
-    </div>  
+    </div>
 
     <div class="column2">
       <!-- Nature -->
@@ -84,5 +81,5 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-<script src="../static/javascript/analytics.js"> </script>
+<script src="../static/javascript/analytics.js"></script>
 {% endblock %}
