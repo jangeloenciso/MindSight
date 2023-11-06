@@ -7,37 +7,79 @@
 {% endblock %}
 
 {% block content %}
-
-
-<div class="main-content">
-  <div class="experience-container">
-    <span class="title" id="experience">Experiences</span>
-    <!-- <canvas id="myChart1"></canvas> -->
-  </div>
-  <div class="column2-container">
-    <div class="college-container">
-      <span class="title" id="college">College Summaries</span>
-      <canvas id="myChart2"></canvas>
-    </div>  
-    <div class="row2-container">
+<div class="right">
+  <div class="main-content">
+    <!-- <div class="header"> -->
+      <span id="analytics">Analytics</span>
+      <div class="semester-content">
+        <div class="first-Semester">
+          <select id="first-semester">
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
+          </select>
+          <select id="year">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div class="compare">
+          <span id="compare">Compare to</span>
+        </div>
+        <div class="second-semester">
+          <select id="second-semester">
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
+          </select>
+          <select id="year">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div class="metrics-button">
+          <a href="{{ url_for ('metrics') }}">
+            <button class="metrics">Choose Metrics to Compare</button>
+          </a>
+        </div>
+      </div>
+    <!-- </div> -->
+    <div class="column1">
+      <!-- Experiences -->
+      <div class="experience-container">
+        <span class="title" id="experience">Experiences</span>
+        <!-- <canvas id="myChart1"></canvas> -->
+      </div>
+      <!-- College -->
+      <div class="college-container">
+        <span class="title" id="college">College Summaries</span>
+        <canvas id="myChart2"></canvas>
+      </div>  
+      <!--Campus-->
       <div class="campus-container">
         <span class="title" id="campus">Campus</span>
         <canvas id="myChart3"></canvas>
       </div>
+    </div>  
+
+    <div class="column2">
+      <!-- Nature -->
+      <div class="nature-container">
+        <span class="title" id="nature">Nature of Concerns</span>
+        <canvas id="myChart5"></canvas>
+      </div>
+      <!-- Religion -->
       <div class="religion-container">
         <span class="title" id="religion">Religion</span>
         <canvas id="myChart4"></canvas>
       </div>
-    </div>
-  </div>
-  <div class="column3-container">
-    <div class="nature-container">
-      <span class="title" id="nature">Nature of Concerns</span>
-      <canvas id="myChart5"></canvas>
-    </div>
-    <div class="identity-container">
-      <span class="title" id="identity">Identity</span>
-      <canvas id="myChart6"></canvas>
+      <!-- Identity -->
+      <div class="identity-container">
+        <span class="title" id="identity">Identity</span>
+        <canvas id="myChart6"></canvas>
+      </div>
     </div>
   </div>
 </div>

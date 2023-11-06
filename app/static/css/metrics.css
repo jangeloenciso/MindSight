@@ -1,0 +1,45 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: row;
+}
+
+.first-metric, .compare, .second-metric {
+    margin: 0 1em;
+}
+
+.semester-button {
+    margin-left: 10em;
+}
+
+/* Sidebar active indicator */
+.sidebar-buttons #analytics-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#analytics-container img, #analytics-container span {
+    transform: translateX(-7px);
+}

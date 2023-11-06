@@ -1,132 +1,165 @@
-main {
-    position: absolute;
-    top: 50%;
-    left: 53%;
-    transform: translate(-50%, -50%);
-    /* overflow: hidden; */
-}
-
-/* .canvas-content {
+.right {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 1.5em;
-} */
+    width: calc(100% - 73px);
+    height: 100vh;
 
-#myChart1, #myChart2, #myChart3, #myChart4, #myChart5 {
-    width: auto;
-    height: auto;
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
 }
 
 .main-content {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.experience-container {
-    width: 400px;
-    height: 670px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
 }
 
-.college-container {
-    width: 440px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0 1.5em;
-    margin: 0 2.0em 2.0em 0;
-}
-
-.nature-container {
-    width: 440px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    margin-bottom: 2.0em;
-}
-
-.campus-container, .religion-container {
-    width: 205px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    margin-right: 2.0em;
-}
-
-.identity-container {
-    width: 440px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-}
-
-.column2-container, .column3-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.row2-container {
+.semester-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.2em;
+}
+
+.header {
+    width: 100%;
+    height: 10%;
+}
+
+#analytics {
+    margin-bottom: 0.5em;
 }
 
 .title {
     color: var(--primary-color);
     text-align: center;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
     text-align: left;
     border-bottom: 2px solid var(--bg-orange);
-    padding-bottom: 15px;
-    margin-bottom: 10px;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
 }
 
-#college, #nature {
-    width: 410px;
+
+.first-semester, .compare, .second-semester {
+    margin: 0 1em;
 }
 
-#campus, #religion {
-    width: 175px;
+.metrics-button {
+    margin-left: 10em;
 }
 
-#identity {
-    width: 410px;
+#analytics, #compare {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
 }
 
-#experience {
-    width: 370px;
+select, .metrics {
+    width: auto;
+    height: auto;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.metrics:hover {
+    background-color: var(--bg-orange);
+    border: none;
+}
+
+
+#myChart1, #myChart2, #myChart3, 
+#myChart4, #myChart5 , #myChart6{
+    width: auto;
+    height: auto;
+}
+
+.column1, .column2 {
+    display: flex;
+    flex-direction: row;
+    margin: 1.0em 0;
+    width: 100%;
+    height: 45%;
+}
+
+.experience-container {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+    padding: 0.8em;   
+}
+
+.college-container {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+    padding: 0.8em;
+}
+
+.campus-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0.8em;
+}
+
+.nature-container {
+    width: 32.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+    padding: 0.8em;
+}
+
+.religion-container {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    margin-right: 2.0em;
+    padding: 0.8em;
+}
+
+.identity-container {
+    width: 32.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0.8em;
+}
+
+#experience, #college, #campus,
+#nature, #religion, #identity {
+    width: 100%;
 }
 
 /* Sidebar active indicator */

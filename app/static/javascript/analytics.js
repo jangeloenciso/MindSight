@@ -112,11 +112,7 @@ function generateBarGraph(data, chartNumber) {
                 datasets: [{
                     data: values,
                     backgroundColor: 'rgba(9, 83, 113, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)',
-                    borderSkipped: false,
-                    borderRadius: 15,
-                    barPercentage: 0.8,
-                    categoryPercentage: 0.8,
+                    borderColor: 'rgba(160, 216, 224, 1)'
             }]
             },
             options: {
@@ -130,22 +126,22 @@ function generateBarGraph(data, chartNumber) {
                 scales: {
                     x: {
                         grid: {
-                            display: false,
-                            drawBorder: false
+                            display: true,
+                            drawBorder: true
                         },
                         ticks: {
-                            display: false
+                            display: true
                         }
                     },
                     y: {
                         beginAtZero: true,
                         grid: {
-                            display: false,
-                            drawBorder: false
+                            display: true,
+                            drawBorder: true
                         },
-                        // ticks: {
-                        //     display: false
-                        // }
+                        ticks: {
+                            display: true
+                        }
                     }
                 }
             }
@@ -158,71 +154,25 @@ function generateBarGraph(data, chartNumber) {
         var labels = data.map(item => item.nature_of_concern); 
         var values = data.map(item => item.student_count); 
 
-        const progressBar = {
-            id: 'progressBar',
-            beforeDatasetsDraw(chart, args, pluginOptions){
-                const { ctx, data, chartArea: {top, bottom, left, right, width, height},
-                        scales: {x, y} } = chart;
-
-                ctx.save();
-
-                chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
-
-                const barHeight = height / data.labels.length * data.datasets[0].
-                        barPercentage * data.datasets[0].categoryPercentage;
-
-                ctx.path();
-                ctx.strokeStyle = data.datasets[0].borderColor[0];
-                ctx.fillStyle = data.datasets[0].borderColor[0];
-                ctx.line = barHeight * 0.8;
-                ctx.lineBorder = 'round'
-                ctx.strokeRectangle(left + 2.5, datapoint.y, width - 5, 1)
-            })
-        }
-        }
-
         chart5 = new Chart(ctx, {
-            type: 'bar',
+            type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: 'rgba(9, 83, 113, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)',
-                    borderSkipped: false,
-                    borderRadius: 15,
-                    barPercentage: 0.8,
-                    categoryPercentage: 0.8,
+                    backgroundColor: ['rgba(219, 147, 84, 1)',
+                                      'rgba(9, 83, 113, 1)',
+                                      'rgba(96, 146, 192, 1)',
+                                      'rgba(160, 216, 224, 1)']
             }]
             },
             options: {
-                indexAxis: 'y',
+                maintainAspectRatio: true,
+                aspectRatio: 1,
                 responsive: true,
                 plugins: {
-                    progressBar,
                     legend: {
                         display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        // ticks: {
-                        //     display: false
-                        // }
                     }
                 }
             }
@@ -236,17 +186,19 @@ function generateBarGraph(data, chartNumber) {
         var values = data.map(item => item.student_count); 
 
         chart6 = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
                     data: values,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
-                                      'rgba(96, 146, 192, 1)',
-                                    'rgba(9, 83, 113, 1)']
+                                      'rgba(9, 83, 113, 1)',
+                                    'rgba(96, 146, 192, 1)']
                 }]
             },
             options: {
+                maintainAspectRatio: true,
+                aspectRatio: 1,
                 responsive: true,
                 plugins: {
                     legend: {
