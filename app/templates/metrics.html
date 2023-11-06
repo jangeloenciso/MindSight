@@ -1,56 +1,56 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Analytics{% endblock %}
-
-
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/metrics.css"/> 
-{% endblock %}
-
-{% block content %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/metrics.css" />
+{% endblock %} {% block content %}
 <div class="right">
-    <div class="main-content">
-        <span id="analytics">Analytics</span>
-            <div class="metrics-content">
-                <div class="first-metric">
-                    <select id="firstMetricDropdown">
-                        <option value="Mental Health Score">Mental Health Score</option>
-                        <option value="GPA">GPA</option>
-                        <option value="Religion">Religion</option>
-                        <option value="Ethnicity">Ethnicity</option>
-                        <option value="Socioeconomic Status">Socioeconomic Status</option>
-                        <option value="College">College</option>
-                        <option value="Course">Course</option>
-                        <option value="History of Past Mental Health Cases">History of Past Mental Health Cases</option>
-                        <option value="Type of Past Interventions">Type of Past Interventions</option>
-                        <option value="Outcome of Past">Outcome of Past</option>
-                    </select>
-                </div>
-                <div class="compare">
-                    <span id="compare">Compare to</span>
-                </div>
-                <div class="second-metric">
-                    <select id="secondMetricDropdown">
-                        <option value="GPA">GPA</option>
-                        <option value="Mental Health Score">Mental Health Score</option>
-                        <option value="Course Failure Rate">Course Failure Rate</option>
-                        <option value="Attendance Rate">Attendance Rate</option>
-                        <option value="Age">Age</option>
-                    </select>
-                </div>
-                <div class="metrics-button">
-                    <a href="{{ url_for ('analytics') }}">
-                      <button class="metrics">Choose Data to Compare</button>
-                    </a>
-                </div>
-            </div>
-
-            <div class="chart-content">
-                <canvas id="mychart"></canvas>
-            </div>
+  <div class="main-content">
+    <span id="analytics">Analytics</span>
+    <div class="metrics-content">
+      <div class="metrics-left">
+        <div class="first-metric">
+          <select id="firstMetricDropdown">
+            <option value="Mental Health Score">Mental Health Score</option>
+            <option value="GPA">GPA</option>
+            <option value="Religion">Religion</option>
+            <option value="Ethnicity">Ethnicity</option>
+            <option value="Socioeconomic Status">Socioeconomic Status</option>
+            <option value="College">College</option>
+            <option value="Course">Course</option>
+            <option value="History of Past Mental Health Cases">
+              History of Past Mental Health Cases
+            </option>
+            <option value="Type of Past Interventions">
+              Type of Past Interventions
+            </option>
+            <option value="Outcome of Past">Outcome of Past</option>
+          </select>
+        </div>
+        <div class="compare">
+          <span id="compare">Compare to</span>
+        </div>
+        <div class="second-metric">
+          <select id="secondMetricDropdown">
+            <option value="GPA">GPA</option>
+            <option value="Mental Health Score">Mental Health Score</option>
+            <option value="Course Failure Rate">Course Failure Rate</option>
+            <option value="Attendance Rate">Attendance Rate</option>
+            <option value="Age">Age</option>
+          </select>
+        </div>
+      </div>
+      <div class="metrics-button">
+        <a href="{{ url_for ('analytics') }}">
+          <button class="metrics">Choose Data to Compare</button>
+        </a>
+      </div>
     </div>
-</div>  
 
+    <div class="chart-content">
+      <canvas id="mychart"></canvas>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-<script src="../static/javascript/metrics.js"> </script>
+<script src="../static/javascript/metrics.js"></script>
 {% endblock %}

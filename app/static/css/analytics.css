@@ -50,7 +50,7 @@
 }
 
 
-#analytics{
+#analytics {
     font-size: 25px !important;
     height: 5%;
 }
@@ -85,13 +85,21 @@ select, .metrics {
     height: auto;
 }
 
-.column1, .column2 {
+.row-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    row-gap: 20px;
+}
+
+.row1, .row2 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    column-gap: 10px;
+    column-gap: 20px;
     width: 100%;
-    height: 45%;
+    height: calc(50% - 30px);
 }
 
 .experience-container, .college-container {
