@@ -80,7 +80,7 @@ def admin():
 def analytics():
     return render_template('analytics.html')
 
-@app.route('/cbea.html')
+@app.route('/analytics/analysis')
 @login_required
 def metrics():
    return render_template('metrics.html')
