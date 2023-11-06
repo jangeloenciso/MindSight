@@ -1,7 +1,7 @@
 import os
 from app import app, db, bcrypt
 from app.models.models import User
-from flask import render_template, url_for, redirect, jsonify, flash
+from flask import render_template, url_for, redirect, flash
 from flask_login import login_user, logout_user, login_required
 from .data_processing import *
 from .forms import *
@@ -134,10 +134,10 @@ def departments():
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
-    return jsonify(data)
+    return data
 
 @app.route('/get_data/<data_to_count>', methods=['GET'])
 def get_college_count(data_to_count):
     data = data_count(data_to_count)
     print(data)
-    return jsonify(data)
+    return data
