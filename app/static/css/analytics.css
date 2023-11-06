@@ -79,12 +79,6 @@ select, .metrics {
     border: none;
 }
 
-/* #myChart1, #myChart2, #myChart3,
-#myChart4, #myChart5, #myChart6 {
-    width: 50px;
-    height: 50px;
-} */
-
 .row-container {
     margin-top: 20px;
     display: flex;
@@ -99,7 +93,7 @@ select, .metrics {
     justify-content: space-around;
     column-gap: 20px;
     width: 100%;
-    height: calc(50% - 30px);
+    height: 50%;
 }
 
 .experience-container, .college-container {
@@ -145,6 +139,12 @@ select, .metrics {
 #experience, #college, #campus,
 #nature, #religion, #identity {
     width: 100%;
+}
+
+#myChart5, #myChart6{
+    max-width: 180px;
+    max-height: 180px;
+    margin: 0 auto;
 }
 
 /* Sidebar active indicator */

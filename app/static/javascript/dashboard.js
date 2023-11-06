@@ -193,8 +193,11 @@ function generateBarGraph(data, chartNumber) {
                 labels: labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: 'rgba(9, 83, 113, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)'
+                    backgroundColor: 'rgba(48, 127, 226, 1)',
+                    borderSkipped: false,
+                    borderRadius: 15,
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.8,
             }]
             },
             options: {
@@ -207,25 +210,26 @@ function generateBarGraph(data, chartNumber) {
                 },
                 scales: {
                     x: {
-                        ticks: {
-                            color: 'rgba(9, 83, 113, 1)'
-                        },
                         grid: {
-                            color: 'rgba(190, 205, 211, 1)'
+                            display: false,
+                            drawBorder: false
                         },
-                        borderSkipped: false
+                        ticks: {
+                            display: false
+                        }
                     },
                     y: {
                         beginAtZero: true,
-                        ticks: {
-                            color: 'rgba(219, 147, 84, 1)'
-                        },
                         grid: {
-                            color: 'rgba(190, 205, 211, 1)'
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false
                         }
-                    }, 
+                    }
                 }
-            }
+            },
         });
     } else if (chartNumber === 5) {
         if (chart5) {
@@ -236,26 +240,48 @@ function generateBarGraph(data, chartNumber) {
         var values = data.map(item => item.student_count); 
 
         chart5 = new Chart(ctx, {
-            type: 'doughnut',
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: ['rgba(219, 147, 84, 1)',
-                                      'rgba(9, 83, 113, 1)',
-                                      'rgba(96, 146, 192, 1)',
-                                      'rgba(160, 216, 224, 1)']
+                    backgroundColor: 'rgba(48, 127, 226, 1)',
+                    borderSkipped: false,
+                    borderRadius: 15,
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.8,
             }]
             },
             options: {
-                maintainAspectRatio: false,
+                indexAxis: 'y',
                 responsive: true,
                 plugins: {
                     legend: {
                         display: false
                     }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: true
+                        }
+                    }
                 }
-            }
+            },
         });
     } else if (chartNumber === 6) {
         if (chart6) {

@@ -91,7 +91,11 @@
     margin-bottom: 1em;
 }
 
-
+#myChart6{
+    max-width: 250px;
+    max-height: 250px;
+    margin: 0 auto;
+}
 
 .row {
     display: flex;
@@ -100,7 +104,6 @@
     height: 50%;
     column-gap: 20px;
 }
-
 
 /* Sidebar active indicator */
 .sidebar-buttons #dashboard-container::before {
