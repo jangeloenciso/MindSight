@@ -4,69 +4,38 @@ endblock %} {% block styles %}
 {% endblock %} {% block content %}
 
 <div class="right">
-  <div class="content">
-    <!-- Case overview main container -->
-    <div class="nature-college-frame">
-      <span class="title">Case Overview</span>
-      <div class="nature-college-container">
-        <!-- Nature of concerns title and canvas container -->
-        <div class="nature-content">
-          <h1>Nature of Concerns</h1>
-          <canvas id="myChart2"></canvas>
-        </div>
-
-        <!-- vertical line -->
-        <span class="nature-college-vl"></span>
-
-        <!-- College summaries title and canvas -->
-        <div class="college-content">
-          <h1>College Summaries</h1>
-          <canvas id="myChart1"></canvas>
-        </div>
+  <div class="column1">
+    <div class="experience-container">
+      <span class="title" id="experience">Experiences</span>
+      <!-- <canvas id="myChart1"></canvas> -->
+    </div>
+  </div>
+  <div class="column2">
+    <div class="college-container">
+      <span class="title" id="college">College Summaries</span>
+      <canvas id="myChart2"></canvas>
+    </div>
+    <div class="row">
+      <div class="campus-container">
+        <span class="title" id="campus">Campus</span>
+        <canvas id="myChart3"></canvas>
+      </div>
+      <div class="religion-container">
+        <span class="title" id="religion">Religion</span>
+        <canvas id="myChart4"></canvas>
       </div>
     </div>
-
-    <!-- Campus and clinic's activities main container -->
-    <div class="campus-clinic-container">
-      <div class="campus-title">
-        <span class="title">Campus</span>
-        <div class="campus-counselor">
-          <div class="campus-content">
-            <canvas id="myChart3"></canvas>
-          </div>
-          <span class="campus-counselor-vl"></span>
-          <div class="counselor-content">
-            <h1>Counselors</h1>
-            <div class="counselor1">
-              <p>Counselor 1</p>
-            </div>
-            <div class="counselor2">
-              <p>Counselor 2</p>
-            </div>
-            <div class="counselor3">
-              <p>Counselor 3</p>
-            </div>
-            <div class="counselor4">
-              <p>Counselor 4</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="clinic-title">
-        <span class="title">Clinic's Activities</span>
-        <div class="clinic-container">
-          <div>
-            <p>Seminar: Mental Health</p>
-          </div>
-          <div>
-            <p>Community Service</p>
-          </div>
-          <div>
-            <p>Consultation</p>
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="column3">
+    <div class="nature-container">
+      <span class="title" id="nature">Nature of Concerns</span>
+      <canvas id="myChart5"></canvas>
     </div>
+    <div class="identity-container">
+      <span class="title" id="identity">Identity</span>
+      <canvas id="myChart6"></canvas>
+    </div>
+  </div>
   </div>
 </div>
 
