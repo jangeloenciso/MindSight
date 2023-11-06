@@ -16,17 +16,56 @@
     flex-direction: column;
 }
 
-.metrics {
+.metrics-content {
     display: flex;
     flex-direction: row;
 }
 
-.first-metric, .compare, .second-metric {
+#analytics, #compare {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+
+#analytics {
+    margin-bottom: 0.5em;
+}
+
+.first-metrics, .compare, .second-metrics {
     margin: 0 1em;
 }
 
-.semester-button {
-    margin-left: 10em;
+.metrics-button {
+    float: right;
+    margin-left: 30em;
+    /* to be fix */
+}
+
+select, .metrics {
+    width: auto;
+    height: auto;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.metrics:hover {
+    background-color: var(--bg-orange);
+    border: none;
+}
+
+.chart-content {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0.8em;  
+    margin-top: 1em;
 }
 
 /* Sidebar active indicator */

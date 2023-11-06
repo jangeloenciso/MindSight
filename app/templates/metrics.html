@@ -10,7 +10,7 @@
 <div class="right">
     <div class="main-content">
         <span id="analytics">Analytics</span>
-            <div class="metrics">
+            <div class="metrics-content">
                 <div class="first-metric">
                     <select id="firstMetricDropdown">
                         <option value="Mental Health Score">Mental Health Score</option>
@@ -38,15 +38,19 @@
                     </select>
                 </div>
                 <div class="metrics-button">
-                <a href="{{ url_for ('analytics') }}">
-                    <button class="metrics">Compare Data by Semester</button>
-                </a>
+                    <a href="{{ url_for ('analytics') }}">
+                      <button class="metrics">Choose Data to Compare</button>
+                    </a>
                 </div>
+            </div>
+
+            <div class="chart-content">
+                <canvas id="mychart"></canvas>
             </div>
     </div>
 </div>  
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-<script src="../static/javascript/analytics.js"> </script>
+<script src="../static/javascript/metrics.js"> </script>
 {% endblock %}
