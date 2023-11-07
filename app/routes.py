@@ -134,10 +134,11 @@ def departments():
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
-    return data
+    print(data)
+    return jsonify(data)
 
 @app.route('/get_data/<data_to_count>', methods=['GET'])
 def get_college_count(data_to_count):
     data = data_count(data_to_count)
     print(data)
-    return data
+    return jsonify(data)

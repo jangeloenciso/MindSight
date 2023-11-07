@@ -86,7 +86,7 @@ def data_analytics(first_metric, second_metric):
     data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
     data_dict = data_mean.to_dict(orient='records')
 
-    return jsonify(data_dict)
+    return data_dict
 
 
 def data_count(query):
@@ -96,4 +96,4 @@ def data_count(query):
     data_count.columns = [query, 'student_count']
 
     data_dict = data_count.to_dict(orient='records')
-    return jsonify(data_dict)
+    return data_dict
