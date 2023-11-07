@@ -93,28 +93,28 @@ def students():
 
 # Student components
 
-@app.route('/students/cas.html')
+@app.route('/students/cas')
 @login_required
 def cas():
    
    return render_template('students/cas.html')
 
-@app.route('/students/cbea.html')
+@app.route('/students/cbea')
 @login_required
 def cbea():
    return render_template('students/cbea.html')
 
-@app.route('/students/cea.html')
+@app.route('/students/cea')
 @login_required
 def cea():
    return render_template('students/cea.html')
 
-@app.route('/students/ced.html')
+@app.route('/students/ced')
 @login_required
 def ced():
    return render_template('students/ced.html')
 
-@app.route('/students/ihk.html')
+@app.route('/students/ihk')
 @login_required
 def ihk():
    return render_template('students/ihk.html')
@@ -124,7 +124,7 @@ def ihk():
 def settings():
    return render_template('settings.html')
 
-@app.route('/students/departments.html')
+@app.route('/students/departments')
 @login_required
 def departments():
    return render_template('students/departments.html')

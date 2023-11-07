@@ -51,13 +51,13 @@
 
 
 #analytics {
-    font-size: 25px !important;
+    font-size: 1.5rem !important;
     height: 5%;
 }
 
 #analytics, #compare {
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
@@ -72,6 +72,11 @@ select, .metrics {
     border-radius: 10px;
     padding: 10px;
     transition: var(--smooth-transition);
+}
+
+option {
+    background-color: #FFF;
+    color: var(--primary-color);
 }
 
 .metrics:hover {

@@ -6,98 +6,40 @@
 {% endblock %}
 
 {% block content %}
-      <!-- <div class="slide-in personal">
-        <div class="personal-content">
-          <h1>Personal</h1>
-            <p class="desc">Update your personal details and photo here.</p>
-            <hr>
-            <label class="fname">First name</label>
-            <input id="fname" type="text" placeholder="Enter your new First name"> 
-            <label class="lname">Last name</label>
-            <input id="lname" type="text" placeholder="Enter your new Last name">
-            <hr>
-            <div class="for-photo">
-              <p class="your-photo">Your Photo</p>
-              <p class="desc">This will displayed on your profile</p>
-              <img class="pic" src="/static/profile.png">
-              <button class="cancel" type="button">Cancel</button>
-              <button class="update" type="button">Update</button>
-            </div>
+<div class="right">
+    <div class="content-frame"> 
+      <span class="title">Account</span>
+      <hr>
+      <div class="name-content">
+        <div class="name-fields">
+          <label id="first-name">First name</label>
+          <input type="text" placeholder="Enter your new first name" name="first_name">
         </div>
-      </div>   -->
-      <!-- <div class="slide-in account">
-        <div class="account-content">
-          <h1>Account</h1>
-            <p class="desc">Update your account here.</p>
-            <hr>
-            <label class="username">Username</label>
-            <input id="username" type="text" placeholder="Enter your new username"> 
-            <label class="email">Email Address</label>
-            <input id="email" type="text" placeholder="Enter your new email address">
-            <label class="password">Password</label>
-            <input id="password" type="text" placeholder="Enter your new password">
-            <hr>
-            <div class="-update-cancel-button">
-              <button class="cancel" type="button">Cancel</button>
-              <button class="update" type="button">Update</button>
-            </div>
+        <div class="name-fields">
+          <label id="last-name">Last name</label>
+          <input type="text" placeholder="Enter your new last name" name="last_name">
         </div>
-      </div> -->
-      <!-- <div id="buttons" class="buttons">
-        <button id="personal" class="personal" type="button">Personal</button>
-        <button id="acc" class="acc" type="button">Account</button>
-      </div> -->
-
-<div class="slide-in from-left">
-  <div class="slide-in-content">
-    <ul>
-      <li>Lorem</li>
-      <li>Ipsum</li>
-      <li>Dolor</li>
-    </ul>
-  </div>
+      </div>
+      <hr>
+      <div class="account">
+        <div class="account-fields">
+          <label id="username">Username</label>
+          <input type="text" placeholder="Enter your new username" name="username">
+        </div>
+        <div class="account-fields">
+          <label id="email-address">Email Address</label>
+          <input type="text" placeholder="Enter your new email address" name="email_address">
+        </div>
+        <div class="account-fields">
+          <label id="password">Password</label>
+          <input type="password" placeholder="Enter your new password" name="password">
+        </div>
+      </div>
+      <hr>
+      <button class="update">Update</button>
+    </div>
 </div>
 
-<div class="slide-in from-right">
-  <div class="slide-in-content">
-    <ul>
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-    </ul>
-  </div>
-</div>
-
-<button id="toggle" style="position:absolute; top: 120px;">Toggle</button>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-  $('#toggle').click(function() {
-$('.slide-in').toggleClass('show');
-});
-</script>
-  <!-- <script>
-
-$('#personal').click(function() {
-  $('.slide-in').toggleClass('show');
-});
-  // document.getElementById('buttons').addEventListener('click', function(evt) 
-  // {
-  //   var target = evt.target;
-  //   if (target.id === 'personal') 
-  //   {
-  //     $('#personal').click(function() 
-  //     {
-  //       $('.slide-in').toggleClass('show');
-  //     });
-  //   } else if (target.id === 'acc') 
-  //   {
-  //     $('#acc').click(function() 
-  //     {
-  //       $('.slide-in').toggleClass('show');
-  //     });
-  //   }
-  // }, false);
-
-  </script> -->
 {% endblock %}
 
