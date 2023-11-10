@@ -32,14 +32,19 @@
         </div>
         <div class="account-fields">
           <label id="password">Password</label>
-          <input type="password" placeholder="Enter your new password" name="password">
+          <input type="password" id="password" placeholder="Enter your new password" name="password">
         </div>
       </div>
       <hr>
-      <button class="update">Update</button>
+
+      <!-- add sweetalert in here for verification before updating the account information -->
+      <button class="update" id="toggleAlert">Update</button>
     </div>
 </div>
 
 </body>
+
+<script src="../static/javascript/sweetalert2.all.min.js"></script>
+<script src="../static/javascript/settings.js"></script>
 {% endblock %}
 

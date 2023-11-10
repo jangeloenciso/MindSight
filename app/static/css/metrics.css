@@ -51,13 +51,13 @@
 
 
 #analytics {
-    font-size: 25px !important;
+    font-size: 1.5rem !important;
     height: 5%;
 }
 
 #analytics, #compare {
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
@@ -91,8 +91,9 @@ select, .metrics {
 }
 
 #myChart {
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
 }
 /* Sidebar active indicator */
 .sidebar-buttons #analytics-container::before {

@@ -250,9 +250,29 @@ function generateBarGraph(data, chartNumber) {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
+                // animations: {
+                //     tension: {
+                //       duration: 1000,
+                //       easing: 'easeInQuad',
+                //       from: 1,
+                //       to: 0,
+                //       loop: true
+                //     }
+                // },
                 plugins: {
                     legend: {
-                        display: false
+                        display: true,
+                        position: 'left',
+                        align: 'center',
+                        labels: {
+                            color: 'rgba(9, 83, 113, 1)',
+                            textAlign: 'left'
+                        },
+                        title: {
+                            display: true,
+                            color: 'rgba(9, 83, 113, 1)',
+                            text: 'Legends'
+                        }
                     }
                 }
             }
