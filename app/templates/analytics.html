@@ -1,49 +1,87 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Analytics{% endblock %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/analytics.css" />
+{% endblock %} {% block content %}
+<div class="right">
+  <div class="main-content">
+    <span id="analytics">Analytics</span>
+    <div class="semester-content">
+      <div class="semester-left">
+        <div class="first-Semester">
+          <select id="first-semester">
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
+          </select>
+          <select id="year">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div class="compare">
+          <span id="compare">Compare to</span>
+        </div>
+        <div class="second-semester">
+          <select id="second-semester">
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
+          </select>
+          <select id="year">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+      </div>
+      <div class="metrics-button">
+        <a href="{{ url_for ('metrics') }}">
+          <button class="metrics">Choose Metrics to Compare</button>
+        </a>
+      </div>
+    </div>
 
+    <div class="row-container">
+      <div class="row1">
+        <!-- Experiences -->
+        <div class="experience-container">
+          <span class="title" id="experience">Experiences</span>
+          <!-- <canvas id="myChart1" height="40" width="100"></canvas> -->
+        </div>
+        <!-- College -->
+        <div class="college-container">
+          <span class="title" id="college">College Summaries</span>
+          <canvas id="myChart2" height="38" width="100"></canvas>
+        </div>
+        <!--Campus-->
+        <div class="campus-container">
+          <span class="title" id="campus">Campus</span>
+          <canvas id="myChart3" height="78" width="100"></canvas>
+        </div>
+      </div>
 
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/analytics.css"/> 
-{% endblock %}
-
-{% block content %}
-<div class="experience-container">
-  <h1>Compare Trends</h1>
+      <div class="row2">
+        <!-- Nature -->
+        <div class="nature-container">
+          <span class="title" id="nature">Nature of Concerns</span>
+          <canvas id="myChart5"></canvas>
+        </div>
+        <!-- Religion -->
+        <div class="religion-container">
+          <span class="title" id="religion">Religion</span>
+          <canvas id="myChart4" height="40" width="100"></canvas>
+        </div>
+        <!-- Identity -->
+        <div class="identity-container">
+          <span class="title" id="identity">Identity</span>
+          <canvas id="myChart6"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="upload-form">
-  <form method = "POST" enctype="multipart/form-data">
-    {{ form.hidden_tag() }}
-    {{ form.file() }}
-    {{ form.submit() }}
-  </form>
-</div>
-
-<select id="firstMetricDropdown">
-  <option value="Mental Health Score">Mental Health Score</option>
-  <option value="GPA">GPA</option>
-  <option value="Religion">Religion</option>
-  <option value="Ethnicity">Ethnicity</option>
-  <option value="Socioeconomic Status">Socioeconomic Status</option>
-  <option value="College">College</option>
-  <option value="Course">Course</option>
-  <option value="History of Past Mental Health Cases">History of Past Mental Health Cases</option>
-  <option value="Type of Past Interventions">Type of Past Interventions</option>
-  <option value="Outcome of Past">Outcome of Past</option>
-</select>
-<select id="secondMetricDropdown">
-  <option value="GPA">GPA</option>
-  <option value="Mental Health Score">Mental Health Score</option>
-  <option value="Course Failure Rate">Course Failure Rate</option>
-  <option value="Attendance Rate">Attendance Rate</option>
-  <option value="Age">Age</option>
-
-</select>
-
-<div class="canvas-content">
-    <canvas id="myChart1"></canvas>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../static/javascript/analytics.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script src="../static/javascript/analytics.js"></script>
 {% endblock %}

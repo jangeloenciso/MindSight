@@ -131,7 +131,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-left: 7px;
+    margin-left: 0;
 }
 
 /* animated rotation when expanding */

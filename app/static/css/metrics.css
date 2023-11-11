@@ -19,7 +19,7 @@
     row-gap: 10px;
 }
 
-.semester-content {
+.metrics-content {
     height: 5%;
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@
     margin-bottom: 0.3em;
 }
 
-.semester-left {
+.metrics-left {
     display: flex;
     justify-content: space-around;
     column-gap: 20px;
@@ -74,84 +74,27 @@ select, .metrics {
     transition: var(--smooth-transition);
 }
 
-option {
-    background-color: #FFF;
-    color: var(--primary-color);
-}
-
 .metrics:hover {
     background-color: var(--bg-orange);
     border: none;
 }
 
-.row-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+.chart-content {
+    width: 100%;
     height: 90%;
-    row-gap: 20px;
-}
-
-.row1, .row2 {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    column-gap: 20px;
-    width: 100%;
-    height: 50%;
-}
-
-.experience-container, .college-container {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
     padding: 0.8em;
+    margin-top: 20px;
 }
 
-.campus-container {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.nature-container, .identity-container {
-    width: 31%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.religion-container {
-    width: 38%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-#experience, #college, #campus,
-#nature, #religion, #identity {
-    width: 100%;
-}
-
-#myChart5, #myChart6{
-    max-width: 180px;
-    max-height: 180px;
+#myChart {
+    max-width: 100%;
+    max-height: 100%;
     margin: 0 auto;
 }
-
 /* Sidebar active indicator */
 .sidebar-buttons #analytics-container::before {
     content: "";

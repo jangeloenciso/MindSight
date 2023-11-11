@@ -1,68 +1,44 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Dashboard{% endblock %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Dashboard{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/dashboard.css" />
+{% endblock %} {% block content %}
 
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/dashboard.css"/>
-{% endblock %}
-
-{% block content %}
-<div class="content">
-  <div class="nature-college-frame">
-    <span class="title">Case Overview</span>
-    <div class="nature-college-container">
-      <div class="nature-concern">
-        <h1>Nature of Concerns</h1>
-        <div class="canvas-content">
-          <canvas id="myChart2"></canvas>
-        </div>
+<div class="right">
+  <div class="column1">
+    <div class="experience-container">
+      <span class="title" id="experience">Experiences</span>
+      <!-- <canvas id="myChart1"></canvas> -->
+    </div>
+  </div>
+  <div class="column2">
+    <div class="college-container">
+      <span class="title" id="college">College Summaries</span>
+      <canvas id="myChart2"></canvas>
+    </div>
+    <div class="row">
+      <div class="campus-container">
+        <span class="title" id="campus">Campus</span>
+        <canvas id="myChart3" height="100" width="100"></canvas>
       </div>
-      <div class="canvas-content">
-        <h1>College Summaries</h1>
-        <canvas id="myChart1"></canvas>
+      <div class="religion-container">
+        <span class="title" id="religion">Religion</span>
+        <canvas id="myChart4" height="100" width="100"></canvas>
       </div>
     </div>
   </div>
-  <div class="campus-clinic-container">
-    <div class="campus-title">
-      <span class="title">Campus</span>
-      <div class="campus-counselor">
-        <div class="campus">
-          <canvas id="myChart3"></canvas>
-        </div>
-        <div class="counselor">
-          <h1>Counselors</h1>
-          <div class="counselor1">
-            <p>Counselor 1</p>
-          </div>
-          <div class="counselor2">
-            <p>Counselor 2</p>
-          </div>
-          <div class="counselor3">
-            <p>Counselor 3</p>
-          </div>
-          <div class="counselor4">
-            <p>Counselor 4</p>
-          </div>
-        </div>
-      </div>
+  <div class="column3">
+    <div class="nature-container">
+      <span class="title" id="nature">Nature of Concerns</span>
+      <canvas id="myChart5"></canvas>
     </div>
-    <div class="clinic-title">
-      <span class="title">Clinic's Activities</span>
-      <div class="clinic-container">
-        <div class="seminar">
-          <p>Seminar: Mental Health</p>
-        </div>
-        <div class="community">
-          <p>Community Service</p>
-        </div>
-        <div class="consultation">
-          <p>Consultation</p>
-        </div>
-      </div>
-    </div>  
+    <div class="identity-container">
+      <span class="title" id="identity">Identity</span>
+      <canvas id="myChart6"></canvas>
+    </div>
+  </div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../static/javascript/dashboard.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script src="../static/javascript/dashboard.js"></script>
 {% endblock %}

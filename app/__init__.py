@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 
-from app.models import User
+from .models.models import User
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'

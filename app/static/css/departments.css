@@ -1,0 +1,185 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bg-orange);
+    display: flex;
+    padding-bottom: 10px;
+}
+
+/* search */
+.search-container {
+    position: relative;
+    width: 50%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* search input */
+.search-bar input[type="text"] {
+    color: var(--primary-color);
+    flex: 1;
+    border-radius: 40px;
+    border: 2px solid var(--primary-color);
+    padding: 15px 65px 15px 15px;
+    background-color: transparent;
+}
+
+/* placeholder color */
+.search-bar input[type="text"]::placeholder {
+    color: var(--primary-color);
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 20px);
+}
+
+.search-bar button img {
+    height: 33px;
+    aspect-ratio: 1 / 1;
+}
+
+
+.delete-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.delete-button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    margin: 10px 20px 10px 0;
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: var(--smooth-transition);
+}
+
+.delete-button:hover {
+    background-color: #C70000;
+    transform: scale(1.1);
+}
+
+
+/* grid rows */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #c6cfc6;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.grid-header {
+    display: flex;
+    background-color: #c6cfc6;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.grid-row {
+    display: flex;
+    background-color: #eae7d6;
+    color: var(--primary-color);
+    padding: 10px;
+    justify-content: space-between;
+}
+
+
+/* individual sizes per column */
+.grid-checkbox {
+    flex-basis: 1%;
+}
+
+.grid-section {
+    flex-basis: 19%;
+}
+
+.grid-name {
+    flex-basis: 70%;
+}
+
+.grid-row:nth-child(even) {
+    background-color: #c6cfc6;
+}
+
+/* checkbox in odd rows */
+.grid-row input[type="checkbox"] {
+    transform: scale(1.7);
+    border-radius: 20px;
+    accent-color: var(--primary-color);
+}
+
+/* checkbox in even rows */
+.grid-row:nth-child(even) input[type="checkbox"] {
+    border-radius: 20px;
+    accent-color: var(--bg-orange);
+}
+
+/* Sidebar active indicator */
+.sidebar-buttons #students-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#students-container img, #students-container span {
+    transform: translateX(-7px);
+}
