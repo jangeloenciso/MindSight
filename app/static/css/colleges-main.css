@@ -1,0 +1,115 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bg-orange);
+    display: flex;
+    padding-bottom: 10px;
+}
+
+
+
+/* department container */
+.department {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* row boxes */
+.department-row {
+    width: 100%;
+    height: auto;
+    padding: 20px 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+
+/* number button container */
+.year-level {
+    display: flex;
+    opacity: 0;
+    transition: var(--smooth-transition);
+    column-gap: 25px;
+    padding-right: 20px;
+    height: 100% !important;
+}
+
+.department-row:hover .year-level {
+    opacity: 1;
+}
+
+/* buttons */
+.year-level button {
+    border-radius: 50%;
+    background-color: var(--bg-orange);
+    color: var(--white);
+    border: none;
+    transition: all 100ms ease-in-out;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.year-level button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #students-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#students-container img, #students-container span {
+    transform: translateX(-7px);
+}

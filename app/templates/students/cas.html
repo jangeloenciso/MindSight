@@ -1,12 +1,83 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - CAS{%
 endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/students.css" />
+<link rel="stylesheet" href="/static/css/colleges-main.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
   <div class="main">
-    <!-- CAS page -->
+    <div class="main-header">
+      <span>CAS: COLLEGE OF ARTS AND SCIENCES</span>
+      <p>
+        Please click on the following <b>DEPARTMENTS</b> to view the
+        corresponding records:
+      </p>
+    </div>
+    <div class="department">
+      <div class="department-row">
+        <div class="department-name">Department of Biology</div>
+        <div class="year-level">
+          <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">
+          Department of Earth and Space Sciences
+        </div>
+        <div class="year-level">
+          <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Statistics</div>
+        <div class="year-level">
+          <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Political Science</div>
+        <div class="year-level">
+          <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+        </div>
+      </div>
+
+      <div class="department-row">
+        <div class="department-name">Department of Psychology</div>
+        <div class="year-level">
+          <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+          <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 {% endblock %}
+
+<!-- block template -->
+
+<!-- <div class="department-row">
+      <div class="department-name">#</div>
+      <div class="year-level">
+        <a href="{{ url_for ('departments') }}"><button class="year-button">1</button></a>
+        <a href="{{ url_for ('departments') }}"><button class="year-button">2</button></a>
+        <a href="{{ url_for ('departments') }}"><button class="year-button">3</button></a>
+        <a href="{{ url_for ('departments') }}"><button class="year-button">4</button></a>
+      </div>
+    </div> -->

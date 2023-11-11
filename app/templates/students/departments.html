@@ -1,0 +1,66 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Departments{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/departments.css" />
+{% endblock %} {% block content %}
+
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+      <span>DEPARTMENT OF xxx</span>
+      <p>The records below are for <b>xxx - YEAR.</b></p>
+      <div class="search-container">
+        <form>
+          <div class="search-bar">
+            <input type="text" placeholder="Search" name="search" />
+            <button type="submit">
+              <img src="/static/students/search.png" alt="search" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- delete button -->
+    <div class="delete-container">
+      <img
+        src="/static/students/delete.png"
+        alt="delete"
+        class="delete-button"
+      />
+    </div>
+    <!-- flex grid -->
+    <div class="grid-container">
+      <div class="grid-header">
+        <div class="grid-checkbox"></div>
+        <div class="grid-section">Section</div>
+        <div class="grid-name">Name</div>
+      </div>
+
+      <!-- sample data rows -->
+      <div class="row-container">
+        <!-- sample row #1 -->
+        <div class="grid-row">
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">201P</div>
+          <div class="grid-name">Maven Sy</div>
+        </div>
+
+        <!-- sample row #2 -->
+        <div class="grid-row">
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">401P</div>
+          <div class="grid-name">Mika Cruz</div>
+        </div>
+
+        <!-- sample row #3 -->
+        <div class="grid-row">
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">201P</div>
+          <div class="grid-name">Paul Santos</div>
+        </div>
+      </div>
+      <!-- Add more rows as needed -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

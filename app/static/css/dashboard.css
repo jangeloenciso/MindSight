@@ -1,17 +1,36 @@
-main {
-    position: absolute;
-    top: 50%;
-    left: 53%;
-    transform: translate(-50%, -50%);
-    padding: 0;
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+    column-gap: 20px;
 }
 
-.content {
+.column1 {
+    width: 30%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 0;
 }
+
+.column2, .column3 {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.column2 {
+    row-gap: 20px;
+}
+
+
 
 .title {
     font-size: 25px;
@@ -19,108 +38,71 @@ main {
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    border-bottom: 2px solid var(--bg-orange);
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
 }
 
-.nature-college-container {
-    width: 1380px;
-    height: 330px;
+#experience, #college, #campus,
+#nature, #religion, #identity {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+}
+
+#myChart1, #myChart2, #myChart3,
+#myChart4, #myChart5{
+    width: auto;
+    height: auto;
+}
+
+.experience-container {
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin: 15px 0 40px 0;
+    padding: 0.8em;
 }
 
-.campus-counselor {
-    width: 670px;
-    height: 240px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.college-container {
+    width: 100%;
+    height: 50%;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin: 15px 20px 0 0;
+    padding: 0.8em;
 }
 
-.campus-clinic-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.college-summary, .nature-concern, .campus, .counselor {
-    margin: 0;
-    padding: 0;
-}
-
-.counselor1, .counselor2, .counselor3, .counselor4 {
-    width: 180px;
-    height: 30px;
-    border-radius: 12px;
-    background: #BECDD3;
-    margin-bottom: 7px;
-    padding: 5px 0 5px 15px;
-}
-
-.clinic-title {
-    margin-left: 20px;
-}
-
-.clinic-container {
-    width: 670px;
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+.campus-container, .religion-container {
+    width: calc(50% - 10px);
+    height: 100%;
     border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    margin-top: 15px;
+    padding: 0.8em;
 }
 
-h1 {
-    font-size: 22px;
-    color: var(--primary-color);
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
+.nature-container, .identity-container {
+    width: 100%;
+    height: 50%;
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0.8em;
 }
 
-.seminar, .community, .consultation {
-    width: 622px;
-    height: 38px;
-    border-radius: 12px;
-    background: #75ACC1;
-    padding: 8px 0 8px 15px;
-    justify-content: center;
-    align-items: center;
+.nature-container {
+    margin-bottom: 1em;
 }
 
-p {
-    padding: 0;
-    margin: 0;
+#myChart6{
+    max-width: 250px;
+    max-height: 250px;
+    margin: 0 auto;
 }
 
-#myChart1, #myChart2 {
-    width: 400px;
-    height: 400px;
-}
-
-#myChart3 {
-    width: 350px;
-    height: 300px;
-}
-
-.campus {
-    margin-right: 5.5em;
-}
-
-.nature-concern {
-    margin-right: 5.5em;
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    column-gap: 20px;
 }
 
 /* Sidebar active indicator */

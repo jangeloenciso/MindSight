@@ -146,3 +146,7 @@ main {
 .admin-indicator img, .admin-indicator span {
     transform: translateX(-7px);
 }
+
+.admin-expand {
+    margin-left: 9px !important;
+}

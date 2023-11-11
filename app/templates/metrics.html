@@ -1,0 +1,55 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/metrics.css" />
+{% endblock %} {% block content %}
+<div class="right">
+  <div class="main-content">
+    <span id="analytics">Analytics</span>
+    <div class="metrics-content">
+      <div class="metrics-left">
+        <div class="first-metric">
+          <select id="firstMetricDropdown">
+            <option value="college">College</option>
+            <option value="course">Course</option>
+            <option value="year_level">Year Level</option>
+            <option value="campus">Campus</option>
+            <option value="age">Age</option>
+            <option value="sex">Sex</option>
+            <option value="gender">Gender</option>
+            <option value="religion">Religion</option>
+            <option value="nationality">Nationality</option>
+            <option value="counesling_history">Counseling History</option>
+            <option value="residence">Residence</option>
+            <option value="learning_styles">Learning Style</option>
+            <option value="personality_test">Personality Type</option>
+            <option value="iq_test">IQ</option>
+            <option value="nature_of_concern">Nature of Concern</option>
+          </select>
+        </div>
+        <div class="compare">
+          <span id="compare">Compare to</span>
+        </div>
+        <div class="second-metric">
+          <select id="secondMetricDropdown">
+            <option value="gpa">GPA</option>
+            <option value="age">Age</option>
+            <option value="sex">Sex</option>
+          </select>
+        </div>
+      </div>
+      <div class="metrics-button">
+        <a href="{{ url_for ('analytics') }}">
+          <button class="metrics">Choose Data to Compare</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="chart-content">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script src="../static/javascript/metrics.js"></script>
+{% endblock %}
