@@ -12,19 +12,27 @@ document.addEventListener('DOMContentLoaded', function() {
 function fetchAndGenerateChart(chartNumber) {
 
     let dataEndpoint;
-    if (chartNumber === 1){
-        dataEndpoint = '/get_data/religion'; 
-    } else if (chartNumber === 2 ) {
-        dataEndpoint = '/get_data/college'; 
-    } else if (chartNumber === 3) {
-        dataEndpoint = '/get_data/campus'; 
-    } else if (chartNumber === 4) {
-        dataEndpoint = '/get_data/religion'; 
-    } else if (chartNumber === 5) {
-        dataEndpoint = '/get_data/nature_of_concern'; 
-    } else if (chartNumber === 6) {
-        dataEndpoint = '/get_data/gender'; 
+    switch (chartNumber) {
+        case 1:
+            dataEndpoint = '/get_data/religion';
+            break;
+        case 2:
+            dataEndpoint = '/get_data/college';
+            break;
+        case 3:
+            dataEndpoint = '/get_data/campus';
+            break;
+        case 4:
+            dataEndpoint = '/get_data/religion';
+            break;
+        case 5:
+            dataEndpoint = '/get_data/nature_of_concern';
+            break;
+        case 6:
+            dataEndpoint = '/get_data/gender';
+            break;
     }
+    
 
     fetch(dataEndpoint)
         .then(response => response.json())
