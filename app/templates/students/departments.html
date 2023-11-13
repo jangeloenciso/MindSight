@@ -39,11 +39,11 @@ endblock %} {% block styles %}
       <div class="row-container">
 
       {% for student in data %}
-        <div class="grid-row">
+        <a href="{{ url_for('student_detail', student_id=student.student_id) }}" class="grid-row">
           <div class="grid-checkbox"><input type="checkbox" /></div>
           <div class="grid-section">{{ student.student_id }}</div>
           <div class="grid-name">{{ student.first_name }} {{ student.last_name }}</div>
-        </div>
+        </a>
       {% endfor %}
       <!-- Add more rows as needed -->
     </div>

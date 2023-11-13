@@ -183,3 +183,7 @@
 #students-container img, #students-container span {
     transform: translateX(-7px);
 }
+
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}

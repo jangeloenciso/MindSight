@@ -5,10 +5,14 @@ from app import app, db
 from app.models.models import *
 from sqlalchemy.orm import joinedload
 
-def process_data():
+def process_data(student_id=None):
     with app.app_context():
+        query = StudentInformation.query
+        if student_id is not None:
+            query = query.filter_by(student_id=student_id)
+
         data = (
-            StudentInformation.query
+            query
             .options(joinedload(StudentInformation.personal_information))
             .options(joinedload(StudentInformation.family_background))
             .options(joinedload(StudentInformation.health_information))
@@ -17,6 +21,7 @@ def process_data():
             .options(joinedload(StudentInformation.visits))
             .all()
         )
+
         data_list = []
         for record in data:
             personal_information = record.personal_information
@@ -63,7 +68,6 @@ def process_data():
                 'father_first_name': family_background.father_first_name,
                 'mother_last_name': family_background.mother_last_name,
                 'mother_first_name': family_background.mother_first_name,
-                            
 
                 # Psychological Assessments
                 'learning_styles': psychological_assessments.learning_styles,
@@ -71,6 +75,7 @@ def process_data():
                 'iq_test': psychological_assessments.iq_test,
                 'nature_of_concern': nature_of_concern,
             })
+            
         df = pd.DataFrame(data_list)
         return df
 

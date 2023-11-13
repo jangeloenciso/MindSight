@@ -131,6 +131,14 @@ def departments():
 
    return render_template('students/departments.html', data=data)
 
+@app.route('/students/<student_id>')
+def student_detail(student_id):
+    data = process_data(student_id)
+    student_data = data.to_dict(orient='records')
+    print(student_data)
+
+    return render_template('students/student_record.html', student_data=student_data)
+
 # API endpoints
 
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
