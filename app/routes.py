@@ -127,7 +127,9 @@ def settings():
 @app.route('/students/departments')
 @login_required
 def departments():
-   return render_template('students/departments.html')
+   data = data_to_dict()
+
+   return render_template('students/departments.html', data=data)
 
 # API endpoints
 

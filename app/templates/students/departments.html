@@ -31,33 +31,21 @@ endblock %} {% block styles %}
     <div class="grid-container">
       <div class="grid-header">
         <div class="grid-checkbox"></div>
-        <div class="grid-section">Section</div>
+        <div class="grid-section">Student ID</div>
         <div class="grid-name">Name</div>
       </div>
 
       <!-- sample data rows -->
       <div class="row-container">
-        <!-- sample row #1 -->
-        <div class="grid-row">
-          <div class="grid-checkbox"><input type="checkbox" /></div>
-          <div class="grid-section">201P</div>
-          <div class="grid-name">Maven Sy</div>
-        </div>
 
-        <!-- sample row #2 -->
+      {% for student in data %}
         <div class="grid-row">
           <div class="grid-checkbox"><input type="checkbox" /></div>
-          <div class="grid-section">401P</div>
-          <div class="grid-name">Mika Cruz</div>
+          <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-name">{{ student.first_name }} {{ student.last_name }}</div>
+          <div class="grid-section">{{ student.student_id }}</div>
         </div>
-
-        <!-- sample row #3 -->
-        <div class="grid-row">
-          <div class="grid-checkbox"><input type="checkbox" /></div>
-          <div class="grid-section">201P</div>
-          <div class="grid-name">Paul Santos</div>
-        </div>
-      </div>
+      {% endfor %}
       <!-- Add more rows as needed -->
     </div>
   </div>
