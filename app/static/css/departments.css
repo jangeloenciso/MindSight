@@ -136,6 +136,7 @@
     color: var(--primary-color);
     padding: 10px;
     justify-content: space-between;
+    text-decoration: none;
 }
 
 
