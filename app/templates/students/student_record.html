@@ -1,9 +1,118 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Students{%endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/departments.css" />
+<link rel="stylesheet" href="/static/css/student-record.css" />
 {% endblock %} {% block content %}
 
-<br>
-<h1> {{student_data[0]['first_name']}} </h1>
+<div class="right">
+    <div class="main">
+        <!-- Header -->
+        <div class="main-header">
+            <h1 class="college"> {{student_data[0]['college']}} </h1>
+            <h1 class="name"> {{student_data[0]['first_name']}} {{student_data[0]['last_name']}} </h1>
+            <div class="vl"></div>
+            <div class="student-id">
+                <h1 class="id">Student ID: &nbsp;</h1>
+                <h1 class="id">{{student_data[0]['student_id']}}</h1>
+            </div>
+            <div class="back-button">
+                <a href="{{ url_for ('departments') }}">
+                    <img src="/static/SVG/back_button.svg"/>
+                </a>
+            </div>
+        </div>
 
+        <!-- Nature, Identity, Campus, and Age -->
+        <div class="row1">
+            <div class="nature-content">
+                <h1 class="title">Nature of Concern: &nbsp;</h1>
+                <h1 class="answer">{{student_data[0]['nature_of_concern']}}</h1>
+            </div>
+            <div class="identity-content">
+                <h1 class="title">Identity: &nbsp;</h1>
+                <h1 class="answer">{{student_data[0]['gender']}}</h1>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="campus-content">
+                <h1 class="title">Campus: &nbsp;</h1>
+                <h1 class="answer">{{student_data[0]['campus']}}</h1>
+            </div>
+            <div class="age-content">
+                <h1 class="title">Age: &nbsp;</h1>
+                <h1 class="answer">{{student_data[0]['age']}}</h1>
+            </div>
+        </div>
 
+        <!-- Full records -->
+        <div class="full-records-button">
+            <h1 class="title">View full records &nbsp;</h1>
+            <img src="/static/SVG/view_button.svg"/>
+        </div>
+        <div class="full-records">
+            <span>Client History and Information</span>
+            <h1 class="title">Basic Information</h1>
+            <div class="column-content">
+                <div class="column1">
+                    <div class="details">
+                        <h1>Client's Name: &nbsp;</h1>
+                        <h1>{{student_data[0]['first_name']}} {{student_data[0]['last_name']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Course/Department: &nbsp;</h1>
+                        <h1>{{student_data[0]['college']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Date of Birth: &nbsp;</h1>
+                        <h1>{{student_data[0]['date_of_birth']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Gender: &nbsp;</h1>
+                        <h1>{{student_data[0]['gender']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Nationality: &nbsp;</h1>
+                        <h1>{{student_data[0]['nationality']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Home Address: &nbsp;</h1>
+                        <h1>{{student_data[0]['residence']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Email Address: &nbsp;</h1>
+                        <h1>{{student_data[0]['contact_number']}}</h1>
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="details">
+                        <h1>Student's Number: &nbsp;</h1>
+                        <h1>{{student_data[0]['student_id']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Grade/Yr. Level: &nbsp;</h1>
+                        <h1>{{student_data[0]['year_level']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Age: &nbsp;</h1>
+                        <h1>{{student_data[0]['age']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Civil Status: &nbsp;</h1>
+                        <h1>{{student_data[0]['']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Religion: &nbsp;</h1>
+                        <h1>{{student_data[0]['religion']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Phone No.: &nbsp;</h1>
+                        <h1>{{student_data[0]['contact_number']}}</h1>
+                    </div>
+                    <div class="details">
+                        <h1>Cellphone No.: &nbsp;</h1>
+                        <h1>{{student_data[0]['contact_number']}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
