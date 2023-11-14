@@ -36,7 +36,8 @@ def process_data(student_id=None):
             college_name = college.college.name if college else None 
 
             nature_of_concern = [visit.nature_of_concern for visit in record.visits]
-
+            nature_of_concern_str = ', '.join(nature_of_concern)
+            
             data_list.append({
                 # Student Information
                 'student_id': record.student_id,
@@ -73,7 +74,7 @@ def process_data(student_id=None):
                 'learning_styles': psychological_assessments.learning_styles,
                 'personality_test': psychological_assessments.personality_test,
                 'iq_test': psychological_assessments.iq_test,
-                'nature_of_concern': nature_of_concern,
+                'nature_of_concern': nature_of_concern_str,
             })
             
         df = pd.DataFrame(data_list)
