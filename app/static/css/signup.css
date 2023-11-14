@@ -134,7 +134,7 @@ body {
     flex-direction: column;
 }
 
-/* login text */
+/* signup text */
 .rsub-container p {
     color: var(--primary-color);
     font-size: 1.4em;
@@ -143,7 +143,7 @@ body {
 }
 
 /* sets the gap between the input boxes */
-.rsub-container form{
+.rsub-container form {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -232,14 +232,14 @@ input:-webkit-autofill {
     padding-right: 50px;
 }
 
-/* login button */
-.login-btn-container {
+/* signup button */
+.signup-btn-container {
     width: 100%;
     height: auto;
     margin-top: 40px;
 }
 
-.login-btn-container button {
+.signup-btn-container button {
     width: 100%;
     height: auto;
     font-size: 1.4em;
@@ -253,8 +253,17 @@ input:-webkit-autofill {
     color: #FEFEFE;
     border: none;
     cursor: pointer;
+    transition: var(--smooth-transition);
 }
 
-.login-btn-container button:hover {
-    background-color: #0E2E5E;
+
+.signup-button:not([disabled]):hover  {
+    background-color: #0E2E5E !important;
+}
+
+/* signup button disabled state */
+.signup-button[disabled] {
+    background-color: #113a4abd;
+    color: var(--text-white-dim);
+    cursor: default;
 }

@@ -45,3 +45,11 @@ function toggleImageConfirm() {
   currentIndexConfirm = (currentIndexConfirm + 1) % 2;
   imageConfirm.src = imageSourcesConfirm[currentIndexConfirm];
 }
+
+// signup button
+var checkbox = document.getElementById("terms-checkbox");
+var proceedButton = document.getElementById("signup-button");
+
+checkbox.addEventListener("change", function () {
+  proceedButton.disabled = !checkbox.checked;
+});
