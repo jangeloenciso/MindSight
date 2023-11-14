@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function () {
+  
 // Password toggle JavaScript code
 const passwordInput = document.getElementById("password");
 const togglePassword = document.getElementById("togglePassword");
@@ -52,4 +54,7 @@ var proceedButton = document.getElementById("signup-button");
 
 checkbox.addEventListener("change", function () {
   proceedButton.disabled = !checkbox.checked;
+});
+
+
 });

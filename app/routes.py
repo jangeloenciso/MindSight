@@ -8,6 +8,8 @@ from .forms import *
 from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
+from flask import render_template, url_for, redirect, flash, get_flashed_messages
+
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -31,24 +33,29 @@ def signup():
     form = SignupForm()
 
     if form.validate_on_submit(): 
-
         _username = form.username.data
         _password = form.password.data
 
-        user = User.query.filter_by(username=_username).first()
-        if user:
-            prmpt = f'Sorry, but the username "{_username}" is already taken'
+        existing_user = User.query.filter_by(username=_username).first()
+        if existing_user:
+            flash(f'Sorry, but the username "{_username}" is already taken', 'error')
         else:
             hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
             new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
-            return redirect(url_for('dashboard'))
+            flash('Signup successful!__signup_success', 'success')  # Append a suffix to denote successful signup
+            
+            return redirect(url_for('signup'))  # Redirect back to signup route to display SweetAlert
+            
     else:
-        prmpt = 'Please correct the form errors.'
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f"{getattr(form, field).label.text}: {error}", 'error')
 
-    return render_template('signup.html', form=form, prmpt=prmpt)
+    messages = get_flashed_messages(with_categories=True)
+    return render_template('signup.html', form=form, messages=messages)
 
 @app.route('/logout')
 @login_required
