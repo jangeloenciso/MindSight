@@ -26,14 +26,14 @@ endblock %} {% block styles %}
 
     <!-- directory buttons -->
     <div class="main-buttons">
-      <a href="{{ url_for ('cea') }}" id="cea">
+      <a href="{{ url_for ('college_records', college="CEA") }}" id="cea">
         <button class="cea">
           <img src="/static/students/cea.png" />
           <span>College of Engineering and Architecture <br />CEA </span>
         </button></a
       >
       <div class="buttons-group">
-        <a href="{{ url_for ('cbea') }}">
+        <a href="{{ url_for ('college_records', college="CBEA") }}">
           <button class="cbea">
             <img src="/static/students/cbea.png" />
             <span
@@ -42,7 +42,7 @@ endblock %} {% block styles %}
             >
           </button></a
         >
-        <a href="{{ url_for ('cas') }}">
+        <a href="{{ url_for ('college_records', college="CAS") }}">
           <button class="cas">
             <img src="/static/students/cas.png" />
             <span
@@ -51,7 +51,7 @@ endblock %} {% block styles %}
             >
           </button></a
         >
-        <a href="{{ url_for ('ced') }}">
+        <a href="{{ url_for ('college_records', college="CED") }}">
           <button class="ced">
             <img src="/static/students/ced.png" />
             <span
@@ -60,7 +60,7 @@ endblock %} {% block styles %}
             >
           </button></a
         >
-        <a href="{{ url_for ('ihk') }}">
+        <a href="{{ url_for ('college_records', college="IHK") }}">
           <button class="ihk">
             <img src="/static/students/ihk.png" />
             <span

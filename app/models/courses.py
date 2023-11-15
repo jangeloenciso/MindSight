@@ -21,7 +21,7 @@ course_names = {
             "Bachelor of Science in Business Administration major in Financial Management",
             "Bachelor of Science in Business Administration major in Human Resource Management",
         ],
-        "COE": [
+        "CED": [
             "Bachelor of Secondary Education major in English",
             "Bachelor of Secondary Education major in Math",
             "Bachelor of Secondary Education major in Science (Boni Campus)",
