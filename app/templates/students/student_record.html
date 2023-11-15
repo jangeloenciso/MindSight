@@ -14,7 +14,7 @@
                 <h1 class="id">{{student_data[0]['student_id']}}</h1>
             </div>
             <div class="back-button">
-                <a href="{{ url_for ('departments') }}">
+                <a href="{{ url_for ('college_records', college=college) }}">
                     <img src="/static/SVG/back_button.svg"/>
                 </a>
             </div>
