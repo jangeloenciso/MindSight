@@ -107,7 +107,7 @@ def college_records(college):
     def college_name(college):
         college_dict = {
             'CEA': 'College of Engineering and Architecture',
-            'CBEA': ' College of Business Economics and Accounting',
+            'CBEA': 'College of Business Entrepreneurship and Accountancy',
             'CAS': 'College of Arts and Sciences',
             'CED': 'College of Education',
             'IHK': 'Institute of Human Kinetics'

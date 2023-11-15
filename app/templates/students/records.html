@@ -7,6 +7,12 @@
       <div class="main">
         <div class="main-header">
             <span>{{ college_name }}</span>
+            <div class="back-button">
+                <a href="{{ url_for ('students') }}">
+                    <img src="/static/SVG/back_button.svg"/>
+                </a>
+            </div>
+        </div>
           <p>The records below are for <b>xxx - YEAR.</b></p>
           <div class="search-container">
             <form>
@@ -18,7 +24,7 @@
               </div>
             </form>
           </div>
-        </div>
+
         <!-- delete button -->
         <div class="delete-container">
           <img
