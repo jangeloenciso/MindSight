@@ -6,7 +6,7 @@
 {% block content %}
     <div class="test">
         <h2>Edit Student Record</h2>
-        <form method="POST" action="{{ url_for('edit_record', college=college, student_id=student.student_id) }}">
+        <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
             {{ form.csrf_token }}
             <div>
                 {{ form.hidden_tag() }}
@@ -184,7 +184,7 @@
                 {{ form.submit }}
             </div>
             <div>
-                <a href="{{ url_for('student_record', student_id=student.student_id, college=college) }}">
+                <a href="{{ url_for('student_record', student_id=student.student_id) }}">
                     <button type="button">Cancel</button>
                 </a>
             </div>

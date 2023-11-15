@@ -118,23 +118,25 @@ def college_records(college):
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
-@app.route('/students/records/<college>/<student_id>')
+@app.route('/students/records/view/<student_id>')
 @login_required
-def student_record(student_id, college):
+def student_record(student_id):
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
-    print(student_data)
+
+    print(student_id)
 
     if len(student_data) == 0:
         # TODO: ADD A FLASH "STUDENT NOT FOUND"
-        return redirect(url_for('college_records', college=college))
+        print("mayo amp")
+        return redirect(url_for('college_records'))
 
-    return render_template('students/student_record.html', student_data=student_data, college=college)
+    return render_template('students/student_record.html', student_data=student_data)
 
 
-@app.route('/students/records/<college>/<student_id>/edit', methods=['GET', 'POST'])
+@app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
 @login_required
-def edit_record(college, student_id):
+def edit_record(student_id):
     student = (
         StudentInformation.query
         .options(
@@ -151,7 +153,7 @@ def edit_record(college, student_id):
     
     if not student:
         flash('Student not found', 'danger')
-        return redirect(url_for('college_records', college=college))
+        return redirect(url_for('college_records'))
 
     form = EditStudentForm(obj=student)
 
@@ -165,11 +167,11 @@ def edit_record(college, student_id):
 
         db.session.commit()
         flash('Student record updated successfully', 'success')
-        return redirect(url_for('student_record', college=college, student_id=student_id))
+        return redirect(url_for('student_record', student_id=student_id))
     
     print(form.errors)
 
-    return render_template('students/edit_record.html', form=form, college=college, student_id=student_id, student=student)
+    return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
 
 # API endpoints

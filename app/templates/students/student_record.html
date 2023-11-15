@@ -14,7 +14,7 @@
                 <h1 class="id">{{student_data[0]['student_id']}}</h1>
             </div>
             <div class="back-button">
-                <a href="{{ url_for ('college_records', college=college) }}">
+                <a href="{{ url_for ('college_records', college=student_data[0]['college'])}}">
                     <img src="/static/SVG/back_button.svg"/>
                 </a>
             </div>
@@ -51,7 +51,7 @@
                 <img src="/static/SVG/view_button.svg"/>    
             </button>
         </div>
-        <a href={{ url_for('edit_record', college=student_data[0]['college'], student_id=student_data[0]['student_id']) }}><button> EDIT </button></a>
+        <a href={{ url_for('edit_record', student_id=student_data[0]['student_id']) }}><button> EDIT </button></a>
         <div id="studentDetails" class="full-records">
             <span>Client History and Information</span>
             <div class="info">

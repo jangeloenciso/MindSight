@@ -45,7 +45,7 @@
     
           {% for student in data %}
             {% if student.college == college%}
-                <a href="{{ url_for('student_record', student_id=student.student_id, college=student.college) }}" class="grid-row">
+                <a href="{{ url_for('student_record', student_id=student.student_id) }}" class="grid-row">
                 <div class="grid-checkbox"><input type="checkbox" /></div>
                 <div class="grid-section">{{ student.student_id }}</div>
                 <div class="grid-name"> {{ student.last_name }}, {{ student.first_name }}</div>
