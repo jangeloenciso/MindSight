@@ -81,7 +81,7 @@
 .rows {
     width: 100%;
     height: 25%;
-    margin-bottom: 1em;
+    margin-bottom: 0.9em;
 }
 .row1, .row2 {
     display: flex;
@@ -135,6 +135,12 @@
     width: 1.3em;
 }
 
+.info {
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+
 .basic-info {
     width: 100%;
     height: 100%;
@@ -147,13 +153,14 @@
 }
 
 .full-records {
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: var(--white);
     width: 100%;
-    height: 55%;
+    height: 60%;
     border-radius: 2.5rem;
     color: var(--primary-color);
     padding: 1em 2.5em;
@@ -163,12 +170,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 800;
     line-height: normal;
     border-bottom: 2px solid var(--bg-orange);
     width: 100%;
     padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .view-records {
@@ -183,9 +191,16 @@
 .details {
     display: flex;
     flex-direction: row;
+    margin: 0;
+    padding: 0;
 }
 
-.column-content {
+.data {
+    color: var(--bg-orange);
+    font-weight: normal;
+}
+
+.basic-info-column-content{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -197,10 +212,39 @@
     padding: 0;
 }
 
-.column1, .column2 {
+.basic-info-column1, .basic-info-column2 {
     width: 100%;
 }
 
+
+.guardian-info-column-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.4rem;
+    line-height: normal;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.guardian-info-column1, .guardian-info-column2 {
+    width: 100%;
+}
+
+.referral-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.referral-data {
+    font-size: 1.1rem;
+    font-weight: normal;
+    line-height: normal;
+    color: var(--bg-orange);
+}
 /* sweet alert/modal style */
 .swal2-popup {
     width: 70%;
@@ -241,14 +285,19 @@
     padding-bottom: 0.6em;
 }
 
+.full-records-modal .info {
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
+
 .full-records-modal .details {
     display: flex;
     flex-direction: row;
     font-size: 0.5rem;
 }
 
-.full-records-modal .column-content {
-    overflow-y: scroll;
+.full-records-modal .basic-info-column-content {
     display: flex;
     flex-direction: row;
     justify-content: center;
