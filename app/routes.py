@@ -1,6 +1,6 @@
-import os
 from app import app, db, bcrypt
-from app.models.models import User
+from app.models.models import *
+from sqlalchemy.orm import joinedload
 from flask import render_template, url_for, redirect, flash
 from flask_login import login_user, logout_user, login_required
 from .data_processing import *
@@ -8,6 +8,7 @@ from .forms import *
 from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
+from app.forms.edit_record import EditStudentForm
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -85,8 +86,6 @@ def analytics():
 def metrics():
    return render_template('metrics.html')
 
-
-
 @app.route('/settings')
 @login_required
 def settings():
@@ -101,6 +100,7 @@ def students():
    return render_template('students.html')
 
 @app.route('/students/records/<college>')
+@login_required
 def college_records(college):
     data = data_to_dict()
 
@@ -119,12 +119,57 @@ def college_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/students/records/<college>/<student_id>')
-def student_detail(student_id, college):
+@login_required
+def student_record(student_id, college):
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
     print(student_data)
 
+    if len(student_data) == 0:
+        # TODO: ADD A FLASH "STUDENT NOT FOUND"
+        return redirect(url_for('college_records', college=college))
+
     return render_template('students/student_record.html', student_data=student_data, college=college)
+
+
+@app.route('/students/records/<college>/<student_id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_record(college, student_id):
+    student = (
+        StudentInformation.query
+        .options(
+            joinedload(StudentInformation.personal_information),
+            joinedload(StudentInformation.family_background),
+            joinedload(StudentInformation.health_information),
+            joinedload(StudentInformation.educational_background),
+            joinedload(StudentInformation.psychological_assessments),
+            joinedload(StudentInformation.visits)
+        )
+        .filter_by(student_id=student_id)
+        .first()
+    )
+    if not student:
+        flash('Student not found', 'danger')
+        return redirect(url_for('college_records', college=college))
+
+    form = EditStudentForm(obj=student)
+
+    if form.validate_on_submit():
+        form.populate_obj(student)
+        form.populate_obj(student.personal_information)
+        form.populate_obj(student.family_background)
+        form.populate_obj(student.health_information)
+        form.populate_obj(student.educational_background)
+        form.populate_obj(student.psychological_assessments)
+
+        db.session.commit()
+        flash('Student record updated successfully', 'success')
+        return redirect(url_for('student_record', college=college, student_id=student_id))
+    
+    print(form.errors)
+
+    return render_template('students/edit_record.html', form=form, college=college, student_id=student_id, student=student)
+
 
 # API endpoints
 

@@ -51,6 +51,7 @@
                 <img src="/static/SVG/view_button.svg"/>    
             </button>
         </div>
+        <a href={{ url_for('edit_record', college=student_data[0]['college'], student_id=student_data[0]['student_id']) }}><button> EDIT </button></a>
         <div id="studentDetails" class="full-records">
             <span>Client History and Information</span>
             <div class="info">
