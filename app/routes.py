@@ -148,6 +148,7 @@ def edit_record(college, student_id):
         .filter_by(student_id=student_id)
         .first()
     )
+    
     if not student:
         flash('Student not found', 'danger')
         return redirect(url_for('college_records', college=college))

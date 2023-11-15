@@ -11,8 +11,7 @@
             <div>
                 {{ form.hidden_tag() }}
                 <!-- Fields from StudentInformation model -->
-                {{ student.college }}
-                <h1> asdfasdf </h1>
+
                 <div>
                     {{ form.last_name.label }}
                     {{ form.last_name(value=student.last_name) }}
@@ -185,7 +184,7 @@
                 {{ form.submit }}
             </div>
             <div>
-                <a href="{{ url_for('student_record', student_id=student.student_id, college=student.college) }}">
+                <a href="{{ url_for('student_record', student_id=student.student_id, college=college) }}">
                     <button type="button">Cancel</button>
                 </a>
             </div>
