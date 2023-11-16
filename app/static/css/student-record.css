@@ -131,18 +131,12 @@
     justify-content: space-between;
     color: var(--primary-color);
     margin-bottom: 0.5em;
-    cursor: pointer;
 }
 
 .full-records-button img {
     aspect-ratio: 1/1;
     width: 1.3em;
-    cursor: pointer;
     transition: var(--smooth-transition);
-}
-
-.full-records-button img:hover {
-    transform: translateX(5px) scale(1.1);
 }
 
 .edit-print-button {
@@ -223,6 +217,11 @@
     flex-direction: row;
     align-items: center;
     color: var(--primary-color);
+    cursor: pointer;
+}
+
+.view-records:hover img  {
+    transform: translateX(5px) scale(1.1);
 }
 
 .details {
