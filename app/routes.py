@@ -91,10 +91,19 @@ def metrics():
 def settings():
     return render_template('settings.html')
 
-@app.route('/students/records/search/')
+@app.route('/students/records/search/', methods=['GET'])
 @login_required
 def search():
-    return render_template('search.html')
+    query = request.args.get('query')
+
+    print(query)
+
+    search_data = process_data(search_query=query)
+    search_results = search_data.to_dict(orient='records')
+
+    print(search_results)
+
+    return render_template('search.html', search_results=search_results, query=query)
 
 
 # Student components

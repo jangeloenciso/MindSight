@@ -1,0 +1,53 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Search{{ college }} {%endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/departments.css" />
+{% endblock %} {% block content %}
+<div class="right">
+    <div class="main">
+      <div class="main-header">
+          <span>Search Results</span>
+          <div class="back-button">
+              <a href="{{ url_for ('students') }}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+          </div>
+      </div>
+      <hr>
+        <div class="search-container">
+          <form method="GET" action="{{ url_for('search', query=query) }}">
+            <div class="search-bar">
+              <input type="text" placeholder="Search" name="query" value="{{query}}"/>
+              <button type="submit">
+                <img src="/static/students/search.png" alt="search" />
+              </button>
+            </div>
+          </form>
+        </div>
+
+      <!-- delete button -->
+      <div class="delete-container">
+        <img
+          src="/static/students/delete.png"
+          alt="delete"
+          class="delete-button"
+        />
+      </div>
+
+<div class="grid-container">
+    <div class="grid-header">
+      <div class="grid-checkbox"></div>
+      <div class="grid-section">Student ID</div>
+      <div class="grid-name">Name</div>
+    </div>
+        <div class="row-container">
+        {% for record in search_results %}
+            <a href="{{ url_for('student_record', student_id=record.student_id) }}" class="grid-row">
+            <div class="grid-checkbox"><input type="checkbox" /></div>
+            <div class="grid-section">{{ record.student_id }}</div>
+            <div class="grid-name"> {{ record.last_name }}, {{ record.first_name }}</div>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

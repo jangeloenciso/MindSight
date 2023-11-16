@@ -5,11 +5,42 @@ from app import app, db
 from app.models.models import *
 from sqlalchemy.orm import joinedload
 
-def process_data(student_id=None):
+def process_data(student_id=None, search_query=None):
     with app.app_context():
         query = StudentInformation.query
+
         if student_id is not None:
             query = query.filter_by(student_id=student_id)
+
+        if search_query:
+            query = (
+                query
+                .join(PersonalInformation)
+                .join(EducationalBackground)
+                .join(PsychologicalAssessments)
+                .join(Course, Course.name == StudentInformation.course)
+                .join(College, College.id == Course.college_id) 
+                .filter(
+                    (StudentInformation.student_id.ilike(f"%{search_query}%")) |
+                    (StudentInformation.first_name.ilike(f"%{search_query}%")) |
+                    (StudentInformation.last_name.ilike(f"%{search_query}%")) |
+                    (StudentInformation.course.ilike(f"%{search_query}%")) |
+                    (StudentInformation.year_level.ilike(f"%{search_query}%")) |
+                    (StudentInformation.campus.ilike(f"%{search_query}%")) |
+                    (PersonalInformation.sex.ilike(f"%{search_query}%")) |
+                    (PersonalInformation.gender.ilike(f"%{search_query}%")) |
+                    (PersonalInformation.religion.ilike(f"%{search_query}%")) |
+                    (PersonalInformation.nationality.ilike(f"%{search_query}%")) |
+                    (PersonalInformation.place_of_birth.ilike(f"%{search_query}%")) |
+                    (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
+                    (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
+                    (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
+                    (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
+                    (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
+                    (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
+                    (College.name.ilike(f"%{search_query}%"))
+            )
+        )
 
         data = (
             query
