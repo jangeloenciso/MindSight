@@ -12,9 +12,38 @@
         @media print {
             body {
                 font-size: 12pt;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
 
             /* Add other print-specific styles here */
+        }
+
+        .basic-info {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5em;
+        }
+
+        .guardian-info {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5em;
+        }
+
+        .referral-content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5em;
+        }
+
+        .emergency-info-content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5em;
+        }
+        
+        .title {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -75,6 +104,7 @@
 
     <!-- Guardian Information -->
     <div class="guardian-info">
+        <p class="title">Guardian's Information</p>
         <div class="guardian-info-column-content">
             <div class="guardian-info-column1">
                 <div class="details">
@@ -95,8 +125,29 @@
     <!-- Referral Source -->
     <div class="referral-content">
         <p class="title">Referral Source</p>
+        <div class="details">
             <p class="referral-title">Who referred you to our office, or how did you learn about our service?</p>
+        </div>
+        <div class="details">
             <p class="referral-data">Lorem ipsum dolor sit amet consectetur. Arcu eget adipiscing mattis pharetra tellus tempus ipsum fermentum.</p>
+        </div>
+    </div>
+
+    <!-- Emergency Contact Information -->
+    <div class="emergency-info-content">
+        <p class="title">Emergency Contact Information</p>
+        <div class="details"> 
+            <p>Name: &nbsp; {{student_data[0]['mother_first_name']}} {{student_data[0]['mother_last_name']}}</p>
+        </div>
+        <div class="details">
+            <p>Address: &nbsp; {{student_data[0]['residence']}}</p>
+        </div>
+        <div class="details">
+            <p>Relationship: &nbsp; Mother</p>
+        </div>
+        <div class="details">
+            <p>Cellphone No.: &nbsp; {{student_data[0]['contact_number']}}</p>
+        </div>
     </div>
 
     <script>

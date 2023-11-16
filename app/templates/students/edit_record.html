@@ -11,9 +11,9 @@
             <div class="main-header">
                 <span>Edit Records</span>
                 <div class="back-button">
-                    <a href="{{ url_for ('student_record', student_id=student.student_id) }}">
+                    <button class="confirmation" id="confirm">
                         <img src="/static/SVG/back_button.svg"/>
-                    </a>
+                    </button>
                 </div>
             </div>
             <p>Change the current record of a Student</p>
@@ -230,4 +230,7 @@
             </form>
     </div>
 </div>
+
+<script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+<script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
 {% endblock %}

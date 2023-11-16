@@ -51,6 +51,11 @@
     cursor: pointer;
 }
 
+.confirmation {
+    border: none;
+    background: none;
+}
+
 .for-header {
     display: flex;
     flex-direction: column;

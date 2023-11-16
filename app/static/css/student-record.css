@@ -272,6 +272,33 @@
     line-height: normal;
     color: var(--bg-orange);
 }
+
+.emergency-info-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.emergency-info-column-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.emergency-info-column1, .emergency-info-column2 {
+    width: 100%;
+}
+
+
 /* sweet alert/modal style */
 .swal2-popup {
     width: 70%;

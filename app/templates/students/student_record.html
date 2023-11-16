@@ -159,9 +159,38 @@
                 <!-- Referral Source -->
                 <div class="referral-content">
                     <h1 class="title">Referral Source</h1>
-                        <h1 class="referral-title">Who referred you to our office, or how did you learn about our service?</h1>
-                        <h1 class="referral-data">Lorem ipsum dolor sit amet consectetur. Arcu eget adipiscing mattis pharetra tellus tempus ipsum fermentum.</h1>
+                    <h1 class="referral-title">Who referred you to our office, or how did you learn about our service?</h1>
+                    <h1 class="referral-data">Lorem ipsum dolor sit amet consectetur. Arcu eget adipiscing mattis pharetra tellus tempus ipsum fermentum.</h1>
                 </div>
+
+                <!-- Emergency Contact Information -->
+                <div class="emergency-info-content">
+                    <h1 class="title">Emergency Contact Information</h1>
+                    <div class="emergency-info-column-content">
+                        <div class="emergency-info-column1">
+                            <div class="details">
+                                <h1>Name: &nbsp;</h1>
+                                <h1 class="data">{{student_data[0]['mother_first_name']}} {{student_data[0]['mother_last_name']}}</h1>
+                            </div>
+                            <div class="details">
+                                <h1>Address: &nbsp;</h1>
+                                <h1 class="data">{{student_data[0]['residence']}}</h1>
+                            </div>
+                        </div>
+                        <div class="emergency-info-column2">
+                            <div class="details">
+                                <h1>Relationship: &nbsp;</h1>
+                                <h1 class="data">Mother</h1>
+                            </div>
+                            <div class="details">
+                                <h1>Cellphone No.: &nbsp;</h1>
+                                <h1 class="data">{{student_data[0]['contact_number']}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
 
             </div>
         </div>

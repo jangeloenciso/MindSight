@@ -250,6 +250,11 @@ function generateBarGraph(data, chartNumber) {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
                 // animations: {
                 //     tension: {
                 //       duration: 1000,
@@ -259,22 +264,22 @@ function generateBarGraph(data, chartNumber) {
                 //       loop: true
                 //     }
                 // },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'left',
-                        align: 'center',
-                        labels: {
-                            color: 'rgba(9, 83, 113, 1)',
-                            textAlign: 'left'
-                        },
-                        title: {
-                            display: true,
-                            color: 'rgba(9, 83, 113, 1)',
-                            text: 'Legends'
-                        }
-                    }
-                }
+                // plugins: {
+                //     legend: {
+                //         display: true,
+                //         position: 'left',
+                //         align: 'center',
+                //         labels: {
+                //             color: 'rgba(9, 83, 113, 1)',
+                //             textAlign: 'left'
+                //         },
+                //         title: {
+                //             display: true,
+                //             color: 'rgba(9, 83, 113, 1)',
+                //             text: 'Legends'
+                //         }
+                //     }
+                // }
             }
         });
     } else if (chartNumber === 6) {
