@@ -55,4 +55,4 @@ class EditStudentForm(FlaskForm):
     iq_test = StringField('IQ Test', validators=[Length(max=100)])
 
 
-    submit = SubmitField('Save Changes')
+    submit = SubmitField('Update')

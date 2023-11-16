@@ -148,20 +148,18 @@
     aspect-ratio: 1/1;
     width: 2.5em;
     cursor: pointer;
-    background-color: var(--primary-color);
-    padding: 5px;
     border-radius: 50%;
     overflow: hidden;
     transition: var(--smooth-transition);
 }
 
-.edit, .print {
-    margin: 0 0.5em;
-}
-
-.edit, .print:hover {
+/* .edit, .print:hover {
     background-color: var(--bg-orange);
     transform: scale(1.1);
+} */
+
+.edit, .print {
+    margin: 0 0.5em;
 }
 
 .info {
