@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Document</title>
+
+    <!-- Styles for printing -->
+    <style>
+        @media print {
+            body {
+                font-size: 12pt;
+            }
+
+            /* Add other print-specific styles here */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="basic-info">
+        <p class="title">Basic Information</p>
+        <div class="basic-info-column-content">
+            <div class="basic-info-column1">
+                <div class="details">
+                    <p>Client's Name: &nbsp;{{student_data[0]['first_name']}} {{student_data[0]['last_name']}}</p>
+                </div>
+                <div class="details">
+                    <p>Course/Department: &nbsp;{{student_data[0]['college']}}</p>
+                </div>
+                <div class="details">
+                    <p>Date of Birth: &nbsp;{{student_data[0]['date_of_birth']}}</p>
+                </div>
+                <div class="details">
+                    <p>Gender: &nbsp;{{student_data[0]['gender']}}</p>
+                </div>
+                <div class="details">
+                    <p>Nationality: &nbsp;{{student_data[0]['nationality']}}</p>
+                </div>
+                <div class="details">
+                    <p>Home Address: &nbsp;{{student_data[0]['residence']}}</p>
+                </div>
+                <div class="details">
+                    <p>Email Address: &nbsp;{{student_data[0]['contact_number']}}</p>
+                </div>
+            </div>
+            <div class="basic-info-column2">
+                <div class="details">
+                    <p>Student's Number: &nbsp;{{student_data[0]['student_id']}}</p>
+                </div>
+                <div class="details">
+                    <p>Grade/Yr. Level: &nbsp;{{student_data[0]['year_level']}}</p>
+                </div>
+                <div class="details">
+                    <p>Age: &nbsp;{{student_data[0]['age']}}</p>
+                </div>
+                <div class="details">
+                    <p>Civil Status: &nbsp;{{student_data[0]['']}}</p>
+                </div>
+                <div class="details">
+                    <p>Religion: &nbsp;{{student_data[0]['religion']}}</p>
+                </div>
+                <div class="details">
+                    <p>Phone No.: &nbsp;{{student_data[0]['contact_number']}}</p>
+                </div>
+                <div class="details">
+                    <p>Cellphone No.: &nbsp;{{student_data[0]['contact_number']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guardian Information -->
+    <div class="guardian-info">
+        <div class="guardian-info-column-content">
+            <div class="guardian-info-column1">
+                <div class="details">
+                    <p>Name of Guardian: &nbsp;{{student_data[0]['mother_first_name']}} {{student_data[0]['mother_last_name']}}</p>
+                </div>
+                <div class="details">
+                    <p>Address of Guardian: &nbsp;{{student_data[0]['residence']}}</p>
+                </div>
+            </div>
+            <div class="guardian-info-column2">
+                <div class="details">
+                    <p>Guardian's Contact No.: &nbsp;{{student_data[0]['contact_number']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Referral Source -->
+    <div class="referral-content">
+        <p class="title">Referral Source</p>
+            <p class="referral-title">Who referred you to our office, or how did you learn about our service?</p>
+            <p class="referral-data">Lorem ipsum dolor sit amet consectetur. Arcu eget adipiscing mattis pharetra tellus tempus ipsum fermentum.</p>
+    </div>
+
+    <script>
+        // Trigger print window when the page loads
+        window.onload = function () {
+            window.print();
+            // Close the window after printing (optional)
+            window.onafterprint = function () {
+                window.close();
+            };
+        };
+    </script>
+
+</body>
+
+</html>

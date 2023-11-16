@@ -105,6 +105,21 @@ def search():
 
     return render_template('search.html', search_results=search_results, query=query)
 
+@app.route('/students/records/view/<student_id>/print')
+@login_required
+def print_record(student_id):
+    data = process_data(student_id)
+    student_data = data.to_dict(orient='records')
+
+    print(student_id)
+
+    if len(student_data) == 0:
+        # TODO: ADD A FLASH "STUDENT NOT FOUND"
+        print("mayo amp")
+        return redirect(url_for('college_records'))
+
+    return render_template('print_record.html', student_data=student_data)
+
 
 # Student components
 
