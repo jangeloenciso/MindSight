@@ -103,9 +103,10 @@
         // Trigger print window when the page loads
         window.onload = function () {
             window.print();
-            // Close the window after printing (optional)
+            // Handle window after print
             window.onafterprint = function () {
-                window.close();
+                // Redirect to the previous page
+                window.history.back();
             };
         };
     </script>
