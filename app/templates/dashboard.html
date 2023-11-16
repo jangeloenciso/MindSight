@@ -39,6 +39,6 @@ endblock %} {% block styles %}
   </div>
 </div>
 
-<script src="../static/javascript/cdn/chartjs.js"></script>
-<script src="../static/javascript/dashboard.js"></script>
+<script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
 {% endblock %}
