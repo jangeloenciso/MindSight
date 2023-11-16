@@ -69,12 +69,12 @@ def dashboard():
 @app.route('/developers')
 @login_required
 def developers():
-   return render_template('developers.html')
+    return render_template('developers.html')
 
 @app.route('/admin')
 @login_required
 def admin():
-   return render_template('admin.html')
+    return render_template('admin.html')
 
 @app.route('/analytics', methods=['GET', 'POST'])
 @login_required
@@ -84,12 +84,17 @@ def analytics():
 @app.route('/analytics/analysis')
 @login_required
 def metrics():
-   return render_template('metrics.html')
+    return render_template('metrics.html')
 
 @app.route('/settings')
 @login_required
 def settings():
-   return render_template('settings.html')
+    return render_template('settings.html')
+
+@app.route('/students/records/search/')
+@login_required
+def search():
+    return render_template('search.html')
 
 
 # Student components
@@ -97,7 +102,7 @@ def settings():
 @app.route('/students')
 @login_required
 def students():
-   return render_template('students.html')
+    return render_template('students.html')
 
 @app.route('/students/records/<college>')
 @login_required
