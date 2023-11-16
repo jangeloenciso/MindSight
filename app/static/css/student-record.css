@@ -68,6 +68,7 @@
 .back-button img {
     aspect-ratio: 1/1;
     width: 1.3em;
+    cursor: pointer;
 }
 
 .vl {
@@ -126,13 +127,41 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     color: var(--primary-color);
     margin-bottom: 0.5em;
+    cursor: pointer;
 }
 
 .full-records-button img {
     aspect-ratio: 1/1;
     width: 1.3em;
+}
+
+.edit-print-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.edit-print-button img {
+    aspect-ratio: 1/1;
+    width: 2.5em;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    padding: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: var(--smooth-transition);
+}
+
+.edit, .print {
+    margin: 0 0.5em;
+}
+
+.edit, .print:hover {
+    background-color: var(--bg-orange);
+    transform: scale(1.1);
 }
 
 .info {

@@ -11,7 +11,7 @@ from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
 
 @app.route('/')
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
 
@@ -76,7 +76,7 @@ def developers():
 def admin():
     return render_template('admin.html')
 
-@app.route('/analytics', methods=['GET', 'POST'])
+@app.route('/analytics', methods=['POST', 'GET'])
 @login_required
 def analytics():
     return render_template('analytics.html')
@@ -91,7 +91,7 @@ def metrics():
 def settings():
     return render_template('settings.html')
 
-@app.route('/students/records/search/', methods=['GET'])
+@app.route('/students/records/search/', methods=['POST'])
 @login_required
 def search():
     query = request.args.get('query')
@@ -163,7 +163,7 @@ def student_record(student_id):
     return render_template('students/student_record.html', student_data=student_data)
 
 
-@app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
+@app.route('/students/records/edit/<student_id>', methods=['POST', 'GET'])
 @login_required
 def edit_record(student_id):
     student = (
@@ -205,13 +205,13 @@ def edit_record(student_id):
 
 # API endpoints
 
-@app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
+@app.route('/get_data/<first_metric>/<second_metric>', methods=['POST'])
 def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
     print(data)
     return jsonify(data)
 
-@app.route('/get_data/<data_to_count>', methods=['GET'])
+@app.route('/get_data/<data_to_count>', methods=['POST'])
 def get_college_count(data_to_count):
     data = data_count(data_to_count)
     print(data)
