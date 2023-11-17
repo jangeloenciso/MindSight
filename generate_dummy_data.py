@@ -48,7 +48,7 @@ with app.app_context():
             last_name = family_name,
             first_name = fake.first_name(),
             course = fake.random_element(elements=course_names),
-            year_level=str(random.randint(1, 4)),
+            year_level=fake.random_element(elements=["1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year"]),
             gpa=round(random.uniform(1.0, 5.0), 2),
             campus=fake.random_element(elements=["Boni", "Pasig"])
         )

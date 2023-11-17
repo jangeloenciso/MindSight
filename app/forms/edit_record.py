@@ -7,13 +7,13 @@ class EditStudentForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired(), Length(max=50)])
     first_name = StringField('First Name', validators=[DataRequired(), Length(max=50)])
     course = StringField('Course', validators=[DataRequired(), Length(max=100)])
-    year_level = StringField('Year Level', validators=[Length(max=20)])
+    year_level = SelectField('Year Level', choices=[('1st Year', '1st Year'), ('2nd Year', '2nd Year'), ('3rd Year', '3rd Year'), ('4th Year', '4th Year'), ('5th Year', '5th Year')])
     gpa = FloatField('GPA')
-    campus = StringField('Campus', validators=[DataRequired(), Length(max=20)])
+    campus = SelectField('Campus', choices=[('Boni', 'Boni'), ('Pasig', 'Pasig')])
 
     # Fields from PersonalInformation model
     age = IntegerField('Age')
-    sex = StringField('Sex', validators=[Length(max=10)])
+    sex = SelectField('Sex', choices=[('Male', 'Male'), ('Female', 'Female')])
     gender = StringField('Gender', validators=[Length(max=20)])
     contact_number = StringField('Contact Number', validators=[Length(max=20)])
     religion = StringField('Religion', validators=[Length(max=50)])

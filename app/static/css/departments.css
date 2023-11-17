@@ -34,7 +34,7 @@
     width: 100%;
     height: auto;
     color: var(--primary-color);
-    margin-bottom: 0.5em;
+    margin-bottom: 2em;
     border-bottom: 2px solid var(--bg-orange);
     padding-bottom: 1em;
 }
