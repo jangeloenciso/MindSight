@@ -102,6 +102,47 @@ p {
     margin: 0 1em;
 }
 
+.update-button, .cancel-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.5em;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.update-button, .cancel-button:hover {
+    background-color: var(--bg-orange);
+}
+
+/* Style for the cancel button */
+.cancel-button {
+    /* You can add specific styles for the cancel button here */
+}
+
+
+/* sweet alert/modal style */
+.swal2-popup {
+    color: var(--bg-orange);
+    background: var(--main-db-bg-color);
+    font-size: 1rem;
+    border-radius: 3rem;
+    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(10px);
+}
+
+.swal2-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: normal;
+    color: var(--primary-color);
+}
+
+
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
     content: "";
