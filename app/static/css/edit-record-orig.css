@@ -1,0 +1,152 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
+    padding: 0 0 0.5em 0;
+}
+
+.main-header span {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 1.3em;
+    cursor: pointer;
+}
+
+.confirmation {
+    border: none;
+    background: none;
+}
+
+.for-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 2em;
+}
+
+p {
+    font-size: 1.3rem;
+    line-height: normal;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 0 0 0.2em 0;
+    padding: 0;
+}
+
+.title {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    line-height: normal;
+    font-weight: bold;
+    margin: 0 0 0.5em 0;
+}
+
+.fields {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: normal;
+    color: #9C9E9F;
+}
+
+.scroll-content {
+    overflow-y: scroll;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.submit, .cancel {
+    margin: 0 1em;
+}
+
+.form-section {
+    margin-bottom: 20px;
+  }
+  
+  .form-section-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-label {
+    width: 200px;
+    text-align: right;
+    margin-right: 20px;
+  }
+  
+  .form-input,
+  .form-dropdown {
+    flex: 1;
+    padding: 8px;
+    margin-right: 20px;
+  }
+  
+  .form-input:last-child,
+  .form-dropdown:last-child {
+    margin-right: 0;
+  }
+  
+/* Sidebar active indicator */
+.sidebar-buttons #students-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#students-container img, #students-container span {
+    transform: translateX(-7px);
+}

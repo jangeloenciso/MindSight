@@ -19,215 +19,96 @@
             <p>Change the current record of a Student</p>
         </div>
         <div class="scroll-content">
-            <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
-                {{ form.csrf_token }}
-                
-                    {{ form.hidden_tag() }}
-                <div class="information">
-                    <div class="title">
-                        <h1>Student Information</h1>
-                    </div>
-                    <!-- Fields from StudentInformation model -->
-                    <div class="fields">
-                        <label>Student Name (Last Name, First Name): &nbsp;</label>
-                        {{ form.last_name(value=student.last_name) }} &nbsp; {{ form.first_name(value=student.first_name) }}
-                    </div>
-                    <div class="fields">
-                        <label>Course: &nbsp;</label>
-                        {{ form.course(value=student.course) }}
-                    </div>
-                    <div class="fields">
-                        <label>Year Level: &nbsp;</label>
-                        {{ form.year_level(value=student.year_level) }}
-                    </div>
-                    <div class="fields">
-                        <label>GPA: &nbsp;</label>
-                        {{ form.gpa(value=student.gpa) }}
-                    </div>
-                    <div class="fields">
-                        <label>Campus: &nbsp;</label>
-                        {{ form.campus(value=student.campus) }}
-                    </div>
-                </div>
-
-                <div class="information">
-                    <div class="title">
-                        <h1>Personal Information</h1>
-                    </div>
-                    <!-- Fields from PersonalInformation model -->
-                    <div class="fields">
-                        {{ form.age.label }}
-                        {{ form.age(value=student.personal_information.age) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.sex.label }}
-                        {{ form.sex(value=student.personal_information.sex) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.gender.label }}
-                        {{ form.gender(value=student.personal_information.gender) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.contact_number.label }}
-                        {{ form.contact_number(value=student.personal_information.contact_number) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.religion.label }}
-                        {{ form.religion(value=student.personal_information.religion) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.date_of_birth.label }}
-                        {{ form.date_of_birth(value=student.personal_information.date_of_birth) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.place_of_birth.label }}
-                        {{ form.place_of_birth(value=student.personal_information.place_of_birth) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.nationality.label }}
-                        {{ form.nationality(value=student.personal_information.nationality) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.counseling_history.label }}
-                        {{ form.counseling_history(value=student.personal_information.counseling_history) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.residence.label }}
-                        {{ form.residence(value=student.personal_information.residence) }}
-                    </div>
-                </div>
-
-                <div class="information">
-                    <div class="title">
-                        <h1>Family Background</h1>
-                    </div>
-                    <!-- Fields from FamilyBackground model -->
-                    <div class="fields">
-                        {{ form.father_age.label }}
-                        {{ form.father_age(value=student.family_background.father_age) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.father_last_name.label }}
-                        {{ form.father_last_name(value=student.family_background.father_last_name) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.mother_age.label }}
-                        {{ form.mother_age(value=student.family_background.mother_age) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.mother_last_name.label }}
-                        {{ form.mother_last_name(value=student.family_background.mother_last_name) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.father_first_name.label }}
-                        {{ form.father_first_name(value=student.family_background.father_first_name) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.mother_first_name.label }}
-                        {{ form.mother_first_name(value=student.family_background.mother_first_name) }}
-                    </div>
-                </div>
-
-                <div class="information">
-                    <div class="title">
-                        <h1>Health Information</h1>
-                    </div>
-                    <!-- Fields from HealthInformation model -->
-                    <div class="fields">
-                        {{ form.height.label }}
-                        {{ form.height(value=student.health_information.height) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.weight.label }}
-                        {{ form.weight(value=student.health_information.weight) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.sight.label }}
-                        {{ form.sight(value=student.health_information.sight) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.hearing.label }}
-                        {{ form.hearing(value=student.health_information.hearing) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.speech.label }}
-                        {{ form.speech(value=student.health_information.speech) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.general_health.label }}
-                        {{ form.general_health(value=student.health_information.general_health) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.experienced_sickness.label }}
-                        {{ form.experienced_sickness(value=student.health_information.experienced_sickness) }}
-                    </div>
-                </div>
-
-                <div class="information">
-                    <div class="title">
-                        <h1>Educational Background</h1>
-                    </div>
-                    <!-- Fields from EducationalBackground model -->
-                    <div class="fields">
-                        {{ form.senior_high_school.label }}
-                        {{ form.senior_high_school(value=student.educational_background.senior_high_school) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.shs_strand.label }}
-                        {{ form.shs_strand(value=student.educational_background.shs_strand) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.shs_graduation_year.label }}
-                        {{ form.shs_graduation_year(value=student.educational_background.shs_graduation_year) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.junior_high_school.label }}
-                        {{ form.junior_high_school(value=student.educational_background.junior_high_school) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.jhs_graduation_year.label }}
-                        {{ form.jhs_graduation_year(value=student.educational_background.jhs_graduation_year) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.elementary_school.label }}
-                        {{ form.elementary_school(value=student.educational_background.elementary_school) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.elementary_graduation_year.label }}
-                        {{ form.elementary_graduation_year(value=student.educational_background.elementary_graduation_year) }}
-                    </div>
-                </div>
-
-                <div class="information">
-                    <div class="title">
-                        <h1>Educational Background</h1>
-                    </div>
-                    <!-- Fields from PsychologicalAssessments model -->
-                    <div class="fields">
-                        {{ form.learning_styles.label }}
-                        {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.personality_test.label }}
-                        {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
-                    </div>
-                    <div class="fields">
-                        {{ form.iq_test.label }}
-                        {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
-                    </div>
-                </div>
-        </div>
-                <div class="buttons">
-                    <div class="submit">
-                        {{ form.submit }}
-                    </div>
-                    <div class="cancel">
-                        <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-                            <button type="button">Cancel</button>
-                        </a>
-                    </div>
-                </div>
-            </form>
+          <div class="form-section">
+            <div class="form-section-title">STUDENT INFORMATION</div>
+            <div class="form-row">
+              <div class="form-label">Last Name:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">First Name:</div>
+              <input type="text" class="form-input">
+            </div>
+            <div class="form-row">
+              <div class="form-label">Course:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Year Level:</div>
+              <select class="form-dropdown">
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+                <option value="5">5th Year</option>
+              </select>
+              <div class="form-label">GPA:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Campus:</div>
+              <select class="form-dropdown">
+                <option value="Boni">Boni</option>
+                <option value="Pasig">Pasig</option>
+              </select>
+            </div>
+          </div>
+        
+          <div class="form-section">
+            <div class="form-section-title">PERSONAL INFORMATION</div>
+            <div class="form-row">
+              <div class="form-label">Age:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Sex:</div>
+              <select class="form-dropdown">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div class="form-label">Gender:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Contact No.:</div>
+              <input type="text" class="form-input">
+            </div>
+            <!-- Other personal information fields -->
+          </div>
+        
+          <div class="form-section">
+            <div class="form-section-title">FAMILY BACKGROUND</div>
+            <div class="form-row">
+              <div class="form-label">Mother Last Name:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Mother First Name:</div>
+              <input type="text" class="form-input">
+            </div>
+            <!-- Other family background fields -->
+          </div>
+        
+          <div class="form-section">
+            <div class="form-section-title">HEALTH INFORMATION</div>
+            <div class="form-row">
+              <div class="form-label">Height (cm):</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Weight (kg):</div>
+              <input type="text" class="form-input">
+            </div>
+            <!-- Other health information fields -->
+          </div>
+        
+          <div class="form-section">
+            <div class="form-section-title">EDUCATIONAL BACKGROUND</div>
+            <div class="form-row">
+              <div class="form-label">Elementary School:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Graduation Year:</div>
+              <input type="text" class="form-input">
+            </div>
+            <!-- Other educational background fields -->
+          </div>
+        
+          <div class="form-section">
+            <div class="form-section-title">PSYCHOLOGICAL ASSESSMENT</div>
+            <div class="form-row">
+              <div class="form-label">Learning Style:</div>
+              <input type="text" class="form-input">
+              <div class="form-label">Personality Test:</div>
+              <input type="text" class="form-input">
+            </div>
+            <!-- Other psychological assessment fields -->
+          </div>
     </div>
 </div>
 
