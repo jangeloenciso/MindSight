@@ -38,7 +38,7 @@
                     </div>
                     <div class="fields">
                         <label>Year Level: &nbsp;</label>
-                        {{ form.year_level(value=student.year_level) }}
+                        {{ form.year_level(value=student.year_level, class="form-dropdown") }}
                     </div>
                     <div class="fields">
                         <label>GPA: &nbsp;</label>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="fields">
                         <label>Campus: &nbsp;</label>
-                        {{ form.campus(value=student.campus) }}
+                        {{ form.campus(value=student.campus, class="form-dropdown") }}
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                     </div>
                     <div class="fields">
                         {{ form.sex.label }}
-                        {{ form.sex(value=student.personal_information.sex) }}
+                        {{ form.sex(value=student.personal_information.sex, class="form-dropdown") }}
                     </div>
                     <div class="fields">
                         {{ form.gender.label }}
