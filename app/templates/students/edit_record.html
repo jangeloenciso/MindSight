@@ -222,10 +222,9 @@
                         {{ form.submit(class="update-button") }}
                     </div>
                     <div class="cancel">
-                        <button class="cancel-button" type="button">Cancel
-                            <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-                            </a>
-                        </button>
+                        <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+                            <button class="cancel-button" type="button">Cancel</button>
+                        </a>
                     </div>
                 </div>
             </form>

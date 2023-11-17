@@ -103,25 +103,25 @@ p {
 }
 
 .update-button, .cancel-button {
+    width: 100%;
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 1.5em;
+    padding: 0.5em 1em;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1.7rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 400;
     line-height: normal;
 }
 
-.update-button, .cancel-button:hover {
-    background-color: var(--bg-orange);
+.update-button:hover {
+    background-color: var(--bg-orange);   
 }
 
-/* Style for the cancel button */
-.cancel-button {
-    /* You can add specific styles for the cancel button here */
+.cancel-button:hover {
+    background-color: var(--bg-orange);
 }
 
 
