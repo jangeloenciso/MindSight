@@ -1,115 +1,193 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Edit Record {% endblock %}
-{% block styles %}
-    <link rel="stylesheet" href="/static/css/edit-record.css" />
-{% endblock %}
-{% block content %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Edit Record
+{% endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/edit-record.css" />
+{% endblock %} {% block content %}
 
 <div class="right">
-    <div class="main">
-        <div class="for-header">
-            <div class="main-header">
-                <span>Edit Records</span>
-                <div class="back-button">
-                    <button class="confirmation" id="confirm">
-                        <img src="/static/SVG/back_button.svg"/>
-                    </button>
-                </div>
-            </div>
-            <p>Change the current record of a Student</p>
+  <div class="main">
+    <div class="for-header">
+      <div class="main-header">
+        <span>Edit Records</span>
+        <div class="back-button">
+          <button class="confirmation" id="confirm">
+            <img src="/static/SVG/back_button.svg" />
+          </button>
         </div>
-        <div class="scroll-content">
-          <div class="form-section">
-            <div class="form-section-title">STUDENT INFORMATION</div>
-            <div class="form-row">
-              <div class="form-label">Last Name:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">First Name:</div>
-              <input type="text" class="form-input">
-            </div>
-            <div class="form-row">
-              <div class="form-label">Course:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Year Level:</div>
-              <select class="form-dropdown">
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-                <option value="5">5th Year</option>
-              </select>
-              <div class="form-label">GPA:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Campus:</div>
-              <select class="form-dropdown">
-                <option value="Boni">Boni</option>
-                <option value="Pasig">Pasig</option>
-              </select>
-            </div>
-          </div>
-        
-          <div class="form-section">
-            <div class="form-section-title">PERSONAL INFORMATION</div>
-            <div class="form-row">
-              <div class="form-label">Age:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Sex:</div>
-              <select class="form-dropdown">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-              <div class="form-label">Gender:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Contact No.:</div>
-              <input type="text" class="form-input">
-            </div>
-            <!-- Other personal information fields -->
-          </div>
-        
-          <div class="form-section">
-            <div class="form-section-title">FAMILY BACKGROUND</div>
-            <div class="form-row">
-              <div class="form-label">Mother Last Name:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Mother First Name:</div>
-              <input type="text" class="form-input">
-            </div>
-            <!-- Other family background fields -->
-          </div>
-        
-          <div class="form-section">
-            <div class="form-section-title">HEALTH INFORMATION</div>
-            <div class="form-row">
-              <div class="form-label">Height (cm):</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Weight (kg):</div>
-              <input type="text" class="form-input">
-            </div>
-            <!-- Other health information fields -->
-          </div>
-        
-          <div class="form-section">
-            <div class="form-section-title">EDUCATIONAL BACKGROUND</div>
-            <div class="form-row">
-              <div class="form-label">Elementary School:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Graduation Year:</div>
-              <input type="text" class="form-input">
-            </div>
-            <!-- Other educational background fields -->
-          </div>
-        
-          <div class="form-section">
-            <div class="form-section-title">PSYCHOLOGICAL ASSESSMENT</div>
-            <div class="form-row">
-              <div class="form-label">Learning Style:</div>
-              <input type="text" class="form-input">
-              <div class="form-label">Personality Test:</div>
-              <input type="text" class="form-input">
-            </div>
-            <!-- Other psychological assessment fields -->
-          </div>
+      </div>
+      <p>Change the current record of a Student</p>
     </div>
+    <div class="scroll-content">
+      <div class="form-section">
+        <div class="form-section-title">STUDENT INFORMATION</div>
+        <div class="form-row">
+          <div class="form-label">Last Name:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">First Name:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Course:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Year Level:</div>
+          <select class="form-dropdown">
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="5">5th Year</option>
+          </select>
+          <div class="form-label">GPA:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Campus:</div>
+          <select class="form-dropdown">
+            <option value="Boni">Boni</option>
+            <option value="Pasig">Pasig</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">PERSONAL INFORMATION</div>
+        <div class="form-row">
+          <div class="form-label">Age:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Sex:</div>
+          <select class="form-dropdown">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Gender:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Contact No.:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Religion:</div>
+        </div>
+        <div class="form-row">
+          <input type="text" class="form-input" />
+          <div class="form-label">Date of Birth:</div>
+          <input type="date" class="form-input" />
+          <div class="form-label">Place of Birth:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Nationality:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Counseling History:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Residence:</div>
+          <input type="text" class="form-input" />
+        </div>
+      </div>
+      <!-- Other personal information fields -->
+
+      <div class="form-section">
+        <div class="form-section-title">FAMILY BACKGROUND</div>
+        <div class="form-row">
+          <div class="form-label">Mother Last Name:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Mother First Name:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Mother Age:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Father Last Name:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Father First Name:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Father Age:</div>
+          <input type="text" class="form-input" />
+        </div>
+      </div>
+      <!-- Other family background fields -->
+
+      <div class="form-section">
+        <div class="form-section-title">HEALTH INFORMATION</div>
+        <div class="form-row">
+          <div class="form-label">Height (cm):</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Weight (kg):</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Sight:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Hearing:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Speech:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">General Health:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Experienced Sickness:</div>
+          <input type="text" class="form-input" />
+        </div>
+
+        <!-- Other health information fields -->
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">EDUCATIONAL BACKGROUND</div>
+        <div class="form-row">
+          <div class="form-label">Elementary School:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Graduation Year:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Junior High School:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Graduation Year:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Senior High School:</div>
+          <input type="text" class="form-input" />
+          <div class="form-label">Graduation Year:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Senior High Strand:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <!-- Other educational background fields -->
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">PSYCHOLOGICAL ASSESSMENT</div>
+        <div class="form-row">
+          <div class="form-label">Learning Style:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">Personality Test:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-label">IQ Test:</div>
+          <input type="text" class="form-input" />
+        </div>
+        <!-- Other psychological assessment fields -->
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
