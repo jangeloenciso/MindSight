@@ -200,7 +200,7 @@
 
                 <div class="information">
                     <div class="title">
-                        <h1>Educational Background</h1>
+                        <h1>Psychological Assessments</h1>
                     </div>
                     <!-- Fields from PsychologicalAssessments model -->
                     <div class="fields">
@@ -218,13 +218,16 @@
                 </div>
         </div>
                 <div class="buttons">
-                    <div class="submit">
-                        {{ form.submit }}
+                    <div>
+                        <button class="update-button">
+                            {{ form.submit }}
+                        </button>
                     </div>
                     <div class="cancel">
-                        <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-                            <button type="button">Cancel</button>
-                        </a>
+                        <button class="cancel-button" type="button">Cancel
+                            <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+                            </a>
+                        </button>
                     </div>
                 </div>
             </form>

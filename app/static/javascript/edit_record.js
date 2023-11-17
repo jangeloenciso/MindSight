@@ -5,7 +5,8 @@ document.getElementById('confirm').addEventListener('click', function() {
         confirmButtonColor: "#095371",
         confirmButtonText: 'Yes',
         showCancelButton: true,
-        cancelButtonText: 'No'
+        cancelButtonText: 'No',
+        cancelButtonColor: "#DB9354"
     }).then((result) => {
         if (result.isConfirmed) {
             // If confirmed, redirect to the student_record page
