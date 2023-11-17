@@ -116,7 +116,7 @@ def print_record(student_id):
     if len(student_data) == 0:
         # TODO: ADD A FLASH "STUDENT NOT FOUND"
         print("mayo amp")
-        return redirect(url_for('college_records'))
+        return redirect(url_for('students'))
 
     return render_template('print_record.html', student_data=student_data)
 
@@ -155,11 +155,6 @@ def student_record(student_id):
 
     print(student_id)
 
-    if len(student_data) == 0:
-        # TODO: ADD A FLASH "STUDENT NOT FOUND"
-        print("mayo amp")
-        return redirect(url_for('college_records'))
-
     return render_template('students/student_record.html', student_data=student_data)
 
 
@@ -180,9 +175,9 @@ def edit_record(student_id):
         .first()
     )
     
-    if not student:
-        flash('Student not found', 'danger')
-        return redirect(url_for('college_records'))
+    # if not student:
+    #     flash('Student not found', 'danger')
+    #     return redirect(url_for('college_records', college="CBEA"))
 
     form = EditStudentForm(obj=student)
 
