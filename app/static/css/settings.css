@@ -90,7 +90,7 @@ input[type="text"], input[type="password"] {
     border: 2px solid var(--primary-color);
     border-radius: 10px;
     color: var(--primary-color);
-    background-color: var(--main-db-bg-color);
+    background-color: transparent;
     font-size: 1.5em;
     width: 40%;
     letter-spacing: 2px;
@@ -117,10 +117,9 @@ input[type="text"], input[type="password"] {
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-    color: var(--bg-orange);
     width: auto;
-    background: var(--main-db-bg-color);
-    border-radius: 3.75rem;
+    background: var(--white);
+    border-radius: 1.5rem;
     box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
     backdrop-filter: blur(10px);
 }

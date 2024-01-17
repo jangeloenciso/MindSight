@@ -46,6 +46,7 @@
 /* search */
 .search-container {
     position: relative;
+    width: 50%;
 }
 
 .search-bar {
@@ -85,6 +86,51 @@
     aspect-ratio: 1 / 1;
 }
 
+.search-upload-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* upload file */
+.upload-button {
+    width: 12%;
+    background-color: var(--primary-color);
+    border-radius: 40px;
+    border: 2px solid #095371;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.upload-button button {
+    background: none;
+    border: none;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.upload-button button img {
+    height: 33px;
+    aspect-ratio: 1 / 1;
+    margin-right: 1em;
+}
+
+.upload-button p {
+    font-size: 1em;
+    color: var(--white);
+}
+
+.upload-button:hover {
+    background-color: var(--bg-orange);
+    border: none;
+}
 
 /* directory buttons */
 .main-buttons {
@@ -215,4 +261,59 @@
 
 #students-container img, #students-container span {
     transform: translateX(-7px);
+}
+
+/* for modal style */
+.swal2-popup {
+    width: auto;
+    background: var(--white);
+    border-radius: 1.5rem;
+    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(10px);
+}
+
+.file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.drop-file {
+    border: 3px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+  
+.drop-title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+  
+.drop-down-college,
+.drop-down-year {
+    margin-bottom: 20px;
+}
+  
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+  
+.swal2-popup.cancel-button  {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+}
+
+.swal2-popup.submit-button  {
+    background-color: var(--primary-color);
+    border: none;
 }
