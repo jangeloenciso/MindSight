@@ -3,15 +3,11 @@
     justify-content: center;
     width: calc(100% - 73px);
     height: 100vh;
-
     /* positions right div properly */
     margin-left: 73px;
-
     /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
-
-
 
 .main {
     border-radius: 1em;
@@ -21,16 +17,15 @@
     height: 100%;
     border: 3px solid var(--bg-orange);
     padding: 20px;
+    background-color: #faf4f4;
 }
-
-
 
 /* header */
 .main-header {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    height: 10%;
     color: var(--primary-color);
     justify-content: space-between;
     align-items: center;
@@ -56,40 +51,81 @@
     background: none;
 }
 
-.for-header {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 10%;
-    margin-bottom: 2em;
-}
-
-p {
-    font-size: 1.3rem;
-    line-height: normal;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin: 0 0 0.2em 0;
-    padding: 0;
-}
-
-.title {
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    line-height: normal;
-    font-weight: bold;
-    margin: 0 0 0.5em 0;
-}
-
-.fields {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: normal;
-    color: #9C9E9F;
+hr {
+    margin: 40px 0 40px 0;
+    border-top: 1.2px solid var(--bg-orange);
 }
 
 .scroll-content {
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.scroll-content section {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.left-header {
+    font-size: 1.4em;
+}
+
+/* inputs section */
+.right-content {
+    display: flex;
+    margin-left: auto;
+    width: 70%;
+    flex-direction: column;
+    padding: 0 20px 0 40px;
+    row-gap: 10px;
+}
+
+
+/* FORMATS */
+.single-row {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.single-row-half {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 20px);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+}
+
+
+
+.double-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.double-row div {
+    flex: 50%;
+}
+
+
+.double-row div:nth-child(1) select, .double-row div:nth-child(1) input {
+    width: calc(100% - 20px);
+}
+
+.double-row div:nth-child(2) input {
+    width: 100%;
 }
 
 .buttons {
@@ -117,7 +153,7 @@ p {
 }
 
 .update-button:hover {
-    background-color: var(--bg-orange);   
+    background-color: var(--bg-orange);
 }
 
 .cancel-button:hover {
