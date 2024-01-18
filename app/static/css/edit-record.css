@@ -3,14 +3,16 @@
     justify-content: center;
     width: calc(100% - 73px);
     height: 100vh;
+
     /* positions right div properly */
     margin-left: 73px;
+
     /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
 .main {
-    border-radius: 1em;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,7 +33,7 @@
     align-items: center;
     border-bottom: 2px solid var(--bg-orange);
     margin-bottom: 1em;
-    padding: 0 0 0.5em 0;
+    padding: 0 0 0.5em;
 }
 
 .main-header span {
@@ -40,10 +42,24 @@
     text-transform: uppercase;
 }
 
+* {
+    transition: var(--smooth-transition);
+}
+
+
+.back-button button {
+    cursor: pointer;
+}
+
 .back-button img {
     aspect-ratio: 1/1;
     width: 1.3em;
-    cursor: pointer;
+    position: relative;
+
+}
+
+.back-button:hover img {
+    transform: translateX(-5px) scale(1.1);
 }
 
 .confirmation {
@@ -52,7 +68,7 @@
 }
 
 hr {
-    margin: 40px 0 40px 0;
+    margin: 40px 0;
     border-top: 1.2px solid var(--bg-orange);
 }
 
@@ -68,6 +84,8 @@ hr {
 
 .left-header {
     font-size: 1.4em;
+    font-family: Lexend-medium;
+    color: var(--primary-color);
 }
 
 /* inputs section */
@@ -78,6 +96,9 @@ hr {
     flex-direction: column;
     padding: 0 20px 0 40px;
     row-gap: 10px;
+    color: var(--primary-color);
+
+    /* font-weight: 500; */
 }
 
 
@@ -99,6 +120,7 @@ select {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 input {
@@ -106,6 +128,7 @@ input {
     margin-top: 5px;
     border-radius: 10px;
     border: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 
@@ -128,36 +151,46 @@ input {
     width: 100%;
 }
 
-.buttons {
+footer {
     display: flex;
-    flex-direction: row;
+    position: relative;
+    column-gap: 20px;
+    transform: translate(-20px, 20px);
+    border-radius: 0 0 1em 1em;
+    align-items: center;
     justify-content: center;
+    background-color: var(--bg-orange);
+    padding: 10px;
+    width: calc(100% + 40px);
+    height: 60px;
 }
 
-.submit, .cancel {
-    margin: 0 1em;
-}
-
-.update-button, .cancel-button {
-    width: 100%;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 1.7rem;
+footer button {
+    padding: 7px 62px;
+    font-family: Lexend-regular;
+    font-size: 1em;
+    border-radius: 0.2em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: normal;
 }
 
-.update-button:hover {
-    background-color: var(--bg-orange);
+footer button:hover {
+    opacity: 1;
 }
 
-.cancel-button:hover {
-    background-color: var(--bg-orange);
+.update-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.update-btn:hover {
+    background-color: #084b65;
+}
+
+.cancel-btn {
+    border: 2px solid var(--primary-color);
+    background-color: none;
+    color: var(--primary-color);
 }
 
 
@@ -167,7 +200,7 @@ input {
     background: var(--main-db-bg-color);
     font-size: 1rem;
     border-radius: 3rem;
-    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
+    box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
     backdrop-filter: blur(10px);
 }
 
