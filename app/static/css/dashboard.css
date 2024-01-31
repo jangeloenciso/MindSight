@@ -50,9 +50,15 @@
 }
 
 #myChart1, #myChart2, #myChart3,
-#myChart4, #myChart5{
+#myChart4, #myChart5 {
     width: auto;
     height: auto;
+}
+
+
+/* White bg css */
+.experience-container, .college-container, .identity-container, .nature-container, .religion-container, .campus-container {
+    background-color: var(--white);
 }
 
 .experience-container {
@@ -91,7 +97,7 @@
     margin-bottom: 1em;
 }
 
-#myChart6{
+#myChart6 {
     max-width: 250px;
     max-height: 250px;
     margin: 0 auto;
