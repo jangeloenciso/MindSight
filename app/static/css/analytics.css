@@ -166,3 +166,9 @@ option {
 #analytics-container img, #analytics-container span {
     transform: translateX(-7px);
 }
+
+
+/* White bg css */
+.experience-container, .college-container, .campus-container, .nature-container, .religion-container, .identity-container{
+    background-color: var(--white);
+}
