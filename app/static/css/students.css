@@ -307,13 +307,3 @@ select {
     width: 100%;
     box-sizing: border-box;
 }
-  
-.swal2-popup.cancel-button  {
-    background: transparent;
-    border: 2px solid var(--primary-color);
-}
-
-.swal2-popup.submit-button  {
-    background-color: var(--primary-color);
-    border: none;
-}
