@@ -1,50 +1,47 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Settings{% endblock %}
-
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/settings.css"/> 
-{% endblock %}
-
-{% block content %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Settings{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/settings.css" />
+{% endblock %} {% block content %}
 <div class="right">
-    <div class="content-frame"> 
-      <span class="title">Account</span>
-      <hr>
-      <div class="name-content">
-        <div class="name-fields">
-          <label id="first-name">First name</label>
-          <input type="text" placeholder="Enter your new first name" name="first_name">
-        </div>
-        <div class="name-fields">
-          <label id="last-name">Last name</label>
-          <input type="text" placeholder="Enter your new last name" name="last_name">
-        </div>
-      </div>
-      <hr>
-      <div class="account">
-        <div class="account-fields">
-          <label id="username">Username</label>
-          <input type="text" placeholder="Enter your new username" name="username">
-        </div>
-        <div class="account-fields">
-          <label id="email-address">Email Address</label>
-          <input type="text" placeholder="Enter your new email address" name="email_address">
-        </div>
-        <div class="account-fields">
-          <label id="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your new password" name="password">
-        </div>
-      </div>
-      <hr>
-
-      <!-- add sweetalert in here for verification before updating the account information -->
-      <button class="update" id="toggleAlert">Update</button>
+  <div class="main">
+    <div class="main-header">
+      <span>Settings</span>
     </div>
-</div>
+    <div class="scroll-content">
+      <section>
+        <div class="left-header">User Profile Details</div>
+        <div class="right-content">
+          <div class="single-row">
+            <label for="ufname">First name</label>
+            <input type="text" id="ufname" name="ufname" />
+          </div>
 
-</body>
+          <div class="single-row">
+            <label for="lname">Last name</label>
+            <input type="text" id="ulname" name="ulname" />
+          </div>
+
+          <div class="single-row">
+            <label for="lname">Username</label>
+            <input type="text" id="username" name="username" />
+          </div>
+
+          <div class="single-row">
+            <label for="lname">Email</label>
+            <input type="email" id="email" name="email" />
+          </div>
+
+          <div class="single-row">
+            <label for="lname">Password</label>
+            <input type="password" id="password" name="password" />
+          </div>
+          <button class="update-btn" id="toggleAlert">Update</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 
 <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
 <script src="{{url_for('static', filename='javascript/settings.js')}}"></script>
 {% endblock %}
-

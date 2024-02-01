@@ -11,141 +11,141 @@
     padding: 40px;
 }
 
-.content-frame {
+.main {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
     border: 3px solid var(--bg-orange);
-    padding: 2em;
-    background-color: var(--white);
+    padding: 20px;
+    background-color: #faf4f4;
 }
 
-.name-content, .account {
-    flex-direction: column;
-    margin: 0;
-}
-
-.name-fields, .account-fields {
+/* header */
+.main-header {
+    display: flex;
     flex-direction: row;
-    margin: 1em 0;
-}
-
-.title {
+    width: 100%;
+    height: 10%;
     color: var(--primary-color);
-    font-size: 1.5rem;
-    font-style: normal;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
+    padding: 0 0 0.5em;
+}
+
+.main-header span {
+    font-size: 2.2rem;
     font-weight: bold;
-    line-height: normal;
-    text-align: left;
-    margin-bottom: 0.5em;
+    text-transform: uppercase;
 }
 
-label {
-    color: #000;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    text-align: left;
-    letter-spacing: 2px;
-}
-
-#first-name {
-    margin-right: 12em;
-}
-
-#last-name {
-    margin-right: 12.2em;
-}
-
-#username {
-    margin-right: 12.4em;
-}
-
-#email-address {
-    margin-right: 10.1em;
-}
-
-#password {
-    margin-right: 12.7em;
+* {
+    transition: var(--smooth-transition);
 }
 
 hr {
-    width: 100%;
-    padding: 0;
-    margin: 2em 0;
-    border-color: var(--primary-color);
-    opacity: 0.5;
+    margin: 40px 0;
+    border-top: 1.2px solid var(--bg-orange);
 }
 
+.scroll-content {
+    overflow-y: auto;
+}
 
-/* placeholder color */
-input[type="text"]::placeholder, input[type="password"]::placeholder {
+.scroll-content section {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-header {
+    font-size: 1.4em;
+    font-family: Lexend-medium;
     color: var(--primary-color);
-    opacity: 0.5;
 }
 
-/* username and password input box */
-input[type="text"], input[type="password"] {
-    padding: 8px 17px;
-    border: 2px solid var(--primary-color);
+/* inputs section */
+.right-content {
+    display: flex;
+    margin-left: auto;
+    width: 70%;
+    flex-direction: column;
+    padding: 0 20px 0 40px;
+    row-gap: 10px;
+    color: var(--primary-color);
+
+    /* font-weight: 500; */
+}
+
+
+/* FORMATS */
+.single-row {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.single-row-half {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 20px);
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
     border-radius: 10px;
+    border: 1px solid var(--primary-color);
     color: var(--primary-color);
-    background-color: transparent;
-    font-size: 1.5em;
-    width: 40%;
-    letter-spacing: 2px;
 }
 
-.update {
+.update-btn {
+    margin-left: auto;
+    margin-top: 20px;
+    width: 200px;
+    padding: 7px 62px;
+    font-family: Lexend-regular;
+    font-size: 1em;
+    border-radius: 0.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.update-btn {
+    background-color: var(--primary-color);
+    color: white;
     border: none;
-    background-color: inherit;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
 }
 
-.update:hover {
-    color: var(--bg-orange);
+.update-btn:hover {
+    background-color: #084b65;
 }
 
 
 /* sweet alert/modal style */
 .swal2-popup {
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    width: auto;
+    color: var(--primary-color);
     background: var(--white);
-    border-radius: 1.5rem;
-    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(10px);
-}
-
-.swal2-popup .swal2-input {
-    font-size: 1.5rem;
-    width: auto;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .swal2-title {
     font-size: 2rem;
+    font-weight: 800;
+    line-height: normal;
     color: var(--primary-color);
 }
 
-.swal2-popup .swal2-iconHTML{
-    aspect-ratio: 1/1;
-    width: 100px;
-}
-
-.no-border {
-    border: 0;
-}
 
 /* Sidebar active indicator */
-.sidebar-buttons #settings-container::before {
+.sidebar-buttons #students-container::before {
     content: "";
     position: relative;
     left: 0;
@@ -155,6 +155,6 @@ input[type="text"], input[type="password"] {
     transform: translateX(-25px);
 }
 
-#settings-container img, #settings-container span {
+#students-container img, #students-container span {
     transform: translateX(-7px);
 }

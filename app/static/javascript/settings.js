@@ -1,6 +1,6 @@
 document.getElementById('toggleAlert').addEventListener('click', function() {
     swal.fire({
-        title: "Please enter your password to confirm",
+        title: "Please enter your password to confirm changes",
         input: "password",
         inputPlaceholder: "Enter your password",
         inputAttributes: {
