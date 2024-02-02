@@ -19,20 +19,10 @@
             ><img src="/static/SVG/dashboard.svg" /><span>Dashboard</span></a
           >
         </li>
-        <li class="admin-container">
-          <div id="admin-main-menu" class="admin-indicator">
-            <img src="/static/SVG/admin.svg" /><span class="admin-expand"
-              ><span>Admin</span>
-              <img
-                id="expand-img"
-                src={{ url_for('static', filename='SVG/expand arrow.svg') }}
-                alt="expand"
-            /></span>
-          </div>
-          <ul class="sub-menu" id="admin-submenu">
-            <li><a href="{{ url_for('admin') }}">Admin</a></li>
-            <li><a href="{{ url_for('developers') }}">Developers</a></li>
-          </ul>
+        <li>
+          <a href="{{ url_for('admin') }}" id="admin-container">
+            <img src="/static/SVG/admin.svg" /><span>Admin</span></a
+          >
         </li>
         <li>
           <a href="{{ url_for('analytics') }}" id="analytics-container"

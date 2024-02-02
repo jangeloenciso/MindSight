@@ -189,7 +189,7 @@ h1 {
 }
 
 /* Sidebar active indicator */
-.sidebar-buttons .admin-indicator::before {
+.sidebar-buttons #admin-container::before {
     content: "";
     position: relative;
     left: 0;
@@ -199,10 +199,6 @@ h1 {
     transform: translateX(-25px);
 }
 
-.admin-indicator img, .admin-indicator span {
+#admin-container img, #admin-container span {
     transform: translateX(-7px);
-}
-
-.admin-expand {
-    margin-left: 9px !important;
 }

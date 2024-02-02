@@ -97,7 +97,7 @@
     margin-right: 12px;
 }
 
-.sidebar a, .sidebar #admin-main-menu {
+.sidebar a {
     display: flex;
     width: 100%;
     height: 100%;
@@ -113,38 +113,6 @@
     flex-direction: column;
     cursor: pointer;
 }
-
-/* "Admin" and "Developers" sub menu */
-.sidebar .admin-container li a {
-    padding-left: 60px;
-    font-size: 20px;
-    color: white;
-    display: none;
-}
-
-.sidebar a:hover {
-    background-color: var(--bg-orange);
-    transition: var(--smooth-transition);
-}
-
-.admin-expand {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 0;
-}
-
-/* animated rotation when expanding */
-#expand-img {
-    transition: transform 0.3s ease;
-}
-
-
-.sub-menu {
-    box-shadow: rgb(50 50 93 / 25%) 0 30px 60px -12px inset, rgb(0 0 0 / 30%) 0 18px 36px -18px inset;
-    background-color: #094c66;
-}
-
 
 .dim {
     position: absolute;
