@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash
+from flask import render_template, url_for, redirect, flash, request
 from flask_login import login_user, logout_user, login_required
 from .data_processing import *
 from .forms import *
@@ -9,6 +9,8 @@ from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
+import pytesseract
+from PIL import Image
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])

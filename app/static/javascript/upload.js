@@ -4,7 +4,7 @@ document.getElementById('toggleUpload').addEventListener('click', function() {
         <div class="file-container">
             <div id="drop-file" class="drop-file">
                 <span class="drop-title">Drop files here</span>
-                <input type="file" id="fileDrop" class="file-drop" multiple />
+                <input type="file" name="scanned_image" accept="image/*">
             </div>
 
             <div class="drop-down-college">
@@ -25,7 +25,6 @@ document.getElementById('toggleUpload').addEventListener('click', function() {
                     <option value="2">Second Year</option>
                     <option value="2">Third Year</option>
                     <option value="2">Fourth Year</option>
-                    <option value="2">Fifth Year</option>
                 </select>
             </div>
         </div>

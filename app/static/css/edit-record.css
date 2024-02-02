@@ -19,7 +19,7 @@
     height: 100%;
     border: 3px solid var(--bg-orange);
     padding: 20px;
-    background-color: #faf4f4;
+    background-color: var(--white);
 }
 
 /* header */

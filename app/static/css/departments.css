@@ -124,7 +124,8 @@ p {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    background-color: #c6cfc6;
+    border: 3px solid var(--primary-color);
+    background-color: var(--primary-color);
     overflow-y: auto;
     padding-bottom: 10px;
     border: 3px solid var(--primary-color);
@@ -134,7 +135,7 @@ p {
     display: flex;
     background-color: var(--primary-color);
     color: var(--white);
-
+    font-weight: bold;
     padding: 10px;
     justify-content: space-between;
 }
