@@ -1,61 +1,68 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - {{ college }} {%endblock %} {% block styles %}
+{% extends "components/base.html" %} {% block title %} Mindsight - {{ college }}
+{%endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/departments.css" />
 {% endblock %} {% block content %}
-    
-    <div class="right">
-      <div class="main">
-        <div class="main-header">
-            <span>{{ college_name }}</span>
-            <div class="back-button">
-                <a href="{{ url_for ('students') }}">
-                    <img src="/static/SVG/back_button.svg"/>
-                </a>
-            </div>
-        </div>
-          <!-- <p>The records below are for <b>xxx - YEAR.</b></p> -->
-          <div class="search-container">
-            <form method="GET" action="{{ url_for('search', query=query) }}">
-              <div class="search-bar">
-                <input type="text" placeholder="Search" name="query" value="{{query}}"/>
-                <button type="submit">
-                  <img src="/static/students/search.png" alt="search" />
-                </button>
-              </div>
-            </form>
-          </div>
 
-        <!-- delete button -->
-        <div class="delete-container">
-          <img
-            src="/static/students/delete.png"
-            alt="delete"
-            class="delete-button"
-          />
-        </div>
-        <!-- flex grid -->
-        <div class="grid-container">
-          <div class="grid-header">
-            <div class="grid-checkbox"></div>
-            <div class="grid-section">Student ID</div>
-            <div class="grid-name">Name</div>
-          </div>
-    
-          <!-- sample data rows -->
-          <div class="row-container">
-    
-          {% for student in data %}
-            {% if student.college == college%}
-                <a href="{{ url_for('student_record', student_id=student.student_id) }}" class="grid-row">
-                <div class="grid-checkbox"><input type="checkbox" /></div>
-                <div class="grid-section">{{ student.student_id }}</div>
-                <div class="grid-name"> {{ student.last_name }}, {{ student.first_name }}</div>
-                </a>
-            {% endif %}
-          {% endfor %}
-          <!-- Add more rows as needed -->
-        </div>
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+      <span>{{ college_name }}</span>
+      <div class="back-button">
+        <a href="{{ url_for ('students') }}">
+          <img src="/static/SVG/back_button.svg" />
+        </a>
       </div>
     </div>
-    
-    {% endblock %}
-    
+    <!-- <p>The records below are for <b>xxx - YEAR.</b></p> -->
+    <div class="search-container">
+      <form method="GET" action="{{ url_for('search', query=query) }}">
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search"
+            name="query"
+            value="{{query}}"
+          />
+          <button type="submit">
+            <img src="/static/students/search.png" alt="search" />
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- delete button -->
+    <div class="delete-container">
+      <img
+        src="/static/students/delete.png"
+        alt="delete"
+        class="delete-button"
+      />
+    </div>
+    <!-- flex grid -->
+    <div class="grid-header">
+      <div class="grid-checkbox"></div>
+      <div class="grid-section">Student ID</div>
+      <div class="grid-name">Name</div>
+    </div>
+    <div class="grid-container">
+      <!-- sample data rows -->
+      <div class="row-container">
+        {% for student in data %} {% if student.college == college%}
+        <a
+          href="{{ url_for('student_record', student_id=student.student_id) }}"
+          class="grid-row"
+        >
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-name">
+            {{ student.last_name }}, {{ student.first_name }}
+          </div>
+        </a>
+        {% endif %} {% endfor %}
+        <!-- Add more rows as needed -->
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

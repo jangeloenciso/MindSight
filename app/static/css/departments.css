@@ -123,12 +123,11 @@ p {
 .grid-container {
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     border: 3px solid var(--primary-color);
     background-color: var(--primary-color);
     overflow-y: auto;
     padding-bottom: 10px;
-    border: 3px solid var(--primary-color);
 }
 
 .grid-header {
@@ -138,6 +137,7 @@ p {
     font-weight: bold;
     padding: 10px;
     justify-content: space-between;
+    border-radius: 10px 10px 0 0;
 }
 
 .grid-row {
