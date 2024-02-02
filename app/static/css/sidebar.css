@@ -108,6 +108,11 @@
     transition: var(--smooth-transition);
 }
 
+.sidebar a:hover {
+    background-color: var(--bg-orange);
+    transition: var(--smooth-transition);
+}
+
 .sidebar .admin-container {
     display: flex;
     flex-direction: column;
