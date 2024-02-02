@@ -142,7 +142,7 @@ p {
 
 .grid-row {
     display: flex;
-    background-color: #f2d4c0;
+    background-color: var(--main-db-bg-color);
     color: var(--primary-color);
     padding: 10px;
     justify-content: space-between;
@@ -164,7 +164,7 @@ p {
 }
 
 .grid-row:nth-child(even) {
-    background-color: #f6e9dc;
+    background-color: #C5CFC6;
 }
 
 /* checkbox in odd rows */
@@ -196,7 +196,7 @@ p {
 }
 
 .grid-row:hover {
-    background-color: #FFEAD9;
+    background-color: var(--bg-orange);
 }
 
 .back-button img {
