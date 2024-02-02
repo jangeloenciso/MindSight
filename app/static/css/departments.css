@@ -127,20 +127,21 @@ p {
     background-color: #c6cfc6;
     overflow-y: auto;
     padding-bottom: 10px;
+    border: 3px solid var(--primary-color);
 }
 
 .grid-header {
     display: flex;
-    background-color: #c6cfc6;
-    color: var(--primary-color);
-    font-weight: bold;
+    background-color: var(--primary-color);
+    color: var(--white);
+
     padding: 10px;
     justify-content: space-between;
 }
 
 .grid-row {
     display: flex;
-    background-color: #eae7d6;
+    background-color: #f2d4c0;
     color: var(--primary-color);
     padding: 10px;
     justify-content: space-between;
@@ -162,7 +163,7 @@ p {
 }
 
 .grid-row:nth-child(even) {
-    background-color: #c6cfc6;
+    background-color: #f6e9dc;
 }
 
 /* checkbox in odd rows */
@@ -194,7 +195,7 @@ p {
 }
 
 .grid-row:hover {
-    background-color: var(--bg-orange);
+    background-color: #FFEAD9;
 }
 
 .back-button img {
