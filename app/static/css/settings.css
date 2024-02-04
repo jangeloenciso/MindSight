@@ -145,7 +145,7 @@ button:hover {
 
 
 /* Sidebar active indicator */
-.sidebar-buttons #students-container::before {
+.sidebar-buttons #settings-container::before {
     content: "";
     position: relative;
     left: 0;
@@ -155,6 +155,6 @@ button:hover {
     transform: translateX(-25px);
 }
 
-#students-container img, #students-container span {
+#settings-container img, #settings-container span {
     transform: translateX(-7px);
 }

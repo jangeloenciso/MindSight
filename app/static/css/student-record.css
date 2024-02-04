@@ -193,7 +193,7 @@
     background: var(--white);
     width: 100%;
     height: 60%;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     color: var(--primary-color);
     padding: 0.5em 2.5em;
     border: 3px solid var(--primary-color);
@@ -229,8 +229,6 @@
 .details {
     display: flex;
     flex-direction: row;
-    margin: 0;
-    padding: 0;
 }
 
 .data {
@@ -241,7 +239,7 @@
 .basic-info-column-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 0.4rem;
     line-height: normal;
@@ -252,6 +250,14 @@
 
 .basic-info-column1, .basic-info-column2 {
     width: 100%;
+    justify-content: stretch;
+}
+
+.info-answer {
+    font-size: 1.1rem;
+    color: var(--bg-orange);
+    line-height: normal;
+    font-weight: normal;
 }
 
 
@@ -271,17 +277,13 @@
     width: 100%;
 }
 
+
+
 .referral-title {
     font-size: 1.1rem;
     font-weight: 800;
     line-height: normal;
-}
-
-.referral-data {
-    font-size: 1.1rem;
-    font-weight: normal;
-    line-height: normal;
-    color: var(--bg-orange);
+    justify-self: flex-start;
 }
 
 .emergency-info-content{
@@ -330,12 +332,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--white);
     width: 100%;
     height: 100%;
-    border-radius: 2.5rem;
+    border-radius: 2rem;
     color: var(--primary-color);
-    padding: 0 1.5em;
+    padding: 0 1em;
 }
 
 .full-records-modal span {
@@ -400,23 +401,39 @@
     padding: 0;
 }
 
-.radio-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    font-size: 1.1rem;
-}
-
-.client, .guardian, .other {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.history-question1, .history-question2 {
+.question {
     font-size: 1.1rem;
     font-weight: 800;
     line-height: normal;
 }
+
+.treatment-info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.medical-info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.family-info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
