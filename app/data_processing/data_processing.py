@@ -17,7 +17,7 @@ def process_data(student_id=None, search_query=None):
                 query
                 .join(PersonalInformation)
                 .join(EducationalBackground)
-                .join(PsychologicalAssessments)
+                # .join(PsychologicalAssessments)
                 .join(Course, Course.name == StudentInformation.course)
                 .join(College, College.id == Course.college_id) 
                 .filter(
@@ -35,9 +35,9 @@ def process_data(student_id=None, search_query=None):
                     (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
                     (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
                     (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
                     (College.name.ilike(f"%{search_query}%"))
             )
         )
