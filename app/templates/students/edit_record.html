@@ -29,6 +29,16 @@
               <label for="lname">Last name</label>
               <input type="text" id="lname" name="lname" />
             </div>
+            <div class="double-row">
+              <div>
+                <label for="studId">Student ID</label><br />
+                <input type="text" id="studId" name="studId" />
+              </div>
+              <div>
+                <label for="fname">GPA</label>
+                <input type="number" id="gpa" name="gpa" />
+              </div>
+            </div>
 
             <div class="double-row">
               <div>
@@ -48,7 +58,6 @@
                 </select>
               </div>
             </div>
-
             <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
             <!-- TODO: replace "idk" with actual courses -->
             <div class="single-row">
@@ -65,11 +74,6 @@
                 <option value="idk">idk</option>
                 <option value="idk">idk</option>
               </select>
-            </div>
-
-            <div class="single-row-half">
-              <label for="fname">GPA</label>
-              <input type="number" id="gpa" name="gpa" />
             </div>
           </div>
         </section>
@@ -279,7 +283,9 @@
       <button class="cancel-btn">Cancel</button>
     </footer>
   </div>
-  <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-  <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
-  {% endblock %}
+</div>
+</div>
+<script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+<script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
+{% endblock %}
 </div>
