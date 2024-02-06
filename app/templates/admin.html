@@ -1,89 +1,45 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Admin{% endblock %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Admin{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/admin.css" />
+{% endblock %} {% block content %}
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+      <span>GUIDANCE COUNSELORS</span>
+    </div>
 
-{% block styles %}     
-<link rel="stylesheet" href="/static/css/admin.css" /> 
-{% endblock %}
+    <nav class="counselors">
+      <div>EMMANUELLE A. SANTIAGO <span>Director</span></div>
+      <div>RUSSEL ANE A. DELA CRUZ<span>Head, Counseling and Wellness</span></div>
+      <div>JAKE JASON QUEDDENG<span>GCSC Personnel-Pasig</span></div>
+      <div>LIZELLE ANNE MARIE O. MANABAT<span>Registered Psychometrician</span></div>
+    </nav>
 
-{% block content %}
-  <div class="frame">
-      <h1>Guidance Advocates</h1>
-        <div class="content">
-            <div class="directors">
-              <svg class="circle1" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
-                <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-              </svg>
-              <svg class="circle2" xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 157 157" fill="none">
-                <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-              </svg>
-                <div class="container-director">
-                  <p id="direct" class="name">
-                    Asst. Prof. Emmanuelle A. Santiago
-                  </p>
-                  <p id="direct-title" class="title">
-                    Director
-                  </p>
-                </div>
-                <div class="container-director">
-                    <p id="asst-direct" class="name">
-                      Instr. Emeraldo M. Sabit
-                    </p>
-                    <p id="asst-direct-title" class="title">
-                      Assistant Director
-                    </p>
-                </div>
-            </div>
-            <div class="facilitators">
-              <h1>Peer Facilitators</h1>
-                <div class="iris-russel">
-                  <svg class="circle3" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <svg class="circle4" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <div class="container-facilitator">
-                    <p id="iris" class="name">
-                      Instr. Iris Cristelle D. Destura
-                    </p>
-                    <p id="iris-title" class="title">
-                      Head, Testing and Assessment
-                    </p>
-                  </div>
-                  <div class="container-facilitator">
-                    <p id="russel" class="name">
-                      Asst. Prof. Russel Ane A. Dela Cruz
-                    </p>
-                    <p id="russel-title" class="title">
-                      Head, Counseling and Wellness
-                    </p>
-                  </div>
-                  </div>
-                <div class="jake-lizelle">
-                  <svg class="circle5" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>
-                  <svg class="circle6" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 157 157" fill="none">
-                    <circle cx="78.5" cy="78.5" r="78.5" fill="#DB9050"/>
-                  </svg>  
-                  <div class="container-facilitator">
-                    <p id="jake" class="name">
-                      Instr. Jake Jason Queddeng
-                    </p>
-                    <p id="jake-title" class="title">
-                      GCSC Personal - Pasig
-                    </p>
-                  </div>
-                  <div class="container-facilitator">
-                    <p id="lizelle" class="name">
-                      Instr. Lizelle Anne Marie O. Manabat
-                    </p>
-                    <p id="lizelle-title" class="title">
-                      Registered Guidance Counselor/Psychometrician
-                    </p>
-                  </div>
-                </div>
-            </div>
-        </div>
+
+    <!-- flex grid -->
+    <div class="grid-header">
+      <div class="grid-checkbox"></div>
+      <div class="grid-section">Student ID</div>
+      <div class="grid-name">Name</div>
+    </div>
+    <div class="grid-container">
+      <!-- sample data rows -->
+      <div class="row-container">
+        {% for student in data %} {% if student.college == college%}
+        <a
+          href="{{ url_for('student_record', student_id=student.student_id) }}"
+          class="grid-row"
+        >
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-name">
+            {{ student.last_name }}, {{ student.first_name }}
+          </div>
+        </a>
+        {% endif %} {% endfor %}
+        <!-- Add more rows as needed -->
+      </div>
+    </div>
   </div>
+</div>
 {% endblock %}
