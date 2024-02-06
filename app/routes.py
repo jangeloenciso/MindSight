@@ -9,6 +9,7 @@ from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
+from app.forms.add_record import AddStudentForm
 import pytesseract
 from PIL import Image
 
@@ -198,6 +199,34 @@ def edit_record(student_id):
     print(form.errors)
 
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
+
+
+@app.route('/students/records/add', methods=['GET', 'POST'])
+@login_required
+def add_record():
+    form = AddStudentForm()  # Create an instance of the AddRecordForm
+
+    if form.validate_on_submit():  # If the form is submitted and validated
+        # Create a new record object and populate it with form data
+        new_record = form(
+            field1=form.field1.data,
+            field2=form.field2.data,
+            # Add more fields as needed based on your Record model and form
+        )
+
+        # Add the new record to the database
+        db.session.add(new_record)
+        db.session.commit() 
+
+        # Flash a success message
+        flash('New record added successfully!', 'success')
+
+        # Redirect the user to a page displaying the newly added record
+        return redirect(url_for('student_record', new_student_id=new_record.id))  # Assuming student_id is the identifier for the record
+
+    # If the form is not submitted or not validated, or if it's a GET request, render the add record template
+    return render_template('students/add_record.html', form=form)
+
 
 
 # API endpoints
