@@ -37,6 +37,7 @@
       <div class="grid-checkbox"></div>
       <div class="grid-section">Student ID</div>
       <div class="grid-name">Name</div>
+      <div class="grid-gender">Gender</div>
     </div>
         <div class="row-container">
         {% for record in search_results %}
@@ -44,6 +45,7 @@
             <div class="grid-checkbox"><input type="checkbox" /></div>
             <div class="grid-section">{{ record.student_id }}</div>
             <div class="grid-name"> {{ record.last_name }}, {{ record.first_name }}</div>
+            <div class="grid-gender"> {{ record.gender }}</div>
             </a>
         {% endfor %}
         </div>

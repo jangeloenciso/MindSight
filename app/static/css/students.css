@@ -97,7 +97,7 @@
 
 /* upload file */
 .upload-button {
-    width: 12%;
+    width: 14%;
     background-color: var(--primary-color);
     border-radius: 40px;
     border: 2px solid #095371;
@@ -106,7 +106,7 @@
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
-    padding: 0 15px;
+    padding: 0;
 }
 
 .upload-button button {
@@ -118,9 +118,9 @@
 }
 
 .upload-button button img {
-    height: 33px;
+    height: 30px;
     aspect-ratio: 1 / 1;
-    margin-right: 1em;
+    margin: 0.3em 1em 0 0;
 }
 
 .upload-button p {

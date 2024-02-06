@@ -28,8 +28,8 @@ endblock %} {% block styles %}
         <!-- upload -->
         <div class="upload-button">
           <button type="submit" id="toggleUpload">
-            <img src="../static/SVG/upload.svg" alt="upload" />
-            <p>Upload file</p>
+            <img src="../static/add-user.png" alt="upload" />
+            <p>Add new record</p>
           </button>
         </div>
       </div>
@@ -87,6 +87,6 @@ endblock %} {% block styles %}
 
 
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-<script src={{ url_for('static', filename='javascript/upload.js') }}></script>
+<script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
 
 {% endblock %}

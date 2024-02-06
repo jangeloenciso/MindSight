@@ -1,0 +1,284 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Add New Record
+{% endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/add-new.css" />
+{% endblock %} {% block content %}
+
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+      <span>Add New Record</span>
+      <div class="back-button">
+        <button class="confirmation" id="confirm">
+          <img src="/static/SVG/back_button.svg" />
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-content">
+      <form action="">
+        <!-- Student Information section -->
+        <section>
+          <div class="left-header">Student Information</div>
+          <div class="right-content">
+            <div class="single-row-half">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" />
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" />
+            </div>
+
+
+            <div class="double-row">
+              <div>
+                <label for="campus">Campus</label><br />
+                <select name="campus" id="campus">
+                  <option value="boni">Boni</option>
+                  <option value="pasig">Pasig</option>
+                </select>
+              </div>
+              <div>
+                <label for="year">Year Level</label><br />
+                <select name="year" id="year">
+                  <option value="1styear">1st Year</option>
+                  <option value="2ndyear">2nd Year</option>
+                  <option value="3rdyear">3rd Year</option>
+                  <option value="4thyear">4th Year</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
+            <!-- TODO: replace "idk" with actual courses -->
+            <div class="single-row">
+              <label for="course">Course</label>
+              <select name="course" id="course">
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+                <option value="idk">idk</option>
+              </select>
+            </div>
+
+            <div class="single-row-half">
+              <label for="fname">GPA</label>
+              <input type="number" id="gpa" name="gpa" />
+            </div>
+          </div>
+        </section>
+
+        <hr />
+
+        <section>
+          <div class="left-header">Personal Information</div>
+          <div class="right-content">
+            <div class="double-row">
+              <div>
+                <label for="birthday">Date of Birth</label><br />
+                <input type="date" id="birthday" name="birthday" />
+              </div>
+              <div>
+                <label for="age">Age</label><br />
+                <input type="number" id="age" name="age" />
+              </div>
+            </div>
+            <div class="double-row">
+              <div>
+                <label for="sex">Sex</label>
+                <select name="sex" id="sex">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div>
+                <label for="gender">Gender</label><br />
+                <input type="text" id="gender" name="gender" />
+              </div>
+            </div>
+
+            <div class="single-row">
+              <label for="contact">Contact No.</label>
+              <input type="number" id="contact" name="contact" />
+            </div>
+            <div class="single-row">
+              <label for="residence">Residence</label>
+              <input type="text" id="residence" name="residence" />
+            </div>
+            <div class="single-row">
+              <label for="nationality">Nationality</label>
+              <input type="text" id="nationality" name="nationality" />
+            </div>
+            <div class="single-row">
+              <label for="placeofbirth">Place of Birth</label>
+              <input type="text" id="placeofbirth" name="placeofbirth" />
+            </div>
+            <div class="single-row">
+              <label for="religion">Religion</label>
+              <input type="text" id="religion" name="religion" />
+            </div>
+            <div class="single-row">
+              <label for="counselinghistory">Counseling History</label>
+              <input
+                type="text"
+                id="counselinghistory"
+                name="counselinghistory"
+              />
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <div class="left-header">Family Background</div>
+          <div class="right-content">
+            <div class="double-row">
+              <div>
+                <label for="mfname">Mother Firstname</label>
+                <input type="text" id="mfname" name="mfname" />
+              </div>
+              <div>
+                <label for="mlname">Mother Lastname</label>
+                <input type="text" id="mlname" name="mlname" />
+              </div>
+            </div>
+            <div class="single-row-half">
+              <label for="mage">Mother Age</label>
+              <input type="number" id="mage" name="mage" />
+            </div>
+            <div class="double-row">
+              <div>
+                <label for="ffname">Father Firstname</label>
+                <input type="text" id="ffname" name="ffname" />
+              </div>
+              <div>
+                <label for="flname">Father Lastname</label>
+                <input type="text" id="flname" name="flname" />
+              </div>
+            </div>
+            <div class="single-row-half">
+              <label for="fage">Father Age</label>
+              <input type="number" id="fage" name="fage" />
+            </div>
+          </div>
+        </section>
+
+        <hr />
+        <section>
+          <div class="left-header">Educational Background</div>
+          <div class="right-content">
+            <div class="double-row">
+              <div>
+                <label for="shs">Senior High School</label>
+                <input type="text" id="shs" name="shs" />
+              </div>
+              <div>
+                <label for="shsgradyear">SHS Graduation Year</label>
+                <input type="number" id="shsgradyear" name="shsgradyear" />
+              </div>
+            </div>
+
+            <div class="single-row">
+              <label for="shsstrand">SHS Strand</label>
+              <input type="text" id="shsstrand" name="shsstrand" />
+            </div>
+            <hr style="margin: 7px 0 7px 0 !important" />
+            <div class="double-row">
+              <div>
+                <label for="jhs">Junior High School</label>
+                <input type="text" id="jhs" name="jhs" />
+              </div>
+              <div>
+                <label for="jhsgradyear">JHS Graduation Year</label>
+                <input type="number" id="jhsgradyear" name="jhsgradyear" />
+              </div>
+            </div>
+            <hr style="margin: 7px 0 7px 0 !important" />
+            <div class="double-row">
+              <div>
+                <label for="elemschool">Elementary school</label>
+                <input type="text" id="elemschool" name="elemschool" />
+              </div>
+              <div>
+                <label for="elemgradyear">Elementary Graduation Year</label>
+                <input type="number" id="elemgradyear" name="elemgradyear" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr />
+        <section>
+          <div class="left-header">Health Information</div>
+          <div class="right-content">
+            <div class="double-row">
+              <div>
+                <label for="generalhealth">General Health</label>
+                <input type="text" id="generalhealth" name="generalhealth" />
+              </div>
+              <div>
+                <label for="expsickness">Experienced Sickness</label>
+                <input type="text" id="expsickness" name="expsickness" />
+              </div>
+            </div>
+            <div class="double-row">
+              <div>
+                <label for="height">Height (cm)</label>
+                <input type="text" id="height" name="height" />
+              </div>
+              <div>
+                <label for="weight">Weight (kg)</label>
+                <input type="text" id="weight" name="weight" />
+              </div>
+            </div>
+            <div class="single-row">
+              <label for="sight">Sight</label>
+              <input type="text" id="sight" name="sight" />
+            </div>
+            <div class="single-row">
+              <label for="hearing">Hearing</label>
+              <input type="text" id="hearing" name="hearing" />
+            </div>
+            <div class="single-row">
+              <label for="speech">Speech</label>
+              <input type="text" id="speech" name="speech" />
+            </div>
+          </div>
+        </section>
+
+        <hr />
+        <section>
+          <div class="left-header">Psychological Assessment</div>
+          <div class="right-content">
+            <div class="single-row">
+              <label for="learningstyle">Learning Style</label>
+              <input type="text" id="learningstyle" name="learningstyle" />
+            </div>
+            <div class="double-row">
+              <div>
+                <label for="ptest">Personality Test</label>
+                <input type="text" id="ptest" name="ptest" />
+              </div>
+              <div>
+                <label for="iqtest">IQ Test</label>
+                <input type="number" id="iqtest" name="iqtest" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+    <!-- TODO: make buttons functional; to save or cancel -->
+    <footer>
+      <button class="update-btn">Update</button>
+      <button class="cancel-btn">Cancel</button>
+    </footer>
+  </div>
+  <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+  <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
+  
+</div>
+{% endblock %}

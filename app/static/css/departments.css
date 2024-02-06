@@ -156,11 +156,15 @@ p {
 }
 
 .grid-section {
-    flex-basis: 19%;
+    flex-basis: 12%;
 }
 
 .grid-name {
-    flex-basis: 70%;
+    flex-basis: 14%;
+}
+
+.grid-gender {
+    flex-basis: 54%;
 }
 
 .grid-row:nth-child(even) {
