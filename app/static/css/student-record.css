@@ -437,3 +437,6 @@
     padding: 0;
 }
 
+table, th, td {
+    border: 1px solid var(--primary-color);
+  }

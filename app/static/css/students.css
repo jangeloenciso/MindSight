@@ -266,11 +266,37 @@
 
 /* for modal style */
 .swal2-popup {
-    width: auto;
-    background: var(--white);
-    border-radius: 1.5rem;
+    font-size: 1rem;
+    width: 30%;
+    background: var(--main-db-bg-color);
+    border-radius: 1.2rem;
     box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
     backdrop-filter: blur(10px);
+    padding: 1.5em;
+}
+
+.swal2-title {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.swal2-confirm.confirm-button-class, .swal2-deny.deny-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+    width: 80%;
+    height: auto;
+    border-radius: 40px;
+    padding: 1em;
+}
+
+.swal2-confirm.upload-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+    height: auto;
+    width: 21.5rem;
+    border-radius: 40px;
+    font-weight: 800;
 }
 
 .file-container {
@@ -280,31 +306,55 @@
 }
   
 .drop-file {
-    border: 3px dashed #ccc;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid var(--primary-color);
+    border-radius: 1em;
     padding: 20px;
     text-align: center;
     cursor: pointer;
-    margin-bottom: 20px;
-    justify-content: center;
+    margin-bottom: 4rem;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
-  
-.drop-title {
-    display: block;
-    margin-bottom: 10px;
+
+#file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 0.6rem 3rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 2em;
+}
+
+.file, .file-label {
     font-size: 1rem;
+    font-weight: 600;
 }
-  
+
+.file {
+    color: var(--primary-color);
+}
+
 .drop-down-college,
 .drop-down-year {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    width: 100%; 
 }
   
 select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: none;
+    padding: 0.7rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 1em;
     width: 100%;
     box-sizing: border-box;
 }

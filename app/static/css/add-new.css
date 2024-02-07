@@ -211,7 +211,6 @@ footer button:hover {
 }
 
 
-
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
     content: "";

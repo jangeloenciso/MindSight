@@ -1,18 +1,23 @@
 document.getElementById('toggleUpload').addEventListener('click', function() {
     swal.fire({
-        text: "Does this student have a previous counseling record to upload?",
-        confirmButtonColor: "#3085d6",
+        title: "Does this student have a previous counseling record to upload?",
         confirmButtonText: "Yes, upload previous record (OCR)",
         showDenyButton: true,
-        denyButtonText: `No, create a new record`
+        denyButtonText: "No, create a new record",
+        focusConfirm: false,
+        customClass: {
+            confirmButton: `confirm-button-class`,
+            denyButton: `deny-button-class`,
+          }
       }).then((result) => {
         if (result.isConfirmed) {
             swal.fire({
                 html: `
                 <div class="file-container">
                     <div id="drop-file" class="drop-file">
-                        <span class="drop-title">Drop files here</span>
-                        <input type="file" name="scanned_image" accept="image/*">
+                        <input type="file" name="scanned_image" id="file-input" accept="image/*">
+                        <label for="file-input" class="file-label">Choose File</label>
+                        <label class="file">No file chosen</label>
                     </div>
         
                     <div class="drop-down-college">
@@ -37,8 +42,10 @@ document.getElementById('toggleUpload').addEventListener('click', function() {
                     </div>
                 </div>
                 `,
-                confirmButtonColor: "#095371",
-                confirmButtonText: 'Submit',
+                confirmButtonText: 'UPLOAD',
+                customClass: {
+                    confirmButton: `upload-button-class`,
+                  },
                 onOpen: function() {
                     const dropArea = document.getElementById('drop-file');
         
