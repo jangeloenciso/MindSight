@@ -15,24 +15,27 @@
     </div>
 
     <div class="scroll-content">
-      <form action="">
+      <form action="{{ url_for('add_record') }}">
+        {{ form.csrf_token }}
+        
+            {{ form.hidden_tag() }}
         <!-- Student Information section -->
         <section>
           <div class="left-header">Student Information</div>
           <div class="right-content">
             <div class="single-row">
               <label for="fname">First name</label>
-              <input type="text" id="fname" name="fname" />
+              {{ form.first_name }}
             </div>
 
             <div class="single-row">
               <label for="lname">Last name</label>
-              <input type="text" id="lname" name="lname" />
+              {{ form.last_name }}
             </div>
             <div class="double-row">
               <div>
                 <label for="studId">Student ID</label><br />
-                <input type="text" id="studId" name="studId" />
+                {{ form.student_id }}
               </div>
               <div>
                 <label for="fname">GPA</label>
@@ -63,16 +66,42 @@
             <div class="single-row">
               <label for="course">Course</label>
               <select name="course" id="course">
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
-                <option value="idk">idk</option>
+                <option value="idk">Select Course</option>
+                <option value="idk">Bachelor of Science in Mechanical Engineering</option>
+                <option value="idk">Bachelor of Science in Architecture (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Civil Engineering</option>
+                <option value="idk">Bachelor of Science in Electrical Engineering</option>
+                <option value="idk">Bachelor of Science in Electronics Engineering</option>
+                <option value="idk">Bachelor of Science in Computer Engineering</option>
+                <option value="idk">Bachelor of Science in Industrial Engineering (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Information Technology (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Mechatronics</option>
+                <option value="idk">Bachelor of Science in Accountancy</option>
+                <option value="idk">Bachelor of Science in Entrepreneurship</option>
+                <option value="idk">Bachelor of Science in Office Administration</option>
+                <option value="idk">Bachelor of Science in Business Administration major in Operations Management</option>
+                <option value="idk">Bachelor of Science in Business Administration major in Marketing Management</option>
+                <option value="idk">Bachelor of Science in Business Administration major in Financial Management</option>
+                <option value="idk">Bachelor of Science in Business Administration major in Human Resource Management</option>
+                <option value="idk">Bachelor of Secondary Education major in English</option>
+                <option value="idk">Bachelor of Secondary Education major in Math</option>
+                <option value="idk">Bachelor of Secondary Education major in Science (Boni Campus)</option>
+                <option value="idk">Bachelor of Secondary Education major in Social Studies</option>
+                <option value="idk">Bachelor of Secondary Education Major in Filipino</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Animation</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology</option>
+                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
+                <option value="idk">Bachelor of Science in Psychology</option>
+                <option value="idk">Bachelor of Arts in Political Science</option>
+                <option value="idk">Bachelor of Science in Statistics (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Biology (Boni Campus)</option>
+                <option value="idk">Bachelor of Science in Astronomy</option>
+                <option value="idk">Bachelor of Science in Physical Education (Boni Campus)</option>
               </select>
             </div>
           </div>
@@ -90,7 +119,7 @@
               </div>
               <div>
                 <label for="age">Age</label><br />
-                <input type="number" id="age" name="age" />
+                {{ form.age }}
               </div>
             </div>
             <div class="double-row">
@@ -103,13 +132,13 @@
               </div>
               <div>
                 <label for="gender">Gender</label><br />
-                <input type="text" id="gender" name="gender" />
+                {{ form.gender }}
               </div>
             </div>
 
             <div class="single-row">
               <label for="contact">Contact No.</label>
-              <input type="number" id="contact" name="contact" />
+              {{ form.contact_number }}
             </div>
             <div class="single-row">
               <label for="residence">Residence</label>
@@ -125,7 +154,7 @@
             </div>
             <div class="single-row">
               <label for="religion">Religion</label>
-              <input type="text" id="religion" name="religion" />
+              {{ form.religion }}
             </div>
             <div class="single-row">
               <label for="counselinghistory">Counseling History</label>
@@ -279,8 +308,12 @@
     </div>
     <!-- TODO: make buttons functional; to save or cancel -->
     <footer>
-      <button class="update-btn">Update</button>
-      <button class="cancel-btn">Cancel</button>
+      <div class="add-btn">
+        {{ form.submit(class="add") }}
+      </div>
+      <a href="{{ url_for('students') }}">
+        <button class="cancel-btn">Cancel</button>
+      </a>
     </footer>
   </div>
 </div>

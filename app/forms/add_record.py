@@ -10,6 +10,9 @@ class AddStudentForm(FlaskForm):
     year_level = StringField('Year Level', validators=[Length(max=20)])
     gpa = FloatField('GPA')
     campus = StringField('Campus', validators=[DataRequired(), Length(max=20)])
+    
+    # Don't really know what I'm doing here
+    student_id = IntegerField('Student ID', validators=[Length(max=10)]) 
 
     # Fields from PersonalInformation model
     age = IntegerField('Age')
@@ -55,4 +58,4 @@ class AddStudentForm(FlaskForm):
     iq_test = StringField('IQ Test', validators=[Length(max=100)])
 
 
-    submit = SubmitField('Add')
+    submit = SubmitField('Add New Student')

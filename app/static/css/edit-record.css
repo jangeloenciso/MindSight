@@ -180,7 +180,15 @@ footer button:hover {
 .update-btn {
     background-color: var(--primary-color);
     color: white;
+}
+
+.update {
+    background: none;
+    color: var(--white);
+    font-size: 1rem;
     border: none;
+    padding: auto;
+    margin: 0;
 }
 
 .update-btn:hover {

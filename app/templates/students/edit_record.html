@@ -303,7 +303,7 @@
     </div>
     <!-- TODO: make buttons functional; to save or cancel -->
     <footer>
-      <button class="update-btn">{{ form.submit }}</button>
+      <div class="update-btn">{{ form.submit(class="update") }}</div>
       <a href="{{ url_for('student_record', student_id=student.student_id) }}">
         <button class="cancel-btn">Cancel</button>
       </a>

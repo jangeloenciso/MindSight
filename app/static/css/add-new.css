@@ -177,14 +177,22 @@ footer button:hover {
     opacity: 1;
 }
 
-.update-btn {
+.add-btn {
     background-color: var(--primary-color);
-    color: white;
-    border: none;
+    color: var(--white);
 }
 
-.update-btn:hover {
+.add-btn:hover {
     background-color: #084b65;
+}
+
+.add {
+    background: none;
+    color: var(--white);
+    font-size: 1rem;
+    border: none;
+    padding: auto;
+    margin: 0;
 }
 
 .cancel-btn {

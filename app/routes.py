@@ -69,11 +69,6 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/developers')
-@login_required
-def developers():
-    return render_template('developers.html')
-
 @app.route('/admin')
 @login_required
 def admin():
@@ -207,11 +202,27 @@ def add_record():
     form = AddStudentForm()  # Create an instance of the AddRecordForm
 
     if form.validate_on_submit():  # If the form is submitted and validated
-        # Create a new record object and populate it with form data
-        new_record = form(
-            field1=form.field1.data,
-            field2=form.field2.data,
-            # Add more fields as needed based on your Record model and form
+        
+        last_name = form.last_name.data
+        first_name = form.first.name.data
+        course = form.course.data
+        student_id = form.student_id.data
+        age = form.age.data
+        sex = form.sex.data
+        gender = form.gender.data
+        contact_number = form.contact_number.data
+        religion = form.religion.data
+
+        new_record = Student(
+            last_name=last_name,
+            first_name=first_name,
+            course=course,
+            student_id=student_id,
+            age=age,
+            sex=sex,
+            gender=gender,
+            contact_number=contact_number,
+            religion=religion,
         )
 
         # Add the new record to the database
@@ -219,10 +230,10 @@ def add_record():
         db.session.commit() 
 
         # Flash a success message
-        flash('New record added successfully!', 'success')
+        flash('New student added successfully!', 'success')
 
         # Redirect the user to a page displaying the newly added record
-        return redirect(url_for('student_record', new_student_id=new_record.id))  # Assuming student_id is the identifier for the record
+        return redirect(url_for('student_record', new_record_id=new_record.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
     return render_template('students/add_record.html', form=form)
