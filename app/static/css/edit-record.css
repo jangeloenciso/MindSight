@@ -180,14 +180,14 @@ footer button:hover {
 .update-btn {
     background-color: var(--primary-color);
     color: white;
+    border-radius: 0.2em;
 }
 
 .update {
     background: none;
     color: var(--white);
     font-size: 1rem;
-    border: none;
-    padding: auto;
+    padding: 7px 24px;
     margin: 0;
 }
 
@@ -208,7 +208,7 @@ footer button:hover {
     background: var(--white);
     font-size: 1rem;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
 }
 
 .swal2-title {
