@@ -14,32 +14,11 @@ endblock %} {% block styles %}
       <div>JAKE JASON QUEDDENG<span>GCSC Personnel-Pasig</span></div>
       <div>LIZELLE ANNE MARIE O. MANABAT<span>Registered Psychometrician</span></div>
     </nav>
+    <span>Recent counselors who counseled..</span>
+    
 
 
-    <!-- flex grid -->
-    <div class="grid-header">
-      <div class="grid-checkbox"></div>
-      <div class="grid-section">Student ID</div>
-      <div class="grid-name">Name</div>
-    </div>
-    <div class="grid-container">
-      <!-- sample data rows -->
-      <div class="row-container">
-        {% for student in data %} {% if student.college == college%}
-        <a
-          href="{{ url_for('student_record', student_id=student.student_id) }}"
-          class="grid-row"
-        >
-          <div class="grid-checkbox"><input type="checkbox" /></div>
-          <div class="grid-section">{{ student.student_id }}</div>
-          <div class="grid-name">
-            {{ student.last_name }}, {{ student.first_name }}
-          </div>
-        </a>
-        {% endif %} {% endfor %}
-        <!-- Add more rows as needed -->
-      </div>
-    </div>
+
   </div>
 </div>
 {% endblock %}
