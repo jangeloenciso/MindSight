@@ -17,7 +17,7 @@ def process_data(student_id=None, search_query=None):
                 query
                 .join(PersonalInformation)
                 .join(EducationalBackground)
-                .join(PsychologicalAssessments)
+                # .join(PsychologicalAssessments)
                 .join(Course, Course.name == StudentInformation.course)
                 .join(College, College.id == Course.college_id) 
                 .filter(
@@ -35,9 +35,9 @@ def process_data(student_id=None, search_query=None):
                     (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
                     (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
                     (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
-                    (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
+                    # (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
                     (College.name.ilike(f"%{search_query}%"))
             )
         )
@@ -45,10 +45,16 @@ def process_data(student_id=None, search_query=None):
         data = (
             query
             .options(joinedload(StudentInformation.personal_information))
-            .options(joinedload(StudentInformation.family_background))
+            .options(joinedload(StudentInformation.history_information))
             .options(joinedload(StudentInformation.health_information))
+            .options(joinedload(StudentInformation.family_background))
+            .options(joinedload(StudentInformation.social_history))
             .options(joinedload(StudentInformation.educational_background))
-            .options(joinedload(StudentInformation.psychological_assessments))
+            .options(joinedload(StudentInformation.occupational_history))
+            .options(joinedload(StudentInformation.substance_abuse_history))
+            .options(joinedload(StudentInformation.legal_history))
+            # .options(joinedload(StudentInformation.psychological_assessments))
+            .options(joinedload(StudentInformation.additional_information))
             .options(joinedload(StudentInformation.visits))
             .all()
         )
@@ -56,10 +62,15 @@ def process_data(student_id=None, search_query=None):
         data_list = []
         for record in data:
             personal_information = record.personal_information
-            family_background = record.family_background
+            history_information = record.history_information
             health_information = record.health_information
+            family_background = record.family_background
+            social_history = record.social_history
             educational_background = record.educational_background
-            psychological_assessments = record.psychological_assessments
+            occupational_history = record.occupational_history
+            substance_abuse_history = record.substance_abuse_history
+            legal_history = record.legal_history
+            additional_information = record.additional_information
             student_visits = record.visits
 
             course_name = record.course
@@ -101,10 +112,10 @@ def process_data(student_id=None, search_query=None):
                 'mother_last_name': family_background.mother_last_name,
                 'mother_first_name': family_background.mother_first_name,
 
-                # Psychological Assessments
-                'learning_styles': psychological_assessments.learning_styles,
-                'personality_test': psychological_assessments.personality_test,
-                'iq_test': psychological_assessments.iq_test,
+                # # Psychological Assessments
+                # 'learning_styles': psychological_assessments.learning_styles,
+                # 'personality_test': psychological_assessments.personality_test,
+                # 'iq_test': psychological_assessments.iq_test,
                 'nature_of_concern': nature_of_concern_str,
             })
             

@@ -32,7 +32,11 @@ course_names = [
     "Bachelor of Science in Statistics (Boni Campus)",
     "Bachelor of Science in Biology (Boni Campus)",
     "Bachelor of Science in Astronomy",
-    "Bachelor of Science in Physical Education (Boni Campus)"
+    "Bachelor of Science in Physical Education (Boni Campus)",
+    "STEM",
+    "ABM",
+    "HUMSS",
+    "GAS"
 ]
 
 religion_names = [
