@@ -110,6 +110,9 @@ td, th {
     padding: 8px;
 }
 
+td{
+    color: var(--primary-color);
+}
 
 tr:not(:first-child){
     cursor: pointer;
