@@ -111,6 +111,14 @@ td, th {
 }
 
 
+tr{
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: var(--bg-orange) !important;
+}
+
 /* keeps the header at the top */
 th {
     position: sticky;
