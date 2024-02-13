@@ -1,38 +1,81 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Dashboard{%
 endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %} {% block content %}
 
 <div class="right">
   <div class="column1">
     <div class="experience-container">
-      <span class="title" id="experience">Experiences</span>
+        <span class="title" id="experience">
+          <div>Experiences</div>
+          <div class="back-button">
+            <a href="{{ url_for ('experiences')}}">
+                <img src="/static/SVG/back_button.svg"/>
+            </a>
+          </div>
+        </span>
       <!-- <canvas id="myChart1"></canvas> -->
     </div>
   </div>
   <div class="column2">
     <div class="college-container">
-      <span class="title" id="college">College Summaries</span>
+      <span class="title" id="college">
+        <div>College Summaries</div>
+        <div class="back-button">
+          <a href="{{ url_for ('college_summaries')}}">
+              <img src="/static/SVG/back_button.svg"/>
+          </a>
+        </div>
+      </span>
       <canvas id="myChart2"></canvas>
     </div>
     <div class="row">
       <div class="campus-container">
-        <span class="title" id="campus">Campus</span>
+        <span class="title" id="campus">
+          <div>Campus</div>
+          <div class="back-button">
+            <a href="{{ url_for ('campus')}}">
+                <img src="/static/SVG/back_button.svg"/>
+            </a>
+          </div>
+        </span>
         <canvas id="myChart3" height="100" width="100"></canvas>
       </div>
       <div class="religion-container">
-        <span class="title" id="religion">Religion</span>
+        <span class="title" id="religion">
+          <div>Religion</div>
+          <div class="back-button">
+            <a href="{{ url_for ('religion')}}">
+                <img src="/static/SVG/back_button.svg"/>
+            </a>
+          </div>
+        </span>
         <canvas id="myChart4" height="100" width="100"></canvas>
       </div>
     </div>
   </div>
   <div class="column3">
     <div class="nature-container">
-      <span class="title" id="nature">Nature of Concerns</span>
+      <span class="title" id="nature">
+        <div>Nature of Concerns</div>
+        <div class="back-button">
+          <a href="{{ url_for ('nature_of_concern')}}">
+              <img src="/static/SVG/back_button.svg"/>
+          </a>
+        </div>
+      </span>
       <canvas id="myChart5"></canvas>
     </div>
     <div class="identity-container">
-      <span class="title" id="identity">Identity</span>
+      <span class="title" id="identity">
+        <div>Identity</div>
+        <div class="back-button">
+          <a href="{{ url_for ('identity')}}">
+              <img src="/static/SVG/back_button.svg"/>
+          </a>
+        </div>
+      </span>
       <canvas id="myChart6"></canvas>
     </div>
   </div>

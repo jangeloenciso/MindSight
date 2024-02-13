@@ -180,6 +180,7 @@ footer button:hover {
 .add-btn {
     background-color: var(--primary-color);
     color: var(--white);
+    border-radius: 0.2em;
 }
 
 .add-btn:hover {
@@ -190,8 +191,7 @@ footer button:hover {
     background: none;
     color: var(--white);
     font-size: 1rem;
-    border: none;
-    padding: auto;
+    padding: 7px 24px;
     margin: 0;
 }
 

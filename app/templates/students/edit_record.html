@@ -4,312 +4,311 @@
 {% endblock %} {% block content %}
 
 <div class="right">
-  <div class="main">
-    <div class="main-header">
-      <span>Edit Records</span>
-      <div class="back-button">
-        <button class="confirmation" id="confirm">
-          <img src="/static/SVG/back_button.svg" />
-        </button>
-      </div>
+    <div class="main">
+        <div class="main-header">
+            <span>Edit Records</span>
+            <div class="back-button">
+                <button class="confirmation" id="confirm">
+                    <img src="/static/SVG/back_button.svg" />
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-content">
+            <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
+                {{ form.csrf_token }}
+                
+                    {{ form.hidden_tag() }}
+                <!-- Student Information section -->
+                <section>
+                    <div class="left-header">Student Information</div>
+                    <div class="right-content">
+                        <div class="single-row">
+                            <label for="fname">First name</label>
+                            {{ form.first_name(value=student.first_name) }}
+                        </div>
+
+                        <div class="single-row">
+                            <label for="lname">Last name</label>
+                            {{ form.last_name(value=student.last_name) }}
+                        </div>
+                        <div class="double-row">
+                            <div>
+                                <label for="studId">Student ID</label><br />
+                                <input type="text" id="studId" name="studId" />
+                            </div>
+                        <div>
+                            <label for="fname">GPA</label>
+                            {{ form.gpa(value=student.gpa) }}
+                        </div>
+                        </div>
+
+                        <div class="double-row">
+                            <div>
+                                <label for="campus">Campus</label><br />
+                                <select name="campus" id="campus">
+                                <option value="boni">Boni</option>
+                                <option value="pasig">Pasig</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="year">Year Level</label><br />
+                                <select name="year" id="year">
+                                <option value="1styear">1st Year</option>
+                                <option value="2ndyear">2nd Year</option>
+                                <option value="3rdyear">3rd Year</option>
+                                <option value="4thyear">4th Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
+                        <!-- TODO: replace "idk" with actual courses -->
+                        <div class="single-row">
+                            <label for="course">Course</label>
+                            <select name="course" id="course">
+                                <option value="idk">Bachelor of Science in Mechanical Engineering</option>
+                                <option value="idk">Bachelor of Science in Architecture (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Civil Engineering</option>
+                                <option value="idk">Bachelor of Science in Electrical Engineering</option>
+                                <option value="idk">Bachelor of Science in Electronics Engineering</option>
+                                <option value="idk">Bachelor of Science in Computer Engineering</option>
+                                <option value="idk">Bachelor of Science in Industrial Engineering (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Information Technology (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Mechatronics</option>
+                                <option value="idk">Bachelor of Science in Accountancy</option>
+                                <option value="idk">Bachelor of Science in Entrepreneurship</option>
+                                <option value="idk">Bachelor of Science in Office Administration</option>
+                                <option value="idk">Bachelor of Science in Business Administration major in Operations Management</option>
+                                <option value="idk">Bachelor of Science in Business Administration major in Marketing Management</option>
+                                <option value="idk">Bachelor of Science in Business Administration major in Financial Management</option>
+                                <option value="idk">Bachelor of Science in Business Administration major in Human Resource Management</option>
+                                <option value="idk">Bachelor of Secondary Education major in English</option>
+                                <option value="idk">Bachelor of Secondary Education major in Math</option>
+                                <option value="idk">Bachelor of Secondary Education major in Science (Boni Campus)</option>
+                                <option value="idk">Bachelor of Secondary Education major in Social Studies</option>
+                                <option value="idk">Bachelor of Secondary Education Major in Filipino</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Animation</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology</option>
+                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
+                                <option value="idk">Bachelor of Science in Psychology</option>
+                                <option value="idk">Bachelor of Arts in Political Science</option>
+                                <option value="idk">Bachelor of Science in Statistics (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Biology (Boni Campus)</option>
+                                <option value="idk">Bachelor of Science in Astronomy</option>
+                                <option value="idk">Bachelor of Science in Physical Education (Boni Campus)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <hr />
+
+                <section>
+                <div class="left-header">Personal Information</div>
+                <div class="right-content">
+                    <div class="double-row">
+                    <div>
+                        <label for="birthday">Date of Birth</label><br />
+                        {{ form.date_of_birth(value=student.personal_information.date_of_birth) }}
+                    </div>
+                    <div>
+                        <label for="age">Age</label><br />
+                        {{ form.age(value=student.personal_information.age) }}
+                    </div>
+                    </div>
+                    <div class="double-row">
+                    <div>
+                        <label for="sex">Sex</label>
+                        <select name="sex" id="sex">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="gender">Gender</label><br />
+                        {{ form.gender(value=student.personal_information.gender) }}
+                    </div>
+                    </div>
+
+                    <div class="single-row">
+                    <label for="contact">Contact No.</label>
+                    {{ form.contact_number(value=student.personal_information.contact_number) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="residence">Residence</label>
+                    {{ form.residence(value=student.personal_information.residence) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="nationality">Nationality</label>
+                    {{ form.nationality(value=student.personal_information.nationality) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="placeofbirth">Place of Birth</label>
+                    {{ form.place_of_birth(value=student.personal_information.place_of_birth) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="religion">Religion</label>
+                    {{ form.religion(value=student.personal_information.religion) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="counselinghistory">Counseling History</label>
+                    {{ form.counseling_history(value=student.personal_information.counseling_history) }}
+                    </div>
+                </div>
+                </section>
+                <hr />
+                <section>
+                <div class="left-header">Family Background</div>
+                <div class="right-content">
+                    <div class="double-row">
+                    <div>
+                        <label for="mfname">Mother Firstname</label>
+                        {{ form.mother_first_name(value=student.family_background.mother_first_name) }}
+                    </div>
+                    <div>
+                        <label for="mlname">Mother Lastname</label>
+                        {{ form.mother_last_name(value=student.family_background.mother_last_name) }}
+                    </div>
+                    </div>
+                    <div class="single-row-half">
+                    <label for="mage">Mother Age</label>
+                    {{ form.mother_age(value=student.family_background.mother_age) }}
+                    </div>
+                    <div class="double-row">
+                    <div>
+                        <label for="ffname">Father Firstname</label>
+                        {{ form.father_first_name(value=student.family_background.father_first_name) }}
+                    </div>
+                    <div>
+                        <label for="flname">Father Lastname</label>
+                        {{ form.father_last_name(value=student.family_background.father_last_name) }}
+                    </div>
+                    </div>
+                    <div class="single-row-half">
+                    <label for="fage">Father Age</label>
+                    {{ form.father_age(value=student.family_background.father_age) }}
+                    </div>
+                </div>
+                </section>
+
+                <hr />
+                <section>
+                <div class="left-header">Educational Background</div>
+                <div class="right-content">
+                    <div class="double-row">
+                    <div>
+                        <label for="shs">Senior High School</label>
+                        {{ form.senior_high_school(value=student.educational_background.senior_high_school) }}
+                    </div>
+                    <div>
+                        <label for="shsgradyear">SHS Graduation Year</label>
+                        {{ form.shs_graduation_year(value=student.educational_background.shs_graduation_year) }}
+                    </div>
+                    </div>
+
+                    <div class="single-row">
+                    <label for="shsstrand">SHS Strand</label>
+                    {{ form.shs_strand(value=student.educational_background.shs_strand) }}
+                    </div>
+                    <hr style="margin: 7px 0 7px 0 !important" />
+                    <div class="double-row">
+                    <div>
+                        <label for="jhs">Junior High School</label>
+                        {{ form.junior_high_school(value=student.educational_background.junior_high_school) }}
+                    </div>
+                    <div>
+                        <label for="jhsgradyear">JHS Graduation Year</label>
+                        {{ form.jhs_graduation_year(value=student.educational_background.jhs_graduation_year) }}
+                    </div>
+                    </div>
+                    <hr style="margin: 7px 0 7px 0 !important" />
+                    <div class="double-row">
+                    <div>
+                        <label for="elemschool">Elementary school</label>
+                        {{ form.elementary_school(value=student.educational_background.elementary_school) }}
+                    </div>
+                    <div>
+                        <label for="elemgradyear">Elementary Graduation Year</label>
+                        {{ form.elementary_graduation_year(value=student.educational_background.elementary_graduation_year) }}
+                    </div>
+                    </div>
+                </div>
+                </section>
+
+                <hr />
+                <section>
+                <div class="left-header">Health Information</div>
+                <div class="right-content">
+                    <div class="double-row">
+                    <div>
+                        <label for="generalhealth">General Health</label>
+                        {{ form.general_health(value=student.health_information.general_health) }}
+                    </div>
+                    <div>
+                        <label for="expsickness">Experienced Sickness</label>
+                        {{ form.experienced_sickness(value=student.health_information.experienced_sickness) }}
+                    </div>
+                    </div>
+                    <div class="double-row">
+                    <div>
+                        <label for="height">Height (cm)</label>
+                        {{ form.height(value=student.health_information.height) }}
+                    </div>
+                    <div>
+                        <label for="weight">Weight (kg)</label>
+                        {{ form.weight(value=student.health_information.weight) }}
+                    </div>
+                    </div>
+                    <div class="single-row">
+                    <label for="sight">Sight</label>
+                    {{ form.sight(value=student.health_information.sight) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="hearing">Hearing</label>
+                    {{ form.hearing(value=student.health_information.hearing) }}
+                    </div>
+                    <div class="single-row">
+                    <label for="speech">Speech</label>
+                    {{ form.speech(value=student.health_information.speech) }}
+                    </div>
+                </div>
+                </section>
+
+                <hr />
+                <section>
+                <div class="left-header">Psychological Assessment</div>
+                <div class="right-content">
+                    <div class="single-row">
+                    <label for="learningstyle">Learning Style</label>
+                    {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
+                    </div>
+                    <div class="double-row">
+                    <div>
+                        <label for="ptest">Personality Test</label>
+                        {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
+                    </div>
+                    <div>
+                        <label for="iqtest">IQ Test</label>
+                        {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
+                    </div>
+                    </div>
+                </div>
+                </section>
+            </form>
+        </div>
+        <!-- TODO: make buttons functional; to save or cancel -->
+        <footer>
+        <div class="update-btn">{{ form.submit(class="update") }}</div>
+        <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+            <button class="cancel-btn">Cancel</button>
+        </a>
+        </footer>
     </div>
-
-    <div class="scroll-content">
-      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
-        {{ form.csrf_token }}
-        
-            {{ form.hidden_tag() }}
-        <!-- Student Information section -->
-        <section>
-          <div class="left-header">Student Information</div>
-          <div class="right-content">
-            <div class="single-row">
-              <label for="fname">First name</label>
-              {{ form.first_name(value=student.first_name) }}
-            </div>
-
-            <div class="single-row">
-              <label for="lname">Last name</label>
-              {{ form.last_name(value=student.last_name) }}
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="studId">Student ID</label><br />
-                <input type="text" id="studId" name="studId" />
-              </div>
-              <div>
-                <label for="fname">GPA</label>
-                {{ form.gpa(value=student.gpa) }}
-              </div>
-            </div>
-
-            <div class="double-row">
-              <div>
-                <label for="campus">Campus</label><br />
-                <select name="campus" id="campus">
-                  <option value="boni">Boni</option>
-                  <option value="pasig">Pasig</option>
-                </select>
-              </div>
-              <div>
-                <label for="year">Year Level</label><br />
-                <select name="year" id="year">
-                  <option value="1styear">1st Year</option>
-                  <option value="2ndyear">2nd Year</option>
-                  <option value="3rdyear">3rd Year</option>
-                  <option value="4thyear">4th Year</option>
-                </select>
-              </div>
-            </div>
-            <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
-            <!-- TODO: replace "idk" with actual courses -->
-            <div class="single-row">
-              <label for="course">Course</label>
-              <select name="course" id="course">
-                <option value="idk">Bachelor of Science in Mechanical Engineering</option>
-                <option value="idk">Bachelor of Science in Architecture (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Civil Engineering</option>
-                <option value="idk">Bachelor of Science in Electrical Engineering</option>
-                <option value="idk">Bachelor of Science in Electronics Engineering</option>
-                <option value="idk">Bachelor of Science in Computer Engineering</option>
-                <option value="idk">Bachelor of Science in Industrial Engineering (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Information Technology (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Mechatronics</option>
-                <option value="idk">Bachelor of Science in Accountancy</option>
-                <option value="idk">Bachelor of Science in Entrepreneurship</option>
-                <option value="idk">Bachelor of Science in Office Administration</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Operations Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Marketing Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Financial Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Human Resource Management</option>
-                <option value="idk">Bachelor of Secondary Education major in English</option>
-                <option value="idk">Bachelor of Secondary Education major in Math</option>
-                <option value="idk">Bachelor of Secondary Education major in Science (Boni Campus)</option>
-                <option value="idk">Bachelor of Secondary Education major in Social Studies</option>
-                <option value="idk">Bachelor of Secondary Education Major in Filipino</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Animation</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                <option value="idk">Bachelor of Science in Psychology</option>
-                <option value="idk">Bachelor of Arts in Political Science</option>
-                <option value="idk">Bachelor of Science in Statistics (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Biology (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Astronomy</option>
-                <option value="idk">Bachelor of Science in Physical Education (Boni Campus)</option>
-              </select>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-
-        <section>
-          <div class="left-header">Personal Information</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                <label for="birthday">Date of Birth</label><br />
-                {{ form.date_of_birth(value=student.personal_information.date_of_birth) }}
-              </div>
-              <div>
-                <label for="age">Age</label><br />
-                {{ form.age(value=student.personal_information.age) }}
-              </div>
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="sex">Sex</label>
-                <select name="sex" id="sex">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-              <div>
-                <label for="gender">Gender</label><br />
-                {{ form.gender(value=student.personal_information.gender) }}
-              </div>
-            </div>
-
-            <div class="single-row">
-              <label for="contact">Contact No.</label>
-              {{ form.contact_number(value=student.personal_information.contact_number) }}
-            </div>
-            <div class="single-row">
-              <label for="residence">Residence</label>
-              {{ form.residence(value=student.personal_information.residence) }}
-            </div>
-            <div class="single-row">
-              <label for="nationality">Nationality</label>
-              {{ form.nationality(value=student.personal_information.nationality) }}
-            </div>
-            <div class="single-row">
-              <label for="placeofbirth">Place of Birth</label>
-              {{ form.place_of_birth(value=student.personal_information.place_of_birth) }}
-            </div>
-            <div class="single-row">
-              <label for="religion">Religion</label>
-              {{ form.religion(value=student.personal_information.religion) }}
-            </div>
-            <div class="single-row">
-              <label for="counselinghistory">Counseling History</label>
-              {{ form.counseling_history(value=student.personal_information.counseling_history) }}
-            </div>
-          </div>
-        </section>
-        <hr />
-        <section>
-          <div class="left-header">Family Background</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                <label for="mfname">Mother Firstname</label>
-                {{ form.mother_first_name(value=student.family_background.mother_first_name) }}
-              </div>
-              <div>
-                <label for="mlname">Mother Lastname</label>
-                {{ form.mother_last_name(value=student.family_background.mother_last_name) }}
-              </div>
-            </div>
-            <div class="single-row-half">
-              <label for="mage">Mother Age</label>
-              {{ form.mother_age(value=student.family_background.mother_age) }}
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="ffname">Father Firstname</label>
-                {{ form.father_first_name(value=student.family_background.father_first_name) }}
-              </div>
-              <div>
-                <label for="flname">Father Lastname</label>
-                {{ form.father_last_name(value=student.family_background.father_last_name) }}
-              </div>
-            </div>
-            <div class="single-row-half">
-              <label for="fage">Father Age</label>
-              {{ form.father_age(value=student.family_background.father_age) }}
-            </div>
-          </div>
-        </section>
-
-        <hr />
-        <section>
-          <div class="left-header">Educational Background</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                <label for="shs">Senior High School</label>
-                {{ form.senior_high_school(value=student.educational_background.senior_high_school) }}
-              </div>
-              <div>
-                <label for="shsgradyear">SHS Graduation Year</label>
-                {{ form.shs_graduation_year(value=student.educational_background.shs_graduation_year) }}
-              </div>
-            </div>
-
-            <div class="single-row">
-              <label for="shsstrand">SHS Strand</label>
-              {{ form.shs_strand(value=student.educational_background.shs_strand) }}
-            </div>
-            <hr style="margin: 7px 0 7px 0 !important" />
-            <div class="double-row">
-              <div>
-                <label for="jhs">Junior High School</label>
-                {{ form.junior_high_school(value=student.educational_background.junior_high_school) }}
-              </div>
-              <div>
-                <label for="jhsgradyear">JHS Graduation Year</label>
-                {{ form.jhs_graduation_year(value=student.educational_background.jhs_graduation_year) }}
-              </div>
-            </div>
-            <hr style="margin: 7px 0 7px 0 !important" />
-            <div class="double-row">
-              <div>
-                <label for="elemschool">Elementary school</label>
-                {{ form.elementary_school(value=student.educational_background.elementary_school) }}
-              </div>
-              <div>
-                <label for="elemgradyear">Elementary Graduation Year</label>
-                {{ form.elementary_graduation_year(value=student.educational_background.elementary_graduation_year) }}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-        <section>
-          <div class="left-header">Health Information</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                <label for="generalhealth">General Health</label>
-                {{ form.general_health(value=student.health_information.general_health) }}
-              </div>
-              <div>
-                <label for="expsickness">Experienced Sickness</label>
-                {{ form.experienced_sickness(value=student.health_information.experienced_sickness) }}
-              </div>
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="height">Height (cm)</label>
-                {{ form.height(value=student.health_information.height) }}
-              </div>
-              <div>
-                <label for="weight">Weight (kg)</label>
-                {{ form.weight(value=student.health_information.weight) }}
-              </div>
-            </div>
-            <div class="single-row">
-              <label for="sight">Sight</label>
-              {{ form.sight(value=student.health_information.sight) }}
-            </div>
-            <div class="single-row">
-              <label for="hearing">Hearing</label>
-              {{ form.hearing(value=student.health_information.hearing) }}
-            </div>
-            <div class="single-row">
-              <label for="speech">Speech</label>
-              {{ form.speech(value=student.health_information.speech) }}
-            </div>
-          </div>
-        </section>
-
-        <hr />
-        <section>
-          <div class="left-header">Psychological Assessment</div>
-          <div class="right-content">
-            <div class="single-row">
-              <label for="learningstyle">Learning Style</label>
-              {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="ptest">Personality Test</label>
-                {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
-              </div>
-              <div>
-                <label for="iqtest">IQ Test</label>
-                {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
-              </div>
-            </div>
-          </div>
-        </section>
-      </form>
-    </div>
-    <!-- TODO: make buttons functional; to save or cancel -->
-    <footer>
-      <div class="update-btn">{{ form.submit(class="update") }}</div>
-      <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-        <button class="cancel-btn">Cancel</button>
-      </a>
-    </footer>
-  </div>
-</div>
 </div>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
