@@ -32,9 +32,9 @@ def process_data(student_id=None, search_query=None):
                     (PersonalInformation.religion.ilike(f"%{search_query}%")) |
                     (PersonalInformation.nationality.ilike(f"%{search_query}%")) |
                     (PersonalInformation.place_of_birth.ilike(f"%{search_query}%")) |
-                    (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
-                    (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
-                    (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
+                    # (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
+                    # (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
+                    # (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
                     # (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
                     # (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
                     # (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |

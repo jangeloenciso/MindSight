@@ -35,6 +35,7 @@
             <div class="double-row">
               <div>
                 <label for="studId">Student ID</label><br />
+                {% comment %} Make sure this is not editable {% endcomment %}
                 <input type="text" id="studId" name="studId" />
               </div>
               <div>
@@ -202,8 +203,8 @@
           <div class="right-content">
             <div class="double-row">
               <div>
-                <label for="shs">Senior High School</label>
-                {{ form.senior_high_school(value=student.educational_background.senior_high_school) }}
+                {% comment %} <label for="shs">Senior High School</label>
+                {{ form.senior_high_school(value=student.educational_background.senior_high_school) }} {% endcomment %}
               </div>
               <div>
                 <label for="shsgradyear">SHS Graduation Year</label>

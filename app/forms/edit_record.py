@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 class EditStudentForm(FlaskForm):
     # Fields from StudentInformation model
+    student_id = StringField('Student ID', validators=[DataRequired(), Length(min=11, max=11)])
     last_name = StringField('Last Name', validators=[DataRequired(), Length(max=50)])
     first_name = StringField('First Name', validators=[DataRequired(), Length(max=50)])
     course = StringField('Course', validators=[DataRequired(), Length(max=100)])

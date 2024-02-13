@@ -9,7 +9,7 @@ from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
-from app.forms.add_record import AddStudentForm
+# from app.forms.add_record import AddStudentForm
 import pytesseract
 from PIL import Image
 
@@ -199,12 +199,12 @@ def edit_record(student_id):
 @app.route('/students/records/add', methods=['GET', 'POST'])
 @login_required
 def add_record():
-    form = AddStudentForm()  # Create an instance of the AddRecordForm
+    form = EditStudentForm()  # Create an instance of the AddRecordForm
 
     if form.validate_on_submit():  # If the form is submitted and validated
         
         last_name = form.last_name.data
-        first_name = form.first.name.data
+        first_name = form.first_name.data
         course = form.course.data
         student_id = form.student_id.data
         age = form.age.data
@@ -213,21 +213,23 @@ def add_record():
         contact_number = form.contact_number.data
         religion = form.religion.data
 
-        new_record = Student(
-            last_name=last_name,
-            first_name=first_name,
-            course=course,
-            student_id=student_id,
-            age=age,
-            sex=sex,
-            gender=gender,
-            contact_number=contact_number,
-            religion=religion,
-        )
+        print("valid!")
+
+        # new_record = Student(
+        #     last_name=last_name,
+        #     first_name=first_name,
+        #     course=course,
+        #     student_id=student_id,
+        #     age=age,
+        #     sex=sex,
+        #     gender=gender,
+        #     contact_number=contact_number,
+        #     religion=religion,
+        # )
 
         # Add the new record to the database
-        db.session.add(new_record)
-        db.session.commit() 
+        # db.session.add(new_record)
+        # db.session.commit() 
 
         # Flash a success message
         flash('New student added successfully!', 'success')
