@@ -68,7 +68,6 @@
     flex-basis: 25%;
     padding: 10px;
     transition: var(--smooth-transition);
-    cursor: pointer;
     text-decoration: none;
 }
 
@@ -84,6 +83,7 @@
     background:none;
     border: none;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .btn span {
