@@ -6,6 +6,7 @@
     --bg-orange: #DB9354;
     --border: #b1b1b1;
     --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
+    --smooth-transition-slower: cubic-bezier(0.18, 0.89, 0.47, 1) 0.6s;
 }
 
 * {
