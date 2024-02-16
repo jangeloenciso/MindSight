@@ -333,3 +333,8 @@ input:-webkit-autofill {
 .login-btn-container button:hover {
     background-color: #0E2E5E;
 }
+
+/* forces html to be 100vh */
+.htmlheight100vh{
+    height: 100vh;
+}
