@@ -25,113 +25,41 @@
 }
 
 
-
 /* header */
 .main-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
-    height: auto;
+    height: 10%;
     color: var(--primary-color);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
+    padding: 0 0 0.5em;
 }
 
 .main-header span {
-    font-size: 2.2em;
+    font-size: 2.2rem;
     font-weight: bold;
-    border-bottom: 2px solid var(--bg-orange);
-    display: flex;
-    padding-bottom: 10px;
+    text-transform: uppercase;
 }
 
+.back-button button {
+    cursor: pointer;
+}
 
-/* search */
-.search-container {
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 1.4em;
     position: relative;
-    width: 50%;
+
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    padding: 5px;
+.back-button:hover img {
+    transform: translateX(-5px) scale(1.1);
 }
 
-/* search input */
-.search-bar input[type="text"] {
-    color: #095371;
-    flex: 1;
-    border-radius: 40px;
-    border: 2px solid #095371;
-    padding: 15px 65px 15px 15px;
-    background-color: transparent;
-}
-
-/* placeholder color */
-.search-bar input[type="text"]::placeholder {
-    color: #095371;
-}
-
-.search-bar button {
-    background: none;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: calc(50% - 20px);
-}
-
-.search-bar button img {
-    height: 33px;
-    aspect-ratio: 1 / 1;
-}
-
-.search-upload-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-/* upload file */
-.upload-button {
-    width: auto;
-    background-color: var(--primary-color);
-    border-radius: 40px;
-    border: 2px solid #095371;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    cursor: pointer;
-    padding: 0 1em;
-}
-
-.upload-button button {
-    background: none;
-    border: none;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.upload-button button img {
-    height: 30px;
-    aspect-ratio: 1 / 1;
-    margin: 0.3em 1em 0 0;
-}
-
-.upload-button p {
-    font-size: 1em;
-    color: var(--white);
-}
-
-.upload-button:hover {
-    background-color: var(--bg-orange);
-    border: none;
-}
 
 /* directory buttons */
 .main-buttons {
@@ -214,6 +142,7 @@
 .main-buttons a {
     border: 3px solid var(--white);
     transition: var(--smooth-transition);
+    text-decoration: none;
 }
 
 .main-buttons a:hover {
@@ -250,7 +179,7 @@
 
 
 /* Sidebar active indicator */
-.sidebar-buttons #students-container::before {
+.sidebar-buttons #admin-container::before {
     content: "";
     position: relative;
     left: 0;
@@ -260,7 +189,7 @@
     transform: translateX(-25px);
 }
 
-#students-container img, #students-container span {
+#admin-container img, #admin-container span {
     transform: translateX(-7px);
 }
 

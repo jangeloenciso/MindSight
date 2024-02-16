@@ -1,6 +1,6 @@
 :root {
     --primary-color: #095371;
-    --white: #fff;
+    --white: #faf4f4;
     --text-white-dim: #d9d9d9;
     --main-db-bg-color: #EAE7D6;
     --bg-orange: #DB9354;
@@ -86,8 +86,14 @@ body {
     letter-spacing: 0.9px;
 }
 
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .btn-signup {
-    width: 100%;
+    width: auto;
     height: 45px;
     font-size: 1.3em;
     font-weight: bold;
@@ -97,8 +103,23 @@ body {
     border: 2px solid #FFF;
     background-color: transparent;
     cursor: pointer;
+    padding: 0 3em;
 }
 
+.sign-stud-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+.vl {
+    border-left: 2px solid var(--white);
+    height: 80%;
+    margin: 0;
+    padding: 0;
+}
 
 /* SVGs */
 .svg-top {
@@ -232,6 +253,40 @@ input:-webkit-autofill {
     padding-right: 50px;
 }
 
+/* for modal style */
+.swal2-popup {
+    font-size: 1.1rem;
+    width: 40%;
+    color: var(--primary-color);
+    background: var(--main-db-bg-color);
+    border-radius: 1.2rem;
+    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(10px);
+    padding: 1em;
+}
+
+.swal2-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.swal2-confirm.confirm-button-class, 
+.swal2-cancel.cancel-button-class {
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+}
+
+.swal2-confirm.confirm-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+
+}
+
+.swal2-cancel.cancel-button-class {
+    color: var(--primary-color);
+    background-color: var(--white);
+}
 
 
 /* login button */

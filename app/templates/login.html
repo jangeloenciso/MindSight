@@ -24,15 +24,31 @@
             alt="Mindsight logo"
           />
         </div>
-        <div>
-          <div class="btn-header">
-            <span>New Here?</span> Have an account with us!
+        <div class="sign-stud-btn">
+          <div class="btn">
+            <div class="btn-header">
+              <span>New Here?</span>Have an account with us!
+            </div>
+  
+            <!-- Redirect to the Sign up page -->
+            <a href="{{ url_for('signup') }}">
+              <button class="btn-signup">SIGN UP</button>
+            </a>
           </div>
+          
+          <div class="vl"></div>
 
-          <!-- Redirect to the Sign up page -->
-          <a href="{{ url_for('signup') }}">
-            <button class="btn-signup">SIGN UP</button>
-          </a>
+          <div class="btn">
+            <div class="btn-header">
+              <span>Student?</span>Answer the form
+            </div>
+  
+            <!-- Redirect to the Form page -->
+            <a>
+              <button class="btn-signup" id="toggleConfirmation">STUDENT</button>
+            </a>
+          </div>
+          
         </div>
       </div>
       <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
@@ -71,6 +87,8 @@
       </div>
     </section>
 
-    <script src="../static/javascript/login.js"></script>
+    <script src={{ url_for('static', filename='javascript/login.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/add_confirmation.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
   </body>
 </html>

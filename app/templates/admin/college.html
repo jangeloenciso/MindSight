@@ -1,0 +1,74 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Students{%
+    endblock %} {% block styles %}
+    <link rel="stylesheet" href="/static/css/college.css" />
+    {% endblock %} {% block content %}
+    
+    <div class="right">
+      <div class="main">
+        <div class="main-header">
+            <!-- for counselor name -->
+          <span>EMAMANUELLE A. SANTIAGO</span>
+
+          <div class="back-button">
+            <a href="{{ url_for ('admin')}}">
+                <img src="/static/SVG/back_button.svg"/>
+            </a>
+          </div>
+        </div>
+    
+        <!-- directory buttons -->
+        <div class="main-buttons">
+          <a href="{{ url_for ('counseling_history') }}">
+            <button class="cea">
+              <img src="/static/students/cea.png" />
+              <span>College of Engineering and Architecture <br />CEA </span>
+            </button></a
+          >
+          <div class="buttons-group">
+            <a href="{{ url_for ('college_records', college="CBEA") }}">
+              <button class="cbea">
+                <img src="/static/students/cbea.png" />
+                <span
+                  >College of Business Entrepreneurship and Accountancy <br />
+                  CBEA</span
+                >
+              </button></a
+            >
+            <a href="{{ url_for ('college_records', college="CAS") }}">
+              <button class="cas">
+                <img src="/static/students/cas.png" />
+                <span
+                  >College of Arts and Sciences <br />
+                  CAS</span
+                >
+              </button></a
+            >
+            <a href="{{ url_for ('college_records', college="CED") }}">
+              <button class="ced">
+                <img src="/static/students/ced.png" />
+                <span
+                  >College of Education <br />
+                  CED</span
+                >
+              </button></a
+            >
+            <a href="{{ url_for ('college_records', college="IHK") }}">
+              <button class="ihk">
+                <img src="/static/students/ihk.png" />
+                <span
+                  >Institute of Human Kinetics <br />
+                  IHK</span
+                >
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
+    
+    {% endblock %}
+    

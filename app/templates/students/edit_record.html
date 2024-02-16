@@ -281,23 +281,23 @@
 
                 <hr />
                 <section>
-                <div class="left-header">Psychological Assessment</div>
-                <div class="right-content">
-                    <div class="single-row">
-                    <label for="learningstyle">Learning Style</label>
-                    {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
+                    <div class="left-header">Psychological Assessment</div>
+                    <div class="right-content">
+                        <div class="single-row">
+                        <label for="learningstyle">Learning Style</label>
+                        {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
+                        </div>
+                        <div class="double-row">
+                        <div>
+                            <label for="ptest">Personality Test</label>
+                            {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
+                        </div>
+                        <div>
+                            <label for="iqtest">IQ Test</label>
+                            {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
+                        </div>
+                        </div>
                     </div>
-                    <div class="double-row">
-                    <div>
-                        <label for="ptest">Personality Test</label>
-                        {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
-                    </div>
-                    <div>
-                        <label for="iqtest">IQ Test</label>
-                        {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
-                    </div>
-                    </div>
-                </div>
                 </section>
             </form>
         </div>

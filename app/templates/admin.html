@@ -9,14 +9,21 @@ endblock %} {% block styles %}
     </div>
 
     <nav class="counselors">
-      <div>EMMANUELLE A. SANTIAGO <span>Director</span></div>
-      <div>
-        RUSSEL ANE A. DELA CRUZ<span>Head, Counseling and Wellness</span>
-      </div>
-      <div>JAKE JASON QUEDDENG<span>GCSC Personnel-Pasig</span></div>
-      <div>
-        LIZELLE ANNE MARIE O. MANABAT<span>Registered Psychometrician</span>
-      </div>
+      <a href="{{ url_for('counselor') }}">
+        <button class="btn">EMMANUELLE A. SANTIAGO <br><span>Director</span></button>
+      </a>
+
+      <a href="{{ url_for('counselor') }}">
+        <button class="btn">RUSSEL ANE A. DELA CRUZ <br><span>Head, Counseling and Wellness</span></button>
+      </a>
+
+      <a href="{{ url_for('counselor') }}">
+        <button class="btn">JAKE JASON QUEDDENG <br><span>GCSC Personnel-Pasig</span></button>
+      </a>
+
+      <a href="{{ url_for('counselor') }}">
+        <button class="btn">LIZELLE ANNE MARIE O. MANABAT <br><span>Registered Psychometrician</span></button>
+      </a>
     </nav>
 
     <div class="recent-records">

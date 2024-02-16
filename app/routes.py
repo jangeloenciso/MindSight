@@ -64,7 +64,7 @@ def logout():
 
 # Pages
 
-# for dashboad / case overview pages
+# for dashboard / case overview pages
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -107,10 +107,23 @@ def identity():
     return render_template('dashboard/identity.html')
 
 
+# for admin / viewing of students whose been counseled page
 @app.route('/admin')
 @login_required
 def admin():
     return render_template('admin.html')
+
+@app.route('/admin/counselor')
+@login_required
+def counselor():
+    return render_template('admin/college.html')
+
+@app.route('/admin/counselor/counseling_history')
+@login_required
+def counseling_history():
+    return render_template('admin/counseling_history.html')
+
+
 
 @app.route('/analytics', methods=['GET', 'POST'])
 @login_required
@@ -234,8 +247,7 @@ def edit_record(student_id):
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
 
-@app.route('/students/records/add', methods=['GET', 'POST'])
-@login_required
+@app.route('/add', methods=['GET', 'POST'])
 def add_record():
 
     student = (
@@ -350,7 +362,7 @@ def add_record():
         return redirect(url_for('student_record', new_record_id=student.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('students/add_record.html', form=form)
+    return render_template('add_record.html', form=form)
 
 
 

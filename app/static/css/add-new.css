@@ -1,24 +1,15 @@
-.right {
-    display: flex;
-    justify-content: center;
-    width: calc(100% - 73px);
-    height: 100vh;
-
-    /* positions right div properly */
-    margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
-    padding: 40px;
+body {
+    padding: 2em;
 }
 
 .main {
-    border-radius: 20px;
+    border-radius: 1.2em;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     border: 3px solid var(--bg-orange);
-    padding: 20px;
+    padding: 1.2em;
     background-color: var(--white);
 }
 
@@ -33,7 +24,7 @@
     align-items: center;
     border-bottom: 2px solid var(--bg-orange);
     margin-bottom: 1em;
-    padding: 0 0 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .main-header span {
