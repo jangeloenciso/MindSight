@@ -24,32 +24,34 @@
             alt="Mindsight logo"
           />
         </div>
-        <div class="sign-stud-btn">
-          <div class="btn">
-            <div class="btn-header">
-              <span>New Here?</span>Have an account with us!
-            </div>
-  
-            <!-- Redirect to the Sign up page -->
-            <a href="{{ url_for('signup') }}">
-              <button class="btn-signup">SIGN UP</button>
-            </a>
-          </div>
-          
-          <div class="vl"></div>
 
-          <div class="btn">
-            <div class="btn-header">
-              <span>Student?</span>Answer the form
-            </div>
-  
-            <!-- Redirect to the Form page -->
-            <a>
-              <button class="btn-signup" id="toggleConfirmation">STUDENT</button>
-            </a>
+        
+        <div class="student-container ">
+          <div class="student-header">
+            <span>For Students: </span
+            ><i
+              >Help us understand your needs and connect you with the right
+              support.</i
+            >
           </div>
-          
+
+          <!-- Redirect to the Form page -->
+          <a>
+            <button class="btn-student" id="toggleConfirmation">
+              <div>
+                <span>Share your details with us</span>
+                <span>We're here for you</span>
+              </div>
+            </button>
+          </a>
+          <div class="signup-container">
+            To register a new administrator, please click
+            <!-- Redirect to the Sign up page -->
+            <a href="{{ url_for('signup') }}"> here. </a>
+          </div>
         </div>
+
+       
       </div>
       <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
     </section>
@@ -61,11 +63,13 @@
           {{ form.hidden_tag() }}
           <div>
             <p>Log in</p>
-            {{ form.username(placeholder="username", id="username", required=true) }}
+            {{ form.username(placeholder="username", id="username",
+            required=true) }}
           </div>
           <div class="password-div">
             <div class="password-input-container">
-              {{ form.password(placeholder="password", id="password", required=true) }}
+              {{ form.password(placeholder="password", id="password",
+              required=true) }}
               <i class="togglepass" id="togglePassword"
                 ><img
                   id="eye-image"
@@ -86,7 +90,6 @@
         <div class="prmpt">{{ prmpt }}</div>
       </div>
     </section>
-
     <script src={{ url_for('static', filename='javascript/login.js') }}></script>
     <script src={{ url_for('static', filename='javascript/add_confirmation.js') }}></script>
     <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
