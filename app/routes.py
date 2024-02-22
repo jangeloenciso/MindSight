@@ -362,7 +362,7 @@ def add_record():
         return redirect(url_for('student_record', new_record_id=student.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('add_record.html', form=form)
+    return render_template('add_record-test.html', form=form)
 
 
 
