@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5724b93016db
+Revision ID: 5896bda485d2
 Revises: 
-Create Date: 2024-02-05 20:12:26.392446
+Create Date: 2024-02-26 09:38:48.887035
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5724b93016db'
+revision = '5896bda485d2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,6 +42,7 @@ def upgrade():
     sa.Column('username', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=255), nullable=False),
+    sa.Column('role', sa.String(length=45), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -96,7 +97,7 @@ def upgrade():
     sa.Column('current_physical_health', sa.String(length=20), nullable=True),
     sa.Column('last_check_up', sa.Date(), nullable=True),
     sa.Column('has_physician', sa.Boolean(), nullable=True),
-    sa.Column('physician_name', sa.String(length=20), nullable=True),
+    sa.Column('physician_name', sa.String(length=50), nullable=True),
     sa.Column('physician_email', sa.String(length=50), nullable=True),
     sa.Column('physician_number', sa.String(length=20), nullable=True),
     sa.Column('student_id', sa.String(length=20), nullable=True),
@@ -105,7 +106,7 @@ def upgrade():
     )
     op.create_table('history_information',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('information_provider', sa.String(length=20), nullable=True),
+    sa.Column('information_provider', sa.String(length=50), nullable=True),
     sa.Column('current_problem', sa.String(length=200), nullable=True),
     sa.Column('problem_length', sa.String(length=200), nullable=True),
     sa.Column('stressors', sa.String(length=200), nullable=True),
@@ -220,58 +221,58 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('struggled_with_substance_abuse', sa.Boolean(), nullable=True),
     sa.Column('alcohol', sa.Boolean(), nullable=True),
-    sa.Column('alcohol_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('alcohol_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('alcohol_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('alcohol_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('alcohol_amount_used', sa.String(length=50), nullable=True),
     sa.Column('alcohol_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('cigarette', sa.Boolean(), nullable=True),
-    sa.Column('cigarette_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('cigarette_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('cigarette_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('cigarette_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('cigarette_amount_used', sa.String(length=50), nullable=True),
     sa.Column('cigarette_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('marijuana', sa.Boolean(), nullable=True),
-    sa.Column('marijuana_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('marijuana_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('marijuana_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('marijuana_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('marijuana_amount_used', sa.String(length=50), nullable=True),
     sa.Column('marijuana_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('cocaine', sa.Boolean(), nullable=True),
-    sa.Column('cocaine_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('cocaine_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('cocaine_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('cocaine_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('cocaine_amount_used', sa.String(length=50), nullable=True),
     sa.Column('cocaine_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('heroin', sa.Boolean(), nullable=True),
-    sa.Column('heroin_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('heroin_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('heroin_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('heroin_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('heroin_amount_used', sa.String(length=50), nullable=True),
     sa.Column('heroin_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('amphetamines', sa.Boolean(), nullable=True),
-    sa.Column('amphetamines_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('amphetamines_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('amphetamines_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('amphetamines_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('amphetamines_amount_used', sa.String(length=50), nullable=True),
     sa.Column('amphetamines_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('club_drugs', sa.Boolean(), nullable=True),
-    sa.Column('club_drugs_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('club_drugs_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('club_drugs_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('club_drugs_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('club_drugs_amount_used', sa.String(length=50), nullable=True),
     sa.Column('club_drugs_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('pain_meds', sa.Boolean(), nullable=True),
-    sa.Column('pain_meds_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('pain_meds_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('pain_meds_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('pain_meds_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('pain_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('pain_meds_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('benzo', sa.Boolean(), nullable=True),
-    sa.Column('benzo_meds_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('benzo_meds_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('benzo_meds_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('benzo_meds_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('benzo_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('benzo_meds_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('hallucinogens', sa.Boolean(), nullable=True),
-    sa.Column('hallucinogens_meds_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('hallucinogens_meds_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('hallucinogens_meds_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('hallucinogens_meds_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('hallucinogens_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('hallucinogens_meds_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('other', sa.Boolean(), nullable=True),
-    sa.Column('other_meds_age_first_use', sa.String(length=10), nullable=True),
-    sa.Column('other_meds_frequency_of_use', sa.String(length=10), nullable=True),
+    sa.Column('other_meds_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('other_meds_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('other_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('other_meds_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('student_id', sa.String(length=20), nullable=True),
