@@ -1,8 +1,8 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request
-from flask_login import login_user, logout_user, login_required
+from flask import render_template, url_for, redirect, flash, request, abort
+from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
 from flask_login import login_user
@@ -10,8 +10,40 @@ from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
 from app.forms.add_record import AddStudentForm
+from app.forms.edit_credentials import EditCredentials
 import pytesseract
 from PIL import Image
+from functools import wraps
+
+roles_permissions = {
+    'superadmin': ['viewall', 'editall', 'searchall', 'deleteall', 'addall'],
+    'admin': ['viewall', 'view', 'editall','edit', 'search', 'delete', 'addall']
+}
+
+users = {
+    'user1': 'superadmin',
+    'user2': 'admin'
+}
+
+def permission_required(permission):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            # Check if current user has the required permission
+            user_role = getattr(current_user, 'role', None)
+            if user_role in roles_permissions and permission in roles_permissions[user_role]:
+                return func(*args, **kwargs)
+            else:
+                flash('You do not have permission to access this page.', 'danger')
+                return redirect(url_for('dashboard'))
+        return wrapper
+    return decorator
+
+
+@app.context_processor
+def inject_role():
+    role = getattr(current_user, 'role', None)
+    return dict(role=role) 
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -27,24 +59,26 @@ def login():
         else:
             flash('Login failed. Please check your username and password.', 'danger')
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form, current_user=current_user)
 
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+
     form = SignupForm()
 
     if form.validate_on_submit(): 
 
         _username = form.username.data
         _password = form.password.data
+        _role = form.role.data
 
         user = User.query.filter_by(username=_username).first()
         if user:
             prmpt = f'Sorry, but the username "{_username}" is already taken'
         else:
             hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
-            new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password)
+            new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password, role=_role)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
@@ -66,41 +100,48 @@ def logout():
 
 # for dashboard / case overview pages
 @app.route('/dashboard')
+@permission_required('viewall')
 @login_required
 def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/dashboard/experiences', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def experiences():
     
     return render_template('dashboard/experiences.html')
 
 @app.route('/dashboard/college_summary', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def college_summaries():
     
     return render_template('dashboard/college_summaries.html')
 
 @app.route('/dashboard/nature_of_concern', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def nature_of_concern():
     
     return render_template('dashboard/nature_concern.html')
 
 @app.route('/dashboard/campus', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def campus():
     
     return render_template('dashboard/campus.html')
 
 @app.route('/dashboard/religion', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def religion():
     
     return render_template('dashboard/religion.html')
 
 @app.route('/dashboard/identity', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def identity():
     
@@ -109,6 +150,7 @@ def identity():
 
 # for admin / viewing of students whose been counseled page
 @app.route('/admin')
+@permission_required('viewall')
 @login_required
 def admin():
     return render_template('admin.html')
@@ -126,21 +168,51 @@ def counseling_history():
 
 
 @app.route('/analytics', methods=['GET', 'POST'])
+@permission_required('viewall')
 @login_required
 def analytics():
     return render_template('analytics.html')
 
 @app.route('/analytics/analysis')
+@permission_required('viewall')
 @login_required
 def metrics():
     return render_template('metrics.html')
 
-@app.route('/settings')
+@app.route('/settings', methods=['GET', 'POST'])
+@permission_required('editall')
 @login_required
 def settings():
-    return render_template('settings.html')
+    form = EditCredentials()
+
+    if form.validate_on_submit():
+        # Get user information from the form
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+
+        # Update the user's information in the database
+        # (Replace with your specific code for updating user data)
+        update_user_info(current_user, first_name, last_name, username, email, password)
+
+    return render_template('settings.html', form=form)
+
+def update_user_info(user, first_name, last_name, username, email, password):
+    # Update the user's information in the database
+    # (Use appropriate methods for your database interaction)
+    user.first_name = first_name
+    user.last_name = last_name
+    user.username = username
+    user.email = email
+    if password:
+        user.set_password(password)
+    db.session.commit()
+
 
 @app.route('/students/records/search/', methods=['GET'])
+@permission_required('viewall')
 @login_required
 def search():
     query = request.args.get('query')
@@ -155,6 +227,7 @@ def search():
     return render_template('search.html', search_results=search_results, query=query)
 
 @app.route('/students/records/view/<student_id>/print')
+@permission_required('viewall')
 @login_required
 def print_record(student_id):
     data = process_data(student_id)
@@ -173,11 +246,13 @@ def print_record(student_id):
 # Student components
 
 @app.route('/students')
+@permission_required('viewall')
 @login_required
 def students():
     return render_template('students.html')
 
 @app.route('/students/records/<college>')
+@permission_required('viewall')
 @login_required
 def college_records(college):
     data = data_to_dict()
@@ -197,6 +272,7 @@ def college_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/students/records/view/<student_id>')
+@permission_required('viewall')
 @login_required
 def student_record(student_id):
     data = process_data(student_id)
@@ -208,6 +284,7 @@ def student_record(student_id):
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
+@permission_required('editall')
 @login_required
 def edit_record(student_id):
     student = (
@@ -248,6 +325,7 @@ def edit_record(student_id):
 
 
 @app.route('/add', methods=['GET', 'POST'])
+@permission_required('addall')
 def add_record():
 
     student = (
@@ -363,7 +441,6 @@ def add_record():
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
     return render_template('add_record-test.html', form=form)
-
 
 
 # API endpoints

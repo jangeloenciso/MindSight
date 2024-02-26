@@ -26,7 +26,8 @@ def load_user(user_id):
 def inject_user_info():
     user_info = {
         'first_name': current_user.first_name if current_user.is_authenticated else None,
-        'last_name': current_user.last_name if current_user.is_authenticated else None
+        'last_name': current_user.last_name if current_user.is_authenticated else None,
+        'role': current_user.role if current_user.is_authenticated else None
     }
     return user_info
 

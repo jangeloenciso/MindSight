@@ -9,7 +9,7 @@
     />
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
     <link rel="stylesheet" href="../static/css/signup.css" />
-    <title>Mindsight - Signup</title>
+    <title>Mindsight - Sign Up</title>
   </head>
   <body>
     <!-- left -->
@@ -48,6 +48,15 @@
 
           <p>Sign up</p>
 
+          <select name="role" required>
+            <option value="" disabled selected>Select your role</option>
+            <option value="superadmin">Super Admin</option>
+            <option value="admin">Admin</option>
+          </select>
+          {% for error in form.role.errors %}
+            <div class="error-message">{{ error }}</div>
+          {% endfor %}
+          
           <input
             type="text"
             placeholder="First Name"

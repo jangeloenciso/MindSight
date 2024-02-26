@@ -9,7 +9,7 @@
     />
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
     <link rel="stylesheet" href="../static/css/login.css" />
-    <title>Mindsight - Login</title>
+    <title>Mindsight - Sign In</title>
   </head>
   <body>
     <!-- left -->
@@ -44,9 +44,10 @@
               </div>
             </button>
           </a>
+  
+          <!-- Redirect to the Sign up page -->
           <div class="signup-container">
             To register a new administrator, please click
-            <!-- Redirect to the Sign up page -->
             <a href="{{ url_for('signup') }}"> here. </a>
           </div>
         </div>
@@ -84,7 +85,7 @@
           </div>
 
           <div class="login-btn-container">
-            <button type="submit" class="login-button">LOG IN</button>
+            <button type="submit" class="login-button">SIGN IN</button>
           </div>
         </form>
         <div class="prmpt">{{ prmpt }}</div>
