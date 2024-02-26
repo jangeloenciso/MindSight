@@ -53,6 +53,12 @@ with app.app_context():
         "IHK": [
             "Bachelor of Science in Physical Education (Boni Campus)",
         ],
+        "Senior High School" : [
+            "STEM",
+            "ABM",
+            "HUMSS",
+            "GAS"
+        ]
     }
 
     for college_name, course_names in college_courses.items():

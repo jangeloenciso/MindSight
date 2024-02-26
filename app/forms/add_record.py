@@ -42,7 +42,7 @@ class AddStudentForm(FlaskForm):
     experienced_sickness = StringField('Experienced Sickness', validators=[Length(max=3)])
 
     # Fields from EducationalBackground model
-    senior_high_school = StringField('Senior High School', validators=[Length(max=100)])
+    # senior_high_school = StringField('Senior High School', validators=[Length(max=100)])
     shs_strand = StringField('SHS Strand', validators=[Length(max=100)])
     shs_graduation_year = IntegerField('SHS Graduation Year')
     junior_high_school = StringField('Junior High School', validators=[Length(max=100)])

@@ -321,6 +321,11 @@ def add_record():
         #     gender=gender,
         #     contact_number=contact_number,
         #     religion=religion,
+        # )
+
+        # Add the new record to the database
+        # db.session.add(new_record)
+        # db.session.commit() 
         #     date_of_birth=date_of_birth,
         #     place_of_birth=place_of_birth,
         #     nationality=nationality,
