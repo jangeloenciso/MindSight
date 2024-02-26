@@ -1,0 +1,41 @@
+{% extends "components/base.html" %}
+{% block title %} Mindsight - College Summaries{% endblock %}
+
+{% block styles %}     
+<link rel="stylesheet" href="/static/css/experiences.css"/> 
+{% endblock %}
+
+{% block content %}
+
+<div class="right">
+    <div class="main">
+        <div class="main-header">
+            <span class="title">
+            <div>COLLEGE SUMMARIES</div>
+            <div class="back-button">
+                <a href="{{ url_for ('dashboard')}}">
+                    <img src="/static/SVG/back_button.svg"/>
+                </a>
+            </div>
+            </span>
+        </div>
+        <div class="content">
+            <div class="box">
+                    <span>CAS</span>
+            </div>
+            <div class="box">
+                    <span>CBEA</span>
+            </div>
+            <div class="box">
+                    <span>CEA</span>    
+            </div>
+            <div class="box">
+                    <span>CED</span>  
+            </div>
+            <div class="box">
+                    <span>IHK</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -31,6 +31,17 @@
 }
 
 
+.back-button button {
+    cursor: pointer;
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 0.9em; 
+    rotate: -90deg;
+    position: relative;
+
+}
 
 .title {
     font-size: 25px;
@@ -41,6 +52,8 @@
     border-bottom: 2px solid var(--bg-orange);
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #experience, #college, #campus,

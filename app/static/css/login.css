@@ -1,16 +1,16 @@
 :root {
     --primary-color: #095371;
-    --white: #fff;
+    --white: #faf4f4;
     --text-white-dim: #d9d9d9;
     --main-db-bg-color: #EAE7D6;
     --bg-orange: #DB9354;
     --border: #b1b1b1;
-    --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
 * {
     box-sizing: border-box;
     font-family: Lexend-Regular;
+    transition: var(--smooth-transition-slower);
 }
 
 body, html {
@@ -71,23 +71,28 @@ body {
 
 
 /* text on top of button */
-.btn-header {
-    width: auto;
-    display: flex;
-    font-size: 1.4em;
-    flex-direction: column;
-    align-items: center;
+.student-header {
+    font-size: 1em;
+    text-align: center;
     color: var(--white);
     margin-bottom: 20px;
 }
 
-.btn-header span {
+/* bolds text */
+.student-header span {
     font-weight: bold;
     letter-spacing: 0.9px;
 }
 
-.btn-signup {
-    width: 100%;
+/* container for text and button */
+.student-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 99;
+}
+
+.btn-student {
     height: 45px;
     font-size: 1.3em;
     font-weight: bold;
@@ -97,6 +102,40 @@ body {
     border: 2px solid #FFF;
     background-color: transparent;
     cursor: pointer;
+    padding: 0 3em;
+}
+
+/* container for text scrolling effect */
+.btn-student div {
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-top: 7px;
+
+}
+
+.btn-student:hover {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-student div span:last-child {
+    margin-top: 20px;
+}
+
+.btn-student:hover span:last-child {
+    margin-top: 0;
+    transform: translateY(-27px);
+}
+
+.btn-student:hover span:first-child {
+    opacity: 0;
+}
+
+.signup-container {
+    color: var(--white);
+    transform: translateY(20px);
 }
 
 
@@ -145,7 +184,7 @@ body {
 }
 
 /* sets the gap between the input boxes */
-.rsub-container .password-input-container{
+.rsub-container .password-input-container {
     margin-top: 10px;
 }
 
@@ -232,6 +271,40 @@ input:-webkit-autofill {
     padding-right: 50px;
 }
 
+/* for modal style */
+.swal2-popup {
+    font-size: 1.1rem;
+    width: 40%;
+    color: var(--primary-color);
+    background: var(--main-db-bg-color);
+    border-radius: 1.2rem;
+    box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
+    backdrop-filter: blur(10px);
+    padding: 1em;
+}
+
+.swal2-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.swal2-confirm.confirm-button-class,
+.swal2-cancel.cancel-button-class {
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+}
+
+.swal2-confirm.confirm-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+
+}
+
+.swal2-cancel.cancel-button-class {
+    color: var(--primary-color);
+    background-color: var(--white);
+}
 
 
 /* login button */
@@ -259,4 +332,9 @@ input:-webkit-autofill {
 
 .login-btn-container button:hover {
     background-color: #0E2E5E;
+}
+
+/* forces html to be 100vh */
+.htmlheight100vh{
+    height: 100vh;
 }

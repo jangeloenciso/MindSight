@@ -55,7 +55,7 @@
 }
 
 .title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
     line-height: normal;
 }
@@ -81,22 +81,23 @@
 
 .rows {
     width: 100%;
-    height: 25%;
+    height: auto;
     margin-bottom: 0.9em;
 }
 
-.row1, .row2 {
+.row1, .row2, .row3 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: auto;
     column-gap: 0.6em;
+    width: auto;
     margin: 0.5em 0;
 }
 
 
+
 .nature-content, .identity-content,
-.campus-content, .age-content {
+.campus-content, .age-content, .counselor {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -111,8 +112,9 @@
     height: 100%;
 }
 
+
 .answer {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--bg-orange);
     text-transform: uppercase;
 }

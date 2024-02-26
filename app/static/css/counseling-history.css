@@ -1,0 +1,207 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: var(--white);
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+    margin-bottom: 2em;
+    border-bottom: 2px solid var(--bg-orange);
+    padding-bottom: 1em;
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* search */
+.search-container {
+    position: relative;
+    width: 50%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.text {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.bottom-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5em;
+}
+
+/* search input */
+.search-bar input[type="text"] {
+    color: var(--primary-color);
+    flex: 1;
+    border-radius: 40px;
+    border: 2px solid var(--primary-color);
+    padding: 15px 65px 15px 15px;
+    background-color: transparent;
+}
+
+/* placeholder color */
+.search-bar input[type="text"]::placeholder {
+    color: var(--primary-color);
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 20px);
+}
+
+.search-bar button img {
+    height: 33px;
+    aspect-ratio: 1 / 1;
+}
+
+
+/* grid rows */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    border: 3px solid var(--primary-color);
+    background-color: var(--primary-color);
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.grid-header {
+    display: flex;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: bold;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+}
+
+.grid-row {
+    display: flex;
+    background-color: var(--main-db-bg-color);
+    color: var(--primary-color);
+    padding: 10px;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+
+/* individual sizes per column */
+.grid-date {
+    flex-basis: 18%;
+}
+
+.grid-section {
+    flex-basis: 30%;
+}
+
+.grid-college {
+    flex-basis: 30%;
+}
+
+.grid-name {
+    flex-basis: 40%;
+}
+
+.grid-gender {
+    flex-basis: 25%;
+}
+
+.grid-counselor {
+    flex-basis: 40%;
+}
+
+.grid-row:nth-child(even) {
+    background-color: #C5CFC6;
+}
+
+/* checkbox in odd rows */
+.grid-row input[type="checkbox"] {
+    transform: scale(1.7);
+    border-radius: 20px;
+    accent-color: var(--primary-color);
+}
+
+/* checkbox in even rows */
+.grid-row:nth-child(even) input[type="checkbox"] {
+    border-radius: 20px;
+    accent-color: var(--bg-orange);
+}
+
+/* Sidebar active indicator */
+.sidebar-buttons #admin-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#admin-container img, #admin-container span {
+    transform: translateX(-7px);
+}
+
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}
+
+.grid-row:nth-child(even):hover {
+    background-color: var(--primary-color);
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 1.3em;
+}

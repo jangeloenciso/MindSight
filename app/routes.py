@@ -9,7 +9,7 @@ from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
 from app.forms.edit_record import EditStudentForm
-# from app.forms.add_record import AddStudentForm
+from app.forms.add_record import AddStudentForm
 import pytesseract
 from PIL import Image
 
@@ -64,15 +64,66 @@ def logout():
 
 # Pages
 
+# for dashboard / case overview pages
 @app.route('/dashboard')
 @login_required
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/dashboard/experiences', methods=['GET'])
+@login_required
+def experiences():
+    
+    return render_template('dashboard/experiences.html')
+
+@app.route('/dashboard/college_summary', methods=['GET'])
+@login_required
+def college_summaries():
+    
+    return render_template('dashboard/college_summaries.html')
+
+@app.route('/dashboard/nature_of_concern', methods=['GET'])
+@login_required
+def nature_of_concern():
+    
+    return render_template('dashboard/nature_concern.html')
+
+@app.route('/dashboard/campus', methods=['GET'])
+@login_required
+def campus():
+    
+    return render_template('dashboard/campus.html')
+
+@app.route('/dashboard/religion', methods=['GET'])
+@login_required
+def religion():
+    
+    return render_template('dashboard/religion.html')
+
+@app.route('/dashboard/identity', methods=['GET'])
+@login_required
+def identity():
+    
+    return render_template('dashboard/identity.html')
+
+
+# for admin / viewing of students whose been counseled page
 @app.route('/admin')
 @login_required
 def admin():
     return render_template('admin.html')
+
+@app.route('/admin/counselor')
+@login_required
+def counselor():
+    return render_template('admin/college.html')
+
+@app.route('/admin/counselor/counseling_history')
+@login_required
+def counseling_history():
+    return render_template('admin/counseling_history.html')
+
+
 
 @app.route('/analytics', methods=['GET', 'POST'])
 @login_required
@@ -196,26 +247,71 @@ def edit_record(student_id):
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
 
-@app.route('/students/records/add', methods=['GET', 'POST'])
-@login_required
+@app.route('/add', methods=['GET', 'POST'])
 def add_record():
-    form = EditStudentForm()  # Create an instance of the AddRecordForm
+
+    student = (
+        StudentInformation.query
+        .options(
+            joinedload(StudentInformation.personal_information),
+            joinedload(StudentInformation.family_background),
+            joinedload(StudentInformation.health_information),
+            joinedload(StudentInformation.educational_background),
+            joinedload(StudentInformation.psychological_assessments),
+            joinedload(StudentInformation.visits)
+        )
+    )
+
+    form = AddStudentForm(obj=student) 
 
     if form.validate_on_submit():  # If the form is submitted and validated
         
-        last_name = form.last_name.data
-        first_name = form.first_name.data
-        course = form.course.data
-        student_id = form.student_id.data
-        age = form.age.data
-        sex = form.sex.data
-        gender = form.gender.data
-        contact_number = form.contact_number.data
-        religion = form.religion.data
+        # last_name = form.last_name.data
+        # first_name = form.first_name.data
+        # course = form.course.data
+        # student_id = form.student_id.data
+        # age = form.age.data
+        # sex = form.sex.data
+        # gender = form.gender.data
+        # contact_number = form.contact_number.data
+        # religion = form.religion.data
+        # date_of_birth = form.date_of_birth.data
+        # place_of_birth = form.place_of_birth.data
+        # nationality = form.nationality.data
+        # counseling_history = form.counseling_history.data
+        # residence = form.residence.data
+        # father_age = form.father_age.data
+        # mother_age = form.mother_age.data
+        # father_last_name = form.father_last_name.data
+        # mother_last_name = form.mother_last_name.data
+        # father_first_name = form.father_first_name.data
+        # mother_first_name = form.mother_first_name.data
+        # height = form.height.data
+        # weight = form.weight.data
+        # sight = form.sight.data
+        # hearing = form.hearing.data
+        # speech = form.speech.data
+        # general_health = form.general_health.data
+        # experienced_sickness = form.experienced_sickness.data
+        # senior_high_school = form.senior_high_school.data
+        # shs_strand = form.shs_strand.data
+        # shs_graduation_year = form.shs_graduation_year.data
+        # junior_high_school = form.junior_high_school.data
+        # jhs_graduation_year = form.jhs_graduation_year.data
+        # elementary_school = form.elementary_school.data
+        # elementary_graduation_year = form.elementary_graduation_year.data
+        # learning_styles = form.learning_styles.data
+        # personality_test = form.personality_test.data
+        # iq_test = form.iq_test.data
 
-        print("valid!")
+        form.populate_obj(student)
+        form.populate_obj(student.personal_information)
+        form.populate_obj(student.family_background)
+        form.populate_obj(student.health_information)
+        form.populate_obj(student.educational_background)
+        form.populate_obj(student.psychological_assessments)
 
-        # new_record = Student(
+        # new_record = student (
         #     last_name=last_name,
         #     first_name=first_name,
         #     course=course,
@@ -230,15 +326,48 @@ def add_record():
         # Add the new record to the database
         # db.session.add(new_record)
         # db.session.commit() 
+        #     date_of_birth=date_of_birth,
+        #     place_of_birth=place_of_birth,
+        #     nationality=nationality,
+        #     counseling_history=counseling_history,
+        #     residence=residence,
+        #     father_age=father_age,
+        #     mother_age=mother_age,
+        #     father_last_name=father_last_name,
+        #     mother_last_name=mother_last_name,
+        #     father_first_name=father_first_name,
+        #     mother_first_name=mother_first_name,
+        #     height=height,
+        #     weight=weight,
+        #     sight=sight,
+        #     hearing=hearing,
+        #     speech=speech,
+        #     general_health=general_health,
+        #     experienced_sickness=experienced_sickness,
+        #     senior_high_school=senior_high_school,
+        #     shs_strand=shs_strand,
+        #     shs_graduation_year=shs_graduation_year,
+        #     junior_high_school=junior_high_school,
+        #     jhs_graduation_year=jhs_graduation_year,
+        #     elementary_school=elementary_school,
+        #     elementary_graduation_year=elementary_graduation_year,
+        #     learning_styles=learning_styles,
+        #     personality_test=personality_test,
+        #     iq_test=iq_test
+        # )
+
+        # Add the new record to the database
+        db.session.add(student)
+        db.session.commit() 
 
         # Flash a success message
         flash('New student added successfully!', 'success')
 
         # Redirect the user to a page displaying the newly added record
-        return redirect(url_for('student_record', new_record_id=new_record.id))
+        return redirect(url_for('student_record', new_record_id=student.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('students/add_record.html', form=form)
+    return render_template('add_record-test.html', form=form)
 
 
 

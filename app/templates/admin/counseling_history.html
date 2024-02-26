@@ -1,49 +1,49 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - {{ college }}
 {%endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/records.css" />
+<link rel="stylesheet" href="/static/css/counseling-history.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>{{ college_name }}</span>
+      <span>Emmanuelle A. Santiago</span>
       <div class="back-button">
-        <a href="{{ url_for ('students') }}">
+        <a href="{{ url_for ('counselor') }}">
           <img src="/static/SVG/back_button.svg" />
         </a>
       </div>
     </div>
-    <!-- <p>The records below are for <b>xxx - YEAR.</b></p> -->
-    <div class="search-container">
-      <form method="GET" action="{{ url_for('search', query=query) }}">
-        <div class="search-bar">
-          <input
+    
+
+    <div class="bottom-header">
+      <div class="text"><span>Your counseling history..</span></div>
+
+      <div class="search-container">
+        <form method="GET" action="{{ url_for('search', query=query) }}">
+          <div class="search-bar">
+            <input
             type="text"
             placeholder="Search"
             name="query"
             value="{{query}}"
-          />
-          <button type="submit">
-            <img src="/static/students/search.png" alt="search" />
-          </button>
-        </div>
-      </form>
+            />
+            <button type="submit">
+              <img src="/static/students/search.png" alt="search" />
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+    
 
-    <!-- delete button -->
-    <div class="delete-container">
-      <img
-        src="/static/students/delete.png"
-        alt="delete"
-        class="delete-button"
-      />
-    </div>
     <!-- flex grid -->
     <div class="grid-header">
-      <div class="grid-checkbox"></div>
+      <div class="grid-date">Date</div>
       <div class="grid-section">Student ID</div>
+      <div class="grid-college">College</div>
       <div class="grid-name">Name</div>
       <div class="grid-gender">Gender</div>
+      <div class="grid-counselor">Counselor</div>
     </div>
     <div class="grid-container">
       <!-- sample data rows -->
@@ -53,10 +53,12 @@
           href="{{ url_for('student_record', student_id=student.student_id) }}"
           class="grid-row"
         >
-          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-date"></div>
           <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-college">{{ student.college }}</div>
           <div class="grid-name">{{ student.last_name }}, {{ student.first_name }} </div>
           <div class="grid-gender"> {{ student.gender }}</div>
+          <div class="grid-counselor"> {{ student.gender }}</div>
         </a>
         {% endif %} {% endfor %}
         <!-- Add more rows as needed -->

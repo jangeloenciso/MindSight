@@ -36,7 +36,6 @@
 }
 
 .main-header span {
-    display: flex;
     justify-content: center;
     font-size: 2.2em;
     font-weight: bold;
@@ -57,7 +56,7 @@
     column-gap: 1.2em;
 }
 
-.counselors div {
+.counselors a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,49 +66,92 @@
     border-radius: 10px;
     flex: 1;
     flex-basis: 25%;
-    padding: 10px 10px;
+    padding: 10px;
     transition: var(--smooth-transition);
-    cursor: pointer;
+    text-decoration: none;
 }
 
-.counselors div:hover {
+.counselors a:hover {
     border: 3px solid var(--bg-orange);
 }
 
-.counselors div span {
+.counselors a span {
     color: var(--primary-color);
 }
 
+.btn {
+    background:none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
 
+.btn span {
+    color: var(--primary-color);
+}
 
-/* grid rows */
-.grid-container {
+/* records container */
+.recent-records {
     display: flex;
     flex-direction: column;
-    border-radius: 0 0 10px 10px;
-    border: 3px solid var(--primary-color);
-    background-color: var(--primary-color);
-    overflow-y: auto;
-    padding-bottom: 10px;
+    overflow: auto;
+    margin-top: 5px;
 }
 
-.grid-header {
-    display: flex;
+/* "Recent counselors who counseled.." */
+.recent-records span {
+    margin: 20px 0;
+    font-family: Lexend-Bold;
+    color: var(--primary-color);
+}
+
+/* main table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+}
+
+
+/* keeps text to left */
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+td{
+    color: var(--primary-color);
+}
+
+tr:not(:first-child){
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: var(--bg-orange) !important;
+}
+
+/* keeps the header at the top */
+th {
+    position: sticky;
+    top: 0;
     background-color: var(--primary-color);
     color: var(--white);
-    font-weight: bold;
-    padding: 10px;
-    justify-content: space-between;
-    border-radius: 10px 10px 0 0;
 }
 
-.grid-row {
+
+/* enables the scrolling automatically */
+.scrollable {
     display: flex;
+    overflow-y: auto;
+    width: auto;
+    background-color: #C5CFC6;
+    border: 3px solid var(--primary-color);
+    border-radius: 10px 0 0 10px;
+}
+
+tr:nth-child(even) {
     background-color: var(--main-db-bg-color);
-    color: var(--primary-color);
-    padding: 10px;
-    justify-content: space-between;
-    text-decoration: none;
 }
 
 
