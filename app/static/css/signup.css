@@ -20,56 +20,6 @@ body, html {
     /* overflow: hidden; */
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--main-db-bg-color);
-    display: flex;
-}
-
-
-
-/* left side */
-.left-main {
-    width: 50%;
-    background-color: var(--bg-orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lsub-container {
-    width: 75%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* MINDSIGHT logo offset */
-.lsub-container .lsub-top {
-    position: relative;
-    bottom: 45px;
-}
-
-
-.welcome-msg {
-    width: 350px;
-    padding-left: 20px;
-    font-size: 1.4em;
-    color: var(--white);
-}
-
-.logo-img {
-    width: 490px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
 /* text on top of button */
 .btn-header {
     width: auto;
@@ -100,40 +50,85 @@ body {
 }
 
 
-/* SVGs */
-.svg-top {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 25%;
-    pointer-events: none;
-}
-
-.svg-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 40%;
-    pointer-events: none;
-}
-
-
-
-
-/* login side (right side) */
-.right-main {
-    width: 50%;
-    background-color: var(--white);
+.right {
     display: flex;
-    align-items: center;
     justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
 }
 
-.rsub-container {
-    width: 65%;
-    height: auto;
+.main {
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: #faf4f4;
+}
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+    color: var(--primary-color);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
+    padding: 0 0 0.5em;
+}
+
+.main-header span {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+* {
+    transition: var(--smooth-transition);
+}
+
+hr {
+    margin: 40px 0;
+    border-top: 1.2px solid var(--bg-orange);
+}
+
+.scroll-content {
+    overflow-y: auto;
+}
+
+.scroll-content section {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-header {
+    font-size: 1.4em;
+    font-family: Lexend-medium;
+    color: var(--primary-color);
+}
+
+/* inputs section */
+.right-content {
+    display: flex;
+    margin-left: auto;
+    width: 70%;
+    flex-direction: column;
+    padding: 0 20px 0 40px;
+    row-gap: 10px;
+    color: var(--primary-color);
+
+    /* font-weight: 500; */
 }
 
 /* signup text */
@@ -150,25 +145,6 @@ body {
     flex-direction: column;
     row-gap: 10px;
 }
-
-/* forgot password styles */
-.forgot-pw-container {
-    margin-top: 11px;
-    display: flex;
-    justify-content: flex-end;
-    text-decoration: underline;
-    color: #7FA4B1;
-}
-
-.forgot-pw-container a:visited {
-    color: #7FA4B1;
-}
-
-.forgot-pw-container a:active {
-    color: var(--primary-color);
-}
-
-
 
 /* username and password input box */
 input[type="text"], input[type="password"] {
@@ -268,4 +244,20 @@ input:-webkit-autofill {
     background-color: #113a4abd;
     color: var(--text-white-dim);
     cursor: default;
+}
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #add-user-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#add-user-container img, #add-user-container span {
+    transform: translateX(-7px);
 }
