@@ -14,37 +14,40 @@ endblock %} {% block styles %}
           
           <form action="{{ url_for('settings') }}" method="POST">
             {{ form.hidden_tag() }}
-          <div class="single-row">
-            <label for="ufname">First name</label>
-            <input type="text" id="ufname" placeholder="First Name" name="ufname" />
-          </div>
-
-          <div class="single-row">
-            <label for="lname">Last name</label>
-            <input type="text" id="ulname" placeholder="Last Name" name="ulname" />
-          </div>
-
-          <div class="single-row">
-            <label for="lname">Username</label>
-            <input type="text" id="username" placeholder="Username" name="username" />
-          </div>
-
-          <div class="single-row">
-            <label for="lname">Email</label>
-            <input type="email" id="email" placeholder="Email" name="email" />
-          </div>
-
-          <div class="single-row">
-            <label for="lname">Password</label>
-            <input type="password" id="password" placeholder="Password" name="password" />
-          </div>
-
-          <div class="single-row">
-            <label for="lname">Confirm Password</label>
-            <input type="password" id="password" placeholder="Confirm Password" name="password" />
-          </div>
-          <button class="update-btn" id="toggleAlert">Update</button>
+        
+            <div class="single-row">
+                <label for="ufname">First name</label>
+                <input type="text" id="ufname" name="first_name" value="{{ form.first_name.data }}" />
+            </div>
+        
+            <div class="single-row">
+                <label for="ulname">Last name</label>
+                <input type="text" id="ulname" name="last_name" value="{{ form.last_name.data }}" />
+            </div>
+        
+            <div class="single-row">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ form.username.data }}" />
+            </div>
+        
+            <div class="single-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ form.email.data }}" />
+            </div>
+        
+            <div class="single-row">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </div>
+        
+            <div class="single-row">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm" />
+            </div>
+        
+            <button class="update-btn" id="toggleAlert">Update</button>
         </form>
+        
         </div>
       </section>
     </div>

@@ -183,15 +183,21 @@ def metrics():
 @permission_required('editall')
 @login_required
 def settings():
+
     form = EditCredentials()
 
+    form.first_name.data = current_user.first_name
+    form.last_name.data = current_user.last_name
+    form.username.data = current_user.username
+    form.email.data = current_user.email
+
     if form.validate_on_submit():
-        # Get user information from the form
-        first_name = form.first_name.data
-        last_name = form.last_name.data
-        username = form.username.data
-        email = form.email.data
-        password = form.password.data
+        
+        # Commit changes to the database
+        db.session.commit()
+        
+        flash('Your credentials have been updated successfully.', 'success')
+        return redirect(url_for('dashboard'))
 
 
     return render_template('settings.html', form=form)
@@ -311,7 +317,6 @@ def edit_record(student_id):
 
 
 @app.route('/add', methods=['GET', 'POST'])
-@permission_required('addall')
 def add_record():
 
     student = (
