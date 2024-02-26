@@ -1,1540 +1,176 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/static/css/main.css" />
-<link rel="stylesheet" href="/static/css/add-new-test.css" />
-<link rel="stylesheet" href="..//static/fonts/custom-fonts.css" />
-<link
-      rel="stylesheet"
-      type="text/css"
-      href="/static/fonts/custom-fonts.css"
-    />
-<link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
-<title>Mindsight - Add Record</title>
-<body>
-<div class="main">
-    <div class="main-header">
-      <span>Add New Record</span>
-    </div>
-
-    
-    <div class="scrollable">
-        <form action="{{ url_for('add_record') }}">
-            {{ form.csrf_token }}
-            
-                {{ form.hidden_tag() }}
-
-        <!-- Basic Information -->
-        <div class="title">
-            <span>Basic Information</span>
-        </div>
-
-        <div class="basic-info-container">    
-            <div class="row-container">
-                <div class="client-name">
-                    <div class="container">
-                        <div class="question">
-                            <label>First Name: </label>
-                        </div>
-                        <div class="answer">
-                            {{ form.first_name }}
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <div class="question">
-                            <label>Last Name: </label>
-                        </div>
-                        <div class="answer">
-                            {{ form.last_name }}
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Student Number: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.student_id }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Course/Department: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Grade/Yr Level: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Date of Birth: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.date_of_birth }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Age: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.age }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Gender: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Civil Status: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Nationality: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.nationality }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Religion: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.religion }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Home Address: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.residence }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Phone Number: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Email Address: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.first_name }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Cellphone Number: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="title">
-                <span>If the above client is a minor complete the following: </span>
-            </div>
-            
-            <div class="row-container">
-                <div class="client-name">
-                    <div class="container">
-                        <div class="question">
-                            <label>Name of Guardian: </label>
-                        </div>
-                        <div class="answer">
-                            {{ form.first_name }}
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <div class="question">
-                            <label>Address of Guardian: </label>
-                        </div>
-                        <div class="answer">
-                            {{ form.last_name }}
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Guardian’s Contact No.: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Referral Source -->
-        <div class="title">
-            <span>Referral Source</span>
-        </div>
-
-        <div class="question2">
-            <span>Who referred you to our office, or how did you learn about our service? </span>
-        </div>
-        <div class="answer2">
-            {{ form.contact_number }}
-        </div>
-
-        <!-- Emergency Information -->
-        <div class="title">
-            <span>Emergency Contact Information</span>
-        </div>
-
-        <div class="question2">
-            <span>In case of an emergency, who should we contact? </span>
-        </div>
-        
-        <div class="emergency-container">
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Name: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.first_name }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Relationship: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-            </div>
-    
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Address: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.first_name }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Cellphone No.: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-        <!-- History Information -->
-        <div class="title">
-            <span>History Information</span>
-        </div>
-
-        <div class="question2">
-            <span>Who is providing the history information? </span>
-        </div>
-
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="client" id="client"><label>The Client</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="guardian" id="guardian"><label>The Client's Guardian</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="other" id="other"><label>Other</label>
-            </div>
-        </div>
-
-        <div class="question2">
-            <span>Please describe the current complaint or problem as specifically as you can, in your own words. </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-
-        <div class="question2">
-            <span>How long have you experienced this problem, or when did you first notice it? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-
-        <div class="question2">
-            <span>What stressors may have contributed to the current complaint or problem? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-
-        <div class="question2">
-            <span>Check all the words/phrases that describe what you are experiencing and explain if possible. </span>
-        </div>
-        <div class="history-answer2">
-            <div class="history-container">
-                 <input type="radio" name="substance" id="substance"><label for="substance">Substance</label>
-            </div>
-            <div class="history-container">
-            <input type="radio" name="addiction" id="addiction"><label for="addiction">Addiction (internet, porn, shopping, exercise, gaming, gambling, etc.)</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="depression" id="depression"><label for="depression">Depression/Sad/Down Feelings</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="energy" id="energy"><label for="energy">High/Low energy level</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="angry" id="angry"><label for="angry">Angry/Irritable</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="interest" id="interest"><label for="interest">Lost of interest in activities</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="enjoy" id="enjoy"><label for="enjoy">Difficulty enjoying things</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="crying" id="crying"><label for="crying">Crying spells</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="motivation" id="motivation"><label for="motivation">Decreased Motivation</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="isolation" id="isolation"><label for="isolation">Withdrawing from people/Isolation</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="mood" id="mood"><label for="mood">Mood Swings</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="thinking" id="thinking"><label for="thinking">Black and white thinking/All or nothing thinking</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="negathink" id="negathink"><label for="negathink">Negative thinking</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="weight" id="weight"><label for="weight">Change in weight or appetite</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="sleep" id="sleep"><label for="sleep">Change in sleeping pattern</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="suicide" id="suicide"><label for="suicide">Suicidal thoughts or plans/Thoughts of hurting yourself</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="self-harm" id="self-harm"><label for="self-harm">Self-harm/Cutting/Burning yourself</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="homicidal" id="homicidal"><label for="homicidal">Homicidal thoughts or plans/Thoughts of hurting others</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="focus" id="focus"><label for="focus">Poor concentration/Difficulty focusing</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="hopeless" id="hopeless"><label for="hopeless">Feelings of hopelessness/Worthlessness</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="guilt" id="guilt"><label for="guilt">Feelings of shame or guilt</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="low-esteem" id="low-esteem"><label for="low-esteem">Feelings of inadequacy/Low self-esteem</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="anxious" id="anxious"><label for="anxious">Anxious/Nervous/Tense feelings</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="panic" id="panic"><label for="panic">Panic attacks</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="racing" id="racing"><label for="racing">Racing or scrambled thoughts</label>  
-            </div>
-            <div class="history-container">
-                <input type="radio" name="bad" id="bad"><label for="bad">Bad or unwanted thoughts</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="flashback" id="flashback"><label for="flashback">Flashback/Nightmares</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="tension" id="tension"><label for="tension">Muscle tensions, aches, etc.</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="hearing-voice" id="hearing-voice"><label for="hearing-voice">Hearing voices/Seeing things not there</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="running-away" id="running-away"><label for="running-away">Thoughts of running away</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="paranoid" id="paranoid"><label for="paranoid">Paranoid thoughts/Thoughts that someone is watching you, out to get you or hurt you.</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="frustrate" id="frustrate"><label for="frustrate">Feelings of frustation</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="cheated" id="cheated"><label for="cheated">Feelings of being cheated</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="perfectionism" id="perfectionism"><label for="perfectionism">Perfectionism</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="ritual" id="ritual"><label for="ritual">Rituals of counting things, washing hands, checking locks, doors, stove, etc./Overly concerned about germs.</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="distorted" id="distorted"><label for="distorted">Distorted body image (believe you are heavier or less attractive than others say you are)</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="diet" id="diet"><label for="diet">Concerns about dieting</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="overeating" id="overeating"><label>Feelings of loss of control over eating</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="binge" id="binge"><label>Binge eating/Purging</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="compensating" id="compensating"><label>Rules about eating/Compensating for eating</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="excessive" id="excessive"><label>Excessive exercise</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="indecisive" id="indecisive"><label>Indecisiveness about career</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="problem" id="problem"><label>Job Problems</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="other" id="other"><label>Other</label>
-            </div>
-        </div>
-
-        <!-- Previous Treatment Information -->
-        <div class="title">
-            <span>Previous Treatment</span>
-        </div>
-        <div class="question2">
-            <span>Have you received or participated in previous counseling and/or therapy? </span>
-        </div>
-        
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="yes" id="yes"><label>Yes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="no" id="no"><label>No</label>
-            </div>
-        </div>
-        <div class="question2">
-            <span>What did you like/dislike about previous treatment? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>What did you learn about yourself through previous counseling/treatment that may help you? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Is there any type of treatment you would like to continue? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Have you had hospital stays for psychological concerns? </span>
-        </div>
-        
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="yes" id="yes"><label>Yes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="no" id="no"><label>No</label>
-            </div>
-        </div>
-        <div class="question2">
-            <span>Are you currently experiencing thoughts of harming either yourself or someone else? </span>
-        </div>
-        
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="yes" id="yes"><label>Yes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="no" id="no"><label>No</label>
-            </div>
-        </div>
-        <div class="question2">
-            <span>Have you in the past experienced thoughts of harming either yourself or someone else? </span>
-        </div>
-        
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="yes" id="yes"><label>Yes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="no" id="no"><label>No</label>
-            </div>
-        </div>
-
-    <!-- Medical History Information -->
-        <div class="title">
-            <span>Medical History</span>
-        </div>
-        <div class="question2">
-            <span>List any current or important past medications. </span>
-        </div>
-
-        <div class="qa-container">
-            <div class="question2">
-                <span>Medication & Dose: </span>
-            </div>
-            <div class="answer3">
-                {{ form.contact_number }}
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>History of serious childhood illness: </span>
-            </div>
-            <div class="answer3">
-                {{ form.contact_number }}
-            </div>
-        </div>
-
-        <div class="question2">
-            <span>Other health concerns, serous illness, conditions, or major operations requiring hospitalization during your life time: </span>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Have you experienced any head injuries? </span>
-            </div>
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="question2">
-            <span>Important Details: </span>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>If yes, did you lose consciousness? </span>
-            </div>
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Have you experienced convulsions or seizures? </span>
-            </div>
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>If yes, did you also have fever? </span>
-            </div>
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>List any allergies you have: </span>
-            </div>
-            <div class="answer3">
-                {{ form.contact_number }}
-            </div>
-        </div>
-        <div class="question2">
-            <span>How would you rate your current physical health? </span>
-        </div>
-
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="excellent"><label>Excellent</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="vgood" id="vgood"><label>Very Good</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="good" id="good"><label>Good</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="fair"><label>Fair</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="poor"><label>Poor</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="vpoor" id="vpoor"><label>Very Poor</label>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>What was the date of your last physical or routine health “check up”? </span>
-            </div>
-            <div class="answer3">
-                {{ form.contact_number }}
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Do you have a primary care physician? </span>
-            </div>
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="question2">
-            <span>If yes, complete the following: </span>
-        </div>
-        <div class="med-qa-container">
-            <div class="qa-container">
-                <div class="question3">
-                    <span>Name:  </span>
-                </div>
-                <div class="answer3">
-                    {{ form.contact_number }}
-                </div>
-            </div>
-            <div class="qa-container">
-                <div class="question3">
-                    <span>Email:  </span>
-                </div>
-                <div class="answer3">
-                    {{ form.contact_number }}
-                </div>
-            </div>
-            <div class="qa-container">
-                <div class="question3">
-                    <span>Contact No.:  </span>
-                </div>
-                <div class="answer3">
-                    {{ form.contact_number }}
-                </div>
-            </div>
-        </div>
-            
-        <!-- Family History Information -->
-        <div class="title">
-            <span>Family History</span>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Birth Location: </span>
-            </div>
-            <div class="answer3">
-                {{ form.contact_number }}
-            </div>
-        </div>
-
-        <div class="qa-container">
-            <div class="question3">
-                <span>Raised by: </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="mother" id="mother"><label>Mother</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="father" id="father"><label>Father</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="stepM" id="stepM"><label>Step-Mother</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="stepF" id="stepF"><label>Step-Father</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="other" id="other"><label>Other</label>
-                </div>
-            </div>
-        </div>
-    
-
-        <div class="question2">
-            <span>Relationship with parent figures: (INDICATE if good, fair, poor, close, distant, etc.) </span>
-        </div>
-
-        <div class="qa-container">
-            <div class="question2">
-                <span>Mother: </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="excellent" id="excellent"><label>Excellent</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="fair" id="fair"><label>Fair</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="poor" id="poor"><label>Poor</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="vgood" id="close"><label>Close</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="distant" id="distant"><label>Distant</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="other" id="other"><label>Other</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="qa-container">
-            <div class="question2">
-                <span>Father: </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="excellent" id="excellent"><label>Excellent</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="fair" id="fair"><label>Fair</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="poor" id="poor"><label>Poor</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="vgood" id="close"><label>Close</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="distant" id="distant"><label>Distant</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="other" id="other"><label>Other</label>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="qa-container">
-            <div class="question2">
-                <span>Step-Parent: </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="excellent" id="excellent"><label>Excellent</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="fair" id="fair"><label>Fair</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="poor" id="poor"><label>Poor</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="vgood" id="close"><label>Close</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="distant" id="distant"><label>Distant</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="other" id="other"><label>Other</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="question2">
-            <span>Other: </span>
-        </div>
-
-        <div class="question2">
-            <span>List your siblings and describe your relationship with them. </span>
-        </div>
-        <div class="question-regular">
-            <span>(INDICATE if good, fair, poor, close, distant, etc. as nature of relationship.) </span>
-        </div>
-
-        <div class="relation-container">
-            <div class="question-relation">
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Name of Sibling </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Age </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Gender </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Nature of Relationship </span>
-                    </div>
-                    <div class="history-answer3">
-                        <div class="history-container">
-                            <input type="radio" name="excellent" id="good"><label>Good</label>
-                        </div>
-                        <div class="history-container">
-                            <input type="radio" name="fair" id="fair"><label>Fair</label>
-                        </div>
-                        <div class="history-container">
-                            <input type="radio" name="poor" id="poor"><label>Poor</label>
-                        </div>
-                        <div class="history-container">
-                            <input type="radio" name="vgood" id="close"><label>Close</label>
-                        </div>
-                        <div class="history-container">
-                            <input type="radio" name="distant" id="distant"><label>Distant</label>
-                        </div>
-                        <div class="history-container">
-                            <input type="radio" name="other" id="other"><label>Other</label>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </div>
-
-        <div class="question2">
-            <span>Any history of neglect, and/o physical, verbal, emotional, spiritual, or sexual abuse? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Any family history of substance abuse, mental illness, suicide, or violence? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Any Additional Family Information: </span>
-        </div>
-        <div class="answer4">
-            {{ form.contact_number }}
-        </div>
-
-        <!-- Family History Information -->
-        <div class="title">
-            <span>Social History</span>
-        </div>
-        <div class="question2">
-            <span>Describe your relationship with peers and/or friends? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>How would you describe your social support network? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Describe your hobbies/interests: </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Describe any cultural concerns: </span>
-        </div>
-        <div class="answer4">
-            {{ form.contact_number }}
-        </div>
-
-        <!-- Educational Information -->
-        <div class="title">
-            <span>Educational History</span>
-        </div>
-        <div class="question2">
-            <span>When attending school were you: </span>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="regular"><label>In regular classes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="home"><label>Home Study</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="special"><label>Special Classes</label>
-            </div>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="advanced"><label>Advanced classes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="suspend"><label>Ever Suspended</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="alter"><label>Placed in alternative school</label>
-            </div>
-        </div>
-        <div class="question2">
-            <span>What is the highest educational level you have completed? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Give any additional important educational information (i.e. Did you like school? Have a learning disability?) </span>
-        </div>
-        <div class="answer4">
-            {{ form.contact_number }}
-        </div>
-
-
-        <!-- Occupational Information -->
-        <div class="title">
-            <span>Occupational History</span>
-        </div>
-        <div class="question2">
-            <span>What is your current employment status? </span>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="full"><label>Employed Full-Time</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="part"><label>Employed Part-Time</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="unemp"><label>Unemployed</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="self-emp"><label>Self-employed</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="stud"><label>Student</label>
-            </div>
-        </div>
-
-        <div class="question2">
-            <span>Are you satisfied with your employment? why? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>If not, why? </span>
-        </div>
-        <div class="answer4">
-            {{ form.contact_number }}
-        </div>
-
-
-        <!-- Substance Abuse Information -->
-        <div class="title">
-            <span>Substance Abuse History</span>
-        </div>
-        <div class="question2">
-            <span>Are you currently or have you ever struggled with substance abuse? (alcohol, tobacco, marijuana, caffeine, or other) </span>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="yes" id="yes"><label>Yes</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="no" id="no"><label>No</label>
-            </div>
-        </div>
-        <div class="question-regular2">
-            <span>If you answered yes, please complete the following substance abuse history chart. </span>
-        </div>
-
-        <div class="substance-container">
-            <div class="substance-title">
-                <div class="question2">
-                    <span>Substance</span>
-                </div>
-                <div class="question2">
-                    <span>Ever Used <br>
-                        Yes/No</span>
-                </div>
-                <div class="question2">
-                    <span>Age of <br>
-                        First Use</span>
-                </div>
-                <div class="question2">
-                    <span>Frequency of Use <br>
-                        (Daily, Weekly, Monthly)</span>
-                </div>
-                <div class="question2">
-                    <span>Amount Used </span>
-                </div>
-                <div class="question2">
-                    <span>How did you use it (smoked, injected, etc.)</span>
-                </div>
-            </div>
-            <div class="substance-title">
-                <div class="ques-container">
-                    <span>
-                        Alcohol
-                    </span>
-                </div>
-                <div class="ques-container">
-                    <select>
-                        <option>No</option>
-                        <option>Yes</option>
-                    </select>
-                </div>
-                <div class="ques-container">
-                    <select>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>27</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                        <option>32</option>
-                        <option>33</option>
-                    </select>
-                </div>
-                <div class="ques-container">
-                    <select>
-                        <option>NONE</option>
-                        <option>DAILY</option>
-                        <option>WEEKLY</option>
-                        <option>MONTHLY</option>
-                    </select>
-                </div>
-                <div class="ques-container">
-                    <select>
-                        <option>NONE</option>
-                        <option>DAILY</option>
-                        <option>WEEKLY</option>
-                        <option>MONTHLY</option>
-                    </select>
-                </div>
-                <div class="ques-container">
-                    <select>
-                        <option>NONE</option>
-                        <option>DAILY</option>
-                        <option>WEEKLY</option>
-                        <option>MONTHLY</option>
-                    </select>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="question2">
-            <span>Have ever received treatment for a substance abuse issue? <br>Name of Treatment Program </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Type of Treatment </span>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="rehab"><label>Rehab</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="partial"><label>Partial Hospitalization</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="recovery"><label>Recovery House</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="metha"><label>Methadone</label>
-            </div>
-        </div>
-        <div class="history-answer">
-            <div class="history-container">
-                <input type="radio" name="excellent" id="outpatient"><label>Intensive Outpatient Program</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="fair" id="halfway"><label>Halfway Hous</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="counsel"><label>Counseling</label>
-            </div>
-            <div class="history-container">
-                <input type="radio" name="poor" id="suboxone"><label>Suboxone</label>
-            </div>
-        </div>
-        <div class="question2">
-            <span>Date of Treatment (Month, Year) </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Outcome? </span>
-        </div>
-        <div class="answer4">
-            {{ form.contact_number }}
-        </div>
-
-
-        <!-- Legal History Information -->
-        <div class="title">
-            <span>Legal History</span>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Do you currently have any pending criminal charges? </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Are you on probation? </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="qa-container">
-            <div class="question2">
-                <span>Have you ever been arrested/convicted of a crime? </span>
-            </div>
-    
-            <div class="history-answer">
-                <div class="history-container">
-                    <input type="radio" name="yes" id="yes"><label>Yes</label>
-                </div>
-                <div class="history-container">
-                    <input type="radio" name="no" id="no"><label>No</label>
-                </div>
-            </div>
-        </div>
-        <div class="question-regular2">
-            <span>If yes, complete chart. </span>
-        </div>
-
-        <div class="legal-container">
-            <div class="question-relation">
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>List any Arrest/Conviction </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.contact_number }}
-                    </div>
-                </div>
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Date of Arrests/Convictions </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.date_of_birth }}
-                    </div>
-                </div>
-                <div class="sibling-container">
-                    <div class="question2">
-                        <span>Outcome </span>
-                    </div>
-                    <div class="answer3">
-                        {{ form.contact_number }}
-                    </div>
-                </div> 
-            </div>
-        </div>
-
-
-        <!-- Additional Information -->
-        <div class="title">
-            <span>Additional Information</span>
-        </div>
-        <div class="question2">
-            <span>What you would like to work on in counseling?: </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>What expectations do you have for counseling? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Name 3 things you would like to change about yourself. </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-        <div class="question2">
-            <span>Is there any additional information that you believe it is important for your counselor to know in order to provide you with the best care possible? </span>
-        </div>
-        <div class="answer3">
-            {{ form.contact_number }}
-        </div>
-
-
-        <!-- Personal Agreement -->
-        <div class="personal-container">
-            <div class="title">
-                <span>PERSONAL AGREEMENTS</span>
-            </div>
-            <div class="paragraph">
-                <p>I understand that I may be asked to do certain "homework exercises" Such as reading, changing behaviors and otherwise acting in my own best interest. I understand that I am entirely responsible for my own actions and I will always make my own final decisions regarding counseling.</p>
-            </div>
-            <div class="paragraph">
-                <p>I understand that there will be psychological testing as need arises. I further understand that much of the work done will be to resolve issues and will depend on my honesty, and willingness to do the things I need to do to move forward even if it is painful and difficult.</p>
-            </div>
-            <div class="paragraph">
-                <p>I understand that whatever I say in a session is strictly confidential and will not be released to anyone without my consent unless I am violating codes of abuse, harm to myself or others.</p>
-            </div>
-
-            <div class="client-time-container">
-                <div class="client">
-                    {{ form.contact_number }}
-                    <span>Client Signature / Date</span>
-                </div> 
-                <div class="client">
-                    {{ form.contact_number }}
-                    <span>Time Ended</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="session-container">
-            
-        </div>
-
-
-        <!-- Referral Information -->
-        <div class="title">
-            <span>REFERRAL INFORMATION</span>
-        </div>
-        <div class="referral-container">
-            <div class="question3">
-                <span>Reason for Referral: </span>
-            </div>
-            <hr class="line">
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Receiving Agency: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Contact No.: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Name: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Email Address: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Official Address: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <hr class="line">
-            <div class="row-container">
-                <div class="question3">
-                    <span>Appointment Schedule: </span>
-                </div>
-                <div class="container">
-                    <div class="question">
-                        <label>Date: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.date_of_birth }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Time: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-            <hr class="line">
-            <div class="question4">
-                <span>Authorization for Referral: I authorize my case to be referred to the above agency. </span>
-            </div>
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Client’s Signature: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Counselor’s Signature: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.gender }}
-                    </div>
-                </div>
-            </div>
-            <div class="row-container">
-                <div class="container">
-                    <div class="question">
-                        <label>Date: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.date_of_birth }}
-                    </div>
-                </div>
-        
-                <div class="container">
-                    <div class="question">
-                        <label>Date: </label>
-                    </div>
-                    <div class="answer">
-                        {{ form.date_of_birth }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Confidential Information -->
-        <div class="title">
-            <span>CONFIDENTIAL</span>
-        </div>
-        <hr class="line">
-        <div class="title2">
-            <span>CASE NOTE</span>
-        </div>
-        <div class="confidential-container">
-            <div class="container">
-                <div class="question">
-                    <label>Counselor/Psychometrician Name: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Date of Intake Interview: </label>
-                </div>
-                <div class="answer">
-                    {{ form.date_of_birth }}
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Number of Session: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <hr class="line">
-            <div class="container">
-                <div class="question">
-                    <label>Subject Complaint: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Objective Assessment: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Plan of Action: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-            <div class="container">
-                <div class="question">
-                    <label>Progress Made: </label>
-                </div>
-                <div class="answer">
-                    {{ form.gender }}
-                </div>
-            </div>
-        </div>
-
-        <div class="client2">
-            {{ form.contact_number }}
-            <span>Signature of the Counselor/Guidance Personnel</span>
-        </div> 
-
-    </form>
-</div>
-
-
-
-<footer>
-    <div class="add-btn">
-        {{ form.submit(class="add") }}
-    </div>
-    <a href="{{ url_for('login') }}">
-        <button class="cancel-btn">Cancel</button>
-    </a>
-</footer>
-</div>
-  <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-  <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
-
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <link rel="stylesheet" href="/static/css/add-new-test.css" />
+  <link rel="stylesheet" href="..//static/fonts/custom-fonts.css" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/fonts/custom-fonts.css"
+  />
+  <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+  <title>Mindsight - Add Record</title>
+  <body>
+    <main>
+      <header class="main-header">Client History and Information</header>
+      <hr />
+      <header>Basic Information</header>
+
+      <div class="center">
+        <section class="basic-information">
+          <div class="double-column">
+            <div>
+              <label for="fname">First name:</label>
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                placeholder="First Name"
+              />
+            </div>
+            <div>
+              <label for="studNumber">Student's Number:</label>
+              <input
+                type="text"
+                id="studNumber"
+                name="studNumber"
+                placeholder="XXXX-XXXXXX"
+                maxlength="11"
+              />
+            </div>
+          </div>
+
+          <div class="single-column">
+            <div>
+              <label for="course">Last Name:</label>
+              <input
+                type="text"
+                id="course"
+                name="course"
+                placeholder="Course/Department"
+              />
+            </div>
+            <div></div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="course">Course/Department:</label>
+              <input
+                type="text"
+                id="course"
+                name="course"
+                placeholder="Course/Department"
+              />
+            </div>
+            <div>
+              <label for="yearlevel">Grade/Yr Level:</label>
+              <input
+                type="text"
+                id="yearlevel"
+                name="yearlevel"
+                placeholder="Grade/Yr Level"
+              />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="dob">Date of Birth:</label>
+              <input
+                type="text"
+                id="dob"
+                name="dob"
+                placeholder="Date of Birth"
+              />
+            </div>
+            <div>
+              <label for="age">Age:</label>
+              <input type="text" id="age" name="age" placeholder="Age" />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="gender">Gender:</label>
+              <input
+                type="text"
+                id="gender"
+                name="gender"
+                placeholder="Gender"
+              />
+            </div>
+            <div>
+              <label for="civil">Civil Status:</label>
+              <select name="civil" id="civil">
+                <option value="">-Select Marital Status-</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Divorced">Divorced</option>
+              </select>
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="nationality">Nationality:</label>
+              <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                placeholder="Nationality"
+              />
+            </div>
+            <div>
+              <label for="religion">Religion:</label>
+              <input
+                type="text"
+                id="religion"
+                name="religion"
+                placeholder="Religion"
+              />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="address">Home Address:</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Home Address"
+              />
+            </div>
+            <div>
+              <label for="pnumber">Phone Number:</label>
+              <input
+                type="number"
+                id="pnumber"
+                name="pnumber"
+                placeholder="02-12345"
+              />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="email">Email Address:</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+              />
+            </div>
+            <div>
+              <label for="cnumber">Cellphone Number:</label>
+              <input
+                type="text"
+                id="cnumber"
+                name="cnumber"
+                placeholder="09123456789"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>
