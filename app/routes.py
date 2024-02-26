@@ -193,22 +193,8 @@ def settings():
         email = form.email.data
         password = form.password.data
 
-        # Update the user's information in the database
-        # (Replace with your specific code for updating user data)
-        update_user_info(current_user, first_name, last_name, username, email, password)
 
     return render_template('settings.html', form=form)
-
-def update_user_info(user, first_name, last_name, username, email, password):
-    # Update the user's information in the database
-    # (Use appropriate methods for your database interaction)
-    user.first_name = first_name
-    user.last_name = last_name
-    user.username = username
-    user.email = email
-    if password:
-        user.set_password(password)
-    db.session.commit()
 
 
 @app.route('/students/records/search/', methods=['GET'])
