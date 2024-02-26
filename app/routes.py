@@ -326,7 +326,6 @@ def add_record():
             joinedload(StudentInformation.family_background),
             joinedload(StudentInformation.health_information),
             joinedload(StudentInformation.educational_background),
-            joinedload(StudentInformation.psychological_assessments),
             joinedload(StudentInformation.visits)
         )
     )
@@ -378,7 +377,6 @@ def add_record():
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
-        form.populate_obj(student.psychological_assessments)
 
         # new_record = student (
         #     last_name=last_name,
