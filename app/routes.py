@@ -184,7 +184,8 @@ def metrics():
 @login_required
 def settings():
 
-    form = EditCredentials()
+    form = EditCredentials(request.form)
+    form.confirm.validators = []
 
     form.first_name.data = current_user.first_name
     form.last_name.data = current_user.last_name
@@ -192,13 +193,17 @@ def settings():
     form.email.data = current_user.email
 
     if form.validate_on_submit():
-        
+        form.populate_obj(current_user)
+
+        if form.password.data:
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            current_user.password = hashed_password
+
+        db.session.add(current_user)
         # Commit changes to the database
         db.session.commit()
-        
-        flash('Your credentials have been updated successfully.', 'success')
+        print('Your credentials have been updated successfully.', 'success')
         return redirect(url_for('dashboard'))
-
 
     return render_template('settings.html', form=form)
 
@@ -286,8 +291,12 @@ def edit_record(student_id):
             joinedload(StudentInformation.family_background),
             joinedload(StudentInformation.health_information),
             joinedload(StudentInformation.educational_background),
-            # joinedload(StudentInformation.psychological_assessments),
-            joinedload(StudentInformation.visits)
+            joinedload(StudentInformation.social_history),
+            joinedload(StudentInformation.history_information),
+            joinedload(StudentInformation.occupational_history),
+            joinedload(StudentInformation.substance_abuse_history),
+            joinedload(StudentInformation.legal_history),
+            joinedload(StudentInformation.additional_information)
         )
         .filter_by(student_id=student_id)
         .first()
@@ -300,15 +309,21 @@ def edit_record(student_id):
     form = EditStudentForm(obj=student)
 
     if form.validate_on_submit():
+        print('validated')
         form.populate_obj(student)
         form.populate_obj(student.personal_information)
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
-        form.populate_obj(student.psychological_assessments)
+        form.populate_obj(student.social_history)
+        form.populate_obj(student.history_information)
+        form.populate_obj(student.occupational_history)
+        form.populate_obj(student.substance_abuse_history)
+        form.populate_obj(student.legal_history)
+        form.populate_obj(student.additional_information)
 
         db.session.commit()
-        flash('Student record updated successfully', 'success')
+        print('Student record updated successfully', 'success')
         return redirect(url_for('student_record', student_id=student_id))
     
     print(form.errors)
