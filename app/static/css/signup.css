@@ -171,8 +171,7 @@ body {
 
 
 /* username and password input box */
-input[type="text"], input[type="password"] {
-    padding: 8px 17px;
+input[type="text"], input[type="password"], select {
     border: 2px solid var(--primary-color);
     outline-color: var(--primary-color);
     border-radius: 10px;
@@ -183,6 +182,15 @@ input[type="text"], input[type="password"] {
     letter-spacing: 2px;
     transition: cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s, transform 1s ease-out;
 }
+
+input[type="text"], input[type="password"] {
+    padding: 8px 17px;
+}
+
+select {
+    padding: 8px 12px;
+}
+
 
 /* eye icon */
 .password-input-container .togglepass img {
