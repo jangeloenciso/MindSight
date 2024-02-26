@@ -286,7 +286,7 @@ def edit_record(student_id):
             joinedload(StudentInformation.family_background),
             joinedload(StudentInformation.health_information),
             joinedload(StudentInformation.educational_background),
-            joinedload(StudentInformation.psychological_assessments),
+            # joinedload(StudentInformation.psychological_assessments),
             joinedload(StudentInformation.visits)
         )
         .filter_by(student_id=student_id)
