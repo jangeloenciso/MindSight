@@ -1,6 +1,7 @@
 body {
     padding: 2em;
     background-color: var(--white);
+    overflow-x: hidden;
 }
 
 * {
@@ -8,7 +9,35 @@ body {
     box-sizing: border-box;
 }
 
+/* for tooltips */
+.tooltip {
+    padding-left: 5px;
+    position: relative;
+    display: inline-block;
+    border: none;
+}
 
+.tooltip img {
+    aspect-ratio: 1/1;
+    max-height: 20px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 20vw;
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    color: var(--white);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 
 
 
@@ -29,25 +58,33 @@ header {
 
 hr {
     border-top: 1px solid var(--bg-orange);
+    width: 100%;
 }
 
 main {
     /* background-color: rgba(255, 0, 0, 0.092); */
+    display: flex;
+    flex-direction: column;
+
 
 }
 
+/* keeps everything aligned */
 .center {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 
-.basic-information {
+/* main styling layout */
+.basic-information, .referral, .emergency {
     display: flex;
     flex-direction: column;
     width: 80%;
     align-items: center;
     justify-content: center;
+
     /* background-color: rgba(0, 0, 255, 0.249); */
 }
 
@@ -67,12 +104,8 @@ main {
     margin-bottom: 7px;
 }
 
-/* input type text for double and single -column formats */
-.double-column input[type="text"],
-.single-column input[type="text"],
-.double-column input[type="number"],
-.single-column input[type="number"],
-.double-column select {
+/* input style */
+input, select {
     width: 200px;
     padding: 5px 10px;
     border-radius: 5px;
@@ -80,7 +113,8 @@ main {
     color: var(--fade-text-blue);
 }
 
-.double-column input::placeholder, .single-column input::placeholder, .single-column-span input::placeholder {
+/* input placeholder style */
+input::placeholder {
     opacity: 0.5;
     color: var(--fade-text-blue);
 }
@@ -105,6 +139,11 @@ main {
     margin-bottom: 0;
 }
 
+.form-width100 {
+    display: flex;
+    width: 100%;
+}
+
 
 label {
     width: 200px !important;
@@ -114,13 +153,35 @@ label {
     align-items: center;
 }
 
+.left-align {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+}
 
 
 
 
-/* responsiveness */
-@media screen and (max-width: 1127px) {
-    .double-column, .single-column {
+/* left-align referral label main style */
+.referral label, .left-align label {
+    width: 100% !important;
+    margin-bottom: 7px;
+}
+
+
+
+/* responsiveness. is this even needed? */
+@media screen and (width <= 1127px) {
+    .double-column, .single-column, .left-align {
         justify-content: center;
+    }
+
+    .left-align {
+        width: 400px;
+        padding: 0;
     }
 }

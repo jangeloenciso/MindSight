@@ -155,7 +155,7 @@
             <div>
               <label for="email">Email Address:</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 placeholder="Email Address"
@@ -171,9 +171,134 @@
               />
             </div>
           </div>
+
+          <div class="left-align">
+            If the above client is a minor complete the following:
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="guardian">Name of Guardian:</label>
+              <input
+                type="text"
+                id="guardian"
+                name="guardian"
+                placeholder="Name of Guardian"
+              />
+            </div>
+            <div>
+              <label for="gcnumber">Guardian's Contact No.:</label>
+              <input
+                type="text"
+                id="cnumber"
+                name="cnumber"
+                placeholder="09123456789"
+              />
+            </div>
+          </div>
+          <div class="single-column">
+            <div>
+              <label for="guardianadd">Address of Guardian:</label>
+              <input
+                type="text"
+                id="guardianadd"
+                name="guardianadd"
+                placeholder="Address of Guardian:"
+              />
+            </div>
+            <div></div>
+          </div>
         </section>
+
+        <!-- end: BASIC INFORMATION -->
+
+        <!-- start: REFERAL SOURCE -->
+        <header>Referral Source</header>
+        <div class="referral">
+          <div class="left-align">
+            <label for="referrer"
+              >Who referred you to our office, or how did you learn about our
+              service?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Share with us how you found out about our counseling
+                  services. Was it through a referral or another source?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="referrer"
+              name="referrer"
+              placeholder=""
+            />
+          </div>
+        </div>
+
+        <!-- end: REFERAL SOURCE -->
+
+        <!-- start: Emergency Contact Information -->
+        <header>Emergency Contact Information</header>
+        <div class="emergency">
+          <div class="left-align">
+            <label for="#"
+              >In case of an emergency, who should we contact?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >In case of an emergency, please provide the name and contact
+                  information of the person we should reach out to on your
+                  behalf.</span
+                >
+              </div></label
+            >
+          </div>
+
+          <div class="double-column">
+            <div>
+              <label for="emername">Name:</label>
+              <input
+                type="text"
+                id="emername"
+                name="emername"
+                placeholder="Name"
+              />
+            </div>
+            <div>
+              <label for="emerrel">Relationship:</label>
+              <input
+                type="text"
+                id="emerrel"
+                name="emerrel"
+                placeholder="Relationship"
+              />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="dob">Address:</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Address"
+              />
+            </div>
+            <div>
+              <label for="emercell">Cellphone No.:</label>
+              <input
+                type="number"
+                id="emercell"
+                name="emercell"
+                placeholder="Cellphone No."
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- end: Emergency Contact Information -->
       </div>
-      <!-- end: BASIC INFORMATION -->
     </main>
   </body>
 </html>
