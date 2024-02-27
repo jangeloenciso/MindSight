@@ -8,8 +8,9 @@ from .forms import *
 from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
-from app.forms.edit_record import EditStudentForm
-from app.forms.add_record import AddStudentForm
+# from app.forms.edit_record import EditStudentForm
+# from app.forms.add_record import AddStudentForm
+from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 import pytesseract
 from PIL import Image
@@ -306,7 +307,7 @@ def edit_record(student_id):
     #     flash('Student not found', 'danger')
     #     return redirect(url_for('college_records', college="CBEA"))
 
-    form = EditStudentForm(obj=student)
+    form = StudentRecordForm(obj=student)
 
     if form.validate_on_submit():
         print('validated')
@@ -345,7 +346,7 @@ def add_record():
         )
     )
 
-    form = AddStudentForm(obj=student) 
+    form = StudentRecordForm(obj=student) 
 
     if form.validate_on_submit():  # If the form is submitted and validated
         
