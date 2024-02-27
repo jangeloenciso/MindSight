@@ -78,7 +78,7 @@ main {
 }
 
 /* main styling layout */
-.basic-information, .referral, .emergency, .historyinfo {
+.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -201,7 +201,7 @@ label {
     aspect-ratio: 1/1;
 }
 
-/* hides "other" text box if not selected */
+/* hides "other" text box if not selected initially */
 .hidden {
     width: 0 !important;
     opacity: 0;
@@ -255,7 +255,20 @@ label {
 }
 
 
+/* style for spanning the label and input at the same line */
+.single-column-span {
+    flex-direction: row;
+}
 
+.single-column-span label {
+    width: 200px !important;
+}
+
+
+/* for three column layouts */
+.tri-column{
+    display: flex;
+}
 
 
 
@@ -268,7 +281,7 @@ label {
     }
 
     .left-align, .left-align-checkbox {
-        width: 400px;
+        width: 400px !important;
         padding: 0;
     }
 
@@ -276,4 +289,10 @@ label {
         background-color: #f3ded0;
         border-radius: 5px;
     }
+
+    .single-column-span, .resp, .tri-column {
+        flex-direction: column;
+    }
+
+
 }

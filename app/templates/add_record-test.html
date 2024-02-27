@@ -102,7 +102,9 @@
             <div>
               <label for="civil">Civil Status:</label>
               <select name="civil" id="civil">
-                <option value="">-Select Marital Status-</option>
+                <option value="" disabled selected>
+                  -Select Marital Status-
+                </option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Widowed">Widowed</option>
@@ -928,6 +930,484 @@
           </ul>
         </div>
         <!-- end: History Information -->
+
+        <!-- start: Previous Treatment -->
+        <header>Previous Treatment</header>
+        <section class="prevtreatment">
+          <div class="left-align">
+            <label for="#"
+              >Have you received or participated in previous counseling and/or
+              therapy?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="prevtreatmentyes"
+                  name="prevtreatment"
+                  value="prevtreatmentyes"
+                />
+                <label for="prevtreatmentyes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="prevtreatmentno"
+                  name="prevtreatment"
+                  value="prevtreatmentno"
+                />
+                <label for="prevtreatmentno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="prevtreatment1"
+              >What did you like/dislike about previous treatment?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What aspects did you appreciate or find challenging in your
+                  previous treatment experiences?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="prevtreatment1"
+              name="prevtreatment1"
+            />
+          </div>
+          <div class="left-align">
+            <label for="prevtreatment2"
+              >What did you learn about yourself through previous
+              counseling/treatment that may help you?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Reflecting on your past counseling or treatment experiences,
+                  what insights have you gained about yourself that may be
+                  valuable for your current situation?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="prevtreatment2"
+              name="prevtreatment2"
+            />
+          </div>
+          <div class="left-align">
+            <label for="prevtreatment3"
+              >Is there any type of treatment you would like to continue?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Is there a specific type of treatment or approach that you
+                  would like to continue or explore further? Your preferences
+                  play a crucial role in tailoring our support to align with
+                  your needs and goals.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="prevtreatment3"
+              name="prevtreatment3"
+            />
+          </div>
+
+          <div class="left-align">
+            <label for="#"
+              >Have you had hospital stays for psychological concerns?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="hospstaysyes"
+                  name="hospital"
+                  value="hospstaysyes"
+                />
+                <label for="hospstaysyes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="hospstaysno"
+                  name="hospital"
+                  value="hospstaysno"
+                />
+                <label for="hospstaysno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label for="#"
+              >Are you currently experiencing thoughts of harming either
+              yourself or someone else?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="currentharmyes"
+                  name="currentharm"
+                  value="currentharmyes"
+                />
+                <label for="currentharmyes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="currentharmno"
+                  name="currentharm"
+                  value="currentharmno"
+                />
+                <label for="currentharmno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label for="#"
+              >Have you in the past experienced thoughts of harming either
+              yourself or someone else?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="pastharmyes"
+                  name="pastharm"
+                  value="pastharmyes"
+                />
+                <label for="pastharmyes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="pastharmno"
+                  name="pastharm"
+                  value="pastharmno"
+                />
+                <label for="pastharmno">No</label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- end: Previous Treatment -->
+
+        <!-- start: Medical History -->
+        <section class="medhistory">
+          <div class="left-align">
+            <label>List any current or important past medications.</label>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="medsndose">Medication & Dose:</label>
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="medsndose"
+              name="medsndose"
+            />
+          </div>
+          <div class="left-align single-column-span">
+            <label for="childhoodill" style="width: 420px !important"
+              >History of serious childhood illness:</label
+            >
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="childhoodill"
+              name="childhoodill"
+            />
+          </div>
+
+          <div class="left-align">
+            <label
+              >Other health concerns, serous illness, conditions, or major
+              operations requiring hospitalization during your life time:</label
+            >
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="headinjury" style="width: 600px !important"
+              >Have you experienced any head injuries?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="headinjuryyes"
+                  name="headinjury"
+                  value="headinjuryyes"
+                />
+                <label style="width: auto !important" for="headinjuryyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="headinjuryno"
+                  name="headinjury"
+                  value="headinjuryno"
+                />
+                <label for="headinjuryno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label>Important Details:</label>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="losscons" style="width: 600px !important"
+              >If yes, did you lose consciousness?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="lossconsyes"
+                  name="losscons"
+                  value="lossconsyes"
+                />
+                <label style="width: auto !important" for="lossconsyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="lossconsno"
+                  name="losscons"
+                  value="lossconsno"
+                />
+                <label for="lossconsno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="expseizures" style="width: 600px !important"
+              >Have you experienced convulsions or seizures?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="expseizuresyes"
+                  name="expseizures"
+                  value="expseizuresyes"
+                />
+                <label style="width: auto !important" for="expseizuresyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="expseizuresno"
+                  name="expseizures"
+                  value="expseizuresno"
+                />
+                <label for="expseizuresno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="hasfever" style="width: 600px !important"
+              >If yes, did you also have fever?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="hasfeveryes"
+                  name="hasfever"
+                  value="hasfeveryes"
+                />
+                <label style="width: auto !important" for="hasfeveryes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="hasfeverno"
+                  name="hasfever"
+                  value="hasfeverno"
+                />
+                <label for="hasfeverno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="allergies" style="width: 310px !important"
+              >List any allergies you have:</label
+            >
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="allergies"
+              name="allergies"
+            />
+          </div>
+
+          <div class="left-align">
+            <label for="#"
+              >How would you rate your current physical health?
+            </label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthexc"
+                  name="phyhealth"
+                  value="phyhealthexc"
+                />
+                <label for="phyhealthexc">Excellent</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthvg"
+                  name="phyhealth"
+                  value="phyhealthvg"
+                />
+                <label for="phyhealthvg">Very Good</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthg"
+                  name="phyhealth"
+                  value="phyhealthg"
+                />
+                <label for="phyhealthg">Good</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthf"
+                  name="phyhealth"
+                  value="phyhealthf"
+                />
+                <label for="phyhealthf">Fair</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthp"
+                  name="phyhealth"
+                  value="phyhealthp"
+                />
+                <label for="phyhealthp">Poor</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthvp"
+                  name="phyhealth"
+                  value="phyhealthvp"
+                />
+                <label for="phyhealthvp">Very Poor</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="lastcheckup" style="width: 1270px !important"
+              >What was the date of your last physical or routine health “check
+              up”?</label
+            >
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="lastcheckup"
+              name="lastcheckup"
+            />
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="physician" style="width: 600px !important"
+              >Do you have a primary care physician?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="physicianyes"
+                  name="physician"
+                  value="physicianyes"
+                />
+                <label style="width: auto !important" for="physicianyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="physicianno"
+                  name="physician"
+                  value="physicianno"
+                />
+                <label for="physicianno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label>If yes, complete the following:</label>
+          </div>
+
+          <div class="tri-column">
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physname">Name:</label>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="physname"
+                  name="physname"
+                />
+              </div>
+            </div>
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physemail">Email:</label>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="physemail"
+                  name="physemail"
+                />
+              </div>
+            </div>
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physnum">Contact Number:</label>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="physnum"
+                  name="physnum"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- end: Medical History -->
+
+        <!-- start: Family History -->
+        <header>Family History</header>
+        
+        <!-- end: Family History -->
       </div>
     </main>
 
