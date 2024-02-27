@@ -271,4 +271,9 @@ label {
         width: 400px;
         padding: 0;
     }
+
+    .left-align-checkbox li {
+        background-color: #f3ded0;
+        border-radius: 5px;
+    }
 }
