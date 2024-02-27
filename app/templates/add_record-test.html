@@ -298,7 +298,657 @@
         </div>
 
         <!-- end: Emergency Contact Information -->
+
+        <!-- start: History Information -->
+        <header>History Information</header>
+        <div class="historyinfo">
+          <div class="left-align">
+            <label for="#"
+              >Who referred you to our office, or how did you learn about our
+              service?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Kindly specify the individual providing the historical
+                  information. This helps us ensure accuracy and better assist
+                  you with the relevant details.</span
+                >
+              </div></label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="client"
+                  name="history_provider"
+                  value="client"
+                />
+                <label for="client">The client</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="cguardian"
+                  name="history_provider"
+                  value="cguardian"
+                />
+                <label for="cguardian">The client's guardian</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="otherOption"
+                  name="history_provider"
+                  value="other"
+                />
+                <label for="otherOption">Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  class="hidden"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="problem1"
+              >Please describe the current complaint or problem as specifically
+              as you can, in your own words.
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Please describe your current challenges or concerns related
+                  to your mental health in your own words. Be as specific as you
+                  feel comfortable, as this information will assist us in
+                  tailoring our support to your unique needs.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="problem1"
+              name="problem1"
+              placeholder=""
+            />
+          </div>
+          <div class="left-align">
+            <label for="problem2"
+              >How long have you experienced this problem, or when did you first
+              notice it?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Could you please share how long you have been experiencing
+                  this issue or when you first noticed it? Your timeline helps
+                  us gain a better understanding of the duration and
+                  progression, enabling us to provide more comprehensive
+                  assistance.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="problem2"
+              name="problem2"
+              placeholder=""
+            />
+          </div>
+          <div class="left-align">
+            <label for="problem3"
+              >What stressors may have contributed to the current complaint or
+              problem?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Reflecting on the factors that may have contributed to your
+                  current concerns, please share any stressors you believe are
+                  relevant.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="problem3"
+              name="problem3"
+              placeholder=""
+            />
+          </div>
+
+          <!-- long checkbox form -->
+          <div class="left-align">
+            <label for="left-align-checkbox" style="margin: 0"
+              >Check all the words/phrases that describe what you are
+              experiencing and explain if possible.
+            </label>
+          </div>
+
+          <ul class="left-align-checkbox">
+            <li>
+              <input
+                type="checkbox"
+                id="exp1"
+                name="exp1"
+                value="exp1"
+                class="checkbox-round"
+              />
+              <label for="exp1">Substance abuse/dependence</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="exp2"
+                name="exp2"
+                value="exp2"
+                class="checkbox-round"
+              />
+              <label for="exp2"
+                >Addiction (internet, porn, shopping, exercise, gaming,
+                gambling, etc.)</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp3"
+                name="exp3"
+                value="exp3"
+                class="checkbox-round"
+              />
+              <label for="exp3">Depression/Sad/Down Feelings</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp4"
+                name="exp4"
+                value="exp4"
+                class="checkbox-round"
+              />
+              <label for="exp4">High/Low energy level</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp5"
+                name="exp5"
+                value="exp5"
+                class="checkbox-round"
+              />
+              <label for="exp5">Angry/Irritable</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp6"
+                name="exp6"
+                value="exp6"
+                class="checkbox-round"
+              />
+              <label for="exp6">Lost of interest in activities</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp7"
+                name="exp7"
+                value="exp7"
+                class="checkbox-round"
+              />
+              <label for="exp7">Difficulty enjoying things</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp8"
+                name="exp8"
+                value="exp8"
+                class="checkbox-round"
+              />
+              <label for="exp8">Crying spells</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp9"
+                name="exp9"
+                value="exp9"
+                class="checkbox-round"
+              />
+              <label for="exp9">Decreased Motivation</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp10"
+                name="exp10"
+                value="exp10"
+                class="checkbox-round"
+              />
+              <label for="exp10">Withdrawing from people/Isolation</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp11"
+                name="exp11"
+                value="exp11"
+                class="checkbox-round"
+              />
+              <label for="exp11">Mood Swings</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp12"
+                name="exp12"
+                value="exp12"
+                class="checkbox-round"
+              />
+              <label for="exp12"
+                >Black and white thinking/All or nothing thinking</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp13"
+                name="exp13"
+                value="exp13"
+                class="checkbox-round"
+              />
+              <label for="exp13">Negative thinking</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp14"
+                name="exp14"
+                value="exp14"
+                class="checkbox-round"
+              />
+              <label for="exp14">Change in weight or appetite</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp15"
+                name="exp15"
+                value="exp15"
+                class="checkbox-round"
+              />
+              <label for="exp15">Change in sleeping pattern</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp16"
+                name="exp16"
+                value="exp16"
+                class="checkbox-round"
+              />
+              <label for="exp16"
+                >Suicidal thoughts or plans/Thoughts of hurting yourself</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp17"
+                name="exp17"
+                value="exp17"
+                class="checkbox-round"
+              />
+              <label for="exp17">Self-harm/Cutting/Burning yourself</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp18"
+                name="exp18"
+                value="exp18"
+                class="checkbox-round"
+              />
+              <label for="exp18"
+                >Homicidal thoughts or plans/Thoughts of hurting others</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp19"
+                name="exp19"
+                value="exp19"
+                class="checkbox-round"
+              />
+              <label for="exp19">Poor concentration/Difficulty focusing</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp20"
+                name="exp20"
+                value="exp20"
+                class="checkbox-round"
+              />
+              <label for="exp20">Feelings of hopelessness/Worthlessness</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp21"
+                name="exp21"
+                value="exp21"
+                class="checkbox-round"
+              />
+              <label for="exp21">Feelings of shame or guilt</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp22"
+                name="exp22"
+                value="exp22"
+                class="checkbox-round"
+              />
+              <label for="exp22">Feelings of inadequacy/Low self-esteem</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp23"
+                name="exp23"
+                value="exp23"
+                class="checkbox-round"
+              />
+              <label for="exp23">Anxious/Nervous/Tense feelings</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp24"
+                name="exp24"
+                value="exp24"
+                class="checkbox-round"
+              />
+              <label for="exp24">Panic attacks</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp25"
+                name="exp25"
+                value="exp25"
+                class="checkbox-round"
+              />
+              <label for="exp25">Racing or scrambled thoughts</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp26"
+                name="exp26"
+                value="exp26"
+                class="checkbox-round"
+              />
+              <label for="exp26">Bad or unwanted thoughts</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp27"
+                name="exp27"
+                value="exp27"
+                class="checkbox-round"
+              />
+              <label for="exp27">Flashback/Nightmares</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp28"
+                name="exp28"
+                value="exp28"
+                class="checkbox-round"
+              />
+              <label for="exp28">Muscle tensions, aches, etc.</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp29"
+                name="exp29"
+                value="exp29"
+                class="checkbox-round"
+              />
+              <label for="exp29">Hearing voices/Seeing things not there</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp30"
+                name="exp30"
+                value="exp30"
+                class="checkbox-round"
+              />
+              <label for="exp30">Thoughts of running away</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp31"
+                name="exp31"
+                value="exp31"
+                class="checkbox-round"
+              />
+              <label for="exp31"
+                >Paranoid thoughts/Thoughts that someone is watching you, out to
+                get you or hurt you.</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp32"
+                name="exp32"
+                value="exp32"
+                class="checkbox-round"
+              />
+              <label for="exp32">Feelings of frustation</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp33"
+                name="exp33"
+                value="exp33"
+                class="checkbox-round"
+              />
+              <label for="exp33">Feelings of being cheated</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp34"
+                name="exp34"
+                value="exp34"
+                class="checkbox-round"
+              />
+              <label for="exp34">Perfectionism</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp35"
+                name="exp35"
+                value="exp35"
+                class="checkbox-round"
+              />
+              <label for="exp35"
+                >Rituals of counting things, washing hands, checking locks,
+                doors, stove, etc./Overly concerned about germs.</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp36"
+                name="exp36"
+                value="exp36"
+                class="checkbox-round"
+              />
+              <label for="exp36"
+                >Distorted body image (believe you are heavier or less
+                attractive than others say you are)</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp37"
+                name="exp37"
+                value="exp37"
+                class="checkbox-round"
+              />
+              <label for="exp37">Concerns about dieting</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp38"
+                name="exp38"
+                value="exp38"
+                class="checkbox-round"
+              />
+              <label for="exp38">Feelings of loss of control over eating</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp39"
+                name="exp39"
+                value="exp39"
+                class="checkbox-round"
+              />
+              <label for="exp39">Binge eating/Purging</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp40"
+                name="exp40"
+                value="exp40"
+                class="checkbox-round"
+              />
+              <label for="exp40"
+                >Rules about eating/Compensating for eating</label
+              >
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp41"
+                name="exp41"
+                value="exp41"
+                class="checkbox-round"
+              />
+              <label for="exp41">Excessive exercise</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp42"
+                name="exp42"
+                value="exp42"
+                class="checkbox-round"
+              />
+              <label for="exp42">Indecisiveness about career</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp43"
+                name="exp43"
+                value="exp43"
+                class="checkbox-round"
+              />
+              <label for="exp43">Job Problems </label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp44"
+                name="exp44"
+                value="exp44"
+                class="checkbox-round"
+              />
+              <label for="exp44">Other</label>
+            </li>
+          </ul>
+        </div>
+        <!-- end: History Information -->
       </div>
     </main>
+
+    <!-- TODO: Move this to a separate js file later -->
+    <script>
+      // text box appears if "other" option is selected
+      const otherOptionRadio = document.getElementById("otherOption");
+      const otherTextbox = document.getElementById("otherTextbox");
+
+      otherOptionRadio.addEventListener("change", function () {
+        if (this.checked) {
+          otherTextbox.classList.remove("hidden");
+        } else {
+          otherTextbox.classList.add("hidden");
+        }
+      });
+    </script>
   </body>
 </html>

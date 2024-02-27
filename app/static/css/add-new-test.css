@@ -78,7 +78,7 @@ main {
 }
 
 /* main styling layout */
-.basic-information, .referral, .emergency {
+.basic-information, .referral, .emergency, .historyinfo {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -166,6 +166,8 @@ label {
 
 
 
+
+
 /* left-align referral label main style */
 .referral label, .left-align label {
     width: 100% !important;
@@ -174,13 +176,98 @@ label {
 
 
 
+/* radio container style */
+.radio-inline-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+
+}
+
+.radio-inline-container div {
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+}
+
+.radio-inline-container label {
+    margin: 0 !important;
+}
+
+.radio-inline-container input:not([type=text]) {
+    display: flex;
+    width: 20px !important;
+    aspect-ratio: 1/1;
+}
+
+/* hides "other" text box if not selected */
+.hidden {
+    width: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+/* left align style for the list of checkboxes */
+.left-align-checkbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+    list-style: none;
+    margin: 0;
+}
+
+.left-align-checkbox li {
+    column-gap: 5px;
+    margin-bottom: 7px;
+
+}
+
+.left-align-checkbox label {
+    width: auto !important;
+    font-family: Lexend-regular;
+    display: inline-block;
+}
+
+
+/* roundes checkboxes but eliminates the checkmark */
+.checkbox-round {
+    width: auto;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid var(--primary-color);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: #0075ff;
+}
+
+
+
+
+
+
+
+
 /* responsiveness. is this even needed? */
-@media screen and (width <= 1127px) {
-    .double-column, .single-column, .left-align {
+@media screen and (width <=1127px) {
+    .double-column, .single-column, .left-align, .left-align-checkbox {
         justify-content: center;
     }
 
-    .left-align {
+    .left-align, .left-align-checkbox {
         width: 400px;
         padding: 0;
     }
