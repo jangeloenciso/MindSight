@@ -14,6 +14,7 @@ document.getElementById('confirmation').addEventListener('submit', function(even
                 iconHtml: '<img class="custom-icon" src="static/popup.png">',
                 showConfirmButton: false,
                 timer: 1500,
+                timerProgressBar: true,
             }).then(() => {
                 window.location.href = "dashboard";
             });
