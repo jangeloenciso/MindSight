@@ -124,21 +124,34 @@ button:hover {
 
 
 /* sweet alert/modal style */
-/* .swal2-popup {
-    color: var(--primary-color);
-    background: var(--white);
-    font-size: 1rem;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.swal2-popup {
+    color: var(--bg-orange);
+    font-size: 1.5rem;
+    background: var(--main-db-bg-color);
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px 15px 10px rgba(0, 0, 0, 0.40);
+    padding-bottom: 2em;
+    width: 40%;
+    height: auto;
 }
 
 .swal2-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: normal;
     color: var(--primary-color);
-} */
+}
 
+.swal2-icon {
+    border: none;
+}
+
+.custom-icon {
+    aspect-ratio: 1/1;
+    width: 1.5em;
+    margin: 0;
+    padding: 0;
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #settings-container::before {

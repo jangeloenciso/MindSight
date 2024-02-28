@@ -12,7 +12,7 @@ endblock %} {% block styles %}
         <div class="left-header">User Profile Details</div>
         <div class="right-content">
           
-          <form action="{{ url_for('settings') }}" method="POST">
+          <form id="confirmation" action="{{ url_for('settings') }}" method="POST">
             {{ form.hidden_tag() }}
         
             <div class="single-row">
@@ -50,7 +50,7 @@ endblock %} {% block styles %}
               {{ form.current_password }}
             </div>
         
-            <button class="update-btn" id="toggleAlert">Update</button>
+            <button type="submit" class="update-btn" id="toggleAlert">Update</button>
         </form>
         
         </div>
@@ -60,6 +60,5 @@ endblock %} {% block styles %}
 </div>
 
 <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
-<!-- <script src="{{url_for('static', filename='javascript/settings.js')}}"></script> -->
-<!-- <script src="{{url_for('static', filename='javascript/otp.js')}}"></script> -->
+<script src="{{url_for('static', filename='javascript/settings.js')}}"></script>
 {% endblock %}

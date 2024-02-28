@@ -13,10 +13,7 @@ from app.forms.login import LoginForm
 from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 from functools import wraps
-# from flask_mail import Mail, Message
-# import random
 
-# mail = Mail(app)
 
 roles_permissions = {
     'superadmin': ['viewall', 'editall', 'searchall', 'deleteall', 'addall'],
@@ -207,8 +204,7 @@ def settings():
 
         # Commit changes to the database
         db.session.commit()
-        flash('Your credentials have been updated successfully.', 'success')
-        return redirect(url_for('dashboard'))
+        return jsonify({'success': True})
 
 
     return render_template('settings.html', form=form)
