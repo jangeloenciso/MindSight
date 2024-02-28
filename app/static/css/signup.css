@@ -320,5 +320,5 @@ input:-webkit-autofill {
 
 /* forces html to be 100vh */
 .htmlheight100vh{
-    height: 100vh !important;
+    height: 100vh;
 }
