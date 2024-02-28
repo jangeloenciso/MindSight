@@ -17,32 +17,37 @@ endblock %} {% block styles %}
         
             <div class="single-row">
                 <label for="ufname">First name</label>
-                <input type="text" id="ufname" name="first_name" value="{{ form.first_name.data }}" />
+                {{ form.first_name }}
             </div>
         
             <div class="single-row">
                 <label for="ulname">Last name</label>
-                <input type="text" id="ulname" name="last_name" value="{{ form.last_name.data }}" />
+                {{ form.last_name }}
             </div>
         
             <div class="single-row">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="{{ form.username.data }}" />
+                {{ form.username }}
             </div>
         
             <div class="single-row">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ form.email.data }}" />
+                {{ form.email }}
             </div>
         
             <div class="single-row">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <label for="password">New password</label>
+                {{ form.password }}
             </div>
-        
+
             <div class="single-row">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" id="confirm_password" name="confirm" />
+              <label for="confirm_password">Confirm new password</label>
+              {{ form.confirm }}
+            </div>
+
+            <div class="single-row">
+              <label for="current_password">Old password</label>
+              {{ form.current_password }}
             </div>
         
             <button class="update-btn" id="toggleAlert">Update</button>
@@ -55,5 +60,6 @@ endblock %} {% block styles %}
 </div>
 
 <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
-<script src="{{url_for('static', filename='javascript/settings.js')}}"></script>
+<!-- <script src="{{url_for('static', filename='javascript/settings.js')}}"></script> -->
+<!-- <script src="{{url_for('static', filename='javascript/otp.js')}}"></script> -->
 {% endblock %}

@@ -46,11 +46,6 @@
     transition: var(--smooth-transition);
 }
 
-hr {
-    margin: 40px 0;
-    border-top: 1.2px solid var(--bg-orange);
-}
-
 .scroll-content {
     overflow-y: auto;
 }
@@ -84,6 +79,7 @@ hr {
 .single-row {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.5em;
 }
 
 
@@ -128,7 +124,7 @@ button:hover {
 
 
 /* sweet alert/modal style */
-.swal2-popup {
+/* .swal2-popup {
     color: var(--primary-color);
     background: var(--white);
     font-size: 1rem;
@@ -141,7 +137,7 @@ button:hover {
     font-weight: 800;
     line-height: normal;
     color: var(--primary-color);
-}
+} */
 
 
 /* Sidebar active indicator */

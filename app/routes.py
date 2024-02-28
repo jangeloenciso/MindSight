@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request, abort
+from flask import render_template, url_for, redirect, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
@@ -12,9 +12,11 @@ from app.forms.login import LoginForm
 # from app.forms.add_record import AddStudentForm
 from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
-import pytesseract
-from PIL import Image
 from functools import wraps
+# from flask_mail import Mail, Message
+# import random
+
+# mail = Mail(app)
 
 roles_permissions = {
     'superadmin': ['viewall', 'editall', 'searchall', 'deleteall', 'addall'],
@@ -149,7 +151,7 @@ def identity():
     return render_template('dashboard/identity.html')
 
 
-# for admin / viewing of students whose been counseled page
+# pages for admin / viewing of students whose been counseled
 @app.route('/admin')
 @permission_required('viewall')
 @login_required
@@ -180,31 +182,34 @@ def analytics():
 def metrics():
     return render_template('metrics.html')
 
+
 @app.route('/settings', methods=['GET', 'POST'])
-@permission_required('editall')
 @login_required
 def settings():
 
     form = EditCredentials(request.form)
-    form.confirm.validators = []
 
-    form.first_name.data = current_user.first_name
-    form.last_name.data = current_user.last_name
-    form.username.data = current_user.username
-    form.email.data = current_user.email
 
     if form.validate_on_submit():
-        form.populate_obj(current_user)
+        if not bcrypt.check_password_hash(current_user.password, form.current_password.data):
+            flash('Incorrect password. Please try again.', 'danger')
+            return redirect(url_for('settings'))
+        
+        current_user.first_name = form.first_name.data
+        current_user.last_name = form.last_name.data
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.confirm = form.confirm.data
 
         if form.password.data:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             current_user.password = hashed_password
 
-        db.session.add(current_user)
         # Commit changes to the database
         db.session.commit()
-        print('Your credentials have been updated successfully.', 'success')
+        flash('Your credentials have been updated successfully.', 'success')
         return redirect(url_for('dashboard'))
+
 
     return render_template('settings.html', form=form)
 
@@ -346,7 +351,7 @@ def add_record():
         )
     )
 
-    form = StudentRecordForm(obj=student) 
+    form = StudentRecordForm(obj=student)
 
     if form.validate_on_submit():  # If the form is submitted and validated
         
