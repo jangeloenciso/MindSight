@@ -43,7 +43,7 @@
       <div class="rsub-container">
         <!-- ... Previous HTML content ... -->
 
-        <form action="{{ url_for('signup') }}" method="POST">
+        <form id="confirmation" action="{{ url_for('signup') }}" method="POST">
           {{ form.hidden_tag() }}
 
           <p>Sign up</p>
@@ -162,5 +162,7 @@
     </section>
 
     <script src="../static/javascript/signup.js"></script>
+    <script src="../static/javascript/signup_confirmation.js"></script>
+    <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
   </body>
 </html>

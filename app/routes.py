@@ -71,18 +71,21 @@ def signup():
 
         _username = form.username.data
         _password = form.password.data
+        _email = form.email.data
         _role = form.role.data
 
         user = User.query.filter_by(username=_username).first()
         if user:
             prmpt = f'Sorry, but the username "{_username}" is already taken'
+            prmpt = f'Sorry, but the username "{_email}" is already taken'
         else:
             hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
             new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password, role=_role)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
-            return redirect(url_for('dashboard'))
+
+            return jsonify({'success': True})
     else:
         prmpt = 'Please correct the form errors.'
 
