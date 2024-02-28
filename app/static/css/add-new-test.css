@@ -78,7 +78,7 @@ main {
 }
 
 /* main styling layout */
-.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory {
+.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -266,9 +266,28 @@ label {
 
 
 /* for three column layouts */
-.tri-column{
+.tri-column {
     display: flex;
 }
+
+
+
+/* table format */
+table {
+    border-collapse: collapse;
+    width: calc(100% - 40px);
+    padding: 0 7px;
+    margin-bottom: 7px;
+}
+
+th, td {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    text-align: center;
+}
+
+
 
 
 
@@ -290,7 +309,7 @@ label {
         border-radius: 5px;
     }
 
-    .single-column-span, .resp, .tri-column {
+    .single-column-span, .resp, .tri-column, .raisedby, .relby {
         flex-direction: column;
     }
 

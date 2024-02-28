@@ -1101,6 +1101,7 @@
         <!-- end: Previous Treatment -->
 
         <!-- start: Medical History -->
+        <header>Medical History</header>
         <section class="medhistory">
           <div class="left-align">
             <label>List any current or important past medications.</label>
@@ -1406,14 +1407,592 @@
 
         <!-- start: Family History -->
         <header>Family History</header>
-        
+        <section class="famhistory">
+          <div class="left-align single-column-span">
+            <label for="birthloc" style="width: 160px !important"
+              >Birth Location:</label
+            >
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="birthloc"
+              name="birthloc"
+            />
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important"
+              >Raised by:
+            </label>
+            <div class="radio-inline-container raisedby">
+              <div>
+                <input
+                  type="radio"
+                  id="raisedmother"
+                  name="raised"
+                  value="raisedmother"
+                />
+                <label style="width: auto !important" for="raisedmother"
+                  >Mother</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedfather"
+                  name="raised"
+                  value="raisedfather"
+                />
+                <label style="width: auto !important" for="raisedfather"
+                  >Father</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedstepm"
+                  name="raised"
+                  value="raisedstepm"
+                />
+                <label style="width: auto !important" for="raisedstepm"
+                  >Step-Mother</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedstepf"
+                  name="raised"
+                  value="raisedstepf"
+                />
+                <label style="width: auto !important" for="raisedstepf"
+                  >Step-Father</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedother"
+                  name="raised"
+                  value="raisedother"
+                />
+                <label style="width: auto !important" for="raisedother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  class="hidden"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label
+              >Relationship with parent figures: (INDICATE if good, fair, poor,
+              close, distant, etc.)</label
+            >
+          </div>
+
+          <!-- Relationhip Mother -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important">Mother</label>
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relmothergood"
+                  name="relmother"
+                  value="relmothergood"
+                />
+                <label style="width: auto !important" for="relmothergood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherfair"
+                  name="relmother"
+                  value="relmotherfair"
+                />
+                <label style="width: auto !important" for="relmotherfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherpoor"
+                  name="relmother"
+                  value="relmotherpoor"
+                />
+                <label style="width: auto !important" for="relmotherpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherclose"
+                  name="relmother"
+                  value="relmotherclose"
+                />
+                <label style="width: auto !important" for="relmotherclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherdistant"
+                  name="relmother"
+                  value="relmotherdistant"
+                />
+                <label style="width: auto !important" for="relmotherdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherother"
+                  name="relmother"
+                  value="relmotherother"
+                />
+                <label style="width: auto !important" for="relmotherother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  class="hidden"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Relationhip Father -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important">Father</label>
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relfathergood"
+                  name="relfather"
+                  value="relfathergood"
+                />
+                <label style="width: auto !important" for="relfathergood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherfair"
+                  name="relfather"
+                  value="relfatherfair"
+                />
+                <label style="width: auto !important" for="relfatherfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherpoor"
+                  name="relfather"
+                  value="relfatherpoor"
+                />
+                <label style="width: auto !important" for="relfatherpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherclose"
+                  name="relfather"
+                  value="relfatherclose"
+                />
+                <label style="width: auto !important" for="relfatherclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherdistant"
+                  name="relfather"
+                  value="relfatherdistant"
+                />
+                <label style="width: auto !important" for="relfatherdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherother"
+                  name="relfather"
+                  value="relfatherother"
+                />
+                <label style="width: auto !important" for="relfatherother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  class="hidden"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Relationhip Father -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important"
+              >Step-Parent</label
+            >
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentgood"
+                  name="relstepparent"
+                  value="relstepparentgood"
+                />
+                <label style="width: auto !important" for="relstepparentgood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentfair"
+                  name="relstepparent"
+                  value="relstepparentfair"
+                />
+                <label style="width: auto !important" for="relstepparentfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentpoor"
+                  name="relstepparent"
+                  value="relstepparentpoor"
+                />
+                <label style="width: auto !important" for="relstepparentpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentclose"
+                  name="relstepparent"
+                  value="relstepparentclose"
+                />
+                <label style="width: auto !important" for="relstepparentclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentdistant"
+                  name="relstepparent"
+                  value="relstepparentdistant"
+                />
+                <label style="width: auto !important" for="relstepparentdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentother"
+                  name="relstepparent"
+                  value="relstepparentother"
+                />
+                <label style="width: auto !important" for="relstepparentother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  class="hidden"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="relparent" style="width: 80px !important">Other:</label>
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="relparent"
+              name="relparent"
+            />
+          </div>
+
+          <div class="left-align">
+            <label for="prevtreatment1"
+              >List your siblings and describe your relationship with them.<br />(INDICATE
+              if good, fair, poor, close, distant, etc. as nature of
+              relationship.)
+            </label>
+          </div>
+
+          <table>
+            <tr>
+              <th>Name of Sibling</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Nature of Relationship</th>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <div class="radio-inline-container relby">
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblinggood"
+                      name="relsibling"
+                      value="relsiblinggood"
+                    />
+                    <label style="width: auto !important" for="relsiblinggood"
+                      >Good</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingfair"
+                      name="relsibling"
+                      value="relsiblingfair"
+                    />
+                    <label style="width: auto !important" for="relsiblingfair"
+                      >Fair</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingpoor"
+                      name="relsibling"
+                      value="relsiblingpoor"
+                    />
+                    <label style="width: auto !important" for="relsiblingpoor"
+                      >Poor</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingclose"
+                      name="relsibling"
+                      value="relsiblingclose"
+                    />
+                    <label style="width: auto !important" for="relsiblingclose"
+                      >Close</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingdistant"
+                      name="relsibling"
+                      value="relsiblingdistant"
+                    />
+                    <label
+                      style="width: auto !important"
+                      for="relsiblingdistant"
+                      >Distant</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingother"
+                      name="relsibling"
+                      value="relsiblingother"
+                    />
+                    <label
+                      style="width: auto !important; padding-right: 10px"
+                      for="relsiblingother"
+                      >Other</label
+                    ><input
+                      type="text"
+                      id="otherTextbox"
+                      placeholder="Enter text"
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <div class="left-align">
+            <label for="famhistoryneglect1"
+              >Any history of neglect, and/o physical, verbal, emotional,
+              spiritual, or sexual abuse?
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="famhistoryneglect1"
+              name="famhistoryneglect1"
+            />
+          </div>
+          <div class="left-align">
+            <label for="famhistoryneglect2"
+              >Any family history of substance abuse, mental illness, suicide,
+              or violence?
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="famhistoryneglect2"
+              name="famhistoryneglect2"
+            />
+          </div>
+          <div class="left-align">
+            <label for="famhistoryneglect3"
+              >Any Additional Family Information:
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="famhistoryneglect3"
+              name="famhistoryneglect3"
+            />
+          </div>
+        </section>
+
         <!-- end: Family History -->
+
+        <!-- start: Family History -->
+        <header>Social History</header>
+        <section class="sochistory">
+          <div class="left-align">
+            <label for="sochistory1"
+              >Describe your relationship with peers and/or friends?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >How would you characterize your current relationship with
+                  peers and/or friends?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="sochistory1"
+              name="sochistory1"
+            />
+          </div>
+          <div class="left-align">
+            <label for="sochistory2"
+              >How would you describe your social support network?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Share information about the individuals or groups you rely on
+                  for support.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="sochistory2"
+              name="sochistory2"
+            />
+          </div>
+          <div class="left-align">
+            <label for="sochistory3"
+              >Describe your hobbies/interests:
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What are some of your hobbies and interests? Sharing your
+                  personal pursuits can help us understand more about you and
+                  identify potential therapeutic activities that align with your
+                  preferences.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="sochistory3"
+              name="sochistory3"
+            />
+          </div>
+          <div class="left-align">
+            <label for="sochistory4"
+              >Describe any cultural concerns:
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Do you have any specific cultural concerns or aspects of your
+                  cultural background that you believe are important for us to
+                  be aware of?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="sochistory4"
+              name="sochistory4"
+            />
+          </div>
+        </section>
+
+        <!-- end: Family History -->
+
+        <!-- start: Educational History -->
+        <header>Educational History</header>
+
+        <section class="educhistory"><!-- continue here --></section>
+        <!-- end: Educational History -->
       </div>
     </main>
 
     <!-- TODO: Move this to a separate js file later -->
     <script>
       // text box appears if "other" option is selected
+      // NOTE: alisin nalang js ang complicated kapag maraming "other" throughout sa form.
       const otherOptionRadio = document.getElementById("otherOption");
       const otherTextbox = document.getElementById("otherTextbox");
 
