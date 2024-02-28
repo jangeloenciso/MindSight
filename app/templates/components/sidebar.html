@@ -47,7 +47,7 @@
         </li>
 
         <li>
-          <a href="{{ url_for('logout') }}"
+          <a href="#" onclick="confirmLogout()"
             ><img src="/static/SVG/log-out.svg" /><span>Log&nbsp;out</span></a
           >
         </li>
@@ -62,3 +62,5 @@
 </nav>
 
 <div class="dim"></div>
+<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
+<script src="{{url_for('static', filename='javascript/logout_confirmation.js')}}"></script>
