@@ -57,7 +57,16 @@ with app.app_context():
             "STEM",
             "ABM",
             "HUMSS",
-            "GAS"
+            "TECH-VOC"
+        ],
+        "Junior High School" : [
+            "SEVEN",
+            "EIGHT",
+            "NINE",
+            "TEN"
+        ],
+        "Graduate School" : [
+            "GRAD"
         ]
     }
 

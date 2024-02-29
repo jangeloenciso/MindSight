@@ -2,7 +2,7 @@ function confirmLogout() {
     swal.fire({
         title: 'Are you sure?',
         text: "You're about to log out.",
-        iconHtml: '<img class="custom-icon" src="static/question.png">',
+        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
         showCancelButton: true,
         confirmButtonText: 'Yes, log out.',
         customClass: {

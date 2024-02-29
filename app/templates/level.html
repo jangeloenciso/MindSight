@@ -1,0 +1,58 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Students{%
+    endblock %} {% block styles %}
+    <link rel="stylesheet" href="/static/css/level.css" />
+    {% endblock %} {% block content %}
+    
+    <div class="right">
+      <div class="main">
+        <div class="main-header">
+          <span>EDUCATION LEVEL</span>
+          <p>
+            Please click on the following <b>LEVEL</b> to view the corresponding
+            records:
+          </p>
+        
+          <div class="search-upload-container">
+             <!-- search -->
+            <div class="search-container">
+              <form method="GET" action="{{ url_for('search', query=query) }}">
+                <div class="search-bar">
+                  <input type="text" placeholder="Search" name="query" value="{{query}}"/>
+                  <button type="submit">
+                    <img src="/static/students/search.png" alt="search" />
+                  </button>
+                </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- directory buttons -->
+        <div class="main-buttons">
+            <a href="{{ url_for ('jhs') }}">
+              <button>Junior High
+              </button></a
+            >
+            <a href="{{ url_for ('shs') }}">
+                <button>Senior High
+                </button></a
+            >
+            <a href="{{ url_for ('colleges')}}">
+              <button>College
+              </button></a
+            >
+            <a href="{{ url_for ('graduate') }}">
+              <button>Graduate School
+              </button></a
+            >
+        </div>
+      </div>
+    </div>
+    
+    
+    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
+    
+    {% endblock %}
+    

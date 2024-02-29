@@ -309,6 +309,7 @@
     height: 85%;
     border-radius: 1.5rem;
     box-shadow: 2px 2px 15px 10px rgba(0, 0, 0, 0.40);
+    background-color: var(--white);
 }
 
 .title-modal {

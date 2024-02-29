@@ -247,11 +247,67 @@ def print_record(student_id):
 
 # Student components
 
-@app.route('/students')
+@app.route('/level')
 @permission_required('viewall')
 @login_required
-def students():
-    return render_template('students.html')
+def level():
+    return render_template('level.html')
+
+@app.route('/JHS')
+@permission_required('viewall')
+@login_required
+def jhs():
+    return render_template('jhs.html')
+
+@app.route('/students/records/<college>')
+@permission_required('viewall')
+@login_required
+def jhs_records(college):
+    data = data_to_dict()
+
+    def college_name(college):
+        college_dict = {
+            'SEVEN': 'Grade 7',
+            'EIGHT': 'Grade 8',
+            'NINE': 'Grade 9',
+            'TEN': 'Grade 10',
+        }
+        return college_dict.get(college)
+
+    print(college_name(college))
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+
+@app.route('/SHS')
+@permission_required('viewall')
+@login_required
+def shs():
+    return render_template('shs.html')
+
+@app.route('/students/records/<college>')
+@permission_required('viewall')
+@login_required
+def shs_records(college):
+    data = data_to_dict()
+
+    def college_name(college):
+        college_dict = {
+            'STEM': 'Science, Technology, Engineering and Mathematics',
+            'ABM': 'Accountancy, Business and Management',
+            'HUMSS': 'Humanities and Social Sciences',
+            'ICT': 'Information Communication and Technology',
+        }
+        return college_dict.get(college)
+
+    print(college_name(college))
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+
+@app.route('/colleges')
+@permission_required('viewall')
+@login_required
+def colleges():
+    return render_template('colleges.html')
 
 @app.route('/students/records/<college>')
 @permission_required('viewall')
@@ -265,7 +321,29 @@ def college_records(college):
             'CBEA': 'College of Business Entrepreneurship and Accountancy',
             'CAS': 'College of Arts and Sciences',
             'CED': 'College of Education',
-            'IHK': 'Institute of Human Kinetics'
+            'IHK': 'Institute of Human Kinetics',
+        }
+        return college_dict.get(college)
+
+    print(college_name(college))
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+
+@app.route('/graduate')
+@permission_required('viewall')
+@login_required
+def graduate():
+    return render_template('graduate.html')
+
+@app.route('/students/records/<college>')
+@permission_required('viewall')
+@login_required
+def graduate_records(college):
+    data = data_to_dict()
+
+    def college_name(college):
+        college_dict = {
+            'GRAD': 'Graduate',
         }
         return college_dict.get(college)
 
@@ -353,95 +431,12 @@ def add_record():
     form = StudentRecordForm(obj=student)
 
     if form.validate_on_submit():  # If the form is submitted and validated
-        
-        # last_name = form.last_name.data
-        # first_name = form.first_name.data
-        # course = form.course.data
-        # student_id = form.student_id.data
-        # age = form.age.data
-        # sex = form.sex.data
-        # gender = form.gender.data
-        # contact_number = form.contact_number.data
-        # religion = form.religion.data
-        # date_of_birth = form.date_of_birth.data
-        # place_of_birth = form.place_of_birth.data
-        # nationality = form.nationality.data
-        # counseling_history = form.counseling_history.data
-        # residence = form.residence.data
-        # father_age = form.father_age.data
-        # mother_age = form.mother_age.data
-        # father_last_name = form.father_last_name.data
-        # mother_last_name = form.mother_last_name.data
-        # father_first_name = form.father_first_name.data
-        # mother_first_name = form.mother_first_name.data
-        # height = form.height.data
-        # weight = form.weight.data
-        # sight = form.sight.data
-        # hearing = form.hearing.data
-        # speech = form.speech.data
-        # general_health = form.general_health.data
-        # experienced_sickness = form.experienced_sickness.data
-        # senior_high_school = form.senior_high_school.data
-        # shs_strand = form.shs_strand.data
-        # shs_graduation_year = form.shs_graduation_year.data
-        # junior_high_school = form.junior_high_school.data
-        # jhs_graduation_year = form.jhs_graduation_year.data
-        # elementary_school = form.elementary_school.data
-        # elementary_graduation_year = form.elementary_graduation_year.data
-        # learning_styles = form.learning_styles.data
-        # personality_test = form.personality_test.data
-        # iq_test = form.iq_test.data
 
         form.populate_obj(student)
         form.populate_obj(student.personal_information)
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
-
-        # new_record = student (
-        #     last_name=last_name,
-        #     first_name=first_name,
-        #     course=course,
-        #     student_id=student_id,
-        #     age=age,
-        #     sex=sex,
-        #     gender=gender,
-        #     contact_number=contact_number,
-        #     religion=religion,
-        # )
-
-        # Add the new record to the database
-        # db.session.add(new_record)
-        # db.session.commit() 
-        #     date_of_birth=date_of_birth,
-        #     place_of_birth=place_of_birth,
-        #     nationality=nationality,
-        #     counseling_history=counseling_history,
-        #     residence=residence,
-        #     father_age=father_age,
-        #     mother_age=mother_age,
-        #     father_last_name=father_last_name,
-        #     mother_last_name=mother_last_name,
-        #     father_first_name=father_first_name,
-        #     mother_first_name=mother_first_name,
-        #     height=height,
-        #     weight=weight,
-        #     sight=sight,
-        #     hearing=hearing,
-        #     speech=speech,
-        #     general_health=general_health,
-        #     experienced_sickness=experienced_sickness,
-        #     senior_high_school=senior_high_school,
-        #     shs_strand=shs_strand,
-        #     shs_graduation_year=shs_graduation_year,
-        #     junior_high_school=junior_high_school,
-        #     jhs_graduation_year=jhs_graduation_year,
-        #     elementary_school=elementary_school,
-        #     elementary_graduation_year=elementary_graduation_year,
-        #     learning_styles=learning_styles,
-        #     personality_test=personality_test,
-        #     iq_test=iq_test
-        # )
 
         # Add the new record to the database
         db.session.add(student)

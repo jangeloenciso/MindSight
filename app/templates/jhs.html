@@ -1,0 +1,74 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Students{%
+    endblock %} {% block styles %}
+    <link rel="stylesheet" href="/static/css/shs.css" />
+    {% endblock %} {% block content %}
+    
+    <div class="right">
+      <div class="main">
+        <div class="main-header">
+          <span>STUDENT RECORDS - JHS</span>
+          <p>
+            Please click on the following <b>GRADE LEVEL</b> to view the corresponding
+            records:
+          </p>
+         
+          <div class="search-upload-container">
+             <!-- search -->
+            <div class="search-container">
+              <form method="GET" action="{{ url_for('search', query=query) }}">
+                <div class="search-bar">
+                  <input type="text" placeholder="Search" name="query" value="{{query}}"/>
+                  <button type="submit">
+                    <img src="/static/students/search.png" alt="search" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+        <!-- directory buttons -->
+        <div class="main-buttons">
+            <div class="row">
+                <a href="{{ url_for ('jhs_records', college='SEVEN') }}">
+                    <button>
+                      <img src="/static/seven.png" />
+                      <span
+                        >GRADE 7</span>
+                    </button></a
+                  >
+                  <a href="{{ url_for ('jhs_records', college='EIGHT') }}">
+                    <button>
+                        <img src="/static/eight.png" />
+                        <span
+                        >GRADE 8</span>
+                    </button></a
+                  >
+            </div>
+                
+            <div class="row">
+                <a href="{{ url_for ('jhs_records', college='NINE') }}">
+                    <button>
+                      <img src="/static/nine.png" />
+                      <span
+                        >GRADE 9</span>
+                    </button></a
+                  >
+                  <a href="{{ url_for ('jhs_records', college='TEN') }}">
+                    <button>
+                        <img src="/static/ten.png" />
+                        <span
+                        >GRADE 10</span>
+                    </button></a
+                  >
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
+    
+    {% endblock %}
+    

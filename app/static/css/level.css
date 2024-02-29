@@ -1,0 +1,158 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: var(--white);
+}
+
+
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bg-orange);
+    display: flex;
+    padding-bottom: 10px;
+}
+
+
+/* search */
+.search-container {
+    position: relative;
+    width: 50%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* search input */
+.search-bar input[type="text"] {
+    color: #095371;
+    flex: 1;
+    border-radius: 40px;
+    border: 2px solid #095371;
+    padding: 15px 65px 15px 15px;
+    background-color: transparent;
+}
+
+/* placeholder color */
+.search-bar input[type="text"]::placeholder {
+    color: #095371;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 20px);
+}
+
+.search-bar button img {
+    height: 33px;
+    aspect-ratio: 1 / 1;
+}
+
+.search-upload-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* directory buttons */
+.main-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3.5em;
+    row-gap: 1em;
+}
+
+.main-buttons button {
+    height: 100%;
+    text-align: left;
+    padding: 1.4em 0em 1.4em 2em;
+}
+
+.main-buttons button, .main-buttons a {
+    border-radius: 20px;
+    color: white;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    border: none;
+    font-weight: bold;
+    transition: var(--smooth-transition);
+    cursor: pointer;
+}
+
+.main-buttons button {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: transparent;
+}
+
+
+/* buttom borders */
+.main-buttons a {
+    border: 3px solid var(--white);
+    transition: var(--smooth-transition);
+}
+
+.main-buttons a:hover {
+    border: 3px dashed var(--white);
+    background-color: #073f55;
+    transition: var(--smooth-transition);
+}
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #students-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#students-container img, #students-container span {
+    transform: translateX(-7px);
+}

@@ -24,7 +24,9 @@
     background-color: var(--white);
 }
 
-
+.main, .row {
+    gap: 1em;
+}
 
 /* header */
 .main-header {
@@ -95,18 +97,16 @@
 }
 
 
-
 /* directory buttons */
 .main-buttons {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
-    padding-top: 20px;
-    gap: 20px;
+    flex-direction: column;
+    row-gap: 1em;
 }
 
-.main-buttons button, .main-buttons a {
+.row button, .row a {
     border-radius: 20px;
     color: white;
     font-size: 1em;
@@ -115,49 +115,8 @@
     font-weight: bold;
     transition: var(--smooth-transition);
     cursor: pointer;
-}
-
-.main-buttons button {
-    height: 100% !important;
-    width: 100% !important;
-    background-color: transparent;
-    row-gap: 0.4em;
-}
-
-
-/* button icons */
-.main-buttons img {
-    width: 70px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 1em;
-}
-
-
-
-/* cea button */
-.cea, #cea {
-    width: 20%;
+    width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    flex-direction: column;
-}
-
-
-/* group of 4 buttons */
-.buttons-group {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    height: 100%;
-    gap: 20px;
-}
-
-.buttons-group a, .buttons-group button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,51 +126,67 @@
     flex-direction: column;
 }
 
-/* expand button to entire <a> container */
-.buttons-group button {
+.row button {
     height: 100% !important;
     width: 100% !important;
+    background-color: transparent;
+    row-gap: 0.4em;
+}
+
+
+/* button icons */
+.row img {
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1em;
 }
 
 
 /* buttom borders */
-.main-buttons a {
+.row a {
     border: 3px solid var(--white);
     transition: var(--smooth-transition);
 }
 
-.main-buttons a:hover {
+.row a:hover {
     border: 3px dashed var(--white);
     background-color: #073f55;
     transition: var(--smooth-transition);
-
-    /* transform: scale(1.03); */
 }
 
 
 /* button text initial position */
-.main-buttons span {
+.row span {
     transition: var(--smooth-transition);
     transform: translateY(10px);
 }
 
 /* button text hover animation */
-.main-buttons a:hover span {
+.row a:hover span {
     transform: translateY(0);
 }
 
 
 /* button icon initial position */
-.main-buttons img {
+.row img {
     transition: var(--smooth-transition);
     transform: translateY(0);
 }
 
 /* button icon hover animation */
-.main-buttons a:hover img {
+.row a:hover img {
     transform: translateY(5px);
 }
 
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
@@ -226,84 +201,4 @@
 
 #students-container img, #students-container span {
     transform: translateX(-7px);
-}
-
-/* for modal style */
-.swal2-popup {
-    font-size: 1rem;
-    width: 30%;
-    background: var(--main-db-bg-color);
-    border-radius: 1.2rem;
-    box-shadow: 3px 3px 25px 12px rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(10px);
-    padding: 1.5em;
-}
-
-.swal2-confirm.upload-button-class {
-    color: var(--white);
-    background-color: var(--primary-color);
-    height: auto;
-    width: 21.5rem;
-    border-radius: 40px;
-    font-weight: 800;
-}
-
-.file-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-  
-.drop-file {
-    display: flex;
-    flex-direction: row;
-    border: 2px solid var(--primary-color);
-    border-radius: 1em;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 4rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-#file-input {
-    display: none;
-}
-
-.file-label {
-    display: inline-block;
-    padding: 0.6rem 3rem;
-    background-color: var(--primary-color);
-    color: var(--white);
-    cursor: pointer;
-    border-radius: 2em;
-}
-
-.file, .file-label {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.file {
-    color: var(--primary-color);
-}
-
-.drop-down-college,
-.drop-down-year {
-    margin-bottom: 1rem;
-    width: 100%; 
-}
-  
-select {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    background: none;
-    padding: 0.7rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 1em;
-    width: 100%;
-    box-sizing: border-box;
 }

@@ -6,7 +6,7 @@ endblock %} {% block styles %}
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>STUDENT RECORDS</span>
+      <span>STUDENT RECORDS - COLLEGE</span>
       <p>
         Please click on the following <b>COLLEGES</b> to view the corresponding
         records:
@@ -24,59 +24,51 @@ endblock %} {% block styles %}
             </div>
           </form>
         </div>
-
-        <!-- upload -->
-        <div class="upload-button">
-          <button type="submit" id="toggleUpload">
-            <img src="../static/add-user.png" alt="upload" />
-            <p>Add previous record</p>
-          </button>
-        </div>
       </div>
     </div>
 
     <!-- directory buttons -->
     <div class="main-buttons">
-      <a href="{{ url_for ('college_records', college="CEA") }}" id="cea">
+      <a href="{{ url_for ('college_records', college='CEA')}}" id="cea">
         <button class="cea">
           <img src="/static/students/cea.png" />
-          <span>College of Engineering and Architecture <br />CEA </span>
+          <span>College of Engineering and Architecture </span> <span>CEA </span>
         </button></a
       >
       <div class="buttons-group">
-        <a href="{{ url_for ('college_records', college="CBEA") }}">
+        <a href="{{ url_for ('college_records', college='CBEA')}}">
           <button class="cbea">
             <img src="/static/students/cbea.png" />
             <span
-              >College of Business Entrepreneurship and Accountancy <br />
-              CBEA</span
+              >College of Business Entrepreneurship and Accountancy </span>
+              <span>CBEA</span
             >
           </button></a
         >
-        <a href="{{ url_for ('college_records', college="CAS") }}">
+        <a href="{{ url_for ('college_records', college='CAS')}}">
           <button class="cas">
             <img src="/static/students/cas.png" />
             <span
-              >College of Arts and Sciences <br />
-              CAS</span
+              >College of Arts and Sciences </span>
+              <span>CAS</span
             >
           </button></a
         >
-        <a href="{{ url_for ('college_records', college="CED") }}">
+        <a href="{{ url_for ('college_records', college='CED')}}">
           <button class="ced">
             <img src="/static/students/ced.png" />
             <span
-              >College of Education <br />
-              CED</span
+              >College of Education </span>
+              <span>CED</span
             >
           </button></a
         >
-        <a href="{{ url_for ('college_records', college="IHK") }}">
+        <a href="{{ url_for ('college_records', college='IHK')}}">
           <button class="ihk">
             <img src="/static/students/ihk.png" />
             <span
-              >Institute of Human Kinetics <br />
-              IHK</span
+              >Institute of Human Kinetics </span>
+              <span>IHK</span
             >
           </button></a
         >
@@ -87,6 +79,5 @@ endblock %} {% block styles %}
 
 
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-<script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
 
 {% endblock %}
