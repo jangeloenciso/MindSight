@@ -61,6 +61,7 @@
 
 /* search input */
 .search-bar input[type="text"] {
+    font-size: 1rem;
     color: #095371;
     flex: 1;
     border-radius: 40px;
@@ -180,6 +181,19 @@
     transform: translateY(5px);
 }
 
+select {
+    border: 2px solid var(--primary-color);
+    outline-color: var(--primary-color);
+    border-radius: 2em;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 300;
+    width: 100%;
+    padding: 0.9em 1em;
+    letter-spacing: 2px;
+    transition: cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s, transform 1s ease-out;
+    background-color: transparent;
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {

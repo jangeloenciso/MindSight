@@ -12,16 +12,33 @@
           </div>
       </div>
       <hr>
+      <div class="search-upload-container">
         <div class="search-container">
           <form method="GET" action="{{ url_for('search', query=query) }}">
             <div class="search-bar">
-              <input type="text" placeholder="Search" name="query" value="{{query}}"/>
+              <input
+                type="text"
+                placeholder="Search"
+                name="query"
+                value="{{query}}"
+              />
               <button type="submit">
                 <img src="/static/students/search.png" alt="search" />
               </button>
             </div>
           </form>
         </div>
+  
+        <div class="filter">
+          <select name="filterby">
+            <option value="" disabled selected>Filter by:</option>
+            <option value="date">Date</option>
+            <option value="control_no">Control No.</option>
+            <option value="student_no">Student No.</option>
+            <option value="concern">Nature of Concern</option>
+          </select>
+        </div>
+      </div>
 
       <!-- delete button -->
       <div class="delete-container">

@@ -61,6 +61,7 @@
 
 /* search input */
 .search-bar input[type="text"] {
+    font-size: 1rem;
     color: #095371;
     flex: 1;
     border-radius: 40px;
