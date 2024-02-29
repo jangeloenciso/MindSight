@@ -190,7 +190,7 @@
             <div>
               <label for="gcnumber">Guardian's Contact No.:</label>
               <input
-                type="text"
+                type="tel"
                 id="cnumber"
                 name="cnumber"
                 placeholder="09123456789"
@@ -243,7 +243,7 @@
         <header>Emergency Contact Information</header>
         <div class="emergency">
           <div class="left-align">
-            <label for="#"
+            <label
               >In case of an emergency, who should we contact?
               <div class="tooltip">
                 <img src="/static/tooltip.png" />
@@ -289,7 +289,7 @@
             <div>
               <label for="emercell">Cellphone No.:</label>
               <input
-                type="number"
+                type="tel"
                 id="emercell"
                 name="emercell"
                 placeholder="09123456789"
@@ -304,7 +304,7 @@
         <header>History Information</header>
         <div class="historyinfo">
           <div class="left-align">
-            <label for="#"
+            <label
               >Who is providing the history information?
               <div class="tooltip">
                 <img src="/static/tooltip.png" />
@@ -925,7 +925,11 @@
                 value="exp44"
                 class="checkbox-round"
               />
-              <label for="exp44">Other</label>
+              <label
+                style="width: auto !important; padding-right: 10px"
+                for="exp44"
+                >Other</label
+              ><input type="text" placeholder="Enter text" />
             </li>
           </ul>
         </div>
@@ -935,7 +939,7 @@
         <header>Previous Treatment</header>
         <section class="prevtreatment">
           <div class="left-align">
-            <label for="#"
+            <label
               >Have you received or participated in previous counseling and/or
               therapy?
             </label>
@@ -1021,7 +1025,7 @@
           </div>
 
           <div class="left-align">
-            <label for="#"
+            <label
               >Have you had hospital stays for psychological concerns?
             </label>
             <div class="radio-inline-container">
@@ -1046,7 +1050,7 @@
             </div>
           </div>
           <div class="left-align">
-            <label for="#"
+            <label
               >Are you currently experiencing thoughts of harming either
               yourself or someone else?
             </label>
@@ -1072,7 +1076,7 @@
             </div>
           </div>
           <div class="left-align">
-            <label for="#"
+            <label
               >Have you in the past experienced thoughts of harming either
               yourself or someone else?
             </label>
@@ -1129,7 +1133,7 @@
 
           <div class="left-align">
             <label
-              >Other health concerns, serous illness, conditions, or major
+              >Other health concerns, serious illness, conditions, or major
               operations requiring hospitalization during your life time:</label
             >
           </div>
@@ -1261,9 +1265,7 @@
           </div>
 
           <div class="left-align">
-            <label for="#"
-              >How would you rate your current physical health?
-            </label>
+            <label>How would you rate your current physical health? </label>
             <div class="radio-inline-container resp">
               <div>
                 <input
@@ -1393,7 +1395,7 @@
               <div class="left-align single-column-span">
                 <label for="physnum">Contact Number:</label>
                 <input
-                  type="text"
+                  type="tel"
                   class="form-width100 single-column-span"
                   id="physnum"
                   name="physnum"
@@ -1476,14 +1478,11 @@
                   name="raised"
                   value="raisedother"
                 />
-                <label style="width: auto !important" for="raisedother"
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="raisedother"
                   >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  class="hidden"
-                  placeholder="Enter text"
-                />
+                ><input type="text" placeholder="Enter text" />
               </div>
             </div>
           </div>
@@ -1561,14 +1560,11 @@
                   name="relmother"
                   value="relmotherother"
                 />
-                <label style="width: auto !important" for="relmotherother"
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relmotherother"
                   >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  class="hidden"
-                  placeholder="Enter text"
-                />
+                ><input type="text" placeholder="Enter text" />
               </div>
             </div>
           </div>
@@ -1638,14 +1634,11 @@
                   name="relfather"
                   value="relfatherother"
                 />
-                <label style="width: auto !important" for="relfatherother"
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relfatherother"
                   >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  class="hidden"
-                  placeholder="Enter text"
-                />
+                ><input type="text" placeholder="Enter text" />
               </div>
             </div>
           </div>
@@ -1717,14 +1710,11 @@
                   name="relstepparent"
                   value="relstepparentother"
                 />
-                <label style="width: auto !important" for="relstepparentother"
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relstepparentother"
                   >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  class="hidden"
-                  placeholder="Enter text"
-                />
+                ><input type="text" placeholder="Enter text" />
               </div>
             </div>
           </div>
@@ -1899,7 +1889,7 @@
 
         <!-- end: Family History -->
 
-        <!-- start: Family History -->
+        <!-- start: Social History -->
         <header>Social History</header>
         <section class="sochistory">
           <div class="left-align">
@@ -1979,30 +1969,1004 @@
           </div>
         </section>
 
-        <!-- end: Family History -->
+        <!-- end: Social History -->
 
         <!-- start: Educational History -->
         <header>Educational History</header>
 
-        <section class="educhistory"><!-- continue here --></section>
+        <section class="educhistory">
+          <div class="left-align">
+            <label>When attending school were you:</label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="educattend1"
+                  name="educattend"
+                  value="educattend1"
+                />
+                <label for="educattend1">In regular classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend2"
+                  name="educattend"
+                  value="educattend2"
+                />
+                <label for="educattend2">Advanced classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend3"
+                  name="educattend"
+                  value="educattend3"
+                />
+                <label for="educattend3">Home Study</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend4"
+                  name="educattend"
+                  value="educattend4"
+                />
+                <label for="educattend4">Ever suspended</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend5"
+                  name="educattend"
+                  value="educattend5"
+                />
+                <label for="educattend5">Special classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend6"
+                  name="educattend"
+                  value="educattend6"
+                />
+                <label for="educattend6">Placed in alternative school</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="educhighest"
+              >What is the highest educational level you have completed?
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="educhighest"
+              name="educhighest"
+            />
+          </div>
+
+          <div class="left-align">
+            <label for="educinfo"
+              >Give any additional important educational information (i.e. Did
+              you like school? Have a learning disability?)
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Please provide any additional important educational
+                  information, such as your feelings towards school or the
+                  presence of any learning disabilities. Understanding your
+                  educational experiences helps us consider various factors that
+                  may impact your well-being.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="educinfo"
+              name="educinfo"
+            />
+          </div>
+        </section>
         <!-- end: Educational History -->
+
+        <!-- start: Occupational History -->
+        <header>Occupational History</header>
+        <section class="occuhistory">
+          <div class="left-align">
+            <label>What is your current employment status? </label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat1"
+                  name="employmentstat"
+                  value="employmentstat1"
+                />
+                <label for="employmentstat1">Employed Full-Time</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat2"
+                  name="employmentstat"
+                  value="employmentstat2"
+                />
+                <label for="employmentstat2">Employed Part-time</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat3"
+                  name="employmentstat"
+                  value="employmentstat3"
+                />
+                <label for="employmentstat3">Unemployed</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat4"
+                  name="employmentstat"
+                  value="employmentstat4"
+                />
+                <label for="employmentstat4">Self-employed</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat5"
+                  name="employmentstat"
+                  value="employmentstat5"
+                />
+                <label for="employmentstat5">Student</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="employmentsatis"
+              >Are you satisfied with your employment? why?
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="employmentsatis"
+              name="employmentsatis"
+            />
+          </div>
+          <div class="left-align">
+            <label for="employmentsatisifnot">If not, why? </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="employmentsatisifnot"
+              name="employmentsatisifnot"
+            />
+          </div>
+        </section>
+
+        <!-- end: Occupational History -->
+
+        <!-- start: Substance Abuse History -->
+        <header>Substance Abuse History</header>
+        <section class="subsabuse">
+          <div class="left-align">
+            <label
+              >Are you currently or have you ever struggled with substance
+              abuse?<br />
+              (alcohol, tobacco, marijuana, caffeine, or other)
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="subsabuseyes"
+                  name="subsabuse"
+                  value="subsabuseyes"
+                />
+                <label for="subsabuseyes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="subsabuseno"
+                  name="subsabuse"
+                  value="subsabuseno"
+                />
+                <label for="subsabuseno">No</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="subsabuseother"
+                  name="subsabuse"
+                  value="subsabuseother"
+                />
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="subsabuseother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label
+              >If you answered yes, please complete the following substance
+              abuse history chart.
+            </label>
+          </div>
+
+          <table>
+            <tr>
+              <th>Substance</th>
+              <th>Ever Used<br />(Yes/No)</th>
+              <th>Age of First Use</th>
+              <th>Frequency of Use (Daily, Weekly, Monthly)</th>
+              <th>Amount Used</th>
+              <th>How did you use it (smoked, injected, etc.)</th>
+            </tr>
+            <tr>
+              <td>Alcohol</td>
+              <td>
+                <select name="alcoholuse" id="alcoholuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="alcoholage"
+                  name="alcoholage"
+                />
+              </td>
+              <td>
+                <select name="alcoholfrequency" id="alcoholfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="alcoholamount"
+                  name="alcoholamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="alcoholmethod"
+                  name="alcoholmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Marijuana</td>
+              <td>
+                <select name="marijuanause" id="marijuanause">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="marijuanaage"
+                  name="marijuanaage"
+                />
+              </td>
+              <td>
+                <select name="marijuanafrequency" id="marijuanafrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="marijuanaamount"
+                  name="marijuanaamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="marijuanamethod"
+                  name="marijuanamethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Cocaine or Crack</td>
+              <td>
+                <select name="cocaineorcrackuse" id="cocaineorcrackuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="cocaineorcrackage"
+                  name="cocaineorcrackage"
+                />
+              </td>
+              <td>
+                <select
+                  name="cocaineorcrackfrequency"
+                  id="cocaineorcrackfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="cocaineorcrackamount"
+                  name="cocaineorcrackamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="cocaineorcrackmethod"
+                  name="cocaineorcrackmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Heroin</td>
+              <td>
+                <select name="heroinuse" id="heroinuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="heroinage"
+                  name="heroinage"
+                />
+              </td>
+              <td>
+                <select name="heroinfrequency" id="heroinfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="heroinamount"
+                  name="heroinamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="heroinmethod"
+                  name="heroinmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Amphetamites</td>
+              <td>
+                <select name="amphetamitesuse" id="amphetamitesuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="amphetamitesage"
+                  name="amphetamitesage"
+                />
+              </td>
+              <td>
+                <select name="amphetamitesfrequency" id="amphetamitesfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="amphetamitesamount"
+                  name="amphetamitesamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="amphetamitesmethod"
+                  name="amphetamitesmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Club Drugs (Ecstasy, Inhalants, etc.)</td>
+              <td>
+                <select name="clubdrugsuse" id="clubdrugsuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="clubdrugsage"
+                  name="clubdrugsage"
+                />
+              </td>
+              <td>
+                <select name="clubdrugsfrequency" id="clubdrugsfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="clubdrugsamount"
+                  name="clubdrugsamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="clubdrugsmethod"
+                  name="clubdrugsmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Pain Medication (Oxycontin, Vicodin, etc.)</td>
+              <td>
+                <select name="painmedicationuse" id="painmedicationuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="painmedicationage"
+                  name="painmedicationage"
+                />
+              </td>
+              <td>
+                <select
+                  name="painmedicationfrequency"
+                  id="painmedicationfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="painmedicationamount"
+                  name="painmedicationamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="painmedicationmethod"
+                  name="painmedicationmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Benzodiazepines</td>
+              <td>
+                <select name="benzodiazepinesuse" id="benzodiazepinesuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="benzodiazepinesage"
+                  name="benzodiazepinesage"
+                />
+              </td>
+              <td>
+                <select
+                  name="benzodiazepinesfrequency"
+                  id="benzodiazepinesfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="benzodiazepinesamount"
+                  name="benzodiazepinesamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="benzodiazepinesmethod"
+                  name="benzodiazepinesmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Hallucinogens</td>
+              <td>
+                <select name="hallucinogensuse" id="hallucinogensuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="hallucinogensage"
+                  name="hallucinogensage"
+                />
+              </td>
+              <td>
+                <select
+                  name="hallucinogensfrequency"
+                  id="hallucinogensfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="hallucinogensamount"
+                  name="hallucinogensamount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="hallucinogensmethod"
+                  name="hallucinogensmethod"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Other<input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="hallucinogensmethod"
+                  name="hallucinogensmethod"
+                />
+              </td>
+              <td>
+                <select name="otheruse" id="otheruse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="form-width100 single-column-span"
+                  id="otherage"
+                  name="otherage"
+                />
+              </td>
+              <td>
+                <select name="otherfrequency" id="otherfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="otheramount"
+                  name="otheramount"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="othermethod"
+                  name="othermethod"
+                />
+              </td>
+            </tr>
+          </table>
+          <div class="left-align">
+            <label for="subsabuseprogram"
+              >Have ever received treatment for a substance abuse issue?<br />Name
+              of Treatment Program
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabuseprogram"
+              name="subsabuseprogram"
+            />
+          </div>
+
+          <div class="left-align">
+            <label>Type of Treatment </label>
+            <div class="radio-inline-container treatmenttype">
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttyperehab"
+                  name="treatmenttype"
+                  value="treatmenttyperehab"
+                />
+                <label for="treatmenttyperehab" style="padding-right: 196px"
+                  >Rehab</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypeparthospital"
+                  name="treatmenttype"
+                  value="treatmenttypeparthospital"
+                />
+                <label for="treatmenttypeparthospital"
+                  >Partial Hospitalization</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttyperecoveryhouse"
+                  name="treatmenttype"
+                  value="treatmenttyperecoveryhouse"
+                />
+                <label for="treatmenttyperecoveryhouse">Recovery House</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypemethadone"
+                  name="treatmenttype"
+                  value="treatmenttypemethadone"
+                />
+                <label for="treatmenttypemethadone">Methadone</label>
+              </div>
+            </div>
+
+            <div class="radio-inline-container treatmenttype">
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypeiop"
+                  name="treatmenttype"
+                  value="treatmenttypeiop"
+                />
+                <label for="treatmenttypeiop"
+                  >Intensive Outpatient Program</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypehalfwayhouse"
+                  name="treatmenttype"
+                  value="treatmenttypehalfwayhouse"
+                />
+                <label
+                  for="treatmenttypehalfwayhouse"
+                  style="padding-right: 63px"
+                  >Halfway House</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypecounselling"
+                  name="treatmenttype"
+                  value="treatmenttypecounselling"
+                />
+                <label
+                  for="treatmenttypecounselling"
+                  style="padding-right: 35px"
+                  >Counselling</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypesuboxone"
+                  name="treatmenttype"
+                  value="treatmenttypesuboxone"
+                />
+                <label for="treatmenttypesuboxone">Suboxone</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="subsabusetreatmentdate"
+              >Date of Treatment (Month, Year)
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabusetreatmentdate"
+              name="subsabusetreatmentdate"
+            />
+          </div>
+          <div class="left-align">
+            <label for="subsabuseoutcome"
+              >Outcome?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Can you describe the outcomes or results of your previous
+                  treatment? Understanding what worked or didn't work for you
+                  helps us refine our approach and provide more effective
+                  support.</span
+                >
+              </div>
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabuseoutcome"
+              name="subsabuseoutcome"
+            />
+          </div>
+        </section>
+        <!-- end: Substance Abuse History -->
+
+        <!-- start: Legal History -->
+        <header>Legal History</header>
+        <section class="legalhistory">
+          <div class="left-align single-column-span">
+            <label for="legalpending" style="width: 900px !important"
+              >Do you currently have any pending criminal charges?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="legalpendingyes"
+                  name="legalpending"
+                  value="legalpendingyes"
+                />
+                <label style="width: auto !important" for="legalpendingyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="legalpendingno"
+                  name="legalpending"
+                  value="legalpendingno"
+                />
+                <label for="legalpendingno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="legalprobation" style="width: 900px !important"
+              >Are you on probation?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="legalprobationyes"
+                  name="legalprobation"
+                  value="legalprobationyes"
+                />
+                <label style="width: auto !important" for="legalprobationyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="legalprobationno"
+                  name="legalprobation"
+                  value="legalprobationno"
+                />
+                <label for="legalprobationno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="legalarrest" style="width: 900px !important"
+              >Have you ever been arrested/convicted of a crime?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                <input
+                  type="radio"
+                  id="legalarrestyes"
+                  name="legalarrest"
+                  value="legalarrestyes"
+                />
+                <label style="width: auto !important" for="legalarrestyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="legalarrestno"
+                  name="legalarrest"
+                  value="legalarrestno"
+                />
+                <label for="legalarrestno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label>If yes, complete chart.</label>
+          </div>
+
+          <table>
+            <tr>
+              <th>List any Arrest/Conviction</th>
+              <th>Date of Arrests/Convictions</th>
+              <th>Outcome</th>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="legalarrestlist"
+                  name="legalarrestlist"
+                />
+              </td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="legalarrestdate"
+                  name="legalarrestdate"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="legalarrestoutcome"
+                  name="legalarrestoutcome"
+                />
+              </td>
+            </tr>
+          </table>
+        </section>
+        <!-- end: Legal History -->
+
+        <!-- start: Additional Information -->
+        <header>Additional Information</header>
+        <section class="additionalinfo">
+          <div class="left-align">
+            <label for="additionalinfo1"
+              >What you would like to work on in counseling?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What specific areas or issues would you like to address and
+                  work on during counseling?</span
+                >
+              </div>
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="additionalinfo1"
+              name="additionalinfo1"
+            />
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo2"
+              >What expectations do you have for counseling?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Understanding your hopes and goals helps us collaborate
+                  effectively to meet your expectations.</span
+                >
+              </div>
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="additionalinfo2"
+              name="additionalinfo2"
+            />
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo3"
+              >Name 3 things you would like to change about yourself.
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="additionalinfo3"
+              name="additionalinfo3"
+            />
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo4"
+              >Is there any additional information that you believe it is
+              important for your counselor to know in order to provide you with
+              the best care possible?
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="additionalinfo4"
+              name="additionalinfo4"
+            />
+          </div>
+        </section>
+        <!-- end: Additional Information -->
       </div>
     </main>
-
-    <!-- TODO: Move this to a separate js file later -->
-    <script>
-      // text box appears if "other" option is selected
-      // NOTE: alisin nalang js ang complicated kapag maraming "other" throughout sa form.
-      const otherOptionRadio = document.getElementById("otherOption");
-      const otherTextbox = document.getElementById("otherTextbox");
-
-      otherOptionRadio.addEventListener("change", function () {
-        if (this.checked) {
-          otherTextbox.classList.remove("hidden");
-        } else {
-          otherTextbox.classList.add("hidden");
-        }
-      });
-    </script>
   </body>
 </html>

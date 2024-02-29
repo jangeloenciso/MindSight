@@ -77,8 +77,8 @@ main {
     width: 100%;
 }
 
-/* main styling layout */
-.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory {
+/* main styling layout per section */
+.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -201,14 +201,6 @@ label {
     aspect-ratio: 1/1;
 }
 
-/* hides "other" text box if not selected initially */
-.hidden {
-    width: 0 !important;
-    opacity: 0;
-    pointer-events: none;
-}
-
-
 
 /* left align style for the list of checkboxes */
 .left-align-checkbox {
@@ -313,5 +305,14 @@ th, td {
         flex-direction: column;
     }
 
+
+    .treatmenttype {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .treatmenttype label {
+        padding-right: 0;
+    }
 
 }
