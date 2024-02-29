@@ -57,6 +57,6 @@ course_names = {
             "TEN"
         ],
         "Graduate School" : [
-            "GRAD"
+            "GRADUATE"
         ]
 }

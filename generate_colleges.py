@@ -66,7 +66,7 @@ with app.app_context():
             "TEN"
         ],
         "Graduate School" : [
-            "GRAD"
+            "GRADUATE"
         ]
     }
 
