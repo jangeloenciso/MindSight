@@ -78,7 +78,7 @@ main {
 }
 
 /* main styling layout per section */
-.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo {
+.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo, .personalagree, .refinfo, .confidential {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -280,7 +280,36 @@ th, td {
 }
 
 
+/* personal agreements container style */
+.personalagree .container, .refinfo .container, .confidential .container {
+    width: calc(100% - 40px);
+    height: auto;
+    margin: 20px 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--primary-color);
+}
 
+
+.tac {
+    display: flex;
+}
+
+.tac label {
+    width: auto !important;
+}
+
+.tac input {
+    width: 20px;
+    aspect-ratio: 1/1;
+    margin-right: 10px;
+}
+
+.tacdatetime {
+    margin-top: 10px;
+    width: 342px;
+}
 
 
 
@@ -295,6 +324,12 @@ th, td {
         width: 400px !important;
         padding: 0;
     }
+
+    .personalagree .container, .refinfo .container, .confidential .container {
+        width: 400px !important;
+    }
+
+
 
     .left-align-checkbox li {
         background-color: #f3ded0;
@@ -314,5 +349,11 @@ th, td {
     .treatmenttype label {
         padding-right: 0;
     }
+
+    .referral {
+        width: 358px !important;
+    }
+
+
 
 }
