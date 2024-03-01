@@ -63,7 +63,7 @@ class StudentInformation(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     course = db.Column(db.String(100), nullable=False)
     year_level = db.Column(db.String(20))
-    gpa = db.Column(db.Float)
+    # gpa = db.Column(db.Float)
     campus = db.Column(db.String(20), nullable=False)
 
     @validates('student_id')

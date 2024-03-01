@@ -6,7 +6,7 @@ class StudentRecordForm(FlaskForm):
     # User Information
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
-    username = StringField('Username', validators=[DataRequired()])
+    # username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = StringField('Password', validators=[DataRequired(), Length(min=8)])
     role = StringField('Role', validators=[DataRequired()])

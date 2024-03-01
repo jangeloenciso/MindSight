@@ -416,48 +416,140 @@ def edit_record(student_id):
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_record():
-
-    student = (
-        StudentInformation.query
-        .options(
-            joinedload(StudentInformation.personal_information),
-            joinedload(StudentInformation.family_background),
-            joinedload(StudentInformation.health_information),
-            joinedload(StudentInformation.educational_background),
-            joinedload(StudentInformation.social_history),
-            joinedload(StudentInformation.history_information),
-            joinedload(StudentInformation.occupational_history),
-            joinedload(StudentInformation.substance_abuse_history),
-            joinedload(StudentInformation.legal_history),
-            joinedload(StudentInformation.additional_information)
-        )
-    )
-
-    form = StudentRecordForm(obj=student)
+    form = StudentRecordForm()
 
     if form.validate_on_submit():  # If the form is submitted and validated
+        # Create instances of related models and populate them with form data
+        personal_info = PersonalInformation(
+            age=form.age.data,
+            sex=form.sex.data,
+            gender=form.gender.data,
+            contact_number=form.contact_number.data,
+            religion=form.religion.data,
+            date_of_birth=form.date_of_birth.data,
+            place_of_birth=form.place_of_birth.data,
+            nationality=form.nationality.data,
+            counseling_history=form.counseling_history.data,
+            residence=form.residence.data,
+            civil_status=form.civil_status.data,
+            student_id=form.student_id.data
+        )
+        
+        history_info = HistoryInformation(
+            information_provider=form.information_provider.data,
+            current_problem=form.current_problem.data,
+            problem_length=form.problem_length.data,
+            stressors=form.stressors.data,
+            substance_abuse=form.substance_abuse.data,
+            addiction=form.addiction.data,
+            # Populate other history information fields
+            student_id=form.student_id.data
+        )
 
-        form.populate_obj(student)
-        form.populate_obj(student.personal_information)
-        form.populate_obj(student.family_background)
-        form.populate_obj(student.health_information)
-        form.populate_obj(student.educational_background)
-        form.populate_obj(student.social_history)
-        form.populate_obj(student.history_information)
-        form.populate_obj(student.occupational_history)
-        form.populate_obj(student.substance_abuse_history)
-        form.populate_obj(student.legal_history)
-        form.populate_obj(student.additional_information)
+        health_info = HealthInformation(
+            medication_and_dose=form.medication_and_dose.data,
+            serious_ch_illnesses_history=form.serious_ch_illnesses_history.data,
+            head_injuries=form.head_injuries.data,
+            lose_consciousness=form.lose_consciousness.data,
+            convulsions_or_seizures=form.convulsions_or_seizures.data,
+            fever=form.fever.data,
+            allergies=form.allergies.data,
+            current_physical_health=form.current_physical_health.data,
+            last_check_up=form.last_check_up.data,
+            has_physician=form.has_physician.data,
+            physician_name=form.physician_name.data,
+            physician_email=form.physician_email.data,
+            physician_number=form.physician_number.data,
+            student_id=form.student_id.data
+        )
 
-        # Add the new record to the database
-        db.session.add(student)
-        db.session.commit() 
+        family_background = FamilyBackground(
+            father_age=form.father_age.data,
+            mother_age=form.mother_age.data,
+            father_last_name=form.father_last_name.data,
+            mother_last_name=form.mother_last_name.data,
+            father_first_name=form.father_first_name.data,
+            mother_first_name=form.mother_first_name.data,
+            family_abuse_history=form.family_abuse_history.data,
+            family_mental_history=form.family_mental_history.data,
+            additional_information=form.additional_information.data,
+            student_id=form.student_id.data
+        )
+
+        social_history = SocialHistory(
+            relationship_with_peers=form.relationship_with_peers.data,
+            social_support_network=form.social_support_network.data,
+            hobbies_or_interests=form.hobbies_or_interests.data,
+            cultural_concerns=form.cultural_concerns.data,
+            student_id=form.student_id.data
+        )
+
+        educational_background = EducationalBackground(
+            educational_history=form.educational_history.data,
+            highest_level_achieved=form.highest_level_achieved.data,
+            additional_information=form.additional_information_edu.data,
+            student_id=form.student_id.data
+        )
+
+        occupational_history = OccupationalHistory(
+            employment_status=form.employment_status.data,
+            satisfaction=form.satisfaction.data,
+            satisfaction_reason=form.satisfaction_reason.data,
+            student_id=form.student_id.data
+        )
+
+        substance_abuse_history = SubstanceAbuseHistory(
+            struggled_with_substance_abuse=form.struggled_with_substance_abuse.data,
+            alcohol=form.alcohol.data,
+            # Populate other substance abuse history fields
+            student_id=form.student_id.data
+        )
+
+        legal_history = LegalHistory(
+            pending_criminal_charges=form.pending_criminal_charges.data,
+            on_probation=form.on_probation.data,
+            has_been_arrested=form.has_been_arrested.data,
+            student_id=form.student_id.data
+        )
+
+        additional_info = AdditionalInformation(
+            to_work_on=form.to_work_on.data,
+            expectations=form.expectations.data,
+            things_to_change=form.things_to_change.data,
+            other_information=form.other_information.data,
+            student_id=form.student_id.data
+        )
+
+        # Create an instance of the main StudentInformation model and associate related models
+        new_student = StudentInformation(
+            student_id=form.student_id.data,
+            last_name=form.last_name.data,
+            first_name=form.first_name.data,
+            course=form.course.data,
+            year_level=form.year_level.data,
+            # gpa=form.gpa.data,
+            campus=form.campus.data,
+            personal_information=personal_info,
+            history_information=history_info,
+            health_information=health_info,
+            family_background=family_background,
+            social_history=social_history,
+            educational_background=educational_background,
+            occupational_history=occupational_history,
+            substance_abuse_history=substance_abuse_history,
+            legal_history=legal_history,
+            additional_information=additional_info
+        )
+
+        # Add the new records to the database
+        db.session.add(new_student)
+        db.session.commit()
 
         # Flash a success message
-        flash('New student added successfully!', 'success')
+        flash('New student record added successfully!', 'success')
 
         # Redirect the user to a page displaying the newly added record
-        return redirect(url_for('student_record', new_record_id=student.id))
+        return redirect(url_for('student_record', new_record_id=new_student.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
     return render_template('add_record.html', form=form)
