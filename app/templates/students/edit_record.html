@@ -2808,20 +2808,21 @@ href="/static/fonts/custom-fonts.css"
             </div>
             <div></div>
           </div>
-          <div class="form-btn-container">
-            <button class="update-btn" type="submit">Submit</button>
-            <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-              <button class="cancel-btn">Cancel</button>
-            </a>
-          </div>
         </section>
         <!-- end: CONFIDENTIAL -->
-
+        
         
       </div>
-      </form>
+      
     </div>
   </div>
+  <div class="form-btn-container">
+    <button class="update-btn" type="submit">Submit</button>
+    <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+      <button class="cancel-btn">Cancel</button>
+    </a>
+  </div>
+</form>
 </div>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
