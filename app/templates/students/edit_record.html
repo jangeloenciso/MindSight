@@ -9,11 +9,19 @@ href="/static/fonts/custom-fonts.css"
 />
 <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
 {% endblock %} {% block content %}
-
+<title>Mindsight - Add Record</title>
 <div class="right">
-  <title>Mindsight - Add Record</title>
-    <main>
-      <header class="main-header">Client History and Information</header>
+  <div class="main">
+    <div class="main-header">
+      <span>Edit Record</span>
+      <div class="back-button">
+          <a href="{{ url_for ('colleges') }}">
+              <img src="/static/SVG/back_button.svg"/>
+          </a>
+      </div>
+    </div>
+    <div class="main-content">
+      <header class="main-header-content">Client History and Information</header>
       <hr />
 
       <!-- start: BASIC INFORMATION -->
@@ -2812,7 +2820,8 @@ href="/static/fonts/custom-fonts.css"
         
       </div>
       </form>
-    </main>
+    </div>
+  </div>
 </div>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
