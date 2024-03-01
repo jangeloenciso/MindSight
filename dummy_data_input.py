@@ -54,5 +54,13 @@ religion_names = [
 ]
 
 strands = [
-    "STEM", "ABM", "HUMSS", "GAS", "Arts and Design", "TVL", "Sports"
+    "STEM", "ABM", "HUMSS", "TECH-VOC"
+]
+
+grade_level = [
+    "SEVEN", "EIGHT", "NINE", "TEN"
+]
+
+graduate = [
+    "GRADUATE"
 ]

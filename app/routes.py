@@ -424,7 +424,12 @@ def add_record():
             joinedload(StudentInformation.family_background),
             joinedload(StudentInformation.health_information),
             joinedload(StudentInformation.educational_background),
-            joinedload(StudentInformation.visits)
+            joinedload(StudentInformation.social_history),
+            joinedload(StudentInformation.history_information),
+            joinedload(StudentInformation.occupational_history),
+            joinedload(StudentInformation.substance_abuse_history),
+            joinedload(StudentInformation.legal_history),
+            joinedload(StudentInformation.additional_information)
         )
     )
 
@@ -437,6 +442,12 @@ def add_record():
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
+        form.populate_obj(student.social_history)
+        form.populate_obj(student.history_information)
+        form.populate_obj(student.occupational_history)
+        form.populate_obj(student.substance_abuse_history)
+        form.populate_obj(student.legal_history)
+        form.populate_obj(student.additional_information)
 
         # Add the new record to the database
         db.session.add(student)
@@ -449,7 +460,7 @@ def add_record():
         return redirect(url_for('student_record', new_record_id=student.id))
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('add_record-test.html', form=form)
+    return render_template('add_record.html', form=form)
 
 
 # API endpoints
