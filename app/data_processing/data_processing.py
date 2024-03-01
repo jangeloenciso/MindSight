@@ -87,7 +87,6 @@ def process_data(student_id=None, search_query=None):
                 'first_name': record.first_name,
                 'course': course_name,
                 'year_level': record.year_level,
-                'gpa': record.gpa,
                 'campus': record.campus,
                 'college': college_name,
                 'year_level': record.year_level,
