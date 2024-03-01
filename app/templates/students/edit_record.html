@@ -1,614 +1,2819 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Edit Record
 {% endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/edit-record.css" />
+<link rel="stylesheet" href="..//static/fonts/custom-fonts.css" />
+<link
+rel="stylesheet"
+type="text/css"
+href="/static/fonts/custom-fonts.css"
+/>
+<link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
 {% endblock %} {% block content %}
 
 <div class="right">
-    <div class="main">
-        <div class="main-header">
-            <span>Edit Records</span>
-            <div class="back-button">
-                <button class="confirmation" id="confirm">
-                    <img src="/static/SVG/back_button.svg" />
-                </button>
-            </div>
-        </div>
+  <title>Mindsight - Add Record</title>
+    <main>
+      <header class="main-header">Client History and Information</header>
+      <hr />
 
-        <div class="scroll-content">
-            <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
-                {{ form.csrf_token }}
-                
-                    {{ form.hidden_tag() }}
-                <!-- Student Information section -->
-                <section>
-                    <div class="left-header">Student Information</div>
-                    <div class="right-content">
-                        <div class="single-row">
-                            <label for="fname">First name</label>
-                            {{ form.first_name(value=student.first_name) }}
-                        </div>
-
-                        <div class="single-row">
-                            <label for="lname">Last name</label>
-                            {{ form.last_name(value=student.last_name) }}
-                        </div>
-                        <div class="double-row">
-                            <div>
-                                <label for="studId">Student ID</label><br />
-                                <input type="text" id="studId" name="studId" />
-                            </div>
-                        <div>
-                            <label for="fname">GPA</label>
-                            {{ form.gpa(value=student.gpa) }}
-                        </div>
-                        </div>
-
-                        <div class="double-row">
-                            <div>
-                                <label for="campus">Campus</label><br />
-                                <select name="campus" id="campus">
-                                <option value="boni">Boni</option>
-                                <option value="pasig">Pasig</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="year">Year Level</label><br />
-                                <select name="year" id="year">
-                                <option value="1styear">1st Year</option>
-                                <option value="2ndyear">2nd Year</option>
-                                <option value="3rdyear">3rd Year</option>
-                                <option value="4thyear">4th Year</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
-                        <!-- TODO: replace "idk" with actual courses -->
-                        <div class="single-row">
-                            <label for="course">Course</label>
-                            <select name="course" id="course">
-                                <option value="idk">Bachelor of Science in Mechanical Engineering</option>
-                                <option value="idk">Bachelor of Science in Architecture (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Civil Engineering</option>
-                                <option value="idk">Bachelor of Science in Electrical Engineering</option>
-                                <option value="idk">Bachelor of Science in Electronics Engineering</option>
-                                <option value="idk">Bachelor of Science in Computer Engineering</option>
-                                <option value="idk">Bachelor of Science in Industrial Engineering (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Information Technology (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Mechatronics</option>
-                                <option value="idk">Bachelor of Science in Accountancy</option>
-                                <option value="idk">Bachelor of Science in Entrepreneurship</option>
-                                <option value="idk">Bachelor of Science in Office Administration</option>
-                                <option value="idk">Bachelor of Science in Business Administration major in Operations Management</option>
-                                <option value="idk">Bachelor of Science in Business Administration major in Marketing Management</option>
-                                <option value="idk">Bachelor of Science in Business Administration major in Financial Management</option>
-                                <option value="idk">Bachelor of Science in Business Administration major in Human Resource Management</option>
-                                <option value="idk">Bachelor of Secondary Education major in English</option>
-                                <option value="idk">Bachelor of Secondary Education major in Math</option>
-                                <option value="idk">Bachelor of Secondary Education major in Science (Boni Campus)</option>
-                                <option value="idk">Bachelor of Secondary Education major in Social Studies</option>
-                                <option value="idk">Bachelor of Secondary Education Major in Filipino</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Animation</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology</option>
-                                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                                <option value="idk">Bachelor of Science in Psychology</option>
-                                <option value="idk">Bachelor of Arts in Political Science</option>
-                                <option value="idk">Bachelor of Science in Statistics (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Biology (Boni Campus)</option>
-                                <option value="idk">Bachelor of Science in Astronomy</option>
-                                <option value="idk">Bachelor of Science in Physical Education (Boni Campus)</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-
-                <hr />
-
-                <section>
-                <div class="left-header">Personal Information</div>
-                <div class="right-content">
-                    <div class="double-row">
-                    <div>
-                        <label for="birthday">Date of Birth</label><br />
-                        {{ form.date_of_birth(value=student.personal_information.date_of_birth) }}
-                    </div>
-                    <div>
-                        <label for="age">Age</label><br />
-                        {{ form.age(value=student.personal_information.age) }}
-                    </div>
-                    </div>
-                    <div class="double-row">
-                    <div>
-                        <label for="sex">Sex</label>
-                        <select name="sex" id="sex">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="gender">Gender</label><br />
-                        {{ form.gender(value=student.personal_information.gender) }}
-                    </div>
-                    </div>
-
-                    <div class="single-row">
-                    <label for="contact">Contact No.</label>
-                    {{ form.contact_number(value=student.personal_information.contact_number) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="residence">Residence</label>
-                    {{ form.residence(value=student.personal_information.residence) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="nationality">Nationality</label>
-                    {{ form.nationality(value=student.personal_information.nationality) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="placeofbirth">Place of Birth</label>
-                    {{ form.place_of_birth(value=student.personal_information.place_of_birth) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="religion">Religion</label>
-                    {{ form.religion(value=student.personal_information.religion) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="counselinghistory">Counseling History</label>
-                    {{ form.counseling_history(value=student.personal_information.counseling_history) }}
-                    </div>
-                </div>
-                </section>
-                <hr />
-                <section>
-                <div class="left-header">Family Background</div>
-                <div class="right-content">
-                    <div class="double-row">
-                    <div>
-                        <label for="mfname">Mother Firstname</label>
-                        {{ form.mother_first_name(value=student.family_background.mother_first_name) }}
-                    </div>
-                    <div>
-                        <label for="mlname">Mother Lastname</label>
-                        {{ form.mother_last_name(value=student.family_background.mother_last_name) }}
-                    </div>
-                    </div>
-                    <div class="single-row-half">
-                    <label for="mage">Mother Age</label>
-                    {{ form.mother_age(value=student.family_background.mother_age) }}
-                    </div>
-                    <div class="double-row">
-                    <div>
-                        <label for="ffname">Father Firstname</label>
-                        {{ form.father_first_name(value=student.family_background.father_first_name) }}
-                    </div>
-                    <div>
-                        <label for="flname">Father Lastname</label>
-                        {{ form.father_last_name(value=student.family_background.father_last_name) }}
-                    </div>
-                    </div>
-                    <div class="single-row-half">
-                    <label for="fage">Father Age</label>
-                    {{ form.father_age(value=student.family_background.father_age) }}
-                    </div>
-                </div>
-                </section>
-
-                <hr />
-                <section>
-                <div class="left-header">Educational Background</div>
-                <div class="right-content">
-                    <div class="double-row">
-                    <div>
-                        <label for="shs">Senior High School</label>
-                        {{ form.senior_high_school(value=student.educational_background.senior_high_school) }}
-                    </div>
-                    <div>
-                        <label for="shsgradyear">SHS Graduation Year</label>
-                        {{ form.shs_graduation_year(value=student.educational_background.shs_graduation_year) }}
-                    </div>
-                    </div>
-
-                    <div class="single-row">
-                    <label for="shsstrand">SHS Strand</label>
-                    {{ form.shs_strand(value=student.educational_background.shs_strand) }}
-                    </div>
-                    <hr style="margin: 7px 0 7px 0 !important" />
-                    <div class="double-row">
-                    <div>
-                        <label for="jhs">Junior High School</label>
-                        {{ form.junior_high_school(value=student.educational_background.junior_high_school) }}
-                    </div>
-                    <div>
-                        <label for="jhsgradyear">JHS Graduation Year</label>
-                        {{ form.jhs_graduation_year(value=student.educational_background.jhs_graduation_year) }}
-                    </div>
-                    </div>
-                    <hr style="margin: 7px 0 7px 0 !important" />
-                    <div class="double-row">
-                    <div>
-                        <label for="elemschool">Elementary school</label>
-                        {{ form.elementary_school(value=student.educational_background.elementary_school) }}
-                    </div>
-                    <div>
-                        <label for="elemgradyear">Elementary Graduation Year</label>
-                        {{ form.elementary_graduation_year(value=student.educational_background.elementary_graduation_year) }}
-                    </div>
-                    </div>
-                </div>
-                </section>
-
-                <hr />
-                <section>
-                <div class="left-header">Health Information</div>
-                <div class="right-content">
-                    <div class="double-row">
-                    <div>
-                        <label for="generalhealth">General Health</label>
-                        {{ form.general_health(value=student.health_information.general_health) }}
-                    </div>
-                    <div>
-                        <label for="expsickness">Experienced Sickness</label>
-                        {{ form.experienced_sickness(value=student.health_information.experienced_sickness) }}
-                    </div>
-                    </div>
-                    <div class="double-row">
-                    <div>
-                        <label for="height">Height (cm)</label>
-                        {{ form.height(value=student.health_information.height) }}
-                    </div>
-                    <div>
-                        <label for="weight">Weight (kg)</label>
-                        {{ form.weight(value=student.health_information.weight) }}
-                    </div>
-                    </div>
-                    <div class="single-row">
-                    <label for="sight">Sight</label>
-                    {{ form.sight(value=student.health_information.sight) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="hearing">Hearing</label>
-                    {{ form.hearing(value=student.health_information.hearing) }}
-                    </div>
-                    <div class="single-row">
-                    <label for="speech">Speech</label>
-                    {{ form.speech(value=student.health_information.speech) }}
-                    </div>
-                </div>
-                </section>
-
-                <hr />
-                <section>
-                    <div class="left-header">Psychological Assessment</div>
-                    <div class="right-content">
-                        <div class="single-row">
-                        <label for="learningstyle">Learning Style</label>
-                        {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
-                        </div>
-                        <div class="double-row">
-                        <div>
-                            <label for="ptest">Personality Test</label>
-                            {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
-                        </div>
-                        <div>
-                            <label for="iqtest">IQ Test</label>
-                            {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
-                        </div>
-                        </div>
-                    </div>
-                </section>
-            </form>
-        </div>
-        <!-- TODO: make buttons functional; to save or cancel -->
-        <footer>
-        <div class="update-btn">{{ form.submit(class="update") }}</div>
-        <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-            <button class="cancel-btn">Cancel</button>
-        </a>
-        </footer>
-    </div>
-
-    <div class="scroll-content">
-      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}">
-        {{ form.csrf_token }}
+      <!-- start: BASIC INFORMATION -->
+      <header>Basic Information</header>
+      {{ form.csrf_token }}
         
             {{ form.hidden_tag() }}
-        <!-- Student Information section -->
-        <section>
-          <div class="left-header">Student Information</div>
-          <div class="right-content">
-            <div class="single-row">
-              <label for="fname">First name</label>
-              {{ form.first_name(value=student.first_name) }}
+      <form action="{{ url_for('add_record') }}">      
+      <div class="center">
+        <section class="basic-information">
+          <div class="double-column">
+            <div>
+              <label for="fname">First name:</label>
+              {{ form.first_name(placeholder='First Name') }}
             </div>
+            <div>
+              <label for="studNumber">Student's Number:</label>
+              {{ form.student_id(placeholder='XXXX-XXXXXX') }}
+            </div>
+          </div>
 
-            <div class="single-row">
-              <label for="lname">Last name</label>
-              {{ form.last_name(value=student.last_name) }}
+          <div class="single-column">
+            <div>
+              <label for="course">Last Name:</label>
+              {{ form.last_name(placeholder='Last Name') }}
             </div>
-            <div class="double-row">
-              <div>
-                <label for="studId">Student ID</label><br />
-                {% comment %} Make sure this is not editable {% endcomment %}
-                <input type="text" id="studId" name="studId" />
-              </div>
-              <div>
-                <label for="fname">GPA</label>
-                {{ form.gpa(value=student.gpa) }}
-              </div>
+            <div></div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="course">Course/Department:</label>
+              <input
+                type="text"
+                id="course"
+                name="course"
+                placeholder="Course/Department"
+              />
             </div>
-
-            <div class="double-row">
-              <div>
-                <label for="campus">Campus</label><br />
-                <select name="campus" id="campus">
-                  <option value="boni">Boni</option>
-                  <option value="pasig">Pasig</option>
-                </select>
-              </div>
-              <div>
-                <label for="year">Year Level</label><br />
-                <select name="year" id="year">
-                  <option value="1styear">1st Year</option>
-                  <option value="2ndyear">2nd Year</option>
-                  <option value="3rdyear">3rd Year</option>
-                  <option value="4thyear">4th Year</option>
-                </select>
-              </div>
+            <div>
+              <label for="yearlevel">Grade/Yr Level:</label>
+              <input
+                type="text"
+                id="yearlevel"
+                name="yearlevel"
+                placeholder="Grade/Yr Level"
+              />
             </div>
-            <!-- TODO with all <input> tags: replace with code which autofills them with the student's data -->
-            <!-- TODO: replace "idk" with actual courses -->
-            <div class="single-row">
-              <label for="course">Course</label>
-              <select name="course" id="course">
-                <option value="idk">Bachelor of Science in Mechanical Engineering</option>
-                <option value="idk">Bachelor of Science in Architecture (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Civil Engineering</option>
-                <option value="idk">Bachelor of Science in Electrical Engineering</option>
-                <option value="idk">Bachelor of Science in Electronics Engineering</option>
-                <option value="idk">Bachelor of Science in Computer Engineering</option>
-                <option value="idk">Bachelor of Science in Industrial Engineering (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Information Technology (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Instrumentation and Control Engineering (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Mechatronics</option>
-                <option value="idk">Bachelor of Science in Accountancy</option>
-                <option value="idk">Bachelor of Science in Entrepreneurship</option>
-                <option value="idk">Bachelor of Science in Office Administration</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Operations Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Marketing Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Financial Management</option>
-                <option value="idk">Bachelor of Science in Business Administration major in Human Resource Management</option>
-                <option value="idk">Bachelor of Secondary Education major in English</option>
-                <option value="idk">Bachelor of Secondary Education major in Math</option>
-                <option value="idk">Bachelor of Secondary Education major in Science (Boni Campus)</option>
-                <option value="idk">Bachelor of Secondary Education major in Social Studies</option>
-                <option value="idk">Bachelor of Secondary Education Major in Filipino</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Animation</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Computer Hardware Servicing</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education major in Visual Graphic Design</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Electronics Technology</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Welding and Fabrications Technology</option>
-                <option value="idk">Bachelor of Technical-Vocational Teacher Education Major in Garments Fashion and Design</option>
-                <option value="idk">Bachelor of Science in Psychology</option>
-                <option value="idk">Bachelor of Arts in Political Science</option>
-                <option value="idk">Bachelor of Science in Statistics (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Biology (Boni Campus)</option>
-                <option value="idk">Bachelor of Science in Astronomy</option>
-                <option value="idk">Bachelor of Science in Physical Education (Boni Campus)</option>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="dob">Date of Birth:</label>
+              {{ form.date_of_birth(placeholder='Date of Birth') }}
+            </div>
+            <div>
+              <label for="age">Age:</label>
+              {{ form.age(placeholder='Age') }}
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="gender">Gender:</label>
+              {{ form.gender(placeholder='Gender') }}
+            </div>
+            <div>
+              <label for="civil">Civil Status:</label>
+              <select name="civil" id="civil">
+                <option value="" disabled selected>
+                  -Select Marital Status-
+                </option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Divorced">Divorced</option>
               </select>
             </div>
           </div>
+          <div class="double-column">
+            <div>
+              <label for="nationality">Nationality:</label>
+              {{ form.nationality(placeholder='Nationality') }}
+            </div>
+            <div>
+              <label for="religion">Religion:</label>
+              {{ form.religion(placeholder='Religion') }}
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="address">Home Address:</label>
+              {{ form.residence(placeholder='Home Address') }}
+            </div>
+            <div>
+              <label for="pnumber">Phone Number:</label>
+              {{ form.contact_number(placeholder='02-12345') }}
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="email">Email Address:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+              />
+            </div>
+            <div>
+              <label for="cnumber">Cellphone Number:</label>
+              {{ form.contact_number(placeholder='09123456789') }}
+            </div>
+          </div>
+
+          <div class="left-align">
+            If the above client is a minor complete the following:
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="guardian">Name of Guardian:</label>
+              <input
+                type="text"
+                id="guardian"
+                name="guardian"
+                placeholder="Name of Guardian"
+              />
+            </div>
+            <div>
+              <label for="gcnumber">Guardian's Contact No.:</label>
+              {{ form.contact_number(placeholder='09123456789') }}
+            </div>
+          </div>
+          <div class="single-column">
+            <div>
+              <label for="guardianadd">Address of Guardian:</label>
+              {{ form.residence(placeholder='Address of Guardian') }}
+            </div>
+            <div></div>
+          </div>
         </section>
 
-        <hr />
+        <!-- end: BASIC INFORMATION -->
 
-        <section>
-          <div class="left-header">Personal Information</div>
-          <div class="right-content">
-            <div class="double-row">
+        <!-- start: REFERAL SOURCE -->
+        <header>Referral Source</header>
+        <div class="referral">
+          <div class="left-align">
+            <label for="referrer"
+              >Who referred you to our office, or how did you learn about our
+              service?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Share with us how you found out about our counseling
+                  services. Was it through a referral or another source?</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="referrer"
+              name="referrer"
+            />
+          </div>
+        </div>
+
+        <!-- end: REFERAL SOURCE -->
+
+        <!-- start: Emergency Contact Information -->
+        <header>Emergency Contact Information</header>
+        <div class="emergency">
+          <div class="left-align">
+            <label
+              >In case of an emergency, who should we contact?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >In case of an emergency, please provide the name and contact
+                  information of the person we should reach out to on your
+                  behalf.</span
+                >
+              </div></label
+            >
+          </div>
+
+          <div class="double-column">
+            <div>
+              <label for="emername">Name:</label>
+              <input
+                type="text"
+                id="emername"
+                name="emername"
+                placeholder="Name"
+              />
+            </div>
+            <div>
+              <label for="emerrel">Relationship:</label>
+              <input
+                type="text"
+                id="emerrel"
+                name="emerrel"
+                placeholder="Relationship"
+              />
+            </div>
+          </div>
+          <div class="double-column">
+            <div>
+              <label for="dob">Address:</label>
+              {{ form.residence(placeholder='Address') }}
+            </div>
+            <div>
+              <label for="emercell">Cellphone No.:</label>
+              {{ form.contact_number(placeholder='Cellphone No.') }}
+            </div>
+          </div>
+        </div>
+
+        <!-- end: Emergency Contact Information -->
+
+        <!-- start: History Information -->
+        <header>History Information</header>
+        <div class="historyinfo">
+          <div class="left-align">
+            <label
+              >Who is providing the history information?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Kindly specify the individual providing the historical
+                  information. This helps us ensure accuracy and better assist
+                  you with the relevant details.</span
+                >
+              </div></label
+            >
+            <div class="radio-inline-container">
               <div>
-                <label for="birthday">Date of Birth</label><br />
-                {{ form.date_of_birth(value=student.personal_information.date_of_birth) }}
+                <input
+                  type="radio"
+                  id="client"
+                  name="history_provider"
+                  value="client"
+                />
+                <label for="client">The client</label>
               </div>
               <div>
-                <label for="age">Age</label><br />
-                {{ form.age(value=student.personal_information.age) }}
+                <input
+                  type="radio"
+                  id="cguardian"
+                  name="history_provider"
+                  value="cguardian"
+                />
+                <label for="cguardian">The client's guardian</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="otherOption"
+                  name="history_provider"
+                  value="other"
+                />
+                <label for="otherOption">Other</label
+                >{{ form.information_provider }}
               </div>
             </div>
-            <div class="double-row">
+          </div>
+
+          <div class="left-align">
+            <label for="problem1"
+              >Please describe the current complaint or problem as specifically
+              as you can, in your own words.
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Please describe your current challenges or concerns related
+                  to your mental health in your own words. Be as specific as you
+                  feel comfortable, as this information will assist us in
+                  tailoring our support to your unique needs.</span
+                >
+              </div></label
+            >
+            {{ form.current_problem(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="problem2"
+              >How long have you experienced this problem, or when did you first
+              notice it?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Could you please share how long you have been experiencing
+                  this issue or when you first noticed it? Your timeline helps
+                  us gain a better understanding of the duration and
+                  progression, enabling us to provide more comprehensive
+                  assistance.</span
+                >
+              </div></label
+            >
+            {{ form.problem_length(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="problem3"
+              >What stressors may have contributed to the current complaint or
+              problem?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Reflecting on the factors that may have contributed to your
+                  current concerns, please share any stressors you believe are
+                  relevant.</span
+                >
+              </div></label
+            >
+            {{ form.stressors(class='form-width100') }}
+          </div>
+
+          <!-- long checkbox form -->
+          <div class="left-align">
+            <label for="left-align-checkbox" style="margin: 0"
+              >Check all the words/phrases that describe what you are
+              experiencing and explain if possible.
+            </label>
+          </div>
+
+          <ul class="left-align-checkbox">
+            <li>
+              {{ form.substance_abuse(class='checkbox-round') }}
+              <label for="exp1">Substance abuse/dependence</label>
+            </li>
+            <li>
+              {{ form.addiction(class='checkbox-round') }}
+              <label for="exp2"
+                >Addiction (internet, porn, shopping, exercise, gaming,
+                gambling, etc.)</label
+              >
+            </li>
+
+            <li>
+              {{ form.depression_sad_down_feelings(class='checkbox-round') }}
+              <label for="exp3">Depression/Sad/Down Feelings</label>
+            </li>
+
+            <li>
+              {{ form.high_low_energy_level(class='checkbox-round') }}
+              <label for="exp4">High/Low energy level</label>
+            </li>
+
+            <li>
+              {{ form.angry_irritable(class='checkbox-round') }}
+              <label for="exp5">Angry/Irritable</label>
+            </li>
+
+            <li>
+              {{ form.loss_of_interest(class='checkbox-round') }}
+              <label for="exp6">Lost of interest in activities</label>
+            </li>
+
+            <li>
+              {{ form.difficulty_enjoying_things(class='checkbox-round') }}
+              <label for="exp7">Difficulty enjoying things</label>
+            </li>
+
+            <li>
+              {{ form.crying_spells(class='checkbox-round') }}
+              <label for="exp8">Crying spells</label>
+            </li>
+
+            <li>
+              {{ form.decreased_motivation(class='checkbox-round') }}
+              <label for="exp9">Decreased Motivation</label>
+            </li>
+
+            <li>
+              {{ form.withdrawing_from_people(class='checkbox-round') }}
+              <label for="exp10">Withdrawing from people/Isolation</label>
+            </li>
+
+            <li>
+              {{ form.mood_swings(class='checkbox-round') }}
+              <label for="exp11">Mood Swings</label>
+            </li>
+
+            <li>
+              {{ form.black_and_white_thinking(class='checkbox-round') }}
+              <label for="exp12"
+                >Black and white thinking/All or nothing thinking</label
+              >
+            </li>
+
+            <li>
+              {{ form.negative_thinking(class='checkbox-round') }}
+              <label for="exp13">Negative thinking</label>
+            </li>
+
+            <li>
+              {{ form.change_in_weight_or_appetite(class='checkbox-round') }}
+              <label for="exp14">Change in weight or appetite</label>
+            </li>
+
+            <li>
+              {{ form.change_in_sleeping_pattern(class='checkbox-round') }}
+              <label for="exp15">Change in sleeping pattern</label>
+            </li>
+
+            <li>
+              {{ form.suicidal_thoughts_or_plans(class='checkbox-round') }}
+              <label for="exp16"
+                >Suicidal thoughts or plans/Thoughts of hurting yourself</label
+              >
+            </li>
+
+            <li>
+              {{ form.self_harm(class='checkbox-round') }}
+              <label for="exp17">Self-harm/Cutting/Burning yourself</label>
+            </li>
+
+            <li>
+              {{ form.homicidal_thoughts_or_plans(class='checkbox-round') }}
+              <label for="exp18"
+                >Homicidal thoughts or plans/Thoughts of hurting others</label
+              >
+            </li>
+
+            <li>
+              {{ form.difficulty_focusing(class='checkbox-round') }}
+              <label for="exp19">Poor concentration/Difficulty focusing</label>
+            </li>
+
+            <li>
+              {{ form.feelings_of_hopelessness(class='checkbox-round') }}
+              <label for="exp20">Feelings of hopelessness/Worthlessness</label>
+            </li>
+
+            <li>
+              {{ form.feelings_of_shame_or_guilt(class='checkbox-round') }}
+              <label for="exp21">Feelings of shame or guilt</label>
+            </li>
+
+            <li>
+              {{ form.feelings_of_inadequacy(class='checkbox-round') }}
+              <label for="exp22">Feelings of inadequacy/Low self-esteem</label>
+            </li>
+
+            <li>
+              {{ form.anxious_nervous_tense_feelings(class='checkbox-round') }}
+              <label for="exp23">Anxious/Nervous/Tense feelings</label>
+            </li>
+
+            <li>
+              {{ form.panic_attacks(class='checkbox-round') }}
+              <label for="exp24">Panic attacks</label>
+            </li>
+
+            <li>
+              {{ form.racing_or_scrambled_thoughts(class='checkbox-round') }}
+              <label for="exp25">Racing or scrambled thoughts</label>
+            </li>
+
+            <li>
+              {{ form.bad_or_unwanted_thoughts(class='checkbox-round') }}
+              <label for="exp26">Bad or unwanted thoughts</label>
+            </li>
+
+            <li>
+              {{ form.flashbacks_or_nightmares(class='checkbox-round') }}
+              <label for="exp27">Flashback/Nightmares</label>
+            </li>
+
+            <li>
+              {{ form.muscle_tensions_aches(class='checkbox-round') }}
+              <label for="exp28">Muscle tensions, aches, etc.</label>
+            </li>
+
+            <li>
+              {{ form.hearing_voices_or_seeing_things(class='checkbox-round') }}
+              <label for="exp29">Hearing voices/Seeing things not there</label>
+            </li>
+
+            <li>
+              {{ form.thoughts_of_running_away(class='checkbox-round') }}
+              <label for="exp30">Thoughts of running away</label>
+            </li>
+
+            <li>
+              {{ form.paranoid_thoughts(class='checkbox-round') }}
+              <label for="exp31"
+                >Paranoid thoughts/Thoughts that someone is watching you, out to
+                get you or hurt you.</label
+              >
+            </li>
+
+            <li>
+              {{ form.feelings_of_frustration(class='checkbox-round') }}
+              <label for="exp32">Feelings of frustation</label>
+            </li>
+
+            <li>
+              {{ form.feelings_of_being_cheated(class='checkbox-round') }}
+              <label for="exp33">Feelings of being cheated</label>
+            </li>
+
+            <li>
+              {{ form.perfectionism(class='checkbox-round') }}
+              <label for="exp34">Perfectionism</label>
+            </li>
+
+            <li>
+              {{ form.counting_washing_checking(class='checkbox-round') }}
+              <label for="exp35"
+                >Rituals of counting things, washing hands, checking locks,
+                doors, stove, etc./Overly concerned about germs.</label
+              >
+            </li>
+
+            <li>
+              {{ form.distorted_body_image(class='checkbox-round') }}
+              <label for="exp36"
+                >Distorted body image (believe you are heavier or less
+                attractive than others say you are)</label
+              >
+            </li>
+
+            <li>
+              {{ form.concerns_about_dieting(class='checkbox-round') }}
+              <label for="exp37">Concerns about dieting</label>
+            </li>
+
+            <li>
+              {{ form.loss_of_control_over_eating(class='checkbox-round') }}
+              <label for="exp38">Feelings of loss of control over eating</label>
+            </li>
+
+            <li>
+              {{ form.binge_eating_or_purging(class='checkbox-round') }}
+              <label for="exp39">Binge eating/Purging</label>
+            </li>
+
+            <li>
+              {{ form.rules_about_eating(class='checkbox-round') }}
+              <label for="exp40"
+                >Rules about eating/Compensating for eating</label
+              >
+            </li>
+
+            <li>
+              {{ form.excessive_exercise(class='checkbox-round') }}
+              <label for="exp41">Excessive exercise</label>
+            </li>
+
+            <li>
+              {{ form.indecisiveness_about_career(class='checkbox-round') }}
+              <label for="exp42">Indecisiveness about career</label>
+            </li>
+
+            <li>
+              {{ form.job_problems(class='checkbox-round') }}
+              <label for="exp43">Job Problems </label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                id="exp44"
+                name="exp44"
+                value="exp44"
+                class="checkbox-round"
+              />
+              <label
+                style="width: auto !important; padding-right: 10px"
+                for="exp44"
+                >Other</label
+              >{{ form.other }}
+            </li>
+          </ul>
+        </div>
+        <!-- end: History Information -->
+
+        <!-- start: Previous Treatment -->
+        <header>Previous Treatment</header>
+        <section class="prevtreatment">
+          <div class="left-align">
+            <label
+              >Have you received or participated in previous counseling and/or
+              therapy?
+            </label>
+            <div class="radio-inline-container">
               <div>
-                <label for="sex">Sex</label>
-                <select name="sex" id="sex">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                {{ form.previous_treatments(class='checkbox-round', value='Yes') }}
+                <label for="prevtreatmentyes">Yes</label>
+              </div>
+              <div>
+                {{ form.previous_treatments(class='checkbox-round', value='No') }}
+                <label for="prevtreatmentno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="prevtreatment1"
+              >What did you like/dislike about previous treatment?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What aspects did you appreciate or find challenging in your
+                  previous treatment experiences?</span
+                >
+              </div></label
+            >
+            {{ form.previous_treatments_likes_dislikes(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="prevtreatment2"
+              >What did you learn about yourself through previous
+              counseling/treatment that may help you?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Reflecting on your past counseling or treatment experiences,
+                  what insights have you gained about yourself that may be
+                  valuable for your current situation?</span
+                >
+              </div></label
+            >
+            {{ form.previous_treatments_learned(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="prevtreatment3"
+              >Is there any type of treatment you would like to continue?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Is there a specific type of treatment or approach that you
+                  would like to continue or explore further? Your preferences
+                  play a crucial role in tailoring our support to align with
+                  your needs and goals.</span
+                >
+              </div></label
+            >
+            {{ form.previous_treatments_like_to_continue(class='form-width100') }}
+          </div>
+
+          <div class="left-align">
+            <label
+              >Have you had hospital stays for psychological concerns?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='Yes') }}
+                <label for="hospstaysyes">Yes</label>
+              </div>
+              <div>
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='No') }}
+                <label for="hospstaysno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label
+              >Are you currently experiencing thoughts of harming either
+              yourself or someone else?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                {{ form.current_thoughts_to_harm(class='checkbox-round', value='Yes') }}
+                <label for="currentharmyes">Yes</label>
+              </div>
+              <div>
+                {{ form.current_thoughts_to_harm(class='checkbox-round', value='No') }}
+                <label for="currentharmno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label
+              >Have you in the past experienced thoughts of harming either
+              yourself or someone else?
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                {{ form.past_thoughts_to_harm(class='checkbox-round', value='Yes') }}
+                <label for="pastharmyes">Yes</label>
+              </div>
+              <div>
+                {{ form.past_thoughts_to_harm(class='checkbox-round', value='No') }}
+                <label for="pastharmno">No</label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- end: Previous Treatment -->
+
+        <!-- start: Medical History -->
+        <header>Medical History</header>
+        <section class="medhistory">
+          <div class="left-align">
+            <label>List any current or important past medications.</label>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="medsndose">Medication & Dose:</label>
+            {{ form.medication_and_dose(class='form-width100 single-column-span') }}
+          </div>
+          <div class="left-align single-column-span">
+            <label for="childhoodill" style="width: 420px !important"
+              >History of serious childhood illness:</label
+            >
+            {{ form.serious_ch_illnesses_history(class='form-width100 single-column-span') }}
+          </div>
+
+          <div class="left-align">
+            <label
+              >Other health concerns, serious illness, conditions, or major
+              operations requiring hospitalization during your life time:</label
+            >
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="headinjury" style="width: 600px !important"
+              >Have you experienced any head injuries?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.head_injuries(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="headinjuryyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.head_injuries(class='checkbox-round', value='No') }}
+                <label for="headinjuryno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label>Important Details:</label>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="losscons" style="width: 600px !important"
+              >If yes, did you lose consciousness?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.lose_consciousness(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="lossconsyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.lose_consciousness(class='checkbox-round', value='No') }}
+                <label for="lossconsno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="expseizures" style="width: 600px !important"
+              >Have you experienced convulsions or seizures?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.convulsions_or_seizures(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="expseizuresyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.convulsions_or_seizures(class='checkbox-round', value='No') }}
+                <label for="expseizuresno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align single-column-span">
+            <label for="hasfever" style="width: 600px !important"
+              >If yes, did you also have fever?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.fever(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="hasfeveryes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.fever(class='checkbox-round', value='No') }}
+                <label for="hasfeverno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="allergies" style="width: 310px !important"
+              >List any allergies you have:</label
+            >
+            {{ form.allergies(class='form-width100 single-column-span') }}
+          </div>
+
+          <div class="left-align">
+            <label>How would you rate your current physical health? </label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthexc"
+                  name="phyhealth"
+                  value="phyhealthexc"
+                />
+                <label for="phyhealthexc">Excellent</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthvg"
+                  name="phyhealth"
+                  value="phyhealthvg"
+                />
+                <label for="phyhealthvg">Very Good</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthg"
+                  name="phyhealth"
+                  value="phyhealthg"
+                />
+                <label for="phyhealthg">Good</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthf"
+                  name="phyhealth"
+                  value="phyhealthf"
+                />
+                <label for="phyhealthf">Fair</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthp"
+                  name="phyhealth"
+                  value="phyhealthp"
+                />
+                <label for="phyhealthp">Poor</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="phyhealthvp"
+                  name="phyhealth"
+                  value="phyhealthvp"
+                />
+                <label for="phyhealthvp">Very Poor</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="lastcheckup" style="width: 1270px !important"
+              >What was the date of your last physical or routine health “check
+              up”?</label
+            >
+            {{ form.last_check_up(class='form-width100 single-column-span') }}
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="physician" style="width: 600px !important"
+              >Do you have a primary care physician?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.has_physician(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="physicianyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.has_physician(class='checkbox-round', value='No') }}
+                <label for="physicianno">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="left-align">
+            <label>If yes, complete the following:</label>
+          </div>
+
+          <div class="tri-column">
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physname">Name:</label>
+                {{ form.physician_name(class='form-width100 single-column-span') }}
+              </div>
+            </div>
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physemail">Email:</label>
+                {{ form.physician_email(class='form-width100 single-column-span') }}
+              </div>
+            </div>
+            <div>
+              <div class="left-align single-column-span">
+                <label for="physnum">Contact Number:</label>
+                {{ form.physician_number(class='form-width100 single-column-span') }}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- end: Medical History -->
+
+        <!-- start: Family History -->
+        <header>Family History</header>
+        <section class="famhistory">
+          <div class="left-align single-column-span">
+            <label for="birthloc" style="width: 160px !important"
+              >Birth Location:</label
+            >
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="birthloc"
+              name="birthloc"
+            />
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important"
+              >Raised by:
+            </label>
+            <div class="radio-inline-container raisedby">
+              <div>
+                <input
+                  type="radio"
+                  id="raisedmother"
+                  name="raised"
+                  value="raisedmother"
+                />
+                <label style="width: auto !important" for="raisedmother"
+                  >Mother</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedfather"
+                  name="raised"
+                  value="raisedfather"
+                />
+                <label style="width: auto !important" for="raisedfather"
+                  >Father</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedstepm"
+                  name="raised"
+                  value="raisedstepm"
+                />
+                <label style="width: auto !important" for="raisedstepm"
+                  >Step-Mother</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedstepf"
+                  name="raised"
+                  value="raisedstepf"
+                />
+                <label style="width: auto !important" for="raisedstepf"
+                  >Step-Father</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="raisedother"
+                  name="raised"
+                  value="raisedother"
+                />
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="raisedother"
+                  >Other</label
+                ><input type="text" placeholder="Enter text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label
+              >Relationship with parent figures: (INDICATE if good, fair, poor,
+              close, distant, etc.)</label
+            >
+          </div>
+
+          <!-- Relationhip Mother -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important">Mother</label>
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relmothergood"
+                  name="relmother"
+                  value="relmothergood"
+                />
+                <label style="width: auto !important" for="relmothergood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherfair"
+                  name="relmother"
+                  value="relmotherfair"
+                />
+                <label style="width: auto !important" for="relmotherfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherpoor"
+                  name="relmother"
+                  value="relmotherpoor"
+                />
+                <label style="width: auto !important" for="relmotherpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherclose"
+                  name="relmother"
+                  value="relmotherclose"
+                />
+                <label style="width: auto !important" for="relmotherclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherdistant"
+                  name="relmother"
+                  value="relmotherdistant"
+                />
+                <label style="width: auto !important" for="relmotherdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relmotherother"
+                  name="relmother"
+                  value="relmotherother"
+                />
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relmotherother"
+                  >Other</label
+                ><input type="text" placeholder="Enter text" />
+              </div>
+            </div>
+          </div>
+          <!-- Relationhip Father -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important">Father</label>
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relfathergood"
+                  name="relfather"
+                  value="relfathergood"
+                />
+                <label style="width: auto !important" for="relfathergood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherfair"
+                  name="relfather"
+                  value="relfatherfair"
+                />
+                <label style="width: auto !important" for="relfatherfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherpoor"
+                  name="relfather"
+                  value="relfatherpoor"
+                />
+                <label style="width: auto !important" for="relfatherpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherclose"
+                  name="relfather"
+                  value="relfatherclose"
+                />
+                <label style="width: auto !important" for="relfatherclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherdistant"
+                  name="relfather"
+                  value="relfatherdistant"
+                />
+                <label style="width: auto !important" for="relfatherdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relfatherother"
+                  name="relfather"
+                  value="relfatherother"
+                />
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relfatherother"
+                  >Other</label
+                ><input type="text" placeholder="Enter text" />
+              </div>
+            </div>
+          </div>
+          <!-- Relationhip Father -->
+          <div class="left-align single-column-span">
+            <label for="raised" style="width: 120px !important"
+              >Step-Parent</label
+            >
+            <div class="radio-inline-container relby">
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentgood"
+                  name="relstepparent"
+                  value="relstepparentgood"
+                />
+                <label style="width: auto !important" for="relstepparentgood"
+                  >Good</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentfair"
+                  name="relstepparent"
+                  value="relstepparentfair"
+                />
+                <label style="width: auto !important" for="relstepparentfair"
+                  >Fair</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentpoor"
+                  name="relstepparent"
+                  value="relstepparentpoor"
+                />
+                <label style="width: auto !important" for="relstepparentpoor"
+                  >Poor</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentclose"
+                  name="relstepparent"
+                  value="relstepparentclose"
+                />
+                <label style="width: auto !important" for="relstepparentclose"
+                  >Close</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentdistant"
+                  name="relstepparent"
+                  value="relstepparentdistant"
+                />
+                <label style="width: auto !important" for="relstepparentdistant"
+                  >Distant</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="relstepparentother"
+                  name="relstepparent"
+                  value="relstepparentother"
+                />
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="relstepparentother"
+                  >Other</label
+                ><input type="text" placeholder="Enter text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label for="relparent" style="width: 80px !important">Other:</label>
+            <input
+              type="text"
+              class="form-width100 single-column-span"
+              id="relparent"
+              name="relparent"
+            />
+          </div>
+
+          <div class="left-align">
+            <label for="prevtreatment1"
+              >List your siblings and describe your relationship with them.<br />(INDICATE
+              if good, fair, poor, close, distant, etc. as nature of
+              relationship.)
+            </label>
+          </div>
+
+          <table>
+            <tr>
+              <th>Name of Sibling</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Nature of Relationship</th>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="relparent"
+                  name="relparent"
+                />
+              </td>
+              <td>
+                <div class="radio-inline-container relby">
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblinggood"
+                      name="relsibling"
+                      value="relsiblinggood"
+                    />
+                    <label style="width: auto !important" for="relsiblinggood"
+                      >Good</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingfair"
+                      name="relsibling"
+                      value="relsiblingfair"
+                    />
+                    <label style="width: auto !important" for="relsiblingfair"
+                      >Fair</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingpoor"
+                      name="relsibling"
+                      value="relsiblingpoor"
+                    />
+                    <label style="width: auto !important" for="relsiblingpoor"
+                      >Poor</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingclose"
+                      name="relsibling"
+                      value="relsiblingclose"
+                    />
+                    <label style="width: auto !important" for="relsiblingclose"
+                      >Close</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingdistant"
+                      name="relsibling"
+                      value="relsiblingdistant"
+                    />
+                    <label
+                      style="width: auto !important"
+                      for="relsiblingdistant"
+                      >Distant</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="relsiblingother"
+                      name="relsibling"
+                      value="relsiblingother"
+                    />
+                    <label
+                      style="width: auto !important; padding-right: 10px"
+                      for="relsiblingother"
+                      >Other</label
+                    ><input
+                      type="text"
+                      id="otherTextbox"
+                      placeholder="Enter text"
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <div class="left-align">
+            <label for="famhistoryneglect1"
+              >Any history of neglect, and/o physical, verbal, emotional,
+              spiritual, or sexual abuse?
+            </label>
+            {{ form.family_abuse_history(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="famhistoryneglect2"
+              >Any family history of substance abuse, mental illness, suicide,
+              or violence?
+            </label>
+            {{ form.family_mental_history(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="famhistoryneglect3"
+              >Any Additional Family Information:
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="famhistoryneglect3"
+              name="famhistoryneglect3"
+            />
+          </div>
+        </section>
+
+        <!-- end: Family History -->
+
+        <!-- start: Social History -->
+        <header>Social History</header>
+        <section class="sochistory">
+          <div class="left-align">
+            <label for="sochistory1"
+              >Describe your relationship with peers and/or friends?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >How would you characterize your current relationship with
+                  peers and/or friends?</span
+                >
+              </div></label
+            >
+            {{ form.relationship_with_peers(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="sochistory2"
+              >How would you describe your social support network?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Share information about the individuals or groups you rely on
+                  for support.</span
+                >
+              </div></label
+            >
+            {{ form.social_support_network(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="sochistory3"
+              >Describe your hobbies/interests:
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What are some of your hobbies and interests? Sharing your
+                  personal pursuits can help us understand more about you and
+                  identify potential therapeutic activities that align with your
+                  preferences.</span
+                >
+              </div></label
+            >
+            {{ form.hobbies_or_interests(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="sochistory4"
+              >Describe any cultural concerns:
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Do you have any specific cultural concerns or aspects of your
+                  cultural background that you believe are important for us to
+                  be aware of?</span
+                >
+              </div></label
+            >
+            {{ form.cultural_concerns(class='form-width100') }}
+          </div>
+        </section>
+
+        <!-- end: Social History -->
+
+        <!-- start: Educational History -->
+        <header>Educational History</header>
+
+        <section class="educhistory">
+          <div class="left-align">
+            <label>When attending school were you:</label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="educattend1"
+                  name="educattend"
+                  value="educattend1"
+                />
+                <label for="educattend1">In regular classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend2"
+                  name="educattend"
+                  value="educattend2"
+                />
+                <label for="educattend2">Advanced classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend3"
+                  name="educattend"
+                  value="educattend3"
+                />
+                <label for="educattend3">Home Study</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend4"
+                  name="educattend"
+                  value="educattend4"
+                />
+                <label for="educattend4">Ever suspended</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend5"
+                  name="educattend"
+                  value="educattend5"
+                />
+                <label for="educattend5">Special classes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="educattend6"
+                  name="educattend"
+                  value="educattend6"
+                />
+                <label for="educattend6">Placed in alternative school</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="educhighest"
+              >What is the highest educational level you have completed?
+            </label>
+            {{ form.highest_level_achieved(class='form-width100') }}
+          </div>
+
+          <div class="left-align">
+            <label for="educinfo"
+              >Give any additional important educational information (i.e. Did
+              you like school? Have a learning disability?)
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Please provide any additional important educational
+                  information, such as your feelings towards school or the
+                  presence of any learning disabilities. Understanding your
+                  educational experiences helps us consider various factors that
+                  may impact your well-being.</span
+                >
+              </div></label
+            >
+            <input
+              type="text"
+              class="form-width100"
+              id="educinfo"
+              name="educinfo"
+            />
+          </div>
+        </section>
+        <!-- end: Educational History -->
+
+        <!-- start: Occupational History -->
+        <header>Occupational History</header>
+        <section class="occuhistory">
+          <div class="left-align">
+            <label>What is your current employment status? </label>
+            <div class="radio-inline-container resp">
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat1"
+                  name="employmentstat"
+                  value="employmentstat1"
+                />
+                <label for="employmentstat1">Employed Full-Time</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat2"
+                  name="employmentstat"
+                  value="employmentstat2"
+                />
+                <label for="employmentstat2">Employed Part-time</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat3"
+                  name="employmentstat"
+                  value="employmentstat3"
+                />
+                <label for="employmentstat3">Unemployed</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat4"
+                  name="employmentstat"
+                  value="employmentstat4"
+                />
+                <label for="employmentstat4">Self-employed</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="employmentstat5"
+                  name="employmentstat"
+                  value="employmentstat5"
+                />
+                <label for="employmentstat5">Student</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label for="employmentsatis"
+              >Are you satisfied with your employment? why?
+            </label>
+            {{ form.satisfaction(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="employmentsatisifnot">If not, why? </label>
+            {{ form.satisfaction_reason(class='form-width100') }}
+          </div>
+        </section>
+
+        <!-- end: Occupational History -->
+
+        <!-- start: Substance Abuse History -->
+        <header>Substance Abuse History</header>
+        <section class="subsabuse">
+          <div class="left-align">
+            <label
+              >Are you currently or have you ever struggled with substance
+              abuse?<br />
+              (alcohol, tobacco, marijuana, caffeine, or other)
+            </label>
+            <div class="radio-inline-container">
+              <div>
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Yes') }}
+                <label for="subsabuseyes">Yes</label>
+              </div>
+              <div>
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='No') }}
+                <label for="subsabuseno">No</label>
+              </div>
+              <div>
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Other') }}
+                <label
+                  style="width: auto !important; padding-right: 10px"
+                  for="subsabuseother"
+                  >Other</label
+                ><input
+                  type="text"
+                  id="otherTextbox"
+                  placeholder="Enter text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align">
+            <label
+              >If you answered yes, please complete the following substance
+              abuse history chart.
+            </label>
+          </div>
+
+          <table>
+            <tr>
+              <th>Substance</th>
+              <th>Ever Used<br />(Yes/No)</th>
+              <th>Age of First Use</th>
+              <th>Frequency of Use (Daily, Weekly, Monthly)</th>
+              <th>Amount Used</th>
+              <th>How did you use it (smoked, injected, etc.)</th>
+            </tr>
+            <tr>
+              <td>Alcohol</td>
+              <td>
+                <select name="alcoholuse" id="alcoholuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
                 </select>
+              </td>
+              <td>
+                {{ form.alcohol_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="alcoholfrequency" id="alcoholfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.alcohol_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.alcohol_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Marijuana</td>
+              <td>
+                <select name="marijuanause" id="marijuanause">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.marijuana_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="marijuanafrequency" id="marijuanafrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.marijuana_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.marijuana_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Cocaine or Crack</td>
+              <td>
+                <select name="cocaineorcrackuse" id="cocaineorcrackuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.cocaine_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select
+                  name="cocaineorcrackfrequency"
+                  id="cocaineorcrackfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.cocaine_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.cocaine_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Heroin</td>
+              <td>
+                <select name="heroinuse" id="heroinuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.heroin_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="heroinfrequency" id="heroinfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.heroin_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.heroin_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Amphetamites</td>
+              <td>
+                <select name="amphetamitesuse" id="amphetamitesuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.amphetamines_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="amphetamitesfrequency" id="amphetamitesfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.amphetamines_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.amphetamines_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Club Drugs (Ecstasy, Inhalants, etc.)</td>
+              <td>
+                <select name="clubdrugsuse" id="clubdrugsuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.club_drugs_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="clubdrugsfrequency" id="clubdrugsfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.club_drugs_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.club_drugs_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Pain Medication (Oxycontin, Vicodin, etc.)</td>
+              <td>
+                <select name="painmedicationuse" id="painmedicationuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.pain_meds_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select
+                  name="painmedicationfrequency"
+                  id="painmedicationfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.pain_meds_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.pain_meds_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Benzodiazepines</td>
+              <td>
+                <select name="benzodiazepinesuse" id="benzodiazepinesuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.benzo_meds_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select
+                  name="benzodiazepinesfrequency"
+                  id="benzodiazepinesfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.benzo_meds_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.benzo_meds_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>Hallucinogens</td>
+              <td>
+                <select name="hallucinogensuse" id="hallucinogensuse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.hallucinogens_meds_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select
+                  name="hallucinogensfrequency"
+                  id="hallucinogensfrequency"
+                >
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.hallucinogens_meds_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.hallucinogens_meds_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Other<input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="hallucinogensmethod"
+                  name="hallucinogensmethod"
+                />
+              </td>
+              <td>
+                <select name="otheruse" id="otheruse">
+                  <option value="No" selected>No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </td>
+              <td>
+                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                <select name="otherfrequency" id="otherfrequency">
+                  <option value="Daily" selected>Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </td>
+              <td>
+                {{ form.other_meds_amount_used(class='form-width100 single-column-span') }}
+              </td>
+              <td>
+                {{ form.other_meds_way_of_intake(class='form-width100 single-column-span') }}
+              </td>
+            </tr>
+          </table>
+          <div class="left-align">
+            <label for="subsabuseprogram"
+              >Have ever received treatment for a substance abuse issue?<br />Name
+              of Treatment Program
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabuseprogram"
+              name="subsabuseprogram"
+            />
+          </div>
+
+          <div class="left-align">
+            <label>Type of Treatment </label>
+            <div class="radio-inline-container treatmenttype">
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttyperehab"
+                  name="treatmenttype"
+                  value="treatmenttyperehab"
+                />
+                <label for="treatmenttyperehab" style="padding-right: 196px"
+                  >Rehab</label
+                >
               </div>
               <div>
-                <label for="gender">Gender</label><br />
-                {{ form.gender(value=student.personal_information.gender) }}
+                <input
+                  type="radio"
+                  id="treatmenttypeparthospital"
+                  name="treatmenttype"
+                  value="treatmenttypeparthospital"
+                />
+                <label for="treatmenttypeparthospital"
+                  >Partial Hospitalization</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttyperecoveryhouse"
+                  name="treatmenttype"
+                  value="treatmenttyperecoveryhouse"
+                />
+                <label for="treatmenttyperecoveryhouse">Recovery House</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypemethadone"
+                  name="treatmenttype"
+                  value="treatmenttypemethadone"
+                />
+                <label for="treatmenttypemethadone">Methadone</label>
               </div>
             </div>
 
-            <div class="single-row">
-              <label for="contact">Contact No.</label>
-              {{ form.contact_number(value=student.personal_information.contact_number) }}
-            </div>
-            <div class="single-row">
-              <label for="residence">Residence</label>
-              {{ form.residence(value=student.personal_information.residence) }}
-            </div>
-            <div class="single-row">
-              <label for="nationality">Nationality</label>
-              {{ form.nationality(value=student.personal_information.nationality) }}
-            </div>
-            <div class="single-row">
-              <label for="placeofbirth">Place of Birth</label>
-              {{ form.place_of_birth(value=student.personal_information.place_of_birth) }}
-            </div>
-            <div class="single-row">
-              <label for="religion">Religion</label>
-              {{ form.religion(value=student.personal_information.religion) }}
-            </div>
-            <div class="single-row">
-              <label for="counselinghistory">Counseling History</label>
-              {{ form.counseling_history(value=student.personal_information.counseling_history) }}
+            <div class="radio-inline-container treatmenttype">
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypeiop"
+                  name="treatmenttype"
+                  value="treatmenttypeiop"
+                />
+                <label for="treatmenttypeiop"
+                  >Intensive Outpatient Program</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypehalfwayhouse"
+                  name="treatmenttype"
+                  value="treatmenttypehalfwayhouse"
+                />
+                <label
+                  for="treatmenttypehalfwayhouse"
+                  style="padding-right: 63px"
+                  >Halfway House</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypecounselling"
+                  name="treatmenttype"
+                  value="treatmenttypecounselling"
+                />
+                <label
+                  for="treatmenttypecounselling"
+                  style="padding-right: 35px"
+                  >Counselling</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="treatmenttypesuboxone"
+                  name="treatmenttype"
+                  value="treatmenttypesuboxone"
+                />
+                <label for="treatmenttypesuboxone">Suboxone</label>
+              </div>
             </div>
           </div>
-        </section>
-        <hr />
-        <section>
-          <div class="left-header">Family Background</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                <label for="mfname">Mother Firstname</label>
-                {{ form.mother_first_name(value=student.family_background.mother_first_name) }}
-              </div>
-              <div>
-                <label for="mlname">Mother Lastname</label>
-                {{ form.mother_last_name(value=student.family_background.mother_last_name) }}
-              </div>
-            </div>
-            <div class="single-row-half">
-              <label for="mage">Mother Age</label>
-              {{ form.mother_age(value=student.family_background.mother_age) }}
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="ffname">Father Firstname</label>
-                {{ form.father_first_name(value=student.family_background.father_first_name) }}
-              </div>
-              <div>
-                <label for="flname">Father Lastname</label>
-                {{ form.father_last_name(value=student.family_background.father_last_name) }}
-              </div>
-            </div>
-            <div class="single-row-half">
-              <label for="fage">Father Age</label>
-              {{ form.father_age(value=student.family_background.father_age) }}
-            </div>
-          </div>
-        </section>
 
-        <hr />
-        <section>
-          <div class="left-header">Educational Background</div>
-          <div class="right-content">
-            <div class="double-row">
-              <div>
-                {% comment %} <label for="shs">Senior High School</label>
-                {{ form.senior_high_school(value=student.educational_background.senior_high_school) }} {% endcomment %}
+          <div class="left-align">
+            <label for="subsabusetreatmentdate"
+              >Date of Treatment (Month, Year)
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabusetreatmentdate"
+              name="subsabusetreatmentdate"
+            />
+          </div>
+          <div class="left-align">
+            <label for="subsabuseoutcome"
+              >Outcome?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Can you describe the outcomes or results of your previous
+                  treatment? Understanding what worked or didn't work for you
+                  helps us refine our approach and provide more effective
+                  support.</span
+                >
               </div>
-              <div>
-                <label for="shsgradyear">SHS Graduation Year</label>
-                {{ form.shs_graduation_year(value=student.educational_background.shs_graduation_year) }}
-              </div>
-            </div>
+            </label>
+            <input
+              type="text"
+              class="form-width100"
+              id="subsabuseoutcome"
+              name="subsabuseoutcome"
+            />
+          </div>
+        </section>
+        <!-- end: Substance Abuse History -->
 
-            <div class="single-row">
-              <label for="shsstrand">SHS Strand</label>
-              {{ form.shs_strand(value=student.educational_background.shs_strand) }}
-            </div>
-            <hr style="margin: 7px 0 7px 0 !important" />
-            <div class="double-row">
+        <!-- start: Legal History -->
+        <header>Legal History</header>
+        <section class="legalhistory">
+          <div class="left-align single-column-span">
+            <label for="legalpending" style="width: 900px !important"
+              >Do you currently have any pending criminal charges?</label
+            >
+            <div class="radio-inline-container">
               <div>
-                <label for="jhs">Junior High School</label>
-                {{ form.junior_high_school(value=student.educational_background.junior_high_school) }}
+                {{ form.pending_criminal_charges(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="legalpendingyes"
+                  >Yes</label
+                >
               </div>
               <div>
-                <label for="jhsgradyear">JHS Graduation Year</label>
-                {{ form.jhs_graduation_year(value=student.educational_background.jhs_graduation_year) }}
-              </div>
-            </div>
-            <hr style="margin: 7px 0 7px 0 !important" />
-            <div class="double-row">
-              <div>
-                <label for="elemschool">Elementary school</label>
-                {{ form.elementary_school(value=student.educational_background.elementary_school) }}
-              </div>
-              <div>
-                <label for="elemgradyear">Elementary Graduation Year</label>
-                {{ form.elementary_graduation_year(value=student.educational_background.elementary_graduation_year) }}
+                {{ form.pending_criminal_charges(class='checkbox-round', value='No') }}
+                <label for="legalpendingno">No</label>
               </div>
             </div>
           </div>
-        </section>
-
-        <hr />
-        <section>
-          <div class="left-header">Health Information</div>
-          <div class="right-content">
-            <div class="double-row">
+          <div class="left-align single-column-span">
+            <label for="legalprobation" style="width: 900px !important"
+              >Are you on probation?</label
+            >
+            <div class="radio-inline-container">
               <div>
-                <label for="generalhealth">General Health</label>
-                {{ form.general_health(value=student.health_information.general_health) }}
+                {{ form.on_probation(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="legalprobationyes"
+                  >Yes</label
+                >
               </div>
               <div>
-                <label for="expsickness">Experienced Sickness</label>
-                {{ form.experienced_sickness(value=student.health_information.experienced_sickness) }}
-              </div>
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="height">Height (cm)</label>
-                {{ form.height(value=student.health_information.height) }}
-              </div>
-              <div>
-                <label for="weight">Weight (kg)</label>
-                {{ form.weight(value=student.health_information.weight) }}
-              </div>
-            </div>
-            <div class="single-row">
-              <label for="sight">Sight</label>
-              {{ form.sight(value=student.health_information.sight) }}
-            </div>
-            <div class="single-row">
-              <label for="hearing">Hearing</label>
-              {{ form.hearing(value=student.health_information.hearing) }}
-            </div>
-            <div class="single-row">
-              <label for="speech">Speech</label>
-              {{ form.speech(value=student.health_information.speech) }}
-            </div>
-          </div>
-        </section>
-
-        <hr />
-        <section>
-          <div class="left-header">Psychological Assessment</div>
-          <div class="right-content">
-            <div class="single-row">
-              <label for="learningstyle">Learning Style</label>
-              {{ form.learning_styles(value=student.psychological_assessments.learning_styles) }}
-            </div>
-            <div class="double-row">
-              <div>
-                <label for="ptest">Personality Test</label>
-                {{ form.personality_test(value=student.psychological_assessments.personality_test) }}
-              </div>
-              <div>
-                <label for="iqtest">IQ Test</label>
-                {{ form.iq_test(value=student.psychological_assessments.iq_test) }}
+                {{ form.on_probation(class='checkbox-round', value='No') }}
+                <label for="legalprobationno">No</label>
               </div>
             </div>
           </div>
+          <div class="left-align single-column-span">
+            <label for="legalarrest" style="width: 900px !important"
+              >Have you ever been arrested/convicted of a crime?</label
+            >
+            <div class="radio-inline-container">
+              <div>
+                {{ form.has_been_arrested(class='checkbox-round', value='Yes') }}
+                <label style="width: auto !important" for="legalarrestyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.has_been_arrested(class='checkbox-round', value='No') }}
+                <label for="legalarrestno">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-align single-column-span">
+            <label>If yes, complete chart.</label>
+          </div>
+
+          <table>
+            <tr>
+              <th>List any Arrest/Conviction</th>
+              <th>Date of Arrests/Convictions</th>
+              <th>Outcome</th>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="legalarrestlist"
+                  name="legalarrestlist"
+                />
+              </td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="legalarrestdate"
+                  name="legalarrestdate"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="legalarrestoutcome"
+                  name="legalarrestoutcome"
+                />
+              </td>
+            </tr>
+          </table>
         </section>
+        <!-- end: Legal History -->
+
+        <!-- start: Additional Information -->
+        <header>Additional Information</header>
+        <section class="additionalinfo">
+          <div class="left-align">
+            <label for="additionalinfo1"
+              >What you would like to work on in counseling?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >What specific areas or issues would you like to address and
+                  work on during counseling?</span
+                >
+              </div>
+            </label>
+            {{ form.to_work_on(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo2"
+              >What expectations do you have for counseling?
+              <div class="tooltip">
+                <img src="/static/tooltip.png" />
+                <span class="tooltiptext"
+                  >Understanding your hopes and goals helps us collaborate
+                  effectively to meet your expectations.</span
+                >
+              </div>
+            </label>
+            {{ form.expectations(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo3"
+              >Name 3 things you would like to change about yourself.
+            </label>
+            {{ form.things_to_change(class='form-width100') }}
+          </div>
+          <div class="left-align">
+            <label for="additionalinfo4"
+              >Is there any additional information that you believe it is
+              important for your counselor to know in order to provide you with
+              the best care possible?
+            </label>
+            {{ form.other_information(class='form-width100') }}
+          </div>
+        </section>
+        <!-- end: Additional Information -->
+
+        <!-- start: Personal Agreements -->
+        <section class="personalagree">
+          <div class="container">
+            <header>PERSONAL AGREEMENTS</header>
+            <p>
+              I understand that I may be asked to do certain "homework
+              exercises" Such as reading, changing behaviors and otherwise
+              acting in my own best interest. I understand that I am entirely
+              responsible for my own actions and I will always make my own final
+              decisions regarding counseling.<br /><br />I understand that there
+              will be psychological testing as need arises. I further understand
+              that much of the work done will be to resolve issues and will
+              depend on my honesty, and willingness to do the things I need to
+              do to move forward even if it is painful and difficult.<br /><br />I
+              understand that whatever I say in a session is strictly
+              confidential and will not be released to anyone without my consent
+              unless I am violating codes of abuse, harm to myself or others.
+            </p>
+
+            <div class="tac">
+              <input id="taccheckbox" type="checkbox" />
+              <label for="taccheckbox">
+                I understand and agree to the information presented
+                above.</label
+              >
+            </div>
+            <input
+              type="datetime-local"
+              required
+              name="tacdatetime"
+              class="tacdatetime"
+            />
+          </div>
+
+          <table>
+            <tr>
+              <th>Sessions</th>
+              <th>Date</th>
+              <th>Time Started</th>
+              <th>Time Ended</th>
+              <th>Follow-Up</th>
+              <th>Attended by</th>
+            </tr>
+            <tr>
+              <td>Session 1</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="ses1date"
+                  name="ses1date"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses1timestart"
+                  name="ses1timestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses1timeend"
+                  name="ses1timeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses1followup"
+                  name="ses1followup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses1attendedby"
+                  name="ses1attendedby"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Session 2</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="ses2date"
+                  name="ses2date"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses2timestart"
+                  name="ses2timestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses2timeend"
+                  name="ses2timeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses2followup"
+                  name="ses2followup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses2attendedby"
+                  name="ses2attendedby"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Session 3</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="ses3date"
+                  name="ses3date"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses3timestart"
+                  name="ses3timestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses3timeend"
+                  name="ses3timeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses3followup"
+                  name="ses3followup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses3attendedby"
+                  name="ses3attendedby"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Session 4</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="ses4date"
+                  name="ses4date"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses4timestart"
+                  name="ses4timestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses4timeend"
+                  name="ses4timeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses4followup"
+                  name="ses4followup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses4attendedby"
+                  name="ses4attendedby"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Session 5</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="ses5date"
+                  name="ses5date"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses5timestart"
+                  name="ses5timestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="ses5timeend"
+                  name="ses5timeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses5followup"
+                  name="ses5followup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="ses5attendedby"
+                  name="ses5attendedby"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Termination</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="terminationdate"
+                  name="terminationdate"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="terminationtimestart"
+                  name="terminationtimestart"
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="terminationtimeend"
+                  name="terminationtimeend"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="terminationfollowup"
+                  name="terminationfollowup"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="terminationattendedby"
+                  name="terminationattendedby"
+                />
+              </td>
+            </tr>
+          </table>
+        </section>
+        <!-- end: Personal Agreements -->
+
+        <!-- start: Referral Information -->
+        <section class="refinfo">
+          <header>Referral Information</header>
+
+          <div class="container">
+            <div class="left-align">
+              <label>Reason for Referral:</label>
+            </div>
+            <hr style="border-top: 1px solid var(--primary-color)" />
+            <div class="left-align single-column-span">
+              <label
+                for="refinforeceiving"
+                style="width: 500px !important; padding-right: 10px"
+                >Receiving Agency:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span referral"
+                style="margin-right: 20px"
+                id="refinforeceiving"
+                name="refinforeceiving"
+              />
+              <label
+                for="refinfocontact"
+                style="width: 320px !important; padding-right: 10px"
+                >Contact No.:</label
+              >
+              <input
+                type="tel"
+                class="form-width100 single-column-span referral"
+                id="refinfocontact"
+                name="refinfocontact"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label
+                for="refinfoname"
+                style="width: 200px !important; padding-right: 10px"
+                >Name:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span referral"
+                style="width: 1110px; margin-right: 20px"
+                id="refinfoname"
+                name="refinfoname"
+              />
+              <label
+                for="refinfoemail"
+                style="width: 200px !important; padding-right: 10px"
+                >Email:</label
+              >
+              <input
+                type="email"
+                class="form-width100 single-column-span referral"
+                id="refinfoemail"
+                name="refinfoemail"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="refinfoofficeadd" style="width: 160px !important"
+                >Office Address:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="refinfoofficeadd"
+                name="refinfoofficeadd"
+              />
+            </div>
+            <hr style="border-top: 1px solid var(--primary-color)" />
+
+            <div class="left-align single-column-span">
+              <label for="refinfoas" style="width: 510px !important"
+                >Appointment Schedule:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="refinfoas"
+                name="refinfoas"
+              />
+              <label
+                for="refinfodate"
+                style="width: 210px !important; margin-left: 10px"
+                >Date:</label
+              >
+              <input
+                type="date"
+                class="form-width100 single-column-span"
+                id="refinfodate"
+                name="refinfodate"
+              />
+              <label
+                for="refinfotime"
+                style="width: 210px !important; margin-left: 10px"
+                >Time:</label
+              >
+              <input
+                type="time"
+                class="form-width100 single-column-span"
+                id="refinfotime"
+                name="refinfotime"
+              />
+            </div>
+            <hr style="border-top: 1px solid var(--primary-color)" />
+            <div class="left-align">
+              <label
+                >Authorization for Referral: I authorize my case to be referred
+                to the above agency.</label
+              >
+            </div>
+            <div class="left-align single-column-span">
+              <label
+                for="refinfoclientsig"
+                style="width: 500px !important; padding-right: 10px"
+                >Client Signature:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span referral"
+                style="margin-right: 20px"
+                id="refinfoclientsig"
+                name="refinfoclientsig"
+              />
+              <label
+                for="refinfocounselorsig"
+                style="width: 320px !important; padding-right: 10px"
+                >Counselor's Signature:</label
+              >
+              <input
+                type="tel"
+                class="form-width100 single-column-span referral"
+                id="refinfocounselorsig"
+                name="refinfocounselorsig"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label
+                for="refinfoclientdate"
+                style="width: 500px !important; padding-right: 10px"
+                >Date:</label
+              >
+              <input
+                type="date"
+                class="form-width100 single-column-span referral"
+                style="margin-right: 20px"
+                id="refinfoclientdate"
+                name="refinfoclientdate"
+              />
+              <label
+                for="refinfocounselordate"
+                style="width: 320px !important; padding-right: 10px"
+                >Date:</label
+              >
+              <input
+                type="date"
+                class="form-width100 single-column-span referral"
+                id="refinfocounselordate"
+                name="refinfocounselordate"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- end: Referral Information -->
+
+        <!-- start: CONFIDENTIAL -->
+        <section class="confidential">
+          <header>CONFIDENTIAL</header>
+          <hr style="border-top: 1px solid var(--primary-color)" />
+          <header>CASE NOTE</header>
+          <div class="container">
+            <div class="left-align single-column-span">
+              <label for="conficounselor" style="width: 460px !important"
+                >Counselor/Psychometrician Name:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="conficounselor"
+                name="conficounselor"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="confiinterview" style="width: 460px !important"
+                >Date of Intake Interview:</label
+              >
+              <input
+                type="date"
+                class="form-width100 single-column-span"
+                id="confiinterview"
+                name="confiinterview"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="confinosessions" style="width: 460px !important"
+                >Number of Session:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="confinosessions"
+                name="confinosessions"
+              />
+            </div>
+            <hr style="border-top: 1px solid var(--primary-color)" />
+
+            <div class="left-align single-column-span">
+              <label for="conficomplaint" style="width: 280px !important"
+                >Subject Complaint:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="conficomplaint"
+                name="conficomplaint"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="confiobjassess" style="width: 280px !important"
+                >Objective Assessment:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="confiobjassess"
+                name="confiobjassess"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="confipoa" style="width: 280px !important"
+                >Plan of Action:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="confipoa"
+                name="confipoa"
+              />
+            </div>
+            <div class="left-align single-column-span">
+              <label for="confiprogress" style="width: 280px !important"
+                >Progress Made:</label
+              >
+              <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="confiprogress"
+                name="confiprogress"
+              />
+            </div>
+          </div>
+          <div class="single-column">
+            <div
+              style="
+                display: flex !important;
+                flex-direction: column-reverse !important;
+              "
+            >
+              <label
+                for="Counselorsignature"
+                style="width: auto !important; padding-top: 5px"
+                >Signature of the Counselor/Guidance Personnel</label
+              >
+              <input
+                type="text"
+                id="Counselorsignature"
+                name="Counselorsignature"
+                style="width: auto !important"
+              />
+            </div>
+            <div></div>
+          </div>
+          <div class="form-btn-container">
+            <button class="update-btn" type="submit">Submit</button>
+            <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+              <button class="cancel-btn">Cancel</button>
+            </a>
+          </div>
+        </section>
+        <!-- end: CONFIDENTIAL -->
+
+        
+      </div>
       </form>
-    </div>
-    <!-- TODO: make buttons functional; to save or cancel -->
-    <footer>
-      <div class="update-btn">{{ form.submit(class="update") }}</div>
-      <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-        <button class="cancel-btn">Cancel</button>
-      </a>
-    </footer>
-  </div>
-</div>
+    </main>
 </div>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
 {% endblock %}
-</div>
