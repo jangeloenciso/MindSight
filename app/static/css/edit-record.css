@@ -222,8 +222,8 @@ label {
 .radio-inline-container {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: auto;
+    padding-right: 20px;
+    align-items: center;
 
 }
 
