@@ -146,12 +146,14 @@ with app.app_context():
         )
 
         family_background = FamilyBackground(
-            father_age=random.randint(35, 60),
-            mother_age=random.randint(35, 60),
-            father_first_name=fake.first_name(),
-            father_last_name=family_name,
-            mother_first_name=fake.first_name(),
-            mother_last_name=family_name,
+            birth_location = fake.city(),
+            raised_by = fake.name(),
+
+            #TODO: CHANGE 
+            rel_qual_mother = fake.sentence(nb_words=1),
+            rel_qual_father = fake.sentence(nb_words=1),
+            rel_qual_step_parent = fake.sentence(nb_words=1),
+
             family_abuse_history=fake.sentence(),
             family_mental_history=fake.sentence(),
             additional_information=fake.sentence(),
