@@ -176,9 +176,9 @@ with app.app_context():
         )
 
         occupational_history = OccupationalHistory(
-            employment_status=fake.sentence(),
-            satisfaction=fake.sentence(),
-            satisfaction_reason=fake.sentence(),
+            employment_status=fake.sentence(nb_words=1),
+            satisfaction=fake.sentence(nb_words=1),
+            satisfaction_reason=fake.sentence(nb_words=1),
             student = student
         )
 
@@ -240,6 +240,10 @@ with app.app_context():
             other_meds_amount_used = fake.sentence(nb_words=2),
             other_meds_way_of_intake = fake.sentence(nb_words=2),
 
+            treatment_program_name = fake.sentence(nb_words=2),
+            treatment_type = fake.sentence(nb_words=2),
+            treatment_date = fake.date(),
+            treatment_outcome = fake.sentence(nb_words=2),
 
             student = student
         )
@@ -248,6 +252,10 @@ with app.app_context():
             pending_criminal_charges=fake.boolean(),
             on_probation=fake.boolean(),
             has_been_arrested=fake.boolean(),
+
+            conviction = fake.sentence(nb_words=1),
+            conviction_date = fake.date(),
+            conviction_outcome = fake.sentence(nb_words=2),
             student = student
         )
 
