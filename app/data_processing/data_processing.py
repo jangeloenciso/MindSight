@@ -99,12 +99,7 @@ def process_data(student_id=None, search_query=None):
                 'residence': record.residence,
 
                 # Family Background
-                'father_age': family_background.father_age,
-                'mother_age': family_background.mother_age,
-                'father_last_name': family_background.father_last_name,
-                'father_first_name': family_background.father_first_name,
-                'mother_last_name': family_background.mother_last_name,
-                'mother_first_name': family_background.mother_first_name,
+                # TODO: ADD THE NEW SHIT
 
                 # # Psychological Assessments
                 # 'learning_styles': psychological_assessments.learning_styles,

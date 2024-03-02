@@ -6,10 +6,7 @@ class StudentRecordForm(FlaskForm):
     # User Information
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
-    # username = StringField('Username', validators=[DataRequired()])
-    # email = StringField('Email', validators=[DataRequired(), Email()])
-    # password = StringField('Password', validators=[DataRequired(), Length(min=8)])
-    # role = StringField('Role', validators=[DataRequired()])
+    email_address = StringField('Email Address', validators=[DataRequired(), Email()])
 
     # College Information
     college_name = StringField('College Name', validators=[DataRequired()])
@@ -17,7 +14,7 @@ class StudentRecordForm(FlaskForm):
     # Course Information
     course_name = StringField('Course Name', validators=[DataRequired()])
 
-# Basic Information
+    # Basic Information
     student_id = StringField('Student ID', validators=[DataRequired(), Regexp('^20\d{2}-\d{6}$', message="Student ID must be in the format 20xx-xxxxxx")])
     last_name = StringField('Last Name', validators=[DataRequired()])
     first_name = StringField('First Name', validators=[DataRequired()])
@@ -35,7 +32,6 @@ class StudentRecordForm(FlaskForm):
     place_of_birth = StringField('Place of Birth', validators=[Optional()])
     nationality = StringField('Nationality', validators=[Optional()])
     civil_status = StringField('Civil Status', validators=[Optional()])
-    email_address = StringField('Email Address', validators=[DataRequired()])
 
     guardian_name = StringField('Guardian Name', validators=[Optional()])
     guardian_address = StringField('Guardian Address', validators=[Optional()])
@@ -154,51 +150,61 @@ class StudentRecordForm(FlaskForm):
     cigarette_frequency_of_use = StringField('Cigarette Frequency of Use', validators=[Optional()])
     cigarette_amount_used = StringField('Cigarette Amount Used', validators=[Optional()])
     cigarette_way_of_intake = StringField('Cigarette Way of Intake', validators=[Optional()])
+    
     marijuana = BooleanField('Marijuana', validators=[Optional()])
     marijuana_age_first_use = StringField('Marijuana Age of First Use', validators=[Optional()])
     marijuana_frequency_of_use = StringField('Marijuana Frequency of Use', validators=[Optional()])
     marijuana_amount_used = StringField('Marijuana Amount Used', validators=[Optional()])
     marijuana_way_of_intake = StringField('Marijuana Way of Intake', validators=[Optional()])
+    
     cocaine = BooleanField('Cocaine', validators=[Optional()])
     cocaine_age_first_use = StringField('Cocaine Age of First Use', validators=[Optional()])
     cocaine_frequency_of_use = StringField('Cocaine Frequency of Use', validators=[Optional()])
     cocaine_amount_used = StringField('Cocaine Amount Used', validators=[Optional()])
     cocaine_way_of_intake = StringField('Cocaine Way of Intake', validators=[Optional()])
+    
     heroin = BooleanField('Heroin', validators=[Optional()])
     heroin_age_first_use = StringField('Heroin Age of First Use', validators=[Optional()])
     heroin_frequency_of_use = StringField('Heroin Frequency of Use', validators=[Optional()])
     heroin_amount_used = StringField('Heroin Amount Used', validators=[Optional()])
     heroin_way_of_intake = StringField('Heroin Way of Intake', validators=[Optional()])
+    
     amphetamines = BooleanField('Amphetamines', validators=[Optional()])
     amphetamines_age_first_use = StringField('Amphetamines Age of First Use', validators=[Optional()])
     amphetamines_frequency_of_use = StringField('Amphetamines Frequency of Use', validators=[Optional()])
     amphetamines_amount_used = StringField('Amphetamines Amount Used', validators=[Optional()])
     amphetamines_way_of_intake = StringField('Amphetamines Way of Intake', validators=[Optional()])
+    
     club_drugs = BooleanField('Club Drugs', validators=[Optional()])
     club_drugs_age_first_use = StringField('Club Drugs Age of First Use', validators=[Optional()])
     club_drugs_frequency_of_use = StringField('Club Drugs Frequency of Use', validators=[Optional()])
     club_drugs_amount_used = StringField('Club Drugs Amount Used', validators=[Optional()])
     club_drugs_way_of_intake = StringField('Club Drugs Way of Intake', validators=[Optional()])
+    
     pain_meds = BooleanField('Pain Meds', validators=[Optional()])
     pain_meds_age_first_use = StringField('Pain Meds Age of First Use', validators=[Optional()])
     pain_meds_frequency_of_use = StringField('Pain Meds Frequency of Use', validators=[Optional()])
     pain_meds_amount_used = StringField('Pain Meds Amount Used', validators=[Optional()])
     pain_meds_way_of_intake = StringField('Pain Meds Way of Intake', validators=[Optional()])
+    
     benzo = BooleanField('Benzodiazepines', validators=[Optional()])
     benzo_meds_age_first_use = StringField('Benzodiazepines Age of First Use', validators=[Optional()])
     benzo_meds_frequency_of_use = StringField('Benzodiazepines Frequency of Use', validators=[Optional()])
     benzo_meds_amount_used = StringField('Benzodiazepines Amount Used', validators=[Optional()])
     benzo_meds_way_of_intake = StringField('Benzodiazepines Way of Intake', validators=[Optional()])
+    
     hallucinogens = BooleanField('Hallucinogens', validators=[Optional()])
     hallucinogens_meds_age_first_use = StringField('Hallucinogens Age of First Use', validators=[Optional()])
     hallucinogens_meds_frequency_of_use = StringField('Hallucinogens Frequency of Use', validators=[Optional()])
     hallucinogens_meds_amount_used = StringField('Hallucinogens Amount Used', validators=[Optional()])
     hallucinogens_meds_way_of_intake = StringField('Hallucinogens Way of Intake', validators=[Optional()])
+    
     other_meds = BooleanField('Other', validators=[Optional()])
     other_meds_age_first_use = StringField('Other Age of First Use', validators=[Optional()])
     other_meds_frequency_of_use = StringField('Other Frequency of Use', validators=[Optional()])
     other_meds_amount_used = StringField('Other Amount Used', validators=[Optional()])
     other_meds_way_of_intake = StringField('Other Way of Intake', validators=[Optional()])
+
 
     # Legal History
     pending_criminal_charges = BooleanField('Pending Criminal Charges', validators=[Optional()])

@@ -229,18 +229,34 @@ class HealthInformation(db.Model):
 # idk how to add siblings and shit 
 class FamilyBackground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    father_age = db.Column(db.Integer)
-    mother_age = db.Column(db.Integer)
-    father_last_name = db.Column(db.String(50))
-    mother_last_name = db.Column(db.String(50))
-    father_first_name = db.Column(db.String(50))
-    mother_first_name = db.Column(db.String(50))
+    # TODO: ADD TO FLASK FORMS
+    birth_location = db.Column(db.String(50))
+    raised_by = db.Column(db.String(50))
 
-    family_abuse_history = db.Column(db.String(300))
-    family_mental_history = db.Column(db.String(300))
-    additional_information = db.Column(db.String(300))
+    rel_qual_mother = db.Column(db.String(50), nullable=True)
+    rel_qual_father = db.Column(db.String(50), nullable=True)
+    rel_qual_step_parent = db.Column(db.String(50), nullable=True)
+
+    family_abuse_history = db.Column(db.String(300), nullable=True)
+    family_mental_history = db.Column(db.String(300), nullable=True)
+    additional_information = db.Column(db.String(300), nullable=True)
+
+    siblings = db.relationship('Sibling', backref='family_background', lazy=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+
+class Sibling(db.Model):
+    __tablename__ = 'siblings'
+    
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String(100))
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(10))
+    rel_qual = db.Column(db.String(50))
+
+    family_background_id = db.Column(db.Integer, db.ForeignKey('family_background.id'), nullable=False)
+
 
 class SocialHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
