@@ -75,7 +75,7 @@ class BasicInformation(db.Model):
     civil_status = db.Column(db.String(20))
     nationality = db.Column(db.String(50))
     religion = db.Column(db.String(50))
-    home_address = db.Column(db.String(100))
+    residence = db.Column(db.String(100))
     contact_number = db.Column(db.String(20))
     email_address = db.Column(db.String(120), nullable=False)
 
@@ -199,8 +199,9 @@ class HistoryInformation(db.Model):
 class HealthInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-
     medication_and_dose = db.Column(db.String(100))
+
+    # ch = childhood
     serious_ch_illnesses_history = db.Column(db.String(100))
 
     head_injuries = db.Column(db.Boolean, default=False)
@@ -258,13 +259,6 @@ class EducationalBackground(db.Model):
     highest_level_achieved = db.String(40)
     additional_information = db.String(200)
 
-    # senior_high_school = db.Column(db.String(100))
-    # shs_strand = db.Column(db.String(100))
-    # shs_graduation_year = db.Column(db.Integer)
-    # junior_high_school = db.Column(db.String(100))
-    # jhs_graduation_year = db.Column(db.Integer)
-    # elementary_school = db.Column(db.String(100))
-    # elementary_graduation_year = db.Column(db.Integer)
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class OccupationalHistory(db.Model):

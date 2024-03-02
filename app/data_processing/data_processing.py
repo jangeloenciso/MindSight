@@ -96,7 +96,7 @@ def process_data(student_id=None, search_query=None):
                 'religion': record.religion,
                 'date_of_birth': record.date_of_birth,
                 'nationality': record.nationality,
-                'residence': record.home_address,
+                'residence': record.residence,
 
                 # Family Background
                 'father_age': family_background.father_age,

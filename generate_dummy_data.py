@@ -59,7 +59,7 @@ with app.app_context():
             religion=fake.random_element(elements=religion_names),
             date_of_birth=random_date(date(1990, 1, 1), date(2005, 1, 1)),
             nationality=fake.random_element(elements=("Filipino", "Non-Filipino")),
-            home_address=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
+            residence=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
             email_address=fake.email(),
             civil_status=fake.random_element(elements=("Single", "Married", "Divorced", "Widowed")),
         )

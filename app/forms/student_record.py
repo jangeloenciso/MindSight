@@ -28,6 +28,7 @@ class StudentRecordForm(FlaskForm):
     age = IntegerField('Age', validators=[Optional()])
     sex = StringField('Sex', validators=[Optional()])
     gender = StringField('Gender', validators=[Optional()])
+    residence = StringField('Residence', validators=[Optional()])
     contact_number = StringField('Contact Number', validators=[Optional()])
     religion = StringField('Religion', validators=[Optional()])
     date_of_birth = DateField('Date of Birth', validators=[Optional()])
