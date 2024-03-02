@@ -280,9 +280,9 @@ class EducationalBackground(db.Model):
 class OccupationalHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # TODO:
-    employment_status = db.String(20)
-    satisfaction = db.String(20)
-    satisfaction_reason = db.String(200)
+    employment_status = db.Column(db.String(20))
+    satisfaction = db.Column(db.String(20), nullable=True)
+    satisfaction_reason = db.Column(db.String(200), nullable=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
@@ -368,13 +368,18 @@ class SubstanceAbuseHistory(db.Model):
     hallucinogens_meds_amount_used = db.Column(db.String(50))
     hallucinogens_meds_way_of_intake = db.Column(db.String(50))
 
-    # benzodiazepines
+    # others
     other = db.Column(db.Boolean, default=False)
     other_meds_age_first_use = db.Column(db.String(50))
     other_meds_frequency_of_use = db.Column(db.String(50))
     other_meds_amount_used = db.Column(db.String(50))
     other_meds_way_of_intake = db.Column(db.String(50))
-    
+
+    treatment_program_name = db.Column(db.String(50), nullable=False)
+    treatment_type = db.Column(db.String(50), nullable=False)
+    treatment_date = db.Column(db.Date)
+    treatment_outcome = db.Column(db.String(100))
+
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class LegalHistory(db.Model):
@@ -385,7 +390,10 @@ class LegalHistory(db.Model):
     on_probation = db.Column(db.Boolean, default=False)
     has_been_arrested = db.Column(db.Boolean, default=False)
 
-    # TODO: chart
+    # TODO: THIS WAS LAZY. FOR TESTING PURPOSES ONLY. CREATE SEPARATE MODEL/TABLE LATER
+    conviction = db.Column(db.String(50))
+    conviction_date = db.Date
+    conviction_outcome = db.Column(db.String(50))
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
