@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 755a9b3f4cf7
+Revision ID: 8d5151085dc0
 Revises: 
-Create Date: 2024-03-02 13:56:06.975102
+Create Date: 2024-03-02 17:03:30.419419
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '755a9b3f4cf7'
+revision = '8d5151085dc0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,7 +32,7 @@ def upgrade():
     sa.Column('civil_status', sa.String(length=20), nullable=True),
     sa.Column('nationality', sa.String(length=50), nullable=True),
     sa.Column('religion', sa.String(length=50), nullable=True),
-    sa.Column('home_address', sa.String(length=100), nullable=True),
+    sa.Column('residence', sa.String(length=100), nullable=True),
     sa.Column('contact_number', sa.String(length=20), nullable=True),
     sa.Column('email_address', sa.String(length=120), nullable=False),
     sa.Column('guardian_name', sa.String(length=50), nullable=True),
@@ -83,12 +83,11 @@ def upgrade():
     )
     op.create_table('family_background',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('father_age', sa.Integer(), nullable=True),
-    sa.Column('mother_age', sa.Integer(), nullable=True),
-    sa.Column('father_last_name', sa.String(length=50), nullable=True),
-    sa.Column('mother_last_name', sa.String(length=50), nullable=True),
-    sa.Column('father_first_name', sa.String(length=50), nullable=True),
-    sa.Column('mother_first_name', sa.String(length=50), nullable=True),
+    sa.Column('birth_location', sa.String(length=50), nullable=True),
+    sa.Column('raised_by', sa.String(length=50), nullable=True),
+    sa.Column('rel_qual_mother', sa.String(length=50), nullable=True),
+    sa.Column('rel_qual_father', sa.String(length=50), nullable=True),
+    sa.Column('rel_qual_step_parent', sa.String(length=50), nullable=True),
     sa.Column('family_abuse_history', sa.String(length=300), nullable=True),
     sa.Column('family_mental_history', sa.String(length=300), nullable=True),
     sa.Column('additional_information', sa.String(length=300), nullable=True),
@@ -183,12 +182,17 @@ def upgrade():
     sa.Column('pending_criminal_charges', sa.Boolean(), nullable=True),
     sa.Column('on_probation', sa.Boolean(), nullable=True),
     sa.Column('has_been_arrested', sa.Boolean(), nullable=True),
+    sa.Column('conviction', sa.String(length=50), nullable=True),
+    sa.Column('conviction_outcome', sa.String(length=50), nullable=True),
     sa.Column('student_id', sa.String(length=20), nullable=True),
     sa.ForeignKeyConstraint(['student_id'], ['basic_information.student_id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('occupational_history',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('employment_status', sa.String(length=20), nullable=True),
+    sa.Column('satisfaction', sa.String(length=20), nullable=True),
+    sa.Column('satisfaction_reason', sa.String(length=200), nullable=True),
     sa.Column('student_id', sa.String(length=20), nullable=True),
     sa.ForeignKeyConstraint(['student_id'], ['basic_information.student_id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -255,22 +259,36 @@ def upgrade():
     sa.Column('pain_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('pain_meds_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('benzo', sa.Boolean(), nullable=True),
-    sa.Column('benzo_meds_age_first_use', sa.String(length=50), nullable=True),
-    sa.Column('benzo_meds_frequency_of_use', sa.String(length=50), nullable=True),
-    sa.Column('benzo_meds_amount_used', sa.String(length=50), nullable=True),
-    sa.Column('benzo_meds_way_of_intake', sa.String(length=50), nullable=True),
+    sa.Column('benzo_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('benzo_frequency_of_use', sa.String(length=50), nullable=True),
+    sa.Column('benzo_amount_used', sa.String(length=50), nullable=True),
+    sa.Column('benzo_way_of_intake', sa.String(length=50), nullable=True),
     sa.Column('hallucinogens', sa.Boolean(), nullable=True),
-    sa.Column('hallucinogens_meds_age_first_use', sa.String(length=50), nullable=True),
-    sa.Column('hallucinogens_meds_frequency_of_use', sa.String(length=50), nullable=True),
-    sa.Column('hallucinogens_meds_amount_used', sa.String(length=50), nullable=True),
-    sa.Column('hallucinogens_meds_way_of_intake', sa.String(length=50), nullable=True),
-    sa.Column('other', sa.Boolean(), nullable=True),
+    sa.Column('hallucinogens_age_first_use', sa.String(length=50), nullable=True),
+    sa.Column('hallucinogens_frequency_of_use', sa.String(length=50), nullable=True),
+    sa.Column('hallucinogens_amount_used', sa.String(length=50), nullable=True),
+    sa.Column('hallucinogens_way_of_intake', sa.String(length=50), nullable=True),
+    sa.Column('other_meds', sa.Boolean(), nullable=True),
     sa.Column('other_meds_age_first_use', sa.String(length=50), nullable=True),
     sa.Column('other_meds_frequency_of_use', sa.String(length=50), nullable=True),
     sa.Column('other_meds_amount_used', sa.String(length=50), nullable=True),
     sa.Column('other_meds_way_of_intake', sa.String(length=50), nullable=True),
+    sa.Column('treatment_program_name', sa.String(length=50), nullable=False),
+    sa.Column('treatment_type', sa.String(length=50), nullable=False),
+    sa.Column('treatment_date', sa.Date(), nullable=True),
+    sa.Column('treatment_outcome', sa.String(length=100), nullable=True),
     sa.Column('student_id', sa.String(length=20), nullable=True),
     sa.ForeignKeyConstraint(['student_id'], ['basic_information.student_id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('siblings',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=True),
+    sa.Column('age', sa.Integer(), nullable=True),
+    sa.Column('gender', sa.String(length=10), nullable=True),
+    sa.Column('rel_qual', sa.String(length=50), nullable=True),
+    sa.Column('family_background_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['family_background_id'], ['family_background.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
@@ -278,6 +296,7 @@ def upgrade():
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
+    op.drop_table('siblings')
     op.drop_table('substance_abuse_history')
     op.drop_table('student_visits')
     op.drop_table('social_history')
