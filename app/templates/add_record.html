@@ -44,21 +44,11 @@
           <div class="double-column">
             <div>
               <label for="course">Course/Department:</label>
-              <input
-                type="text"
-                id="course"
-                name="course"
-                placeholder="Course/Department"
-              />
+              {{ form.age(placeholder='Course/Department') }}
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
-              <input
-                type="text"
-                id="yearlevel"
-                name="yearlevel"
-                placeholder="Grade/Yr Level"
-              />
+              {{ form.age(placeholder='Grade/Yr Level') }}
             </div>
           </div>
           <div class="double-column">
@@ -77,6 +67,8 @@
               {{ form.gender(placeholder='Gender') }}
             </div>
             <div>
+
+              <!-- TODO: form -->
               <label for="civil">Civil Status:</label>
               <select name="civil" id="civil">
                 <option value="" disabled selected>
@@ -113,12 +105,7 @@
           <div class="double-column">
             <div>
               <label for="email">Email Address:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-              />
+              {{ form.residence(placeholder='Email Address') }}
             </div>
             <div>
               <label for="cnumber">Cellphone Number:</label>
@@ -132,12 +119,7 @@
           <div class="double-column">
             <div>
               <label for="guardian">Name of Guardian:</label>
-              <input
-                type="text"
-                id="guardian"
-                name="guardian"
-                placeholder="Name of Guardian"
-              />
+              {{ form.first_name(placeholder='Name of Guardian') }}
             </div>
             <div>
               <label for="gcnumber">Guardian's Contact No.:</label>
@@ -170,12 +152,7 @@
                 >
               </div></label
             >
-            <input
-              type="text"
-              class="form-width100"
-              id="referrer"
-              name="referrer"
-            />
+            {{ form.residence(placeholder='Address of Guardian', class='form-width100') }}
           </div>
         </div>
 
@@ -201,21 +178,11 @@
           <div class="double-column">
             <div>
               <label for="emername">Name:</label>
-              <input
-                type="text"
-                id="emername"
-                name="emername"
-                placeholder="Name"
-              />
+              {{ form.first_name(placeholder='Name') }}
             </div>
             <div>
               <label for="emerrel">Relationship:</label>
-              <input
-                type="text"
-                id="emerrel"
-                name="emerrel"
-                placeholder="Relationship"
-              />
+              {{ form.first_name(placeholder='Relationship') }}
             </div>
           </div>
           <div class="double-column">
@@ -249,30 +216,15 @@
             >
             <div class="radio-inline-container">
               <div>
-                <input
-                  type="radio"
-                  id="client"
-                  name="history_provider"
-                  value="client"
-                />
+                {{ form.addiction(class='checkbox-round', type='radio', id='client', value='client') }}
                 <label for="client">The client</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="cguardian"
-                  name="history_provider"
-                  value="cguardian"
-                />
+                {{ form.addiction(class='checkbox-round', type='radio', id='cguardian', value='cguardian') }}
                 <label for="cguardian">The client's guardian</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="otherOption"
-                  name="history_provider"
-                  value="other"
-                />
+                {{ form.addiction(class='checkbox-round', type='radio', id='otherOption', value='otherOption') }}
                 <label for="otherOption">Other</label
                 >{{ form.information_provider }}
               </div>
@@ -572,13 +524,7 @@
             </li>
 
             <li>
-              <input
-                type="checkbox"
-                id="exp44"
-                name="exp44"
-                value="exp44"
-                class="checkbox-round"
-              />
+              {{ form.addiction(class='checkbox-round') }}
               <label
                 style="width: auto !important; padding-right: 10px"
                 for="exp44"
@@ -599,11 +545,11 @@
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.previous_treatments(class='checkbox-round', value='Yes') }}
+                {{ form.previous_treatments(class='checkbox-round', type='radio', id='prevtreatmentyes', value='Yes') }}
                 <label for="prevtreatmentyes">Yes</label>
               </div>
               <div>
-                {{ form.previous_treatments(class='checkbox-round', value='No') }}
+                {{ form.previous_treatments(class='checkbox-round', type='radio', id='prevtreatmentno', value='No') }}
                 <label for="prevtreatmentno">No</label>
               </div>
             </div>
@@ -659,11 +605,11 @@
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='Yes') }}
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', type='radio', id='hospstaysyes', value='Yes') }}
                 <label for="hospstaysyes">Yes</label>
               </div>
               <div>
-                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='No') }}
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', type='radio', id='hospstaysno', value='No') }}
                 <label for="hospstaysno">No</label>
               </div>
             </div>
@@ -675,11 +621,11 @@
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.current_thoughts_to_harm(class='checkbox-round', value='Yes') }}
+                {{ form.current_thoughts_to_harm(class='checkbox-round', type='radio', id='currentharmyes', value='Yes') }}
                 <label for="currentharmyes">Yes</label>
               </div>
               <div>
-                {{ form.current_thoughts_to_harm(class='checkbox-round', value='No') }}
+                {{ form.current_thoughts_to_harm(class='checkbox-round', type='radio', id='currentharmno', value='No') }}
                 <label for="currentharmno">No</label>
               </div>
             </div>
@@ -691,11 +637,11 @@
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.past_thoughts_to_harm(class='checkbox-round', value='Yes') }}
+                {{ form.past_thoughts_to_harm(class='checkbox-round', type='radio', id='pastharmyes', value='Yes') }}
                 <label for="pastharmyes">Yes</label>
               </div>
               <div>
-                {{ form.past_thoughts_to_harm(class='checkbox-round', value='No') }}
+                {{ form.past_thoughts_to_harm(class='checkbox-round', type='radio', id='pastharmno', value='No') }}
                 <label for="pastharmno">No</label>
               </div>
             </div>
@@ -733,13 +679,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.head_injuries(class='checkbox-round', value='Yes') }}
+                {{ form.head_injuries(class='checkbox-round', type='radio', id='headinjuryyes', value='Yes') }}
                 <label style="width: auto !important" for="headinjuryyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.head_injuries(class='checkbox-round', value='No') }}
+                {{ form.head_injuries(class='checkbox-round', type='radio', id='headinjuryno',value='No') }}
                 <label for="headinjuryno">No</label>
               </div>
             </div>
@@ -755,13 +701,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.lose_consciousness(class='checkbox-round', value='Yes') }}
+                {{ form.lose_consciousness(class='checkbox-round', type='radio', id='lossconsyes', value='Yes') }}
                 <label style="width: auto !important" for="lossconsyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.lose_consciousness(class='checkbox-round', value='No') }}
+                {{ form.lose_consciousness(class='checkbox-round', type='radio', id='lossconsno', value='No') }}
                 <label for="lossconsno">No</label>
               </div>
             </div>
@@ -772,13 +718,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.convulsions_or_seizures(class='checkbox-round', value='Yes') }}
+                {{ form.convulsions_or_seizures(class='checkbox-round', type='radio', id='expseizuresyes', value='Yes') }}
                 <label style="width: auto !important" for="expseizuresyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.convulsions_or_seizures(class='checkbox-round', value='No') }}
+                {{ form.convulsions_or_seizures(class='checkbox-round', type='radio', id='expseizuresno', value='No') }}
                 <label for="expseizuresno">No</label>
               </div>
             </div>
@@ -789,13 +735,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.fever(class='checkbox-round', value='Yes') }}
+                {{ form.fever(class='checkbox-round', type='radio', id='hasfeveryes', value='Yes') }}
                 <label style="width: auto !important" for="hasfeveryes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.fever(class='checkbox-round', value='No') }}
+                {{ form.fever(class='checkbox-round', type='radio', id='hasfeverno', value='No') }}
                 <label for="hasfeverno">No</label>
               </div>
             </div>
@@ -812,57 +758,27 @@
             <label>How would you rate your current physical health? </label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthexc"
-                  name="phyhealth"
-                  value="phyhealthexc"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthexc', value='Excellent') }}
                 <label for="phyhealthexc">Excellent</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthvg"
-                  name="phyhealth"
-                  value="phyhealthvg"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthvg', value='Very Good') }}
                 <label for="phyhealthvg">Very Good</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthg"
-                  name="phyhealth"
-                  value="phyhealthg"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthg', value='Good') }}
                 <label for="phyhealthg">Good</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthf"
-                  name="phyhealth"
-                  value="phyhealthf"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthf', value='Fair') }}
                 <label for="phyhealthf">Fair</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthp"
-                  name="phyhealth"
-                  value="phyhealthp"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthp', value='Poor') }}
                 <label for="phyhealthp">Poor</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthvp"
-                  name="phyhealth"
-                  value="phyhealthvp"
-                />
+                {{ form.fever(class='checkbox-round', type='radio', id='phyhealthvp', value='Very Poor') }}
                 <label for="phyhealthvp">Very Poor</label>
               </div>
             </div>
@@ -882,13 +798,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.has_physician(class='checkbox-round', value='Yes') }}
+                {{ form.has_physician(class='checkbox-round', type='radio', id='physicianyes', value='Yes') }}
                 <label style="width: auto !important" for="physicianyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.has_physician(class='checkbox-round', value='No') }}
+                {{ form.has_physician(class='checkbox-round', type='radio', id='physicianno', value='No') }}
                 <label for="physicianno">No</label>
               </div>
             </div>
@@ -928,12 +844,7 @@
             <label for="birthloc" style="width: 160px !important"
               >Birth Location:</label
             >
-            <input
-              type="text"
-              class="form-width100 single-column-span"
-              id="birthloc"
-              name="birthloc"
-            />
+            {{ form.date_of_birth(class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align single-column-span">
@@ -942,61 +853,36 @@
             </label>
             <div class="radio-inline-container raisedby">
               <div>
-                <input
-                  type="radio"
-                  id="raisedmother"
-                  name="raised"
-                  value="raisedmother"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='raisedmother', value='Mother') }}
                 <label style="width: auto !important" for="raisedmother"
                   >Mother</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedfather"
-                  name="raised"
-                  value="raisedfather"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='raisedfather', value='Father') }}
                 <label style="width: auto !important" for="raisedfather"
                   >Father</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedstepm"
-                  name="raised"
-                  value="raisedstepm"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='raisedstepm', value='Step-Mother') }}
                 <label style="width: auto !important" for="raisedstepm"
                   >Step-Mother</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedstepf"
-                  name="raised"
-                  value="raisedstepf"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='raisedstepf', value='Step-Father') }}
                 <label style="width: auto !important" for="raisedstepf"
                   >Step-Father</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedother"
-                  name="raised"
-                  value="raisedother"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='raisedother', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="raisedother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >{{ form.first_name }}
               </div>
             </div>
           </div>
@@ -1013,72 +899,42 @@
             <label for="raised" style="width: 120px !important">Mother</label>
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relmothergood"
-                  name="relmother"
-                  value="relmothergood"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmothergood', value='Good') }}
                 <label style="width: auto !important" for="relmothergood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherfair"
-                  name="relmother"
-                  value="relmotherfair"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmotherfair', value='Fair') }}
                 <label style="width: auto !important" for="relmotherfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherpoor"
-                  name="relmother"
-                  value="relmotherpoor"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmotherpoor', value='Poor') }}
                 <label style="width: auto !important" for="relmotherpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherclose"
-                  name="relmother"
-                  value="relmotherclose"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmotherclose', value='Close') }}
                 <label style="width: auto !important" for="relmotherclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherdistant"
-                  name="relmother"
-                  value="relmotherdistant"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmotherdistant', value='Distant') }}
                 <label style="width: auto !important" for="relmotherdistant"
                   >Distant</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherother"
-                  name="relmother"
-                  value="relmotherother"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relmotherother', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relmotherother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >{{ form.first_name }}
               </div>
             </div>
           </div>
@@ -1087,72 +943,42 @@
             <label for="raised" style="width: 120px !important">Father</label>
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relfathergood"
-                  name="relfather"
-                  value="relfathergood"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfathergood', value='Good') }}
                 <label style="width: auto !important" for="relfathergood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherfair"
-                  name="relfather"
-                  value="relfatherfair"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfatherfair', value='Fair') }}
                 <label style="width: auto !important" for="relfatherfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherpoor"
-                  name="relfather"
-                  value="relfatherpoor"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfatherpoor', value='Poor') }}
                 <label style="width: auto !important" for="relfatherpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherclose"
-                  name="relfather"
-                  value="relfatherclose"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfatherclose', value='Close') }}
                 <label style="width: auto !important" for="relfatherclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherdistant"
-                  name="relfather"
-                  value="relfatherdistant"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfatherdistant', value='Distant') }}
                 <label style="width: auto !important" for="relfatherdistant"
                   >Distant</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherother"
-                  name="relfather"
-                  value="relfatherother"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relfatherother', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relfatherother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >{{ form.first_name }}
               </div>
             </div>
           </div>
@@ -1163,84 +989,49 @@
             >
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentgood"
-                  name="relstepparent"
-                  value="relstepparentgood"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentgood', value='Good') }}
                 <label style="width: auto !important" for="relstepparentgood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentfair"
-                  name="relstepparent"
-                  value="relstepparentfair"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentfair', value='Fair') }}
                 <label style="width: auto !important" for="relstepparentfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentpoor"
-                  name="relstepparent"
-                  value="relstepparentpoor"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentpoor', value='Poor') }}
                 <label style="width: auto !important" for="relstepparentpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentclose"
-                  name="relstepparent"
-                  value="relstepparentclose"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentclose', value='Close') }}
                 <label style="width: auto !important" for="relstepparentclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentdistant"
-                  name="relstepparent"
-                  value="relstepparentdistant"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentdistant', value='Distant') }}
                 <label style="width: auto !important" for="relstepparentdistant"
                   >Distant</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentother"
-                  name="relstepparent"
-                  value="relstepparentother"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='relstepparentother', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relstepparentother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >{{ form.first_name }}
               </div>
             </div>
           </div>
 
           <div class="left-align single-column-span">
             <label for="relparent" style="width: 80px !important">Other:</label>
-            <input
-              type="text"
-              class="form-width100 single-column-span"
-              id="relparent"
-              name="relparent"
-            />
+            {{ form.physician_name(class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align">
@@ -1260,82 +1051,42 @@
             </tr>
             <tr>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                {{ form.physician_name(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                {{ form.physician_name(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                {{ form.physician_name(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <div class="radio-inline-container relby">
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblinggood"
-                      name="relsibling"
-                      value="relsiblinggood"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblinggood', value='Good') }}
                     <label style="width: auto !important" for="relsiblinggood"
                       >Good</label
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingfair"
-                      name="relsibling"
-                      value="relsiblingfair"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingfair', value='Fair') }}
                     <label style="width: auto !important" for="relsiblingfair"
                       >Fair</label
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingpoor"
-                      name="relsibling"
-                      value="relsiblingpoor"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingpoor', value='Poor') }}
                     <label style="width: auto !important" for="relsiblingpoor"
                       >Poor</label
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingclose"
-                      name="relsibling"
-                      value="relsiblingclose"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingclose', value='Close') }}
                     <label style="width: auto !important" for="relsiblingclose"
                       >Close</label
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingdistant"
-                      name="relsibling"
-                      value="relsiblingdistant"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingdistant', value='Distant') }}
                     <label
                       style="width: auto !important"
                       for="relsiblingdistant"
@@ -1343,21 +1094,12 @@
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingother"
-                      name="relsibling"
-                      value="relsiblingother"
-                    />
+                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingother', value='Other') }}
                     <label
                       style="width: auto !important; padding-right: 10px"
                       for="relsiblingother"
                       >Other</label
-                    ><input
-                      type="text"
-                      id="otherTextbox"
-                      placeholder="Enter text"
-                    />
+                    >{{ form.first_name }}
                   </div>
                 </div>
               </td>
@@ -1382,12 +1124,7 @@
             <label for="famhistoryneglect3"
               >Any Additional Family Information:
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="famhistoryneglect3"
-              name="famhistoryneglect3"
-            />
+            {{ form.family_mental_history(class='form-width100') }}
           </div>
         </section>
 
@@ -1463,57 +1200,27 @@
             <label>When attending school were you:</label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="educattend1"
-                  name="educattend"
-                  value="educattend1"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend1', value='In regular classes') }}
                 <label for="educattend1">In regular classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend2"
-                  name="educattend"
-                  value="educattend2"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend2', value='Advanced classes') }}
                 <label for="educattend2">Advanced classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend3"
-                  name="educattend"
-                  value="educattend3"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend3', value='Home Study') }}
                 <label for="educattend3">Home Study</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend4"
-                  name="educattend"
-                  value="educattend4"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend4', value='Ever suspended') }}
                 <label for="educattend4">Ever suspended</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend5"
-                  name="educattend"
-                  value="educattend5"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend5', value='Special classes') }}
                 <label for="educattend5">Special classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend6"
-                  name="educattend"
-                  value="educattend6"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='educattend6', value='Placed in alternative school') }}
                 <label for="educattend6">Placed in alternative school</label>
               </div>
             </div>
@@ -1541,12 +1248,7 @@
                 >
               </div></label
             >
-            <input
-              type="text"
-              class="form-width100"
-              id="educinfo"
-              name="educinfo"
-            />
+            {{ form.highest_level_achieved(class='form-width100') }}
           </div>
         </section>
         <!-- end: Educational History -->
@@ -1558,48 +1260,23 @@
             <label>What is your current employment status? </label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat1"
-                  name="employmentstat"
-                  value="employmentstat1"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='employmentstat1', value='Employed Full-Time') }}
                 <label for="employmentstat1">Employed Full-Time</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat2"
-                  name="employmentstat"
-                  value="employmentstat2"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='employmentstat2', value='Employed Part-Time') }}
                 <label for="employmentstat2">Employed Part-time</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat3"
-                  name="employmentstat"
-                  value="employmentstat3"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='employmentstat3', value='Unemployed') }}
                 <label for="employmentstat3">Unemployed</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat4"
-                  name="employmentstat"
-                  value="employmentstat4"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='employmentstat4', value='Self-employed') }}
                 <label for="employmentstat4">Self-employed</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat5"
-                  name="employmentstat"
-                  value="employmentstat5"
-                />
+                {{ form.has_physician(class='checkbox-round', type='radio', id='employmentstat5', value='Student') }}
                 <label for="employmentstat5">Student</label>
               </div>
             </div>
@@ -1630,24 +1307,20 @@
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Yes') }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseyes', value='Yes') }}
                 <label for="subsabuseyes">Yes</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='No') }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseno', value='No') }}
                 <label for="subsabuseno">No</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Other') }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseother', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="subsabuseother"
                   >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  placeholder="Enter text"
-                />
+                >{{ form.residence }}
               </div>
             </div>
           </div>
@@ -1907,12 +1580,8 @@
             </tr>
             <tr>
               <td>
-                Other<input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="hallucinogensmethod"
-                  name="hallucinogensmethod"
-                />
+                Other
+                {{ form.hallucinogens_meds_way_of_intake(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="otheruse" id="otheruse">
@@ -1943,78 +1612,43 @@
               >Have ever received treatment for a substance abuse issue?<br />Name
               of Treatment Program
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabuseprogram"
-              name="subsabuseprogram"
-            />
+            {{ form.other_meds_age_first_use(class='form-width100') }}
           </div>
 
           <div class="left-align">
             <label>Type of Treatment </label>
             <div class="radio-inline-container treatmenttype">
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttyperehab"
-                  name="treatmenttype"
-                  value="treatmenttyperehab"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttyperehab', value='Rehab') }}
                 <label for="treatmenttyperehab" style="padding-right: 196px"
                   >Rehab</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypeparthospital"
-                  name="treatmenttype"
-                  value="treatmenttypeparthospital"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypeparthospital', value='Partial Hospitalization') }}
                 <label for="treatmenttypeparthospital"
                   >Partial Hospitalization</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttyperecoveryhouse"
-                  name="treatmenttype"
-                  value="treatmenttyperecoveryhouse"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttyperecoveryhouse', value='Recovery House') }}
                 <label for="treatmenttyperecoveryhouse">Recovery House</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypemethadone"
-                  name="treatmenttype"
-                  value="treatmenttypemethadone"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypemethadone', value='Methadone') }}
                 <label for="treatmenttypemethadone">Methadone</label>
               </div>
             </div>
 
             <div class="radio-inline-container treatmenttype">
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypeiop"
-                  name="treatmenttype"
-                  value="treatmenttypeiop"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypeiop', value='Intensive Outpatient Program') }}
                 <label for="treatmenttypeiop"
                   >Intensive Outpatient Program</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypehalfwayhouse"
-                  name="treatmenttype"
-                  value="treatmenttypehalfwayhouse"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypehalfwayhouse', value='Halfway House') }}
                 <label
                   for="treatmenttypehalfwayhouse"
                   style="padding-right: 63px"
@@ -2022,12 +1656,7 @@
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypecounselling"
-                  name="treatmenttype"
-                  value="treatmenttypecounselling"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypecounselling', value='Counselling') }}
                 <label
                   for="treatmenttypecounselling"
                   style="padding-right: 35px"
@@ -2035,12 +1664,7 @@
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypesuboxone"
-                  name="treatmenttype"
-                  value="treatmenttypesuboxone"
-                />
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypesuboxone', value='Suboxone') }}
                 <label for="treatmenttypesuboxone">Suboxone</label>
               </div>
             </div>
@@ -2050,12 +1674,7 @@
             <label for="subsabusetreatmentdate"
               >Date of Treatment (Month, Year)
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabusetreatmentdate"
-              name="subsabusetreatmentdate"
-            />
+            {{ form.other_meds_age_first_use(class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="subsabuseoutcome"
@@ -2070,12 +1689,7 @@
                 >
               </div>
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabuseoutcome"
-              name="subsabuseoutcome"
-            />
+            {{ form.other_meds_age_first_use(class='form-width100') }}
           </div>
         </section>
         <!-- end: Substance Abuse History -->
@@ -2089,13 +1703,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='Yes') }}
+                {{ form.pending_criminal_charges(class='checkbox-round', type='radio', id='legalpendingyes', value='Yes') }}
                 <label style="width: auto !important" for="legalpendingyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='No') }}
+                {{ form.pending_criminal_charges(class='checkbox-round', type='radio', id='legalpendingno', value='No') }}
                 <label for="legalpendingno">No</label>
               </div>
             </div>
@@ -2106,13 +1720,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.on_probation(class='checkbox-round', value='Yes') }}
+                {{ form.on_probation(class='checkbox-round', type='radio', id='legalprobationyes', value='Yes') }}
                 <label style="width: auto !important" for="legalprobationyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.on_probation(class='checkbox-round', value='No') }}
+                {{ form.on_probation(class='checkbox-round', type='radio', id='legalprobationno', value='No') }}
                 <label for="legalprobationno">No</label>
               </div>
             </div>
@@ -2123,13 +1737,13 @@
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='Yes') }}
+                {{ form.has_been_arrested(class='checkbox-round', type='radio', id='legalarrestyes', value='Yes') }}
                 <label style="width: auto !important" for="legalarrestyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='No') }}
+                {{ form.has_been_arrested(class='checkbox-round', type='radio', id='legalarrestno', value='No') }}
                 <label for="legalarrestno">No</label>
               </div>
             </div>
@@ -2147,28 +1761,13 @@
             </tr>
             <tr>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="legalarrestlist"
-                  name="legalarrestlist"
-                />
+                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="legalarrestdate"
-                  name="legalarrestdate"
-                />
+                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="legalarrestoutcome"
-                  name="legalarrestoutcome"
-                />
+                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
               </td>
             </tr>
           </table>
@@ -2291,20 +1890,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses1followup"
-                  name="ses1followup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses1attendedby"
-                  name="ses1attendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -2334,20 +1923,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses2followup"
-                  name="ses2followup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses2attendedby"
-                  name="ses2attendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -2377,20 +1956,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses3followup"
-                  name="ses3followup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses3attendedby"
-                  name="ses3attendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -2420,20 +1989,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses4followup"
-                  name="ses4followup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses4attendedby"
-                  name="ses4attendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -2463,20 +2022,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses5followup"
-                  name="ses5followup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses5attendedby"
-                  name="ses5attendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -2506,20 +2055,10 @@
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="terminationfollowup"
-                  name="terminationfollowup"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="terminationattendedby"
-                  name="terminationattendedby"
-                />
+                {{ form.things_to_change(class='form-width100 single-column-span') }}
               </td>
             </tr>
           </table>
@@ -2541,13 +2080,7 @@
                 style="width: 500px !important; padding-right: 10px"
                 >Receiving Agency:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinforeceiving"
-                name="refinforeceiving"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span referral', style='margin-right: 20px') }}
               <label
                 for="refinfocontact"
                 style="width: 320px !important; padding-right: 10px"
@@ -2566,13 +2099,7 @@
                 style="width: 200px !important; padding-right: 10px"
                 >Name:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="width: 1110px; margin-right: 20px"
-                id="refinfoname"
-                name="refinfoname"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span referral', style='width: 1110px; margin-right: 20px') }}
               <label
                 for="refinfoemail"
                 style="width: 200px !important; padding-right: 10px"
@@ -2589,12 +2116,7 @@
               <label for="refinfoofficeadd" style="width: 160px !important"
                 >Office Address:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="refinfoofficeadd"
-                name="refinfoofficeadd"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -2602,12 +2124,7 @@
               <label for="refinfoas" style="width: 510px !important"
                 >Appointment Schedule:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="refinfoas"
-                name="refinfoas"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
               <label
                 for="refinfodate"
                 style="width: 210px !important; margin-left: 10px"
@@ -2644,13 +2161,7 @@
                 style="width: 500px !important; padding-right: 10px"
                 >Client Signature:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinfoclientsig"
-                name="refinfoclientsig"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span referral', style='margin-right: 20px') }}
               <label
                 for="refinfocounselorsig"
                 style="width: 320px !important; padding-right: 10px"
@@ -2702,12 +2213,7 @@
               <label for="conficounselor" style="width: 460px !important"
                 >Counselor/Psychometrician Name:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="conficounselor"
-                name="conficounselor"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <div class="left-align single-column-span">
               <label for="confiinterview" style="width: 460px !important"
@@ -2724,12 +2230,7 @@
               <label for="confinosessions" style="width: 460px !important"
                 >Number of Session:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="confinosessions"
-                name="confinosessions"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -2737,45 +2238,25 @@
               <label for="conficomplaint" style="width: 280px !important"
                 >Subject Complaint:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="conficomplaint"
-                name="conficomplaint"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <div class="left-align single-column-span">
               <label for="confiobjassess" style="width: 280px !important"
                 >Objective Assessment:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="confiobjassess"
-                name="confiobjassess"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <div class="left-align single-column-span">
               <label for="confipoa" style="width: 280px !important"
                 >Plan of Action:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="confipoa"
-                name="confipoa"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <div class="left-align single-column-span">
               <label for="confiprogress" style="width: 280px !important"
                 >Progress Made:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="confiprogress"
-                name="confiprogress"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
           </div>
           <div class="single-column">
@@ -2790,12 +2271,7 @@
                 style="width: auto !important; padding-top: 5px"
                 >Signature of the Counselor/Guidance Personnel</label
               >
-              <input
-                type="text"
-                id="Counselorsignature"
-                name="Counselorsignature"
-                style="width: auto !important"
-              />
+              {{ form.things_to_change(class='form-width100 single-column-span') }}
             </div>
             <div></div>
           </div>

@@ -21,7 +21,7 @@
     width: 100%;
     height: auto;
     color: var(--primary-color);
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     border-bottom: 2px solid var(--bg-orange);
     padding-bottom: 1em;
 }
@@ -357,9 +357,8 @@ th, td {
 .form-btn-container {
     display: flex;
     width: 100%;
-    padding: 0 20px;
+    padding-top: 1em;
     column-gap: 20px;
-    margin: 5px 0 10px;
     justify-content: center;
 }
 
@@ -435,20 +434,41 @@ th, td {
 
 }
 
-/* sweet alert/modal style */
+/* for modal style */
 .swal2-popup {
+    font-size: 1.1rem;
+    width: 40%;
     color: var(--primary-color);
-    background: var(--white);
-    font-size: 1rem;
-    border-radius: 5px;
-    box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+    background: var(--main-db-bg-color);
+    border-radius: 1.2rem;
+    box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
+    backdrop-filter: blur(10px);
+    padding: 1em;
 }
 
 .swal2-title {
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: normal;
+    font-size: 1.5rem;
     color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.swal2-confirm.confirm-button-class,
+.swal2-cancel.cancel-button-class {
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+    border-radius: 1em;
+}
+
+.swal2-confirm.confirm-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+
+}
+
+.swal2-cancel.cancel-button-class {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
 }
 
 
