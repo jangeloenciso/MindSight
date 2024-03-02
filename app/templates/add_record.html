@@ -17,10 +17,10 @@
 
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
-      {{ form.csrf_token }}
-        
-            {{ form.hidden_tag() }}
-      <form action="{{ url_for('add_record') }}">      
+      
+      <form method="post" action="{{ url_for('add_record') }}">  
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }} 
       <div class="center">
         <section class="basic-information">
           <div class="double-column">

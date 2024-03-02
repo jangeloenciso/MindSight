@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask import g
 from flask_login import current_user
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
@@ -30,6 +31,8 @@ def inject_user_info():
         'role': current_user.role if current_user.is_authenticated else None
     }
     return user_info
+
+csrf = CSRFProtect(app)
 
 from app import routes
 
