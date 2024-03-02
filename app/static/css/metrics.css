@@ -6,8 +6,6 @@
 
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
@@ -96,6 +94,7 @@ select, .metrics {
     max-height: 100%;
     margin: 0 auto;
 }
+
 /* Sidebar active indicator */
 .sidebar-buttons #analytics-container::before {
     content: "";

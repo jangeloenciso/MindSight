@@ -6,8 +6,6 @@
 
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
@@ -129,7 +127,7 @@ button:hover {
     font-size: 1.7rem;
     background: var(--main-db-bg-color);
     border-radius: 1.5rem;
-    box-shadow: 2px 2px 15px 10px rgba(0, 0, 0, 0.40);
+    box-shadow: 2px 2px 15px 10px rgb(0 0 0 / 40%);
     padding-bottom: 2em;
     width: 40%;
     height: auto;

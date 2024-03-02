@@ -84,8 +84,6 @@ main {
     width: 80%;
     align-items: center;
     justify-content: center;
-
-    /* background-color: rgba(0, 0, 255, 0.249); */
 }
 
 
@@ -195,7 +193,7 @@ label {
     margin: 0 !important;
 }
 
-.radio-inline-container input:not([type=text]) {
+.radio-inline-container input:not([type="text"]) {
     display: flex;
     width: 20px !important;
     aspect-ratio: 1/1;
@@ -237,7 +235,7 @@ label {
     vertical-align: middle;
     border: 1px solid var(--primary-color);
     appearance: none;
-    -webkit-appearance: none;
+    appearance: none;
     outline: none;
     cursor: pointer;
 }
@@ -317,7 +315,7 @@ th, td {
     width: 100%;
     padding: 0 20px;
     column-gap: 20px;
-    margin: 5px 0 10px 0;
+    margin: 5px 0 10px;
     justify-content: flex-start;
 }
 
@@ -327,7 +325,6 @@ th, td {
     padding: 7px 62px;
     font-family: Lexend-regular;
     font-size: 1em;
-    border-radius: 0.2em;
     cursor: pointer;
     background-color: var(--primary-color);
     color: white;
@@ -340,7 +337,6 @@ th, td {
     padding: 7px 62px;
     font-family: Lexend-regular;
     font-size: 1em;
-    border-radius: 0.2em;
     cursor: pointer;
     border-radius: 20px;
     border: 2px solid var(--primary-color);
@@ -351,7 +347,7 @@ th, td {
     background-color: #084b65;
 }
 
-/* responsiveness*/
+/* responsiveness */
 @media screen and (width <=1127px) {
     .double-column, .single-column, .left-align, .left-align-checkbox {
         justify-content: center;

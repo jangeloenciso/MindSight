@@ -6,8 +6,6 @@
 
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
@@ -31,7 +29,6 @@
 .main-header span {
     font-size: 2.2em;
     font-weight: bold;
-    color: var(--primary-color);
     font-style: normal;
     line-height: normal;
     color: var(--primary-color);
@@ -88,7 +85,6 @@
 .box span {
     font-size: 2em;
     font-weight: bold;
-    color: var(--primary-color);
     font-style: normal;
     line-height: normal;
     color: var(--primary-color);

@@ -6,8 +6,6 @@
 
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
     column-gap: 20px;
 }

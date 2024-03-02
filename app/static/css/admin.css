@@ -3,11 +3,8 @@
     justify-content: center;
     width: calc(100% - 73px);
     height: 100vh;
-
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 

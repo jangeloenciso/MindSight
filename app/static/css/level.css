@@ -6,8 +6,6 @@
 
     /* positions right div properly */
     margin-left: 73px;
-
-    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
@@ -109,7 +107,7 @@
 .main-buttons button {
     height: 100%;
     text-align: left;
-    padding: 1.4em 0em 1.4em 2em;
+    padding: 1.4em 0 1.4em 2em;
 }
 
 .main-buttons button, .main-buttons a {
