@@ -3,17 +3,8 @@ from wtforms import StringField, IntegerField, FloatField, BooleanField, DateFie
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
 
 class StudentRecordForm(FlaskForm):
-    # User Information
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
-    email_address = StringField('Email Address', validators=[DataRequired(), Email()])
-
-    # College Information
-    college_name = StringField('College Name', validators=[DataRequired()])
-
-    # Course Information
-    course_name = StringField('Course Name', validators=[DataRequired()])
-
+    # # College Information
+    # college_name = StringField('College Name', validators=[DataRequired()])
     # Basic Information
     student_id = StringField('Student ID', validators=[DataRequired(), Regexp('^20\d{2}-\d{6}$', message="Student ID must be in the format 20xx-xxxxxx")])
     last_name = StringField('Last Name', validators=[DataRequired()])
@@ -22,16 +13,16 @@ class StudentRecordForm(FlaskForm):
     year_level = StringField('Year Level', validators=[Optional()])
     campus = StringField('Campus', validators=[DataRequired()])
     
-    age = IntegerField('Age', validators=[Optional()])
-    sex = StringField('Sex', validators=[Optional()])
-    gender = StringField('Gender', validators=[Optional()])
-    residence = StringField('Residence', validators=[Optional()])
-    contact_number = StringField('Contact Number', validators=[Optional()])
-    religion = StringField('Religion', validators=[Optional()])
     date_of_birth = DateField('Date of Birth', validators=[Optional()])
-    place_of_birth = StringField('Place of Birth', validators=[Optional()])
-    nationality = StringField('Nationality', validators=[Optional()])
+    age = IntegerField('Age', validators=[Optional()])
+    gender = StringField('Gender', validators=[Optional()])
     civil_status = StringField('Civil Status', validators=[Optional()])
+    nationality = StringField('Nationality', validators=[Optional()])
+    religion = StringField('Religion', validators=[Optional()])
+    residence = StringField('Residence', validators=[Optional()])
+
+    email_address = StringField('Email', validators=[DataRequired(message="Please enter your email"), Email(message="Please enter a valid email address")])
+    contact_number = StringField('Contact Number', validators=[Optional()])
 
     guardian_name = StringField('Guardian Name', validators=[Optional()])
     guardian_address = StringField('Guardian Address', validators=[Optional()])
@@ -39,9 +30,12 @@ class StudentRecordForm(FlaskForm):
 
     # History Information
     information_provider = StringField('Information Provider', validators=[Optional()])
+
     current_problem = StringField('Current Problem', validators=[Optional()])
     problem_length = StringField('Problem Length', validators=[Optional()])
+
     stressors = StringField('Stressors', validators=[Optional()])
+
     substance_abuse = BooleanField('Substance Abuse', validators=[Optional()])
     addiction = BooleanField('Addiction', validators=[Optional()])
     depression_sad_down_feelings = BooleanField('Depression/Sad Down Feelings', validators=[Optional()])
@@ -98,12 +92,15 @@ class StudentRecordForm(FlaskForm):
 
     # Health Information
     medication_and_dose = StringField('Medication and Dose', validators=[Optional()])
+
     serious_ch_illnesses_history = StringField('Serious Chronic Illnesses History', validators=[Optional()])
+
     head_injuries = BooleanField('Head Injuries', validators=[Optional()])
     lose_consciousness = BooleanField('Lose Consciousness', validators=[Optional()])
     convulsions_or_seizures = BooleanField('Convulsions or Seizures', validators=[Optional()])
     fever = BooleanField('Fever', validators=[Optional()])
     allergies = StringField('Allergies', validators=[Optional()])
+
     current_physical_health = StringField('Current Physical Health', validators=[Optional()])
     last_check_up = DateField('Last Check-Up', validators=[Optional()])
     has_physician = BooleanField('Has Physician', validators=[Optional()])
@@ -112,12 +109,14 @@ class StudentRecordForm(FlaskForm):
     physician_number = StringField('Physician Number', validators=[Optional()])
 
     # Family Background
-    father_age = IntegerField('Father Age', validators=[Optional()])
-    mother_age = IntegerField('Mother Age', validators=[Optional()])
-    father_last_name = StringField('Father Last Name', validators=[Optional()])
-    mother_last_name = StringField('Mother Last Name', validators=[Optional()])
-    father_first_name = StringField('Father First Name', validators=[Optional()])
-    mother_first_name = StringField('Mother First Name', validators=[Optional()])
+
+    birth_location = StringField('Birth Location', validators=[Optional()])
+    raised_by = StringField('Raised By', validators=[Optional()])
+
+    rel_qual_mother = StringField('Relationship Quality with Mother', validators=[Optional()])
+    rel_qual_father = StringField('Relationship Quality with Father', validators=[Optional()])
+    rel_qual_step_parent = StringField('Relationship Quality with Step Parent', validators=[Optional()])
+
     family_abuse_history = StringField('Family Abuse History', validators=[Optional()])
     family_mental_history = StringField('Family Mental History', validators=[Optional()])
     additional_information_family = StringField('Additional Information', validators=[Optional()])
@@ -145,6 +144,7 @@ class StudentRecordForm(FlaskForm):
     alcohol_frequency_of_use = StringField('Alcohol Frequency of Use', validators=[Optional()])
     alcohol_amount_used = StringField('Alcohol Amount Used', validators=[Optional()])
     alcohol_way_of_intake = StringField('Alcohol Way of Intake', validators=[Optional()])
+
     cigarette = BooleanField('Cigarette', validators=[Optional()])
     cigarette_age_first_use = StringField('Cigarette Age of First Use', validators=[Optional()])
     cigarette_frequency_of_use = StringField('Cigarette Frequency of Use', validators=[Optional()])
@@ -188,16 +188,16 @@ class StudentRecordForm(FlaskForm):
     pain_meds_way_of_intake = StringField('Pain Meds Way of Intake', validators=[Optional()])
     
     benzo = BooleanField('Benzodiazepines', validators=[Optional()])
-    benzo_meds_age_first_use = StringField('Benzodiazepines Age of First Use', validators=[Optional()])
-    benzo_meds_frequency_of_use = StringField('Benzodiazepines Frequency of Use', validators=[Optional()])
-    benzo_meds_amount_used = StringField('Benzodiazepines Amount Used', validators=[Optional()])
-    benzo_meds_way_of_intake = StringField('Benzodiazepines Way of Intake', validators=[Optional()])
+    benzo_age_first_use = StringField('Benzodiazepines Age of First Use', validators=[Optional()])
+    benzo_frequency_of_use = StringField('Benzodiazepines Frequency of Use', validators=[Optional()])
+    benzo_amount_used = StringField('Benzodiazepines Amount Used', validators=[Optional()])
+    benzo_way_of_intake = StringField('Benzodiazepines Way of Intake', validators=[Optional()])
     
     hallucinogens = BooleanField('Hallucinogens', validators=[Optional()])
-    hallucinogens_meds_age_first_use = StringField('Hallucinogens Age of First Use', validators=[Optional()])
-    hallucinogens_meds_frequency_of_use = StringField('Hallucinogens Frequency of Use', validators=[Optional()])
-    hallucinogens_meds_amount_used = StringField('Hallucinogens Amount Used', validators=[Optional()])
-    hallucinogens_meds_way_of_intake = StringField('Hallucinogens Way of Intake', validators=[Optional()])
+    hallucinogens_age_first_use = StringField('Hallucinogens Age of First Use', validators=[Optional()])
+    hallucinogens_frequency_of_use = StringField('Hallucinogens Frequency of Use', validators=[Optional()])
+    hallucinogens_amount_used = StringField('Hallucinogens Amount Used', validators=[Optional()])
+    hallucinogens_way_of_intake = StringField('Hallucinogens Way of Intake', validators=[Optional()])
     
     other_meds = BooleanField('Other', validators=[Optional()])
     other_meds_age_first_use = StringField('Other Age of First Use', validators=[Optional()])

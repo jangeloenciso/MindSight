@@ -250,11 +250,12 @@ class Sibling(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.String(100))
-    age = db.Column(db.Integer)
-    gender = db.Column(db.String(10))
-    rel_qual = db.Column(db.String(50))
+    name = db.Column(db.String(100), nullable=True)
+    age = db.Column(db.Integer, nullable=True)
+    gender = db.Column(db.String(10), nullable=True)
+    rel_qual = db.Column(db.String(50), nullable=True)
 
+    # TODO: FIX THIS ??? NOT SURE LMAO
     family_background_id = db.Column(db.Integer, db.ForeignKey('family_background.id'), nullable=False)
 
 
@@ -356,20 +357,20 @@ class SubstanceAbuseHistory(db.Model):
 
     # benzodiazepines
     benzo = db.Column(db.Boolean, default=False)
-    benzo_meds_age_first_use = db.Column(db.String(50))
-    benzo_meds_frequency_of_use = db.Column(db.String(50))
-    benzo_meds_amount_used = db.Column(db.String(50))
-    benzo_meds_way_of_intake = db.Column(db.String(50))
+    benzo_age_first_use = db.Column(db.String(50))
+    benzo_frequency_of_use = db.Column(db.String(50))
+    benzo_amount_used = db.Column(db.String(50))
+    benzo_way_of_intake = db.Column(db.String(50))
 
     # hallucinogens
     hallucinogens = db.Column(db.Boolean, default=False)
-    hallucinogens_meds_age_first_use = db.Column(db.String(50))
-    hallucinogens_meds_frequency_of_use = db.Column(db.String(50))
-    hallucinogens_meds_amount_used = db.Column(db.String(50))
-    hallucinogens_meds_way_of_intake = db.Column(db.String(50))
+    hallucinogens_age_first_use = db.Column(db.String(50))
+    hallucinogens_frequency_of_use = db.Column(db.String(50))
+    hallucinogens_amount_used = db.Column(db.String(50))
+    hallucinogens_way_of_intake = db.Column(db.String(50))
 
     # others
-    other = db.Column(db.Boolean, default=False)
+    other_meds = db.Column(db.Boolean, default=False)
     other_meds_age_first_use = db.Column(db.String(50))
     other_meds_frequency_of_use = db.Column(db.String(50))
     other_meds_amount_used = db.Column(db.String(50))

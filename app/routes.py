@@ -420,26 +420,14 @@ def add_record():
     form = StudentRecordForm()
 
     if form.validate_on_submit():
-        personal_info = BasicInformation(
-            age=form.age.data,
-            sex=form.sex.data,
-            gender=form.gender.data,
-            contact_number=form.contact_number.data,
-            religion=form.religion.data,
-            date_of_birth=form.date_of_birth.data,
-            place_of_birth=form.place_of_birth.data,
-            nationality=form.nationality.data,
-            counseling_history=form.counseling_history.data,
-            residence=form.residence.data,
-            civil_status=form.civil_status.data,
-            student_id=form.student_id.data
-        )
-        
         history_info = HistoryInformation(
             information_provider=form.information_provider.data,
+
             current_problem=form.current_problem.data,
             problem_length=form.problem_length.data,
+
             stressors=form.stressors.data,
+
             substance_abuse=form.substance_abuse.data,
             addiction=form.addiction.data,
             depression_sad_down_feelings=form.depression_sad_down_feelings.data,
@@ -498,31 +486,38 @@ def add_record():
 
         health_info = HealthInformation(
             medication_and_dose=form.medication_and_dose.data,
+
             serious_ch_illnesses_history=form.serious_ch_illnesses_history.data,
+
             head_injuries=form.head_injuries.data,
             lose_consciousness=form.lose_consciousness.data,
             convulsions_or_seizures=form.convulsions_or_seizures.data,
             fever=form.fever.data,
             allergies=form.allergies.data,
+
             current_physical_health=form.current_physical_health.data,
             last_check_up=form.last_check_up.data,
             has_physician=form.has_physician.data,
             physician_name=form.physician_name.data,
             physician_email=form.physician_email.data,
             physician_number=form.physician_number.data,
+
             student_id=form.student_id.data
         )
 
         family_background = FamilyBackground(
-            father_age=form.father_age.data,
-            mother_age=form.mother_age.data,
-            father_last_name=form.father_last_name.data,
-            mother_last_name=form.mother_last_name.data,
-            father_first_name=form.father_first_name.data,
-            mother_first_name=form.mother_first_name.data,
+            birth_location = form.place_of_birth.data,
+            raised_by = form.raised_by.data,
+            
+            rel_qual_mother = form.rel_qual_mother.data,
+            rel_qual_father = form.rel_qual_father.data,
+            rel_qual_step_parent = form.rel_qual_step_parent.data,
+
+
             family_abuse_history=form.family_abuse_history.data,
             family_mental_history=form.family_mental_history.data,
             additional_information=form.additional_information_family.data,
+
             student_id=form.student_id.data
         )
 
@@ -550,26 +545,68 @@ def add_record():
 
         substance_abuse_history = SubstanceAbuseHistory(
             struggled_with_substance_abuse=form.struggled_with_substance_abuse.data,
+
             alcohol=form.alcohol.data,
             alcohol_age_first_use=form.alcohol_age_first_use.data,
             alcohol_frequency_of_use=form.alcohol_frequency_of_use.data,
             alcohol_amount_used=form.alcohol_amount_used.data,
             alcohol_way_of_intake=form.alcohol_way_of_intake.data,
+
+            cigarette=form.cigarette.data,
+            cigarette_age_first_use=form.cigarette_age_first_use.data,
+            cigarette_frequency_of_use=form.cigarette_frequency_of_use.data,
+            cigarette_amount_used=form.cigarette_amount_used.data,
+            cigarette_way_of_intake=form.cigarette_way_of_intake.data,
+            
             marijuana=form.marijuana.data,
             marijuana_age_first_use=form.marijuana_age_first_use.data,
             marijuana_frequency_of_use=form.marijuana_frequency_of_use.data,
             marijuana_amount_used=form.marijuana_amount_used.data,
             marijuana_way_of_intake=form.marijuana_way_of_intake.data,
+
+            cocaine=form.cocaine.data,
+            cocaine_age_first_use=form.cocaine_age_first_use.data,
+            cocaine_frequency_of_use=form.cocaine_frequency_of_use.data,
+            cocaine_amount_used=form.cocaine_amount_used.data,
+            cocaine_liked_disliked=form.cocaine_way_of_intake.data,
+
             heroin=form.heroin.data,
             heroin_age_first_use=form.heroin_age_first_use.data,
             heroin_frequency_of_use=form.heroin_frequency_of_use.data,
             heroin_amount_used=form.heroin_amount_used.data,
-            heroin_liked_disliked=form.heroin_liked_disliked.data,
-            other=form.substance_abuse_other.data,
-            other_age_first_use=form.other_age_first_use.data,
-            other_frequency_of_use=form.other_frequency_of_use.data,
-            other_amount_used=form.other_amount_used.data,
-            other_liked_disliked=form.other_liked_disliked.data,
+            heroin_liked_disliked=form.heroin_way_of_intake.data,
+
+            amphetamines=form.amphetamines.data,
+            amphetamines_age_first_use=form.amphetamines_age_first_use.data,
+            amphetamines_frequency_of_use=form.amphetamines_frequency_of_use.data,
+            amphetamines_amount_used=form.amphetamines_amount_used.data,
+            amphetamines_liked_disliked=form.amphetamines_way_of_intake.data,
+
+            club_drugs=form.club_drugs.data,
+            club_drugs_age_first_use=form.club_drugs_age_first_use.data,
+            club_drugs_frequency_of_use=form.club_drugs_frequency_of_use.data,
+            club_drugs_amount_used=form.club_drugs_amount_used.data,
+            club_drugs_liked_disliked=form.club_drugs_way_of_intake.data,
+
+            pain_meds=form.pain_meds.data,
+            pain_meds_age_first_use=form.pain_meds_age_first_use.data,
+            pain_meds_frequency_of_use=form.pain_meds_frequency_of_use.data,
+            pain_meds_amount_used=form.pain_meds_amount_used.data,
+            pain_meds_liked_disliked=form.pain_meds_way_of_intake.data,
+
+            benzo=form.benzo.data,
+            benzo_age_first_use=form.benzo_age_first_use.data,
+            benzo_frequency_of_use=form.benzo_frequency_of_use.data,
+            benzo_amount_used=form.benzo_amount_used.data,
+            benzo_liked_disliked=form.benzo_way_of_intake.data,
+
+
+            other_meds=form.other_meds.data,
+            other_meds_age_first_use=form.other_meds_age_first_use.data,
+            other_meds_frequency_of_use=form.other_meds_frequency_of_use.data,
+            other_meds_amount_used=form.other_meds_amount_used.data,
+            other_meds_liked_disliked=form.other_meds_way_of_intake.data,
+
             student_id=form.student_id.data
         )
 
@@ -577,6 +614,7 @@ def add_record():
             pending_criminal_charges=form.pending_criminal_charges.data,
             on_probation=form.on_probation.data,
             has_been_arrested=form.has_been_arrested.data,
+
             student_id=form.student_id.data
         )
 
@@ -585,6 +623,7 @@ def add_record():
             expectations=form.expectations.data,
             things_to_change=form.things_to_change.data,
             other_information=form.other_information.data,
+            
             student_id=form.student_id.data
         )
 
@@ -596,7 +635,17 @@ def add_record():
             course=form.course.data,
             year_level=form.year_level.data,
             campus=form.campus.data,
-            personal_information=personal_info,
+
+            date_of_birth = form.date_of_birth.data,
+            age = form.age.data,
+            gender = form.gender.data,
+            civil_status = form.civil_status.data,
+            nationality = form.nationality.data,
+            religion = form.religion.data,
+            residence = form.residence.data,
+            contact_number = form.residence.data,
+            email_address = form.email_address.data,
+
             history_information=history_info,
             health_information=health_info,
             family_background=family_background,
