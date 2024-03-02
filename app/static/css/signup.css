@@ -27,49 +27,6 @@ body {
     display: flex;
 }
 
-
-
-/* left side */
-.left-main {
-    width: 50%;
-    background-color: var(--bg-orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lsub-container {
-    width: 75%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* MINDSIGHT logo offset */
-.lsub-container .lsub-top {
-    position: relative;
-    bottom: 45px;
-}
-
-
-.welcome-msg {
-    width: 350px;
-    padding-left: 20px;
-    font-size: 1.4em;
-    color: var(--white);
-}
-
-.logo-img {
-    width: 490px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
 /* text on top of button */
 .btn-header {
     width: auto;
@@ -118,11 +75,31 @@ body {
 }
 
 
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
 
+    /* positions right div properly */
+    margin-left: 73px;
+    padding: 40px;
+}
+
+.main {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: #faf4f4;
+}
 
 /* login side (right side) */
 .right-main {
-    width: 50%;
+    width: 100%;
     background-color: var(--white);
     display: flex;
     align-items: center;
@@ -321,4 +298,20 @@ input:-webkit-autofill {
 /* forces html to be 100vh */
 .htmlheight100vh{
     height: 100vh;
+}
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #add-admin-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#add-admin-container img, #add-admin-container span {
+    transform: translateX(-7px);
 }

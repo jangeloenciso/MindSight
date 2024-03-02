@@ -1,171 +1,157 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/static/css/main.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/static/fonts/custom-fonts.css"
-    />
-    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
-    <link rel="stylesheet" href="../static/css/signup.css" />
-    <title>Mindsight - Sign Up</title>
-  </head>
-  <body>
-    <!-- left -->
-    <section class="left-main">
-      <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
-      <div class="lsub-container">
-        <div class="lsub-top">
-          <div class="welcome-msg">Welcome to</div>
-          <img
-            src="../static/MINDSIGHT LOGO (WHITE).png"
-            class="logo-img"
-            alt="Mindsight logo"
-          />
-        </div>
-        <div>
-          <div class="btn-header">
-            <span>Already a member?</span>Welcome back!
-          </div>
+<!-- right -->
+{% extends "components/base.html" %} {% block title %} Mindsight - Signup{%
+endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/signup.css" />
+{% endblock %} {% block content %}
+<div class="right">
+  <div class="main">
+    <div class="scroll-content">
+      <section>
+        <section class="right-main">
+          <div class="rsub-container">
+            <!-- ... Previous HTML content ... -->
 
-          <!-- Redirect to the Log in page if already have an account -->
-          <a href="{{ url_for('login') }}">
-            <button class="btn-login">LOG IN</button>
-          </a>
-        </div>
-      </div>
-      <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
-    </section>
+            <form
+              id="confirmation"
+              action="{{ url_for('signup') }}"
+              method="POST"
+            >
+              {{ form.hidden_tag() }}
 
-    <!-- right -->
-    <section class="right-main">
-      <div class="rsub-container">
-        <!-- ... Previous HTML content ... -->
+              <p>Sign up</p>
 
-        <form id="confirmation" action="{{ url_for('signup') }}" method="POST">
-          {{ form.hidden_tag() }}
-
-          <p>Sign up</p>
-
-          <select name="role" required>
-            <option value="" disabled selected>Select your role</option>
-            <option value="superadmin">Super Admin</option>
-            <option value="admin">Admin</option>
-          </select>
-          {% for error in form.role.errors %}
-            <div class="error-message">{{ error }}</div>
-          {% endfor %}
-          
-          <input
-            type="text"
-            placeholder="First Name"
-            name="first_name"
-            required
-          />
-          {% for error in form.first_name.errors %}
-          <div class="error-message">{{ error }}</div>
-          {% endfor %}
-
-          <input
-            type="text"
-            placeholder="Last Name"
-            name="last_name"
-            required
-          />
-          {% for error in form.last_name.errors %}
-          <div class="error-message">{{ error }}</div>
-          {% endfor %}
-
-          <input type="text" placeholder="Username" name="username" required />
-          {% for error in form.username.errors %}
-          <div class="error-message">{{ error }}</div>
-          {% endfor %}
-
-          <div class="input-container">
-            <input
-              type="text"
-              class="styled-input"
-              placeholder="Email"
-              name="email"
-              required
-            />
-            {% for error in form.email.errors %}
-            <div class="error-message">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="password-div">
-            <div class="password-input-container">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                required
-              />
-              {% for error in form.password.errors %}
+              <select name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="superadmin">Super Admin</option>
+                <option value="admin">Admin</option>
+              </select>
+              {% for error in form.role.errors %}
               <div class="error-message">{{ error }}</div>
               {% endfor %}
-              <i class="togglepass" id="togglePassword">
-                <img
-                  id="eye-image"
-                  src="../static/SVG/eyehidden.svg"
-                  alt="show/hide"
-                  onclick="toggleImage()"
-                />
-              </i>
-            </div>
-          </div>
 
-          <div class="password-div">
-            <div class="password-input-container">
               <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirm"
-                id="password-confirm"
+                type="text"
+                placeholder="First Name"
+                name="first_name"
                 required
               />
-              {% for error in form.confirm.errors %}
+              {% for error in form.first_name.errors %}
               <div class="error-message">{{ error }}</div>
               {% endfor %}
-              <i class="togglepass" id="togglePassword-confirm">
-                <img
-                  id="eye-image-confirm"
-                  src="../static/SVG/eyehidden.svg"
-                  alt="show/hide"
-                  onclick="toggleImageConfirm()"
-                />
-              </i>
-            </div>
-          </div>
 
-            <label for="terms-checkbox">
               <input
-                type="checkbox"
-                id="terms-checkbox"
-                name="terms-checkbox"
+                type="text"
+                placeholder="Last Name"
+                name="last_name"
                 required
               />
-              By signing up, you agree to our adherence to the
-              <a href="/static/privacy_gov_ph_data-privacy-act.pdf" target="_blank"
-                >Data Privacy Act of 2012.</a
-              >
-            </label>
+              {% for error in form.last_name.errors %}
+              <div class="error-message">{{ error }}</div>
+              {% endfor %}
 
-          <div class="signup-btn-container">
-            <button type="submit" id="signup-button" class="signup-button" disabled>SIGN UP</button>
+              <input
+                type="text"
+                placeholder="Username"
+                name="username"
+                required
+              />
+              {% for error in form.username.errors %}
+              <div class="error-message">{{ error }}</div>
+              {% endfor %}
+
+              <div class="input-container">
+                <input
+                  type="text"
+                  class="styled-input"
+                  placeholder="Email"
+                  name="email"
+                  required
+                />
+                {% for error in form.email.errors %}
+                <div class="error-message">{{ error }}</div>
+                {% endfor %}
+              </div>
+
+              <div class="password-div">
+                <div class="password-input-container">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="password"
+                    required
+                  />
+                  {% for error in form.password.errors %}
+                  <div class="error-message">{{ error }}</div>
+                  {% endfor %}
+                  <i class="togglepass" id="togglePassword">
+                    <img
+                      id="eye-image"
+                      src="../static/SVG/eyehidden.svg"
+                      alt="show/hide"
+                      onclick="toggleImage()"
+                    />
+                  </i>
+                </div>
+              </div>
+
+              <div class="password-div">
+                <div class="password-input-container">
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="confirm"
+                    id="password-confirm"
+                    required
+                  />
+                  {% for error in form.confirm.errors %}
+                  <div class="error-message">{{ error }}</div>
+                  {% endfor %}
+                  <i class="togglepass" id="togglePassword-confirm">
+                    <img
+                      id="eye-image-confirm"
+                      src="../static/SVG/eyehidden.svg"
+                      alt="show/hide"
+                      onclick="toggleImageConfirm()"
+                    />
+                  </i>
+                </div>
+              </div>
+
+              <label for="terms-checkbox">
+                <input
+                  type="checkbox"
+                  id="terms-checkbox"
+                  name="terms-checkbox"
+                  required
+                />
+                By signing up, you agree to our adherence to the
+                <a
+                  href="/static/privacy_gov_ph_data-privacy-act.pdf"
+                  target="_blank"
+                  >Data Privacy Act of 2012.</a
+                >
+              </label>
+
+              <div class="signup-btn-container">
+                <button
+                  type="submit"
+                  id="signup-button"
+                  class="signup-button"
+                  disabled
+                >
+                  SIGN UP
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    </section>
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
 
-    <script src="../static/javascript/signup.js"></script>
-    <script src="../static/javascript/signup_confirmation.js"></script>
-    <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
-
-    <!-- Do not delete: div class below fixes html to 100vh -->
-    <div class="htmlheight100vh"></div>
-  </body>
-</html>
+<script src="../static/javascript/signup.js"></script>
+<script src="../static/javascript/signup_confirmation.js"></script>
+<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
+{% endblock %}
