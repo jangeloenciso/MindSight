@@ -7,9 +7,9 @@ class StudentRecordForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     # username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('Password', validators=[DataRequired(), Length(min=8)])
-    role = StringField('Role', validators=[DataRequired()])
+    # email = StringField('Email', validators=[DataRequired(), Email()])
+    # password = StringField('Password', validators=[DataRequired(), Length(min=8)])
+    # role = StringField('Role', validators=[DataRequired()])
 
     # College Information
     college_name = StringField('College Name', validators=[DataRequired()])
@@ -17,8 +17,14 @@ class StudentRecordForm(FlaskForm):
     # Course Information
     course_name = StringField('Course Name', validators=[DataRequired()])
 
-    # Student Information
+# Basic Information
     student_id = StringField('Student ID', validators=[DataRequired(), Regexp('^20\d{2}-\d{6}$', message="Student ID must be in the format 20xx-xxxxxx")])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    first_name = StringField('First Name', validators=[DataRequired()])
+    course = StringField('Course', validators=[DataRequired()])
+    year_level = StringField('Year Level', validators=[Optional()])
+    campus = StringField('Campus', validators=[DataRequired()])
+    
     age = IntegerField('Age', validators=[Optional()])
     sex = StringField('Sex', validators=[Optional()])
     gender = StringField('Gender', validators=[Optional()])
@@ -27,9 +33,12 @@ class StudentRecordForm(FlaskForm):
     date_of_birth = DateField('Date of Birth', validators=[Optional()])
     place_of_birth = StringField('Place of Birth', validators=[Optional()])
     nationality = StringField('Nationality', validators=[Optional()])
-    counseling_history = StringField('Counseling History', validators=[Optional()])
-    residence = StringField('Residence', validators=[Optional()])
     civil_status = StringField('Civil Status', validators=[Optional()])
+    email_address = StringField('Email Address', validators=[DataRequired()])
+
+    guardian_name = StringField('Guardian Name', validators=[Optional()])
+    guardian_address = StringField('Guardian Address', validators=[Optional()])
+    guardian_contact = StringField('Guardian Contact', validators=[Optional()])
 
     # History Information
     information_provider = StringField('Information Provider', validators=[Optional()])

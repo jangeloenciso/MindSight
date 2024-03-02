@@ -13,6 +13,7 @@ from app.forms.login import LoginForm
 from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 from functools import wraps
+import logging
 
 
 roles_permissions = {
@@ -368,18 +369,18 @@ def student_record(student_id):
 @login_required
 def edit_record(student_id):
     student = (
-        StudentInformation.query
+        BasicInformation.query
         .options(
-            joinedload(StudentInformation.personal_information),
-            joinedload(StudentInformation.family_background),
-            joinedload(StudentInformation.health_information),
-            joinedload(StudentInformation.educational_background),
-            joinedload(StudentInformation.social_history),
-            joinedload(StudentInformation.history_information),
-            joinedload(StudentInformation.occupational_history),
-            joinedload(StudentInformation.substance_abuse_history),
-            joinedload(StudentInformation.legal_history),
-            joinedload(StudentInformation.additional_information)
+            joinedload(BasicInformation.personal_information),
+            joinedload(BasicInformation.family_background),
+            joinedload(BasicInformation.health_information),
+            joinedload(BasicInformation.educational_background),
+            joinedload(BasicInformation.social_history),
+            joinedload(BasicInformation.history_information),
+            joinedload(BasicInformation.occupational_history),
+            joinedload(BasicInformation.substance_abuse_history),
+            joinedload(BasicInformation.legal_history),
+            joinedload(BasicInformation.additional_information)
         )
         .filter_by(student_id=student_id)
         .first()
@@ -418,9 +419,8 @@ def edit_record(student_id):
 def add_record():
     form = StudentRecordForm()
 
-    if form.validate_on_submit():  # If the form is submitted and validated
-        # Create instances of related models and populate them with form data
-        personal_info = PersonalInformation(
+    if form.validate_on_submit():
+        personal_info = BasicInformation(
             age=form.age.data,
             sex=form.sex.data,
             gender=form.gender.data,
@@ -442,7 +442,57 @@ def add_record():
             stressors=form.stressors.data,
             substance_abuse=form.substance_abuse.data,
             addiction=form.addiction.data,
-            # Populate other history information fields
+            depression_sad_down_feelings=form.depression_sad_down_feelings.data,
+            high_low_energy_level=form.high_low_energy_level.data,
+            angry_irritable=form.angry_irritable.data,
+            loss_of_interest=form.loss_of_interest.data,
+            difficulty_enjoying_things=form.difficulty_enjoying_things.data,
+            crying_spells=form.crying_spells.data,
+            decreased_motivation=form.decreased_motivation.data,
+            withdrawing_from_people=form.withdrawing_from_people.data,
+            mood_swings=form.mood_swings.data,
+            black_and_white_thinking=form.black_and_white_thinking.data,
+            negative_thinking=form.negative_thinking.data,
+            change_in_weight_or_appetite=form.change_in_weight_or_appetite.data,
+            change_in_sleeping_pattern=form.change_in_sleeping_pattern.data,
+            suicidal_thoughts_or_plans=form.suicidal_thoughts_or_plans.data,
+            self_harm=form.self_harm.data,
+            homicidal_thoughts_or_plans=form.homicidal_thoughts_or_plans.data,
+            difficulty_focusing=form.difficulty_focusing.data,
+            feelings_of_hopelessness=form.feelings_of_hopelessness.data,
+            feelings_of_shame_or_guilt=form.feelings_of_shame_or_guilt.data,
+            feelings_of_inadequacy=form.feelings_of_inadequacy.data,
+            low_self_esteem=form.low_self_esteem.data,
+            anxious_nervous_tense_feelings=form.anxious_nervous_tense_feelings.data,
+            panic_attacks=form.panic_attacks.data,
+            racing_or_scrambled_thoughts=form.racing_or_scrambled_thoughts.data,
+            bad_or_unwanted_thoughts=form.bad_or_unwanted_thoughts.data,
+            flashbacks_or_nightmares=form.flashbacks_or_nightmares.data,
+            muscle_tensions_aches=form.muscle_tensions_aches.data,
+            hearing_voices_or_seeing_things=form.hearing_voices_or_seeing_things.data,
+            thoughts_of_running_away=form.thoughts_of_running_away.data,
+            paranoid_thoughts=form.paranoid_thoughts.data,
+            feelings_of_frustration=form.feelings_of_frustration.data,
+            feelings_of_being_cheated=form.feelings_of_being_cheated.data,
+            perfectionism=form.perfectionism.data,
+            counting_washing_checking=form.counting_washing_checking.data,
+            distorted_body_image=form.distorted_body_image.data,
+            concerns_about_dieting=form.concerns_about_dieting.data,
+            loss_of_control_over_eating=form.loss_of_control_over_eating.data,
+            binge_eating_or_purging=form.binge_eating_or_purging.data,
+            rules_about_eating=form.rules_about_eating.data,
+            compensating_for_eating=form.compensating_for_eating.data,
+            excessive_exercise=form.excessive_exercise.data,
+            indecisiveness_about_career=form.indecisiveness_about_career.data,
+            job_problems=form.job_problems.data,
+            other=form.other.data,
+            previous_treatments=form.previous_treatments.data,
+            previous_treatments_likes_dislikes=form.previous_treatments_likes_dislikes.data,
+            previous_treatments_learned=form.previous_treatments_learned.data,
+            previous_treatments_like_to_continue=form.previous_treatments_like_to_continue.data,
+            previous_hospital_stays_psych=form.previous_hospital_stays_psych.data,
+            current_thoughts_to_harm=form.current_thoughts_to_harm.data,
+            past_thoughts_to_harm=form.past_thoughts_to_harm.data,
             student_id=form.student_id.data
         )
 
@@ -472,7 +522,7 @@ def add_record():
             mother_first_name=form.mother_first_name.data,
             family_abuse_history=form.family_abuse_history.data,
             family_mental_history=form.family_mental_history.data,
-            additional_information=form.additional_information.data,
+            additional_information=form.additional_information_family.data,
             student_id=form.student_id.data
         )
 
@@ -487,7 +537,7 @@ def add_record():
         educational_background = EducationalBackground(
             educational_history=form.educational_history.data,
             highest_level_achieved=form.highest_level_achieved.data,
-            additional_information=form.additional_information_edu.data,
+            additional_information=form.additional_information_education.data,
             student_id=form.student_id.data
         )
 
@@ -501,7 +551,25 @@ def add_record():
         substance_abuse_history = SubstanceAbuseHistory(
             struggled_with_substance_abuse=form.struggled_with_substance_abuse.data,
             alcohol=form.alcohol.data,
-            # Populate other substance abuse history fields
+            alcohol_age_first_use=form.alcohol_age_first_use.data,
+            alcohol_frequency_of_use=form.alcohol_frequency_of_use.data,
+            alcohol_amount_used=form.alcohol_amount_used.data,
+            alcohol_way_of_intake=form.alcohol_way_of_intake.data,
+            marijuana=form.marijuana.data,
+            marijuana_age_first_use=form.marijuana_age_first_use.data,
+            marijuana_frequency_of_use=form.marijuana_frequency_of_use.data,
+            marijuana_amount_used=form.marijuana_amount_used.data,
+            marijuana_way_of_intake=form.marijuana_way_of_intake.data,
+            heroin=form.heroin.data,
+            heroin_age_first_use=form.heroin_age_first_use.data,
+            heroin_frequency_of_use=form.heroin_frequency_of_use.data,
+            heroin_amount_used=form.heroin_amount_used.data,
+            heroin_liked_disliked=form.heroin_liked_disliked.data,
+            other=form.substance_abuse_other.data,
+            other_age_first_use=form.other_age_first_use.data,
+            other_frequency_of_use=form.other_frequency_of_use.data,
+            other_amount_used=form.other_amount_used.data,
+            other_liked_disliked=form.other_liked_disliked.data,
             student_id=form.student_id.data
         )
 
@@ -521,13 +589,12 @@ def add_record():
         )
 
         # Create an instance of the main StudentInformation model and associate related models
-        new_student = StudentInformation(
+        new_student = BasicInformation(
             student_id=form.student_id.data,
             last_name=form.last_name.data,
             first_name=form.first_name.data,
             course=form.course.data,
             year_level=form.year_level.data,
-            # gpa=form.gpa.data,
             campus=form.campus.data,
             personal_information=personal_info,
             history_information=history_info,
@@ -550,9 +617,13 @@ def add_record():
 
         # Redirect the user to a page displaying the newly added record
         return redirect(url_for('student_record', new_record_id=new_student.id))
+    else:
+        logging.error("Form validation failed")
+        logging.error(form.errors)
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
     return render_template('add_record.html', form=form)
+
 
 
 # API endpoints

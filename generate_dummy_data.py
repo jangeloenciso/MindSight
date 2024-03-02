@@ -9,7 +9,7 @@ from dummy_data_input import course_names, religion_names, strands
 
 with app.app_context():
 
-    db.session.query(PersonalInformation).delete()
+    # db.session.query(PersonalInformation).delete()
     db.session.query(FamilyBackground).delete()
     db.session.query(HealthInformation).delete()
     db.session.query(EducationalBackground).delete()
@@ -20,7 +20,7 @@ with app.app_context():
     db.session.query(SubstanceAbuseHistory).delete()
     db.session.query(LegalHistory).delete()
     db.session.query(AdditionalInformation).delete()
-    db.session.query(StudentInformation).delete()
+    db.session.query(BasicInformation).delete()
     db.session.commit()
 
     fake = Faker()
@@ -45,33 +45,27 @@ with app.app_context():
 
     for _ in range(200):
         family_name = fake.last_name()
-        student = StudentInformation(
+        student = BasicInformation(
             student_id=generate_student_id(),
             last_name=family_name,
             first_name=fake.first_name(),
             course=fake.random_element(elements=course_names),
             year_level=str(random.randint(1, 4)),
             # gpa=round(random.uniform(1.0, 5.0), 2),
-            campus=fake.random_element(elements=["Boni", "Pasig"])
-        )
-
-        db.session.add(student)
-        db.session.commit()
-
-        personal_information = PersonalInformation(
+            campus=fake.random_element(elements=["Boni", "Pasig"]),
             age=random.randint(18, 30),
-            sex=fake.random_element(elements=("Male", "Female")),
             gender=fake.random_element(elements=("Male", "Female", "LGBTQ")),
             contact_number=fake.random_int(min=100000, max=99999999999),
             religion=fake.random_element(elements=religion_names),
             date_of_birth=random_date(date(1990, 1, 1), date(2005, 1, 1)),
-            place_of_birth=fake.city(),
             nationality=fake.random_element(elements=("Filipino", "Non-Filipino")),
-            counseling_history=fake.random_element(elements=("Yes", "No")),
-            residence=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
+            home_address=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
+            email_address=fake.email(),
             civil_status=fake.random_element(elements=("Single", "Married", "Divorced", "Widowed")),
-            student=student
         )
+
+        db.session.add(student)
+        db.session.commit()
 
         history_information = HistoryInformation(
             information_provider=fake.name(),
@@ -266,7 +260,7 @@ with app.app_context():
         for _ in range(1):
             generate_fake_student_visit(student)
 
-        db.session.add(personal_information)
+        # db.session.add(personal_information)
         db.session.add(history_information)
         db.session.add(health_information)
         db.session.add(family_background)

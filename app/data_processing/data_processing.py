@@ -7,7 +7,7 @@ from sqlalchemy.orm import joinedload
 
 def process_data(student_id=None, search_query=None):
     with app.app_context():
-        query = StudentInformation.query
+        query = BasicInformation.query
 
         if student_id is not None:
             query = query.filter_by(student_id=student_id)
@@ -15,23 +15,23 @@ def process_data(student_id=None, search_query=None):
         if search_query:
             query = (
                 query
-                .join(PersonalInformation)
+                # .join(PersonalInformation)
                 .join(EducationalBackground)
                 # .join(PsychologicalAssessments)
-                .join(Course, Course.name == StudentInformation.course)
+                .join(Course, Course.name == BasicInformation.course)
                 .join(College, College.id == Course.college_id) 
                 .filter(
-                    (StudentInformation.student_id.ilike(f"%{search_query}%")) |
-                    (StudentInformation.first_name.ilike(f"%{search_query}%")) |
-                    (StudentInformation.last_name.ilike(f"%{search_query}%")) |
-                    (StudentInformation.course.ilike(f"%{search_query}%")) |
-                    (StudentInformation.year_level.ilike(f"%{search_query}%")) |
-                    (StudentInformation.campus.ilike(f"%{search_query}%")) |
-                    (PersonalInformation.sex.ilike(f"%{search_query}%")) |
-                    (PersonalInformation.gender.ilike(f"%{search_query}%")) |
-                    (PersonalInformation.religion.ilike(f"%{search_query}%")) |
-                    (PersonalInformation.nationality.ilike(f"%{search_query}%")) |
-                    (PersonalInformation.place_of_birth.ilike(f"%{search_query}%")) |
+                    (BasicInformation.student_id.ilike(f"%{search_query}%")) |
+                    (BasicInformation.first_name.ilike(f"%{search_query}%")) |
+                    (BasicInformation.last_name.ilike(f"%{search_query}%")) |
+                    (BasicInformation.course.ilike(f"%{search_query}%")) |
+                    (BasicInformation.year_level.ilike(f"%{search_query}%")) |
+                    (BasicInformation.campus.ilike(f"%{search_query}%")) |
+                    (BasicInformation.sex.ilike(f"%{search_query}%")) |
+                    (BasicInformation.gender.ilike(f"%{search_query}%")) |
+                    (BasicInformation.religion.ilike(f"%{search_query}%")) |
+                    (BasicInformation.nationality.ilike(f"%{search_query}%")) |
+                    (BasicInformation.place_of_birth.ilike(f"%{search_query}%")) |
                     # (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
                     # (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
                     # (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
@@ -44,18 +44,18 @@ def process_data(student_id=None, search_query=None):
 
         data = (
             query
-            .options(joinedload(StudentInformation.personal_information))
-            .options(joinedload(StudentInformation.history_information))
-            .options(joinedload(StudentInformation.health_information))
-            .options(joinedload(StudentInformation.family_background))
-            .options(joinedload(StudentInformation.social_history))
-            .options(joinedload(StudentInformation.educational_background))
-            .options(joinedload(StudentInformation.occupational_history))
-            .options(joinedload(StudentInformation.substance_abuse_history))
-            .options(joinedload(StudentInformation.legal_history))
+            # .options(joinedload(StudentInformation.personal_information))
+            .options(joinedload(BasicInformation.history_information))
+            .options(joinedload(BasicInformation.health_information))
+            .options(joinedload(BasicInformation.family_background))
+            .options(joinedload(BasicInformation.social_history))
+            .options(joinedload(BasicInformation.educational_background))
+            .options(joinedload(BasicInformation.occupational_history))
+            .options(joinedload(BasicInformation.substance_abuse_history))
+            .options(joinedload(BasicInformation.legal_history))
             # .options(joinedload(StudentInformation.psychological_assessments))
-            .options(joinedload(StudentInformation.additional_information))
-            .options(joinedload(StudentInformation.visits))
+            .options(joinedload(BasicInformation.additional_information))
+            .options(joinedload(BasicInformation.visits))
             .all()
         )
 

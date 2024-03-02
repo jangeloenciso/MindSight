@@ -60,15 +60,29 @@ class Course(db.Model):
     college_id = db.Column(db.Integer, db.ForeignKey('colleges.id'))
 
 
-class StudentInformation(db.Model):
+class BasicInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.String(20), unique=True, nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     course = db.Column(db.String(100), nullable=False)
     year_level = db.Column(db.String(20))
-    # gpa = db.Column(db.Float)
     campus = db.Column(db.String(20), nullable=False)
+
+    date_of_birth = db.Column(db.Date)
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(20))
+    civil_status = db.Column(db.String(20))
+    nationality = db.Column(db.String(50))
+    religion = db.Column(db.String(50))
+    home_address = db.Column(db.String(100))
+    contact_number = db.Column(db.String(20))
+    email_address = db.Column(db.String(120), nullable=False)
+
+    guardian_name = db.Column(db.String(50), nullable=True)
+    guardian_address = db.Column(db.String(50), nullable=True)
+    guardian_contact = db.Column(db.String(20), nullable=True)
+
 
     @validates('student_id')
     def validate_student_id(self, key, value):
@@ -77,7 +91,7 @@ class StudentInformation(db.Model):
         return value
 
 
-    personal_information = db.relationship('PersonalInformation', backref='student', uselist=False)
+    # personal_information = db.relationship('PersonalInformation', backref='student', uselist=False)
 
     history_information = db.relationship('HistoryInformation', backref='student', uselist=False)
 
@@ -102,20 +116,14 @@ class StudentInformation(db.Model):
     visits = db.relationship('StudentVisits', backref='student')
 
 
-class PersonalInformation(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    age = db.Column(db.Integer)
-    sex = db.Column(db.String(10))
-    gender = db.Column(db.String(20))
-    contact_number = db.Column(db.String(20))
-    religion = db.Column(db.String(50))
-    date_of_birth = db.Column(db.Date)
-    place_of_birth = db.Column(db.String(100))
-    nationality = db.Column(db.String(50))
-    counseling_history = db.Column(db.String(100))
-    residence = db.Column(db.String(100))
-    civil_status = db.Column(db.String(20))
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+# class PersonalInformation(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+    
+#     # sex = db.Column(db.String(10))    
+#     # counseling_history = db.Column(db.String(100))
+    
+    
+#     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
 
 class HistoryInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -185,7 +193,7 @@ class HistoryInformation(db.Model):
     current_thoughts_to_harm = db.Column(db.Boolean, default=False)
     past_thoughts_to_harm = db.Column(db.Boolean, default=False)
     
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
     
 class HealthInformation(db.Model):
@@ -215,7 +223,7 @@ class HealthInformation(db.Model):
     # speech = db.Column(db.String(20))
     # general_health = db.Column(db.String(100))
     # experienced_sickness = db.Column(db.String(3))
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 # idk how to add siblings and shit 
 class FamilyBackground(db.Model):
@@ -231,7 +239,7 @@ class FamilyBackground(db.Model):
     family_mental_history = db.Column(db.String(300))
     additional_information = db.Column(db.String(300))
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class SocialHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -241,7 +249,7 @@ class SocialHistory(db.Model):
     hobbies_or_interests = db.Column(db.String(300))
     cultural_concerns = db.Column(db.String(300))
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class EducationalBackground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -257,7 +265,7 @@ class EducationalBackground(db.Model):
     # jhs_graduation_year = db.Column(db.Integer)
     # elementary_school = db.Column(db.String(100))
     # elementary_graduation_year = db.Column(db.Integer)
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class OccupationalHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -266,7 +274,7 @@ class OccupationalHistory(db.Model):
     satisfaction = db.String(20)
     satisfaction_reason = db.String(200)
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class SubstanceAbuseHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -357,7 +365,7 @@ class SubstanceAbuseHistory(db.Model):
     other_meds_amount_used = db.Column(db.String(50))
     other_meds_way_of_intake = db.Column(db.String(50))
     
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class LegalHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -369,7 +377,7 @@ class LegalHistory(db.Model):
 
     # TODO: chart
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 class AdditionalInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -379,7 +387,7 @@ class AdditionalInformation(db.Model):
     things_to_change = db.Column(db.String(500))
     other_information = db.Column(db.String(500))
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 
 # TODO: WALA SA FORM
@@ -399,6 +407,6 @@ class StudentVisits(db.Model):
     date_of_visit = db.Column(db.Date, nullable=False)
     nature_of_concern = db.Column(db.String(100))
 
-    student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
     # Plan of action, recommendation, if for follow up or not,
