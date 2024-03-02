@@ -67,8 +67,10 @@
         >
           <div class="grid-checkbox"><input type="checkbox" /></div>
           <div class="grid-section">{{ student.student_id }}</div>
-          <div class="grid-name">{{ student.last_name }}, {{ student.first_name }} </div>
-          <div class="grid-gender"> {{ student.gender }}</div>
+          <div class="grid-name">
+            {{ student.last_name }}, {{ student.first_name }}
+          </div>
+          <div class="grid-gender">{{ student.gender }}</div>
         </a>
         {% endif %} {% endfor %}
         <!-- Add more rows as needed -->
