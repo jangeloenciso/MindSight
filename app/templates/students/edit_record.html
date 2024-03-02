@@ -53,12 +53,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="course">Course/Department:</label>
-              <input
-                type="text"
-                id="course"
-                name="course"
-                placeholder="Course/Department"
-              />
+              {{ form.course_name(placeholder='Course/Department') }}
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
@@ -2815,12 +2810,12 @@ href="/static/fonts/custom-fonts.css"
       </div>
       
     </div>
-  </div>
-  <div class="form-btn-container">
-    <button class="update-btn" type="submit">Submit</button>
-    <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-      <button class="cancel-btn">Cancel</button>
-    </a>
+    <div class="form-btn-container">
+      <button class="update-btn" type="submit">UPDATE</button>
+      <a href="{{ url_for('student_record', student_id=student.student_id) }}">
+        <button class="cancel-btn">CANCEL</button>
+      </a>
+    </div>
   </div>
 </form>
 </div>
