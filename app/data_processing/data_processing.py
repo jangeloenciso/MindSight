@@ -27,7 +27,6 @@ def process_data(student_id=None, search_query=None):
                     (BasicInformation.course.ilike(f"%{search_query}%")) |
                     (BasicInformation.year_level.ilike(f"%{search_query}%")) |
                     (BasicInformation.campus.ilike(f"%{search_query}%")) |
-                    (BasicInformation.sex.ilike(f"%{search_query}%")) |
                     (BasicInformation.gender.ilike(f"%{search_query}%")) |
                     (BasicInformation.religion.ilike(f"%{search_query}%")) |
                     (BasicInformation.nationality.ilike(f"%{search_query}%")) |
@@ -61,7 +60,6 @@ def process_data(student_id=None, search_query=None):
 
         data_list = []
         for record in data:
-            personal_information = record.personal_information
             history_information = record.history_information
             health_information = record.health_information
             family_background = record.family_background
@@ -92,16 +90,13 @@ def process_data(student_id=None, search_query=None):
                 'year_level': record.year_level,
 
                 # Personal Information
-                'age': personal_information.age,
-                'sex': personal_information.sex,
-                'gender': personal_information.gender,
-                'contact_number': personal_information.contact_number,
-                'religion': personal_information.religion,
-                'date_of_birth': personal_information.date_of_birth,
-                'place_of_birth': personal_information.place_of_birth,
-                'nationality': personal_information.nationality,
-                'counseling_history': personal_information.counseling_history,
-                'residence': personal_information.residence,
+                'age': record.age,
+                'gender': record.gender,
+                'contact_number': record.contact_number,
+                'religion': record.religion,
+                'date_of_birth': record.date_of_birth,
+                'nationality': record.nationality,
+                'residence': record.home_address,
 
                 # Family Background
                 'father_age': family_background.father_age,
