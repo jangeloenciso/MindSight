@@ -6,6 +6,8 @@
 
     /* positions right div properly */
     margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
     padding: 40px;
 }
 
@@ -208,14 +210,15 @@ p {
 }
 
 select {
-    border: 2px solid var(--primary-color);
-    outline-color: var(--primary-color);
+    border: 5px solid transparent;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 7px;
     border-radius: 2em;
     color: var(--primary-color);
     font-size: 1rem;
     font-weight: 300;
     width: 100%;
-    padding: 0.9em 1em;
+    padding: 0 1em;
     letter-spacing: 2px;
     transition: cubic-bezier(0.18, 0.89, 0.32, 1.28) 1s, transform 1s ease-out;
     background-color: transparent;

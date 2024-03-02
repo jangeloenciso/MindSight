@@ -66,7 +66,7 @@ select, .metrics {
     height: auto;
     background-color: var(--primary-color);
     color: #FFF;
-    border: none;
+    border: 5px solid var(--primary-color);
     border-radius: 10px;
     padding: 10px;
     transition: var(--smooth-transition);
