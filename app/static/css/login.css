@@ -133,11 +133,6 @@ body {
     opacity: 0;
 }
 
-.signup-container {
-    color: var(--white);
-    transform: translateY(20px);
-}
-
 
 /* SVGs */
 .svg-top {
