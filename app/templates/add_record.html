@@ -17,6 +17,7 @@
       
 
       <!-- TODO: LAGYAN NG CAMPUS FIELD. Kahit wala sa provided form -->
+      <!-- TODO: yung radio buttons din medyo problematic pero im dying so i'll look into it later rawr -->
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
       
@@ -34,6 +35,11 @@
               <label for="studNumber">Student's Number:</label>
               {{ form.student_id(placeholder='XXXX-XXXXXX') }}
             </div>
+            <div>
+              <label for="studNumber">Campus</label>
+              {{ form.campus() }}
+            </div>
+            
           </div>
 
           <div class="single-column">
@@ -46,7 +52,7 @@
           <div class="double-column">
             <div>
               <label for="course">Course/Department:</label>
-              {{ form.age(placeholder='Course/Department') }}
+              {{ form.course(placeholder='Course/Department') }}
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
@@ -107,7 +113,7 @@
           <div class="double-column">
             <div>
               <label for="email">Email Address:</label>
-              {{ form.residence(placeholder='Email Address') }}
+              {{ form.email_address(placeholder='Email Address') }}
             </div>
             <div>
               <label for="cnumber">Cellphone Number:</label>

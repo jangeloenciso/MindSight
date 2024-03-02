@@ -647,7 +647,7 @@ def add_record():
             date_of_birth = form.date_of_birth.data,
             age = form.age.data,
             gender = form.gender.data,
-            civil_status = form.civil_status.data,
+            civil_status = request.form.get('civil'),
             nationality = form.nationality.data,
             religion = form.religion.data,
             residence = form.residence.data,
@@ -682,7 +682,7 @@ def add_record():
         logging.error(form.errors)
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('test.html', form=form)
+    return render_template('add_record.html', form=form)
 
 
 

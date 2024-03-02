@@ -376,8 +376,8 @@ class SubstanceAbuseHistory(db.Model):
     other_meds_amount_used = db.Column(db.String(50))
     other_meds_way_of_intake = db.Column(db.String(50))
 
-    treatment_program_name = db.Column(db.String(50), nullable=False)
-    treatment_type = db.Column(db.String(50), nullable=False)
+    treatment_program_name = db.Column(db.String(50), nullable=True)
+    treatment_type = db.Column(db.String(50), nullable=True)
     treatment_date = db.Column(db.Date)
     treatment_outcome = db.Column(db.String(100))
 

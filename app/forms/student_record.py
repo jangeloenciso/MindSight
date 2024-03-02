@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField
+from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
 
 class StudentRecordForm(FlaskForm):
@@ -16,7 +16,7 @@ class StudentRecordForm(FlaskForm):
     date_of_birth = DateField('Date of Birth', validators=[Optional()])
     age = IntegerField('Age', validators=[Optional()])
     gender = StringField('Gender', validators=[Optional()])
-    civil_status = StringField('Civil Status', validators=[Optional()])
+    civil_status = HiddenField()
     nationality = StringField('Nationality', validators=[Optional()])
     religion = StringField('Religion', validators=[Optional()])
     residence = StringField('Residence', validators=[Optional()])
