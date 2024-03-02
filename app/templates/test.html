@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Form</title>
+</head>
+<body>
+    <h1>Student Record Form</h1>
+    <form method="POST" acting="/add">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag }}
+        <!-- Basic Information -->
+        <label for="student_id">Student ID</label><br>
+        <input type="text" id="student_id" name="student_id" value="{{ form.student_id }}"><br>
+        
+        <label for="last_name">Last Name</label><br>
+        <input type="text" id="last_name" name="last_name" value="{{ form.last_name }}"><br>
+        
+        <label for="first_name">First Name</label><br>
+        <input type="text" id="first_name" name="first_name" value="{{ form.first_name }}"><br>
+        
+        <label for="course">Course</label><br>
+        <input type="text" id="course" name="course" value="{{ form.course }}"><br>
+        
+        <label for="year_level">Year Level</label><br>
+        <input type="text" id="year_level" name="year_level" value="{{ form.year_level }}"><br>
+        
+        <label for="campus">Campus</label><br>
+        <input type="text" id="campus" name="campus" value="{{ form.campus }}"><br>
+        
+        <label for="date_of_birth">Date of Birth</label><br>
+        <input type="date" id="date_of_birth" name="date_of_birth" value="{{ form.date_of_birth }}"><br>
+        
+        <label for="age">Age</label><br>
+        <input type="number" id="age" name="age" value="{{ form.age }}"><br>
+        
+        <label for="gender">Gender</label><br>
+        <input type="text" id="gender" name="gender" value="{{ form.gender }}"><br>
+        
+        <label for="civil_status">Civil Status</label><br>
+        <input type="text" id="civil_status" name="civil_status" value="{{ form.civil_status }}"><br>
+        
+        <label for="nationality">Nationality</label><br>
+        <input type="text" id="nationality" name="nationality" value="{{ form.nationality }}"><br>
+        
+        <label for="religion">Religion</label><br>
+        <input type="text" id="religion" name="religion" value="{{ form.religion }}"><br>
+        
+        <label for="residence">Residence</label><br>
+        <input type="text" id="residence" name="residence" value="{{ form.residence }}"><br>
+        
+        <!-- Contact Information -->
+        <label for="email_address">Email</label><br>
+        <input type="email" id="email_address" name="email_address" value="{{ form.email_address }}"><br>
+        
+        <label for="contact_number">Contact Number</label><br>
+        <input type="tel" id="contact_number" name="contact_number" value="{{ form.contact_number }}"><br>
+        
+        <!-- Guardian Information -->
+        <label for="guardian_name">Guardian Name</label><br>
+        <input type="text" id="guardian_name" name="guardian_name" value="{{ form.guardian_name }}"><br>
+        
+        <label for="guardian_address">Guardian Address</label><br>
+        <input type="text" id="guardian_address" name="guardian_address" value="{{ form.guardian_address }}"><br>
+        
+        <label for="guardian_contact">Guardian Contact</label><br>
+        <input type="tel" id="guardian_contact" name="guardian_contact" value="{{ form.guardian_contact }}"><br>
+        
+        <!-- History Information -->
+        <label for="information_provider">Information Provider</label><br>
+        <input type="text" id="information_provider" name="information_provider" value="{{ form.information_provider }}"><br>
+        
+        <!-- Current Problems -->
+        <label for="current_problem">Current Problem</label><br>
+        <input type="text" id="current_problem" name="current_problem" value="{{ form.current_problem }}"><br>
+        
+        <label for="problem_length">Problem Length</label><br>
+        <input type="text" id="problem_length" name="problem_length" value="{{ form.problem_length }}"><br>
+        
+        <label for="stressors">Stressors</label><br>
+        <input type="text" id="stressors" name="stressors" value="{{ form.stressors }}"><br>
+        
+        <!-- Substance Abuse -->
+        <label for="substance_abuse">Substance Abuse</label><br>
+        <input type="checkbox" id="substance_abuse" name="substance_abuse" value="true" {{ 'checked' if form.substance_abuse.data }}><br>
+        
+        <label for="addiction">Addiction</label><br>
+        <input type="checkbox" id="addiction" name="addiction" value="true" {{ 'checked' if form.addiction.data }}><br>
+        
+        <!-- Depression and Mood -->
+        <label for="depression_sad_down_feelings">Depression/Sad Down Feelings</label><br>
+        <input type="checkbox" id="depression_sad_down_feelings" name="depression_sad_down_feelings" value="true" {{ 'checked' if form.depression_sad_down_feelings.data }}>
+        <br>
+        
+        <!-- High/Low Energy Level -->
+        <label for="high_low_energy_level">High/Low Energy Level</label><br>
+        <input type="checkbox" id="high_low_energy_level" name="high_low_energy_level" value="true" {{ 'checked' if form.high_low_energy_level.data }}>
+        <br>
+        
+        <!-- Angry/Irritable -->
+        <label for="angry_irritable">Angry/Irritable</label><br>
+        <input type="checkbox" id="angry_irritable" name="angry_irritable" value="true" {{ 'checked' if form.angry_irritable.data }}>
+        <br>
+        
+        <!-- Loss of Interest -->
+        <label for="loss_of_interest">Loss of Interest</label><br>
+        <input type="checkbox" id="loss_of_interest" name="loss_of_interest" value="true" {{ 'checked' if form.loss_of_interest.data }}>
+        <br>
+        
+        <!-- Difficulty Enjoying Things -->
+        <label for="difficulty_enjoying_things">Difficulty Enjoying Things</label><br>
+        <input type="checkbox" id="difficulty_enjoying_things" name="difficulty_enjoying_things" value="true" {{ 'checked' if form.difficulty_enjoying_things.data }}>
+        <br>
+        
+        <!-- Crying Spells -->
+        <label for="crying_spells">Crying Spells</label><br>
+        <input type="checkbox" id="crying_spells" name="crying_spells" value="true" {{ 'checked' if form.crying_spells.data }}>
+        <br>
+        
+        <!-- Decreased Motivation -->
+        <label for="decreased_motivation">Decreased Motivation</label><br>
+        <input type="checkbox" id="decreased_motivation" name="decreased_motivation" value="true" {{ 'checked' if form.decreased_motivation.data }}>
+        <br>
+        
+        <!-- Withdrawing from People -->
+        <label for="withdrawing_from_people">Withdrawing from People</label><br>
+        <input type="checkbox" id="withdrawing_from_people" name="withdrawing_from_people" value="true" {{ 'checked' if form.withdrawing_from_people.data }}>
+        <br>
+        
+        <!-- Mood Swings -->
+        <label for="mood_swings">Mood Swings</label><br>
+        <input type="checkbox" id="mood_swings" name="mood_swings" value="true" {{ 'checked' if form.mood_swings.data }}>
+        <br>
+        
+        <!-- Black and White Thinking -->
+        <label for="black_and_white_thinking">Black and White Thinking</label><br>
+        <input type="checkbox" id="black_and_white_thinking" name="black_and_white_thinking" value="true" {{ 'checked' if form.black_and_white_thinking.data }}>
+        <br>
+        
+        <!-- Negative Thinking -->
+        <label for="negative_thinking">Negative Thinking</label><br>
+        <input type="checkbox" id="negative_thinking" name="negative_thinking" value="true" {{ 'checked' if form.negative_thinking.data }}>
+        <br>
+        
+        <!-- Change in Weight or Appetite -->
+        <label for="change_in_weight_or_appetite">Change in Weight or Appetite</label><br>
+        <input type="checkbox" id="change_in_weight_or_appetite" name="change_in_weight_or_appetite" value="true" {{ 'checked' if form.change_in_weight_or_appetite.data }}>
+        <br>
+        
+        <!-- Change in Sleeping Pattern -->
+        <label for="change_in_sleeping_pattern">Change in Sleeping Pattern</label><br>
+        <input type="checkbox" id="change_in_sleeping_pattern" name="change_in_sleeping_pattern" value="true" {{ 'checked' if form.change_in_sleeping_pattern.data }}>
+        <br>
+        
+        <!-- Suicidal Thoughts or Plans -->
+        <label for="suicidal_thoughts_or_plans">Suicidal Thoughts or Plans</label><br>
+        <input type="checkbox" id="suicidal_thoughts_or_plans" name="suicidal_thoughts_or_plans" value="true" {{ 'checked' if form.suicidal_thoughts_or_plans.data }}>
+        <br>
+        
+        <!-- Self-Harm -->
+        <label for="self_harm">Self-Harm</label><br>
+        <input type="checkbox" id="self_harm" name="self_harm" value="true" {{ 'checked' if form.self_harm.data }}>
+        <br>
+        
+        <!-- Homicidal Thoughts or Plans -->
+        <label for="homicidal_thoughts_or_plans">Homicidal Thoughts or Plans</label><br>
+        <input type="checkbox" id="homicidal_thoughts_or_plans" name="homicidal_thoughts_or_plans" value="true" {{ 'checked' if form.homicidal_thoughts_or_plans.data }}>
+        <br>
+        
+        <!-- Difficulty Focusing -->
+        <label for="difficulty_focusing">Difficulty Focusing</label><br>
+        <input type="checkbox" id="difficulty_focusing" name="difficulty_focusing" value="true" {{ 'checked' if form.difficulty_focusing.data }}>
+        <br>
+        
+        <!-- Feelings of Hopelessness -->
+        <label for="feelings_of_hopelessness">Feelings of Hopelessness</label><br>
+        <input type="checkbox" id="feelings_of_hopelessness" name="feelings_of_hopelessness" value="true" {{ 'checked' if form.feelings_of_hopelessness.data }}>
+        <br>
+        
+        <!-- Feelings of Shame or Guilt -->
+        <label for="feelings_of_shame_or_guilt">Feelings of Shame or Guilt</label><br>
+        <input type="checkbox" id="feelings_of_shame_or_guilt" name="feelings_of_shame_or_guilt" value="true" {{ 'checked' if form.feelings_of_shame_or_guilt.data }}>
+        <br>
+        
+        <!-- Feelings of Inadequacy -->
+        <label for="feelings_of_inadequacy">Feelings of Inadequacy</label><br>
+        <input type="checkbox" id="feelings_of_inadequacy" name="feelings_of_inadequacy" value="true" {{ 'checked' if form.feelings_of_inadequacy.data }}>
+        <br>
+        
+        <!-- Low Self-Esteem -->
+        <label for="low_self_esteem">Low Self-Esteem</label><br>
+        <input type="checkbox" id="low_self_esteem" name="low_self_esteem" value="true" {{ 'checked' if form.low_self_esteem.data }}>
+        <br>
+        
+        <!-- Anxious/Nervous/Tense Feelings -->
+        <label for="anxious_nervous_tense_feelings">Anxious/Nervous/Tense Feelings</label><br>
+        <input type="checkbox" id="anxious_nervous_tense_feelings" name="anxious_nervous_tense_feelings" value="true" {{ 'checked' if form.anxious_nervous_tense_feelings.data }}>
+        <br>
+        
+        <!-- Panic Attacks -->
+        <label for="panic_attacks">Panic Attacks</label><br>
+        <input type="checkbox" id="panic_attacks" name="panic_attacks" value="true" {{ '
+        
+        checked' if form.panic_attacks.data }}>
+        <br>
+        
+        <!-- Racing or Scrambled Thoughts -->
+        <label for="racing_or_scrambled_thoughts">Racing or Scrambled Thoughts</label><br>
+        <input type="checkbox" id="racing_or_scrambled_thoughts" name="racing_or_scrambled_thoughts" value="true" {{ 'checked' if form.racing_or_scrambled_thoughts.data }}>
+        <br>
+        
+        <!-- Bad or Unwanted Thoughts -->
+        <label for="bad_or_unwanted_thoughts">Bad or Unwanted Thoughts</label><br>
+        <input type="checkbox" id="bad_or_unwanted_thoughts" name="bad_or_unwanted_thoughts" value="true" {{ 'checked' if form.bad_or_unwanted_thoughts.data }}>
+        <br>
+        
+        <!-- Flashbacks or Nightmares -->
+        <label for="flashbacks_or_nightmares">Flashbacks or Nightmares</label><br>
+        <input type="checkbox" id="flashbacks_or_nightmares" name="flashbacks_or_nightmares" value="true" {{ 'checked' if form.flashbacks_or_nightmares.data }}>
+        <br>
+        
+        <!-- Muscle Tensions/Aches -->
+        <label for="muscle_tensions_aches">Muscle Tensions/Aches</label><br>
+        <input type="checkbox" id="muscle_tensions_aches" name="muscle_tensions_aches" value="true" {{ 'checked' if form.muscle_tensions_aches.data }}>
+        <br>
+        
+        <!-- Hearing Voices or Seeing Things -->
+        <label for="hearing_voices_or_seeing_things">Hearing Voices or Seeing Things</label><br>
+        <input type="checkbox" id="hearing_voices_or_seeing_things" name="hearing_voices_or_seeing_things" value="true" {{ 'checked' if form.hearing_voices_or_seeing_things.data }}>
+        <br>
+        
+        <!-- Thoughts of Running Away -->
+        <label for="thoughts_of_running_away">Thoughts of Running Away</label><br>
+        <input type="checkbox" id="thoughts_of_running_away" name="thoughts_of_running_away" value="true" {{ 'checked' if form.thoughts_of_running_away.data }}>
+        <br>
+        
+        <!-- Paranoid Thoughts -->
+        <label for="paranoid_thoughts">Paranoid Thoughts</label><br>
+        <input type="checkbox" id="paranoid_thoughts" name="paranoid_thoughts" value="true" {{ 'checked' if form.paranoid_thoughts.data }}>
+        <br>
+        
+        <!-- Feelings of Frustration -->
+        <label for="feelings_of_frustration">Feelings of Frustration</label><br>
+        <input type="checkbox" id="feelings_of_frustration" name="feelings_of_frustration" value="true" {{ 'checked' if form.feelings_of_frustration.data }}>
+        <br>
+        
+        <!-- Feelings of Being Cheated -->
+        <label for="feelings_of_being_cheated">Feelings of Being Cheated</label><br>
+        <input type="checkbox" id="feelings_of_being_cheated" name="feelings_of_being_cheated" value="true" {{ 'checked' if form.feelings_of_being_cheated.data }}>
+        <br>
+        
+        <!-- Perfectionism -->
+        <label for="perfectionism">Perfectionism</label><br>
+        <input type="checkbox" id="perfectionism" name="perfectionism" value="true" {{ 'checked' if form.perfectionism.data }}>
+        <br>
+        
+        <!-- Counting/Washing/Checking -->
+        <label for="counting_washing_checking">Counting/Washing/Checking</label><br>
+        <input type="checkbox" id="counting_washing_checking" name="counting_washing_checking" value="true" {{ 'checked' if form.counting_washing_checking.data }}>
+        <br>
+        
+        <!-- Distorted Body Image -->
+        <label for="distorted_body_image">Distorted Body Image</label><br>
+        <input type="checkbox" id="distorted_body_image" name="distorted_body_image" value="true" {{ 'checked' if form.distorted_body_image.data }}>
+        <br>
+        
+        <!-- Concerns About Dieting -->
+        <label for="concerns_about_dieting">Concerns About Dieting</label><br>
+        <input type="checkbox" id="concerns_about_dieting" name="concerns_about_dieting" value="true" {{ 'checked' if form.concerns_about_dieting.data }}>
+        <br>
+        
+        <!-- Loss of Control Over Eating -->
+        <label for="loss_of_control_over_eating">Loss of Control Over Eating</label><br>
+        <input type="checkbox" id="loss_of_control_over_eating" name="loss_of_control_over_eating" value="true" {{ 'checked' if form.loss_of_control_over_eating.data }}>
+        <br>
+        
+        <!-- Binge Eating or Purging -->
+        <label for="binge_eating_or_purging">Binge Eating or Purging</label><br>
+        <input type="checkbox" id="binge_eating_or_purging" name="binge_eating_or_purging" value="true" {{ 'checked' if form.binge_eating_or_purging.data }}>
+        <br>
+        
+        <!-- Rules About Eating -->
+        <label for="rules_about_eating">Rules About Eating</label><br>
+        <input type="checkbox" id="rules_about_eating" name="rules_about_eating" value="true" {{ 'checked' if form.rules_about_eating.data }}>
+        <br>
+        
+        <!-- Compensating for Eating -->
+        <label for="compensating_for_eating">Compensating for Eating</label><br>
+        <input type="checkbox" id="compensating_for_eating" name="compensating_for_eating" value="true" {{ 'checked' if form.compensating_for_eating.data }}>
+        <br>
+        
+        <!-- Excessive Exercise -->
+        <label for="excessive_exercise">Excessive Exercise</label><br>
+        <input type="checkbox" id="excessive_exercise" name="excessive_exercise" value="true" {{ 'checked' if form.excessive_exercise.data }}>
+        <br>
+        
+        <!-- Indecisiveness About Career -->
+        <label for="indecisiveness_about_career">Indecisiveness About Career</label><br>
+        <input type="checkbox" id="indecisiveness_about_career" name="indecisiveness_about_career" value="true" {{ 'checked' if form.indecisiveness_about_career.data }}>
+        <br>
+        
+        <!-- Job Problems -->
+        <label for="job_problems">Job Problems</label><br>
+        <input type="checkbox" id="job_problems" name="job_problems" value="true" {{ 'checked' if form.job_problems.data }}>
+        <br>
+        
+        <!-- Other -->
+        <label for="other_history">Other</label><br>
+        <input type="text" id="other_history" name="other_history" value="{{ form.other_history }}"><br>
+        
+        <!-- Previous Treatments -->
+        <label for="previous_treatments">Previous Treatments</label><br>
+        <input type="checkbox" id="previous_treatments" name="previous_treatments" value="true" {{ 'checked' if form.previous_treatments.data }}>
+        <br>
+        
+        <!-- Previous Treatments Likes/Dislikes -->
+        <label for="previous_treatments_likes_dislikes">Previous Treatments Likes/Dislikes</label><br>
+        <input type="text" id="previous_treatments_likes_dislikes" name="previous_treatments_likes_dislikes" value="{{ form.previous_treatments_likes_dislikes }}"><br>
+        
+        <!-- Previous Treatments Learned -->
+        <label for="previous_treatments_learned">Previous Treatments Learned</label><br>
+        <input type="text" id="previous_treatments_learned" name="previous_treatments_learned" value="{{ form.previous_treatments_learned }}"><br>
+        
+        <!-- Previous Treatments Like to Continue -->
+        <label for="previous_treatments_like_to_continue">Previous Treatments Like to Continue</label><br>
+        <input type="text" id="previous_treatments_like_to_continue" name="previous_treatments_like_to_continue" value="{{ form.previous_treatments_like_to_continue }}"><br>
+        
+        <!-- Previous Hospital Stays (Psych) -->
+        <label for="previous_hospital_stays_psych">Previous Hospital Stays (Psych)</label><br>
+        <input type="checkbox" id="previous_hospital_stays_psych" name="previous_hospital_stays_psych" value="true" {{ 'checked' if form.previous_hospital_stays_psych.data }}>
+        <br>
+        
+        <!-- Current Thoughts to Harm -->
+        <label for="current_thoughts_to_harm">Current Thoughts to Harm</label><br>
+        <input type="checkbox" id="current_thoughts_to_harm" name="current_thoughts_to_harm" value="true" {{ 'checked' if form.current_thoughts_to_harm.data }}>
+        <br>
+        
+        <!-- Past Thoughts to Harm -->
+        <label for="past_thoughts_to_harm">Past Thoughts to Harm</label><br>
+        <input type="checkbox" id="past_thoughts_to_harm" name="past_thoughts_to_harm" value="true" {{ 'checked' if form.past_thoughts_to_harm.data }}>
+        <br>
+
+        <!-- Health Information -->
+        <label for="medication_and_dose">Medication and Dose</label><br>
+        <input type="text" id="medication_and_dose" name="medication_and_dose" value="{{ form.medication_and_dose }}"><br>
+
+        <label for="serious_ch_illnesses_history">Serious Chronic Illnesses History</label><br>
+        <input type="text" id="serious_ch_illnesses_history" name="serious_ch_illnesses_history" value="{{ form.serious_ch_illnesses_history }}"><br>
+
+        <label for="head_injuries">Head Injuries</label><br>
+        <input type="checkbox" id="head_injuries" name="head_injuries" value="true" {{ 'checked' if form.head_injuries.data }}>
+        <br>
+
+        <label for="lose_consciousness">Lose Consciousness</label><br>
+        <input type="checkbox" id="lose_consciousness" name="lose_consciousness" value="true" {{ 'checked' if form.lose_consciousness.data }}>
+        <br>
+
+        <label for="convulsions_or_seizures">Convulsions or Seizures</label><br>
+        <input type="checkbox" id="convulsions_or_seizures" name="convulsions_or_seizures" value="true" {{ 'checked' if form.convulsions_or_seizures.data }}>
+        <br>
+
+        <label for="fever">Fever</label><br>
+        <input type="checkbox" id="fever" name="fever" value="true" {{ 'checked' if form.fever.data }}>
+        <br>
+
+        <label for="allergies">Allergies</label><br>
+        <input type="text" id="allergies" name="allergies" value="{{ form.allergies }}"><br>
+
+        <label for="current_physical_health">Current Physical Health</label><br>
+        <input type="text" id="current_physical_health" name="current_physical_health" value="{{ form.current_physical_health }}"><br>
+
+        <label for="last_check_up">Last Check-Up</label><br>
+        <input type="date" id="last_check_up" name="last_check_up" value="{{ form.last_check_up }}"><br>
+
+        <label for="has_physician">Has Physician</label><br>
+        <input type="checkbox" id="has_physician" name="has_physician" value="true" {{ 'checked' if form.has_physician.data }}>
+        <br>
+
+        <label for="physician_name">Physician Name</label><br>
+        <input type="text" id="physician_name" name="physician_name" value="{{ form.physician_name }}"><br>
+
+        <label for="physician_email">Physician Email</label><br>
+        <input type="email" id="physician_email" name="physician_email" value="{{ form.physician_email }}"><br>
+
+        <label for="physician_number">Physician Number</label><br>
+        <input type="text" id="physician_number" name="physician_number" value="{{ form.physician_number }}"><br>
+
+
+        <!-- Family Background -->
+        <label for="birth_location">Birth Location</label><br>
+        <input type="text" id="birth_location" name="birth_location" value="{{ form.birth_location }}"><br>
+
+        <label for="raised_by">Raised By</label><br>
+        <input type="text" id="raised_by" name="raised_by" value="{{ form.raised_by }}"><br>
+
+        <label for="rel_qual_mother">Relationship Quality with Mother</label><br>
+        <input type="text" id="rel_qual_mother" name="rel_qual_mother" value="{{ form.rel_qual_mother }}"><br>
+
+        <label for="rel_qual_father">Relationship Quality with Father</label><br>
+        <input type="text" id="rel_qual_father" name="rel_qual_father" value="{{ form.rel_qual_father }}"><br>
+
+        <label for="rel_qual_step_parent">Relationship Quality with Step Parent</label><br>
+        <input type="text" id="rel_qual_step_parent" name="rel_qual_step_parent" value="{{ form.rel_qual_step_parent }}"><br>
+
+        <label for="family_abuse_history">Family Abuse History</label><br>
+        <input type="text" id="family_abuse_history" name="family_abuse_history" value="{{ form.family_abuse_history }}"><br>
+
+        <label for="family_mental_history">Family Mental History</label><br>
+        <input type="text" id="family_mental_history" name="family_mental_history" value="{{ form.family_mental_history }}"><br>
+
+        <label for="additional_information_family">Additional Information</label><br>
+        <input type="text" id="additional_information_family" name="additional_information_family" value="{{ form.additional_information_family }}"><br>
+
+        
+
+        <!-- Social History -->
+        <label for="relationship_with_peers">Relationship with Peers</label><br>
+        <input type="text" id="relationship_with_peers" name="relationship_with_peers" value="{{ form.relationship_with_peers }}"><br>
+    
+        <label for="social_support_network">Social Support Network</label><br>
+        <input type="text" id="social_support_network" name="social_support_network" value="{{ form.social_support_network }}"><br>
+    
+        <label for="hobbies_or_interests">Hobbies or Interests</label><br>
+        <input type="text" id="hobbies_or_interests" name="hobbies_or_interests" value="{{ form.hobbies_or_interests }}"><br>
+    
+        <label for="cultural_concerns">Cultural Concerns</label><br>
+        <input type="text" id="cultural_concerns" name="cultural_concerns" value="{{ form.cultural_concerns }}"><br>
+    
+        <!-- Educational Background -->
+        <label for="educational_history">Educational History</label><br>
+        <input type="text" id="educational_history" name="educational_history" value="{{ form.educational_history }}"><br>
+    
+        <label for="highest_level_achieved">Highest Level Achieved</label><br>
+        <input type="text" id="highest_level_achieved" name="highest_level_achieved" value="{{ form.highest_level_achieved }}"><br>
+    
+        <label for="additional_information_education">Additional Information</label><br>
+        <input type="text" id="additional_information_education" name="additional_information_education" value="{{ form.additional_information_education }}"><br>
+    
+        <!-- Occupational History -->
+        <label for="employment_status">Employment Status</label><br>
+        <input type="text" id="employment_status" name="employment_status" value="{{ form.employment_status }}"><br>
+    
+        <label for="satisfaction">Satisfaction</label><br>
+        <input type="text" id="satisfaction" name="satisfaction" value="{{ form.satisfaction }}"><br>
+    
+        <label for="satisfaction_reason">Satisfaction Reason</label><br>
+        <input type="text" id="satisfaction_reason" name="satisfaction_reason" value="{{ form.satisfaction_reason }}"><br>
+
+        <!-- Substance Abuse History -->
+        <label for="struggled_with_substance_abuse">Struggled with Substance Abuse</label><br>
+        <input type="checkbox" id="struggled_with_substance_abuse" name="struggled_with_substance_abuse" value="true" {{ 'checked' if form.struggled_with_substance_abuse.data }}>
+        <br>
+
+        <label for="alcohol">Alcohol</label><br>
+        <input type="checkbox" id="alcohol" name="alcohol" value="true" {{ 'checked' if form.alcohol.data }}><br>
+        <label for="alcohol_age_first_use">Alcohol Age of First Use</label><br>
+        <input type="text" id="alcohol_age_first_use" name="alcohol_age_first_use" value="{{ form.alcohol_age_first_use }}"><br>
+        <label for="alcohol_frequency_of_use">Alcohol Frequency of Use</label><br>
+        <input type="text" id="alcohol_frequency_of_use" name="alcohol_frequency_of_use" value="{{ form.alcohol_frequency_of_use }}"><br>
+        <label for="alcohol_amount_used">Alcohol Amount Used</label><br>
+        <input type="text" id="alcohol_amount_used" name="alcohol_amount_used" value="{{ form.alcohol_amount_used }}"><br>
+        <label for="alcohol_way_of_intake">Alcohol Way of Intake</label><br>
+        <input type="text" id="alcohol_way_of_intake" name="alcohol_way_of_intake" value="{{ form.alcohol_way_of_intake }}"><br>
+
+        <label for="cigarette">Cigarette</label><br>
+        <input type="checkbox" id="cigarette" name="cigarette" value="true" {{ 'checked' if form.cigarette.data }}><br>
+        <label for="cigarette_age_first_use">Cigarette Age of First Use</label><br>
+        <input type="text" id="cigarette_age_first_use" name="cigarette_age_first_use" value="{{ form.cigarette_age_first_use }}"><br>
+        <label for="cigarette_frequency_of_use">Cigarette Frequency of Use</label><br>
+        <input type="text" id="cigarette_frequency_of_use" name="cigarette_frequency_of_use" value="{{ form.cigarette_frequency_of_use }}"><br>
+        <label for="cigarette_amount_used">Cigarette Amount Used</label><br>
+        <input type="text" id="cigarette_amount_used" name="cigarette_amount_used" value="{{ form.cigarette_amount_used }}"><br>
+        <label for="cigarette_way_of_intake">Cigarette Way of Intake</label><br>
+        <input type="text" id="cigarette_way_of_intake" name="cigarette_way_of_intake" value="{{ form.cigarette_way_of_intake }}"><br>
+
+        <label for="marijuana">Marijuana</label><br>
+        <input type="checkbox" id="marijuana" name="marijuana" value="true" {{ 'checked' if form.marijuana.data }}><br>
+        <label for="marijuana_age_first_use">Marijuana Age of First Use</label><br>
+        <input type="text" id="marijuana_age_first_use" name="marijuana_age_first_use" value="{{ form.marijuana_age_first_use }}"><br>
+        <label for="marijuana_frequency_of_use">Marijuana Frequency of Use</label><br>
+        <input type="text" id="marijuana_frequency_of_use" name="marijuana_frequency_of_use" value="{{ form.marijuana_frequency_of_use }}"><br>
+        <label for="marijuana_amount_used">Marijuana Amount Used</label><br>
+        <input type="text" id="marijuana_amount_used" name="marijuana_amount_used" value="{{ form.marijuana_amount_used }}"><br>
+        <label for="marijuana_way_of_intake">Marijuana Way of Intake</label><br>
+        <input type="text" id="marijuana_way_of_intake" name="marijuana_way_of_intake" value="{{ form.marijuana_way_of_intake }}"><br>
+        
+        <label for="cocaine">Cocaine</label><br>
+        <input type="checkbox" id="cocaine" name="cocaine" value="true" {{ 'checked' if form.cocaine.data }}><br>
+        <label for="cocaine_age_first_use">Cocaine Age of First Use</label><br>
+        <input type="text" id="cocaine_age_first_use" name="cocaine_age_first_use" value="{{ form.cocaine_age_first_use }}"><br>
+        <label for="cocaine_frequency_of_use">Cocaine Frequency of Use</label><br>
+        <input type="text" id="cocaine_frequency_of_use" name="cocaine_frequency_of_use" value="{{ form.cocaine_frequency_of_use }}"><br>
+        <label for="cocaine_amount_used">Cocaine Amount Used</label><br>
+        <input type="text" id="cocaine_amount_used" name="cocaine_amount_used" value="{{ form.cocaine_amount_used }}"><br>
+        <label for="cocaine_way_of_intake">Cocaine Way of Intake</label><br>
+        <input type="text" id="cocaine_way_of_intake" name="cocaine_way_of_intake" value="{{ form.cocaine_way_of_intake }}"><br>
+        
+        <label for="heroin">Heroin</label><br>
+        <input type="checkbox" id="heroin" name="heroin" value="true" {{ 'checked' if form.heroin.data }}><br>
+        <label for="heroin_age_first_use">Heroin Age of First Use</label><br>
+        <input type="text" id="heroin_age_first_use" name="heroin_age_first_use" value="{{ form.heroin_age_first_use }}"><br>
+        <label for="heroin_frequency_of_use">Heroin Frequency of Use</label><br>
+        <input type="text" id="heroin_frequency_of_use" name="heroin_frequency_of_use" value="{{ form.heroin_frequency_of_use }}"><br>
+        <label for="heroin_amount_used">Heroin Amount Used</label><br>
+        <input type="text" id="heroin_amount_used" name="heroin_amount_used" value="{{ form.heroin_amount_used }}"><br>
+        <label for="heroin_way_of_intake">Heroin Way of Intake</label><br>
+        <input type="text" id="heroin_way_of_intake" name="heroin_way_of_intake" value="{{ form.heroin_way_of_intake }}"><br>
+    
+
+        <label for="amphetamines">Amphetamines</label><br>
+        <input type="checkbox" id="amphetamines" name="amphetamines" value="true" {{ 'checked' if form.amphetamines.data }}><br>
+        <label for="amphetamines_age_first_use">Amphetamines Age of First Use</label><br>
+        <input type="text" id="amphetamines_age_first_use" name="amphetamines_age_first_use" value="{{ form.amphetamines_age_first_use }}"><br>
+        <label for="amphetamines_frequency_of_use">Amphetamines Frequency of Use</label><br>
+        <input type="text" id="amphetamines_frequency_of_use" name="amphetamines_frequency_of_use" value="{{ form.amphetamines_frequency_of_use }}"><br>
+        <label for="amphetamines_amount_used">Amphetamines Amount Used</label><br>
+        <input type="text" id="amphetamines_amount_used" name="amphetamines_amount_used" value="{{ form.amphetamines_amount_used }}"><br>
+        <label for="amphetamines_way_of_intake">Amphetamines Way of Intake</label><br>
+        <input type="text" id="amphetamines_way_of_intake" name="amphetamines_way_of_intake" value="{{ form.amphetamines_way_of_intake }}"><br>
+        
+        <label for="club_drugs">Club Drugs</label><br>
+        <input type="checkbox" id="club_drugs" name="club_drugs" value="true" {{ 'checked' if form.club_drugs.data }}><br>
+        <label for="club_drugs_age_first_use">Club Drugs Age of First Use</label><br>
+        <input type="text" id="club_drugs_age_first_use" name="club_drugs_age_first_use" value="{{ form.club_drugs_age_first_use }}"><br>
+        <label for="club_drugs_frequency_of_use">Club Drugs Frequency of Use</label><br>
+        <input type="text" id="club_drugs_frequency_of_use" name="club_drugs_frequency_of_use" value="{{ form.club_drugs_frequency_of_use }}"><br>
+        <label for="club_drugs_amount_used">Club Drugs Amount Used</label><br>
+        <input type="text" id="club_drugs_amount_used" name="club_drugs_amount_used" value="{{ form.club_drugs_amount_used }}"><br>
+        <label for="club_drugs_way_of_intake">Club Drugs Way of Intake</label><br>
+        <input type="text" id="club_drugs_way_of_intake" name="club_drugs_way_of_intake" value="{{ form.club_drugs_way_of_intake }}"><br>
+        
+        <label for="pain_meds">Pain Meds</label><br>
+        <input type="checkbox" id="pain_meds" name="pain_meds" value="true" {{ 'checked' if form.pain_meds.data }}><br>
+        <label for="pain_meds_age_first_use">Pain Meds Age of First Use</label><br>
+        <input type="text" id="pain_meds_age_first_use" name="pain_meds_age_first_use" value="{{ form.pain_meds_age_first_use }}"><br>
+        <label for="pain_meds_frequency_of_use">Pain Meds Frequency of Use</label><br>
+        <input type="text" id="pain_meds_frequency_of_use" name="pain_meds_frequency_of_use" value="{{ form.pain_meds_frequency_of_use }}"><br>
+        <label for="pain_meds_amount_used">Pain Meds Amount Used</label><br>
+        <input type="text" id="pain_meds_amount_used" name="pain_meds_amount_used" value="{{ form.pain_meds_amount_used }}"><br>
+        <label for="pain_meds_way_of_intake">Pain Meds Way of Intake</label><br>
+        <input type="text" id="pain_meds_way_of_intake" name="pain_meds_way_of_intake" value="{{ form.pain_meds_way_of_intake }}"><br>
+        
+
+        <label for="benzo">Benzodiazepines</label><br>
+        <input type="checkbox" id="benzo" name="benzo" value="true" {{ 'checked' if form.benzo.data }}><br>
+        <label for="benzo_age_first_use">Benzodiazepines Age of First Use</label><br>
+        <input type="text" id="benzo_age_first_use" name="benzo_age_first_use" value="{{ form.benzo_age_first_use }}"><br>
+        <label for="benzo_frequency_of_use">Benzodiazepines Frequency of Use</label><br>
+        <input type="text" id="benzo_frequency_of_use" name="benzo_frequency_of_use" value="{{ form.benzo_frequency_of_use }}"><br>
+        <label for="benzo_amount_used">Benzodiazepines Amount Used</label><br>
+        <input type="text" id="benzo_amount_used" name="benzo_amount_used" value="{{ form.benzo_amount_used }}"><br>
+        <label for="benzo_way_of_intake">Benzodiazepines Way of Intake</label><br>
+        <input type="text" id="benzo_way_of_intake" name="benzo_way_of_intake" value="{{ form.benzo_way_of_intake }}"><br>
+        
+        <label for="hallucinogens">Hallucinogens</label><br>
+        <input type="checkbox" id="hallucinogens" name="hallucinogens" value="true" {{ 'checked' if form.hallucinogens.data }}><br>
+        <label for="hallucinogens_age_first_use">Hallucinogens Age of First Use</label><br>
+        <input type="text" id="hallucinogens_age_first_use" name="hallucinogens_age_first_use" value="{{ form.hallucinogens_age_first_use }}"><br>
+        <label for="hallucinogens_frequency_of_use">Hallucinogens Frequency of Use</label><br>
+        <input type="text" id="hallucinogens_frequency_of_use" name="hallucinogens_frequency_of_use" value="{{ form.hallucinogens_frequency_of_use }}"><br>
+        <label for="hallucinogens_amount_used">Hallucinogens Amount Used</label><br>
+        <input type="text" id="hallucinogens_amount_used" name="hallucinogens_amount_used" value="{{ form.hallucinogens_amount_used }}"><br>
+        <label for="hallucinogens_way_of_intake">Hallucinogens Way of Intake</label><br>
+        <input type="text" id="hallucinogens_way_of_intake" name="hallucinogens_way_of_intake" value="{{ form.hallucinogens_way_of_intake }}"><br>
+        
+        <label for="other_meds">Other</label><br>
+        <input type="checkbox" id="other_meds" name="other_meds" value="true" {{ 'checked' if form.other_meds.data }}><br>
+        <label for="other_meds_age_first_use">Other Age of First Use</label><br>
+        <input type="text" id="other_meds_age_first_use" name="other_meds_age_first_use" value="{{ form.other_meds_age_first_use }}"><br>
+        <label for="other_meds_frequency_of_use">Other Frequency of Use</label><br>
+        <input type="text" id="other_meds_frequency_of_use" name="other_meds_frequency_of_use" value="{{ form.other_meds_frequency_of_use }}"><br>
+        <label for="other_meds_amount_used">Other Amount Used</label><br>
+        <input type="text" id="other_meds_amount_used" name="other_meds_amount_used" value="{{ form.other_meds_amount_used }}"><br>
+        <label for="other_meds_way_of_intake">Other Way of Intake</label><br>
+        <input type="text" id="other_meds_way_of_intake" name="other_meds_way_of_intake" value="{{ form.other_meds_way_of_intake }}"><br>
+
+
+        <label for="treatment_program_name">Treatment Program Name</label><br>
+        <input type="text" id="treatment_program_name" name="treatment_program_name" value="{{ form.treatment_program_name.data }}"><br>
+
+        <label for="treatment_type">Treatment Type</label><br>
+        <input type="text" id="treatment_type" name="treatment_type" value="{{ form.treatment_type.data }}"><br>
+
+        <label for="treatment_date">Treatment Date</label><br>
+        <input type="date" id="treatment_date" name="treatment_date" value="{{ form.treatment_date.data }}"><br>
+
+        <label for="treatment_outcome">Treatment Outcome</label><br>
+        <input type="text" id="treatment_outcome" name="treatment_outcome" value="{{ form.treatment_outcome.data }}"><br>
+
+
+        <!-- Legal History -->
+        <label for="pending_criminal_charges">Pending Criminal Charges</label><br>
+        <input type="checkbox" id="pending_criminal_charges" name="pending_criminal_charges" value="true" {{ 'checked' if form.pending_criminal_charges.data }}><br>
+        
+        <label for="on_probation">On Probation</label><br>
+        <input type="checkbox" id="on_probation" name="on_probation" value="true" {{ 'checked' if form.on_probation.data }}><br>
+        
+        <label for="has_been_arrested">Has Been Arrested</label><br>
+        <input type="checkbox" id="has_been_arrested" name="has_been_arrested" value="true" {{ 'checked' if form.has_been_arrested.data }}><br>
+
+        <!-- Additional Information -->
+        <label for="to_work_on">To Work On</label><br>
+        <input type="text" id="to_work_on" name="to_work_on" value="{{ form.to_work_on }}"><br>
+        
+        <label for="expectations">Expectations</label><br>
+        <input type="text" id="expectations" name="expectations" value="{{ form.expectations }}"><br>
+        
+        <label for="things_to_change">Things to Change</label><br>
+        <input type="text" id="things_to_change" name="things_to_change" value="{{ form.things_to_change }}"><br>
+        
+        <label for="other_information">Other Information</label><br>
+        <input type="text" id="other_information" name="other_information" value="{{ form.other_information }}"><br>
+
+
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

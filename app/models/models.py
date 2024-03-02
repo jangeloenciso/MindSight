@@ -272,9 +272,9 @@ class SocialHistory(db.Model):
 class EducationalBackground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-    educational_history = db.String(40)
-    highest_level_achieved = db.String(40)
-    additional_information = db.String(200)
+    educational_history = db.Column(db.String(40))
+    highest_level_achieved = db.Column(db.String(40))
+    additional_information = db.Column(db.String(200))
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 

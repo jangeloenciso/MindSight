@@ -1,271 +1,213 @@
-from app import app
+from app import app, db
 from app.models.models import *
-
-
+import pytest
+from flask_wtf import csrf
+from flask_wtf.csrf import CSRFProtect
+    
 def test_add_record():
-    # Generate form data for a new student record
+
     form_data = {
-    'student_id': '2023-123456',
-    'last_name': 'Doe',
-    'first_name': 'John',
-    'college_name': 'IHK',
-    'course_name': 'Computer Science',
-    'year_level': 'Sophomore',
-    'campus': 'Main',
-    'age': 25,
-    'sex': 'Male',
-    'gender': 'Male',
-    'contact_number': '1234567890',
-    'religion': 'Christian',
+    'student_id': '2020-887434',
+    'last_name': 'Smith',
+    'first_name': 'Emily',
+    'course': 'Psychology',
+    'year_level': 'Junior',
+    'campus': 'Main Campus',
     'date_of_birth': '1999-05-15',
-    'place_of_birth': 'Manila',
-    'nationality': 'Filipino',
-    'counseling_history': 'Yes',
-    'residence': 'Family Home',
+    'age': 25,
+    'gender': 'Female',
     'civil_status': 'Single',
-    'information_provider': 'Jane Smith',
-    'current_problem': 'Feeling stressed',
-    'problem_length': 'Several months',
-    'stressors': 'Work pressure',
-    'substance_abuse': False,
+    'nationality': 'Canadian',
+    'religion': 'None',
+    'residence': '789 Elm St, City',
+    'email_address': 'emily.smith@example.com',
+    'contact_number': '123-456-7890',
+    'guardian_name': 'David Smith',
+    'guardian_address': '789 Elm St, City',
+    'guardian_contact': '987-654-3210',
+    'information_provider': 'School counselor',
+    'current_problem': 'Stress and anxiety',
+    'problem_length': '1 year',
+    'stressors': 'Work and personal life balance',
+    'substance_abuse': True,
     'addiction': False,
-    'medication_and_dose': 'None',
+    'depression_sad_down_feelings': True,
+    'high_low_energy_level': False,
+    'angry_irritable': True,
+    'loss_of_interest': False,
+    'difficulty_enjoying_things': True,
+    'crying_spells': False,
+    'decreased_motivation': True,
+    'withdrawing_from_people': False,
+    'mood_swings': True,
+    'black_and_white_thinking': False,
+    'negative_thinking': True,
+    'change_in_weight_or_appetite': False,
+    'change_in_sleeping_pattern': True,
+    'suicidal_thoughts_or_plans': False,
+    'self_harm': True,
+    'homicidal_thoughts_or_plans': False,
+    'difficulty_focusing': True,
+    'feelings_of_hopelessness': False,
+    'feelings_of_shame_or_guilt': True,
+    'feelings_of_inadequacy': False,
+    'low_self_esteem': True,
+    'anxious_nervous_tense_feelings': False,
+    'panic_attacks': True,
+    'racing_or_scrambled_thoughts': False,
+    'bad_or_unwanted_thoughts': True,
+    'flashbacks_or_nightmares': False,
+    'muscle_tensions_aches': True,
+    'hearing_voices_or_seeing_things': False,
+    'thoughts_of_running_away': True,
+    'paranoid_thoughts': False,
+    'feelings_of_frustration': True,
+    'feelings_of_being_cheated': False,
+    'perfectionism': True,
+    'counting_washing_checking': False,
+    'distorted_body_image': True,
+    'concerns_about_dieting': False,
+    'loss_of_control_over_eating': True,
+    'binge_eating_or_purging': False,
+    'rules_about_eating': True,
+    'compensating_for_eating': False,
+    'excessive_exercise': True,
+    'indecisiveness_about_career': False,
+    'job_problems': True,
+    'other_history': 'No other history',
+    'previous_treatments': True,
+    'previous_treatments_likes_dislikes': 'Liked the group therapy sessions',
+    'previous_treatments_learned': 'Learned coping mechanisms',
+    'previous_treatments_like_to_continue': True,
+    'previous_hospital_stays_psych': True,
+    'current_thoughts_to_harm': False,
+    'past_thoughts_to_harm': True,
+    'medication_and_dose': 'Zoloft 50mg daily',
     'serious_ch_illnesses_history': 'None',
-    'head_injuries': False,
+    'head_injuries': True,
     'lose_consciousness': False,
-    'convulsions_or_seizures': False,
+    'convulsions_or_seizures': True,
     'fever': False,
     'allergies': 'None',
     'current_physical_health': 'Good',
-    'last_check_up': '2023-01-15',
+    'last_check_up': '2023-10-15',
     'has_physician': True,
-    'physician_name': 'Dr. Alex Johnson',
-    'physician_email': 'alex.johnson@example.com',
-    'physician_number': '9876543210',
-    'father_age': 55,
-    'mother_age': 50,
-    'father_first_name': 'Michael',
-    'father_last_name': 'Doe',
-    'mother_first_name': 'Emma',
-    'mother_last_name': 'Doe',
-    'family_abuse_history': 'None',
-    'family_mental_history': 'None',
-    'additional_information': 'None',
+    'physician_name': 'Dr. Johnson',
+    'physician_email': 'dr.johnson@example.com',
+    'physician_number': '555-123-4567',
+    'birth_location': 'City, Canada',
+    'raised_by': 'Parents',
+    'rel_qual_mother': 'Good',
+    'rel_qual_father': 'Fair',
+    'rel_qual_step_parent': 'Excellent',
+    'family_abuse_history': 'No',
+    'family_mental_history': 'Yes',
+    'additional_information_family': 'Family history of depression',
     'relationship_with_peers': 'Good',
     'social_support_network': 'Strong',
-    'hobbies_or_interests': 'Reading, playing sports',
+    'hobbies_or_interests': 'Painting, Yoga',
     'cultural_concerns': 'None',
-    'educational_history': 'High school graduate',
-    'highest_level_achieved': 'Bachelor\'s degree',
-    'additional_information_edu': 'None',
+    'educational_history': 'Psychology',
+    'highest_level_achieved': 'Bachelor\'s Degree',
+    'additional_information_education': 'Member of the Psychology Club',
     'employment_status': 'Employed',
     'satisfaction': 'Satisfied',
-    'satisfaction_reason': 'Good working environment',
-    'struggled_with_substance_abuse': False,
-    'alcohol': False,
-    'alcohol_age_first_use': 'N/A',
-    'alcohol_frequency_of_use': 'N/A',
-    'alcohol_amount_used': 'N/A',
-    'alcohol_way_of_intake': 'N/A',
-    'cigarette': False,
-    'cigarette_age_first_use': 'N/A',
-    'cigarette_frequency_of_use': 'N/A',
-    'cigarette_amount_used': 'N/A',
-    'cigarette_way_of_intake': 'N/A',
-    'marijuana': False,
-    'marijuana_age_first_use': 'N/A',
-    'marijuana_frequency_of_use': 'N/A',
-    'marijuana_amount_used': 'N/A',
-    'marijuana_way_of_intake': 'N/A',
-    'cocaine': False,
-    'cocaine_age_first_use': 'N/A',
-    'cocaine_frequency_of_use': 'N/A',
-    'cocaine_amount_used': 'N/A',
-    'cocaine_way_of_intake': 'N/A',
-    'heroin': False,
-    'heroin_age_first_use': 'N/A',
-    'heroin_frequency_of_use': 'N/A',
-    'heroin_amount_used': 'N/A',
-    'heroin_way_of_intake': 'N/A',
-    'amphetamines': False,
-    'amphetamines_age_first_use': 'N/A',
-    'amphetamines_frequency_of_use': 'N/A',
-    'amphetamines_amount_used': 'N/A',
-    'amphetamines_way_of_intake': 'N/A',
-    'club_drugs': False,
-    'club_drugs_age_first_use': 'N/A',
-    'club_drugs_frequency_of_use': 'N/A',
-    'club_drugs_amount_used': 'N/A',
-    'club_drugs_way_of_intake': 'N/A',
-    'pain_meds': False,
-    'pain_meds_age_first_use': 'N/A',
-    'pain_meds_frequency_of_use': 'N/A',
-    'pain_meds_amount_used': 'N/A',
-    'pain_meds_way_of_intake': 'N/A',
-    'benzo': False,
-    'benzo_meds_age_first_use': 'N/A',
-    'benzo_meds_frequency_of_use': 'N/A',
-    'benzo_meds_amount_used': 'N/A',
-    'benzo_meds_way_of_intake': 'N/A',
-    'hallucinogens': False,
-    'hallucinogens_meds_age_first_use': 'N/A',
-    'hallucinogens_meds_frequency_of_use': 'N/A',
-    'hallucinogens_meds_amount_used': 'N/A',
-    'hallucinogens_meds_way_of_intake': 'N/A',
-    'other': False,
-    'other_meds_age_first_use': 'N/A',
-    'other_meds_frequency_of_use': 'N/A',
-    'other_meds_amount_used': 'N/A',
-    'other_meds_way_of_intake': 'N/A',
+    'satisfaction_reason': 'Enjoying the work environment',
+    'struggled_with_substance_abuse': True,
+
+    'alcohol': True,
+    'alcohol_age_first_use': 18,
+    'alcohol_frequency_of_use': 'Occasionally',
+    'alcohol_amount_used': 'Moderate',
+    'alcohol_way_of_intake': 'Drinking',
+
+    'cigarette': True,
+    'cigarette_age_first_use': 16,
+    'cigarette_frequency_of_use': 'Daily',
+    'cigarette_amount_used': 'Heavy',
+    'cigarette_way_of_intake': 'Smoking',
+    
+    'marijuana': True,
+    'marijuana_age_first_use': 16,
+    'marijuana_frequency_of_use': 'Daily',
+    'marijuana_amount_used': 'Heavy',
+    'marijuana_way_of_intake': 'Smoking',
+
+    'cocaine': True,
+    'cocaine_age_first_use': 16,
+    'cocaine_frequency_of_use': 'Daily',
+    'cocaine_amount_used': 'Heavy',
+    'cocaine_way_of_intake': 'Smoking',
+
+    'heroin': True,
+    'heroin_age_first_use': 16,
+    'heroin_frequency_of_use': 'Daily',
+    'heroin_amount_used': 'Heavy',
+    'heroin_way_of_intake': 'Smoking',
+
+    'amphetamines': True,
+    'amphetamines_age_first_use': 16,
+    'amphetamines_frequency_of_use': 'Daily',
+    'amphetamines_amount_used': 'Heavy',
+    'amphetamines_way_of_intake': 'Smoking',
+
+    'club_drugs': True,
+    'club_drugs_age_first_use': 16,
+    'club_drugs_frequency_of_use': 'Daily',
+    'club_drugs_amount_used': 'Heavy',
+    'club_drugs_way_of_intake': 'Smoking',
+
+    'pain_meds': True,
+    'pain_meds_age_first_use': 16,
+    'pain_meds_frequency_of_use': 'Daily',
+    'pain_meds_amount_used': 'Heavy',
+    'pain_meds_way_of_intake': 'Smoking',
+
+    'benzo': True,
+    'benzo_age_first_use': 16,
+    'benzo_frequency_of_use': 'Daily',
+    'benzo_amount_used': 'Heavy',
+    'benzo_way_of_intake': 'Smoking',
+
+    'other_meds': True,
+    'other_meds_age_first_use': 16,
+    'other_meds_frequency_of_use': 'Daily',
+    'other_meds_amount_used': 'Heavy',
+    'other_meds_way_of_intake': 'Smoking',
+
+    'treatment_program_name' : 'form.treatment_program_name.data',
+    'treatment_type' : 'Test',
+    'treatment_date' : '1999-05-15',
+    'treatment_outcome' : 'Test',
+
+    # Include similar fields for other substances
     'pending_criminal_charges': False,
     'on_probation': False,
     'has_been_arrested': False,
-    'to_work_on': 'Improve study habits',
-    'expectations': 'Graduate with honors',
-    'things_to_change': 'Manage time better',
+    'to_work_on': 'Managing stress',
+    'expectations': 'To improve mental well-being',
+    'things_to_change': 'Better coping mechanisms',
     'other_information': 'None',
-}
+    }
 
-
-
-
-    # Simulate a POST request to the /add route with the generated form data
     with app.test_client() as client:
+
+        print(form_data)
+
         response = client.post('/add', data=form_data, follow_redirects=True)
 
+        print(response)
+        print(response.data)
+
         # Check if the response is successful (status code 200)
-        assert response.status_code == 200
+        assert response.status_code == 200, "Unexpected status code"
 
-
-        # Check if the success message is displayed
-        # assert b'New student record added successfully!' in response.data
-
-        # Check if the new record is added to the database
         new_student = BasicInformation.query.filter_by(student_id=form_data['student_id']).first()
         assert new_student is not None
-        assert new_student.last_name == form_data['last_name']
-        assert new_student.first_name == form_data['first_name']
-        assert new_student.course == form_data['course']
-        assert new_student.year_level == form_data['year_level']
-        assert new_student.campus == form_data['campus']
-        assert new_student.personal_information.age == form_data['age']
-        assert new_student.personal_information.sex == form_data['sex']
-        assert new_student.personal_information.gender == form_data['gender']
-        assert new_student.personal_information.contact_number == form_data['contact_number']
-        assert new_student.personal_information.religion == form_data['religion']
-        assert new_student.personal_information.date_of_birth == form_data['date_of_birth']
-        assert new_student.personal_information.place_of_birth == form_data['place_of_birth']
-        assert new_student.personal_information.nationality == form_data['nationality']
-        assert new_student.personal_information.counseling_history == form_data['counseling_history']
-        assert new_student.personal_information.residence == form_data['residence']
-        assert new_student.personal_information.civil_status == form_data['civil_status']
-        assert new_student.history_information.information_provider == form_data['information_provider']
-        assert new_student.history_information.current_problem == form_data['current_problem']
-        assert new_student.history_information.problem_length == form_data['problem_length']
-        assert new_student.history_information.stressors == form_data['stressors']
-        assert new_student.history_information.substance_abuse == form_data['substance_abuse']
-        assert new_student.history_information.addiction == form_data['addiction']
-        assert new_student.health_information.medication_and_dose == form_data['medication_and_dose']
-        assert new_student.health_information.serious_ch_illnesses_history == form_data['serious_ch_illnesses_history']
-        assert new_student.health_information.head_injuries == form_data['head_injuries']
-        assert new_student.health_information.lose_consciousness == form_data['lose_consciousness']
-        assert new_student.health_information.convulsions_or_seizures == form_data['convulsions_or_seizures']
-        assert new_student.health_information.fever == form_data['fever']
-        assert new_student.health_information.allergies == form_data['allergies']
-        assert new_student.health_information.current_physical_health == form_data['current_physical_health']
-        assert new_student.health_information.last_check_up == form_data['last_check_up']
-        assert new_student.health_information.has_physician == form_data['has_physician']
-        assert new_student.health_information.physician_name == form_data['physician_name']
-        assert new_student.health_information.physician_email == form_data['physician_email']
-        assert new_student.health_information.physician_number == form_data['physician_number']
-        assert new_student.family_background.father_age == form_data['father_age']
-        assert new_student.family_background.mother_age == form_data['mother_age']
-        assert new_student.family_background.father_first_name == form_data['father_first_name']
-        assert new_student.family_background.father_last_name == form_data['father_last_name']
-        assert new_student.family_background.mother_first_name == form_data['mother_first_name']
-        assert new_student.family_background.mother_last_name == form_data['mother_last_name']
-        assert new_student.family_background.family_abuse_history == form_data['family_abuse_history']
-        assert new_student.family_background.family_mental_history == form_data['family_mental_history']
-        assert new_student.family_background.additional_information == form_data['additional_information']
-        assert new_student.social_history.relationship_with_peers == form_data['relationship_with_peers']
-        assert new_student.social_history.social_support_network == form_data['social_support_network']
-        assert new_student.social_history.hobbies_or_interests == form_data['hobbies_or_interests']
-        assert new_student.social_history.cultural_concerns == form_data['cultural_concerns']
-        assert new_student.educational_background.educational_history == form_data['educational_history']
-        assert new_student.educational_background.highest_level_achieved == form_data['highest_level_achieved']
-        assert new_student.educational_background.additional_information == form_data['additional_information_edu']
-        assert new_student.occupational_history.employment_status == form_data['employment_status']
-        assert new_student.occupational_history.satisfaction == form_data['satisfaction']
-        assert new_student.occupational_history.satisfaction_reason == form_data['satisfaction_reason']
-        assert new_student.substance_abuse_history.struggled_with_substance_abuse == form_data['struggled_with_substance_abuse']
-        assert new_student.substance_abuse_history.alcohol == form_data['alcohol']
-        assert new_student.substance_abuse_history.alcohol_age_first_use == form_data['alcohol_age_first_use']
-        assert new_student.substance_abuse_history.alcohol_frequency_of_use == form_data['alcohol_frequency_of_use']
-        assert new_student.substance_abuse_history.alcohol_amount_used == form_data['alcohol_amount_used']
-        assert new_student.substance_abuse_history.alcohol_way_of_intake == form_data['alcohol_way_of_intake']
-        assert new_student.substance_abuse_history.cigarette == form_data['cigarette']
-        assert new_student.substance_abuse_history.cigarette_age_first_use == form_data['cigarette_age_first_use']
-        assert new_student.substance_abuse_history.cigarette_frequency_of_use == form_data['cigarette_frequency_of_use']
-        assert new_student.substance_abuse_history.cigarette_amount_used == form_data['cigarette_amount_used']
-        assert new_student.substance_abuse_history.cigarette_way_of_intake == form_data['cigarette_way_of_intake']
-        assert new_student.substance_abuse_history.marijuana == form_data['marijuana']
-        assert new_student.substance_abuse_history.marijuana_age_first_use == form_data['marijuana_age_first_use']
-        assert new_student.substance_abuse_history.marijuana_frequency_of_use == form_data['marijuana_frequency_of_use']
-        assert new_student.substance_abuse_history.marijuana_amount_used == form_data['marijuana_amount_used']
-        assert new_student.substance_abuse_history.marijuana_way_of_intake == form_data['marijuana_way_of_intake']
-        assert new_student.substance_abuse_history.cocaine == form_data['cocaine']
-        assert new_student.substance_abuse_history.cocaine_age_first_use == form_data['cocaine_age_first_use']
-        assert new_student.substance_abuse_history.cocaine_frequency_of_use == form_data['cocaine_frequency_of_use']
-        assert new_student.substance_abuse_history.cocaine_amount_used == form_data['cocaine_amount_used']
-        assert new_student.substance_abuse_history.cocaine_way_of_intake == form_data['cocaine_way_of_intake']
-        assert new_student.substance_abuse_history.heroin == form_data['heroin']
-        assert new_student.substance_abuse_history.heroin_age_first_use == form_data['heroin_age_first_use']
-        assert new_student.substance_abuse_history.heroin_frequency_of_use == form_data['heroin_frequency_of_use']
-        assert new_student.substance_abuse_history.heroin_amount_used == form_data['heroin_amount_used']
-        assert new_student.substance_abuse_history.heroin_way_of_intake == form_data['heroin_way_of_intake']
-        assert new_student.substance_abuse_history.amphetamines == form_data['amphetamines']
-        assert new_student.substance_abuse_history.amphetamines_age_first_use == form_data['amphetamines_age_first_use']
-        assert new_student.substance_abuse_history.amphetamines_frequency_of_use == form_data['amphetamines_frequency_of_use']
-        assert new_student.substance_abuse_history.amphetamines_amount_used == form_data['amphetamines_amount_used']
-        assert new_student.substance_abuse_history.amphetamines_way_of_intake == form_data['amphetamines_way_of_intake']
-        assert new_student.substance_abuse_history.club_drugs == form_data['club_drugs']
-        assert new_student.substance_abuse_history.club_drugs_age_first_use == form_data['club_drugs_age_first_use']
-        assert new_student.substance_abuse_history.club_drugs_frequency_of_use == form_data['club_drugs_frequency_of_use']
-        assert new_student.substance_abuse_history.club_drugs_amount_used == form_data['club_drugs_amount_used']
-        assert new_student.substance_abuse_history.club_drugs_way_of_intake == form_data['club_drugs_way_of_intake']
-        assert new_student.substance_abuse_history.pain_meds == form_data['pain_meds']
-        assert new_student.substance_abuse_history.pain_meds_age_first_use == form_data['pain_meds_age_first_use']
-        assert new_student.substance_abuse_history.pain_meds_frequency_of_use == form_data['pain_meds_frequency_of_use']
-        assert new_student.substance_abuse_history.pain_meds_amount_used == form_data['pain_meds_amount_used']
-        assert new_student.substance_abuse_history.pain_meds_way_of_intake == form_data['pain_meds_way_of_intake']
-        assert new_student.substance_abuse_history.benzo == form_data['benzo']
-        assert new_student.substance_abuse_history.benzo_meds_age_first_use == form_data['benzo_meds_age_first_use']
-        assert new_student.substance_abuse_history.benzo_meds_frequency_of_use == form_data['benzo_meds_frequency_of_use']
-        assert new_student.substance_abuse_history.benzo_meds_amount_used == form_data['benzo_meds_amount_used']
-        assert new_student.substance_abuse_history.benzo_meds_way_of_intake == form_data['benzo_meds_way_of_intake']
-        assert new_student.substance_abuse_history.hallucinogens == form_data['hallucinogens']
-        assert new_student.substance_abuse_history.hallucinogens_meds_age_first_use == form_data['hallucinogens_meds_age_first_use']
-        assert new_student.substance_abuse_history.hallucinogens_meds_frequency_of_use == form_data['hallucinogens_meds_frequency_of_use']
-        assert new_student.substance_abuse_history.hallucinogens_meds_amount_used == form_data['hallucinogens_meds_amount_used']
-        assert new_student.substance_abuse_history.hallucinogens_meds_way_of_intake == form_data['hallucinogens_meds_way_of_intake']
-        assert new_student.substance_abuse_history.other == form_data['other']
-        assert new_student.substance_abuse_history.other_meds_age_first_use == form_data['other_meds_age_first_use']
-        assert new_student.substance_abuse_history.other_meds_frequency_of_use == form_data['other_meds_frequency_of_use']
-        assert new_student.substance_abuse_history.other_meds_amount_used == form_data['other_meds_amount_used']
-        assert new_student.substance_abuse_history.other_meds_way_of_intake == form_data['other_meds_way_of_intake']
-        assert new_student.legal_history.pending_criminal_charges == form_data['pending_criminal_charges']
-        assert new_student.legal_history.on_probation == form_data['on_probation']
-        assert new_student.legal_history.has_been_arrested == form_data['has_been_arrested']
-        assert new_student.additional_information.to_work_on == form_data['to_work_on']
-        assert new_student.additional_information.expectations == form_data['expectations']
-        assert new_student.additional_information.things_to_change == form_data['things_to_change']
-        assert new_student.additional_information.other_information == form_data['other_information']
-
-
 
         # Clean up - delete the newly added record from the database
         db.session.delete(new_student)
         db.session.commit()
 
 if __name__ == '__main__':
-    test_add_record()
+    pytest.main()

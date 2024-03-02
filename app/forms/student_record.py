@@ -81,6 +81,7 @@ class StudentRecordForm(FlaskForm):
     excessive_exercise = BooleanField('Excessive Exercise', validators=[Optional()])
     indecisiveness_about_career = BooleanField('Indecisiveness About Career', validators=[Optional()])
     job_problems = BooleanField('Job Problems', validators=[Optional()])
+
     other_history = StringField('Other', validators=[Optional()])
     previous_treatments = BooleanField('Previous Treatments', validators=[Optional()])
     previous_treatments_likes_dislikes = StringField('Previous Treatments Likes/Dislikes', validators=[Optional()])
@@ -204,6 +205,11 @@ class StudentRecordForm(FlaskForm):
     other_meds_frequency_of_use = StringField('Other Frequency of Use', validators=[Optional()])
     other_meds_amount_used = StringField('Other Amount Used', validators=[Optional()])
     other_meds_way_of_intake = StringField('Other Way of Intake', validators=[Optional()])
+
+    treatment_program_name = StringField('Treatment Program Name', validators=[Optional()])
+    treatment_type = StringField('Treatment Type', validators=[Optional()])
+    treatment_date = DateField()
+    treatment_outcome = StringField('Treatment Outcome', validators=[Optional()])
 
 
     # Legal History

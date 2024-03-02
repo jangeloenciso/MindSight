@@ -473,7 +473,7 @@ def add_record():
             excessive_exercise=form.excessive_exercise.data,
             indecisiveness_about_career=form.indecisiveness_about_career.data,
             job_problems=form.job_problems.data,
-            other=form.other.data,
+            other=form.other_history.data,
             previous_treatments=form.previous_treatments.data,
             previous_treatments_likes_dislikes=form.previous_treatments_likes_dislikes.data,
             previous_treatments_learned=form.previous_treatments_learned.data,
@@ -504,9 +504,9 @@ def add_record():
 
             student_id=form.student_id.data
         )
-
+        
         family_background = FamilyBackground(
-            birth_location = form.place_of_birth.data,
+            birth_location = form.birth_location.data,
             raised_by = form.raised_by.data,
             
             rel_qual_mother = form.rel_qual_mother.data,
@@ -568,44 +568,49 @@ def add_record():
             cocaine_age_first_use=form.cocaine_age_first_use.data,
             cocaine_frequency_of_use=form.cocaine_frequency_of_use.data,
             cocaine_amount_used=form.cocaine_amount_used.data,
-            cocaine_liked_disliked=form.cocaine_way_of_intake.data,
+            cocaine_way_of_intake=form.cocaine_way_of_intake.data,
 
             heroin=form.heroin.data,
             heroin_age_first_use=form.heroin_age_first_use.data,
             heroin_frequency_of_use=form.heroin_frequency_of_use.data,
             heroin_amount_used=form.heroin_amount_used.data,
-            heroin_liked_disliked=form.heroin_way_of_intake.data,
+            heroin_way_of_intake=form.heroin_way_of_intake.data,
 
             amphetamines=form.amphetamines.data,
             amphetamines_age_first_use=form.amphetamines_age_first_use.data,
             amphetamines_frequency_of_use=form.amphetamines_frequency_of_use.data,
             amphetamines_amount_used=form.amphetamines_amount_used.data,
-            amphetamines_liked_disliked=form.amphetamines_way_of_intake.data,
+            amphetamines_way_of_intake=form.amphetamines_way_of_intake.data,
 
             club_drugs=form.club_drugs.data,
             club_drugs_age_first_use=form.club_drugs_age_first_use.data,
             club_drugs_frequency_of_use=form.club_drugs_frequency_of_use.data,
             club_drugs_amount_used=form.club_drugs_amount_used.data,
-            club_drugs_liked_disliked=form.club_drugs_way_of_intake.data,
+            club_drugs_way_of_intake=form.club_drugs_way_of_intake.data,
 
             pain_meds=form.pain_meds.data,
             pain_meds_age_first_use=form.pain_meds_age_first_use.data,
             pain_meds_frequency_of_use=form.pain_meds_frequency_of_use.data,
             pain_meds_amount_used=form.pain_meds_amount_used.data,
-            pain_meds_liked_disliked=form.pain_meds_way_of_intake.data,
+            pain_meds_way_of_intake=form.pain_meds_way_of_intake.data,
 
             benzo=form.benzo.data,
             benzo_age_first_use=form.benzo_age_first_use.data,
             benzo_frequency_of_use=form.benzo_frequency_of_use.data,
             benzo_amount_used=form.benzo_amount_used.data,
-            benzo_liked_disliked=form.benzo_way_of_intake.data,
+            benzo_way_of_intake=form.benzo_way_of_intake.data,
 
 
             other_meds=form.other_meds.data,
             other_meds_age_first_use=form.other_meds_age_first_use.data,
             other_meds_frequency_of_use=form.other_meds_frequency_of_use.data,
             other_meds_amount_used=form.other_meds_amount_used.data,
-            other_meds_liked_disliked=form.other_meds_way_of_intake.data,
+            other_meds_way_of_intake=form.other_meds_way_of_intake.data,
+
+            treatment_program_name = form.treatment_program_name.data,
+            treatment_type = form.treatment_type.data,
+            treatment_date = form.treatment_date.data,
+            treatment_outcome = form.treatment_outcome.data,
 
             student_id=form.student_id.data
         )
@@ -627,7 +632,6 @@ def add_record():
             student_id=form.student_id.data
         )
 
-        # Create an instance of the main StudentInformation model and associate related models
         new_student = BasicInformation(
             student_id=form.student_id.data,
             last_name=form.last_name.data,
@@ -635,6 +639,10 @@ def add_record():
             course=form.course.data,
             year_level=form.year_level.data,
             campus=form.campus.data,
+            guardian_name = form.guardian_name.data,
+            guardian_address = form.guardian_address.data,
+            guardian_contact = form.guardian_contact.data,
+            
 
             date_of_birth = form.date_of_birth.data,
             age = form.age.data,
@@ -664,14 +672,17 @@ def add_record():
         # Flash a success message
         flash('New student record added successfully!', 'success')
 
+        print(new_student.student_id)
+
         # Redirect the user to a page displaying the newly added record
-        return redirect(url_for('student_record', new_record_id=new_student.id))
+        # return redirect(url_for('student_record', new_record_id=new_student.id))
+        return redirect(url_for('login'))
     else:
         logging.error("Form validation failed")
         logging.error(form.errors)
 
     # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('add_record.html', form=form)
+    return render_template('test.html', form=form)
 
 
 
