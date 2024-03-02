@@ -3,6 +3,7 @@ from app import db
 import re
 from sqlalchemy import event
 from sqlalchemy.orm import validates
+from werkzeug.security import generate_password_hash
 from . import courses
 
 class User(UserMixin, db.Model):
@@ -21,8 +22,11 @@ class User(UserMixin, db.Model):
         self.last_name = last_name
         self.username = username
         self.email = email
-        self.password = password 
+        self.set_password(password) 
         self.role = role
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
 
     def is_authenticated(self):
         return True
