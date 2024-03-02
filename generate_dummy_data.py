@@ -169,9 +169,9 @@ with app.app_context():
         )
 
         educational_background = EducationalBackground(
-            educational_history=fake.sentence(),
-            highest_level_achieved=fake.sentence(),
-            additional_information=fake.sentence(),
+            educational_history=fake.sentence(nb_words=3),
+            highest_level_achieved=fake.sentence(nb_words=3),
+            additional_information=fake.sentence(nb_words=3),
             student=student
         )
 
