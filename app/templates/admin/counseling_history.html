@@ -1,4 +1,4 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - {{ college }}
+{% extends "components/base.html" %} {% block title %} Mindsight - History
 {%endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/counseling-history.css" />
 {% endblock %} {% block content %}
@@ -6,9 +6,10 @@
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>Emmanuelle A. Santiago</span>
+      <!-- TODO: counselor name -->
+      <span>{{ admin_name }}</span>
       <div class="back-button">
-        <a href="{{ url_for ('counselor') }}">
+        <a href="{{ url_for ('admin') }}">
           <img src="/static/SVG/back_button.svg" />
         </a>
       </div>
