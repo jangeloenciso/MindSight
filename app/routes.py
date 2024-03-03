@@ -17,14 +17,9 @@ import logging, datetime
 
 
 roles_permissions = {
-    'superadmin': ['viewall', 'editall', 'searchall', 'deleteall', 'addall'],
-    'admin': ['viewall', 'view', 'editall','edit', 'search', 'delete', 'addall']
+    'admin': ['view', 'edit', 'search', 'delete']
 }
 
-users = {
-    'user1': 'superadmin',
-    'user2': 'admin'
-}
 
 def permission_required(permission):
     def decorator(func):
@@ -32,19 +27,17 @@ def permission_required(permission):
         def wrapper(*args, **kwargs):
             # Check if current user has the required permission
             user_role = getattr(current_user, 'role', None)
+            if user_role == 'superadmin':
+                return func(*args, **kwargs)
+
             if user_role in roles_permissions and permission in roles_permissions[user_role]:
                 return func(*args, **kwargs)
             else:
-                flash('You do not have permission to access this page.', 'danger')
+                print('You do not have permission to access this page.', 'danger')
                 return redirect(url_for('dashboard'))
         return wrapper
     return decorator
 
-
-@app.context_processor
-def inject_role():
-    role = getattr(current_user, 'role', None)
-    return dict(role=role) 
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -57,13 +50,16 @@ def login():
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('dashboard'))
+        
         else:
             flash('Login failed. Please check your username and password.', 'danger')
+            print('User not found. Please check your username.', 'danger')
 
     return render_template('login.html', form=form, current_user=current_user)
 
 
 @app.route('/signup', methods=['POST', 'GET'])
+# @permission_required('create_account')
 def signup():
 
     form = SignupForm()
@@ -104,48 +100,41 @@ def logout():
 
 # for dashboard / case overview pages
 @app.route('/dashboard')
-@permission_required('viewall')
 @login_required
 def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/dashboard/experiences', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def experiences():
     
     return render_template('dashboard/experiences.html')
 
 @app.route('/dashboard/college_summary', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def college_summaries():
     
     return render_template('dashboard/college_summaries.html')
 
 @app.route('/dashboard/nature_of_concern', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def nature_of_concern():
     
     return render_template('dashboard/nature_concern.html')
 
 @app.route('/dashboard/campus', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def campus():
     
     return render_template('dashboard/campus.html')
 
 @app.route('/dashboard/religion', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def religion():
     
     return render_template('dashboard/religion.html')
 
 @app.route('/dashboard/identity', methods=['GET'])
-@permission_required('viewall')
 @login_required
 def identity():
     
@@ -154,36 +143,38 @@ def identity():
 
 # pages for admin / viewing of students whose been counseled
 @app.route('/admin')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def admin():
-    return render_template('admin.html')
 
-@app.route('/admin/counselor')
-@login_required
-def counselor():
-    return render_template('admin/college.html')
+    admin_name = ['Emmanuelle A. Santiago',
+                  'Russel Ane A. Dela Cruz', 
+                  'Jake Jason Queddeng', 
+                  'Lizelle Anne O. Manabat']
 
-@app.route('/admin/counselor/counseling_history')
+    return render_template('admin.html', admin_name=admin_name)
+
+@app.route('/admin/history')
+@permission_required('view')
 @login_required
 def counseling_history():
     return render_template('admin/counseling_history.html')
 
 
 
+# analytics
 @app.route('/analytics', methods=['GET', 'POST'])
-@permission_required('viewall')
 @login_required
 def analytics():
     return render_template('analytics.html')
 
 @app.route('/analytics/analysis')
-@permission_required('viewall')
 @login_required
 def metrics():
     return render_template('metrics.html')
 
 
+# settings page
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
@@ -215,7 +206,7 @@ def settings():
 
 
 @app.route('/students/records/search/', methods=['GET'])
-@permission_required('viewall')
+@permission_required('search')
 @login_required
 def search():
     query = request.args.get('query')
@@ -230,7 +221,7 @@ def search():
     return render_template('search.html', search_results=search_results, query=query)
 
 @app.route('/students/records/view/<student_id>/print')
-@permission_required('viewall')
+@permission_required('print')
 @login_required
 def print_record(student_id):
     data = process_data(student_id)
@@ -249,19 +240,19 @@ def print_record(student_id):
 # Student components
 
 @app.route('/level')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def level():
     return render_template('level.html')
 
 @app.route('/JHS')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def jhs():
     return render_template('jhs.html')
 
 @app.route('/students/records/<college>')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def jhs_records(college):
     data = data_to_dict()
@@ -280,13 +271,13 @@ def jhs_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/SHS')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def shs():
     return render_template('shs.html')
 
 @app.route('/students/records/<college>')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def shs_records(college):
     data = data_to_dict()
@@ -305,13 +296,13 @@ def shs_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/colleges')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def colleges():
     return render_template('colleges.html')
 
 @app.route('/students/records/<college>')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def college_records(college):
     data = data_to_dict()
@@ -331,13 +322,13 @@ def college_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/graduate')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def graduate():
     return render_template('graduate.html')
 
 @app.route('/students/records/<college>')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def graduate_records(college):
     data = data_to_dict()
@@ -353,7 +344,7 @@ def graduate_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/students/records/view/<student_id>')
-@permission_required('viewall')
+@permission_required('view')
 @login_required
 def student_record(student_id):
     data = process_data(student_id)
@@ -365,7 +356,7 @@ def student_record(student_id):
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
-@permission_required('editall')
+@permission_required('edit')
 @login_required
 def edit_record(student_id):
     student = (
