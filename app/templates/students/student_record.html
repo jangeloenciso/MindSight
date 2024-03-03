@@ -6,12 +6,12 @@
     <div class="main">
         <!-- Header -->
         <div class="main-header">
-            <h1 class="college"> {{student_data[0]['college']}} </h1>
-            <h1 class="name"> {{student_data[0]['first_name']}} {{student_data[0]['last_name']}} </h1>
+            <div class="college"> <span>{{student_data[0]['college']}}</span> </div>
+            <div class="name"> <span>{{student_data[0]['first_name']}} {{student_data[0]['last_name']}}</span> </div>
             <div class="vl"></div>
             <div class="student-id">
-                <h1 class="id">Student ID: &nbsp;</h1>
-                <h1 class="id">{{student_data[0]['student_id']}}</h1>
+                <div class="id"> <span>Student ID: &nbsp; </span></div>
+                <div class="id"> <span>{{student_data[0]['student_id']}}</span></div>
             </div>
             <div class="back-button">
                 <a href="{{ url_for ('college_records', college=student_data[0]['college'])}}">
@@ -24,22 +24,28 @@
         <div class="rows">
             <div class="row1">
                 <div class="nature-content">
-                    <h1 class="title">Status: &nbsp;</h1>
-                    <h1 class="answer">Enrolled</h1>
+                    <div class="title"><span>Status: &nbsp;</span></div>
+                    <div class="answer"><span>Enrolled</span></div>
                 </div>
                 <div class="identity-content">
-                    <h1 class="title">Identity: &nbsp;</h1>
-                    <h1 class="answer">{{student_data[0]['gender']}}</h1>
+                    <div class="title"><span>Identity: &nbsp;</span></div>
+                    <div class="answer"><span>{{student_data[0]['gender']}}</span></div>
                 </div>
             </div>
             <div class="row2">
                 <div class="campus-content">
-                    <h1 class="title">Campus: &nbsp;</h1>
-                    <h1 class="answer">{{student_data[0]['campus']}}</h1>
+                    <div class="title"><span>Campus: &nbsp;</span></div>
+                    <div class="answer"><span>{{student_data[0]['campus']}}</span></div>
                 </div>
                 <div class="age-content">
-                    <h1 class="title">Age: &nbsp;</h1>
-                    <h1 class="answer">{{student_data[0]['age']}}</h1>
+                    <div class="title"><span>Age: &nbsp;</span></div>
+                    <div class="answer"><span>{{student_data[0]['age']}}</span></div>
+                </div>
+            </div>
+            <div class="row3">
+                <div class="counselor">
+                    <div class="title"><span>Counselor: &nbsp;</span></div>
+                    <div class="answer"><span>Emmanuelle A. Santiago</span></div>
                 </div>
             </div>
         </div> 
@@ -47,17 +53,17 @@
         <!-- Full records -->
         <div class="full-records-button">
             <button class="view-records" id="view">
-                <h1 class="title">View full records &nbsp;</h1>
+                <div class="title"><span>View full records &nbsp;</span></div>
                 <img src="/static/SVG/view_button.svg"/>    
             </button>
             <div class="edit-print-button">
                 <div class="edit">
-                    <a href={{ url_for('edit_record', student_id=student_data[0]['student_id']) }}>
+                    <a href="{{ url_for('edit_record', student_id=student_data[0]['student_id']) }}">
                         <img src="{{url_for('static', filename='edit-button.png')}}"/>
                     </a>
                 </div>
                 <div class="print">
-                    <a href={{ url_for('print_record', student_id=student_data[0]['student_id']) }}>
+                    <a href="{{ url_for('print_record', student_id=student_data[0]['student_id']) }}">
                         <img src="{{url_for('static', filename='print-button.png')}}"/>
                     </a>
                 </div>
@@ -76,93 +82,79 @@
                     <div class="double-column">
                       <div>
                         <label for="fname">First name:</label>
-                        {{student_data[0]['first_name']}}
+                        <span>{{student_data[0]['first_name']}}</span>
                       </div>
                       <div>
                         <label for="studNumber">Student's Number:</label>
-                        {{student_data[0]['student_id']}}
+                        <span>{{student_data[0]['student_id']}}</span>
                       </div>
                     </div>
           
                     <div class="single-column">
                       <div>
                         <label for="course">Last Name:</label>
-                        {{student_data[0]['last_name']}}
+                        <span>{{student_data[0]['last_name']}}</span>
                       </div>
                       <div></div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="course">Course/Department:</label>
-                        {{student_data[0]['course']}}
+                        <span>{{student_data[0]['course']}}</span>
                       </div>
                       <div>
                         <label for="yearlevel">Grade/Yr Level:</label>
-                        {{student_data[0]['year_level']}}
+                        <span>{{student_data[0]['year_level']}}</span>
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="dob">Date of Birth:</label>
-                        {{student_data[0]['date_of_birth']}}
+                        <span>{{student_data[0]['date_of_birth']}}</span>
                       </div>
                       <div>
                         <label for="age">Age:</label>
-                        {{student_data[0]['age']}}
+                        <span>{{student_data[0]['age']}}</span>
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="gender">Gender:</label>
-                        {{student_data[0]['gender']}}
+                        <span>{{student_data[0]['gender']}}</span>
                       </div>
                       <div>
                         <label for="civil">Civil Status:</label>
-                        <select name="civil" id="civil">
-                          <option value="" disabled selected>
-                            -Select Marital Status-
-                          </option>
-                          <option value="Single">Single</option>
-                          <option value="Married">Married</option>
-                          <option value="Widowed">Widowed</option>
-                          <option value="Separated">Separated</option>
-                          <option value="Divorced">Divorced</option>
-                        </select>
+                        <!-- TODO: put answer -->
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="nationality">Nationality:</label>
-                        {{student_data[0]['nationality']}}
+                        <span>{{student_data[0]['nationality']}}</span>
                       </div>
                       <div>
                         <label for="religion">Religion:</label>
-                        {{student_data[0]['religion']}}
+                        <span>{{student_data[0]['religion']}}</span>
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="address">Home Address:</label>
-                        {{student_data[0]['residence']}}
+                        <span>{{student_data[0]['residence']}}</span>
                       </div>
                       <div>
                         <label for="pnumber">Phone Number:</label>
-                        {{student_data[0]['contact_number']}}
+                        <span>{{student_data[0]['contact_number']}}</span>
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="email">Email Address:</label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          placeholder="Email Address"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div>
                         <label for="cnumber">Cellphone Number:</label>
-                        {{student_data[0]['contact_number']}}
+                        <span>{{student_data[0]['contact_number']}}</span>
                       </div>
                     </div>
           
@@ -172,22 +164,17 @@
                     <div class="double-column">
                       <div>
                         <label for="guardian">Name of Guardian:</label>
-                        <input
-                          type="text"
-                          id="guardian"
-                          name="guardian"
-                          placeholder="Name of Guardian"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div>
                         <label for="gcnumber">Guardian's Contact No.:</label>
-                        {{student_data[0]['contact_number']}}
+                        <span>{{student_data[0]['contact_number']}}</span>
                       </div>
                     </div>
                     <div class="single-column">
                       <div>
                         <label for="guardianadd">Address of Guardian:</label>
-                        {{student_data[0]['residence']}}
+                        <span>{{student_data[0]['residence']}}</span>
                       </div>
                       <div></div>
                     </div>
@@ -201,21 +188,9 @@
                     <div class="left-align">
                       <label for="referrer"
                         >Who referred you to our office, or how did you learn about our
-                        service?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Share with us how you found out about our counseling
-                            services. Was it through a referral or another source?</span
-                          >
-                        </div></label
+                        service?</label
                       >
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="referrer"
-                        name="referrer"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
                   </div>
           
@@ -226,46 +201,28 @@
                   <div class="emergency">
                     <div class="left-align">
                       <label
-                        >In case of an emergency, who should we contact?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >In case of an emergency, please provide the name and contact
-                            information of the person we should reach out to on your
-                            behalf.</span
-                          >
-                        </div></label
+                        >In case of an emergency, who should we contact?</label
                       >
                     </div>
           
                     <div class="double-column">
                       <div>
                         <label for="emername">Name:</label>
-                        <input
-                          type="text"
-                          id="emername"
-                          name="emername"
-                          placeholder="Name"
-                        />
+                        <!-- TODO: Put answer -->
                       </div>
                       <div>
                         <label for="emerrel">Relationship:</label>
-                        <input
-                          type="text"
-                          id="emerrel"
-                          name="emerrel"
-                          placeholder="Relationship"
-                        />
+                        <!-- TODO: Put answer -->
                       </div>
                     </div>
                     <div class="double-column">
                       <div>
                         <label for="dob">Address:</label>
-                        {{student_data[0]['residence']}}
+                        <span>{{student_data[0]['residence']}}</span>
                       </div>
                       <div>
                         <label for="emercell">Cellphone No.:</label>
-                        {{student_data[0]['contact_number']}}
+                        <span>{{student_data[0]['contact_number']}}</span>
                       </div>
                     </div>
                   </div>
@@ -277,44 +234,21 @@
                   <div class="historyinfo">
                     <div class="left-align">
                       <label
-                        >Who is providing the history information?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Kindly specify the individual providing the historical
-                            information. This helps us ensure accuracy and better assist
-                            you with the relevant details.</span
-                          >
-                        </div></label
+                        >Who is providing the history information?</label
                       >
                       <div class="radio-inline-container">
                         <div>
-                          <input
-                            type="radio"
-                            id="client"
-                            name="history_provider"
-                            value="client"
-                          />
+                          <!-- TODO: Put answer -->
                           <label for="client">The client</label>
                         </div>
                         <div>
-                          <input
-                            type="radio"
-                            id="cguardian"
-                            name="history_provider"
-                            value="cguardian"
-                          />
+                          <!-- TODO: Put answer -->
                           <label for="cguardian">The client's guardian</label>
                         </div>
                         <div>
-                          <input
-                            type="radio"
-                            id="otherOption"
-                            name="history_provider"
-                            value="other"
-                          />
+                          <!-- TODO: Put answer -->
                           <label for="otherOption">Other</label
-                          >{{student_data[0]['information_provider']}}
+                          ><span>{{student_data[0]['information_provider']}}</span>
                         </div>
                       </div>
                     </div>
@@ -322,50 +256,23 @@
                     <div class="left-align">
                       <label for="problem1"
                         >Please describe the current complaint or problem as specifically
-                        as you can, in your own words.
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Please describe your current challenges or concerns related
-                            to your mental health in your own words. Be as specific as you
-                            feel comfortable, as this information will assist us in
-                            tailoring our support to your unique needs.</span
-                          >
-                        </div></label
+                        as you can, in your own words.</label
                       >
-                      {{student_data[0]['current problem']}}
+                      <span>{{student_data[0]['current problem']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="problem2"
                         >How long have you experienced this problem, or when did you first
-                        notice it?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Could you please share how long you have been experiencing
-                            this issue or when you first noticed it? Your timeline helps
-                            us gain a better understanding of the duration and
-                            progression, enabling us to provide more comprehensive
-                            assistance.</span
-                          >
-                        </div></label
+                        notice it?</label
                       >
-                      {{student_data[0]['problem_length']}}
+                     <span>{{student_data[0]['problem_length']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="problem3"
                         >What stressors may have contributed to the current complaint or
-                        problem?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Reflecting on the factors that may have contributed to your
-                            current concerns, please share any stressors you believe are
-                            relevant.</span
-                          >
-                        </div></label
+                        problem?</label
                       >
-                      {{student_data[0]['stressors']}}
+                      <span>{{student_data[0]['stressors']}}</span>
                     </div>
           
                     <!-- long checkbox form -->
@@ -378,11 +285,11 @@
           
                     <ul class="left-align-checkbox">
                       <li>
-                        {{student_data[0]['substance_abuse']}}
+                        <span>{{student_data[0]['substance_abuse']}}</span>
                         <label for="exp1">Substance abuse/dependence</label>
                       </li>
                       <li>
-                        {{student_data[0]['addiction']}}
+                        <span>{{student_data[0]['addiction']}}</span>
                         <label for="exp2"
                           >Addiction (internet, porn, shopping, exercise, gaming,
                           gambling, etc.)</label
@@ -390,153 +297,153 @@
                       </li>
           
                       <li>
-                        {{student_data[0]['depression_sad_down_feelings']}}
+                        <span>{{student_data[0]['depression_sad_down_feelings']}}</span>
                         <label for="exp3">Depression/Sad/Down Feelings</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['high_low_energy_level']}}
+                        <span>{{student_data[0]['high_low_energy_level']}}</span>
                         <label for="exp4">High/Low energy level</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['angry_irritable']}}
+                        <span>{{student_data[0]['angry_irritable']}}</span>
                         <label for="exp5">Angry/Irritable</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['loss_of_interest']}}
+                        <span>{{student_data[0]['loss_of_interest']}}</span>
                         <label for="exp6">Lost of interest in activities</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['difficulty_enjoying_things']}}
+                        <span>{{student_data[0]['difficulty_enjoying_things']}}</span>
                         <label for="exp7">Difficulty enjoying things</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['crying_spells']}}
+                        <span>{{student_data[0]['crying_spells']}}</span>
                         <label for="exp8">Crying spells</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['decreased_motivation']}}
+                        <span>{{student_data[0]['decreased_motivation']}}</span>
                         <label for="exp9">Decreased Motivation</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['withdrawing_from_people']}}
+                        <span>{{student_data[0]['withdrawing_from_people']}}</span>
                         <label for="exp10">Withdrawing from people/Isolation</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['mood_swings']}}
+                        <span>{{student_data[0]['mood_swings']}}</span>
                         <label for="exp11">Mood Swings</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['black_and_white_thinking']}}
+                        <span>{{student_data[0]['black_and_white_thinking']}}</span>
                         <label for="exp12"
                           >Black and white thinking/All or nothing thinking</label
                         >
                       </li>
           
                       <li>
-                        {{student_data[0]['negative_thinkingg']}}
+                        <span>{{student_data[0]['negative_thinkingg']}}</span>
                         <label for="exp13">Negative thinking</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['change_in_weight_or_appetite']}}
+                        <span>{{student_data[0]['change_in_weight_or_appetite']}}</span>
                         <label for="exp14">Change in weight or appetite</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['change_in_sleeping_pattern']}}
+                        <span>{{student_data[0]['change_in_sleeping_pattern']}}</span>
                         <label for="exp15">Change in sleeping pattern</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['suicidal_thoughts_or_plans']}}
+                        <span>{{student_data[0]['suicidal_thoughts_or_plans']}}</span>
                         <label for="exp16"
                           >Suicidal thoughts or plans/Thoughts of hurting yourself</label
                         >
                       </li>
           
                       <li>
-                        {{student_data[0]['self_harm']}}
+                        <span>{{student_data[0]['self_harm']}}</span>
                         <label for="exp17">Self-harm/Cutting/Burning yourself</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['homicidal_thoughts_or_plans']}}
+                        <span>{{student_data[0]['homicidal_thoughts_or_plans']}}</span>
                         <label for="exp18"
                           >Homicidal thoughts or plans/Thoughts of hurting others</label
                         >
                       </li>
           
                       <li>
-                        {{student_data[0]['difficulty_focusing']}}
+                        <span>{{student_data[0]['difficulty_focusing']}}</span>
                         <label for="exp19">Poor concentration/Difficulty focusing</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['feelings_of_hopelessness']}}
+                        <span>{{student_data[0]['feelings_of_hopelessness']}}</span>
                         <label for="exp20">Feelings of hopelessness/Worthlessness</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['feelings_of_shame_or_guilt']}}
+                        <span>{{student_data[0]['feelings_of_shame_or_guilt']}}</span>
                         <label for="exp21">Feelings of shame or guilt</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['feelings_of_inadequacy']}}
+                        <span>{{student_data[0]['feelings_of_inadequacy']}}</span>
                         <label for="exp22">Feelings of inadequacy/Low self-esteem</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['anxious_nervous_tense_feelings']}}
+                        <span>{{student_data[0]['anxious_nervous_tense_feelings']}}</span>
                         <label for="exp23">Anxious/Nervous/Tense feelings</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['panic_attacks']}}
+                        <span>{{student_data[0]['panic_attacks']}}</span>
                         <label for="exp24">Panic attacks</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['racing_or_scrambled_thoughts']}}
+                        <span>{{student_data[0]['racing_or_scrambled_thoughts']}}</span>
                         <label for="exp25">Racing or scrambled thoughts</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['bad_or_unwanted_thoughtsbad_or_unwanted_thoughts']}}
+                        <span>{{student_data[0]['bad_or_unwanted_thoughtsbad_or_unwanted_thoughts']}}</span>
                         <label for="exp26">Bad or unwanted thoughts</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['flashbacks_or_nightmares']}}
+                        <span>{{student_data[0]['flashbacks_or_nightmares']}}</span>
                         <label for="exp27">Flashback/Nightmares</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['muscle_tensions_aches']}}
+                        <span>{{student_data[0]['muscle_tensions_aches']}}</span>
                         <label for="exp28">Muscle tensions, aches, etc.</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['hearing_voices_or_seeing_things']}}
+                        <span>{{student_data[0]['hearing_voices_or_seeing_things']}}</span>
                         <label for="exp29">Hearing voices/Seeing things not there</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['thoughts_of_running_away']}}
+                        <span>{{student_data[0]['thoughts_of_running_away']}}</span>
                         <label for="exp30">Thoughts of running away</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['paranoid_thoughts']}}
+                        <span>{{student_data[0]['paranoid_thoughts']}}</span>
                         <label for="exp31"
                           >Paranoid thoughts/Thoughts that someone is watching you, out to
                           get you or hurt you.</label
@@ -544,22 +451,22 @@
                       </li>
           
                       <li>
-                        {{student_data[0]['feelings_of_frustration']}}
+                        <span>{{student_data[0]['feelings_of_frustration']}}</span>
                         <label for="exp32">Feelings of frustation</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['feelings_of_being_cheated']}}
+                        <span>{{student_data[0]['feelings_of_being_cheated']}}</span>
                         <label for="exp33">Feelings of being cheated</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['perfectionism']}}
+                        <span>{{student_data[0]['perfectionism']}}</span>
                         <label for="exp34">Perfectionism</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['counting_washing_checking']}}
+                        <span>{{student_data[0]['counting_washing_checking']}}</span>
                         <label for="exp35"
                           >Rituals of counting things, washing hands, checking locks,
                           doors, stove, etc./Overly concerned about germs.</label
@@ -567,7 +474,7 @@
                       </li>
           
                       <li>
-                        {{student_data[0]['distorted_body_image']}}
+                        <span>{{student_data[0]['distorted_body_image']}}</span>
                         <label for="exp36"
                           >Distorted body image (believe you are heavier or less
                           attractive than others say you are)</label
@@ -575,55 +482,49 @@
                       </li>
           
                       <li>
-                        {{student_data[0]['concerns_about_dieting']}}
+                        <span>{{student_data[0]['concerns_about_dieting']}}</span>
                         <label for="exp37">Concerns about dieting</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['loss_of_control_over_eating']}}
+                        <span>{{student_data[0]['loss_of_control_over_eating']}}</span>
                         <label for="exp38">Feelings of loss of control over eating</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['binge_eating_or_purging']}}
+                        <span>{{student_data[0]['binge_eating_or_purging']}}</span>
                         <label for="exp39">Binge eating/Purging</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['rules_about_eating']}}
+                        <span>{{student_data[0]['rules_about_eating']}}</span>
                         <label for="exp40"
                           >Rules about eating/Compensating for eating</label
                         >
                       </li>
           
                       <li>
-                        {{student_data[0]['excessive_exercise']}}
+                        <span>{{student_data[0]['excessive_exercise']}}</span>
                         <label for="exp41">Excessive exercise</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['indecisiveness_about_career']}}
+                        <span>{{student_data[0]['indecisiveness_about_career']}}</span>
                         <label for="exp42">Indecisiveness about career</label>
                       </li>
           
                       <li>
-                        {{student_data[0]['job_problems']}}
+                        <span>{{student_data[0]['job_problems']}}</span>
                         <label for="exp43">Job Problems </label>
                       </li>
           
                       <li>
-                        <input
-                          type="checkbox"
-                          id="exp44"
-                          name="exp44"
-                          value="exp44"
-                          class="checkbox-round"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           style="width: auto !important; padding-right: 10px"
                           for="exp44"
                           >Other</label
-                        >{{student_data[0]['other']}}
+                        ><span>{{student_data[0]['other']}}</span>
                       </li>
                     </ul>
                   </div>
@@ -639,58 +540,29 @@
                       </label>
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['previous_treatments']}}
-                          <label for="prevtreatmentyes">Yes</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['previous_treatments']}}
-                          <label for="prevtreatmentno">No</label>
+                          <span>{{student_data[0]['previous_treatments']}}</span>
                         </div>
                       </div>
                     </div>
           
                     <div class="left-align">
                       <label for="prevtreatment1"
-                        >What did you like/dislike about previous treatment?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >What aspects did you appreciate or find challenging in your
-                            previous treatment experiences?</span
-                          >
-                        </div></label
+                        >What did you like/dislike about previous treatment?</label
                       >
-                      {{student_data[0]['previous_treatments_likes_dislikes']}}
+                      <span>{{student_data[0]['previous_treatments_likes_dislikes']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="prevtreatment2"
                         >What did you learn about yourself through previous
-                        counseling/treatment that may help you?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Reflecting on your past counseling or treatment experiences,
-                            what insights have you gained about yourself that may be
-                            valuable for your current situation?</span
-                          >
-                        </div></label
+                        counseling/treatment that may help you?</label
                       >
-                      {{student_data[0]['previous_treatments_learned']}}
+                      <span>{{student_data[0]['previous_treatments_learned']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="prevtreatment3"
-                        >Is there any type of treatment you would like to continue?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Is there a specific type of treatment or approach that you
-                            would like to continue or explore further? Your preferences
-                            play a crucial role in tailoring our support to align with
-                            your needs and goals.</span
-                          >
-                        </div></label
+                        >Is there any type of treatment you would like to continue?</label
                       >
-                      {{student_data[0]['previous_treatments_like_to_continue']}}
+                      <span>{{student_data[0]['previous_treatments_like_to_continue']}}</span>
                     </div>
           
                     <div class="left-align">
@@ -699,12 +571,7 @@
                       </label>
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['previous_hospital_stays_psych']}}
-                          <label for="hospstaysyes">Yes</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['previous_hospital_stays_psych']}}
-                          <label for="hospstaysno">No</label>
+                          <span>{{student_data[0]['previous_hospital_stays_psych']}}</span>
                         </div>
                       </div>
                     </div>
@@ -715,12 +582,7 @@
                       </label>
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['current_thoughts_to_harm']}}
-                          <label for="currentharmyes">Yes</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['current_thoughts_to_harm']}}
-                          <label for="currentharmno">No</label>
+                          <span>{{student_data[0]['current_thoughts_to_harm']}}</span>
                         </div>
                       </div>
                     </div>
@@ -731,12 +593,7 @@
                       </label>
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['past_thoughts_to_harm']}}
-                          <label for="pastharmyes">Yes</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['past_thoughts_to_harm']}}
-                          <label for="pastharmno">No</label>
+                          <span>{{student_data[0]['past_thoughts_to_harm']}}</span>
                         </div>
                       </div>
                     </div>
@@ -757,7 +614,7 @@
                       <label for="childhoodill" style="width: 420px !important"
                         >History of serious childhood illness:</label
                       >
-                      {{student_data[0]['serious_ch_illnesses_history']}}
+                      <span>{{student_data[0]['serious_ch_illnesses_history']}}</span>
                     </div>
           
                     <div class="left-align">
@@ -773,14 +630,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['head_injuries']}}
-                          <label style="width: auto !important" for="headinjuryyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['head_injuries']}}
-                          <label for="headinjuryno">No</label>
+                          <span>{{student_data[0]['head_injuries']}}
                         </div>
                       </div>
                     </div>
@@ -795,14 +645,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['lose_consciousness']}}
-                          <label style="width: auto !important" for="lossconsyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['lose_consciousness']}}
-                          <label for="lossconsno">No</label>
+                          <span>{{student_data[0]['lose_consciousness']}}</span>
                         </div>
                       </div>
                     </div>
@@ -812,14 +655,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['convulsions_or_seizures']}}
-                          <label style="width: auto !important" for="expseizuresyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['convulsions_or_seizures']}}
-                          <label for="expseizuresno">No</label>
+                          <span>{{student_data[0]['convulsions_or_seizures']}}</span>
                         </div>
                       </div>
                     </div>
@@ -829,14 +665,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['fever']}}
-                          <label style="width: auto !important" for="hasfeveryes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['fever']}}
-                          <label for="hasfeverno">No</label>
+                          <span>{{student_data[0]['fever']}}</span>
                         </div>
                       </div>
                     </div>
@@ -845,65 +674,14 @@
                       <label for="allergies" style="width: 310px !important"
                         >List any allergies you have:</label
                       >
-                      {{student_data[0]['allergies']}}
+                      <span>{{student_data[0]['allergies']}}</span>
                     </div>
           
                     <div class="left-align">
                       <label>How would you rate your current physical health? </label>
                       <div class="radio-inline-container resp">
                         <div>
-                          <input
-                            type="radio"
-                            id="phyhealthexc"
-                            name="phyhealth"
-                            value="phyhealthexc"
-                          />
-                          <label for="phyhealthexc">Excellent</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="phyhealthvg"
-                            name="phyhealth"
-                            value="phyhealthvg"
-                          />
-                          <label for="phyhealthvg">Very Good</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="phyhealthg"
-                            name="phyhealth"
-                            value="phyhealthg"
-                          />
-                          <label for="phyhealthg">Good</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="phyhealthf"
-                            name="phyhealth"
-                            value="phyhealthf"
-                          />
-                          <label for="phyhealthf">Fair</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="phyhealthp"
-                            name="phyhealth"
-                            value="phyhealthp"
-                          />
-                          <label for="phyhealthp">Poor</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="phyhealthvp"
-                            name="phyhealth"
-                            value="phyhealthvp"
-                          />
-                          <label for="phyhealthvp">Very Poor</label>
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -913,7 +691,7 @@
                         >What was the date of your last physical or routine health “check
                         up”?</label
                       >
-                      {{student_data[0]['last_check_up']}}
+                      <span>{{student_data[0]['last_check_up']}}</span>
                     </div>
           
                     <div class="left-align single-column-span">
@@ -922,14 +700,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['has_physician']}}
-                          <label style="width: auto !important" for="physicianyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['has_physician']}}
-                          <label for="physicianno">No</label>
+                          <span>{{student_data[0]['has_physician']}}</span>
                         </div>
                       </div>
                     </div>
@@ -941,19 +712,19 @@
                       <div>
                         <div class="left-align single-column-span">
                           <label for="physname">Name:</label>
-                          {{student_data[0]['physician_name']}}
+                          <span>{{student_data[0]['physician_name']}}</span>
                         </div>
                       </div>
                       <div>
                         <div class="left-align single-column-span">
                           <label for="physemail">Email:</label>
-                          {{student_data[0]['physician_email']}}
+                          <span>{{student_data[0]['physician_email']}}</span>
                         </div>
                       </div>
                       <div>
                         <div class="left-align single-column-span">
                           <label for="physnum">Contact Number:</label>
-                          {{student_data[0]['physician_number']}}
+                          <span>{{student_data[0]['physician_number']}}</span>
                         </div>
                       </div>
                     </div>
@@ -968,12 +739,7 @@
                       <label for="birthloc" style="width: 160px !important"
                         >Birth Location:</label
                       >
-                      <input
-                        type="text"
-                        class="form-width100 single-column-span"
-                        id="birthloc"
-                        name="birthloc"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
           
                     <div class="left-align single-column-span">
@@ -981,63 +747,7 @@
                         >Raised by:
                       </label>
                       <div class="radio-inline-container raisedby">
-                        <div>
-                          <input
-                            type="radio"
-                            id="raisedmother"
-                            name="raised"
-                            value="raisedmother"
-                          />
-                          <label style="width: auto !important" for="raisedmother"
-                            >Mother</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="raisedfather"
-                            name="raised"
-                            value="raisedfather"
-                          />
-                          <label style="width: auto !important" for="raisedfather"
-                            >Father</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="raisedstepm"
-                            name="raised"
-                            value="raisedstepm"
-                          />
-                          <label style="width: auto !important" for="raisedstepm"
-                            >Step-Mother</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="raisedstepf"
-                            name="raised"
-                            value="raisedstepf"
-                          />
-                          <label style="width: auto !important" for="raisedstepf"
-                            >Step-Father</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="raisedother"
-                            name="raised"
-                            value="raisedother"
-                          />
-                          <label
-                            style="width: auto !important; padding-right: 10px"
-                            for="raisedother"
-                            >Other</label
-                          ><input type="text" placeholder="Enter text" />
-                        </div>
+                        <!-- TODO: put answer -->
                       </div>
                     </div>
           
@@ -1053,72 +763,7 @@
                       <label for="raised" style="width: 120px !important">Mother</label>
                       <div class="radio-inline-container relby">
                         <div>
-                          <input
-                            type="radio"
-                            id="relmothergood"
-                            name="relmother"
-                            value="relmothergood"
-                          />
-                          <label style="width: auto !important" for="relmothergood"
-                            >Good</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relmotherfair"
-                            name="relmother"
-                            value="relmotherfair"
-                          />
-                          <label style="width: auto !important" for="relmotherfair"
-                            >Fair</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relmotherpoor"
-                            name="relmother"
-                            value="relmotherpoor"
-                          />
-                          <label style="width: auto !important" for="relmotherpoor"
-                            >Poor</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relmotherclose"
-                            name="relmother"
-                            value="relmotherclose"
-                          />
-                          <label style="width: auto !important" for="relmotherclose"
-                            >Close</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relmotherdistant"
-                            name="relmother"
-                            value="relmotherdistant"
-                          />
-                          <label style="width: auto !important" for="relmotherdistant"
-                            >Distant</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relmotherother"
-                            name="relmother"
-                            value="relmotherother"
-                          />
-                          <label
-                            style="width: auto !important; padding-right: 10px"
-                            for="relmotherother"
-                            >Other</label
-                          ><input type="text" placeholder="Enter text" />
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -1127,72 +772,7 @@
                       <label for="raised" style="width: 120px !important">Father</label>
                       <div class="radio-inline-container relby">
                         <div>
-                          <input
-                            type="radio"
-                            id="relfathergood"
-                            name="relfather"
-                            value="relfathergood"
-                          />
-                          <label style="width: auto !important" for="relfathergood"
-                            >Good</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relfatherfair"
-                            name="relfather"
-                            value="relfatherfair"
-                          />
-                          <label style="width: auto !important" for="relfatherfair"
-                            >Fair</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relfatherpoor"
-                            name="relfather"
-                            value="relfatherpoor"
-                          />
-                          <label style="width: auto !important" for="relfatherpoor"
-                            >Poor</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relfatherclose"
-                            name="relfather"
-                            value="relfatherclose"
-                          />
-                          <label style="width: auto !important" for="relfatherclose"
-                            >Close</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relfatherdistant"
-                            name="relfather"
-                            value="relfatherdistant"
-                          />
-                          <label style="width: auto !important" for="relfatherdistant"
-                            >Distant</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relfatherother"
-                            name="relfather"
-                            value="relfatherother"
-                          />
-                          <label
-                            style="width: auto !important; padding-right: 10px"
-                            for="relfatherother"
-                            >Other</label
-                          ><input type="text" placeholder="Enter text" />
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -1203,84 +783,14 @@
                       >
                       <div class="radio-inline-container relby">
                         <div>
-                          <input
-                            type="radio"
-                            id="relstepparentgood"
-                            name="relstepparent"
-                            value="relstepparentgood"
-                          />
-                          <label style="width: auto !important" for="relstepparentgood"
-                            >Good</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relstepparentfair"
-                            name="relstepparent"
-                            value="relstepparentfair"
-                          />
-                          <label style="width: auto !important" for="relstepparentfair"
-                            >Fair</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relstepparentpoor"
-                            name="relstepparent"
-                            value="relstepparentpoor"
-                          />
-                          <label style="width: auto !important" for="relstepparentpoor"
-                            >Poor</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relstepparentclose"
-                            name="relstepparent"
-                            value="relstepparentclose"
-                          />
-                          <label style="width: auto !important" for="relstepparentclose"
-                            >Close</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relstepparentdistant"
-                            name="relstepparent"
-                            value="relstepparentdistant"
-                          />
-                          <label style="width: auto !important" for="relstepparentdistant"
-                            >Distant</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="relstepparentother"
-                            name="relstepparent"
-                            value="relstepparentother"
-                          />
-                          <label
-                            style="width: auto !important; padding-right: 10px"
-                            for="relstepparentother"
-                            >Other</label
-                          ><input type="text" placeholder="Enter text" />
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
           
                     <div class="left-align single-column-span">
                       <label for="relparent" style="width: 80px !important">Other:</label>
-                      <input
-                        type="text"
-                        class="form-width100 single-column-span"
-                        id="relparent"
-                        name="relparent"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
           
                     <div class="left-align">
@@ -1300,104 +810,18 @@
                       </tr>
                       <tr>
                         <td>
-                          <input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="relparent"
-                            name="relparent"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          <input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="relparent"
-                            name="relparent"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          <input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="relparent"
-                            name="relparent"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
                           <div class="radio-inline-container relby">
                             <div>
-                              <input
-                                type="radio"
-                                id="relsiblinggood"
-                                name="relsibling"
-                                value="relsiblinggood"
-                              />
-                              <label style="width: auto !important" for="relsiblinggood"
-                                >Good</label
-                              >
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="relsiblingfair"
-                                name="relsibling"
-                                value="relsiblingfair"
-                              />
-                              <label style="width: auto !important" for="relsiblingfair"
-                                >Fair</label
-                              >
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="relsiblingpoor"
-                                name="relsibling"
-                                value="relsiblingpoor"
-                              />
-                              <label style="width: auto !important" for="relsiblingpoor"
-                                >Poor</label
-                              >
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="relsiblingclose"
-                                name="relsibling"
-                                value="relsiblingclose"
-                              />
-                              <label style="width: auto !important" for="relsiblingclose"
-                                >Close</label
-                              >
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="relsiblingdistant"
-                                name="relsibling"
-                                value="relsiblingdistant"
-                              />
-                              <label
-                                style="width: auto !important"
-                                for="relsiblingdistant"
-                                >Distant</label
-                              >
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="relsiblingother"
-                                name="relsibling"
-                                value="relsiblingother"
-                              />
-                              <label
-                                style="width: auto !important; padding-right: 10px"
-                                for="relsiblingother"
-                                >Other</label
-                              ><input
-                                type="text"
-                                id="otherTextbox"
-                                placeholder="Enter text"
-                              />
+                              <!-- TODO: put answer -->
                             </div>
                           </div>
                         </td>
@@ -1409,28 +833,22 @@
                         >Any history of neglect, and/o physical, verbal, emotional,
                         spiritual, or sexual abuse?
                       </label>
-                      {{student_data[0]['family_abuse_history']}}
+                      <span>{{student_data[0]['family_abuse_history']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="famhistoryneglect2"
                         >Any family history of substance abuse, mental illness, suicide,
                         or violence?
                       </label>
-                      {{student_data[0]['family_mental_history']}}
+                      <span>{{student_data[0]['family_mental_history']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="famhistoryneglect3"
                         >Any Additional Family Information:
                       </label>
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="famhistoryneglect3"
-                        name="famhistoryneglect3"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
                   </section>
-          
                   <!-- end: Family History -->
           
                   <!-- start: Social History -->
@@ -1438,61 +856,29 @@
                   <section class="sochistory">
                     <div class="left-align">
                       <label for="sochistory1"
-                        >Describe your relationship with peers and/or friends?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >How would you characterize your current relationship with
-                            peers and/or friends?</span
-                          >
-                        </div></label
+                        >Describe your relationship with peers and/or friends?</label
                       >
-                      {{student_data[0]['relationship_with_peers']}}
+                      <span>{{student_data[0]['relationship_with_peers']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="sochistory2"
-                        >How would you describe your social support network?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Share information about the individuals or groups you rely on
-                            for support.</span
-                          >
-                        </div></label
+                        >How would you describe your social support network?</label
                       >
-                      {{student_data[0]['social_support_network']}}
+                      <span>{{student_data[0]['social_support_network']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="sochistory3"
-                        >Describe your hobbies/interests:
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >What are some of your hobbies and interests? Sharing your
-                            personal pursuits can help us understand more about you and
-                            identify potential therapeutic activities that align with your
-                            preferences.</span
-                          >
-                        </div></label
+                        >Describe your hobbies/interests:</label
                       >
-                      {{student_data[0]['hobbies_or_interests']}}
+                      <span>{{student_data[0]['hobbies_or_interests']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="sochistory4"
-                        >Describe any cultural concerns:
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Do you have any specific cultural concerns or aspects of your
-                            cultural background that you believe are important for us to
-                            be aware of?</span
-                          >
-                        </div></label
+                        >Describe any cultural concerns:</label
                       >
-                      {{student_data[0]['cultural_concerns']}}
+                      <span>{{student_data[0]['cultural_concerns']}}</span>
                     </div>
                   </section>
-          
                   <!-- end: Social History -->
           
                   <!-- start: Educational History -->
@@ -1503,58 +889,7 @@
                       <label>When attending school were you:</label>
                       <div class="radio-inline-container resp">
                         <div>
-                          <input
-                            type="radio"
-                            id="educattend1"
-                            name="educattend"
-                            value="educattend1"
-                          />
-                          <label for="educattend1">In regular classes</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="educattend2"
-                            name="educattend"
-                            value="educattend2"
-                          />
-                          <label for="educattend2">Advanced classes</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="educattend3"
-                            name="educattend"
-                            value="educattend3"
-                          />
-                          <label for="educattend3">Home Study</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="educattend4"
-                            name="educattend"
-                            value="educattend4"
-                          />
-                          <label for="educattend4">Ever suspended</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="educattend5"
-                            name="educattend"
-                            value="educattend5"
-                          />
-                          <label for="educattend5">Special classes</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="educattend6"
-                            name="educattend"
-                            value="educattend6"
-                          />
-                          <label for="educattend6">Placed in alternative school</label>
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -1563,30 +898,15 @@
                       <label for="educhighest"
                         >What is the highest educational level you have completed?
                       </label>
-                      {{student_data[0]['highest_level_achieved']}}
+                      <span>{{student_data[0]['highest_level_achieved']}}</span>
                     </div>
           
                     <div class="left-align">
                       <label for="educinfo"
                         >Give any additional important educational information (i.e. Did
-                        you like school? Have a learning disability?)
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Please provide any additional important educational
-                            information, such as your feelings towards school or the
-                            presence of any learning disabilities. Understanding your
-                            educational experiences helps us consider various factors that
-                            may impact your well-being.</span
-                          >
-                        </div></label
+                        you like school? Have a learning disability?)</label
                       >
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="educinfo"
-                        name="educinfo"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
                   </section>
                   <!-- end: Educational History -->
@@ -1598,49 +918,7 @@
                       <label>What is your current employment status? </label>
                       <div class="radio-inline-container resp">
                         <div>
-                          <input
-                            type="radio"
-                            id="employmentstat1"
-                            name="employmentstat"
-                            value="employmentstat1"
-                          />
-                          <label for="employmentstat1">Employed Full-Time</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="employmentstat2"
-                            name="employmentstat"
-                            value="employmentstat2"
-                          />
-                          <label for="employmentstat2">Employed Part-time</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="employmentstat3"
-                            name="employmentstat"
-                            value="employmentstat3"
-                          />
-                          <label for="employmentstat3">Unemployed</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="employmentstat4"
-                            name="employmentstat"
-                            value="employmentstat4"
-                          />
-                          <label for="employmentstat4">Self-employed</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="employmentstat5"
-                            name="employmentstat"
-                            value="employmentstat5"
-                          />
-                          <label for="employmentstat5">Student</label>
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -1649,14 +927,13 @@
                       <label for="employmentsatis"
                         >Are you satisfied with your employment? why?
                       </label>
-                      {{student_data[0]['satisfaction']}}
+                      <span>{{student_data[0]['satisfaction']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="employmentsatisifnot">If not, why? </label>
-                      {{student_data[0]['satisfaction_reason']}}
+                      <span>{{student_data[0]['satisfaction_reason']}}</span>
                     </div>
                   </section>
-          
                   <!-- end: Occupational History -->
           
                   <!-- start: Substance Abuse History -->
@@ -1670,24 +947,7 @@
                       </label>
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['struggled_with_substance_abuse']}}
-                          <label for="subsabuseyes">Yes</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['struggled_with_substance_abuse']}}
-                          <label for="subsabuseno">No</label>
-                        </div>
-                        <div>
-                          {{student_data[0]['struggled_with_substance_abuse']}}
-                          <label
-                            style="width: auto !important; padding-right: 10px"
-                            for="subsabuseother"
-                            >Other</label
-                          ><input
-                            type="text"
-                            id="otherTextbox"
-                            placeholder="Enter text"
-                          />
+                          <span>{{student_data[0]['struggled_with_substance_abuse']}}</span>
                         </div>
                       </div>
                     </div>
@@ -1711,270 +971,184 @@
                       <tr>
                         <td>Alcohol</td>
                         <td>
-                          <select name="alcoholuse" id="alcoholuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['alcohol_age_first_use']}}
+                          <span>{{student_data[0]['alcohol_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="alcoholfrequency" id="alcoholfrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['alcohol_amount_used']}}
+                          <span>{{student_data[0]['alcohol_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['alcohol_way_of_intake']}}
+                          <span>{{student_data[0]['alcohol_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Marijuana</td>
                         <td>
-                          <select name="marijuanause" id="marijuanause">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['marijuana_age_first_use']}}
+                          <span>{{student_data[0]['marijuana_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="marijuanafrequency" id="marijuanafrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['marijuana_amount_used']}}
+                          <span>{{student_data[0]['marijuana_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['marijuana_way_of_intake']}}
+                          <span>{{student_data[0]['marijuana_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Cocaine or Crack</td>
                         <td>
-                          <select name="cocaineorcrackuse" id="cocaineorcrackuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['cocaine_age_first_use']}}
+                          <span>{{student_data[0]['cocaine_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select
-                            name="cocaineorcrackfrequency"
-                            id="cocaineorcrackfrequency"
-                          >
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['cocaine_amount_used']}}
+                          <span>{{student_data[0]['cocaine_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['cocaine_way_of_intake']}}
+                          <span>{{student_data[0]['cocaine_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Heroin</td>
                         <td>
-                          <select name="heroinuse" id="heroinuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['heroin_age_first_use']}}
+                          <span>{{student_data[0]['heroin_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="heroinfrequency" id="heroinfrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['heroin_amount_used']}}
+                          <span>{{student_data[0]['heroin_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['heroin_way_of_intake']}}
+                          <span>{{student_data[0]['heroin_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Amphetamites</td>
                         <td>
-                          <select name="amphetamitesuse" id="amphetamitesuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['amphetamines_age_first_use']}}
+                          <span>{{student_data[0]['amphetamines_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="amphetamitesfrequency" id="amphetamitesfrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['amphetamines_amount_used']}}
+                          <span>{{student_data[0]['amphetamines_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['amphetamines_way_of_intake']}}
+                          <span>{{student_data[0]['amphetamines_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Club Drugs (Ecstasy, Inhalants, etc.)</td>
                         <td>
-                          <select name="clubdrugsuse" id="clubdrugsuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['club_drugs_age_first_use']}}
+                          <span>{{student_data[0]['club_drugs_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="clubdrugsfrequency" id="clubdrugsfrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['club_drugs_amount_used']}}
+                          <span>{{student_data[0]['club_drugs_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['club_drugs_way_of_intake']}}
+                          <span>{{student_data[0]['club_drugs_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Pain Medication (Oxycontin, Vicodin, etc.)</td>
                         <td>
-                          <select name="painmedicationuse" id="painmedicationuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['pain_meds_age_first_use']}}
+                          <span>{{student_data[0]['pain_meds_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select
-                            name="painmedicationfrequency"
-                            id="painmedicationfrequency"
-                          >
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['pain_meds_amount_used']}}
+                          <span>{{student_data[0]['pain_meds_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['pain_meds_way_of_intake']}}
+                          <span>{{student_data[0]['pain_meds_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Benzodiazepines</td>
                         <td>
-                          <select name="benzodiazepinesuse" id="benzodiazepinesuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['benzo_meds_age_first_use']}}
+                          <span>{{student_data[0]['benzo_meds_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select
-                            name="benzodiazepinesfrequency"
-                            id="benzodiazepinesfrequency"
-                          >
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['benzo_meds_amount_used']}}
+                          <span>{{student_data[0]['benzo_meds_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['benzo_meds_way_of_intake']}}
+                          <span>{{student_data[0]['benzo_meds_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>Hallucinogens</td>
                         <td>
-                          <select name="hallucinogensuse" id="hallucinogensuse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['hallucinogens_meds_age_first_use']}}
+                          <span>{{student_data[0]['hallucinogens_meds_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select
-                            name="hallucinogensfrequency"
-                            id="hallucinogensfrequency"
-                          >
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['hallucinogens_meds_amount_used']}}
+                          <span>{{student_data[0]['hallucinogens_meds_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['hallucinogens_meds_way_of_intake']}}
+                          <span>{{student_data[0]['hallucinogens_meds_way_of_intake']}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          Other<input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="hallucinogensmethod"
-                            name="hallucinogensmethod"
-                          />
+                          Other
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          <select name="otheruse" id="otheruse">
-                            <option value="No" selected>No</option>
-                            <option value="Yes">Yes</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['other_meds_age_first_use']}}
+                          <span>{{student_data[0]['other_meds_age_first_use']}}</span>
                         </td>
                         <td>
-                          <select name="otherfrequency" id="otherfrequency">
-                            <option value="Daily" selected>Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                          </select>
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          {{student_data[0]['other_meds_amount_used']}}
+                          <span>{{student_data[0]['other_meds_amount_used']}}</span>
                         </td>
                         <td>
-                          {{student_data[0]['other_meds_way_of_intake']}}
+                          <span>{{student_data[0]['other_meds_way_of_intake']}}</span>
                         </td>
                       </tr>
                     </table>
@@ -1983,105 +1157,14 @@
                         >Have ever received treatment for a substance abuse issue?<br />Name
                         of Treatment Program
                       </label>
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="subsabuseprogram"
-                        name="subsabuseprogram"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
           
                     <div class="left-align">
                       <label>Type of Treatment </label>
                       <div class="radio-inline-container treatmenttype">
                         <div>
-                          <input
-                            type="radio"
-                            id="treatmenttyperehab"
-                            name="treatmenttype"
-                            value="treatmenttyperehab"
-                          />
-                          <label for="treatmenttyperehab" style="padding-right: 196px"
-                            >Rehab</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypeparthospital"
-                            name="treatmenttype"
-                            value="treatmenttypeparthospital"
-                          />
-                          <label for="treatmenttypeparthospital"
-                            >Partial Hospitalization</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttyperecoveryhouse"
-                            name="treatmenttype"
-                            value="treatmenttyperecoveryhouse"
-                          />
-                          <label for="treatmenttyperecoveryhouse">Recovery House</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypemethadone"
-                            name="treatmenttype"
-                            value="treatmenttypemethadone"
-                          />
-                          <label for="treatmenttypemethadone">Methadone</label>
-                        </div>
-                      </div>
-          
-                      <div class="radio-inline-container treatmenttype">
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypeiop"
-                            name="treatmenttype"
-                            value="treatmenttypeiop"
-                          />
-                          <label for="treatmenttypeiop"
-                            >Intensive Outpatient Program</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypehalfwayhouse"
-                            name="treatmenttype"
-                            value="treatmenttypehalfwayhouse"
-                          />
-                          <label
-                            for="treatmenttypehalfwayhouse"
-                            style="padding-right: 63px"
-                            >Halfway House</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypecounselling"
-                            name="treatmenttype"
-                            value="treatmenttypecounselling"
-                          />
-                          <label
-                            for="treatmenttypecounselling"
-                            style="padding-right: 35px"
-                            >Counselling</label
-                          >
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            id="treatmenttypesuboxone"
-                            name="treatmenttype"
-                            value="treatmenttypesuboxone"
-                          />
-                          <label for="treatmenttypesuboxone">Suboxone</label>
+                          <!-- TODO: put answer -->
                         </div>
                       </div>
                     </div>
@@ -2090,32 +1173,13 @@
                       <label for="subsabusetreatmentdate"
                         >Date of Treatment (Month, Year)
                       </label>
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="subsabusetreatmentdate"
-                        name="subsabusetreatmentdate"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
                     <div class="left-align">
                       <label for="subsabuseoutcome"
                         >Outcome?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Can you describe the outcomes or results of your previous
-                            treatment? Understanding what worked or didn't work for you
-                            helps us refine our approach and provide more effective
-                            support.</span
-                          >
-                        </div>
                       </label>
-                      <input
-                        type="text"
-                        class="form-width100"
-                        id="subsabuseoutcome"
-                        name="subsabuseoutcome"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
                   </section>
                   <!-- end: Substance Abuse History -->
@@ -2129,14 +1193,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['pending_criminal_charges']}}
-                          <label style="width: auto !important" for="legalpendingyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['pending_criminal_charges']}}
-                          <label for="legalpendingno">No</label>
+                          <span>{{student_data[0]['pending_criminal_charges']}}</span>
                         </div>
                       </div>
                     </div>
@@ -2146,14 +1203,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['on_probation']}}
-                          <label style="width: auto !important" for="legalprobationyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['on_probation']}}
-                          <label for="legalprobationno">No</label>
+                          <span>{{student_data[0]['on_probation']}}</span>
                         </div>
                       </div>
                     </div>
@@ -2163,14 +1213,7 @@
                       >
                       <div class="radio-inline-container">
                         <div>
-                          {{student_data[0]['has_been_arrested']}}
-                          <label style="width: auto !important" for="legalarrestyes"
-                            >Yes</label
-                          >
-                        </div>
-                        <div>
-                          {{student_data[0]['has_been_arrested']}}
-                          <label for="legalarrestno">No</label>
+                          <span>{{student_data[0]['has_been_arrested']}}</span>
                         </div>
                       </div>
                     </div>
@@ -2187,28 +1230,13 @@
                       </tr>
                       <tr>
                         <td>
-                          <input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="legalarrestlist"
-                            name="legalarrestlist"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          <input
-                            type="date"
-                            class="form-width100 single-column-span"
-                            id="legalarrestdate"
-                            name="legalarrestdate"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                         <td>
-                          <input
-                            type="text"
-                            class="form-width100 single-column-span"
-                            id="legalarrestoutcome"
-                            name="legalarrestoutcome"
-                          />
+                          <!-- TODO: put answer -->
                         </td>
                       </tr>
                     </table>
@@ -2221,34 +1249,20 @@
                     <div class="left-align">
                       <label for="additionalinfo1"
                         >What you would like to work on in counseling?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >What specific areas or issues would you like to address and
-                            work on during counseling?</span
-                          >
-                        </div>
                       </label>
-                      {{student_data[0]['to_work_on']}}
+                      <span>{{student_data[0]['to_work_on']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="additionalinfo2"
                         >What expectations do you have for counseling?
-                        <div class="tooltip">
-                          <img src="/static/tooltip.png" />
-                          <span class="tooltiptext"
-                            >Understanding your hopes and goals helps us collaborate
-                            effectively to meet your expectations.</span
-                          >
-                        </div>
                       </label>
-                      {{student_data[0]['expectations']}}
+                      <span>{{student_data[0]['expectations']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="additionalinfo3"
                         >Name 3 things you would like to change about yourself.
                       </label>
-                      {{student_data[0]['things_to_change']}}
+                      <span>{{student_data[0]['things_to_change']}}</span>
                     </div>
                     <div class="left-align">
                       <label for="additionalinfo4"
@@ -2256,7 +1270,7 @@
                         important for your counselor to know in order to provide you with
                         the best care possible?
                       </label>
-                      {{student_data[0]['other_information']}}
+                      <span>{{student_data[0]['other_information']}}</span>
                     </div>
                   </section>
                   <!-- end: Additional Information -->
@@ -2281,18 +1295,13 @@
                       </p>
           
                       <div class="tac">
-                        <input id="taccheckbox" type="checkbox" />
+                        <input id="taccheckbox" type="checkbox" /><!-- TODO: put answer -->
                         <label for="taccheckbox">
                           I understand and agree to the information presented
                           above.</label
                         >
                       </div>
-                      <input
-                        type="datetime-local"
-                        required
-                        name="tacdatetime"
-                        class="tacdatetime"
-                      />
+                      <!-- TODO: put answer -->
                     </div>
           
                     <table>
@@ -2306,7 +1315,7 @@
                       </tr>
                       <tr>
                         <td>Session 1</td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="date"
                             class="form-width100 single-column-span"
@@ -2314,7 +1323,7 @@
                             name="ses1date"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2322,7 +1331,7 @@
                             name="ses1timestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2330,7 +1339,7 @@
                             name="ses1timeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2338,7 +1347,7 @@
                             name="ses1followup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2347,7 +1356,7 @@
                           />
                         </td>
                       </tr>
-                      <tr>
+                      <tr><!-- TODO: put answer -->
                         <td>Session 2</td>
                         <td>
                           <input
@@ -2357,7 +1366,7 @@
                             name="ses2date"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2365,7 +1374,7 @@
                             name="ses2timestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2373,7 +1382,7 @@
                             name="ses2timeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2381,7 +1390,7 @@
                             name="ses2followup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2392,7 +1401,7 @@
                       </tr>
                       <tr>
                         <td>Session 3</td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="date"
                             class="form-width100 single-column-span"
@@ -2400,7 +1409,7 @@
                             name="ses3date"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2408,7 +1417,7 @@
                             name="ses3timestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2416,7 +1425,7 @@
                             name="ses3timeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2424,7 +1433,7 @@
                             name="ses3followup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2435,7 +1444,7 @@
                       </tr>
                       <tr>
                         <td>Session 4</td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="date"
                             class="form-width100 single-column-span"
@@ -2443,7 +1452,7 @@
                             name="ses4date"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2451,7 +1460,7 @@
                             name="ses4timestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2459,7 +1468,7 @@
                             name="ses4timeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2467,7 +1476,7 @@
                             name="ses4followup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2478,7 +1487,7 @@
                       </tr>
                       <tr>
                         <td>Session 5</td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="date"
                             class="form-width100 single-column-span"
@@ -2486,7 +1495,7 @@
                             name="ses5date"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2494,7 +1503,7 @@
                             name="ses5timestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2502,7 +1511,7 @@
                             name="ses5timeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2510,7 +1519,7 @@
                             name="ses5followup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2521,7 +1530,7 @@
                       </tr>
                       <tr>
                         <td>Termination</td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="date"
                             class="form-width100 single-column-span"
@@ -2529,7 +1538,7 @@
                             name="terminationdate"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2537,7 +1546,7 @@
                             name="terminationtimestart"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="time"
                             class="form-width100 single-column-span"
@@ -2545,7 +1554,7 @@
                             name="terminationtimeend"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2553,7 +1562,7 @@
                             name="terminationfollowup"
                           />
                         </td>
-                        <td>
+                        <td><!-- TODO: put answer -->
                           <input
                             type="text"
                             class="form-width100 single-column-span"
@@ -2581,24 +1590,13 @@
                           style="width: 500px !important; padding-right: 10px"
                           >Receiving Agency:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span referral"
-                          style="margin-right: 20px"
-                          id="refinforeceiving"
-                          name="refinforeceiving"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfocontact"
                           style="width: 320px !important; padding-right: 10px"
                           >Contact No.:</label
                         >
-                        <input
-                          type="tel"
-                          class="form-width100 single-column-span referral"
-                          id="refinfocontact"
-                          name="refinfocontact"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label
@@ -2606,35 +1604,19 @@
                           style="width: 200px !important; padding-right: 10px"
                           >Name:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span referral"
-                          style="width: 1110px; margin-right: 20px"
-                          id="refinfoname"
-                          name="refinfoname"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfoemail"
                           style="width: 200px !important; padding-right: 10px"
                           >Email:</label
                         >
-                        <input
-                          type="email"
-                          class="form-width100 single-column-span referral"
-                          id="refinfoemail"
-                          name="refinfoemail"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="refinfoofficeadd" style="width: 160px !important"
                           >Office Address:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="refinfoofficeadd"
-                          name="refinfoofficeadd"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <hr style="border-top: 1px solid var(--primary-color)" />
           
@@ -2642,34 +1624,19 @@
                         <label for="refinfoas" style="width: 510px !important"
                           >Appointment Schedule:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="refinfoas"
-                          name="refinfoas"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfodate"
                           style="width: 210px !important; margin-left: 10px"
                           >Date:</label
                         >
-                        <input
-                          type="date"
-                          class="form-width100 single-column-span"
-                          id="refinfodate"
-                          name="refinfodate"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfotime"
                           style="width: 210px !important; margin-left: 10px"
                           >Time:</label
                         >
-                        <input
-                          type="time"
-                          class="form-width100 single-column-span"
-                          id="refinfotime"
-                          name="refinfotime"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <hr style="border-top: 1px solid var(--primary-color)" />
                       <div class="left-align">
@@ -2684,24 +1651,13 @@
                           style="width: 500px !important; padding-right: 10px"
                           >Client Signature:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span referral"
-                          style="margin-right: 20px"
-                          id="refinfoclientsig"
-                          name="refinfoclientsig"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfocounselorsig"
                           style="width: 320px !important; padding-right: 10px"
                           >Counselor's Signature:</label
                         >
-                        <input
-                          type="tel"
-                          class="form-width100 single-column-span referral"
-                          id="refinfocounselorsig"
-                          name="refinfocounselorsig"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label
@@ -2709,24 +1665,13 @@
                           style="width: 500px !important; padding-right: 10px"
                           >Date:</label
                         >
-                        <input
-                          type="date"
-                          class="form-width100 single-column-span referral"
-                          style="margin-right: 20px"
-                          id="refinfoclientdate"
-                          name="refinfoclientdate"
-                        />
+                        <!-- TODO: put answer -->
                         <label
                           for="refinfocounselordate"
                           style="width: 320px !important; padding-right: 10px"
                           >Date:</label
                         >
-                        <input
-                          type="date"
-                          class="form-width100 single-column-span referral"
-                          id="refinfocounselordate"
-                          name="refinfocounselordate"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                     </div>
                   </section>
@@ -2742,34 +1687,19 @@
                         <label for="conficounselor" style="width: 460px !important"
                           >Counselor/Psychometrician Name:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="conficounselor"
-                          name="conficounselor"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="confiinterview" style="width: 460px !important"
                           >Date of Intake Interview:</label
                         >
-                        <input
-                          type="date"
-                          class="form-width100 single-column-span"
-                          id="confiinterview"
-                          name="confiinterview"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="confinosessions" style="width: 460px !important"
                           >Number of Session:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="confinosessions"
-                          name="confinosessions"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <hr style="border-top: 1px solid var(--primary-color)" />
           
@@ -2777,45 +1707,25 @@
                         <label for="conficomplaint" style="width: 280px !important"
                           >Subject Complaint:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="conficomplaint"
-                          name="conficomplaint"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="confiobjassess" style="width: 280px !important"
                           >Objective Assessment:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="confiobjassess"
-                          name="confiobjassess"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="confipoa" style="width: 280px !important"
                           >Plan of Action:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="confipoa"
-                          name="confipoa"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div class="left-align single-column-span">
                         <label for="confiprogress" style="width: 280px !important"
                           >Progress Made:</label
                         >
-                        <input
-                          type="text"
-                          class="form-width100 single-column-span"
-                          id="confiprogress"
-                          name="confiprogress"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                     </div>
                     <div class="single-column">
@@ -2830,12 +1740,7 @@
                           style="width: auto !important; padding-top: 5px"
                           >Signature of the Counselor/Guidance Personnel</label
                         >
-                        <input
-                          type="text"
-                          id="Counselorsignature"
-                          name="Counselorsignature"
-                          style="width: auto !important"
-                        />
+                        <!-- TODO: put answer -->
                       </div>
                       <div></div>
                     </div>
