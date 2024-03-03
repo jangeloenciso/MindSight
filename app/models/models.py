@@ -53,7 +53,7 @@ class Course(db.Model):
     __tablename__ = 'courses'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), nullable=True)
     college_id = db.Column(db.Integer, db.ForeignKey('colleges.id'))
 
 
@@ -86,9 +86,7 @@ class BasicInformation(db.Model):
         if not re.match(r'^20\d{2}-\d{6}$', value):
             raise ValueError("Student ID must be in the format 20xx-xxxxxx")
         return value
-
-
-    # personal_information = db.relationship('PersonalInformation', backref='student', uselist=False)
+    
 
     history_information = db.relationship('HistoryInformation', backref='student', uselist=False)
 
@@ -108,19 +106,8 @@ class BasicInformation(db.Model):
 
     additional_information = db.relationship('AdditionalInformation', backref='student', uselist=False)
 
-    # psychological_assessments = db.relationship('PsychologicalAssessments', backref='student', uselist=False)
-
     visits = db.relationship('StudentVisits', backref='student')
 
-
-# class PersonalInformation(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-    
-#     # sex = db.Column(db.String(10))    
-#     # counseling_history = db.Column(db.String(100))
-    
-    
-#     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
 
 class HistoryInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -214,13 +201,6 @@ class HealthInformation(db.Model):
     physician_email = db.Column(db.String(50))
     physician_number = db.Column(db.String(20))
 
-    # height = db.Column(db.Float)
-    # weight = db.Column(db.Float)
-    # sight = db.Column(db.String(20))
-    # hearing = db.Column(db.String(20))
-    # speech = db.Column(db.String(20))
-    # general_health = db.Column(db.String(100))
-    # experienced_sickness = db.Column(db.String(3))
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 # idk how to add siblings and shit 
@@ -258,7 +238,7 @@ class Sibling(db.Model):
 
 class SocialHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # TODO: add the rest
+
     relationship_with_peers = db.Column(db.String(300))
     social_support_network = db.Column(db.String(300))
     hobbies_or_interests = db.Column(db.String(300))
@@ -398,6 +378,11 @@ class LegalHistory(db.Model):
 class AdditionalInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
+    # add to form and route
+    nature_of_concern = db.Column(db.String(50), nullable=True)
+    counselor = db.Column(db.String(50), nullable=True)
+    personal_agreement = db.Column(db.Boolean, default=False)
+
     to_work_on = db.Column(db.String(500))
     expectations = db.Column(db.String(500))
     things_to_change = db.Column(db.String(500))
@@ -405,16 +390,9 @@ class AdditionalInformation(db.Model):
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
-
-# TODO: WALA SA FORM
+# TODO: Add this, also figure out if you're going to separate it or not
+# class ReferralInformation(db.Model):
     
-# class PsychologicalAssessments(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     learning_styles = db.Column(db.String(100))
-#     personality_test = db.Column(db.String(100))
-#     iq_test = db.Column(db.String(100))
-#     student_id = db.Column(db.String(20), db.ForeignKey('student_information.student_id'))
-
 
 class StudentVisits(db.Model):
     __tablename__ = 'student_visits'
