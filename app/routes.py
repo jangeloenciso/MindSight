@@ -513,7 +513,7 @@ def add_record():
 
             student_id=form.student_id.data
         )
-        
+
         family_background = FamilyBackground(
             birth_location = form.birth_location.data,
             raised_by = form.raised_by.data,
@@ -529,6 +529,8 @@ def add_record():
             family_abuse_history=form.family_abuse_history.data,
             family_mental_history=form.family_mental_history.data,
             additional_information=form.additional_information_family.data,
+
+            # siblings = siblings,
 
             student_id=form.student_id.data
         )
@@ -694,9 +696,30 @@ def add_record():
         )
 
         print(request.form.get('date_of_birth') + "checking spaces")
+        # print(sibling_names)
 
         # Add the new records to the database
         db.session.add(new_student)
+
+        sibling_names = request.form.getlist('siblingName')
+        sibling_ages = request.form.getlist('siblingAge')
+        sibling_genders = request.form.getlist('siblingGender')
+        sibling_rel_quals = request.form.getlist('rel_qual')
+
+        # Iterating through sibling_names is VERY BAD PRACTICE. will refactor in the future.
+        for i in range(len(sibling_names)):
+            new_sibling = Sibling(
+                name = sibling_names[i],
+                age = sibling_ages[i],
+                gender = sibling_genders[i],
+                rel_qual = "close",
+                family_background=family_background
+            )
+            print(new_sibling.name)
+            db.session.add(new_sibling)
+
+        print(sibling_names)
+
         db.session.commit()
 
         # Flash a success message

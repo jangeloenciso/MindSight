@@ -4,7 +4,6 @@ function createRow(table, row) {
     var templateRow = document.getElementById(row);
     var newRow = templateRow.cloneNode(true);
     var inputs = newRow.getElementsByTagName('input');
-
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].value = '';
     }
@@ -15,7 +14,7 @@ function createRow(table, row) {
     for (var i = 0; i < inputs.length; i++) {        
 
         inputs[i].setAttribute('id', inputs[i].getAttribute('id') + newId);
-        inputs[i].setAttribute('name', inputs[i].getAttribute('name') + newId);
+        inputs[i].setAttribute('name', inputs[i].getAttribute('name'));
     }
 
     table.appendChild(newRow);
