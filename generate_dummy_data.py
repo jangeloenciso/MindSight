@@ -94,7 +94,6 @@ with app.app_context():
             feelings_of_hopelessness=fake.boolean(),
             feelings_of_shame_or_guilt=fake.boolean(),
             feelings_of_inadequacy=fake.boolean(),
-            low_self_esteem=fake.boolean(),
             anxious_nervous_tense_feelings=fake.boolean(),
             panic_attacks=fake.boolean(),
             racing_or_scrambled_thoughts=fake.boolean(),
