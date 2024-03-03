@@ -22,11 +22,8 @@ class User(UserMixin, db.Model):
         self.last_name = last_name
         self.username = username
         self.email = email
-        self.set_password(password) 
+        self.password = password
         self.role = role
-
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
 
     def is_authenticated(self):
         return True
