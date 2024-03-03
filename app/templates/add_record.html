@@ -1070,54 +1070,17 @@
                 <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender"/>
               </td>
               <td>
-                <div class="radio-inline-container relby">
-                  <div>
-                    <input class="checkbox-round" id="relsiblingclose" name="rel_qual" type="radio" value="Close">
-                    <label style="width: auto !important" for="relsiblingclose"
-                      >Close</label
-                    >
-                  </div>
-
-                  <div>
-                    <input class="checkbox-round" id="relsiblinggood" name="rel_qual" type="radio" value="Good">
-                    <label style="width: auto !important" for="relsiblinggood"
-                      >Good</label
-                    >
-                  </div>
-
-                  <div>
-                    <input class="checkbox-round" id="relsiblingfair" name="rel_qual" type="radio" value="Fair">
-                    <label style="width: auto !important" for="relsiblingfair"
-                      >Fair</label
-                    >
-                  </div>
-                                    
-                  <div>
-                    <input class="checkbox-round" id="relsiblingpoor" name="rel_qual" type="radio" value="Poor">
-                    <label style="width: auto !important" for="relsiblingpoor"
-                      >Poor</label
-                    >
-                  </div>
-
-                  <div>
-                    <input class="checkbox-round" id="relsiblingdistant" name="rel_qual" type="radio" value="Distant">
-                    <label
-                      style="width: auto !important"
-                      for="relsiblingdistant"
-                      >Distant</label
-                    >
-                  </div>
-
-                  <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingother', value='Other') }}
-                    <label
-                      style="width: auto !important; padding-right: 10px"
-                      for="relsiblingother"
-                      >Other</label
-                    >{{ form.rel_qual }}
-                  </div>
-                </div>
+                <select name="rel_qual" id="civil">
+                  <option value="" disabled selected>
+                  </option>
+                  <option value="Close">Close</option>
+                  <option value="Good">Good</option>
+                  <option value="Fair">Fair</option>
+                  <option value="Poor">Poor</option>
+                  <option value="Distant">Distant</option>
+                </select>
               </td>
+                
             </tr>
           </table>
           <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>

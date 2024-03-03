@@ -707,16 +707,29 @@ def add_record():
         sibling_rel_quals = request.form.getlist('rel_qual')
 
         # Iterating through sibling_names is VERY BAD PRACTICE. will refactor in the future.
-        for i in range(len(sibling_names)):
+        for sibling in range(len(sibling_names)):
             new_sibling = Sibling(
-                name = sibling_names[i],
-                age = sibling_ages[i],
-                gender = sibling_genders[i],
-                rel_qual = "close",
+                name = sibling_names[sibling],
+                age = sibling_ages[sibling],
+                gender = sibling_genders[sibling],
+                rel_qual = sibling_rel_quals[sibling],
                 family_background=family_background
             )
             print(new_sibling.name)
             db.session.add(new_sibling)
+
+        convictions = request.form.getlist('legalConviction')
+        conviction_dates = request.form.getlist('legalDate')
+        conviction_outcomes = request.form.getlist('legalOutcome')
+
+        for conviction in range(len(convictions)):
+            new_conviction = Conviction(
+                conviction = convictions[conviction],
+                conviction_date = conviction_dates[conviction],
+                conviction_outcome = conviction_outcomes[conviction],
+                legal_history = legal_history
+            )
+            db.session.add(new_conviction)
 
         print(sibling_names)
 

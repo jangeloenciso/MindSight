@@ -379,7 +379,7 @@ class Conviction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     conviction = db.Column(db.String(50))
-    conviction_date = db.Date
+    conviction_date = db.Column(db.Date())
     conviction_outcome = db.Column(db.String(50))
 
     legal_history_id = db.Column(db.Integer, db.ForeignKey('legal_history.id'), nullable=False)
