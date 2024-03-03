@@ -74,6 +74,7 @@ class BasicInformation(db.Model):
     religion = db.Column(db.String(50))
     residence = db.Column(db.String(100))
     contact_number = db.Column(db.String(20))
+    phone_number = db.Column(db.String(20))
     email_address = db.Column(db.String(120), nullable=False)
 
     guardian_name = db.Column(db.String(50), nullable=True)
@@ -142,7 +143,6 @@ class HistoryInformation(db.Model):
     feelings_of_hopelessness = db.Column(db.Boolean, default=False)
     feelings_of_shame_or_guilt = db.Column(db.Boolean, default=False)
     feelings_of_inadequacy = db.Column(db.Boolean, default=False)
-    low_self_esteem = db.Column(db.Boolean, default=False)
     anxious_nervous_tense_feelings = db.Column(db.Boolean, default=False)
     panic_attacks = db.Column(db.Boolean, default=False)
     racing_or_scrambled_thoughts = db.Column(db.Boolean, default=False)
@@ -382,6 +382,13 @@ class AdditionalInformation(db.Model):
     nature_of_concern = db.Column(db.String(50), nullable=True)
     counselor = db.Column(db.String(50), nullable=True)
     personal_agreement = db.Column(db.Boolean, default=False)
+
+    referral_source = db.Column(db.String(50))
+
+    emergency_name = db.Column(db.String(50))
+    emergency_relationship = db.Column(db.String(50))
+    emergency_address = db.Column(db.String(50))
+    emergency_contact = db.Column(db.String(50))
 
     to_work_on = db.Column(db.String(500))
     expectations = db.Column(db.String(500))
