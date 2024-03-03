@@ -117,6 +117,9 @@ input::placeholder {
     color: var(--fade-text-blue);
 }
 
+.confidential select {
+    width: 100%;
+}
 
 
 .single-column {
