@@ -51,7 +51,6 @@ def test_add_record():
     'feelings_of_hopelessness': False,
     'feelings_of_shame_or_guilt': True,
     'feelings_of_inadequacy': False,
-    'low_self_esteem': True,
     'anxious_nervous_tense_feelings': False,
     'panic_attacks': True,
     'racing_or_scrambled_thoughts': False,
