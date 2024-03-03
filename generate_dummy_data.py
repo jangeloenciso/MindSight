@@ -252,9 +252,6 @@ with app.app_context():
             on_probation=fake.boolean(),
             has_been_arrested=fake.boolean(),
 
-            conviction = fake.sentence(nb_words=1),
-            conviction_date = fake.date(),
-            conviction_outcome = fake.sentence(nb_words=2),
             student = student
         )
 
