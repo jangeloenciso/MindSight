@@ -61,3 +61,59 @@ def test_sibling_association_with_family_background():
     assert basic_information.family_background.siblings == [sibling1, sibling2]
 
     assert family_background.siblings == [sibling1, sibling2]
+
+
+def test_convictions_associtation_with_legal_history():
+    """
+    GIVEN a FamilyBackground Model
+    WHEN a new Sibling is created
+    THEN check the relationships between Siblings, FamilyBackground, and BasicInformation
+    """
+
+    legal_history = LegalHistory(
+        pending_criminal_charges=True, 
+        on_probation=True,
+        has_been_arrested=True
+        )
+
+    basic_information = BasicInformation(
+        student_id='2012-123456',
+        last_name='Doe',
+        first_name='John',
+        course='Computer Science',
+        year_level='Senior',
+        campus='Main',
+        date_of_birth='2000-01-01',
+        age=24,
+        gender='Male',
+        civil_status='Single',
+        nationality='American',
+        religion='Christian',
+        residence='123 Street Name, City',
+        contact_number='1234567890',
+        phone_number='0987654321',
+        email_address='johndoe@example.com',
+        guardian_name='Jane Doe',
+        guardian_address='456 Street Name, City',
+        guardian_contact='9876543210',
+        legal_history = legal_history
+    )
+
+    conviction1 = Conviction(
+        conviction="Test",
+        conviction_date="2001-01-01",
+        conviction_outcome="Test",
+        legal_history=legal_history)
+
+    conviction2 = Conviction(
+        conviction="Test2",
+        conviction_date="2001-01-01",
+        conviction_outcome="Test2",
+        legal_history=legal_history)
+
+    assert conviction1.legal_history == legal_history
+    assert conviction2.legal_history == legal_history
+
+    assert basic_information.legal_history.convictions == [conviction1, conviction2]
+
+    assert legal_history.convictions == [conviction1, conviction2]

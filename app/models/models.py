@@ -369,12 +369,21 @@ class LegalHistory(db.Model):
     on_probation = db.Column(db.Boolean, default=False)
     has_been_arrested = db.Column(db.Boolean, default=False)
 
-    # TODO: THIS WAS LAZY. FOR TESTING PURPOSES ONLY. CREATE SEPARATE MODEL/TABLE LATER
+    convictions = db.relationship('Conviction', backref='legal_history', lazy=True)
+
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+
+class Conviction(db.Model):
+    __tablename__ = 'convictions'
+
+    id = db.Column(db.Integer, primary_key=True)
+
     conviction = db.Column(db.String(50))
     conviction_date = db.Date
     conviction_outcome = db.Column(db.String(50))
 
-    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+    legal_history_id = db.Column(db.Integer, db.ForeignKey('legal_history.id'), nullable=False)
+
 
 class AdditionalInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
