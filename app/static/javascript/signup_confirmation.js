@@ -16,7 +16,7 @@ document.getElementById('confirmation').addEventListener('submit', function(even
                 timer: 1500,
                 timerProgressBar: true,
             }).then(() => {
-                window.location.href = "dashboard";
+                window.location.href = "login";
             });
         }
     })
