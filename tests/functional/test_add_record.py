@@ -187,6 +187,11 @@ def test_add_record():
     'expectations': 'To improve mental well-being',
     'things_to_change': 'Better coping mechanisms',
     'other_information': 'None',
+
+    'siblingName': ['John'],    # List of sibling names
+    'siblingAge': ['20'],            # List of sibling ages
+    'siblingGender': ['Male'],  # List of sibling genders
+    'rel_qual': ['Brother'],
     }
 
     with app.test_client() as client:
