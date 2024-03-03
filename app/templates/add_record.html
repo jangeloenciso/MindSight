@@ -1051,58 +1051,63 @@
               relationship.)
             </label>
           </div>
-
-          <table>
+    
+          <table id="siblingsTable">
             <tr>
               <th>Name of Sibling</th>
               <th>Age</th>
               <th>Gender</th>
               <th>Nature of Relationship</th>
             </tr>
-            <tr>
+            <tr id="siblingRow">
               <td>
-                {{ form.physician_name(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="siblingName" name="siblingName"/>
               </td>
               <td>
-                {{ form.physician_name(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge"/>
               </td>
               <td>
-                {{ form.physician_name(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender"/>
               </td>
               <td>
                 <div class="radio-inline-container relby">
                   <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblinggood', value='Good') }}
-                    <label style="width: auto !important" for="relsiblinggood"
-                      >Good</label
-                    >
-                  </div>
-                  <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingfair', value='Fair') }}
-                    <label style="width: auto !important" for="relsiblingfair"
-                      >Fair</label
-                    >
-                  </div>
-                  <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingpoor', value='Poor') }}
-                    <label style="width: auto !important" for="relsiblingpoor"
-                      >Poor</label
-                    >
-                  </div>
-                  <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingclose', value='Close') }}
+                    <input class="checkbox-round" id="relsiblingclose" name="siblingCloseRel" type="radio" value="Close">
                     <label style="width: auto !important" for="relsiblingclose"
                       >Close</label
                     >
                   </div>
+
                   <div>
-                    {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingdistant', value='Distant') }}
+                    <input class="checkbox-round" id="relsiblinggood" name="siblingGoodRel" type="radio" value="Good">
+                    <label style="width: auto !important" for="relsiblinggood"
+                      >Good</label
+                    >
+                  </div>
+
+                  <div>
+                    <input class="checkbox-round" id="relsiblingfair" name="siblingFairRel" type="radio" value="Fair">
+                    <label style="width: auto !important" for="relsiblingfair"
+                      >Fair</label
+                    >
+                  </div>
+                                    
+                  <div>
+                    <input class="checkbox-round" id="relsiblingpoor" name="siblingPoorRel" type="radio" value="Poor">
+                    <label style="width: auto !important" for="relsiblingpoor"
+                      >Poor</label
+                    >
+                  </div>
+
+                  <div>
+                    <input class="checkbox-round" id="relsiblingdistant" name="siblingDistantRel" type="radio" value="Distant">
                     <label
                       style="width: auto !important"
                       for="relsiblingdistant"
                       >Distant</label
                     >
                   </div>
+
                   <div>
                     {{ form.has_physician(class='checkbox-round', type='radio', id='relsiblingother', value='Other') }}
                     <label
@@ -1115,6 +1120,8 @@
               </td>
             </tr>
           </table>
+          <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
+          <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
 
           <div class="left-align">
             <label for="famhistoryneglect1"
@@ -1765,24 +1772,29 @@
             <label>If yes, complete chart.</label>
           </div>
 
-          <table>
+
+
+          <table id="legalTable">
             <tr>
               <th>List any Arrest/Conviction</th>
               <th>Date of Arrests/Convictions</th>
               <th>Outcome</th>
             </tr>
-            <tr>
+            <tr id="legalRow">
               <td>
-                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="legalConviction" name="legalConviction"/>
               </td>
               <td>
-                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="legalDate" name="legalDate"/>
               </td>
               <td>
-                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
+                <input class='form-width100 single-column-span' id="legalOutcome" name="legalOutcome"/>
               </td>
             </tr>
           </table>
+
+          <button type="button" onclick="createRow('legalTable', 'legalRow')">ADD</button>
+          <button type="button" onclick="deleteRow('legalTable')">DELETE</button>
         </section>
         <!-- end: Legal History -->
 
@@ -2300,5 +2312,6 @@
       </div>
       </form>
     </main>
+    <script src={{ url_for('static', filename='javascript/add_record.js') }}></script>
   </body>
 </html>
