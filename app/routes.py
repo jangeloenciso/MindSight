@@ -13,7 +13,7 @@ from app.forms.login import LoginForm
 from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 from functools import wraps
-import logging
+import logging, datetime
 
 
 roles_permissions = {
@@ -421,7 +421,9 @@ def add_record():
 
     if form.validate_on_submit():
         history_info = HistoryInformation(
-            information_provider=form.information_provider.data,
+            # -- DONE: verified 'other' field --works.
+            # TODO: Frontend, remove/disable checkbox for other
+            information_provider=request.form.get('information_provider'),
 
             current_problem=form.current_problem.data,
             problem_length=form.problem_length.data,
@@ -450,7 +452,8 @@ def add_record():
             feelings_of_hopelessness=form.feelings_of_hopelessness.data,
             feelings_of_shame_or_guilt=form.feelings_of_shame_or_guilt.data,
             feelings_of_inadequacy=form.feelings_of_inadequacy.data,
-            low_self_esteem=form.low_self_esteem.data,
+            
+            # TODO: Refactor, magkaibahan si inadequacy tas self-esteem
             anxious_nervous_tense_feelings=form.anxious_nervous_tense_feelings.data,
             panic_attacks=form.panic_attacks.data,
             racing_or_scrambled_thoughts=form.racing_or_scrambled_thoughts.data,
@@ -473,8 +476,13 @@ def add_record():
             excessive_exercise=form.excessive_exercise.data,
             indecisiveness_about_career=form.indecisiveness_about_career.data,
             job_problems=form.job_problems.data,
+
+            # TODO: DONE --verified works
             other=form.other_history.data,
+
+            # TODO: DONE --verified works
             previous_treatments=form.previous_treatments.data,
+
             previous_treatments_likes_dislikes=form.previous_treatments_likes_dislikes.data,
             previous_treatments_learned=form.previous_treatments_learned.data,
             previous_treatments_like_to_continue=form.previous_treatments_like_to_continue.data,
@@ -484,6 +492,7 @@ def add_record():
             student_id=form.student_id.data
         )
 
+        # TODO: DONE --verified working all
         health_info = HealthInformation(
             medication_and_dose=form.medication_and_dose.data,
 
@@ -509,10 +518,13 @@ def add_record():
             birth_location = form.birth_location.data,
             raised_by = form.raised_by.data,
             
+            # TODO: add an other field --done, added field
             rel_qual_mother = form.rel_qual_mother.data,
             rel_qual_father = form.rel_qual_father.data,
             rel_qual_step_parent = form.rel_qual_step_parent.data,
+            rel_qual_other = form.rel_qual_other.data,
 
+            # TODO: add siblings and shit
 
             family_abuse_history=form.family_abuse_history.data,
             family_mental_history=form.family_mental_history.data,
@@ -536,6 +548,8 @@ def add_record():
             student_id=form.student_id.data
         )
 
+        
+        # TODO: Increase max length for fields
         occupational_history = OccupationalHistory(
             employment_status=form.employment_status.data,
             satisfaction=form.satisfaction.data,
@@ -545,6 +559,7 @@ def add_record():
 
         substance_abuse_history = SubstanceAbuseHistory(
             struggled_with_substance_abuse=form.struggled_with_substance_abuse.data,
+            # TODO: add other
 
             alcohol=form.alcohol.data,
             alcohol_age_first_use=form.alcohol_age_first_use.data,
@@ -624,11 +639,23 @@ def add_record():
         )
 
         additional_info = AdditionalInformation(
+            nature_of_concern=form.nature_of_concern.data,
+            counselor=form.counselor.data,
+            personal_agreement=form.personal_agreement.data,
+
+            referral_source = form.referral_source.data,
+
+            emergency_name=form.emergency_name.data,
+            emergency_relationship=form.emergency_relationship.data,
+            emergency_address=form.emergency_address.data,
+            emergency_contact=form.emergency_contact.data,
+            
             to_work_on=form.to_work_on.data,
             expectations=form.expectations.data,
             things_to_change=form.things_to_change.data,
             other_information=form.other_information.data,
-            
+
+
             student_id=form.student_id.data
         )
 
@@ -644,14 +671,15 @@ def add_record():
             guardian_contact = form.guardian_contact.data,
             
 
-            date_of_birth = form.date_of_birth.data,
+            date_of_birth = request.form.get('date_of_birth'),
             age = form.age.data,
             gender = form.gender.data,
             civil_status = request.form.get('civil'),
             nationality = form.nationality.data,
             religion = form.religion.data,
             residence = form.residence.data,
-            contact_number = form.residence.data,
+            contact_number = form.contact_number.data,
+            phone_number = form.phone_number.data,
             email_address = form.email_address.data,
 
             history_information=history_info,
@@ -664,6 +692,8 @@ def add_record():
             legal_history=legal_history,
             additional_information=additional_info
         )
+
+        print(request.form.get('date_of_birth') + "checking spaces")
 
         # Add the new records to the database
         db.session.add(new_student)

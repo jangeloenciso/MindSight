@@ -13,7 +13,7 @@ class StudentRecordForm(FlaskForm):
     year_level = StringField('Year Level', validators=[Optional()])
     campus = StringField('Campus', validators=[DataRequired()])
     
-    date_of_birth = DateField('Date of Birth', validators=[Optional()])
+    date_of_birth = DateField('Date of Birth', format="%Y-%m-%d", validators=[Optional()])
     age = IntegerField('Age', validators=[Optional()])
     gender = StringField('Gender', validators=[Optional()])
     civil_status = HiddenField()
@@ -22,7 +22,8 @@ class StudentRecordForm(FlaskForm):
     residence = StringField('Residence', validators=[Optional()])
 
     email_address = StringField('Email', validators=[DataRequired(message="Please enter your email"), Email(message="Please enter a valid email address")])
-    contact_number = StringField('Contact Number', validators=[Optional()])
+    contact_number = StringField('Cel Number', validators=[Optional()])
+    phone_number = StringField('Phone Number', validators=[Optional()])
 
     guardian_name = StringField('Guardian Name', validators=[Optional()])
     guardian_address = StringField('Guardian Address', validators=[Optional()])
@@ -58,7 +59,6 @@ class StudentRecordForm(FlaskForm):
     feelings_of_hopelessness = BooleanField('Feelings of Hopelessness', validators=[Optional()])
     feelings_of_shame_or_guilt = BooleanField('Feelings of Shame or Guilt', validators=[Optional()])
     feelings_of_inadequacy = BooleanField('Feelings of Inadequacy', validators=[Optional()])
-    low_self_esteem = BooleanField('Low Self-Esteem', validators=[Optional()])
     anxious_nervous_tense_feelings = BooleanField('Anxious/Nervous/Tense Feelings', validators=[Optional()])
     panic_attacks = BooleanField('Panic Attacks', validators=[Optional()])
     racing_or_scrambled_thoughts = BooleanField('Racing or Scrambled Thoughts', validators=[Optional()])
@@ -117,6 +117,7 @@ class StudentRecordForm(FlaskForm):
     rel_qual_mother = StringField('Relationship Quality with Mother', validators=[Optional()])
     rel_qual_father = StringField('Relationship Quality with Father', validators=[Optional()])
     rel_qual_step_parent = StringField('Relationship Quality with Step Parent', validators=[Optional()])
+    rel_qual_other = StringField('Other', validators=[Optional()])
 
     family_abuse_history = StringField('Family Abuse History', validators=[Optional()])
     family_mental_history = StringField('Family Mental History', validators=[Optional()])
@@ -218,6 +219,21 @@ class StudentRecordForm(FlaskForm):
     has_been_arrested = BooleanField('Has Been Arrested', validators=[Optional()])
 
     # Additional Information
+
+    nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
+    counselor = StringField('Counselor', validators=[Optional()])
+    personal_agreement = BooleanField()
+    
+
+    referral_source = StringField('', validators=[Optional()])
+
+    emergency_name = StringField('Name', validators=[Optional()])
+    emergency_relationship = StringField('Relationship', validators=[Optional()])
+    emergency_address = StringField('Address', validators=[Optional()])
+    emergency_contact = StringField('Cellphone No.', validators=[Optional()])
+    
+
+
     to_work_on = StringField('To Work On', validators=[Optional()])
     expectations = StringField('Expectations', validators=[Optional()])
     things_to_change = StringField('Things to Change', validators=[Optional()])

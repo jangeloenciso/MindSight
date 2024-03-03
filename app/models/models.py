@@ -213,6 +213,7 @@ class FamilyBackground(db.Model):
     rel_qual_mother = db.Column(db.String(50), nullable=True)
     rel_qual_father = db.Column(db.String(50), nullable=True)
     rel_qual_step_parent = db.Column(db.String(50), nullable=True)
+    rel_qual_other = db.Column(db.String(50), nullable=True)
 
     family_abuse_history = db.Column(db.String(300), nullable=True)
     family_mental_history = db.Column(db.String(300), nullable=True)
