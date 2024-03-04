@@ -9,21 +9,16 @@ endblock %} {% block styles %}
     </div>
 
     <nav class="counselors">
-      <a href="{{ url_for('counselor') }}">
-        <button class="btn">EMMANUELLE A. SANTIAGO <br><span>Director</span></button>
-      </a>
 
-      <a href="{{ url_for('counselor') }}">
-        <button class="btn">RUSSEL ANE A. DELA CRUZ <br><span>Head, Counseling and Wellness</span></button>
+      {% for counselor, title in user_counselor_data %}
+      <a href="{{ url_for('counseling_history', counselor_name=counselor) }}">
+        <button class="btn">
+          <span class="name">{{ counselor }}</span> <br>
+          <span class="title">{{ title }}</span>
+        </button>
       </a>
+      {% endfor %}
 
-      <a href="{{ url_for('counselor') }}">
-        <button class="btn">JAKE JASON QUEDDENG <br><span>GCSC Personnel-Pasig</span></button>
-      </a>
-
-      <a href="{{ url_for('counselor') }}">
-        <button class="btn">LIZELLE ANNE MARIE O. MANABAT <br><span>Registered Psychometrician</span></button>
-      </a>
     </nav>
 
     <div class="recent-records">
@@ -34,7 +29,7 @@ endblock %} {% block styles %}
           <tr>
             <th>Date</th>
             <th>Student ID</th>
-            <th>Dept.</th>
+            <th>College/Strand/Grade Level</th>
             <th>Gender</th>
             <th>Name</th>
             <th>Counselor</th>

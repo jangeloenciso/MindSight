@@ -72,10 +72,6 @@
     border: 3px solid var(--bg-orange);
 }
 
-.counselors a span {
-    color: var(--primary-color);
-}
-
 .btn {
     background:none;
     border: none;
@@ -83,7 +79,12 @@
     cursor: pointer;
 }
 
-.btn span {
+.name {
+    text-transform: capitalize;
+    color: black;
+}
+
+.title{
     color: var(--primary-color);
 }
 
