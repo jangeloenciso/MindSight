@@ -65,9 +65,9 @@ def test_sibling_association_with_family_background():
 
 def test_convictions_associtation_with_legal_history():
     """
-    GIVEN a FamilyBackground Model
-    WHEN a new Sibling is created
-    THEN check the relationships between Siblings, FamilyBackground, and BasicInformation
+    GIVEN a LegalHistory Model
+    WHEN a new Conviction is created
+    THEN check the relationships between Convictions, LegalHistory, and BasicInformation
     """
 
     legal_history = LegalHistory(
