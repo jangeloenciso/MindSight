@@ -10,4 +10,12 @@ class SignupForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(message="Please enter your password"), Length(min=7, message="Password must be at least 7 characters long")])
     confirm = PasswordField('Confirm Password', validators=[DataRequired(message="Please confirm your password"), EqualTo('password', message="Passwords must match")])
     role = SelectField('Role', choices=[('superadmin', 'Super Admin'), ('admin', 'Admin'),], validators=[DataRequired(message="Please select your role")])
+    security_question = SelectField('Security Question', choices=[
+        ('question1', 'In what city did your parents meet?'),
+        ('question2', 'Where did you go on your first solo trip?'),
+        ('question3', 'What was the first dish you learned to cook?'),
+        ('question4', 'What was the name of your first stuffed toy?'),
+        ('question5', 'What was the title of the first book you read?')
+    ], validators=[DataRequired()])
+    security_answer = StringField('Security Answer', validators=[DataRequired()])
     submit = SubmitField('Sign Up')

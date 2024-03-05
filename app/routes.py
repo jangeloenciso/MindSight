@@ -8,10 +8,10 @@ from .forms import *
 from flask_login import login_user
 from app.forms.signup import SignupForm
 from app.forms.login import LoginForm
-# from app.forms.edit_record import EditStudentForm
-# from app.forms.add_record import AddStudentForm
 from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
+from app.forms.forgot import ForgotPassword
+from app.forms.reset import ResetPassword
 from functools import wraps
 import logging, datetime
 
@@ -20,6 +20,13 @@ roles_permissions = {
     'admin': ['view', 'edit', 'search', 'delete']
 }
 
+SECURITY_QUESTIONS = {
+            'question1': 'In what city did your parents meet?',
+            'question2': 'Where did you go on your first solo trip?',
+            'question3': 'What was the first dish you learned to cook?',
+            'question4': 'What was the name of your first stuffed toy?',
+            'question5': 'What was the title of the first book you read?'
+}
 
 def permission_required(permission):
     def decorator(func):
@@ -70,6 +77,8 @@ def signup():
         _password = form.password.data
         _email = form.email.data
         _role = form.role.data
+        _security_question = form.security_question.data
+        _security_answer = form.security_answer.data
 
         user = User.query.filter_by(username=_username).first()
         if user:
@@ -77,7 +86,15 @@ def signup():
             prmpt = f'Sorry, but the username "{_email}" is already taken'
         else:
             hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
-            new_user = User(first_name=form.first_name.data, last_name=form.last_name.data, username=_username, email=form.email.data, password=hashed_password, role=_role)
+            new_user = User( first_name=form.first_name.data, 
+                             last_name=form.last_name.data, 
+                             username=_username, 
+                             email=form.email.data, 
+                             password=hashed_password, 
+                             role=_role, 
+                             security_question=_security_question, 
+                             security_answer=_security_answer )
+            
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
@@ -95,6 +112,56 @@ def logout():
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
+
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+
+    form = ForgotPassword()
+
+    if form.validate_on_submit():
+        _username = form.username.data
+        user = User.query.filter_by(username=_username).first()
+
+        if user:
+            return redirect(url_for('reset_password', username=_username))
+        
+        else:
+            return jsonify({'error': True})
+
+    return render_template('forgot.html', form=form)
+
+
+@app.route('/reset-password/<username>', methods=['GET', 'POST'])
+def reset_password(username):
+
+    form = ResetPassword()
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        print('User does not exist.', 'error')
+        return redirect(url_for('forgot_password'))
+    
+    if form.validate_on_submit():
+        security_answer = form.security_answer.data
+    
+        if security_answer == user.security_answer:
+            new_password = form.password.data
+            hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
+            user.password = hashed_password
+
+            # Commit changes to the database
+            db.session.commit()
+
+            return jsonify({'success': True})
+    
+        else:
+            return jsonify({'error': True})
+    
+    _security_question = user.security_question
+    security_question = SECURITY_QUESTIONS.get(_security_question, 'Unknown Question')
+
+    return render_template('reset.html', form=form, security_question=security_question, username=username)
 
 # Pages
 
@@ -147,18 +214,38 @@ def identity():
 @login_required
 def admin():
 
-    admin_name = ['Emmanuelle A. Santiago',
-                  'Russel Ane A. Dela Cruz', 
+    counselors = ['Emmanuelle Santiago',
+                  'Russel Ane Dela Cruz', 
                   'Jake Jason Queddeng', 
-                  'Lizelle Anne O. Manabat']
+                  'Lizelle Anne Manabat']    
 
-    return render_template('admin.html', admin_name=admin_name)
+
+    counselor_titles = ['Director',
+                        'Head, Counseling and Wellness',
+                        'GCSC Personnel-Pasig',
+                        'Registered Psychometrician']
+    
+    counselor_data = zip(counselors, counselor_titles) 
+    user_name = current_user.first_name + ' ' + current_user.last_name
+
+    # if superadmin, can access all buttons/files
+    if current_user.role == 'superadmin':
+        user_counselor_data = counselor_data
+    
+    # if admin, can only access their own button/file
+    else:
+        user_counselor_data = [(counselor, title) for counselor, title in counselor_data if counselor == user_name]
+
+    return render_template('admin.html', user_counselor_data=user_counselor_data)
 
 @app.route('/admin/history')
 @permission_required('view')
 @login_required
 def counseling_history():
-    return render_template('admin/counseling_history.html')
+
+    counselor_name = request.args.get('counselor_name', default='', type=str)
+
+    return render_template('admin/counseling_history.html', counselor_name=counselor_name)
 
 
 

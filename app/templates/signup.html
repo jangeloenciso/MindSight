@@ -118,6 +118,25 @@ endblock %} {% block styles %}
                 </div>
               </div>
 
+              <select name="security_question" required>
+                <option value="" disabled selected>Select Security Question</option>
+                <option value="question1">In what city did your parents meet?</option>
+                <option value="question2">Where did you go on your first solo trip?</option>
+                <option value="question3">What was the first dish you learned to cook?</option>
+                <option value="question4">What was the name of your first stuffed toy?</option>
+                <option value="question5">What was the title of the first book you read?</option>
+              </select>
+              {% for error in form.role.errors %}
+              <div class="error-message">{{ error }}</div>
+              {% endfor %}
+
+              <input
+                type="text"
+                placeholder="e.g dubai"
+                name="security_answer"
+                required
+              />
+
               <label for="terms-checkbox">
                 <input
                   type="checkbox"

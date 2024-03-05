@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<link rel="stylesheet" href="/static/css/main.css" />
+    	<link
+      		rel="stylesheet"
+      		type="text/css"
+      		href="/static/fonts/custom-fonts.css"
+    	/>
+    	<link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+    	<link rel="stylesheet" href="../static/css/forgot.css" />
+    	<title>Mindsight - Forgot Password</title>
+  	</head>
+  	<body>
+		<form id="confirmation_forgot" action="{{ url_for('forgot_password') }}" method="POST">
+			{{ form.hidden_tag() }}
+		
+			<label for="username">Username</label>
+			{{ form.username }}
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>
+    
+<!-- <script src="../static/javascript/forgot_confirmation.js"></script> -->
+<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script> 
