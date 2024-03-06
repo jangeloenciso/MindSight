@@ -24,7 +24,7 @@ main {
     background-color: #faf4f4;
     flex-direction: column;
     display: flex;
-    padding: 20px;
+    padding: 40px;
     border-radius: 20px;
 
 }
@@ -61,6 +61,9 @@ main div label {
     cursor: pointer;
 }
 
+.header{
+    padding-bottom: 30px;
+}
 
 .logo-container {
     width: 100%;
@@ -80,6 +83,7 @@ input[type="text"] {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
     font-size: 1.1em;
+    margin-top: 10px;
 }
 
 /* submit button */

@@ -24,9 +24,8 @@ main {
     background-color: #faf4f4;
     flex-direction: column;
     display: flex;
-    padding: 20px;
+    padding: 40px;
     border-radius: 20px;
-
 }
 
 main div {
@@ -45,6 +44,7 @@ main div p {
 main div label {
     color: var(--primary-color);
     padding-bottom: 5px;
+    font-family: Lexend-medium;
 }
 
 /* back button at top */
@@ -76,7 +76,8 @@ main div label {
 .secQuest span {
     color: var(--primary-color);
     font-family: Lexend-bold;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    font-size: 1.4em;
 }
 
 .secAnswer {
@@ -90,7 +91,8 @@ input[type="text"], input[type="password"] {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
     font-size: 1.1em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 /* submit button */
@@ -157,6 +159,6 @@ button[type="submit"]:hover {
 }
 
 /* forces html to be 100vh */
-.htmlheight100vh{
+.htmlheight100vh {
     height: 100vh;
 }
