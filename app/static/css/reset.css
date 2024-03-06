@@ -155,3 +155,8 @@ button[type="submit"]:hover {
     color: var(--white);
     background-color: var(--primary-color);
 }
+
+/* forces html to be 100vh */
+.htmlheight100vh{
+    height: 100vh;
+}
