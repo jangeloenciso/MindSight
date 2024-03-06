@@ -89,13 +89,14 @@ input[type="text"] {
 /* submit button */
 button[type="submit"] {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 15px 10px;
     background-color: var(--primary-color);
     border-radius: 5px;
     border: none;
     font-family: Lexend-bold;
     color: var(--white);
+    cursor: pointer;
 }
 
 button[type="submit"]:hover{

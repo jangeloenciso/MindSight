@@ -105,6 +105,7 @@ button[type="submit"] {
     border: none;
     font-family: Lexend-bold;
     color: var(--white);
+    cursor: pointer;
 }
 
 button[type="submit"]:hover {
