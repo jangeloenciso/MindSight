@@ -8,31 +8,50 @@
       href="/static/fonts/custom-fonts.css"
     />
     <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
-    <link rel="stylesheet" href="../static/css/forgot.css" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
     <title>Mindsight - Reset Password</title>
   </head>
   <body>
-    <div class="container">
-      <form id="confirmation_reset" action="{{ url_for('reset_password', username=username) }}" method="POST">
+    <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+
+    <form
+      id="confirmation_reset"
+      action="{{ url_for('reset_password', username=username) }}"
+      method="POST"
+    >
+      <main>
+        <div class="back-container">
+          <a href="{{ url_for ('login')}}">
+            <img src="../static/SVG/back_button.svg" id="back_button" />
+          </a>
+        </div>
+        <div class="logo-container">
+          <img src="../static/SVG/EYE LOGO.svg" />
+        </div>
         {{ form.hidden_tag() }}
+        <div>
+          <p>Security Question</p>
+          {{ security_question }}
+        </div>
 
-        <label for="security_question">Your Security Question</label>
-        {{ security_question }}
+        <div>
+          <label for="security_answer">Security Answer</label> {{
+          form.security_answer }}
+        </div>
+        <div>
+          <label for="password">New Password</label> {{ form.password }}
+        </div>
 
-        <label for="security_answer">Security Answer</label>
-        {{ form.security_answer }}
+        <div>
+          <label for="confirm">Confirm New Password</label> {{ form.confirm }}
+        </div>
 
-        <label for="password">New Password</label>
-        {{ form.password }}
-
-        <label for="confirm">Confirm New Password</label>
-        {{ form.confirm }}
-        <br>
         <button type="submit">Reset Password</button>
+      </main>
     </form>
-    </div>
+    <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
   </body>
 </html>
-    
+
 <script src="../static/javascript/reset_confirmation.js"></script>
-<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script> 
+<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
