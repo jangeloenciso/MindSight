@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="/static/css/main.css" />
@@ -21,9 +20,9 @@
     >
       <main>
         <div class="back-container">
-          <a href="{{ url_for ('login')}}">
-          <img src="../static/SVG/back_button.svg" id="back_button" />
-          </a>
+			<a href="{{ url_for ('login')}}">
+				<img src="../static/SVG/back_button.svg" id="back_button" />
+			</a>
         </div>
         <div class="logo-container">
           <img src="../static/SVG/EYE LOGO.svg" />
@@ -34,13 +33,12 @@
           <label for="username">Username</label>
           {{ form.username }}
         </div>
-
         <button type="submit">SUBMIT</button>
       </main>
     </form>
     <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
   </body>
 
-  <!-- <script src="../static/javascript/forgot_confirmation.js"></script> -->
+  <script src="../static/javascript/forgot_confirmation.js"></script>
   <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
 </html>

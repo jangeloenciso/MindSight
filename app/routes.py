@@ -86,6 +86,7 @@ def signup():
             prmpt = f'Sorry, but the username "{_email}" is already taken'
         else:
             hashed_password = bcrypt.generate_password_hash(_password).decode('utf-8')
+            hashed_security_answer = bcrypt.generate_password_hash(_security_answer).decode('utf-8')
             new_user = User( first_name=form.first_name.data, 
                              last_name=form.last_name.data, 
                              username=_username, 
@@ -93,7 +94,7 @@ def signup():
                              password=hashed_password, 
                              role=_role, 
                              security_question=_security_question, 
-                             security_answer=_security_answer )
+                             security_answer=hashed_security_answer )
             
             db.session.add(new_user)
             db.session.commit()
@@ -113,25 +114,26 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/forgot-password', methods=['GET', 'POST'])
+# TODO: Accessible directly through the URL. Enhance security
+@app.route('/forgot-password', methods=['POST', 'GET'])
 def forgot_password():
-
     form = ForgotPassword()
 
     if form.validate_on_submit():
         _username = form.username.data
         user = User.query.filter_by(username=_username).first()
-
+        
         if user:
-            return redirect(url_for('reset_password', username=_username))
+            return jsonify({'success': True})
         
         else:
+            print('User does not exist.', 'error')
             return jsonify({'error': True})
-
+    
     return render_template('forgot.html', form=form)
 
-
-@app.route('/reset-password/<username>', methods=['GET', 'POST'])
+# TODO: Accessible directly through the URL. Enhance security
+@app.route('/reset-password/<username>', methods=['POST', 'GET'])
 def reset_password(username):
 
     form = ResetPassword()
@@ -139,23 +141,22 @@ def reset_password(username):
     user = User.query.filter_by(username=username).first()
 
     if not user:
-        print('User does not exist.', 'error')
-        return redirect(url_for('forgot_password'))
+        flash('User not found', 'error')
+        return redirect(url_for('login'))
     
     if form.validate_on_submit():
-        security_answer = form.security_answer.data
-    
-        if security_answer == user.security_answer:
+
+        if bcrypt.check_password_hash(user.security_answer, form.security_answer.data):
             new_password = form.password.data
             hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
             user.password = hashed_password
 
             # Commit changes to the database
             db.session.commit()
-
             return jsonify({'success': True})
     
         else:
+            print('Incorrect security answer.')
             return jsonify({'error': True})
     
     _security_question = user.security_question

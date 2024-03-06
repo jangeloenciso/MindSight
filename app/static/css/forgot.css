@@ -127,9 +127,9 @@ button[type="submit"]:hover{
 
 /* for modal style */
 .swal2-popup {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 40%;
-    color: var(--primary-color);
+    color: var(--bg-orange);
     background: var(--main-db-bg-color);
     border-radius: 1.2rem;
     box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
@@ -138,7 +138,7 @@ button[type="submit"]:hover{
 }
 
 .swal2-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1em;
 }
@@ -148,4 +148,15 @@ button[type="submit"]:hover{
     font-size: 1.2rem;
     color: var(--white);
     background-color: var(--primary-color);
+}
+
+.swal2-icon {
+    border: none;
+}
+
+.custom-icon {
+    aspect-ratio: 1/1;
+    width: 1.8em;
+    margin: 0;
+    padding: 0;
 }

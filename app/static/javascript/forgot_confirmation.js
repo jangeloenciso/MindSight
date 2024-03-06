@@ -1,6 +1,8 @@
 document.getElementById('confirmation_forgot').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    const username = document.getElementById('username').value;
+
     fetch(this.action, {
         method: this.method,
         body: new FormData(this)
@@ -12,17 +14,17 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
                 title: 'Error!',
                 text: 'User does not exist.',
                 iconHtml: '<img class="custom-icon" src="static/popup.png">',
-                showConfirmButton: true,
-                showCancelButton: false, // Add a cancel button
-                confirmButtonText: 'Try Again',
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonText: 'Try Again',
                 customClass: {
-                    confirmButton: 'cancel-button-class'
+                    cancelButton: 'cancel-button-class'
                 }
-            }).then((result) => {
-                if (result.confirm === 'confirm') {
-                    window.location.href = "forgot_password"; // Redirect to forgot password page
-                }
-            });
+            })
         }
-    })
+        else {
+            // Redirect to the reset password page with the username
+            window.location.href = "/reset-password/" + encodeURIComponent(username);
+        }
+    });
 });
