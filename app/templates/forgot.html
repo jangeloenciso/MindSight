@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/custom-fonts.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+    <link rel="stylesheet" href="../static/css/forgot.css" />
+    <title>Mindsight - Forgot Password</title>
+  </head>
+
+  <body>
+    <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+    <form
+      id="confirmation_forgot"
+      action="{{ url_for('forgot_password') }}"
+      method="POST"
+    >
+      <main>
+        <div class="back-container">
+          <!-- #TODO: Implement backend logic for enabling the functionality of a back button -->
+          <img src="../static/SVG/back_button.svg" id="back_button" />
+        </div>
+        <div class="logo-container">
+          <img src="../static/SVG/EYE LOGO.svg" />
+        </div>
+        {{ form.hidden_tag() }}
+        <div>
+          <p>Forgot Password?</p>
+          <label for="username">Username</label>
+          {{ form.username }}
+        </div>
+
+        <button type="submit">SUBMIT</button>
+      </main>
+    </form>
+    <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
+  </body>
+
+  <!-- <script src="../static/javascript/forgot_confirmation.js"></script> -->
+  <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
+</html>

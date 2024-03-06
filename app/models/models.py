@@ -16,14 +16,18 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(45), nullable=False)
+    security_question = db.Column(db.String(255), nullable=False)
+    security_answer = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, first_name, last_name, username, email, password, role):
+    def __init__(self, first_name, last_name, username, email, password, role, security_question, security_answer):
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
         self.email = email
         self.password = password
         self.role = role
+        self.security_question = security_question
+        self.security_answer = security_answer
 
     def is_authenticated(self):
         return True

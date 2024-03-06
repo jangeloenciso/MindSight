@@ -1,0 +1,146 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    transition: var(--smooth-transition);
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-color: #DB9354;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 600px;
+    height: auto;
+    background-color: #faf4f4;
+    flex-direction: column;
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+
+}
+
+main div {
+    display: flex;
+    flex-direction: column;
+}
+
+main div p {
+    font-size: 2em;
+    font-family: Lexend-bold;
+    margin: 0;
+    color: var(--primary-color);
+    padding-bottom: 10px;
+}
+
+main div label {
+    color: var(--primary-color);
+    padding-bottom: 5px;
+}
+
+/* back button at top */
+.back-container {
+    width: 100%;
+    align-items: flex-end;
+}
+
+.back-container img {
+    position: absolute;
+    width: 45px;
+    aspect-ratio: 1/1;
+    padding: 0 5px 20px 20px;
+    cursor: pointer;
+}
+
+
+.logo-container {
+    width: 100%;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 100px;
+    aspect-ratio: 1/1;
+
+}
+
+/* text box input */
+input[type="text"] {
+    border-radius: 5px;
+    padding: 10px 10px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+/* submit button */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    border: none;
+    font-family: Lexend-bold;
+    color: var(--white);
+}
+
+button[type="submit"]:hover{
+    background-color: #084b65;
+}
+
+
+
+/* SVGs */
+.svg-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 25%;
+    pointer-events: none;
+}
+
+.svg-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 40%;
+    pointer-events: none;
+    transform: scaleX(-1)
+}
+
+
+
+/* for modal style */
+.swal2-popup {
+    font-size: 1.1rem;
+    width: 40%;
+    color: var(--primary-color);
+    background: var(--main-db-bg-color);
+    border-radius: 1.2rem;
+    box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
+    backdrop-filter: blur(10px);
+    padding: 1em;
+}
+
+.swal2-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+}
+
+.swal2-cancel.cancel-button-class {
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+}

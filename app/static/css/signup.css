@@ -24,7 +24,6 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--main-db-bg-color);
-    display: flex;
 }
 
 /* text on top of button */
@@ -94,7 +93,7 @@ body {
     height: 100%;
     border: 3px solid var(--bg-orange);
     padding: 20px;
-    background-color: #faf4f4;
+    background-color: var(--white);
 }
 
 /* login side (right side) */

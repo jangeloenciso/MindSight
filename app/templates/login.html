@@ -45,6 +45,11 @@
             </button>
           </a>
 
+          <!-- Redirect to the Sign up page -->
+          <div class="signup-container">
+            To register a new administrator, please click
+            <a href="{{ url_for('signup') }}"> here. </a>
+          </div>
        
       </div>
       <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
@@ -73,7 +78,7 @@
               /></i>
             </div>
             <div class="forgot-pw-container">
-              <a href="">Forgot Password?</a>
+              <a href="{{ url_for('forgot_password') }}" id="forgotPassword">Forgot Password?</a>
             </div>
           </div>
 
