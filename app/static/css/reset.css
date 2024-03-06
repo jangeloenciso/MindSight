@@ -79,6 +79,10 @@ main div label {
     padding-bottom: 5px;
 }
 
+.secAnswer {
+    color: var(--primary-color);
+}
+
 /* text box input */
 input[type="text"], input[type="password"] {
     border-radius: 5px;
