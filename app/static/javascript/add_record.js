@@ -21,6 +21,11 @@ function createRow(table, row) {
 }
 
 function deleteRow(table) {
-    rowToDelete = document.getElementById(table).rows.length - 1;
-    document.getElementById(table).deleteRow(rowToDelete);
+    var rowToDelete = document.getElementById(table).rows.length - 1;
+    var idToDelete = document.getElementById(table).rows[rowToDelete].id;
+
+    if (idToDelete && rowToDelete > 1) {
+        document.getElementById(table).deleteRow(rowToDelete);
+        console.log(rowToDelete);
+    }
 }
