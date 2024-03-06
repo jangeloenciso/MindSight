@@ -21,7 +21,7 @@
     >
       <main>
         <div class="back-container">
-          <a href="{{ url_for ('login')}}">
+          <a href="{{ url_for ('forgot_password')}}">
             <img src="../static/SVG/back_button.svg" id="back_button" />
           </a>
         </div>
@@ -29,15 +29,12 @@
           <img src="../static/SVG/EYE LOGO.svg" />
         </div>
         {{ form.hidden_tag() }}
-        <div>
+        <div class="secQuest">
           <p>Security Question</p>
-          {{ security_question }}
+          <span>{{ security_question }}</span>
         </div>
 
-        <div>
-          <label for="security_answer">Security Answer</label> {{
-          form.security_answer }}
-        </div>
+        <div>{{ form.security_answer }}</div>
         <div>
           <label for="password">New Password</label> {{ form.password }}
         </div>

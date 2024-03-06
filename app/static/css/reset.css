@@ -70,7 +70,13 @@ main div label {
 .logo-container img {
     width: 100px;
     aspect-ratio: 1/1;
+}
 
+/* security question text */
+.secQuest span {
+    color: var(--primary-color);
+    font-family: Lexend-bold;
+    padding-bottom: 5px;
 }
 
 /* text box input */
@@ -95,7 +101,7 @@ button[type="submit"] {
     color: var(--white);
 }
 
-button[type="submit"]:hover{
+button[type="submit"]:hover {
     background-color: #084b65;
 }
 

@@ -53,7 +53,7 @@ main div label {
     align-items: flex-end;
 }
 
-.back-container img {
+.back-container a {
     position: absolute;
     width: 45px;
     aspect-ratio: 1/1;
