@@ -179,7 +179,6 @@ def test_add_record():
     'treatment_date' : '1999-05-15',
     'treatment_outcome' : 'Test',
 
-    # Include similar fields for other substances
     'pending_criminal_charges': False,
     'on_probation': False,
     'has_been_arrested': False,
@@ -192,16 +191,36 @@ def test_add_record():
     'siblingAge': ['20'],            # List of sibling ages
     'siblingGender': ['Male'],  # List of sibling genders
     'rel_qual': ['Brother'],
-    }
+
+    'personal_agreement': True,
+
+    'reason_for_referral': 'Test reason for referral',
+    'receiving_agency': 'Test receiving agency',
+    'receiving_contact_number': '555-123-4567',
+    'receiving_name': 'Test receiving name',
+    'receiving_email': 'test@example.com',
+    'office_address': 'Test office address',
+    'appointment_schedule': '2024-03-07T14:13',  # Example datetime format (YYYY-MM-DDTHH:MM:SS)
+
+    'client_signature': 'Test client signature',
+    'counselor_signature': 'Test counselor signature',
+
+    # CaseNote fields
+    'counselor_name': 'Test counselor name',
+    'interview_date': '2024-03-06',  # Example date format (YYYY-MM-DD)
+    'number_of_session': 'Test number of session',
+    'subject_complaint': 'Test subject complaint',
+    'objective_assessment': 'Test objective assessment',
+    'plan_of_action': 'Test plan of action',
+    'progress_made': 'Test progress made',
+}
+
 
     with app.test_client() as client:
 
-        print(form_data)
+        # print(form_data)
 
         response = client.post('/add', data=form_data, follow_redirects=True)
-
-        print(response)
-        print(response.data)
 
         # Check if the response is successful (status code 200)
         assert response.status_code == 200, "Unexpected status code"
