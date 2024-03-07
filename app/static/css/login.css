@@ -269,38 +269,51 @@ input:-webkit-autofill {
 /* for modal style */
 .swal2-popup {
     font-size: 1.1rem;
-    width: 40%;
+    width: auto;
     color: var(--primary-color);
     background: var(--main-db-bg-color);
     border-radius: 1.2rem;
     box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
     backdrop-filter: blur(10px);
-    padding: 1em;
+    padding: 1.5em;
 }
 
 .swal2-title {
     font-size: 1.5rem;
     color: var(--primary-color);
-    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid var(--bg-orange);
 }
 
 .swal2-confirm.confirm-button-class,
 .swal2-cancel.cancel-button-class {
     padding: 0.5em 2em;
     font-size: 1.2rem;
+    border-radius: 1.5em;
+    font-weight: 400;
 }
 
 .swal2-confirm.confirm-button-class {
     color: var(--white);
     background-color: var(--primary-color);
-
 }
 
 .swal2-cancel.cancel-button-class {
     color: var(--primary-color);
-    background-color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
 }
 
+.modal {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: justify;
+}
+
+.modal a {
+    color: var(--primary-color);
+}
 
 /* login button */
 .login-btn-container {
