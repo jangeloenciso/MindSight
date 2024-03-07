@@ -222,7 +222,7 @@ class StudentRecordForm(FlaskForm):
 
     nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
     counselor = StringField('Counselor', validators=[Optional()])
-    personal_agreement = BooleanField()
+    personal_agreement = BooleanField(validators=[DataRequired()])
     
 
     referral_source = StringField('', validators=[Optional()])
