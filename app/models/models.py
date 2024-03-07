@@ -111,6 +111,10 @@ class BasicInformation(db.Model):
 
     additional_information = db.relationship('AdditionalInformation', backref='student', uselist=False)
 
+    referral_information = db.relationship('ReferralInformation', backref='student', uselist=False)
+
+    case_note = db.relationship('CaseNote', backref='student', uselist=False)
+
     visits = db.relationship('StudentVisits', backref='student')
 
 
@@ -413,8 +417,40 @@ class AdditionalInformation(db.Model):
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 # TODO: Add this, also figure out if you're going to separate it or not
-# class ReferralInformation(db.Model):
+class ReferralInformation(db.Model):
+    __tablename__ = 'referral_information'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    reason_for_referral = db.Column(db.String(500), nullable=True)
+    receiving_agency = db.Column(db.String(100), nullable=True)
+    receiving_contact_number = db.Column(db.String(20), nullable=True)
+    receiving_name = db.Column(db.String(40), nullable=True)
+    receiving_email = db.Column(db.String(40), nullable=True)
+    office_address = db.Column(db.String(50), nullable=True)
+    appointment_schedule = db.Column(db.DateTime)
     
+    client_signature = db.Column(db.String(50), nullable=True)
+    counselor_signature = db.Column(db.String(50), nullable=True)
+
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+
+class CaseNote(db.Model):
+    __tablename__ = 'case_note'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    counselor_name = db.Column(db.String(100), nullable=True)
+    interview_date = db.Column(db.Date)
+    number_of_session = db.Column(db.String(100))
+
+    subject_complaint = db.Column(db.String(500))
+    objective_assessment = db.Column(db.String(500))
+    plan_of_action = db.Column(db.String(500))
+    progress_made = db.Column(db.String(500))
+
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+
 
 class StudentVisits(db.Model):
     __tablename__ = 'student_visits'

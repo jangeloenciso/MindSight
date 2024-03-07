@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField
+from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField, DateTimeField
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
 
 class StudentRecordForm(FlaskForm):
@@ -238,3 +238,27 @@ class StudentRecordForm(FlaskForm):
     expectations = StringField('Expectations', validators=[Optional()])
     things_to_change = StringField('Things to Change', validators=[Optional()])
     other_information = StringField('Other Information', validators=[Optional()])
+
+
+    # Referral Information
+    reason_for_referral = StringField('Reason for Referral', validators=[Optional()])
+    receiving_agency = StringField('', validators=[Optional()])
+    receiving_contact_number = StringField('', validators=[Optional()])
+    receiving_name = StringField('', validators=[Optional()])
+    receiving_email = StringField('', validators=[Optional()])
+    office_address = StringField('', validators=[Optional()])
+    appointment_schedule = DateTimeField()
+
+    client_signature = StringField('', validators=[Optional()])
+    counselor_signature = StringField('', validators=[Optional()])
+
+
+    # Case Note
+    counselor_name = StringField('Reason for Referral', validators=[Optional()])
+    interview_date = DateField()
+    number_of_session = StringField('Reason for Referral', validators=[Optional()])
+
+    subject_complaint = StringField('Reason for Referral', validators=[Optional()])
+    objective_assessment = StringField('Reason for Referral', validators=[Optional()])
+    plan_of_action = StringField('Reason for Referral', validators=[Optional()])
+    progress_made = StringField('Reason for Referral', validators=[Optional()])

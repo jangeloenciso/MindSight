@@ -747,6 +747,30 @@ def add_record():
             student_id=form.student_id.data
         )
 
+        referral_information = ReferralInformation(
+            reason_for_referral=form.reason_for_referral.data,
+            receiving_agency=form.receiving_agency.data,
+            receiving_contact_number=form.receiving_contact_number.data,
+            receiving_name=form.receiving_name.data,
+            receiving_email=form.receiving_email.data,
+            office_address=form.office_address.data,
+            appointment_schedule=request.form.get('appointment_schedule'),
+            
+            client_signature=form.client_signature.data,
+            counselor_signature=form.counselor_signature.data,
+        )
+
+        case_note = CaseNote(
+            counselor_name=form.counselor_name.data,
+            interview_date=request.form.get('confiinterview'),
+            number_of_session=form.number_of_session.data,
+
+            subject_complaint=form.subject_complaint.data,
+            objective_assessment=form.objective_assessment.data,
+            plan_of_action=form.plan_of_action.data,
+            progress_made=form.progress_made.data
+        )
+
         new_student = BasicInformation(
             student_id=form.student_id.data,
             last_name=form.last_name.data,
@@ -778,7 +802,9 @@ def add_record():
             occupational_history=occupational_history,
             substance_abuse_history=substance_abuse_history,
             legal_history=legal_history,
-            additional_information=additional_info
+            additional_information=additional_info,
+            referral_information=referral_information,
+            case_note=case_note
         )
 
         print(request.form.get('date_of_birth') + "checking spaces")
