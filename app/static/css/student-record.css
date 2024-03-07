@@ -158,7 +158,7 @@
     transform: scale(1.1);
 }
 
-.edit, .print {
+.edit, .print, .upload {
     margin: 0 0.5em;
 }
 
