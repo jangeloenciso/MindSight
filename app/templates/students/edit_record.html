@@ -57,12 +57,7 @@ href="/static/fonts/custom-fonts.css"
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
-              <input
-                type="text"
-                id="yearlevel"
-                name="yearlevel"
-                placeholder="Grade/Yr Level"
-              />
+              {{ form.year_level(placeholder='Grade/Yr Level') }}
             </div>
           </div>
           <div class="double-column">
@@ -117,12 +112,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="email">Email Address:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-              />
+              {{ form.email_address(placeholder='Email Address') }}
             </div>
             <div>
               <label for="cnumber">Cellphone Number:</label>
@@ -136,22 +126,17 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="guardian">Name of Guardian:</label>
-              <input
-                type="text"
-                id="guardian"
-                name="guardian"
-                placeholder="Name of Guardian"
-              />
+              {{ form.guardian_name(placeholder='Name of Guardian') }}
             </div>
             <div>
               <label for="gcnumber">Guardian's Contact No.:</label>
-              {{ form.contact_number(placeholder='09123456789') }}
+              {{ form.guardian_contact(placeholder="Guardian's Contact No.") }}
             </div>
           </div>
           <div class="single-column">
             <div>
               <label for="guardianadd">Address of Guardian:</label>
-              {{ form.residence(placeholder='Address of Guardian') }}
+              {{ form.guardian_address(placeholder='Address of Guardian') }}
             </div>
             <div></div>
           </div>
@@ -174,12 +159,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            <input
-              type="text"
-              class="form-width100"
-              id="referrer"
-              name="referrer"
-            />
+            {{ form.referral_source(class="form-width100") }}
           </div>
         </div>
 
@@ -205,31 +185,21 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="emername">Name:</label>
-              <input
-                type="text"
-                id="emername"
-                name="emername"
-                placeholder="Name"
-              />
+              {{ form.emergency_name }}
             </div>
             <div>
               <label for="emerrel">Relationship:</label>
-              <input
-                type="text"
-                id="emerrel"
-                name="emerrel"
-                placeholder="Relationship"
-              />
+              {{ form.emergency_relationship }}
             </div>
           </div>
           <div class="double-column">
             <div>
               <label for="dob">Address:</label>
-              {{ form.residence(placeholder='Address') }}
+              {{ form.emergency_address }}
             </div>
             <div>
               <label for="emercell">Cellphone No.:</label>
-              {{ form.contact_number(placeholder='Cellphone No.') }}
+              {{ form.emergency_contact }}
             </div>
           </div>
         </div>
@@ -271,12 +241,6 @@ href="/static/fonts/custom-fonts.css"
                 <label for="cguardian">The client's guardian</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="otherOption"
-                  name="history_provider"
-                  value="other"
-                />
                 <label for="otherOption">Other</label
                 >{{ form.information_provider }}
               </div>
@@ -576,13 +540,6 @@ href="/static/fonts/custom-fonts.css"
             </li>
 
             <li>
-              <input
-                type="checkbox"
-                id="exp44"
-                name="exp44"
-                value="exp44"
-                class="checkbox-round"
-              />
               <label
                 style="width: auto !important; padding-right: 10px"
                 for="exp44"
@@ -990,12 +947,6 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedother"
-                  name="raised"
-                  value="raisedother"
-                />
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="raisedother"
@@ -1072,12 +1023,6 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherother"
-                  name="relmother"
-                  value="relmotherother"
-                />
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relmotherother"
@@ -1146,12 +1091,6 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherother"
-                  name="relfather"
-                  value="relfatherother"
-                />
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relfatherother"
@@ -1222,12 +1161,6 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentother"
-                  name="relstepparent"
-                  value="relstepparentother"
-                />
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relstepparentother"
@@ -1347,12 +1280,6 @@ href="/static/fonts/custom-fonts.css"
                     >
                   </div>
                   <div>
-                    <input
-                      type="radio"
-                      id="relsiblingother"
-                      name="relsibling"
-                      value="relsiblingother"
-                    />
                     <label
                       style="width: auto !important; padding-right: 10px"
                       for="relsiblingother"
@@ -1642,7 +1569,6 @@ href="/static/fonts/custom-fonts.css"
                 <label for="subsabuseno">No</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Other') }}
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="subsabuseother"
@@ -2794,12 +2720,7 @@ href="/static/fonts/custom-fonts.css"
                 style="width: auto !important; padding-top: 5px"
                 >Signature of the Counselor/Guidance Personnel</label
               >
-              <input
-                type="text"
-                id="Counselorsignature"
-                name="Counselorsignature"
-                style="width: auto !important"
-              />
+              {{ form.counselor(class='form-width100') }}
             </div>
             <div></div>
           </div>
