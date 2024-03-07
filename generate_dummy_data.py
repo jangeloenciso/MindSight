@@ -10,6 +10,10 @@ from dummy_data_input import course_names, religion_names, strands
 with app.app_context():
 
     # db.session.query(PersonalInformation).delete()
+    db.session.query(Sibling).delete()
+    db.session.query(Conviction).delete()
+    db.session.query(CaseNote).delete()
+    db.session.query(ReferralInformation).delete()
     db.session.query(FamilyBackground).delete()
     db.session.query(HealthInformation).delete()
     db.session.query(EducationalBackground).delete()
@@ -43,7 +47,7 @@ with app.app_context():
         )
         db.session.add(visit)
 
-    for _ in range(200):
+    for _ in range(10):
         family_name = fake.last_name()
         student = BasicInformation(
             student_id=generate_student_id(),
