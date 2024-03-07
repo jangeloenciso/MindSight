@@ -8,7 +8,7 @@ def test_add_record():
 
     form_data = {
     'student_id': '2020-887434',
-    'last_name': 'Smith',
+    'last_name': 'TEST',
     'first_name': 'Emily',
     'course': 'Psychology',
     'year_level': 'Junior',
@@ -182,6 +182,11 @@ def test_add_record():
     'pending_criminal_charges': False,
     'on_probation': False,
     'has_been_arrested': False,
+
+    'conviction': ['Test'],
+    'conviction_date': ['2015-12-12'],
+    'conviction_outcome': ['Test'],
+
     'to_work_on': 'Managing stress',
     'expectations': 'To improve mental well-being',
     'things_to_change': 'Better coping mechanisms',
