@@ -1862,18 +1862,13 @@
             </p>
 
             <div class="tac">
-              <input id="taccheckbox" type="checkbox" />
+              {{ form.personal_agreement(type='checkbox', id='taccheckbox') }}
               <label for="taccheckbox">
                 I understand and agree to the information presented
                 above.</label
               >
             </div>
-            <input
-              type="datetime-local"
-              required
-              name="tacdatetime"
-              class="tacdatetime"
-            />
+            {{ form.personal_agreement_date() }}
           </div>
 
           <table>
@@ -2139,12 +2134,7 @@
                 >Appointment Schedule:</label
               >
               <!-- TODO: paayos im so sorry HAHA -->
-              <input
-              type="datetime-local"
-              required
-              name="appointment_schedule"
-              class="tacdatetime"
-            />
+              {{ form.appointment_schedule() }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align">

@@ -401,6 +401,7 @@ class AdditionalInformation(db.Model):
     nature_of_concern = db.Column(db.String(50), nullable=True)
     counselor = db.Column(db.String(50), nullable=True)
     personal_agreement = db.Column(db.Boolean, default=False)
+    personal_agreement_date = db.Column(db.DateTime)
 
     referral_source = db.Column(db.String(50))
 

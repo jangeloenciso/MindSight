@@ -13,7 +13,8 @@ from app.forms.edit_credentials import EditCredentials
 from app.forms.forgot import ForgotPassword
 from app.forms.reset import ResetPassword
 from functools import wraps
-import logging, datetime
+import logging
+from datetime import datetime
 
 
 roles_permissions = {
@@ -730,6 +731,7 @@ def add_record():
             nature_of_concern=form.nature_of_concern.data,
             counselor=form.counselor.data,
             personal_agreement=form.personal_agreement.data,
+            personal_agreement_date=form.personal_agreement_date.data,
 
             referral_source = form.referral_source.data,
 
@@ -754,7 +756,7 @@ def add_record():
             receiving_name=form.receiving_name.data,
             receiving_email=form.receiving_email.data,
             office_address=form.office_address.data,
-            appointment_schedule=request.form.get('appointment_schedule'),
+            appointment_schedule=form.appointment_schedule.data,
             
             client_signature=form.client_signature.data,
             counselor_signature=form.counselor_signature.data,
@@ -807,6 +809,7 @@ def add_record():
             case_note=case_note
         )
 
+        print(request.form.get('appointment_schedule'))
         print(request.form.get('date_of_birth') + "checking spaces")
         # print(sibling_names)
 

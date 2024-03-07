@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField, DateTimeField
+from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField, DateTimeField, DateTimeLocalField
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
 
 class StudentRecordForm(FlaskForm):
@@ -223,6 +223,7 @@ class StudentRecordForm(FlaskForm):
     nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
     counselor = StringField('Counselor', validators=[Optional()])
     personal_agreement = BooleanField(validators=[DataRequired()])
+    personal_agreement_date = DateTimeLocalField()
     
 
     referral_source = StringField('', validators=[Optional()])
@@ -247,7 +248,7 @@ class StudentRecordForm(FlaskForm):
     receiving_name = StringField('', validators=[Optional()])
     receiving_email = StringField('', validators=[Optional()])
     office_address = StringField('', validators=[Optional()])
-    appointment_schedule = DateTimeField()
+    appointment_schedule = DateTimeLocalField()
 
     client_signature = StringField('', validators=[Optional()])
     counselor_signature = StringField('', validators=[Optional()])
