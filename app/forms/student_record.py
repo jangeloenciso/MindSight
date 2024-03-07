@@ -248,7 +248,7 @@ class StudentRecordForm(FlaskForm):
     receiving_name = StringField('', validators=[Optional()])
     receiving_email = StringField('', validators=[Optional()])
     office_address = StringField('', validators=[Optional()])
-    appointment_schedule = DateTimeLocalField()
+    appointment_schedule = DateTimeLocalField(validators=[Optional()])
 
     client_signature = StringField('', validators=[Optional()])
     counselor_signature = StringField('', validators=[Optional()])

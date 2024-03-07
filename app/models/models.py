@@ -429,7 +429,7 @@ class ReferralInformation(db.Model):
     receiving_name = db.Column(db.String(40), nullable=True)
     receiving_email = db.Column(db.String(40), nullable=True)
     office_address = db.Column(db.String(50), nullable=True)
-    appointment_schedule = db.Column(db.DateTime)
+    appointment_schedule = db.Column(db.DateTime, nullable=True)
     
     client_signature = db.Column(db.String(50), nullable=True)
     counselor_signature = db.Column(db.String(50), nullable=True)
