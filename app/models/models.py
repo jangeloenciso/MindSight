@@ -276,92 +276,92 @@ class SubstanceAbuseHistory(db.Model):
     struggled_with_substance_abuse = db.Column(db.Boolean, default=False)
 
     # alcohol
-    alcohol = db.Column(db.Boolean, default=False)
-    alcohol_age_first_use = db.Column(db.String(50))
-    alcohol_frequency_of_use = db.Column(db.String(50))
-    alcohol_amount_used = db.Column(db.String(50))
-    alcohol_way_of_intake = db.Column(db.String(50))
+    alcohol = db.Column(db.String(50), nullable=True)
+    alcohol_age_first_use = db.Column(db.String(50), nullable=True)
+    alcohol_frequency_of_use = db.Column(db.String(50), nullable=True)
+    alcohol_amount_used = db.Column(db.String(50), nullable=True)
+    alcohol_way_of_intake = db.Column(db.String(50), nullable=True)
 
     # cigarette
-    cigarette = db.Column(db.Boolean, default=False)
-    cigarette_age_first_use = db.Column(db.String(50))
-    cigarette_frequency_of_use = db.Column(db.String(50))
-    cigarette_amount_used = db.Column(db.String(50))
-    cigarette_way_of_intake = db.Column(db.String(50))
+    cigarette = db.Column(db.String(50), nullable=True)
+    cigarette_age_first_use = db.Column(db.String(50), nullable=True)
+    cigarette_frequency_of_use = db.Column(db.String(50), nullable=True)
+    cigarette_amount_used = db.Column(db.String(50), nullable=True)
+    cigarette_way_of_intake = db.Column(db.String(50), nullable=True)
 
     # marijuana
-    marijuana = db.Column(db.Boolean, default=False)
-    marijuana_age_first_use = db.Column(db.String(50))
-    marijuana_frequency_of_use = db.Column(db.String(50))
-    marijuana_amount_used = db.Column(db.String(50))
-    marijuana_way_of_intake = db.Column(db.String(50))
+    marijuana = db.Column(db.String(50), nullable=True)
+    marijuana_age_first_use = db.Column(db.String(50), nullable=True)
+    marijuana_frequency_of_use = db.Column(db.String(50), nullable=True)
+    marijuana_amount_used = db.Column(db.String(50), nullable=True)
+    marijuana_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # cocaine
-    cocaine = db.Column(db.Boolean, default=False)
-    cocaine_age_first_use = db.Column(db.String(50))
-    cocaine_frequency_of_use = db.Column(db.String(50))
-    cocaine_amount_used = db.Column(db.String(50))
-    cocaine_way_of_intake = db.Column(db.String(50))
+    cocaine = db.Column(db.String(50), nullable=True)
+    cocaine_age_first_use = db.Column(db.String(50), nullable=True)
+    cocaine_frequency_of_use = db.Column(db.String(50), nullable=True)
+    cocaine_amount_used = db.Column(db.String(50), nullable=True)
+    cocaine_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # heroin
-    heroin = db.Column(db.Boolean, default=False)
-    heroin_age_first_use = db.Column(db.String(50))
-    heroin_frequency_of_use = db.Column(db.String(50))
-    heroin_amount_used = db.Column(db.String(50))
-    heroin_way_of_intake = db.Column(db.String(50))
+    heroin = db.Column(db.String(50), nullable=True)
+    heroin_age_first_use = db.Column(db.String(50), nullable=True)
+    heroin_frequency_of_use = db.Column(db.String(50), nullable=True)
+    heroin_amount_used = db.Column(db.String(50), nullable=True)
+    heroin_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # amphetamines
-    amphetamines = db.Column(db.Boolean, default=False)
-    amphetamines_age_first_use = db.Column(db.String(50))
-    amphetamines_frequency_of_use = db.Column(db.String(50))
-    amphetamines_amount_used = db.Column(db.String(50))
-    amphetamines_way_of_intake = db.Column(db.String(50))
+    amphetamines = db.Column(db.String(50), nullable=True)
+    amphetamines_age_first_use = db.Column(db.String(50), nullable=True)
+    amphetamines_frequency_of_use = db.Column(db.String(50), nullable=True)
+    amphetamines_amount_used = db.Column(db.String(50), nullable=True)
+    amphetamines_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # club_drugs
-    club_drugs = db.Column(db.Boolean, default=False)
-    club_drugs_age_first_use = db.Column(db.String(50))
-    club_drugs_frequency_of_use = db.Column(db.String(50))
-    club_drugs_amount_used = db.Column(db.String(50))
-    club_drugs_way_of_intake = db.Column(db.String(50))
+    club_drugs = db.Column(db.String(50), nullable=True)
+    club_drugs_age_first_use = db.Column(db.String(50), nullable=True)
+    club_drugs_frequency_of_use = db.Column(db.String(50), nullable=True)
+    club_drugs_amount_used = db.Column(db.String(50), nullable=True)
+    club_drugs_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # pain_meds
-    pain_meds = db.Column(db.Boolean, default=False)
-    pain_meds_age_first_use = db.Column(db.String(50))
-    pain_meds_frequency_of_use = db.Column(db.String(50))
-    pain_meds_amount_used = db.Column(db.String(50))
-    pain_meds_way_of_intake = db.Column(db.String(50))
+    pain_meds = db.Column(db.String(50), nullable=True)
+    pain_meds_age_first_use = db.Column(db.String(50), nullable=True)
+    pain_meds_frequency_of_use = db.Column(db.String(50), nullable=True)
+    pain_meds_amount_used = db.Column(db.String(50), nullable=True)
+    pain_meds_way_of_intake = db.Column(db.String(50), nullable=True)
 
 
     # benzodiazepines
-    benzo = db.Column(db.Boolean, default=False)
-    benzo_age_first_use = db.Column(db.String(50))
-    benzo_frequency_of_use = db.Column(db.String(50))
-    benzo_amount_used = db.Column(db.String(50))
-    benzo_way_of_intake = db.Column(db.String(50))
+    benzo = db.Column(db.String(50), nullable=True)
+    benzo_age_first_use = db.Column(db.String(50), nullable=True)
+    benzo_frequency_of_use = db.Column(db.String(50), nullable=True)
+    benzo_amount_used = db.Column(db.String(50), nullable=True)
+    benzo_way_of_intake = db.Column(db.String(50), nullable=True)
 
     # hallucinogens
-    hallucinogens = db.Column(db.Boolean, default=False)
-    hallucinogens_age_first_use = db.Column(db.String(50))
-    hallucinogens_frequency_of_use = db.Column(db.String(50))
-    hallucinogens_amount_used = db.Column(db.String(50))
-    hallucinogens_way_of_intake = db.Column(db.String(50))
+    hallucinogens = db.Column(db.String(50), nullable=True)
+    hallucinogens_age_first_use = db.Column(db.String(50), nullable=True)
+    hallucinogens_frequency_of_use = db.Column(db.String(50), nullable=True)
+    hallucinogens_amount_used = db.Column(db.String(50), nullable=True)
+    hallucinogens_way_of_intake = db.Column(db.String(50), nullable=True)
 
     # others
-    other_meds = db.Column(db.Boolean, default=False)
-    other_meds_age_first_use = db.Column(db.String(50))
-    other_meds_frequency_of_use = db.Column(db.String(50))
-    other_meds_amount_used = db.Column(db.String(50))
-    other_meds_way_of_intake = db.Column(db.String(50))
+    other_meds = db.Column(db.String(50), nullable=True)
+    other_meds_age_first_use = db.Column(db.String(50), nullable=True)
+    other_meds_frequency_of_use = db.Column(db.String(50), nullable=True)
+    other_meds_amount_used = db.Column(db.String(50), nullable=True)
+    other_meds_way_of_intake = db.Column(db.String(50), nullable=True)
 
     treatment_program_name = db.Column(db.String(50), nullable=True)
     treatment_type = db.Column(db.String(50), nullable=True)
-    treatment_date = db.Column(db.Date)
-    treatment_outcome = db.Column(db.String(100))
+    treatment_date = db.Column(db.Date, nullable=True)
+    treatment_outcome = db.Column(db.String(100), nullable=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
@@ -383,9 +383,9 @@ class Conviction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # TODO: THIS WAS LAZY. FOR TESTING PURPOSES ONLY. CREATE SEPARATE MODEL/TABLE LATER
-    conviction = db.Column(db.String(50))
-    conviction_date = db.Column(db.Date())
-    conviction_outcome = db.Column(db.String(50))
+    conviction = db.Column(db.String(50), nullable=True)
+    conviction_date = db.Column(db.Date(), nullable=True)
+    conviction_outcome = db.Column(db.String(50), nullable=True)
 
     legal_history_id = db.Column(db.Integer, db.ForeignKey('legal_history.id'), nullable=False)
 

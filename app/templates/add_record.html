@@ -36,7 +36,7 @@
             </div>
             <div>
               <label for="studNumber">Campus</label>
-              {{ form.campus() }}
+              {{ form.campus(placeholder='Campus') }}
             </div>
             
           </div>
@@ -1066,11 +1066,11 @@
                 <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge"/>
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender"/>
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" />
               </td>
               <td>
                 <select name="rel_qual" id="civil">
-                  <option value="" disabled selected>
+                  <option value="" selected>
                   </option>
                   <option value="Close">Close</option>
                   <option value="Good">Good</option>
@@ -1334,7 +1334,8 @@
               </td>
               <td>
                 <select name="alcoholfrequency" id="alcoholfrequency">
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1347,6 +1348,33 @@
               </td>
             </tr>
             <tr>
+              <tr>
+                <td>Cigarette</td>
+                <td>
+                  <select name="cigaretteuse" id="cigaretteuse">
+                    <option value="No" selected>No</option>
+                    <option value="Yes">Yes</option>
+                  </select>
+                </td>
+                <td>
+                  {{ form.cigarette_age_first_use(class='form-width100 single-column-span') }}
+                </td>
+                <td>
+                  <select name="cigarettefrequency" id="cigarettefrequency">
+                    <option value="">N/A</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                  </select>
+                </td>
+                <td>
+                  {{ form.cigarette_amount_used(class='form-width100 single-column-span') }}
+                </td>
+                <td>
+                  {{ form.cigarette_way_of_intake(class='form-width100 single-column-span') }}
+                </td>
+              </tr>
+              <tr>
               <td>Marijuana</td>
               <td>
                 <select name="marijuanause" id="marijuanause">
@@ -1359,7 +1387,8 @@
               </td>
               <td>
                 <select name="marijuanafrequency" id="marijuanafrequency">
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1387,7 +1416,8 @@
                   name="cocaineorcrackfrequency"
                   id="cocaineorcrackfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1412,7 +1442,8 @@
               </td>
               <td>
                 <select name="heroinfrequency" id="heroinfrequency">
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1425,9 +1456,9 @@
               </td>
             </tr>
             <tr>
-              <td>Amphetamites</td>
+              <td>Amphetamines</td>
               <td>
-                <select name="amphetamitesuse" id="amphetamitesuse">
+                <select name="amphetaminesuse" id="amphetaminesuse">
                   <option value="No" selected>No</option>
                   <option value="Yes">Yes</option>
                 </select>
@@ -1436,8 +1467,9 @@
                 {{ form.amphetamines_age_first_use(class='form-width100 single-column-span') }}
               </td>
               <td>
-                <select name="amphetamitesfrequency" id="amphetamitesfrequency">
-                  <option value="Daily" selected>Daily</option>
+                <select name="amphetaminesfrequency" id="amphetaminesfrequency">
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1462,7 +1494,8 @@
               </td>
               <td>
                 <select name="clubdrugsfrequency" id="clubdrugsfrequency">
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1490,7 +1523,8 @@
                   name="painmedicationfrequency"
                   id="painmedicationfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1518,7 +1552,8 @@
                   name="benzodiazepinesfrequency"
                   id="benzodiazepinesfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1546,7 +1581,8 @@
                   name="hallucinogensfrequency"
                   id="hallucinogensfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
@@ -1561,7 +1597,7 @@
             <tr>
               <td>
                 Other
-                {{ form.hallucinogens_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.other_meds(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="otheruse" id="otheruse">
@@ -1574,7 +1610,8 @@
               </td>
               <td>
                 <select name="otherfrequency" id="otherfrequency">
-                  <option value="Daily" selected>Daily</option>
+                  <option value="">N/A</option>
+                  <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>

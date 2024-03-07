@@ -532,7 +532,7 @@ def add_record():
             feelings_of_shame_or_guilt=form.feelings_of_shame_or_guilt.data,
             feelings_of_inadequacy=form.feelings_of_inadequacy.data,
             
-            # TODO: Refactor, magkaibahan si inadequacy tas self-esteem
+            # TODO: Done --Refactor, magkaibahan si inadequacy tas self-esteem
             anxious_nervous_tense_feelings=form.anxious_nervous_tense_feelings.data,
             panic_attacks=form.panic_attacks.data,
             racing_or_scrambled_thoughts=form.racing_or_scrambled_thoughts.data,
@@ -642,64 +642,71 @@ def add_record():
             struggled_with_substance_abuse=form.struggled_with_substance_abuse.data,
             # TODO: add other
 
-            alcohol=form.alcohol.data,
+            alcohol=request.form.get('alcoholuse'),
             alcohol_age_first_use=form.alcohol_age_first_use.data,
-            alcohol_frequency_of_use=form.alcohol_frequency_of_use.data,
+            alcohol_frequency_of_use=request.form.get('alcoholfrequency'),
             alcohol_amount_used=form.alcohol_amount_used.data,
             alcohol_way_of_intake=form.alcohol_way_of_intake.data,
 
-            cigarette=form.cigarette.data,
+            cigarette=request.form.get('cigaretteuse'),
             cigarette_age_first_use=form.cigarette_age_first_use.data,
-            cigarette_frequency_of_use=form.cigarette_frequency_of_use.data,
+            cigarette_frequency_of_use=request.form.get('cigarettefrequency'),
             cigarette_amount_used=form.cigarette_amount_used.data,
             cigarette_way_of_intake=form.cigarette_way_of_intake.data,
             
-            marijuana=form.marijuana.data,
+            marijuana=request.form.get('marijuanause'),
             marijuana_age_first_use=form.marijuana_age_first_use.data,
-            marijuana_frequency_of_use=form.marijuana_frequency_of_use.data,
+            marijuana_frequency_of_use=request.form.get('marijuanafrequency'),
             marijuana_amount_used=form.marijuana_amount_used.data,
             marijuana_way_of_intake=form.marijuana_way_of_intake.data,
 
-            cocaine=form.cocaine.data,
+            cocaine=request.form.get('cocaineorcrackuse'),
             cocaine_age_first_use=form.cocaine_age_first_use.data,
-            cocaine_frequency_of_use=form.cocaine_frequency_of_use.data,
+            cocaine_frequency_of_use=request.form.get('cocaineorcrackfrequency'),
             cocaine_amount_used=form.cocaine_amount_used.data,
             cocaine_way_of_intake=form.cocaine_way_of_intake.data,
 
-            heroin=form.heroin.data,
+            heroin=request.form.get('heroinuse'),
             heroin_age_first_use=form.heroin_age_first_use.data,
-            heroin_frequency_of_use=form.heroin_frequency_of_use.data,
+            heroin_frequency_of_use=request.form.get('heroinfrequency'),
             heroin_amount_used=form.heroin_amount_used.data,
             heroin_way_of_intake=form.heroin_way_of_intake.data,
 
-            amphetamines=form.amphetamines.data,
+            amphetamines=request.form.get('amphetaminesuse'),
             amphetamines_age_first_use=form.amphetamines_age_first_use.data,
-            amphetamines_frequency_of_use=form.amphetamines_frequency_of_use.data,
+            amphetamines_frequency_of_use=request.form.get('amphetaminesfrequency'),
             amphetamines_amount_used=form.amphetamines_amount_used.data,
             amphetamines_way_of_intake=form.amphetamines_way_of_intake.data,
 
-            club_drugs=form.club_drugs.data,
+            club_drugs=request.form.get('clubdrugsuse'),
             club_drugs_age_first_use=form.club_drugs_age_first_use.data,
-            club_drugs_frequency_of_use=form.club_drugs_frequency_of_use.data,
+            club_drugs_frequency_of_use=request.form.get('clubdrugsfrequency'),
             club_drugs_amount_used=form.club_drugs_amount_used.data,
             club_drugs_way_of_intake=form.club_drugs_way_of_intake.data,
 
-            pain_meds=form.pain_meds.data,
+            pain_meds=request.form.get('painmedicationuse'),
             pain_meds_age_first_use=form.pain_meds_age_first_use.data,
-            pain_meds_frequency_of_use=form.pain_meds_frequency_of_use.data,
+            pain_meds_frequency_of_use=request.form.get('painmedicationfrequency'),
             pain_meds_amount_used=form.pain_meds_amount_used.data,
             pain_meds_way_of_intake=form.pain_meds_way_of_intake.data,
 
-            benzo=form.benzo.data,
+            benzo=request.form.get('benzodiazepinesuse'),
             benzo_age_first_use=form.benzo_age_first_use.data,
-            benzo_frequency_of_use=form.benzo_frequency_of_use.data,
+            benzo_frequency_of_use=request.form.get('benzodiazepinesfrequency'),
             benzo_amount_used=form.benzo_amount_used.data,
             benzo_way_of_intake=form.benzo_way_of_intake.data,
 
 
+            hallucinogens=request.form.get('hallucinogensuse'),
+            hallucinogens_age_first_use=form.hallucinogens_age_first_use.data,
+            hallucinogens_frequency_of_use=request.form.get('hallucinogensfrequency'),
+            hallucinogens_amount_used=form.hallucinogens_amount_used.data,
+            hallucinogens_way_of_intake=form.hallucinogens_way_of_intake.data,
+
+
             other_meds=form.other_meds.data,
             other_meds_age_first_use=form.other_meds_age_first_use.data,
-            other_meds_frequency_of_use=form.other_meds_frequency_of_use.data,
+            other_meds_frequency_of_use=request.form.get('otherfrequency'),
             other_meds_amount_used=form.other_meds_amount_used.data,
             other_meds_way_of_intake=form.other_meds_way_of_intake.data,
 
