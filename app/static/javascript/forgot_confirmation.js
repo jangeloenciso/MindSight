@@ -13,7 +13,7 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
             swal.fire({
                 title: 'Error!',
                 text: 'User does not exist.',
-                iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                iconHtml: '<img class="custom-icon" src="static/error.png">',
                 showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Try Again',

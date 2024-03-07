@@ -47,7 +47,6 @@
     margin-left: auto;
 }
 
-
 #analytics {
     font-size: 1.5rem !important;
     height: 5%;
@@ -66,10 +65,15 @@ select, .metrics {
     height: auto;
     background-color: var(--primary-color);
     color: #FFF;
-    border: 5px solid var(--primary-color);
+    border: none;
     border-radius: 10px;
     padding: 10px;
     transition: var(--smooth-transition);
+}
+
+.metrics:hover {
+    background-color: var(--bg-orange);
+    border: none;
 }
 
 option {
@@ -77,10 +81,6 @@ option {
     color: var(--primary-color);
 }
 
-.metrics:hover {
-    background-color: var(--bg-orange);
-    border: none;
-}
 
 .row-container {
     margin-top: 20px;

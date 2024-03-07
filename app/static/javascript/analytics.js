@@ -101,6 +101,9 @@ function generateBarGraph(data, chartNumber) {
                 datasets: [{
                     data: values,
                     backgroundColor: 'rgba(9, 83, 113, 1)'
+                }, {
+                    data: values,
+                    backgroundColor: 'rgba(219, 147, 84, 1)'
                 }]
             },
             options: {
@@ -147,7 +150,12 @@ function generateBarGraph(data, chartNumber) {
                 datasets: [{
                     data: values,
                     backgroundColor: ['rgba(9, 83, 113, 1)',
+                                     'rgba(9, 83, 113, 1)']
+                }, {
+                    data: values,
+                    backgroundColor:['rgba(219, 147, 84, 1)',
                                      'rgba(219, 147, 84, 1)']
+                                     
                 }]
             },
             options: {
@@ -194,7 +202,9 @@ function generateBarGraph(data, chartNumber) {
                 datasets: [{
                     data: values,
                     backgroundColor: 'rgba(9, 83, 113, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)'
+                }, {
+                    data: values,
+                    backgroundColor:'rgba(219, 147, 84, 1)',
             }]
             },
             options: {
@@ -240,6 +250,12 @@ function generateBarGraph(data, chartNumber) {
             data: {
                 labels: labels,
                 datasets: [{
+                    data: values,
+                    backgroundColor: ['rgba(219, 147, 84, 1)',
+                                      'rgba(9, 83, 113, 1)',
+                                      'rgba(96, 146, 192, 1)',
+                                      'rgba(160, 216, 224, 1)']
+                }, {
                     data: values,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
@@ -298,7 +314,12 @@ function generateBarGraph(data, chartNumber) {
                     data: values,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
-                                    'rgba(96, 146, 192, 1)']
+                                      'rgba(96, 146, 192, 1)']
+                }, {
+                    data: values,
+                    backgroundColor: ['rgba(219, 147, 84, 1)',
+                                      'rgba(9, 83, 113, 1)',
+                                      'rgba(96, 146, 192, 1)']
                 }]
             },
             options: {
