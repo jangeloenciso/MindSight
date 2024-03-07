@@ -820,7 +820,7 @@ def add_record():
         sibling_rel_quals = request.form.getlist('rel_qual')
 
         # This entire block of code is bad
-        if sibling_names[0] != "":
+        if len(sibling_names) > 1:
             for sibling in range(len(sibling_names)):
                 new_sibling = Sibling(
                     name = sibling_names[sibling],
@@ -837,7 +837,7 @@ def add_record():
         conviction_outcomes = request.form.getlist('legalOutcome')
 
         # This entire block of code is bad
-        if convictions[0] != "":
+        if len(convictions) > 1:
             for conviction in range(len(convictions)):
                 new_conviction = Conviction(
                     conviction = convictions[conviction],
@@ -847,7 +847,6 @@ def add_record():
                 )
                 db.session.add(new_conviction)
 
-        print(sibling_names)
 
         db.session.commit()
 
