@@ -115,7 +115,6 @@ def logout():
     return redirect(url_for('login'))
 
 
-# TODO: Accessible directly through the URL. Enhance security
 @app.route('/forgot-password', methods=['POST', 'GET'])
 def forgot_password():
     form = ForgotPassword()
