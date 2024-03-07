@@ -50,6 +50,9 @@ function generateBarGraph(data, firstMetricValue, secondMetricValue) {
                 data: values,
                 backgroundColor: 'rgba(9, 83, 113, 1)',
                 borderColor: 'rgba(160, 216, 224, 1)'
+            }, {
+                data: values,
+                backgroundColor: 'rgba(219, 147, 84, 1)'
             }]
         },
         options: {
