@@ -23,7 +23,7 @@ document.getElementById('confirmation_reset').addEventListener('submit', functio
             swal.fire({
                 title: 'Error!',
                 text: 'Incorrect security answer.',
-                iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                iconHtml: '<img class="custom-icon" src="static/error.png">',
                 showConfirmButton: false,
                 showCancelButton: true, // Add a cancel button
                 cancelButtonText: 'Try Again',
