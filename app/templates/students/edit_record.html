@@ -53,7 +53,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="course">Course/Department:</label>
-              {{ form.course_name(placeholder='Course/Department') }}
+              {{ form.course(placeholder='Course/Department') }}
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
@@ -1862,11 +1862,11 @@ href="/static/fonts/custom-fonts.css"
                 </select>
               </td>
               <td>
-                {{ form.benzo_meds_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.benzo_age_first_use(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
-                  name="benzodiazepinesfrequency"
+                  name="benzo_frequency_of_use"
                   id="benzodiazepinesfrequency"
                 >
                   <option value="Daily" selected>Daily</option>
@@ -1875,10 +1875,10 @@ href="/static/fonts/custom-fonts.css"
                 </select>
               </td>
               <td>
-                {{ form.benzo_meds_amount_used(class='form-width100 single-column-span') }}
+                {{ form.benzo_amount_used(class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.benzo_meds_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.benzo_way_of_intake(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
@@ -1890,7 +1890,7 @@ href="/static/fonts/custom-fonts.css"
                 </select>
               </td>
               <td>
-                {{ form.hallucinogens_meds_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_age_first_use(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
@@ -1903,10 +1903,10 @@ href="/static/fonts/custom-fonts.css"
                 </select>
               </td>
               <td>
-                {{ form.hallucinogens_meds_amount_used(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_amount_used(class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.hallucinogens_meds_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_way_of_intake(class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>

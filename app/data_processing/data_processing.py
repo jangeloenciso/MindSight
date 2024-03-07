@@ -9,9 +9,15 @@ def process_data(student_id=None, search_query=None):
     with app.app_context():
         query = BasicInformation.query
 
+        # print(query)
+
         if student_id is not None:
             query = query.filter_by(student_id=student_id)
+            print("printing student")
+            print(query)
 
+        print(search_query)
+            
         if search_query:
             query = (
                 query
@@ -30,20 +36,12 @@ def process_data(student_id=None, search_query=None):
                     (BasicInformation.gender.ilike(f"%{search_query}%")) |
                     (BasicInformation.religion.ilike(f"%{search_query}%")) |
                     (BasicInformation.nationality.ilike(f"%{search_query}%")) |
-                    (BasicInformation.place_of_birth.ilike(f"%{search_query}%")) |
-                    # (EducationalBackground.senior_high_school.ilike(f"%{search_query}%")) |
-                    # (EducationalBackground.junior_high_school.ilike(f"%{search_query}%")) |
-                    # (EducationalBackground.elementary_school.ilike(f"%{search_query}%")) |
-                    # (PsychologicalAssessments.learning_styles.ilike(f"%{search_query}%")) |
-                    # (PsychologicalAssessments.personality_test.ilike(f"%{search_query}%")) |
-                    # (PsychologicalAssessments.iq_test.ilike(f"%{search_query}%")) |
                     (College.name.ilike(f"%{search_query}%"))
             )
         )
 
         data = (
             query
-            # .options(joinedload(StudentInformation.personal_information))
             .options(joinedload(BasicInformation.history_information))
             .options(joinedload(BasicInformation.health_information))
             .options(joinedload(BasicInformation.family_background))
@@ -52,7 +50,6 @@ def process_data(student_id=None, search_query=None):
             .options(joinedload(BasicInformation.occupational_history))
             .options(joinedload(BasicInformation.substance_abuse_history))
             .options(joinedload(BasicInformation.legal_history))
-            # .options(joinedload(StudentInformation.psychological_assessments))
             .options(joinedload(BasicInformation.additional_information))
             .options(joinedload(BasicInformation.visits))
             .all()

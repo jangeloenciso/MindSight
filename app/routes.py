@@ -451,7 +451,6 @@ def edit_record(student_id):
     student = (
         BasicInformation.query
         .options(
-            joinedload(BasicInformation.personal_information),
             joinedload(BasicInformation.family_background),
             joinedload(BasicInformation.health_information),
             joinedload(BasicInformation.educational_background),
@@ -475,7 +474,6 @@ def edit_record(student_id):
     if form.validate_on_submit():
         print('validated')
         form.populate_obj(student)
-        form.populate_obj(student.personal_information)
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
