@@ -96,27 +96,37 @@ p {
 }
 
 
-.delete-container {
+/* archive icon container */
+.archive-flex-container {
     display: flex;
     width: 100%;
     justify-content: flex-end;
+    margin-bottom: 8px;
 }
 
-.delete-button {
-    cursor: pointer;
+
+/* archive icon */
+.archive-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    width: 2.5em;
     background-color: var(--primary-color);
-    margin: 10px 20px 10px 0;
-    width: 40px;
-    aspect-ratio: 1 / 1;
     padding: 5px;
+    cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
     transition: var(--smooth-transition);
 }
 
-.delete-button:hover {
-    background-color: #C70000;
+.archive-container:hover {
     transform: scale(1.1);
+}
+
+.archive-container img {
+    aspect-ratio: 1/1;
+    width: 20px;
 }
 
 
