@@ -57,26 +57,34 @@
                 <img src="/static/SVG/view_button.svg"/>    
             </button>
             <div class="edit-print-button">
-                <div class="edit">
+                
                     <a href="{{ url_for('edit_record', student_id=student_data[0]['student_id']) }}">
+                      <div class="edit">
                         <img src="{{url_for('static', filename='edit-button.png')}}"/>
+                      </div>
                     </a>
-                </div>
-                <div class="print">
+                
+                
                     <a href="{{ url_for('print_record', student_id=student_data[0]['student_id']) }}">
+                      <div class="print">
                         <img src="{{url_for('static', filename='print-button.png')}}"/>
+                      </div>
                     </a>
-                </div>
-                <div class="upload">
+             
+                
                   <a href="">
+                    <div class="upload">
                       <img src="{{url_for('static', filename='upload-button.png')}}"/>
+                    </div>
                   </a>
-                </div>
-                <div class="archive">
+                
+              
+                
                   <a href="">
+                    <div class="archive">
                       <img src="{{url_for('static', filename='archive-button.png')}}"/>
+                    </div>
                   </a>
-                </div>
             </div>
         </div>
         
@@ -1759,7 +1767,6 @@
                   
                   
                 </div>
-                
               </div>
         </div>
     </div>
