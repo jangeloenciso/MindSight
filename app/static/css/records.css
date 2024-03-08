@@ -108,7 +108,7 @@ p {
     margin: 10px 20px 10px 0;
     width: 40px;
     aspect-ratio: 1 / 1;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     overflow: hidden;
     transition: var(--smooth-transition);
