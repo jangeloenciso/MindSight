@@ -87,7 +87,6 @@ p {
     cursor: pointer;
     position: absolute;
     right: 20px;
-    top: calc(50% - 20px);
 }
 
 .search-bar button img {
