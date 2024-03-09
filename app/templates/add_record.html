@@ -34,6 +34,15 @@
               <label for="studNumber">Student's Number:</label>
               {{ form.student_id(placeholder='XXXX-XXXXXX') }}
             </div>
+            
+          </div>
+
+
+          <div class="double-column">
+            <div>
+              <label for="course">Last Name:</label>
+              {{ form.last_name(placeholder='Last Name') }}
+            </div>
             <div>
               <label for="studNumber">Campus</label>
               <select name="campusDropDown" id="campusDropDown">
@@ -44,16 +53,8 @@
                 <option value="Pasig">Pasig</option>
               </select>
             </div>
-            
           </div>
-
-          <div class="single-column">
-            <div>
-              <label for="course">Last Name:</label>
-              {{ form.last_name(placeholder='Last Name') }}
-            </div>
-            <div></div>
-          </div>
+          
           <div class="double-column">
             <div>
               <label for="course">College/Department:</label>
@@ -70,16 +71,20 @@
                 <option value="Grad">Graduate School</option>
               </select>
             </div>
+            
             <div>
               <label for="course">Course/Strand:</label>
               <select name="course" id="courseDropDown"> 
                 <option disabled selected>-Select-</option>
               </select>
             </div>
+          </div>
+          <div class="single-column">
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
               {{ form.age(placeholder='Grade/Yr Level') }}
             </div>
+            <div></div>
           </div>
           <div class="double-column">
             <div>
