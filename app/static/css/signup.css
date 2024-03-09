@@ -94,6 +94,7 @@ body {
     border: 3px solid var(--bg-orange);
     padding: 20px;
     background-color: var(--white);
+    overflow: auto;
 }
 
 /* login side (right side) */
