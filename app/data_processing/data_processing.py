@@ -21,11 +21,6 @@ def process_data(student_id=None, search_query=None):
         if search_query:
             query = (
                 query
-                # .join(PersonalInformation)
-                .join(EducationalBackground)
-                # .join(PsychologicalAssessments)
-                .join(Course, Course.name == BasicInformation.course)
-                .join(College, College.id == Course.college_id) 
                 .filter(
                     (BasicInformation.student_id.ilike(f"%{search_query}%")) |
                     (BasicInformation.first_name.ilike(f"%{search_query}%")) |

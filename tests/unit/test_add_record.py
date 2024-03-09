@@ -5,9 +5,8 @@ from flask_wtf import csrf
 from flask_wtf.csrf import CSRFProtect
     
 def test_add_record():
-
     form_data = {
-    'student_id': '2020-887434',
+    'student_id': '2020-887431',
     'last_name': 'TEST',
     'first_name': 'Emily',
     'course': 'Psychology',
