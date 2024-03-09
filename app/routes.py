@@ -774,13 +774,13 @@ def add_record():
             student_id=form.student_id.data,
             last_name=form.last_name.data,
             first_name=form.first_name.data,
-            course=form.course.data,
+            department=request.form.get('departmentDropDown'),
+            course=request.form.get('courseDropDown'),
             year_level=form.year_level.data,
-            campus=form.campus.data,
+            campus=request.form.get('campusDropDown'),
             guardian_name = form.guardian_name.data,
             guardian_address = form.guardian_address.data,
             guardian_contact = form.guardian_contact.data,
-            
 
             date_of_birth = request.form.get('date_of_birth'),
             age = form.age.data,

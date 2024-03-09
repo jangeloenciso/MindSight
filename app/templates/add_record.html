@@ -36,7 +36,10 @@
             </div>
             <div>
               <label for="studNumber">Campus</label>
-              {{ form.campus(placeholder='Campus') }}
+              <select name="campusDropDown" id="campusDropDown">
+                <option value="Boni" selected>Boni</option>
+                <option value="Pasig">Pasig</option>
+              </select>
             </div>
             
           </div>
@@ -50,8 +53,25 @@
           </div>
           <div class="double-column">
             <div>
-              <label for="course">Course/Department:</label>
-              {{ form.course(placeholder='Course/Department') }}
+              <label for="course">College/Department:</label>
+              <select name="departmentDropDown" id="departmentDropDown" onchange="populateSecondDropdown()">
+                <option selected disabled>--Select--</option>
+                <option value="SHS">Senior High School</option>
+                <option value="JHS">Junior High School</option>
+
+                <option value="CEA">College of Engineering and Architecture</option>
+                <option value="CBEA">College of Business, Entrepreneurship and Accountancy</option>
+                <option value="CED">College of Education</option>
+                <option value="CAS">College of Arts and Sciences</option>
+                <option value="IHK">Institute of Human Kinetics</option>
+                <option value="Grad">Graduate School</option>
+              </select>
+            </div>
+            <div>
+              <label for="course">Course/Strand:</label>
+              <select name="courseDropDown" id="courseDropDown"> 
+                <option selected disabled>--Select--</option>
+              </select>
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
