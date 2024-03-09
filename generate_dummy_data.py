@@ -5,7 +5,7 @@ from datetime import date, timedelta
 from faker import Faker
 from app import db, app
 from app.models.models import *
-from dummy_data_input import course_names, religion_names, strands
+from dummy_data_input import *
 
 with app.app_context():
 
@@ -47,13 +47,26 @@ with app.app_context():
         )
         db.session.add(visit)
 
+    def pick_course(department):
+        course_prefix = department.lower()
+
+        if course_prefix in course_lists:
+            course_var = course_lists[course_prefix]
+            
+            return random.choice(course_var)
+        else:
+            return None
+
     for _ in range(10):
         family_name = fake.last_name()
+        department = fake.random_element(elements=department_names)
+
         student = BasicInformation(
             student_id=generate_student_id(),
             last_name=family_name,
             first_name=fake.first_name(),
-            course=fake.random_element(elements=course_names),
+            department=department,
+            course=pick_course(department),
             year_level=str(random.randint(1, 4)),
             # gpa=round(random.uniform(1.0, 5.0), 2),
             campus=fake.random_element(elements=["Boni", "Pasig"]),
