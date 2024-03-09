@@ -30,8 +30,7 @@ def process_data(student_id=None, search_query=None):
                     (BasicInformation.campus.ilike(f"%{search_query}%")) |
                     (BasicInformation.gender.ilike(f"%{search_query}%")) |
                     (BasicInformation.religion.ilike(f"%{search_query}%")) |
-                    (BasicInformation.nationality.ilike(f"%{search_query}%")) |
-                    (College.name.ilike(f"%{search_query}%"))
+                    (BasicInformation.nationality.ilike(f"%{search_query}%"))
             )
         )
 
@@ -64,8 +63,6 @@ def process_data(student_id=None, search_query=None):
             student_visits = record.visits
 
             course_name = record.course
-            college = Course.query.filter_by(name=course_name).first()
-            college_name = college.college.name if college else None 
 
             nature_of_concern = [visit.nature_of_concern for visit in record.visits]
             nature_of_concern_str = ', '.join(nature_of_concern)
@@ -78,7 +75,6 @@ def process_data(student_id=None, search_query=None):
                 'course': course_name,
                 'year_level': record.year_level,
                 'campus': record.campus,
-                'college': college_name,
                 'year_level': record.year_level,
 
                 # Personal Information
