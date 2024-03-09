@@ -774,10 +774,10 @@ def add_record():
             student_id=form.student_id.data,
             last_name=form.last_name.data,
             first_name=form.first_name.data,
-            department=request.form.get('departmentDropDown'),
-            course=request.form.get('courseDropDown'),
+            college=request.form.get('college'),
+            course=request.form.get('course'),
             year_level=form.year_level.data,
-            campus=request.form.get('campusDropDown'),
+            campus=request.form.get('campus'),
             guardian_name = form.guardian_name.data,
             guardian_address = form.guardian_address.data,
             guardian_contact = form.guardian_contact.data,
@@ -806,9 +806,7 @@ def add_record():
             case_note=case_note
         )
 
-        print(request.form.get('appointment_schedule'))
-        print(request.form.get('date_of_birth') + "checking spaces")
-        # print(sibling_names)
+
 
         # Add the new records to the database
         db.session.add(new_student)
@@ -858,6 +856,10 @@ def add_record():
         # return redirect(url_for('student_record', new_record_id=new_student.id))
         return redirect(url_for('login'))
     else:
+        print('TESTING')
+        print(request.form.get('collegeDropDown'))
+        print(request.form.get('courseDropDown'))
+        print(request.form.get('campusDropDown'))
         logging.error("Form validation failed")
         logging.error(form.errors)
 

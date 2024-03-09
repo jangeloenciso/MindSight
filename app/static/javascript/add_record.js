@@ -31,14 +31,14 @@ function deleteRow(table) {
 }
 
 function populateSecondDropdown() {
-    var departmentDropDown = document.getElementById("departmentDropDown");
+    var collegeDropDown = document.getElementById("collegeDropDown");
     var courseDropDown = document.getElementById("courseDropDown");
 
     // Clear existing options
     courseDropDown.innerHTML = "";
 
     // Get selected value from first dropdown
-    var selectedValue = departmentDropDown.value;
+    var selectedValue = collegeDropDown.value;
 
     // Add options based on selected value
     if (selectedValue === "SHS") {

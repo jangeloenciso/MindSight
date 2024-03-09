@@ -51,8 +51,8 @@ class BasicInformation(db.Model):
     student_id = db.Column(db.String(20), unique=True, nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
-    college = db.Column(db.String(100), nullable=True)
-    course = db.Column(db.String(100), nullable=True)
+    college = db.Column(db.String(100), nullable=False)
+    course = db.Column(db.String(100), nullable=False)
     year_level = db.Column(db.String(20))
     campus = db.Column(db.String(20), nullable=False)
 

@@ -9,9 +9,10 @@ class StudentRecordForm(FlaskForm):
     student_id = StringField('Student ID', validators=[DataRequired(), Regexp('^20\d{2}-\d{6}$', message="Student ID must be in the format 20xx-xxxxxx")])
     last_name = StringField('Last Name', validators=[DataRequired()])
     first_name = StringField('First Name', validators=[DataRequired()])
-    course = StringField('Course', validators=[DataRequired()])
+    # college = StringField('Test', validators=[Optional()])
+    # course = StringField('Course')
     year_level = StringField('Year Level', validators=[Optional()])
-    campus = StringField('Campus', validators=[DataRequired()])
+    # campus = StringField('Campus', validators=[Optional()])
     
     date_of_birth = DateField('Date of Birth', format="%Y-%m-%d", validators=[Optional()])
     age = IntegerField('Age', validators=[Optional()])
