@@ -99,6 +99,14 @@
                   <section class="basic-information">
                     <div class="double-column">
                       <div>
+                        <label for="course">College/Department:</label>
+                        <span>{{student_data[0]['department']}}</span>
+                      </div>
+                      <div>
+                        <label for="course">Course/Strand:</label>
+                        <span>{{student_data[0]['course']}}</span>
+                      </div>
+                      <div>
                         <label for="fname">First name:</label>
                         <span>{{student_data[0]['first_name']}}</span>
                       </div>
@@ -116,10 +124,6 @@
                       <div></div>
                     </div>
                     <div class="double-column">
-                      <div>
-                        <label for="course">Course/Department:</label>
-                        <span>{{student_data[0]['course']}}</span>
-                      </div>
                       <div>
                         <label for="yearlevel">Grade/Yr Level:</label>
                         <span>{{student_data[0]['year_level']}}</span>

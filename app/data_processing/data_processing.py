@@ -62,7 +62,6 @@ def process_data(student_id=None, search_query=None):
             additional_information = record.additional_information
             student_visits = record.visits
 
-            course_name = record.course
 
             nature_of_concern = [visit.nature_of_concern for visit in record.visits]
             nature_of_concern_str = ', '.join(nature_of_concern)
@@ -72,7 +71,8 @@ def process_data(student_id=None, search_query=None):
                 'student_id': record.student_id,
                 'last_name': record.last_name,
                 'first_name': record.first_name,
-                'course': course_name,
+                'department': record.department,
+                'course': record.course,
                 'year_level': record.year_level,
                 'campus': record.campus,
                 'year_level': record.year_level,
