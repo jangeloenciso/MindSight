@@ -1,4 +1,4 @@
-department_names = [
+college_names = [
     "CEA",
     "CBEA",
     "CED",

@@ -47,8 +47,8 @@ with app.app_context():
         )
         db.session.add(visit)
 
-    def pick_course(department):
-        course_prefix = department.lower()
+    def pick_course(college):
+        course_prefix = college.lower()
 
         if course_prefix in course_lists:
             course_var = course_lists[course_prefix]
@@ -59,14 +59,14 @@ with app.app_context():
 
     for _ in range(10):
         family_name = fake.last_name()
-        department = fake.random_element(elements=department_names)
+        college = fake.random_element(elements=college_names)
 
         student = BasicInformation(
             student_id=generate_student_id(),
             last_name=family_name,
             first_name=fake.first_name(),
-            department=department,
-            course=pick_course(department),
+            college=college,
+            course=pick_course(college),
             year_level=str(random.randint(1, 4)),
             # gpa=round(random.uniform(1.0, 5.0), 2),
             campus=fake.random_element(elements=["Boni", "Pasig"]),

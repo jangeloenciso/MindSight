@@ -71,7 +71,7 @@ def process_data(student_id=None, search_query=None):
                 'student_id': record.student_id,
                 'last_name': record.last_name,
                 'first_name': record.first_name,
-                'department': record.department,
+                'college': record.college,
                 'course': record.course,
                 'year_level': record.year_level,
                 'campus': record.campus,
