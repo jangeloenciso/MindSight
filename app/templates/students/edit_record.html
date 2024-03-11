@@ -50,8 +50,25 @@ href="/static/fonts/custom-fonts.css"
           </div>
           <div class="double-column">
             <div>
-              <label for="course">Course/Department:</label>
-              {{ form.course(placeholder='Course/Department') }}
+              <label for="course">College/Department:</label>
+              <select name="college" id="collegeDropDown" onchange="populateSecondDropdown()">
+                <option disabled selected>{{ student.college }}</option>
+                <option value="SHS">Senior High School</option>
+                <option value="JHS">Junior High School</option>
+
+                <option value="CEA">College of Engineering and Architecture</option>
+                <option value="CBEA">College of Business, Entrepreneurship and Accountancy</option>
+                <option value="CED">College of Education</option>
+                <option value="CAS">College of Arts and Sciences</option>
+                <option value="IHK">Institute of Human Kinetics</option>
+                <option value="Grad">Graduate School</option>
+              </select>
+            </div>
+            <div>
+              <label for="course">Course/Strand:</label>
+              <select name="course" id="courseDropDown"> 
+                <option disabled selected>{{ student.course }}</option>
+              </select>
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
@@ -157,7 +174,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.referral_source(class="form-width100") }}
+            {{ form.referral_source(class="form-width100", value=student.additional_information.referral_source) }}
           </div>
         </div>
 
@@ -183,21 +200,21 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="emername">Name:</label>
-              {{ form.emergency_name }}
+              {{ form.emergency_name(value=student.additional_information.emergency_name) }}
             </div>
             <div>
               <label for="emerrel">Relationship:</label>
-              {{ form.emergency_relationship }}
+              {{ form.emergency_relationship(value=student.additional_information.emergency_relationship) }}
             </div>
           </div>
           <div class="double-column">
             <div>
               <label for="dob">Address:</label>
-              {{ form.emergency_address }}
+              {{ form.emergency_address(value=student.additional_information.emergency_address) }}
             </div>
             <div>
               <label for="emercell">Cellphone No.:</label>
-              {{ form.emergency_contact }}
+              {{ form.emergency_contact(value=student.additional_information.emergency_contact) }}
             </div>
           </div>
         </div>
@@ -219,6 +236,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
+            <!-- TODO: FIX THIS SHIT dapat pag selected si client/guardian yun ang ilagay -->
             <div class="radio-inline-container">
               <div>
                 <input
@@ -240,7 +258,7 @@ href="/static/fonts/custom-fonts.css"
               </div>
               <div>
                 <label for="otherOption">Other</label
-                >{{ form.information_provider }}
+                >{{ form.information_provider(value=student.history_information.information_provider) }}
               </div>
             </div>
           </div>
@@ -259,7 +277,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.current_problem(class='form-width100') }}
+            {{ form.current_problem(value=student.history_information.current_problem, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="problem2"
@@ -276,7 +294,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.problem_length(class='form-width100') }}
+            {{ form.problem_length(value=student.history_information.problem_length, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="problem3"
@@ -291,7 +309,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.stressors(class='form-width100') }}
+            {{ form.stressors(value=student.history_information.stressors, class='form-width100') }}
           </div>
 
           <!-- long checkbox form -->
@@ -304,11 +322,11 @@ href="/static/fonts/custom-fonts.css"
 
           <ul class="left-align-checkbox">
             <li>
-              {{ form.substance_abuse(class='checkbox-round') }}
+              {{ form.substance_abuse(checked=student.history_information.substance_abuse, class='checkbox-round') }}
               <label for="exp1">Substance abuse/dependence</label>
             </li>
             <li>
-              {{ form.addiction(class='checkbox-round') }}
+              {{ form.addiction(checked=student.history_information.addiction, class='checkbox-round') }}
               <label for="exp2"
                 >Addiction (internet, porn, shopping, exercise, gaming,
                 gambling, etc.)</label
@@ -316,153 +334,153 @@ href="/static/fonts/custom-fonts.css"
             </li>
 
             <li>
-              {{ form.depression_sad_down_feelings(class='checkbox-round') }}
+              {{ form.depression_sad_down_feelings(checked=student.history_information.depression_sad_down_feelings, class='checkbox-round') }}
               <label for="exp3">Depression/Sad/Down Feelings</label>
             </li>
 
             <li>
-              {{ form.high_low_energy_level(class='checkbox-round') }}
+              {{ form.high_low_energy_level(checked=student.history_information.high_low_energy_level, class='checkbox-round') }}
               <label for="exp4">High/Low energy level</label>
             </li>
 
             <li>
-              {{ form.angry_irritable(class='checkbox-round') }}
+              {{ form.angry_irritable(checked=student.history_information.angry_irritable, class='checkbox-round') }}
               <label for="exp5">Angry/Irritable</label>
             </li>
 
             <li>
-              {{ form.loss_of_interest(class='checkbox-round') }}
+              {{ form.loss_of_interest(checked=student.history_information.loss_of_interest, class='checkbox-round') }}
               <label for="exp6">Lost of interest in activities</label>
             </li>
 
             <li>
-              {{ form.difficulty_enjoying_things(class='checkbox-round') }}
+              {{ form.difficulty_enjoying_things(checked=student.history_information.difficulty_enjoying_things, class='checkbox-round') }}
               <label for="exp7">Difficulty enjoying things</label>
             </li>
 
             <li>
-              {{ form.crying_spells(class='checkbox-round') }}
+              {{ form.crying_spells(checked=student.history_information.crying_spells, class='checkbox-round') }}
               <label for="exp8">Crying spells</label>
             </li>
 
             <li>
-              {{ form.decreased_motivation(class='checkbox-round') }}
+              {{ form.decreased_motivation(checked=student.history_information.decreased_motivation, class='checkbox-round') }}
               <label for="exp9">Decreased Motivation</label>
             </li>
 
             <li>
-              {{ form.withdrawing_from_people(class='checkbox-round') }}
+              {{ form.withdrawing_from_people(checked=student.history_information.withdrawing_from_people, class='checkbox-round') }}
               <label for="exp10">Withdrawing from people/Isolation</label>
             </li>
 
             <li>
-              {{ form.mood_swings(class='checkbox-round') }}
+              {{ form.mood_swings(checked=student.history_information.mood_swings, class='checkbox-round') }}
               <label for="exp11">Mood Swings</label>
             </li>
 
             <li>
-              {{ form.black_and_white_thinking(class='checkbox-round') }}
+              {{ form.black_and_white_thinking(checked=student.history_information.black_and_white_thinking, class='checkbox-round') }}
               <label for="exp12"
                 >Black and white thinking/All or nothing thinking</label
               >
             </li>
 
             <li>
-              {{ form.negative_thinking(class='checkbox-round') }}
+              {{ form.negative_thinking(checked=student.history_information.negative_thinking, class='checkbox-round') }}
               <label for="exp13">Negative thinking</label>
             </li>
 
             <li>
-              {{ form.change_in_weight_or_appetite(class='checkbox-round') }}
+              {{ form.change_in_weight_or_appetite(checked=student.history_information.change_in_weight_or_appetite, class='checkbox-round') }}
               <label for="exp14">Change in weight or appetite</label>
             </li>
 
             <li>
-              {{ form.change_in_sleeping_pattern(class='checkbox-round') }}
+              {{ form.change_in_sleeping_pattern(checked=student.history_information.change_in_sleeping_pattern, class='checkbox-round') }}
               <label for="exp15">Change in sleeping pattern</label>
             </li>
 
             <li>
-              {{ form.suicidal_thoughts_or_plans(class='checkbox-round') }}
+              {{ form.suicidal_thoughts_or_plans(checked=student.history_information.suicidal_thoughts_or_plans, class='checkbox-round') }}
               <label for="exp16"
                 >Suicidal thoughts or plans/Thoughts of hurting yourself</label
               >
             </li>
 
             <li>
-              {{ form.self_harm(class='checkbox-round') }}
+              {{ form.self_harm(checked=student.history_information.self_harm, class='checkbox-round') }}
               <label for="exp17">Self-harm/Cutting/Burning yourself</label>
             </li>
 
             <li>
-              {{ form.homicidal_thoughts_or_plans(class='checkbox-round') }}
+              {{ form.homicidal_thoughts_or_plans(checked=student.history_information.homicidal_thoughts_or_plans, class='checkbox-round') }}
               <label for="exp18"
                 >Homicidal thoughts or plans/Thoughts of hurting others</label
               >
             </li>
 
             <li>
-              {{ form.difficulty_focusing(class='checkbox-round') }}
+              {{ form.difficulty_focusing(checked=student.history_information.difficulty_focusing, class='checkbox-round') }}
               <label for="exp19">Poor concentration/Difficulty focusing</label>
             </li>
 
             <li>
-              {{ form.feelings_of_hopelessness(class='checkbox-round') }}
+              {{ form.feelings_of_hopelessness(checked=student.history_information.feelings_of_hopelessness, class='checkbox-round') }}
               <label for="exp20">Feelings of hopelessness/Worthlessness</label>
             </li>
 
             <li>
-              {{ form.feelings_of_shame_or_guilt(class='checkbox-round') }}
+              {{ form.feelings_of_shame_or_guilt(checked=student.history_information.feelings_of_shame_or_guilt, class='checkbox-round') }}
               <label for="exp21">Feelings of shame or guilt</label>
             </li>
 
             <li>
-              {{ form.feelings_of_inadequacy(class='checkbox-round') }}
+              {{ form.feelings_of_inadequacy(checked=student.history_information.feelings_of_inadequacy, class='checkbox-round') }}
               <label for="exp22">Feelings of inadequacy/Low self-esteem</label>
             </li>
 
             <li>
-              {{ form.anxious_nervous_tense_feelings(class='checkbox-round') }}
+              {{ form.anxious_nervous_tense_feelings(checked=student.history_information.anxious_nervous_tense_feelings, class='checkbox-round') }}
               <label for="exp23">Anxious/Nervous/Tense feelings</label>
             </li>
 
             <li>
-              {{ form.panic_attacks(class='checkbox-round') }}
+              {{ form.panic_attacks(checked=student.history_information.panic_attacks, class='checkbox-round') }}
               <label for="exp24">Panic attacks</label>
             </li>
 
             <li>
-              {{ form.racing_or_scrambled_thoughts(class='checkbox-round') }}
+              {{ form.racing_or_scrambled_thoughts(checked=student.history_information.racing_or_scrambled_thoughts, class='checkbox-round') }}
               <label for="exp25">Racing or scrambled thoughts</label>
             </li>
 
             <li>
-              {{ form.bad_or_unwanted_thoughts(class='checkbox-round') }}
+              {{ form.bad_or_unwanted_thoughts(checked=student.history_information.bad_or_unwanted_thoughts, class='checkbox-round') }}
               <label for="exp26">Bad or unwanted thoughts</label>
             </li>
 
             <li>
-              {{ form.flashbacks_or_nightmares(class='checkbox-round') }}
+              {{ form.flashbacks_or_nightmares(checked=student.history_information.flashbacks_or_nightmares, class='checkbox-round') }}
               <label for="exp27">Flashback/Nightmares</label>
             </li>
 
             <li>
-              {{ form.muscle_tensions_aches(class='checkbox-round') }}
+              {{ form.muscle_tensions_aches(checked=student.history_information.muscle_tensions_aches, class='checkbox-round') }}
               <label for="exp28">Muscle tensions, aches, etc.</label>
             </li>
 
             <li>
-              {{ form.hearing_voices_or_seeing_things(class='checkbox-round') }}
+              {{ form.hearing_voices_or_seeing_things(checked=student.history_information.hearing_voices_or_seeing_things, class='checkbox-round') }}
               <label for="exp29">Hearing voices/Seeing things not there</label>
             </li>
 
             <li>
-              {{ form.thoughts_of_running_away(class='checkbox-round') }}
+              {{ form.thoughts_of_running_away(checked=student.history_information.thoughts_of_running_away, class='checkbox-round') }}
               <label for="exp30">Thoughts of running away</label>
             </li>
 
             <li>
-              {{ form.paranoid_thoughts(class='checkbox-round') }}
+              {{ form.paranoid_thoughts(checked=student.history_information.paranoid_thoughts, class='checkbox-round') }}
               <label for="exp31"
                 >Paranoid thoughts/Thoughts that someone is watching you, out to
                 get you or hurt you.</label
@@ -470,22 +488,22 @@ href="/static/fonts/custom-fonts.css"
             </li>
 
             <li>
-              {{ form.feelings_of_frustration(class='checkbox-round') }}
+              {{ form.feelings_of_frustration(checked=student.history_information.feelings_of_frustration, class='checkbox-round') }}
               <label for="exp32">Feelings of frustation</label>
             </li>
 
             <li>
-              {{ form.feelings_of_being_cheated(class='checkbox-round') }}
+              {{ form.feelings_of_being_cheated(checked=student.history_information.feelings_of_being_cheated, class='checkbox-round') }}
               <label for="exp33">Feelings of being cheated</label>
             </li>
 
             <li>
-              {{ form.perfectionism(class='checkbox-round') }}
+              {{ form.perfectionism(checked=student.history_information.perfectionism, class='checkbox-round') }}
               <label for="exp34">Perfectionism</label>
             </li>
 
             <li>
-              {{ form.counting_washing_checking(class='checkbox-round') }}
+              {{ form.counting_washing_checking(checked=student.history_information.counting_washing_checking, class='checkbox-round') }}
               <label for="exp35"
                 >Rituals of counting things, washing hands, checking locks,
                 doors, stove, etc./Overly concerned about germs.</label
@@ -493,7 +511,7 @@ href="/static/fonts/custom-fonts.css"
             </li>
 
             <li>
-              {{ form.distorted_body_image(class='checkbox-round') }}
+              {{ form.distorted_body_image(checked=student.history_information.distorted_body_image, class='checkbox-round') }}
               <label for="exp36"
                 >Distorted body image (believe you are heavier or less
                 attractive than others say you are)</label
@@ -501,39 +519,39 @@ href="/static/fonts/custom-fonts.css"
             </li>
 
             <li>
-              {{ form.concerns_about_dieting(class='checkbox-round') }}
+              {{ form.concerns_about_dieting(checked=student.history_information.concerns_about_dieting, class='checkbox-round') }}
               <label for="exp37">Concerns about dieting</label>
             </li>
 
             <li>
-              {{ form.loss_of_control_over_eating(class='checkbox-round') }}
+              {{ form.loss_of_control_over_eating(checked=student.history_information.loss_of_control_over_eating, class='checkbox-round') }}
               <label for="exp38">Feelings of loss of control over eating</label>
             </li>
 
             <li>
-              {{ form.binge_eating_or_purging(class='checkbox-round') }}
+              {{ form.binge_eating_or_purging(checked=student.history_information.binge_eating_or_purging, class='checkbox-round') }}
               <label for="exp39">Binge eating/Purging</label>
             </li>
 
             <li>
-              {{ form.rules_about_eating(class='checkbox-round') }}
+              {{ form.rules_about_eating(checked=student.history_information.rules_about_eating, class='checkbox-round') }}
               <label for="exp40"
                 >Rules about eating/Compensating for eating</label
               >
             </li>
 
             <li>
-              {{ form.excessive_exercise(class='checkbox-round') }}
+              {{ form.excessive_exercise(checked=student.history_information.excessive_exercise, class='checkbox-round') }}
               <label for="exp41">Excessive exercise</label>
             </li>
 
             <li>
-              {{ form.indecisiveness_about_career(class='checkbox-round') }}
+              {{ form.indecisiveness_about_career(checked=student.history_information.indecisiveness_about_career, class='checkbox-round') }}
               <label for="exp42">Indecisiveness about career</label>
             </li>
 
             <li>
-              {{ form.job_problems(class='checkbox-round') }}
+              {{ form.job_problems(checked=student.history_information.job_problems, class='checkbox-round') }}
               <label for="exp43">Job Problems </label>
             </li>
 
@@ -542,7 +560,7 @@ href="/static/fonts/custom-fonts.css"
                 style="width: auto !important; padding-right: 10px"
                 for="exp44"
                 >Other</label
-              >{{ form.other_history }}
+              >{{ form.other_history(value=student.history_information.other) }}
             </li>
           </ul>
         </div>
@@ -558,13 +576,14 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.previous_treatments(class='checkbox-round', value='Yes') }}
+                <input type="checkbox" id="prevtreatmentyes" name="previous_treatments" class="checkbox-round" value="Yes" {% if student.history_information.previous_treatments %} checked {% endif %}>
                 <label for="prevtreatmentyes">Yes</label>
-              </div>
-              <div>
-                {{ form.previous_treatments(class='checkbox-round', value='No') }}
+            </div>
+            <div>
+                <input type="checkbox" id="prevtreatmentno" name="previous_treatments" class="checkbox-round" value="No" {% if not student.history_information.previous_treatments %} checked {% endif %}>
                 <label for="prevtreatmentno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
 
@@ -579,7 +598,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.previous_treatments_likes_dislikes(class='form-width100') }}
+            {{ form.previous_treatments_likes_dislikes(value=student.history_information.previous_treatments_likes_dislikes, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="prevtreatment2"
@@ -594,7 +613,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.previous_treatments_learned(class='form-width100') }}
+            {{ form.previous_treatments_learned(value=student.history_information.previous_treatments_learned, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="prevtreatment3"
@@ -609,7 +628,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.previous_treatments_like_to_continue(class='form-width100') }}
+            {{ form.previous_treatments_like_to_continue(value=student.history_information.previous_treatments_like_to_continue, class='form-width100') }}
           </div>
 
           <div class="left-align">
@@ -618,13 +637,14 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='Yes') }}
+                <input type="checkbox" id="hospstaysyes" name="previous_hospital_stays_psych" class="checkbox-round" value="Yes" {% if student.history_information.previous_hospital_stays_psych %} checked {% endif %}>
                 <label for="hospstaysyes">Yes</label>
-              </div>
-              <div>
-                {{ form.previous_hospital_stays_psych(class='checkbox-round', value='No') }}
+            </div>
+            <div>
+                <input type="checkbox" id="hospstaysno" name="previous_hospital_stays_psych" class="checkbox-round" value="No" {% if not student.history_information.previous_hospital_stays_psych %} checked {% endif %}>
                 <label for="hospstaysno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
           <div class="left-align">
@@ -634,14 +654,15 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.current_thoughts_to_harm(class='checkbox-round', value='Yes') }}
-                <label for="currentharmyes">Yes</label>
+                  <input type="checkbox" id="currentharmyes" name="current_thoughts_to_harm" class="checkbox-round" value="Yes" {% if student.history_information.current_thoughts_to_harm %} checked {% endif %}>
+                  <label for="currentharmyes">Yes</label>
               </div>
               <div>
-                {{ form.current_thoughts_to_harm(class='checkbox-round', value='No') }}
-                <label for="currentharmno">No</label>
+                  <input type="checkbox" id="currentharmno" name="current_thoughts_to_harm" class="checkbox-round" value="No" {% if not student.history_information.current_thoughts_to_harm %} checked {% endif %}>
+                  <label for="currentharmno">No</label>
               </div>
-            </div>
+          </div>
+          
           </div>
           <div class="left-align">
             <label
@@ -650,13 +671,14 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.past_thoughts_to_harm(class='checkbox-round', value='Yes') }}
+                <input type="checkbox" id="pastharmyes" name="past_thoughts_to_harm" class="checkbox-round" value="Yes" {% if student.history_information.past_thoughts_to_harm %} checked {% endif %}>
                 <label for="pastharmyes">Yes</label>
-              </div>
-              <div>
-                {{ form.past_thoughts_to_harm(class='checkbox-round', value='No') }}
+            </div>
+            <div>
+                <input type="checkbox" id="pastharmno" name="past_thoughts_to_harm" class="checkbox-round" value="No" {% if not student.history_information.past_thoughts_to_harm %} checked {% endif %}>
                 <label for="pastharmno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
         </section>
@@ -670,13 +692,13 @@ href="/static/fonts/custom-fonts.css"
           </div>
           <div class="left-align single-column-span">
             <label for="medsndose">Medication & Dose:</label>
-            {{ form.medication_and_dose(class='form-width100 single-column-span') }}
+            {{ form.medication_and_dose(value=student.health_information.medication_and_dose, class='form-width100 single-column-span') }}
           </div>
           <div class="left-align single-column-span">
             <label for="childhoodill" style="width: 420px !important"
               >History of serious childhood illness:</label
             >
-            {{ form.serious_ch_illnesses_history(class='form-width100 single-column-span') }}
+            {{ form.serious_ch_illnesses_history(value=student.health_information.serious_ch_illnesses_history, class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align">
@@ -692,15 +714,14 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.head_injuries(class='checkbox-round', value='Yes') }}
-                <label style="width: auto !important" for="headinjuryyes"
-                  >Yes</label
-                >
-              </div>
-              <div>
-                {{ form.head_injuries(class='checkbox-round', value='No') }}
+                <input type="checkbox" id="headinjuryyes" name="head_injuries" class="checkbox-round" value="Yes" {% if student.health_information.head_injuries %} checked {% endif %}>
+                <label style="width: auto !important" for="headinjuryyes">Yes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="headinjuryno" name="head_injuries" class="checkbox-round" value="No" {% if not student.health_information.head_injuries %} checked {% endif %}>
                 <label for="headinjuryno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
 
@@ -714,15 +735,14 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.lose_consciousness(class='checkbox-round', value='Yes') }}
-                <label style="width: auto !important" for="lossconsyes"
-                  >Yes</label
-                >
-              </div>
-              <div>
-                {{ form.lose_consciousness(class='checkbox-round', value='No') }}
+                <input type="checkbox" id="lossconsyes" name="lose_consciousness" class="checkbox-round" value="Yes" {% if student.health_information.lose_consciousness %} checked {% endif %}>
+                <label style="width: auto !important" for="lossconsyes">Yes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lossconsno" name="lose_consciousness" class="checkbox-round" value="No" {% if not student.health_information.lose_consciousness %} checked {% endif %}>
                 <label for="lossconsno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
           <div class="left-align single-column-span">
@@ -731,15 +751,14 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.convulsions_or_seizures(class='checkbox-round', value='Yes') }}
-                <label style="width: auto !important" for="expseizuresyes"
-                  >Yes</label
-                >
-              </div>
-              <div>
-                {{ form.convulsions_or_seizures(class='checkbox-round', value='No') }}
+                <input type="checkbox" id="expseizuresyes" name="convulsions_or_seizures" class="checkbox-round" value="Yes" {% if student.health_information.convulsions_or_seizures %} checked {% endif %}>
+                <label style="width: auto !important" for="expseizuresyes">Yes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="expseizuresno" name="convulsions_or_seizures" class="checkbox-round" value="No" {% if not student.health_information.convulsions_or_seizures %} checked {% endif %}>
                 <label for="expseizuresno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
           <div class="left-align single-column-span">
@@ -748,15 +767,14 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.fever(class='checkbox-round', value='Yes') }}
-                <label style="width: auto !important" for="hasfeveryes"
-                  >Yes</label
-                >
-              </div>
-              <div>
-                {{ form.fever(class='checkbox-round', value='No') }}
+                <input type="checkbox" id="hasfeveryes" name="fever" class="checkbox-round" value="Yes" {% if student.health_information.fever %} checked {% endif %}>
+                <label style="width: auto !important" for="hasfeveryes">Yes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="hasfeverno" name="fever" class="checkbox-round" value="No" {% if not student.health_information.fever %} checked {% endif %}>
                 <label for="hasfeverno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
 
@@ -764,64 +782,34 @@ href="/static/fonts/custom-fonts.css"
             <label for="allergies" style="width: 310px !important"
               >List any allergies you have:</label
             >
-            {{ form.allergies(class='form-width100 single-column-span') }}
+            {{ form.allergies(value=student.health_information.allergies ,class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align">
             <label>How would you rate your current physical health? </label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthexc"
-                  name="phyhealth"
-                  value="phyhealthexc"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthexc', value='Excellent', checked=student.health_information.current_physical_health == 'Excellent') }}
                 <label for="phyhealthexc">Excellent</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthvg"
-                  name="phyhealth"
-                  value="phyhealthvg"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthvg', value='Very Good', checked=student.health_information.current_physical_health == 'Very Good') }}
                 <label for="phyhealthvg">Very Good</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthg"
-                  name="phyhealth"
-                  value="phyhealthg"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthg', value='Good', checked=student.health_information.current_physical_health == 'Good') }}
                 <label for="phyhealthg">Good</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthf"
-                  name="phyhealth"
-                  value="phyhealthf"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthf', value='Fair', checked=student.health_information.current_physical_health == 'Fair') }}
                 <label for="phyhealthf">Fair</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthp"
-                  name="phyhealth"
-                  value="phyhealthp"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthp', value='Poor', checked=student.health_information.current_physical_health == 'Poor') }}
                 <label for="phyhealthp">Poor</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="phyhealthvp"
-                  name="phyhealth"
-                  value="phyhealthvp"
-                />
+                {{ form.current_physical_health(class='checkbox-round', type='radio', id='phyhealthvp', value='Very Poor', checked=student.health_information.current_physical_health == 'Very Poor') }}
                 <label for="phyhealthvp">Very Poor</label>
               </div>
             </div>
@@ -832,7 +820,7 @@ href="/static/fonts/custom-fonts.css"
               >What was the date of your last physical or routine health “check
               up”?</label
             >
-            {{ form.last_check_up(class='form-width100 single-column-span') }}
+            {{ form.last_check_up(value=student.health_information.last_check_up, class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align single-column-span">
@@ -841,15 +829,14 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.has_physician(class='checkbox-round', value='Yes') }}
-                <label style="width: auto !important" for="physicianyes"
-                  >Yes</label
-                >
-              </div>
-              <div>
-                {{ form.has_physician(class='checkbox-round', value='No') }}
+                <input type="checkbox" id="physicianyes" name="has_physician" class="checkbox-round" value="Yes" {% if student.health_information.has_physician %} checked {% endif %}>
+                <label style="width: auto !important" for="physicianyes">Yes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="physicianno" name="has_physician" class="checkbox-round" value="No" {% if not student.health_information.has_physician %} checked {% endif %}>
                 <label for="physicianno">No</label>
-              </div>
+            </div>
+            
             </div>
           </div>
           <div class="left-align">
@@ -860,19 +847,19 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <div class="left-align single-column-span">
                 <label for="physname">Name:</label>
-                {{ form.physician_name(class='form-width100 single-column-span') }}
+                {{ form.physician_name(value=student.health_information.physician_name, class='form-width100 single-column-span') }}
               </div>
             </div>
             <div>
               <div class="left-align single-column-span">
                 <label for="physemail">Email:</label>
-                {{ form.physician_email(class='form-width100 single-column-span') }}
+                {{ form.physician_email(value=student.health_information.physician_email, class='form-width100 single-column-span') }}
               </div>
             </div>
             <div>
               <div class="left-align single-column-span">
                 <label for="physnum">Contact Number:</label>
-                {{ form.physician_number(class='form-width100 single-column-span') }}
+                {{ form.physician_number(value=student.health_information.physician_number, class='form-width100 single-column-span') }}
               </div>
             </div>
           </div>
@@ -887,12 +874,7 @@ href="/static/fonts/custom-fonts.css"
             <label for="birthloc" style="width: 160px !important"
               >Birth Location:</label
             >
-            <input
-              type="text"
-              class="form-width100 single-column-span"
-              id="birthloc"
-              name="birthloc"
-            />
+            {{ form.birth_location(value=student.family_background.birth_location) }}
           </div>
 
           <div class="left-align single-column-span">
@@ -901,55 +883,41 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container raisedby">
               <div>
-                <input
-                  type="radio"
-                  id="raisedmother"
-                  name="raised"
-                  value="raisedmother"
-                />
+                {{ form.raised_by(class='checkbox-round', type='radio', id='raisedmother', value='Mother', checked=student.family_background.raised_by == 'Mother') }}
                 <label style="width: auto !important" for="raisedmother"
                   >Mother</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedfather"
-                  name="raised"
-                  value="raisedfather"
-                />
+                {{ form.raised_by(class='checkbox-round', type='radio', id='raisedfather', value='Father', checked=student.family_background.raised_by == 'Father') }}
                 <label style="width: auto !important" for="raisedfather"
                   >Father</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedstepm"
-                  name="raised"
-                  value="raisedstepm"
-                />
+                {{ form.raised_by(class='checkbox-round', type='radio', id='raisedstepm', value='Step-Mother', checked=student.family_background.raised_by == 'Step-Mother') }}
                 <label style="width: auto !important" for="raisedstepm"
                   >Step-Mother</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="raisedstepf"
-                  name="raised"
-                  value="raisedstepf"
-                />
+                {{ form.raised_by(class='checkbox-round', type='radio', id='raisedstepf', value='Step-Father', checked=student.family_background.raised_by == 'Step-Father') }}
                 <label style="width: auto !important" for="raisedstepf"
                   >Step-Father</label
                 >
               </div>
               <div>
+                <!-- REMOVED RADIO BUTTON -->
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="raisedother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >
+                {% if student.family_background.raised_by not in ['Mother', 'Father', 'Step-Mother', 'Step-Father'] %}
+                  {{ form.raised_by(value=student.family_background.raised_by) }}
+                {% else %}
+                  {{ form.raised_by() }}
+                {% endif %}
               </div>
             </div>
           </div>
@@ -966,66 +934,47 @@ href="/static/fonts/custom-fonts.css"
             <label for="raised" style="width: 120px !important">Mother</label>
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relmothergood"
-                  name="relmother"
-                  value="relmothergood"
-                />
+                {{ form.rel_qual_mother(class='checkbox-round', type='radio', id='relmothergood', value='Good', checked=student.family_background.rel_qual_mother == 'Good') }}
                 <label style="width: auto !important" for="relmothergood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherfair"
-                  name="relmother"
-                  value="relmotherfair"
-                />
+                {{ form.rel_qual_mother(class='checkbox-round', type='radio', id='relmotherfair', value='Fair', checked=student.family_background.rel_qual_mother == 'Fair') }}
                 <label style="width: auto !important" for="relmotherfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherpoor"
-                  name="relmother"
-                  value="relmotherpoor"
-                />
+                {{ form.rel_qual_mother(class='checkbox-round', type='radio', id='relmotherpoor', value='Poor', checked=student.family_background.rel_qual_mother == 'Poor') }}
                 <label style="width: auto !important" for="relmotherpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherclose"
-                  name="relmother"
-                  value="relmotherclose"
-                />
+                {{ form.rel_qual_mother(class='checkbox-round', type='radio', id='relmotherclose', value='Close', checked=student.family_background.rel_qual_mother == 'Close') }}
                 <label style="width: auto !important" for="relmotherclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relmotherdistant"
-                  name="relmother"
-                  value="relmotherdistant"
-                />
+                {{ form.rel_qual_mother(class='checkbox-round', type='radio', id='relmotherdistant', value='Distant', checked=student.family_background.rel_qual_mother == 'Distant') }}
                 <label style="width: auto !important" for="relmotherdistant"
                   >Distant</label
                 >
               </div>
               <div>
+                <!-- REMOVED RADIO BUTTON -->
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relmotherother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >
+                {% if student.family_background.rel_qual_mother not in ['Good', 'Fair', 'Poor', 'Close', 'Distant'] %}
+                  {{ form.rel_qual_mother(value=student.family_background.rel_qual_mother) }}
+                {% else %}
+                  {{ form.rel_qual_mother() }}
+                {% endif %}
               </div>
             </div>
           </div>
@@ -1034,148 +983,106 @@ href="/static/fonts/custom-fonts.css"
             <label for="raised" style="width: 120px !important">Father</label>
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relfathergood"
-                  name="relfather"
-                  value="relfathergood"
-                />
+                {{ form.rel_qual_father(class='checkbox-round', type='radio', id='relfathergood', value='Good', checked=student.family_background.rel_qual_father == 'Good') }}
                 <label style="width: auto !important" for="relfathergood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherfair"
-                  name="relfather"
-                  value="relfatherfair"
-                />
+                {{ form.rel_qual_father(class='checkbox-round', type='radio', id='relfatherfair', value='Fair', checked=student.family_background.rel_qual_father == 'Fair') }}
                 <label style="width: auto !important" for="relfatherfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherpoor"
-                  name="relfather"
-                  value="relfatherpoor"
-                />
+                {{ form.rel_qual_father(class='checkbox-round', type='radio', id='relfatherpoor', value='Poor', checked=student.family_background.rel_qual_father == 'Poor') }}
                 <label style="width: auto !important" for="relfatherpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherclose"
-                  name="relfather"
-                  value="relfatherclose"
-                />
+                {{ form.rel_qual_father(class='checkbox-round', type='radio', id='relfatherclose', value='Close', checked=student.family_background.rel_qual_father == 'Close') }}
                 <label style="width: auto !important" for="relfatherclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relfatherdistant"
-                  name="relfather"
-                  value="relfatherdistant"
-                />
+                {{ form.rel_qual_father(class='checkbox-round', type='radio', id='relfatherdistant', value='Distant', checked=student.family_background.rel_qual_father == 'Distant') }}
                 <label style="width: auto !important" for="relfatherdistant"
                   >Distant</label
                 >
               </div>
               <div>
+                <!-- REMOVED RADIO BUTTON -->
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relfatherother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >
+                {% if student.family_background.rel_qual_father not in ['Good', 'Fair', 'Poor', 'Close', 'Distant'] %}
+                  {{ form.rel_qual_father(value=student.family_background.rel_qual_father) }}
+                {% else %}
+                  {{ form.rel_qual_father() }}
+                {% endif %}
               </div>
             </div>
           </div>
-          <!-- Relationhip Father -->
+          <!-- Relationhip Step-Parent -->
           <div class="left-align single-column-span">
             <label for="raised" style="width: 120px !important"
               >Step-Parent</label
             >
             <div class="radio-inline-container relby">
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentgood"
-                  name="relstepparent"
-                  value="relstepparentgood"
-                />
+                {{ form.rel_qual_step_parent(class='checkbox-round', type='radio', id='relstepparentgood', value='Good', checked=student.family_background.rel_qual_step_parent == 'Good') }}
                 <label style="width: auto !important" for="relstepparentgood"
                   >Good</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentfair"
-                  name="relstepparent"
-                  value="relstepparentfair"
-                />
+                {{ form.rel_qual_step_parent(class='checkbox-round', type='radio', id='relstepparentfair', value='Fair', checked=student.family_background.rel_qual_step_parent == 'Fair') }}
                 <label style="width: auto !important" for="relstepparentfair"
                   >Fair</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentpoor"
-                  name="relstepparent"
-                  value="relstepparentpoor"
-                />
+                {{ form.rel_qual_step_parent(class='checkbox-round', type='radio', id='relstepparentpoor', value='Poor', checked=student.family_background.rel_qual_step_parent == 'Poor') }}
                 <label style="width: auto !important" for="relstepparentpoor"
                   >Poor</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentclose"
-                  name="relstepparent"
-                  value="relstepparentclose"
-                />
+                {{ form.rel_qual_step_parent(class='checkbox-round', type='radio', id='relstepparentclose', value='Close', checked=student.family_background.rel_qual_step_parent == 'Close') }}
                 <label style="width: auto !important" for="relstepparentclose"
                   >Close</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="relstepparentdistant"
-                  name="relstepparent"
-                  value="relstepparentdistant"
-                />
+                {{ form.rel_qual_step_parent(class='checkbox-round', type='radio', id='relstepparentdistant', value='Distant', checked=student.family_background.rel_qual_step_parent == 'Distant') }}
                 <label style="width: auto !important" for="relstepparentdistant"
                   >Distant</label
                 >
               </div>
               <div>
+                <!-- REMOVED RADIO BUTTON -->
                 <label
                   style="width: auto !important; padding-right: 10px"
                   for="relstepparentother"
                   >Other</label
-                ><input type="text" placeholder="Enter text" />
+                >
+                {% if student.family_background.rel_qual_step_parent not in ['Good', 'Fair', 'Poor', 'Close', 'Distant'] %}
+                  {{ form.rel_qual_step_parent(value=student.family_background.rel_qual_step_parent) }}
+                {% else %}
+                  {{ form.rel_qual_step_parent() }}
+                {% endif %}
               </div>
             </div>
           </div>
-
+          
+          <!-- TODO: Connect to backend -->
           <div class="left-align single-column-span">
             <label for="relparent" style="width: 80px !important">Other:</label>
-            <input
-              type="text"
-              class="form-width100 single-column-span"
-              id="relparent"
-              name="relparent"
-            />
+            {{ form.rel_qual_other(value=student.family_background.rel_qual_other, class='form-width100 single-column-span') }}
           </div>
 
           <div class="left-align">
@@ -1185,113 +1092,40 @@ href="/static/fonts/custom-fonts.css"
               relationship.)
             </label>
           </div>
-
-          <table>
+    
+          <table id="siblingsTable">
             <tr>
               <th>Name of Sibling</th>
               <th>Age</th>
               <th>Gender</th>
               <th>Nature of Relationship</th>
             </tr>
-            <tr>
+            <tr id="siblingRow">
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                <input class='form-width100 single-column-span' id="siblingName" name="siblingName"/>
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge"/>
               </td>
               <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="relparent"
-                  name="relparent"
-                />
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" />
               </td>
               <td>
-                <div class="radio-inline-container relby">
-                  <div>
-                    <input
-                      type="radio"
-                      id="relsiblinggood"
-                      name="relsibling"
-                      value="relsiblinggood"
-                    />
-                    <label style="width: auto !important" for="relsiblinggood"
-                      >Good</label
-                    >
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="relsiblingfair"
-                      name="relsibling"
-                      value="relsiblingfair"
-                    />
-                    <label style="width: auto !important" for="relsiblingfair"
-                      >Fair</label
-                    >
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="relsiblingpoor"
-                      name="relsibling"
-                      value="relsiblingpoor"
-                    />
-                    <label style="width: auto !important" for="relsiblingpoor"
-                      >Poor</label
-                    >
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="relsiblingclose"
-                      name="relsibling"
-                      value="relsiblingclose"
-                    />
-                    <label style="width: auto !important" for="relsiblingclose"
-                      >Close</label
-                    >
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="relsiblingdistant"
-                      name="relsibling"
-                      value="relsiblingdistant"
-                    />
-                    <label
-                      style="width: auto !important"
-                      for="relsiblingdistant"
-                      >Distant</label
-                    >
-                  </div>
-                  <div>
-                    <label
-                      style="width: auto !important; padding-right: 10px"
-                      for="relsiblingother"
-                      >Other</label
-                    ><input
-                      type="text"
-                      id="otherTextbox"
-                      placeholder="Enter text"
-                    />
-                  </div>
-                </div>
+                <select name="rel_qual" id="civil">
+                  <option value="" selected>
+                  </option>
+                  <option value="Close">Close</option>
+                  <option value="Good">Good</option>
+                  <option value="Fair">Fair</option>
+                  <option value="Poor">Poor</option>
+                  <option value="Distant">Distant</option>
+                </select>
               </td>
+                
             </tr>
           </table>
+          <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
+          <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
 
           <div class="left-align">
             <label for="famhistoryneglect1"
@@ -1311,12 +1145,7 @@ href="/static/fonts/custom-fonts.css"
             <label for="famhistoryneglect3"
               >Any Additional Family Information:
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="famhistoryneglect3"
-              name="famhistoryneglect3"
-            />
+            {{ form.additional_information_family(class='form-width100') }}
           </div>
         </section>
 
@@ -2733,6 +2562,7 @@ href="/static/fonts/custom-fonts.css"
   </div>
 </form>
 </div>
+<script src={{ url_for('static', filename='javascript/add_record.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
 {% endblock %}
