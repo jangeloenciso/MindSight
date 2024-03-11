@@ -9,13 +9,13 @@ href="/static/fonts/custom-fonts.css"
 />
 <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
 {% endblock %} {% block content %}
-<title>Mindsight - Add Record</title>
+<title>Mindsight - Edit Record</title>
 <div class="right">
   <div class="main">
     <div class="main-header">
       <span>Edit Record</span>
       <div class="back-button">
-          <a href="{{ url_for ('colleges') }}">
+          <a href="{{ url_for ('student_record', student_id=student.student_id) }}">
               <img src="/static/SVG/back_button.svg"/>
           </a>
       </div>
@@ -26,10 +26,8 @@ href="/static/fonts/custom-fonts.css"
 
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
-      {{ form.csrf_token }}
-        
-            {{ form.hidden_tag() }}
-      <form action="{{ url_for('add_record') }}">      
+      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}"> 
+        {{ form.hidden_tag() }}
       <div class="center">
         <section class="basic-information">
           <div class="double-column">
@@ -544,7 +542,7 @@ href="/static/fonts/custom-fonts.css"
                 style="width: auto !important; padding-right: 10px"
                 for="exp44"
                 >Other</label
-              >{{ form.other }}
+              >{{ form.other_history }}
             </li>
           </ul>
         </div>
@@ -2171,18 +2169,13 @@ href="/static/fonts/custom-fonts.css"
             </p>
 
             <div class="tac">
-              <input id="taccheckbox" type="checkbox" />
+              {{ form.personal_agreement }}
               <label for="taccheckbox">
                 I understand and agree to the information presented
                 above.</label
               >
             </div>
-            <input
-              type="datetime-local"
-              required
-              name="tacdatetime"
-              class="tacdatetime"
-            />
+            {{ form.personal_agreement_date }}
           </div>
 
           <table>

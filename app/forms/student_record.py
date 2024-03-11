@@ -10,7 +10,8 @@ class StudentRecordForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired()])
     first_name = StringField('First Name', validators=[DataRequired()])
     # college = StringField('Test', validators=[Optional()])
-    # course = StringField('Course')
+    # TODO: to check
+    course = StringField('Course')
     year_level = StringField('Year Level', validators=[Optional()])
     # campus = StringField('Campus', validators=[Optional()])
     
