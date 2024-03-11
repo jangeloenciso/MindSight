@@ -6,6 +6,11 @@ from flask_wtf import csrf
 from flask_wtf.csrf import CSRFProtect
     
 def test_add_record():
+    """
+    GIVEN a form input data
+    WHEN a new Student record is created
+    THEN check if the form is validated and the Student exists
+    """
     form_data = {
         'student_id': '2020-887431',
         'last_name': 'TEST',
