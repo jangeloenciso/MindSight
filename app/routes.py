@@ -431,6 +431,7 @@ def graduate_records(college):
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
+
 @app.route('/students/records/view/<student_id>')
 @permission_required('view')
 @login_required
@@ -440,7 +441,17 @@ def student_record(student_id):
 
     print(student_id)
 
-    return render_template('students/student_record.html', student_data=student_data)
+    return render_template('students/student_record.html', student_id=student_id, student_data=student_data)
+
+@app.route('/students/records/view/full_record/<student_id>', methods=['GET', 'POST'])
+@permission_required('view')
+@login_required
+def full_record(student_id):
+
+    data = process_data(student_id)
+    student_data = data.to_dict(orient='records')
+    
+    return render_template('students/full_record.html', student_id=student_id, student_data=student_data)
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])

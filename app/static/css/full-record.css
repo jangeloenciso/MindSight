@@ -1,0 +1,331 @@
+/* main styling layout per section */
+.basic-information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.double-column div{
+    margin-bottom: 7px;
+}
+
+.double-column span {
+    color: var(--bg-orange);
+}
+
+.left-align, 
+.full-records label, 
+.full-records header, 
+.main-header-content  {
+    font-weight: 700;
+}
+
+.left-align span {
+    color: var(--primary-color);
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+    margin-left: 73px;
+
+    /* background-color: var(--main-db-bg-color); */
+    padding: 40px;
+    background-color: var(--main-db-bg-color);
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+    border-bottom: 2px solid var(--bg-orange);
+    padding-bottom: 1em;
+}
+
+p {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.main-header span {
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: var(--white);
+}
+
+
+/* for tooltips */
+.tooltip {
+    padding-left: 5px;
+    position: relative;
+    display: inline-block;
+    border: none;
+}
+
+.tooltip img {
+    aspect-ratio: 1/1;
+    max-height: 20px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 20vw;
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    color: var(--white);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+
+
+
+
+/* top header font size */
+.main-header-content {
+    font-size: 1.8em !important;
+}
+
+/* style for all text headers */
+header {
+    text-align: center;
+    font-family: Lexend-bold;
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+hr {
+    border-top: 1px solid var(--bg-orange);
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden scroll;
+}
+
+/* keeps everything aligned */
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* main styling layout per section */
+.basic-information, .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo, .personalagree, .refinfo, .confidential {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: rgba(0, 0, 255, 0.249); */
+}
+
+
+/* double-column format */
+.double-column {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.double-column div {
+    width: auto;
+    display: flex;
+    margin-bottom: 7px;
+}
+
+
+
+
+.single-column {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.single-column div {
+    width: 400px;
+    display: flex;
+    margin-bottom: 7px;
+}
+
+.single-column div:last-child {
+    margin-bottom: 0;
+}
+
+.form-width100 {
+    display: flex;
+    width: 100%;
+}
+
+
+label {
+    width: 200px !important;
+    color: var(--primary-color);
+    font-family: Lexend-bold;
+    display: flex;
+    align-items: center;
+}
+
+.left-align {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+}
+
+
+
+
+
+
+/* left-align referral label main style */
+.referral label, .left-align label {
+    width: 100% !important;
+    margin-bottom: 7px;
+}
+
+
+
+
+/* left align style for the list of checkboxes */
+.left-align-checkbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 7px;
+    color: var(--primary-color);
+    list-style: none;
+    margin: 0;
+}
+
+.left-align-checkbox li {
+    column-gap: 5px;
+    margin-bottom: 7px;
+
+}
+
+.left-align-checkbox label {
+    width: auto !important;
+    font-family: Lexend-regular;
+    display: inline-block;
+}
+
+
+
+
+/* style for spanning the label and input at the same line */
+.single-column-span {
+    flex-direction: row;
+}
+
+.single-column-span label {
+    width: 200px !important;
+}
+
+
+/* for three column layouts */
+.tri-column {
+    display: flex;
+}
+
+
+
+/* table format */
+table {
+    border-collapse: collapse;
+    width: calc(100% - 40px);
+    padding: 0 7px;
+    margin-bottom: 7px;
+}
+
+th, td {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    text-align: center;
+}
+
+
+/* personal agreements container style */
+.personalagree .container, .refinfo .container, .confidential .container {
+    width: calc(100% - 40px);
+    height: auto;
+    margin: 20px 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--primary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #students-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#students-container img, #students-container span {
+    transform: translateX(-7px);
+}
