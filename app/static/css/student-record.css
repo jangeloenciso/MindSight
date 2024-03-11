@@ -172,6 +172,10 @@
     width: 20px;
 }
 
+a.view {
+    background: none;
+    text-decoration: none;
+}
 
 .view-records {
     background: none;
