@@ -520,6 +520,27 @@ def edit_record(student_id):
                 )
                 db.session.add(new_sibling)
 
+        existing_convictions = student.legal_history.convictions
+
+        convictions = request.form.getlist('legalConviction')
+        conviction_dates = request.form.getlist('legalDate')
+        conviction_outcomes = request.form.getlist('legalOutcome')
+
+        for conviction_index, conviction in enumerate(convictions):
+            if conviction_index < len(existing_convictions):
+                existing_conviction = existing_convictions[conviction_index]
+                existing_conviction.conviction = conviction
+                existing_conviction.conviction_date = conviction_dates[conviction_index]
+                existing_conviction.conviction_outcome = conviction_outcomes[conviction_index]
+            else:
+                new_conviction = Conviction(
+                    conviction=conviction,
+                    conviction_date=conviction_dates[conviction_index],
+                    conviction_outcome=conviction_outcomes[conviction_index],
+                    legal_history=student.legal_history
+                )
+                db.session.add(new_conviction)
+
         db.session.commit()
         print('Student record updated successfully', 'success')
         return redirect(url_for('student_record', student_id=student_id))

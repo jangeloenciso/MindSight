@@ -1803,14 +1803,14 @@ href="/static/fonts/custom-fonts.css"
             <label>If yes, complete chart.</label>
           </div>
 
-          <table>
+          <table id="legalTable">
             <tr>
               <th>List any Arrest/Conviction</th>
               <th>Date of Arrests/Convictions</th>
               <th>Outcome</th>
             </tr>
             {% for conviction in student.legal_history.convictions %}
-            <tr>
+            <tr id="legalRow">
               <td>
                 <input
                   type="text"
