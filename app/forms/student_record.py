@@ -211,7 +211,7 @@ class StudentRecordForm(FlaskForm):
 
     treatment_program_name = StringField('Treatment Program Name', validators=[Optional()])
     treatment_type = StringField('Treatment Type', validators=[Optional()])
-    treatment_date = DateField()
+    treatment_date = StringField('Treatment Date', validators=[Optional()])
     treatment_outcome = StringField('Treatment Outcome', validators=[Optional()])
 
 
