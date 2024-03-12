@@ -573,13 +573,14 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="prevtreatmentyes" name="previous_treatments" class="checkbox-round" value="Yes" {% if student.history_information.previous_treatments %} checked {% endif %}>
+                
+                {{ form.previous_treatments(class='checkbox-round', type='radio', id='prevtreatmentyes', value='Yes', checked=student.history_information.previous_treatments == 'Yes') }}
                 <label for="prevtreatmentyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="prevtreatmentno" name="previous_treatments" class="checkbox-round" value="No" {% if not student.history_information.previous_treatments %} checked {% endif %}>
+              </div>
+              <div>
+                {{ form.previous_treatments(class='checkbox-round', type='radio', id='prevtreatmentno', value='No', checked=student.history_information.previous_treatments == 'No') }}
                 <label for="prevtreatmentno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -634,12 +635,12 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="hospstaysyes" name="previous_hospital_stays_psych" class="checkbox-round" value="Yes" {% if student.history_information.previous_hospital_stays_psych %} checked {% endif %}>
-                <label for="hospstaysyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="hospstaysno" name="previous_hospital_stays_psych" class="checkbox-round" value="No" {% if not student.history_information.previous_hospital_stays_psych %} checked {% endif %}>
-                <label for="hospstaysno">No</label>
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', type='radio', id='prevtreatmentyes', value='Yes', checked=student.history_information.previous_hospital_stays_psych == 'Yes') }}
+                <label for="prevtreatmentyes">Yes</label>
+              </div>
+              <div>
+                {{ form.previous_hospital_stays_psych(class='checkbox-round', type='radio', id='prevtreatmentno', value='No', checked=student.history_information.previous_hospital_stays_psych == 'No') }}
+                <label for="prevtreatmentno">No</label>
             </div>
             
             </div>
@@ -651,11 +652,12 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                  <input type="checkbox" id="currentharmyes" name="current_thoughts_to_harm" class="checkbox-round" value="Yes" {% if student.history_information.current_thoughts_to_harm %} checked {% endif %}>
+                <div>
+                  {{ form.current_thoughts_to_harm(class='checkbox-round', type='radio', id='currentharmyes', value='Yes', checked=student.history_information.current_thoughts_to_harm == 'Yes') }}
                   <label for="currentharmyes">Yes</label>
-              </div>
+                </div>
               <div>
-                  <input type="checkbox" id="currentharmno" name="current_thoughts_to_harm" class="checkbox-round" value="No" {% if not student.history_information.current_thoughts_to_harm %} checked {% endif %}>
+                  {{ form.current_thoughts_to_harm(class='checkbox-round', type='radio', id='currentharmno', value='No', checked=student.history_information.current_thoughts_to_harm == 'No') }}
                   <label for="currentharmno">No</label>
               </div>
           </div>
@@ -668,13 +670,13 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="pastharmyes" name="past_thoughts_to_harm" class="checkbox-round" value="Yes" {% if student.history_information.past_thoughts_to_harm %} checked {% endif %}>
+                {{ form.past_thoughts_to_harm(class='checkbox-round', type='radio', id='pastharmyes', value='Yes', checked=student.history_information.past_thoughts_to_harm == 'Yes') }}
                 <label for="pastharmyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="pastharmno" name="past_thoughts_to_harm" class="checkbox-round" value="No" {% if not student.history_information.past_thoughts_to_harm %} checked {% endif %}>
+              </div>
+              <div>
+                {{ form.past_thoughts_to_harm(class='checkbox-round', type='radio', id='pastharmno', value='No', checked=student.history_information.past_thoughts_to_harm == 'No') }}
                 <label for="pastharmno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -711,13 +713,15 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="headinjuryyes" name="head_injuries" class="checkbox-round" value="Yes" {% if student.health_information.head_injuries %} checked {% endif %}>
-                <label style="width: auto !important" for="headinjuryyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="headinjuryno" name="head_injuries" class="checkbox-round" value="No" {% if not student.health_information.head_injuries %} checked {% endif %}>
+                {{ form.head_injuries(class='checkbox-round', type='radio', id='headinjuryyes', value='Yes', checked=student.health_information.head_injuries == 'Yes') }}
+                <label style="width: auto !important" for="headinjuryyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.head_injuries(class='checkbox-round', type='radio', id='headinjuryno',value='No', checked=student.health_information.head_injuries == 'No') }}
                 <label for="headinjuryno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -732,13 +736,15 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="lossconsyes" name="lose_consciousness" class="checkbox-round" value="Yes" {% if student.health_information.lose_consciousness %} checked {% endif %}>
-                <label style="width: auto !important" for="lossconsyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="lossconsno" name="lose_consciousness" class="checkbox-round" value="No" {% if not student.health_information.lose_consciousness %} checked {% endif %}>
+                {{ form.lose_consciousness(class='checkbox-round', type='radio', id='lossconsyes', value='Yes', checked=student.health_information.lose_consciousness == 'Yes') }}
+                <label style="width: auto !important" for="lossconsyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.lose_consciousness(class='checkbox-round', type='radio', id='lossconsno', value='No', checked=student.health_information.lose_consciousness == 'No') }}
                 <label for="lossconsno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -748,13 +754,15 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="expseizuresyes" name="convulsions_or_seizures" class="checkbox-round" value="Yes" {% if student.health_information.convulsions_or_seizures %} checked {% endif %}>
-                <label style="width: auto !important" for="expseizuresyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="expseizuresno" name="convulsions_or_seizures" class="checkbox-round" value="No" {% if not student.health_information.convulsions_or_seizures %} checked {% endif %}>
+                {{ form.convulsions_or_seizures(class='checkbox-round', type='radio', id='expseizuresyes', value='Yes', checked=student.health_information.convulsions_or_seizures == 'Yes') }}
+                <label style="width: auto !important" for="expseizuresyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.convulsions_or_seizures(class='checkbox-round', type='radio', id='expseizuresno', value='No', checked=student.health_information.convulsions_or_seizures == 'No') }}
                 <label for="expseizuresno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -764,13 +772,15 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="hasfeveryes" name="fever" class="checkbox-round" value="Yes" {% if student.health_information.fever %} checked {% endif %}>
-                <label style="width: auto !important" for="hasfeveryes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="hasfeverno" name="fever" class="checkbox-round" value="No" {% if not student.health_information.fever %} checked {% endif %}>
+                {{ form.fever(class='checkbox-round', type='radio', id='hasfeveryes', value='Yes', value='No', checked=student.health_information.fever == 'Yes') }}
+                <label style="width: auto !important" for="hasfeveryes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.fever(class='checkbox-round', type='radio', id='hasfeverno', value='No', value='No', checked=student.health_information.fever == 'No') }}
                 <label for="hasfeverno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -826,13 +836,15 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                <input type="checkbox" id="physicianyes" name="has_physician" class="checkbox-round" value="Yes" {% if student.health_information.has_physician %} checked {% endif %}>
-                <label style="width: auto !important" for="physicianyes">Yes</label>
-            </div>
-            <div>
-                <input type="checkbox" id="physicianno" name="has_physician" class="checkbox-round" value="No" {% if not student.health_information.has_physician %} checked {% endif %}>
+                {{ form.has_physician(class='checkbox-round', type='radio', id='physicianyes', value='Yes', value='No', checked=student.health_information.has_physician == 'Yes') }}
+                <label style="width: auto !important" for="physicianyes"
+                  >Yes</label
+                >
+              </div>
+              <div>
+                {{ form.has_physician(class='checkbox-round', type='radio', id='physicianno', value='No', checked=student.health_information.has_physician == 'No') }}
                 <label for="physicianno">No</label>
-            </div>
+              </div>
             
             </div>
           </div>
@@ -1097,7 +1109,30 @@ href="/static/fonts/custom-fonts.css"
               <th>Gender</th>
               <th>Nature of Relationship</th>
             </tr>
-
+            {% if student.family_background.siblings == [] %}
+            <tr id="siblingRow">
+              <td>
+                <input class='form-width100 single-column-span' id="siblingName" name="siblingName"/>
+              </td>
+              <td>
+                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge"/>
+              </td>
+              <td>
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" />
+              </td>
+              <td>
+                <select name="rel_qual" id="civil">
+                  <option value="" selected>
+                  </option>
+                  <option value="Close">Close</option>
+                  <option value="Good">Good</option>
+                  <option value="Fair">Fair</option>
+                  <option value="Poor">Poor</option>
+                  <option value="Distant">Distant</option>
+                </select>
+              </td>
+            </tr>
+            {% else %}
             {% for sibling in student.family_background.siblings %}
             <tr id="siblingRow">
               <td>
@@ -1118,11 +1153,10 @@ href="/static/fonts/custom-fonts.css"
                   <option value="Poor" {% if sibling.rel_qual == 'Poor' %} selected {% endif %}>Poor</option>
                   <option value="Distant" {% if sibling.rel_qual == 'Distant' %} selected {% endif %}>Distant</option>
               </select>
-              
-              </td>
-              
+              </td> 
             </tr>
             {% endfor %}
+            {% endif %}
           </table>
           <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
           <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
@@ -1329,11 +1363,11 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseyes', value='Yes', checked=student.substance_abuse_history.struggled_with_substance_abuse == True) }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseyes', value='Yes', checked=student.substance_abuse_history.struggled_with_substance_abuse == 'Yes') }}
                 <label for="subsabuseyes">Yes</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseno', value='No', checked=student.substance_abuse_history.struggled_with_substance_abuse == False) }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseno', value='No', checked=student.substance_abuse_history.struggled_with_substance_abuse == 'No') }}
                 <label for="subsabuseno">No</label>
               </div>
             </div>
@@ -1753,13 +1787,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='Yes', checked=student.legal_history.pending_criminal_charges == True) }}
+                {{ form.pending_criminal_charges(class='checkbox-round', type='radio', value='Yes', checked=student.legal_history.pending_criminal_charges == 'Yes') }}
                 <label style="width: auto !important" for="legalpendingyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='No', checked=student.legal_history.pending_criminal_charges == False) }}
+                {{ form.pending_criminal_charges(class='checkbox-round', type='radio', value='No', checked=student.legal_history.pending_criminal_charges == 'No') }}
                 <label for="legalpendingno">No</label>
               </div>
             </div>
@@ -1770,13 +1804,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.on_probation(class='checkbox-round', value='Yes', checked=student.legal_history.on_probation == True) }}
+                {{ form.on_probation(class='checkbox-round', type='radio', value='Yes', checked=student.legal_history.on_probation == 'Yes') }}
                 <label style="width: auto !important" for="legalprobationyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.on_probation(class='checkbox-round', value='No', checked=student.legal_history.on_probation == False) }}
+                {{ form.on_probation(class='checkbox-round', type='radio', value='No', checked=student.legal_history.on_probation == 'No') }}
                 <label for="legalprobationno">No</label>
               </div>
             </div>
@@ -1787,13 +1821,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='Yes', checked=student.legal_history.has_been_arrested == True) }}
+                {{ form.has_been_arrested(class='checkbox-round', type='radio', value='Yes', checked=student.legal_history.has_been_arrested == 'Yes') }}
                 <label style="width: auto !important" for="legalarrestyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='No', checked=student.legal_history.has_been_arrested == False) }}
+                {{ form.has_been_arrested(class='checkbox-round', type='radio', value='No', checked=student.legal_history.has_been_arrested == 'No') }}
                 <label for="legalarrestno">No</label>
               </div>
             </div>
@@ -1809,6 +1843,20 @@ href="/static/fonts/custom-fonts.css"
               <th>Date of Arrests/Convictions</th>
               <th>Outcome</th>
             </tr>
+            {% if student.legal_history.convictions == [] %}
+              <tr id="legalRow">
+                <td>
+                  <input class='form-width100 single-column-span' id="legalConviction" name="legalConviction"/>
+                </td>
+                <td>
+                  <input class='form-width100 single-column-span' type="date" id="legalDate" name="legalDate"/>
+                </td>
+                <td>
+                  <input class='form-width100 single-column-span' id="legalOutcome" name="legalOutcome"/>
+                </td>
+              </tr>
+            </table>
+            {% else %}
             {% for conviction in student.legal_history.convictions %}
             <tr id="legalRow">
               <td>
@@ -1837,6 +1885,7 @@ href="/static/fonts/custom-fonts.css"
               </td>
             </tr>
             {% endfor %}
+            {% endif %}
           </table>
           <button type="button" onclick="createRow('legalTable', 'legalRow')">ADD</button>
           <button type="button" onclick="deleteRow('legalTable')">DELETE</button>

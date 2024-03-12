@@ -458,94 +458,98 @@ def full_record(student_id):
 @permission_required('edit')
 @login_required
 def edit_record(student_id):
-    student = (
-        BasicInformation.query
-        .options(
-            joinedload(BasicInformation.family_background),
-            joinedload(BasicInformation.health_information),
-            joinedload(BasicInformation.educational_background),
-            joinedload(BasicInformation.social_history),
-            joinedload(BasicInformation.history_information),
-            joinedload(BasicInformation.occupational_history),
-            joinedload(BasicInformation.substance_abuse_history),
-            joinedload(BasicInformation.legal_history),
-            joinedload(BasicInformation.additional_information)
+    with db.session.no_autoflush:
+        student = (
+            BasicInformation.query
+            .options(
+                joinedload(BasicInformation.family_background),
+                joinedload(BasicInformation.health_information),
+                joinedload(BasicInformation.educational_background),
+                joinedload(BasicInformation.social_history),
+                joinedload(BasicInformation.history_information),
+                joinedload(BasicInformation.occupational_history),
+                joinedload(BasicInformation.substance_abuse_history),
+                joinedload(BasicInformation.legal_history),
+                joinedload(BasicInformation.additional_information)
+            )
+            .filter_by(student_id=student_id)
+            .first()
         )
-        .filter_by(student_id=student_id)
-        .first()
-    )
-    
-    # if not student:
-    #     flash('Student not found', 'danger')
-    #     return redirect(url_for('college_records', college="CBEA"))
+        
+        print(student.legal_history.pending_criminal_charges)
+        
+        # if not student:
+        #     flash('Student not found', 'danger')
+        #     return redirect(url_for('college_records', college="CBEA"))
 
-    form = StudentRecordForm(obj=student)
+        form = StudentRecordForm(obj=student)
 
-    if form.validate_on_submit():
-        print('validated')
-        form.populate_obj(student)
-        form.populate_obj(student.family_background)
-        form.populate_obj(student.health_information)
-        form.populate_obj(student.educational_background)
-        form.populate_obj(student.social_history)
-        form.populate_obj(student.history_information)
-        form.populate_obj(student.occupational_history)
-        form.populate_obj(student.substance_abuse_history)
-        form.populate_obj(student.legal_history)
-        form.populate_obj(student.additional_information)
+        if form.validate_on_submit():
+            print('validated')
+            form.populate_obj(student)
+            form.populate_obj(student.family_background)
+            form.populate_obj(student.health_information)
+            form.populate_obj(student.educational_background)
+            form.populate_obj(student.social_history)
+            form.populate_obj(student.history_information)
+            form.populate_obj(student.occupational_history)
+            form.populate_obj(student.substance_abuse_history)
+            form.populate_obj(student.legal_history)
+            form.populate_obj(student.additional_information)
 
 
-        # TODO: Handle delete
-        existing_siblings = student.family_background.siblings
+            # TODO: Handle delete
+            existing_siblings = student.family_background.siblings
 
-        sibling_names = request.form.getlist('siblingName')
-        sibling_ages = request.form.getlist('siblingAge')
-        sibling_genders = request.form.getlist('siblingGender')
-        sibling_rel_quals = request.form.getlist('rel_qual')
+            sibling_names = request.form.getlist('siblingName')
+            sibling_ages = request.form.getlist('siblingAge')
+            sibling_genders = request.form.getlist('siblingGender')
+            sibling_rel_quals = request.form.getlist('rel_qual')
 
-        for sibling_index, sibling_name in enumerate(sibling_names):
-            if sibling_index < len(existing_siblings):
-                existing_sibling = existing_siblings[sibling_index]
-                existing_sibling.name = sibling_name
-                existing_sibling.age = sibling_ages[sibling_index]
-                existing_sibling.gender = sibling_genders[sibling_index]
-                existing_sibling.rel_qual = sibling_rel_quals[sibling_index]
-            else:
-                new_sibling = Sibling(
-                    name=sibling_name,
-                    age=sibling_ages[sibling_index],
-                    gender=sibling_genders[sibling_index],
-                    rel_qual=sibling_rel_quals[sibling_index],
-                    family_background=student.family_background
-                )
-                db.session.add(new_sibling)
+            for sibling_index, sibling_name in enumerate(sibling_names):
+                if sibling_index < len(existing_siblings):
+                    existing_sibling = existing_siblings[sibling_index]
+                    existing_sibling.name = sibling_name
+                    existing_sibling.age = sibling_ages[sibling_index]
+                    existing_sibling.gender = sibling_genders[sibling_index]
+                    existing_sibling.rel_qual = sibling_rel_quals[sibling_index]
+                else:
+                    new_sibling = Sibling(
+                        name=sibling_name,
+                        age=sibling_ages[sibling_index],
+                        gender=sibling_genders[sibling_index],
+                        rel_qual=sibling_rel_quals[sibling_index],
+                        family_background=student.family_background
+                    )
+                    db.session.add(new_sibling)
 
-        existing_convictions = student.legal_history.convictions
+            existing_convictions = student.legal_history.convictions
+            
 
-        convictions = request.form.getlist('legalConviction')
-        conviction_dates = request.form.getlist('legalDate')
-        conviction_outcomes = request.form.getlist('legalOutcome')
+            convictions = request.form.getlist('legalConviction')
+            conviction_dates = request.form.getlist('legalDate')
+            conviction_outcomes = request.form.getlist('legalOutcome')
+            
+            for conviction_index, conviction in enumerate(convictions):
+                if conviction_index < len(existing_convictions):
+                    existing_conviction = existing_convictions[conviction_index]
+                    existing_conviction.conviction = conviction
+                    existing_conviction.conviction_date = conviction_dates[conviction_index]
+                    existing_conviction.conviction_outcome = conviction_outcomes[conviction_index]
+                else:
+                    new_conviction = Conviction(
+                        conviction=conviction,
+                        conviction_date=conviction_dates[conviction_index],
+                        conviction_outcome=conviction_outcomes[conviction_index],
+                        legal_history=student.legal_history
+                    )
+                    db.session.add(new_conviction)
 
-        for conviction_index, conviction in enumerate(convictions):
-            if conviction_index < len(existing_convictions):
-                existing_conviction = existing_convictions[conviction_index]
-                existing_conviction.conviction = conviction
-                existing_conviction.conviction_date = conviction_dates[conviction_index]
-                existing_conviction.conviction_outcome = conviction_outcomes[conviction_index]
-            else:
-                new_conviction = Conviction(
-                    conviction=conviction,
-                    conviction_date=conviction_dates[conviction_index],
-                    conviction_outcome=conviction_outcomes[conviction_index],
-                    legal_history=student.legal_history
-                )
-                db.session.add(new_conviction)
-
-        db.session.commit()
-        print('Student record updated successfully', 'success')
-        return redirect(url_for('student_record', student_id=student_id))
-    
-    print(form.errors)
+            db.session.commit()
+            print('Student record updated successfully', 'success')
+            return redirect(url_for('student_record', student_id=student_id))
+        
+        print(form.errors)
 
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
@@ -914,10 +918,6 @@ def add_record():
         # return redirect(url_for('student_record', new_record_id=new_student.id))
         return redirect(url_for('login'))
     else:
-        print('TESTING')
-        print(request.form.get('collegeDropDown'))
-        print(request.form.get('courseDropDown'))
-        print(request.form.get('campusDropDown'))
         logging.error("Form validation failed")
         logging.error(form.errors)
 
