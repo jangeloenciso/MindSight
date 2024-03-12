@@ -494,6 +494,32 @@ def edit_record(student_id):
         form.populate_obj(student.legal_history)
         form.populate_obj(student.additional_information)
 
+
+        # TODO: Handle delete
+        existing_siblings = student.family_background.siblings
+
+        sibling_names = request.form.getlist('siblingName')
+        sibling_ages = request.form.getlist('siblingAge')
+        sibling_genders = request.form.getlist('siblingGender')
+        sibling_rel_quals = request.form.getlist('rel_qual')
+
+        for sibling_index, sibling_name in enumerate(sibling_names):
+            if sibling_index < len(existing_siblings):
+                existing_sibling = existing_siblings[sibling_index]
+                existing_sibling.name = sibling_name
+                existing_sibling.age = sibling_ages[sibling_index]
+                existing_sibling.gender = sibling_genders[sibling_index]
+                existing_sibling.rel_qual = sibling_rel_quals[sibling_index]
+            else:
+                new_sibling = Sibling(
+                    name=sibling_name,
+                    age=sibling_ages[sibling_index],
+                    gender=sibling_genders[sibling_index],
+                    rel_qual=sibling_rel_quals[sibling_index],
+                    family_background=student.family_background
+                )
+                db.session.add(new_sibling)
+
         db.session.commit()
         print('Student record updated successfully', 'success')
         return redirect(url_for('student_record', student_id=student_id))

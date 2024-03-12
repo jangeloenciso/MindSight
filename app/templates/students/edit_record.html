@@ -51,18 +51,17 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="course">College/Department:</label>
-              <select name="college" id="collegeDropDown" onchange="populateSecondDropdown()">
-                <option disabled selected>{{ student.college }}</option>
-                <option value="SHS">Senior High School</option>
-                <option value="JHS">Junior High School</option>
-
-                <option value="CEA">College of Engineering and Architecture</option>
-                <option value="CBEA">College of Business, Entrepreneurship and Accountancy</option>
-                <option value="CED">College of Education</option>
-                <option value="CAS">College of Arts and Sciences</option>
-                <option value="IHK">Institute of Human Kinetics</option>
-                <option value="Grad">Graduate School</option>
-              </select>
+              <select name="college" id="collegeDropDown" onchange="populateSecondDropdown()" onload="populateSecondDropdown()">
+                <option value="SHS" {% if student.college == 'SHS' %} selected {% endif %}>Senior High School</option>
+                <option value="JHS" {% if student.college == 'JHS' %} selected {% endif %}>Junior High School</option>
+                <option value="CEA" {% if student.college == 'CEA' %} selected {% endif %}>College of Engineering and Architecture</option>
+                <option value="CBEA" {% if student.college == 'CBEA' %} selected {% endif %}>College of Business, Entrepreneurship and Accountancy</option>
+                <option value="CED" {% if student.college == 'CED' %} selected {% endif %}>College of Education</option>
+                <option value="CAS" {% if student.college == 'CAS' %} selected {% endif %}>College of Arts and Sciences</option>
+                <option value="IHK" {% if student.college == 'IHK' %} selected {% endif %}>Institute of Human Kinetics</option>
+                <option value="Grad" {% if student.college == 'Grad' %} selected {% endif %}>Graduate School</option>
+            </select>
+            
             </div>
             <div>
               <label for="course">Course/Strand:</label>
@@ -93,15 +92,13 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="civil">Civil Status:</label>
               <select name="civil" id="civil">
-                <option value="" disabled selected>
-                  -Select Marital Status-
-                </option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Widowed">Widowed</option>
-                <option value="Separated">Separated</option>
-                <option value="Divorced">Divorced</option>
-              </select>
+                <option value="" disabled {% if not student.civil %} selected {% endif %}>-Select Marital Status-</option>
+                <option value="Single" {% if student.civil_status == 'Single' %} selected {% endif %}>Single</option>
+                <option value="Married" {% if student.civil_status == 'Married' %} selected {% endif %}>Married</option>
+                <option value="Widowed" {% if student.civil_status == 'Widowed' %} selected {% endif %}>Widowed</option>
+                <option value="Separated" {% if student.civil_status == 'Separated' %} selected {% endif %}>Separated</option>
+                <option value="Divorced" {% if student.civil_status == 'Divorced' %} selected {% endif %}>Divorced</option>
+            </select>
             </div>
           </div>
           <div class="double-column">
@@ -1100,29 +1097,32 @@ href="/static/fonts/custom-fonts.css"
               <th>Gender</th>
               <th>Nature of Relationship</th>
             </tr>
+
+            {% for sibling in student.family_background.siblings %}
             <tr id="siblingRow">
               <td>
-                <input class='form-width100 single-column-span' id="siblingName" name="siblingName"/>
+                <input class='form-width100 single-column-span' id="siblingName" name="siblingName" value={{ sibling.name }} />
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge"/>
+                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge" value={{ sibling.age }} />
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" />
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" value={{ sibling.gender }} />
               </td>
               <td>
                 <select name="rel_qual" id="civil">
-                  <option value="" selected>
-                  </option>
-                  <option value="Close">Close</option>
-                  <option value="Good">Good</option>
-                  <option value="Fair">Fair</option>
-                  <option value="Poor">Poor</option>
-                  <option value="Distant">Distant</option>
-                </select>
+                  <option value="" {% if not sibling.rel_qual %} selected {% endif %}></option>
+                  <option value="Close" {% if sibling.rel_qual == 'Close' %} selected {% endif %}>Close</option>
+                  <option value="Good" {% if sibling.rel_qual == 'Good' %} selected {% endif %}>Good</option>
+                  <option value="Fair" {% if sibling.rel_qual == 'Fair' %} selected {% endif %}>Fair</option>
+                  <option value="Poor" {% if sibling.rel_qual == 'Poor' %} selected {% endif %}>Poor</option>
+                  <option value="Distant" {% if sibling.rel_qual == 'Distant' %} selected {% endif %}>Distant</option>
+              </select>
+              
               </td>
-                
+              
             </tr>
+            {% endfor %}
           </table>
           <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
           <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
@@ -1132,20 +1132,20 @@ href="/static/fonts/custom-fonts.css"
               >Any history of neglect, and/o physical, verbal, emotional,
               spiritual, or sexual abuse?
             </label>
-            {{ form.family_abuse_history(class='form-width100') }}
+            {{ form.family_abuse_history(value=student.family_background.family_abuse_history, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="famhistoryneglect2"
               >Any family history of substance abuse, mental illness, suicide,
               or violence?
             </label>
-            {{ form.family_mental_history(class='form-width100') }}
+            {{ form.family_mental_history(value=student.family_background.family_mental_history, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="famhistoryneglect3"
               >Any Additional Family Information:
             </label>
-            {{ form.additional_information_family(class='form-width100') }}
+            {{ form.additional_information_family(value=student.family_background.additional_information, class='form-width100') }}
           </div>
         </section>
 
@@ -1165,7 +1165,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.relationship_with_peers(class='form-width100') }}
+            {{ form.relationship_with_peers(value=student.social_history.relationship_with_peers, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="sochistory2"
@@ -1178,7 +1178,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.social_support_network(class='form-width100') }}
+            {{ form.social_support_network(value=student.social_history.social_support_network, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="sochistory3"
@@ -1193,7 +1193,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.hobbies_or_interests(class='form-width100') }}
+            {{ form.hobbies_or_interests(value=student.social_history.hobbies_or_interests, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="sochistory4"
@@ -1207,7 +1207,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            {{ form.cultural_concerns(class='form-width100') }}
+            {{ form.cultural_concerns(value=student.social_history.cultural_concerns, class='form-width100') }}
           </div>
         </section>
 
@@ -1221,57 +1221,27 @@ href="/static/fonts/custom-fonts.css"
             <label>When attending school were you:</label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="educattend1"
-                  name="educattend"
-                  value="educattend1"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend1', value='In regular classes', checked=student.educational_background.educational_history == 'In regular classes') }}
                 <label for="educattend1">In regular classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend2"
-                  name="educattend"
-                  value="educattend2"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend2', value='Advanced classes', checked=student.educational_background.educational_history == 'Advanced classes') }}
                 <label for="educattend2">Advanced classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend3"
-                  name="educattend"
-                  value="educattend3"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend3', value='Home Study', checked=student.educational_background.educational_history == 'Home Study') }}
                 <label for="educattend3">Home Study</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend4"
-                  name="educattend"
-                  value="educattend4"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend4', value='Ever suspended', checked=student.educational_background.educational_history == 'Ever suspended') }}
                 <label for="educattend4">Ever suspended</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend5"
-                  name="educattend"
-                  value="educattend5"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend5', value='Special classes', checked=student.educational_background.educational_history == 'Special classes') }}
                 <label for="educattend5">Special classes</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="educattend6"
-                  name="educattend"
-                  value="educattend6"
-                />
+                {{ form.educational_history(class='checkbox-round', type='radio', id='educattend6', value='Placed in alternative school', checked=student.educational_background.educational_history == 'Placed in alternative school') }}
                 <label for="educattend6">Placed in alternative school</label>
               </div>
             </div>
@@ -1281,7 +1251,7 @@ href="/static/fonts/custom-fonts.css"
             <label for="educhighest"
               >What is the highest educational level you have completed?
             </label>
-            {{ form.highest_level_achieved(class='form-width100') }}
+            {{ form.highest_level_achieved(value=student.educational_background.highest_level_achieved, class='form-width100') }}
           </div>
 
           <div class="left-align">
@@ -1299,12 +1269,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div></label
             >
-            <input
-              type="text"
-              class="form-width100"
-              id="educinfo"
-              name="educinfo"
-            />
+            {{ form.additional_information_education(value=student.educational_background.additional_information, class='form-width100') }}
           </div>
         </section>
         <!-- end: Educational History -->
@@ -1316,48 +1281,23 @@ href="/static/fonts/custom-fonts.css"
             <label>What is your current employment status? </label>
             <div class="radio-inline-container resp">
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat1"
-                  name="employmentstat"
-                  value="employmentstat1"
-                />
+                {{ form.employment_status(class='checkbox-round', type='radio', id='employmentstat1', value='Employed Full-Time', checked=student.occupational_history.employment_status == "Employed Full-Time") }}
                 <label for="employmentstat1">Employed Full-Time</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat2"
-                  name="employmentstat"
-                  value="employmentstat2"
-                />
+                {{ form.employment_status(class='checkbox-round', type='radio', id='employmentstat2', value='Employed Part-Time', checked=student.occupational_history.employment_status == "Employed Part-time") }}
                 <label for="employmentstat2">Employed Part-time</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat3"
-                  name="employmentstat"
-                  value="employmentstat3"
-                />
+                {{ form.employment_status(class='checkbox-round', type='radio', id='employmentstat3', value='Unemployed', checked=student.occupational_history.employment_status == "Unemployed") }}
                 <label for="employmentstat3">Unemployed</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat4"
-                  name="employmentstat"
-                  value="employmentstat4"
-                />
+                {{ form.employment_status(class='checkbox-round', type='radio', id='employmentstat4', value='Self-employed', checked=student.occupational_history.employment_status == "Self-employed") }}
                 <label for="employmentstat4">Self-employed</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="employmentstat5"
-                  name="employmentstat"
-                  value="employmentstat5"
-                />
+                {{ form.employment_status(class='checkbox-round', type='radio', id='employmentstat5', value='Student', checked=student.occupational_history.employment_status == "Student") }}
                 <label for="employmentstat5">Student</label>
               </div>
             </div>
@@ -1367,17 +1307,18 @@ href="/static/fonts/custom-fonts.css"
             <label for="employmentsatis"
               >Are you satisfied with your employment? why?
             </label>
-            {{ form.satisfaction(class='form-width100') }}
+            {{ form.satisfaction(value=student.occupational_history.satisfaction, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="employmentsatisifnot">If not, why? </label>
-            {{ form.satisfaction_reason(class='form-width100') }}
+            {{ form.satisfaction_reason(value=student.occupational_history.satisfaction_reason, class='form-width100') }}
           </div>
         </section>
 
         <!-- end: Occupational History -->
 
         <!-- start: Substance Abuse History -->
+        <!-- TODO: ADD CIGARETTE -->
         <header>Substance Abuse History</header>
         <section class="subsabuse">
           <div class="left-align">
@@ -1388,23 +1329,12 @@ href="/static/fonts/custom-fonts.css"
             </label>
             <div class="radio-inline-container">
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='Yes') }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseyes', value='Yes', checked=student.substance_abuse_history.struggled_with_substance_abuse == True) }}
                 <label for="subsabuseyes">Yes</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', value='No') }}
+                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseno', value='No', checked=student.substance_abuse_history.struggled_with_substance_abuse == False) }}
                 <label for="subsabuseno">No</label>
-              </div>
-              <div>
-                <label
-                  style="width: auto !important; padding-right: 10px"
-                  for="subsabuseother"
-                  >Other</label
-                ><input
-                  type="text"
-                  id="otherTextbox"
-                  placeholder="Enter text"
-                />
               </div>
             </div>
           </div>
@@ -1429,269 +1359,301 @@ href="/static/fonts/custom-fonts.css"
               <td>Alcohol</td>
               <td>
                 <select name="alcoholuse" id="alcoholuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.alcohol == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.alcohol == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.alcohol_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.alcohol_age_first_use(value=student.substance_abuse_history.alcohol_age_first_use ,class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="alcoholfrequency" id="alcoholfrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.alcohol_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.alcohol_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.alcohol_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.alcohol_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.alcohol_amount_used(class='form-width100 single-column-span') }}
+                {{ form.alcohol_amount_used(value=student.substance_abuse_history.alcohol_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.alcohol_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.alcohol_way_of_intake(value=student.substance_abuse_history.alcohol_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
+              <tr>
+                <td>Cigarette</td>
+                <td>
+                  <select name="cigaretteuse" id="cigaretteuse">
+                    <option value="No" {% if student.substance_abuse_history.cigarette == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.cigarette == "Yes" %} selected {% endif %}>Yes</option>
+                  </select>
+                </td>
+                <td>
+                  {{ form.cigarette_age_first_use(value=student.substance_abuse_history.cigarette_age_first_use, class='form-width100 single-column-span') }}
+                </td>
+                <td>
+                  <select name="cigarettefrequency" id="cigarettefrequency">
+                    <option value="" {% if student.substance_abuse_history.cigarette_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                    <option value="Daily" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                    <option value="Weekly" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                    <option value="Monthly" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
+                  </select>
+                </td>
+                <td>
+                  {{ form.cigarette_amount_used(value=student.substance_abuse_history.cigarette_amount_used, class='form-width100 single-column-span') }}
+                </td>
+                <td>
+                  {{ form.cigarette_way_of_intake(value=student.substance_abuse_history.cigarette_way_of_intake, class='form-width100 single-column-span') }}
+                </td>
+              </tr>
+              <tr>
               <td>Marijuana</td>
               <td>
                 <select name="marijuanause" id="marijuanause">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.marijuana == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.marijuana == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.marijuana_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.marijuana_age_first_use(value=student.substance_abuse_history.marijuana_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="marijuanafrequency" id="marijuanafrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.marijuana_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.marijuana_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.marijuana_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.marijuana_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.marijuana_amount_used(class='form-width100 single-column-span') }}
+                {{ form.marijuana_amount_used(value=student.substance_abuse_history.marijuana_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.marijuana_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.marijuana_way_of_intake(value=student.substance_abuse_history.marijuana_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Cocaine or Crack</td>
               <td>
                 <select name="cocaineorcrackuse" id="cocaineorcrackuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.cocaine == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.cocaine == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.cocaine_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.cocaine_age_first_use(value=student.substance_abuse_history.cocaine_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
                   name="cocaineorcrackfrequency"
                   id="cocaineorcrackfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.cigarette_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.cigarette_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.cocaine_amount_used(class='form-width100 single-column-span') }}
+                {{ form.cocaine_amount_used(value=student.substance_abuse_history.cocaine_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.cocaine_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.cocaine_way_of_intake(value=student.substance_abuse_history.cocaine_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Heroin</td>
               <td>
                 <select name="heroinuse" id="heroinuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.heroin == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.heroin == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.heroin_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.heroin_age_first_use(value=student.substance_abuse_history.heroin_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="heroinfrequency" id="heroinfrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.heroin_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.heroin_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.heroin_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.heroin_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.heroin_amount_used(class='form-width100 single-column-span') }}
+                {{ form.heroin_amount_used(value=student.substance_abuse_history.heroin_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.heroin_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.heroin_way_of_intake(value=student.substance_abuse_history.heroin_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
-              <td>Amphetamites</td>
+              <td>Amphetamines</td>
               <td>
-                <select name="amphetamitesuse" id="amphetamitesuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                <select name="amphetaminesuse" id="amphetaminesuse">
+                  <option value="No" {% if student.substance_abuse_history.amphetamine == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.amphetamine == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.amphetamines_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.amphetamines_age_first_use(value=student.substance_abuse_history.amphetamines_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
-                <select name="amphetamitesfrequency" id="amphetamitesfrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                <select name="amphetaminesfrequency" id="amphetaminesfrequency">
+                  <option value="" {% if student.substance_abuse_history.amphetamines_age_first_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.amphetamines_age_first_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.amphetamines_age_first_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.amphetamines_age_first_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.amphetamines_amount_used(class='form-width100 single-column-span') }}
+                {{ form.amphetamines_amount_used(value=student.substance_abuse_history.amphetamines_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.amphetamines_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.amphetamines_way_of_intake(value=student.substance_abuse_history.amphetamines_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Club Drugs (Ecstasy, Inhalants, etc.)</td>
               <td>
                 <select name="clubdrugsuse" id="clubdrugsuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.club_drugs == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.club_drugs == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.club_drugs_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.club_drugs_age_first_use(value=student.substance_abuse_history.club_drugs_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="clubdrugsfrequency" id="clubdrugsfrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.club_drugs_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.club_drugs_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.club_drugs_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.club_drugs_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.club_drugs_amount_used(class='form-width100 single-column-span') }}
+                {{ form.club_drugs_amount_used(value=student.substance_abuse_history.club_drugs_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.club_drugs_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.club_drugs_way_of_intake(value=student.substance_abuse_history.club_drugs_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Pain Medication (Oxycontin, Vicodin, etc.)</td>
               <td>
                 <select name="painmedicationuse" id="painmedicationuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.pain_meds == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.pain_meds == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.pain_meds_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.pain_meds_age_first_use(value=student.substance_abuse_history.pain_meds_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
                   name="painmedicationfrequency"
                   id="painmedicationfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.pain_meds_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.pain_meds_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.pain_meds_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.pain_meds_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.pain_meds_amount_used(class='form-width100 single-column-span') }}
+                {{ form.pain_meds_amount_used(value=student.substance_abuse_history.pain_meds_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.pain_meds_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.pain_meds_way_of_intake(value=student.substance_abuse_history.pain_meds_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Benzodiazepines</td>
               <td>
                 <select name="benzodiazepinesuse" id="benzodiazepinesuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.benzo == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.benzo == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.benzo_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.benzo_age_first_use(value=student.substance_abuse_history.benzo_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
-                  name="benzo_frequency_of_use"
+                  name="benzodiazepinesfrequency"
                   id="benzodiazepinesfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.benzo_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.benzo_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.benzo_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.benzo_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.benzo_amount_used(class='form-width100 single-column-span') }}
+                {{ form.benzo_amount_used(value=student.substance_abuse_history.benzo_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.benzo_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.benzo_way_of_intake(value=student.substance_abuse_history.benzo_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>Hallucinogens</td>
               <td>
                 <select name="hallucinogensuse" id="hallucinogensuse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.hallucinogens == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.hallucinogens == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.hallucinogens_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_age_first_use(value=student.substance_abuse_history.hallucinogens_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select
                   name="hallucinogensfrequency"
                   id="hallucinogensfrequency"
                 >
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.hallucinogens_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.hallucinogens_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.hallucinogens_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.hallucinogens_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.hallucinogens_amount_used(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_amount_used(value=student.substance_abuse_history.hallucinogens_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.hallucinogens_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.hallucinogens_way_of_intake(value=student.substance_abuse_history.hallucinogens_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
             <tr>
               <td>
-                Other<input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="hallucinogensmethod"
-                  name="hallucinogensmethod"
-                />
+                Other
               </td>
               <td>
                 <select name="otheruse" id="otheruse">
-                  <option value="No" selected>No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No" {% if student.substance_abuse_history.other_meds == "No" %} selected {% endif %}>No</option>
+                  <option value="Yes"{% if student.substance_abuse_history.other_meds == "Yes" %} selected {% endif %}>Yes</option>
                 </select>
               </td>
               <td>
-                {{ form.other_meds_age_first_use(class='form-width100 single-column-span') }}
+                {{ form.other_meds_age_first_use(value=student.substance_abuse_history.other_meds_age_first_use, class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="otherfrequency" id="otherfrequency">
-                  <option value="Daily" selected>Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="" {% if student.substance_abuse_history.other_meds_frequency_of_use == "" %} selected {% endif %}>N/A</option>
+                  <option value="Daily" {% if student.substance_abuse_history.other_meds_frequency_of_use == "Daily" %} selected {% endif %}>Daily</option>
+                  <option value="Weekly" {% if student.substance_abuse_history.other_meds_frequency_of_use == "Weekly" %} selected {% endif %}>Weekly</option>
+                  <option value="Monthly" {% if student.substance_abuse_history.other_meds_frequency_of_use == "Monthly" %} selected {% endif %}>Monthly</option>
                 </select>
               </td>
               <td>
-                {{ form.other_meds_amount_used(class='form-width100 single-column-span') }}
+                {{ form.other_meds_amount_used(value=student.substance_abuse_history.other_meds_amount_used, class='form-width100 single-column-span') }}
               </td>
               <td>
-                {{ form.other_meds_way_of_intake(class='form-width100 single-column-span') }}
+                {{ form.other_meds_way_of_intake(value=student.substance_abuse_history.other_meds_way_of_intake, class='form-width100 single-column-span') }}
               </td>
             </tr>
           </table>
@@ -1700,78 +1662,43 @@ href="/static/fonts/custom-fonts.css"
               >Have ever received treatment for a substance abuse issue?<br />Name
               of Treatment Program
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabuseprogram"
-              name="subsabuseprogram"
-            />
+            {{ form.treatment_program_name(value=student.substance_abuse_history.treatment_program_name, class='form-width100') }}
           </div>
 
           <div class="left-align">
             <label>Type of Treatment </label>
             <div class="radio-inline-container treatmenttype">
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttyperehab"
-                  name="treatmenttype"
-                  value="treatmenttyperehab"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttyperehab', value='Rehab', checked=student.substance_abuse_history.treatment_type == 'Rehab') }}
                 <label for="treatmenttyperehab" style="padding-right: 196px"
                   >Rehab</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypeparthospital"
-                  name="treatmenttype"
-                  value="treatmenttypeparthospital"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypeparthospital', value='Partial Hospitalization', checked=student.substance_abuse_history.treatment_type == 'Partial Hospitalization') }}
                 <label for="treatmenttypeparthospital"
                   >Partial Hospitalization</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttyperecoveryhouse"
-                  name="treatmenttype"
-                  value="treatmenttyperecoveryhouse"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttyperecoveryhouse', value='Recovery House', checked=student.substance_abuse_history.treatment_type == 'Recovery House') }}
                 <label for="treatmenttyperecoveryhouse">Recovery House</label>
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypemethadone"
-                  name="treatmenttype"
-                  value="treatmenttypemethadone"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypemethadone', value='Methadone', checked=student.substance_abuse_history.treatment_type == 'Methadone') }}
                 <label for="treatmenttypemethadone">Methadone</label>
               </div>
             </div>
 
             <div class="radio-inline-container treatmenttype">
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypeiop"
-                  name="treatmenttype"
-                  value="treatmenttypeiop"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypeiop', value='Intensive Outpatient Program', checked=student.substance_abuse_history.treatment_type == 'Intensive Outpatient Program<') }}
                 <label for="treatmenttypeiop"
                   >Intensive Outpatient Program</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypehalfwayhouse"
-                  name="treatmenttype"
-                  value="treatmenttypehalfwayhouse"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypehalfwayhouse', value='Halfway House', checked=student.substance_abuse_history.treatment_type == 'Halfway House') }}
                 <label
                   for="treatmenttypehalfwayhouse"
                   style="padding-right: 63px"
@@ -1779,25 +1706,15 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypecounselling"
-                  name="treatmenttype"
-                  value="treatmenttypecounselling"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypecounselling', value='Counseling', checked=student.substance_abuse_history.treatment_type == 'Counseling') }}
                 <label
                   for="treatmenttypecounselling"
                   style="padding-right: 35px"
-                  >Counselling</label
+                  >Counseling</label
                 >
               </div>
               <div>
-                <input
-                  type="radio"
-                  id="treatmenttypesuboxone"
-                  name="treatmenttype"
-                  value="treatmenttypesuboxone"
-                />
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypesuboxone', value='Suboxone', checked=student.substance_abuse_history.treatment_type == 'Suboxone') }}
                 <label for="treatmenttypesuboxone">Suboxone</label>
               </div>
             </div>
@@ -1807,12 +1724,7 @@ href="/static/fonts/custom-fonts.css"
             <label for="subsabusetreatmentdate"
               >Date of Treatment (Month, Year)
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabusetreatmentdate"
-              name="subsabusetreatmentdate"
-            />
+            {{ form.treatment_date(value=student.substance_abuse_history.treatment_date, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="subsabuseoutcome"
@@ -1827,12 +1739,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
             </label>
-            <input
-              type="text"
-              class="form-width100"
-              id="subsabuseoutcome"
-              name="subsabuseoutcome"
-            />
+            {{ form.treatment_outcome(value=student.substance_abuse_history.treatment_outcome, class='form-width100') }}
           </div>
         </section>
         <!-- end: Substance Abuse History -->
@@ -1846,13 +1753,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='Yes') }}
+                {{ form.pending_criminal_charges(class='checkbox-round', value='Yes', checked=student.legal_history.pending_criminal_charges == True) }}
                 <label style="width: auto !important" for="legalpendingyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.pending_criminal_charges(class='checkbox-round', value='No') }}
+                {{ form.pending_criminal_charges(class='checkbox-round', value='No', checked=student.legal_history.pending_criminal_charges == False) }}
                 <label for="legalpendingno">No</label>
               </div>
             </div>
@@ -1863,13 +1770,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.on_probation(class='checkbox-round', value='Yes') }}
+                {{ form.on_probation(class='checkbox-round', value='Yes', checked=student.legal_history.on_probation == True) }}
                 <label style="width: auto !important" for="legalprobationyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.on_probation(class='checkbox-round', value='No') }}
+                {{ form.on_probation(class='checkbox-round', value='No', checked=student.legal_history.on_probation == False) }}
                 <label for="legalprobationno">No</label>
               </div>
             </div>
@@ -1880,13 +1787,13 @@ href="/static/fonts/custom-fonts.css"
             >
             <div class="radio-inline-container">
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='Yes') }}
+                {{ form.has_been_arrested(class='checkbox-round', value='Yes', checked=student.legal_history.has_been_arrested == True) }}
                 <label style="width: auto !important" for="legalarrestyes"
                   >Yes</label
                 >
               </div>
               <div>
-                {{ form.has_been_arrested(class='checkbox-round', value='No') }}
+                {{ form.has_been_arrested(class='checkbox-round', value='No', checked=student.legal_history.has_been_arrested == False) }}
                 <label for="legalarrestno">No</label>
               </div>
             </div>
@@ -1902,33 +1809,37 @@ href="/static/fonts/custom-fonts.css"
               <th>Date of Arrests/Convictions</th>
               <th>Outcome</th>
             </tr>
+            {% for conviction in student.legal_history.convictions %}
             <tr>
               <td>
                 <input
                   type="text"
                   class="form-width100 single-column-span"
-                  id="legalarrestlist"
-                  name="legalarrestlist"
+                  id="legalConviction" name="legalConviction"
+                  value={{ conviction.conviction }}
                 />
               </td>
               <td>
                 <input
                   type="date"
                   class="form-width100 single-column-span"
-                  id="legalarrestdate"
-                  name="legalarrestdate"
+                  id="legalDate" name="legalDate"
+                  value={{ conviction.conviction_date }}
                 />
               </td>
               <td>
                 <input
                   type="text"
                   class="form-width100 single-column-span"
-                  id="legalarrestoutcome"
-                  name="legalarrestoutcome"
+                  id="legalOutcome" name="legalOutcome"
+                  value={{ conviction.conviction_outcome }}
                 />
               </td>
             </tr>
+            {% endfor %}
           </table>
+          <button type="button" onclick="createRow('legalTable', 'legalRow')">ADD</button>
+          <button type="button" onclick="deleteRow('legalTable')">DELETE</button>
         </section>
         <!-- end: Legal History -->
 
@@ -1946,7 +1857,7 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
             </label>
-            {{ form.to_work_on(class='form-width100') }}
+            {{ form.to_work_on(value=student.additional_information.to_work_on, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="additionalinfo2"
@@ -1959,13 +1870,13 @@ href="/static/fonts/custom-fonts.css"
                 >
               </div>
             </label>
-            {{ form.expectations(class='form-width100') }}
+            {{ form.expectations(value=student.additional_information.expectations, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="additionalinfo3"
               >Name 3 things you would like to change about yourself.
             </label>
-            {{ form.things_to_change(class='form-width100') }}
+            {{ form.things_to_change(value=student.additional_information.things_to_change, class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="additionalinfo4"
@@ -1973,7 +1884,7 @@ href="/static/fonts/custom-fonts.css"
               important for your counselor to know in order to provide you with
               the best care possible?
             </label>
-            {{ form.other_information(class='form-width100') }}
+            {{ form.other_information(value=student.additional_information.other_information, class='form-width100') }}
           </div>
         </section>
         <!-- end: Additional Information -->
@@ -1998,13 +1909,13 @@ href="/static/fonts/custom-fonts.css"
             </p>
 
             <div class="tac">
-              {{ form.personal_agreement }}
+              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True) }}
               <label for="taccheckbox">
                 I understand and agree to the information presented
                 above.</label
               >
             </div>
-            {{ form.personal_agreement_date }}
+            {{ form.personal_agreement_date(value=student.additional_information.personal_agreement_date) }}
           </div>
 
           <table>
@@ -2562,6 +2473,11 @@ href="/static/fonts/custom-fonts.css"
   </div>
 </form>
 </div>
+<script>
+  window.onload = function() {
+      populateSecondDropdown();
+  };
+</script>
 <script src={{ url_for('static', filename='javascript/add_record.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
