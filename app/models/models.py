@@ -254,8 +254,8 @@ class OccupationalHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # TODO:
     employment_status = db.Column(db.String(20))
-    satisfaction = db.Column(db.String(20), nullable=True)
-    satisfaction_reason = db.Column(db.String(200), nullable=True)
+    satisfaction = db.Column(db.String(500), nullable=True)
+    satisfaction_reason = db.Column(db.String(500), nullable=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
@@ -350,7 +350,7 @@ class SubstanceAbuseHistory(db.Model):
 
     treatment_program_name = db.Column(db.String(50), nullable=True)
     treatment_type = db.Column(db.String(50), nullable=True)
-    treatment_date = db.Column(db.Date, nullable=True)
+    treatment_date = db.Column(db.String(50), nullable=True)
     treatment_outcome = db.Column(db.String(100), nullable=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
