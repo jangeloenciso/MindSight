@@ -1322,14 +1322,6 @@
                 {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='subsabuseno', value='No') }}
                 <label for="subsabuseno">No</label>
               </div>
-              <div>
-                <!-- REMOVED RADIO BUTTON -->
-                <label
-                  style="width: auto !important; padding-right: 10px"
-                  for="subsabuseother"
-                  >Other</label
-                >{{ form.residence }}
-              </div>
             </div>
           </div>
 
@@ -1625,7 +1617,6 @@
             <tr>
               <td>
                 Other
-                {{ form.other_meds(class='form-width100 single-column-span') }}
               </td>
               <td>
                 <select name="otheruse" id="otheruse">
@@ -1657,43 +1648,43 @@
               >Have ever received treatment for a substance abuse issue?<br />Name
               of Treatment Program
             </label>
-            {{ form.other_meds_age_first_use(class='form-width100') }}
+            {{ form.treatment_program_name(class='form-width100') }}
           </div>
 
           <div class="left-align">
             <label>Type of Treatment </label>
             <div class="radio-inline-container treatmenttype">
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttyperehab', value='Rehab') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttyperehab', value='Rehab') }}
                 <label for="treatmenttyperehab" style="padding-right: 196px"
                   >Rehab</label
                 >
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypeparthospital', value='Partial Hospitalization') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypeparthospital', value='Partial Hospitalization') }}
                 <label for="treatmenttypeparthospital"
                   >Partial Hospitalization</label
                 >
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttyperecoveryhouse', value='Recovery House') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttyperecoveryhouse', value='Recovery House') }}
                 <label for="treatmenttyperecoveryhouse">Recovery House</label>
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypemethadone', value='Methadone') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypemethadone', value='Methadone') }}
                 <label for="treatmenttypemethadone">Methadone</label>
               </div>
             </div>
 
             <div class="radio-inline-container treatmenttype">
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypeiop', value='Intensive Outpatient Program') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypeiop', value='Intensive Outpatient Program') }}
                 <label for="treatmenttypeiop"
                   >Intensive Outpatient Program</label
                 >
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypehalfwayhouse', value='Halfway House') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypehalfwayhouse', value='Halfway House') }}
                 <label
                   for="treatmenttypehalfwayhouse"
                   style="padding-right: 63px"
@@ -1701,15 +1692,15 @@
                 >
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypecounselling', value='Counselling') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypecounselling', value='Counseling') }}
                 <label
                   for="treatmenttypecounselling"
                   style="padding-right: 35px"
-                  >Counselling</label
+                  >Counseling</label
                 >
               </div>
               <div>
-                {{ form.struggled_with_substance_abuse(class='checkbox-round', type='radio', id='treatmenttypesuboxone', value='Suboxone') }}
+                {{ form.treatment_type(class='checkbox-round', type='radio', id='treatmenttypesuboxone', value='Suboxone') }}
                 <label for="treatmenttypesuboxone">Suboxone</label>
               </div>
             </div>
@@ -1719,7 +1710,7 @@
             <label for="subsabusetreatmentdate"
               >Date of Treatment (Month, Year)
             </label>
-            {{ form.other_meds_age_first_use(class='form-width100') }}
+            {{ form.treatment_date(class='form-width100') }}
           </div>
           <div class="left-align">
             <label for="subsabuseoutcome"
@@ -1734,7 +1725,7 @@
                 >
               </div>
             </label>
-            {{ form.other_meds_age_first_use(class='form-width100') }}
+            {{ form.treatment_outcome(class='form-width100') }}
           </div>
         </section>
         <!-- end: Substance Abuse History -->
