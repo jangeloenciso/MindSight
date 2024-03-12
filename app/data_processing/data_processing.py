@@ -13,8 +13,8 @@ def process_data(student_id=None, search_query=None):
 
         if student_id is not None:
             query = query.filter_by(student_id=student_id)
-            print("printing student")
-            print(query)
+            # print("printing student")
+            # print(query)
 
         print(search_query)
             
