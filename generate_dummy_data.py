@@ -134,7 +134,7 @@ with app.app_context():
             indecisiveness_about_career=fake.boolean(),
             job_problems=fake.boolean(),
             other=fake.sentence(),
-            previous_treatments=fake.boolean(),
+            previous_treatments=fake.random_element(elements=("Yes", "No")),
             previous_treatments_likes_dislikes=fake.sentence(),
             previous_treatments_learned=fake.sentence(),
             previous_treatments_like_to_continue=fake.sentence(),
@@ -147,14 +147,14 @@ with app.app_context():
         health_information = HealthInformation(
             medication_and_dose=fake.sentence(),
             serious_ch_illnesses_history=fake.sentence(),
-            head_injuries=fake.boolean(),
-            lose_consciousness=fake.boolean(),
-            convulsions_or_seizures=fake.boolean(),
-            fever=fake.boolean(),
-            allergies=fake.sentence(),
+            head_injuries=fake.random_element(elements=("Yes", "No")),
+            lose_consciousness=fake.random_element(elements=("Yes", "No")),
+            convulsions_or_seizures=fake.random_element(elements=("Yes", "No")),
+            fever=fake.random_element(elements=("Yes", "No")),
+            allergies=fake.random_element(elements=("Yes", "No")),
             current_physical_health=fake.sentence(nb_words=1),
             last_check_up=random_date(date(2020, 1, 1), date(2023, 12, 31)),
-            has_physician=fake.boolean(),
+            has_physician=fake.random_element(elements=("Yes", "No")),
             physician_name=fake.name(),
             physician_email=fake.email(),
             physician_number = fake.random_int(min=100000, max=99999999999),
@@ -199,7 +199,7 @@ with app.app_context():
         )
 
         substance_abuse_history = SubstanceAbuseHistory(
-            struggled_with_substance_abuse=fake.boolean(),
+            struggled_with_substance_abuse=fake.random_element(elements=("Yes", "No")),
             alcohol=fake.boolean(),
             alcohol_age_first_use = fake.sentence(nb_words=2),
             alcohol_frequency_of_use = fake.sentence(nb_words=2),
@@ -265,9 +265,9 @@ with app.app_context():
         )
 
         legal_history = LegalHistory(
-            pending_criminal_charges=fake.boolean(),
-            on_probation=fake.boolean(),
-            has_been_arrested=fake.boolean(),
+            pending_criminal_charges=fake.random_element(elements=("Yes", "No")),
+            on_probation=fake.random_element(elements=("Yes", "No")),
+            has_been_arrested=fake.random_element(elements=("Yes", "No")),
 
             student = student
         )

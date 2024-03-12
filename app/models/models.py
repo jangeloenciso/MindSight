@@ -162,14 +162,14 @@ class HistoryInformation(db.Model):
     other = db.Column(db.String(100))
     
     # TODO: Add other fields for the rest of the history information
-    previous_treatments = db.Column(db.Boolean, default=False)
+    previous_treatments = db.Column(db.String(10))
     previous_treatments_likes_dislikes = db.Column(db.String(400))
     previous_treatments_learned = db.Column(db.String(400))
     previous_treatments_like_to_continue = db.Column(db.String(400))
 
-    previous_hospital_stays_psych = db.Column(db.Boolean, default=False)
-    current_thoughts_to_harm = db.Column(db.Boolean, default=False)
-    past_thoughts_to_harm = db.Column(db.Boolean, default=False)
+    previous_hospital_stays_psych = db.Column(db.String(10))
+    current_thoughts_to_harm = db.Column(db.String(10))
+    past_thoughts_to_harm = db.Column(db.String(10))
     
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
@@ -182,15 +182,15 @@ class HealthInformation(db.Model):
     # ch = childhood
     serious_ch_illnesses_history = db.Column(db.String(100))
 
-    head_injuries = db.Column(db.Boolean, default=False)
-    lose_consciousness = db.Column(db.Boolean, default=False)
-    convulsions_or_seizures = db.Column(db.Boolean, default=False)
-    fever = db.Column(db.Boolean, default=False)
-    allergies = db.Column(db.String(100))
+    head_injuries = db.Column(db.String(10))
+    lose_consciousness = db.Column(db.String(10))
+    convulsions_or_seizures = db.Column(db.String(10))
+    fever = db.Column(db.String(10))
+    allergies = db.Column(db.String(10))
     
     current_physical_health = db.Column(db.String(20)) 
     last_check_up = db.Column(db.Date) # idk date ba dapat???
-    has_physician = db.Column(db.Boolean, default=False)
+    has_physician = db.Column(db.String(10))
     physician_name = db.Column(db.String(50))
     physician_email = db.Column(db.String(50))
     physician_number = db.Column(db.String(20))
@@ -263,7 +263,7 @@ class SubstanceAbuseHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # TODO:
 
-    struggled_with_substance_abuse = db.Column(db.Boolean, default=False)
+    struggled_with_substance_abuse = db.Column(db.String(10))
 
     # alcohol
     alcohol = db.Column(db.String(50), nullable=True)
@@ -359,9 +359,9 @@ class LegalHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # TODO:
 
-    pending_criminal_charges = db.Column(db.Boolean, default=False)
-    on_probation = db.Column(db.Boolean, default=False)
-    has_been_arrested = db.Column(db.Boolean, default=False)
+    pending_criminal_charges = db.Column(db.String(10))
+    on_probation = db.Column(db.String(10))
+    has_been_arrested = db.Column(db.String(10))
 
     convictions = db.relationship('Conviction', backref='legal_history', lazy=True)
 

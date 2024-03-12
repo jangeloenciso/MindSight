@@ -85,28 +85,28 @@ class StudentRecordForm(FlaskForm):
     job_problems = BooleanField('Job Problems', validators=[Optional()])
 
     other_history = StringField('Other', validators=[Optional()])
-    previous_treatments = BooleanField('Previous Treatments', validators=[Optional()])
+    previous_treatments = StringField('Previous Treatments', validators=[Optional()])
     previous_treatments_likes_dislikes = StringField('Previous Treatments Likes/Dislikes', validators=[Optional()])
     previous_treatments_learned = StringField('Previous Treatments Learned', validators=[Optional()])
     previous_treatments_like_to_continue = StringField('Previous Treatments Like to Continue', validators=[Optional()])
-    previous_hospital_stays_psych = BooleanField('Previous Hospital Stays (Psych)', validators=[Optional()])
-    current_thoughts_to_harm = BooleanField('Current Thoughts to Harm', validators=[Optional()])
-    past_thoughts_to_harm = BooleanField('Past Thoughts to Harm', validators=[Optional()])
+    previous_hospital_stays_psych = StringField('Previous Hospital Stays (Psych)', validators=[Optional()])
+    current_thoughts_to_harm = StringField('Current Thoughts to Harm', validators=[Optional()])
+    past_thoughts_to_harm = StringField('Past Thoughts to Harm', validators=[Optional()])
 
     # Health Information
     medication_and_dose = StringField('Medication and Dose', validators=[Optional()])
 
     serious_ch_illnesses_history = StringField('Serious Chronic Illnesses History', validators=[Optional()])
 
-    head_injuries = BooleanField('Head Injuries', validators=[Optional()])
-    lose_consciousness = BooleanField('Lose Consciousness', validators=[Optional()])
-    convulsions_or_seizures = BooleanField('Convulsions or Seizures', validators=[Optional()])
-    fever = BooleanField('Fever', validators=[Optional()])
+    head_injuries = StringField('Head Injuries', validators=[Optional()])
+    lose_consciousness = StringField('Lose Consciousness', validators=[Optional()])
+    convulsions_or_seizures = StringField('Convulsions or Seizures', validators=[Optional()])
+    fever = StringField('Fever', validators=[Optional()])
     allergies = StringField('Allergies', validators=[Optional()])
 
     current_physical_health = StringField('Current Physical Health', validators=[Optional()])
     last_check_up = DateField('Last Check-Up', validators=[Optional()])
-    has_physician = BooleanField('Has Physician', validators=[Optional()])
+    has_physician = StringField('Has Physician', validators=[Optional()])
     physician_name = StringField('Physician Name', validators=[Optional()])
     physician_email = StringField('Physician Email', validators=[Optional()])
     physician_number = StringField('Physician Number', validators=[Optional()])
@@ -142,7 +142,7 @@ class StudentRecordForm(FlaskForm):
     satisfaction_reason = StringField('Satisfaction Reason', validators=[Optional()])
 
     # Substance Abuse History
-    struggled_with_substance_abuse = BooleanField('Struggled with Substance Abuse', validators=[Optional()])
+    struggled_with_substance_abuse = StringField('Struggled with Substance Abuse', validators=[Optional()])
     alcohol = BooleanField('Alcohol', validators=[Optional()])
     alcohol_age_first_use = StringField('Alcohol Age of First Use', validators=[Optional()])
     alcohol_frequency_of_use = StringField('Alcohol Frequency of Use', validators=[Optional()])
@@ -216,9 +216,9 @@ class StudentRecordForm(FlaskForm):
 
 
     # Legal History
-    pending_criminal_charges = BooleanField('Pending Criminal Charges', validators=[Optional()])
-    on_probation = BooleanField('On Probation', validators=[Optional()])
-    has_been_arrested = BooleanField('Has Been Arrested', validators=[Optional()])
+    pending_criminal_charges = StringField('Pending Criminal Charges', validators=[Optional()])
+    on_probation = StringField('On Probation', validators=[Optional()])
+    has_been_arrested = StringField('Has Been Arrested', validators=[Optional()])
 
     # Additional Information
 
