@@ -112,7 +112,7 @@ def test_add_record():
         'social_support_network': 'Strong',
         'hobbies_or_interests': 'Painting, Yoga',
         'cultural_concerns': 'None',
-        'educational_history': 'Psychology',
+        'educational_history': 'In regular classes',
         'highest_level_achieved': 'Bachelor\'s Degree',
         'additional_information_education': 'Member of the Psychology Club',
         'employment_status': 'Employed',
@@ -180,7 +180,7 @@ def test_add_record():
         'other_meds_amount_used': 'Heavy',
         'other_meds_way_of_intake': 'Smoking',
 
-        'treatment_program_name' : 'form.treatment_program_name.data',
+        'treatment_program_name' : 'Test',
         'treatment_type' : 'Test',
         'treatment_date' : '1999-05-15',
         'treatment_outcome' : 'Test',
