@@ -36,7 +36,7 @@ href="/static/fonts/custom-fonts.css"
               {{ form.first_name(placeholder='First Name') }}
             </div>
             <div>
-              <label for="studNumber">Student's Number:</label>
+              <label for="studNumber">Student Number:</label>
               {{ form.student_id(placeholder='XXXX-XXXXXX') }}
             </div>
           </div>
@@ -2425,7 +2425,7 @@ href="/static/fonts/custom-fonts.css"
               <label for="confiinterview" style="width: 460px !important"
                 >Date of Intake Interview:</label
               >
-              {{ form.personal_agreement_date(type='date',class="form-width100 single-column-span", value=student.case_note.interview_date) }}
+              {{ form.interview_date(type='date',class="form-width100 single-column-span", value=student.case_note.interview_date) }}
             </div>
             <div class="left-align single-column-span">
               <label for="confinosessions" style="width: 460px !important"
