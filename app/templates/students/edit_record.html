@@ -2425,12 +2425,7 @@ href="/static/fonts/custom-fonts.css"
               <label for="confiinterview" style="width: 460px !important"
                 >Date of Intake Interview:</label
               >
-              <input
-                type="date"
-                class="form-width100 single-column-span"
-                id="confiinterview"
-                name="confiinterview"
-              />
+              {{ form.personal_agreement_date(type='date',class="form-width100 single-column-span", value=student.case_note.interview_date) }}
             </div>
             <div class="left-align single-column-span">
               <label for="confinosessions" style="width: 460px !important"

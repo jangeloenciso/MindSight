@@ -258,7 +258,7 @@ class StudentRecordForm(FlaskForm):
 
     # Case Note
     counselor_name = StringField('Reason for Referral', validators=[Optional()])
-    interview_date = DateField()
+    interview_date = DateField(validators=[Optional()])
     number_of_session = StringField('Reason for Referral', validators=[Optional()])
 
     subject_complaint = StringField('Reason for Referral', validators=[Optional()])

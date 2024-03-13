@@ -2221,18 +2221,13 @@
               <label for="confiinterview" style="width: 460px !important"
                 >Date of Intake Interview:</label
               >
-              <input
-                type="date"
-                class="form-width100 single-column-span"
-                id="confiinterview"
-                name="confiinterview"
-              />
+              {{ form.personal_agreement_date(type='date',class="form-width100 single-column-span") }}
             </div>
             <div class="left-align single-column-span">
               <label for="confinosessions" style="width: 460px !important"
                 >Number of Session:</label
               >
-              {{ form.number_of_session(class='form-width100 single-column-span') }}
+              {{ form.number_of_session( class='form-width100 single-column-span') }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
