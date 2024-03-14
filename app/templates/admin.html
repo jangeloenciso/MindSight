@@ -10,11 +10,11 @@ endblock %} {% block styles %}
 
     <nav class="counselors">
 
-      {% for counselor, title in user_counselor_data %}
-      <a href="{{ url_for('counseling_history', counselor_name=counselor) }}">
+      {% for user in admin %}
+      <a href="{{ url_for('counseling_history', full_name=user.full_name) }}">
         <button class="btn">
-          <span class="name">{{ counselor }}</span> <br>
-          <span class="title">{{ title }}</span>
+          <span class="name">{{ user.full_name }}</span> <br>
+          <span class="title">{{ user.role }}</span>
         </button>
       </a>
       {% endfor %}

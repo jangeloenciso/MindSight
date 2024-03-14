@@ -19,10 +19,6 @@ import logging, os
 from datetime import datetime
 
 
-roles_permissions = {
-    'admin': ['view', 'edit', 'search', 'delete']
-}
-
 SECURITY_QUESTIONS = {
             'question1': 'In what city did your parents meet?',
             'question2': 'Where did you go on your first solo trip?',
@@ -31,22 +27,12 @@ SECURITY_QUESTIONS = {
             'question5': 'What was the title of the first book you read?'
 }
 
-def permission_required(permission):
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            # Check if current user has the required permission
-            user_role = getattr(current_user, 'role', None)
-            if user_role == 'superadmin':
-                return func(*args, **kwargs)
-
-            if user_role in roles_permissions and permission in roles_permissions[user_role]:
-                return func(*args, **kwargs)
-            else:
-                print('You do not have permission to access this page.', 'danger')
-                return redirect(url_for('dashboard'))
-        return wrapper
-    return decorator
+ROLE = {
+    'admin1': 'Director',
+    'admin2': 'Head, Counseling and Wellness',
+    'admin3': 'GCSC Personnel-Pasig',
+    'admin4': 'Registered Psychometrician',
+}
 
 
 
@@ -71,7 +57,6 @@ def login():
 
 
 @app.route('/signup', methods=['POST', 'GET'])
-# @permission_required('create_account')
 def signup():
 
     form = SignupForm()
@@ -215,42 +200,25 @@ def identity():
 
 # pages for admin / viewing of students whose been counseled
 @app.route('/admin')
-@permission_required('view')
 @login_required
 def admin():
 
-    counselors = ['Emmanuelle Santiago',
-                  'Russel Ane Dela Cruz', 
-                  'Jake Jason Queddeng', 
-                  'Lizelle Anne Manabat']    
+    admin = User.query.all()
 
+    for user in admin:
+        user.full_name = user.first_name + ' ' + user.last_name
+        user.role = ROLE.get(user.role, 'Unknown Role')
 
-    counselor_titles = ['Director',
-                        'Head, Counseling and Wellness',
-                        'GCSC Personnel-Pasig',
-                        'Registered Psychometrician']
-    
-    counselor_data = zip(counselors, counselor_titles) 
-    user_name = current_user.first_name + ' ' + current_user.last_name
+    return render_template('admin.html', admin=admin)
 
-    # if superadmin, can access all buttons/files
-    if current_user.role == 'superadmin':
-        user_counselor_data = counselor_data
-    
-    # if admin, can only access their own button/file
-    else:
-        user_counselor_data = [(counselor, title) for counselor, title in counselor_data if counselor == user_name]
-
-    return render_template('admin.html', user_counselor_data=user_counselor_data)
 
 @app.route('/admin/history')
-@permission_required('view')
 @login_required
 def counseling_history():
 
-    counselor_name = request.args.get('counselor_name', default='', type=str)
+    full_name = request.args.get('full_name', default='', type=str)
 
-    return render_template('admin/counseling_history.html', counselor_name=counselor_name)
+    return render_template('admin/counseling_history.html', full_name=full_name)
 
 
 
@@ -298,7 +266,6 @@ def settings():
 
 
 @app.route('/students/records/search/', methods=['GET'])
-@permission_required('search')
 @login_required
 def search():
     query = request.args.get('query')
@@ -313,7 +280,6 @@ def search():
     return render_template('search.html', search_results=search_results, query=query)
 
 @app.route('/students/records/view/<student_id>/print')
-@permission_required('print')
 @login_required
 def print_record(student_id):
     data = process_data(student_id)
@@ -332,19 +298,16 @@ def print_record(student_id):
 # Student components
 
 @app.route('/level')
-@permission_required('view')
 @login_required
 def level():
     return render_template('level.html')
 
 @app.route('/JHS')
-@permission_required('view')
 @login_required
 def jhs():
     return render_template('jhs.html')
 
 @app.route('/students/records/<college>')
-@permission_required('view')
 @login_required
 def jhs_records(college):
     data = data_to_dict()
@@ -363,13 +326,11 @@ def jhs_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/SHS')
-@permission_required('view')
 @login_required
 def shs():
     return render_template('shs.html')
 
 @app.route('/students/records/<college>')
-@permission_required('view')
 @login_required
 def shs_records(college):
     data = data_to_dict()
@@ -388,13 +349,11 @@ def shs_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/colleges')
-@permission_required('view')
 @login_required
 def colleges():
     return render_template('colleges.html')
 
 @app.route('/students/records/<college>')
-@permission_required('view')
 @login_required
 def college_records(college):
     data = data_to_dict()
@@ -414,13 +373,11 @@ def college_records(college):
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/graduate')
-@permission_required('view')
 @login_required
 def graduate():
     return render_template('graduate.html')
 
 @app.route('/students/records/<college>')
-@permission_required('view')
 @login_required
 def graduate_records(college):
     data = data_to_dict()
@@ -437,7 +394,6 @@ def graduate_records(college):
 
 
 @app.route('/students/records/view/<student_id>')
-@permission_required('view')
 @login_required
 def student_record(student_id):
     data = process_data(student_id)
@@ -448,7 +404,6 @@ def student_record(student_id):
     return render_template('students/student_record.html', student_id=student_id, student_data=student_data)
 
 @app.route('/students/records/view/full_record/<student_id>', methods=['GET', 'POST'])
-@permission_required('view')
 @login_required
 def full_record(student_id):
 
@@ -516,7 +471,6 @@ def get_uploaded_file_path(student_id):
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
-@permission_required('edit')
 @login_required
 def edit_record(student_id):
     with db.session.no_autoflush:
