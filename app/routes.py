@@ -546,6 +546,26 @@ def edit_record(student_id):
                             legal_history=student.legal_history
                         )
                         db.session.add(new_conviction)
+        
+            counselor_list = request.form.getlist('counselorName')
+            interview_date = request.form.getlist('interviewDate')
+            number_of_session = request.form.getlist('numberOfSession')
+            subject_complaint = request.form.getlist('subjectComplaint')
+            objective_assessment = request.form.getlist('objectiveAssessment')
+            plan_of_action = request.form.getlist('planOfAction')
+            progress_made = request.form.getlist('progressMade')
+
+            for case_note in range(len(counselor_list)):
+                new_case_note = CaseNote(
+                    counselor_name = counselor_list[case_note],
+                    interview_date = interview_date[case_note],
+                    number_of_session = number_of_session[case_note],
+                    subject_complaint = subject_complaint[case_note],
+                    objective_assessment = objective_assessment[case_note],
+                    plan_of_action = plan_of_action[case_note],
+                    progress_made = progress_made[case_note],
+                )
+                db.session.add(new_case_note)
 
             db.session.commit()
             print('Student record updated successfully', 'success')
