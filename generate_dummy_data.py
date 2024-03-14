@@ -280,8 +280,8 @@ with app.app_context():
             student = student
         )
 
-        for _ in range(1):
-            generate_fake_student_visit(student)
+        # for _ in range(1):
+        #     generate_fake_student_visit(student)
 
         # db.session.add(personal_information)
         db.session.add(history_information)
