@@ -1967,7 +1967,7 @@ href="/static/fonts/custom-fonts.css"
             {{ form.personal_agreement_date(value=student.additional_information.personal_agreement_date) }}
           </div>
 
-          <table>
+          <table id="sessionsTable">
             <tr>
               <th>Sessions</th>
               <th>Date</th>
@@ -1976,8 +1976,8 @@ href="/static/fonts/custom-fonts.css"
               <th>Follow-Up</th>
               <th>Attended by</th>
             </tr>
-            <tr>
-              <td>Session 1</td>
+            <tr id="sessionsRow">
+              <td id="sessionId" name="sessionId">Session 1</td>
               <td>
                 <input
                   type="date"
@@ -2019,222 +2019,10 @@ href="/static/fonts/custom-fonts.css"
                 />
               </td>
             </tr>
-            <tr>
-              <td>Session 2</td>
-              <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="ses2date"
-                  name="ses2date"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses2timestart"
-                  name="ses2timestart"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses2timeend"
-                  name="ses2timeend"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses2followup"
-                  name="ses2followup"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses2attendedby"
-                  name="ses2attendedby"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Session 3</td>
-              <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="ses3date"
-                  name="ses3date"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses3timestart"
-                  name="ses3timestart"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses3timeend"
-                  name="ses3timeend"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses3followup"
-                  name="ses3followup"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses3attendedby"
-                  name="ses3attendedby"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Session 4</td>
-              <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="ses4date"
-                  name="ses4date"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses4timestart"
-                  name="ses4timestart"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses4timeend"
-                  name="ses4timeend"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses4followup"
-                  name="ses4followup"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses4attendedby"
-                  name="ses4attendedby"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Session 5</td>
-              <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="ses5date"
-                  name="ses5date"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses5timestart"
-                  name="ses5timestart"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="ses5timeend"
-                  name="ses5timeend"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses5followup"
-                  name="ses5followup"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="ses5attendedby"
-                  name="ses5attendedby"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Termination</td>
-              <td>
-                <input
-                  type="date"
-                  class="form-width100 single-column-span"
-                  id="terminationdate"
-                  name="terminationdate"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="terminationtimestart"
-                  name="terminationtimestart"
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  class="form-width100 single-column-span"
-                  id="terminationtimeend"
-                  name="terminationtimeend"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="terminationfollowup"
-                  name="terminationfollowup"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-width100 single-column-span"
-                  id="terminationattendedby"
-                  name="terminationattendedby"
-                />
-              </td>
-            </tr>
           </table>
+          <button type="button" onclick="createRow('sessionsTable', 'sessionsRow')">Add</button>
+          <button type="button" onclick="deleteRow('sessionsTable')">Delete</button>
+          <button type="button" onclick="createRow('sessionsTable', 'sessionsRow', true)"> Termination</button>
         </section>
         <!-- end: Personal Agreements -->
 

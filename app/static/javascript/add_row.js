@@ -1,5 +1,5 @@
 
-function createRow(table, row) {
+function createRow(table, row, terminate) {
     var table = document.getElementById(table);
     var templateRow = document.getElementById(row);
     var newRow = templateRow.cloneNode(true);
@@ -11,10 +11,22 @@ function createRow(table, row) {
     var inputs = newRow.getElementsByTagName('input');
     var newId = table.rows.length - 1
 
-    for (var i = 0; i < inputs.length; i++) {        
-
+    for (var i = 0; i < inputs.length; i++) { 
         inputs[i].setAttribute('id', inputs[i].getAttribute('id') + newId);
         inputs[i].setAttribute('name', inputs[i].getAttribute('name'));
+    }
+
+    if (row == "sessionsRow") {
+        var totalSessions = document.querySelectorAll('[name="sessionId"]')
+        var newSessionId = totalSessions.length + 1
+        var sessionIdElement = newRow.querySelector('[name="sessionId"]')
+        sessionIdElement.setAttribute('id', sessionIdElement.getAttribute('id') + newSessionId)
+        sessionIdElement.innerHTML = "Session " + newSessionId
+    }
+
+    if (terminate) {
+        console.log("terminate")
+        sessionIdElement.innerHTML = "Termination"
     }
 
     table.appendChild(newRow);
