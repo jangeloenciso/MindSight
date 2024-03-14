@@ -77,8 +77,8 @@
             {{ student.last_name }}, {{ student.first_name }}
           </div>
           <div class="grid-gender">{{ student.gender }}</div>
-          <div class="grid-counselor"></div>
-          <div class="grid-status"></div>
+          <div class="grid-counselor">{{ student.counselor }}</div>
+          <div class="grid-status">{{ student.status }}</div>
           <div class="grid-remark"></div>
         </a>
         {% endif %} {% endfor %}
