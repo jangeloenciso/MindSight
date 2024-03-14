@@ -60,11 +60,12 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Login successful!', 'success')
-            return redirect(url_for('dashboard'))
+            return jsonify({'success': True })
         
         else:
             flash('Login failed. Please check your username and password.', 'danger')
             print('User not found. Please check your username.', 'danger')
+            return jsonify({'error': True })
 
     return render_template('login.html', form=form, current_user=current_user)
 
