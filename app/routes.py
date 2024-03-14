@@ -514,14 +514,15 @@ def edit_record(student_id):
                     existing_sibling.gender = sibling_genders[sibling_index]
                     existing_sibling.rel_qual = sibling_rel_quals[sibling_index]
                 else:
-                    new_sibling = Sibling(
-                        name=sibling_name,
-                        age=sibling_ages[sibling_index],
-                        gender=sibling_genders[sibling_index],
-                        rel_qual=sibling_rel_quals[sibling_index],
-                        family_background=student.family_background
-                    )
-                    db.session.add(new_sibling)
+                    if len(sibling_names) > 1:
+                        new_sibling = Sibling(
+                            name=sibling_name,
+                            age=sibling_ages[sibling_index],
+                            gender=sibling_genders[sibling_index],
+                            rel_qual=sibling_rel_quals[sibling_index],
+                            family_background=student.family_background
+                        )
+                        db.session.add(new_sibling)
 
             existing_convictions = student.legal_history.convictions
             
@@ -537,13 +538,14 @@ def edit_record(student_id):
                     existing_conviction.conviction_date = conviction_dates[conviction_index]
                     existing_conviction.conviction_outcome = conviction_outcomes[conviction_index]
                 else:
-                    new_conviction = Conviction(
-                        conviction=conviction,
-                        conviction_date=conviction_dates[conviction_index],
-                        conviction_outcome=conviction_outcomes[conviction_index],
-                        legal_history=student.legal_history
-                    )
-                    db.session.add(new_conviction)
+                    if len(convictions) > 1:
+                        new_conviction = Conviction(
+                            conviction=conviction,
+                            conviction_date=conviction_dates[conviction_index],
+                            conviction_outcome=conviction_outcomes[conviction_index],
+                            legal_history=student.legal_history
+                        )
+                        db.session.add(new_conviction)
 
             db.session.commit()
             print('Student record updated successfully', 'success')
