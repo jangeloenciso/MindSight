@@ -33,6 +33,7 @@ function deleteRow(table) {
 function populateSecondDropdown() {
     var collegeDropDown = document.getElementById("collegeDropDown");
     var courseDropDown = document.getElementById("courseDropDown");
+    var yearLevelDropDown = document.getElementById("year_level");
 
     // Clear existing options
     courseDropDown.innerHTML = "";
@@ -261,5 +262,25 @@ function populateSecondDropdown() {
         disabledOption.disabled = true;
         disabledOption.selected = true;
         courseDropDown.add(disabledOption);
+    }
+
+
+    // For year level
+    yearLevelDropDown.innerHTML = "";
+    if (selectedValue === "SHS") {
+        addOptions(yearLevelDropDown, ["11", "12"]);
+    } else if (selectedValue === "JHS") {
+        addOptions(yearLevelDropDown, ["7", "8", "9", "10"]);
+    } else {
+        addOptions(yearLevelDropDown, ["1", "2", "3", "4", "5"]);
+    }
+}
+
+function addOptions(selectElement, optionsArray) {
+    for (var i = 0; i < optionsArray.length; i++) {
+        var option = document.createElement("option");
+        option.text = optionsArray[i];
+        option.value = optionsArray[i];
+        selectElement.add(option);
     }
 }
