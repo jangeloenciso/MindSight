@@ -20,7 +20,7 @@
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
       
-      <form method="post" action="{{ url_for('add_record') }}">  
+      <form method="post" action="{{ url_for('add_record') }}" autocomplete="off">  
         {{ form.csrf_token }}
         {{ form.hidden_tag() }} 
       <div class="center">
@@ -1825,7 +1825,7 @@
                 <input class='form-width100 single-column-span' id="legalConviction" name="legalConviction"/>
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="legalDate" name="legalDate"/>
+                <input class='form-width100 single-column-span' type="date" id="legalDate" name="legalDate"/>
               </td>
               <td>
                 <input class='form-width100 single-column-span' id="legalOutcome" name="legalOutcome"/>

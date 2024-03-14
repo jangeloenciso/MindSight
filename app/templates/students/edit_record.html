@@ -26,7 +26,7 @@ href="/static/fonts/custom-fonts.css"
 
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
-      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}"> 
+      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}" autocomplete="off"> 
         {{ form.hidden_tag() }}
       <div class="center">
         <section class="basic-information">
@@ -2409,82 +2409,85 @@ href="/static/fonts/custom-fonts.css"
           <header>CONFIDENTIAL</header>
           <hr style="border-top: 1px solid var(--primary-color)" />
           <header>CASE NOTE</header>
-          <div class="container">
-            <div class="left-align single-column-span">
-              <label for="conficounselor" style="width: 460px !important"
-                >Counselor/Psychometrician Name:</label
-              >
-              <input
+          <div class="">
+            <div id="caseNoteContainer" class="container">
+              <div class="left-align single-column-span">
+                <label for="conficounselor" style="width: 460px !important"
+                  >Counselor/Psychometrician Name:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="conficounselor"
-                name="conficounselor"
+                id="counselorName"
+                name="counselorName"
               />
-            </div>
-            <div class="left-align single-column-span">
-              <label for="confiinterview" style="width: 460px !important"
-                >Date of Intake Interview:</label
-              >
-              {{ form.interview_date(type='date',class="form-width100 single-column-span", value=student.case_note.interview_date) }}
-            </div>
-            <div class="left-align single-column-span">
-              <label for="confinosessions" style="width: 460px !important"
-                >Number of Session:</label
-              >
-              <input
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiinterview" style="width: 460px !important"
+                  >Date of Intake Interview:</label
+                >
+                <input class='form-width100 single-column-span' type="date" id="interviewDate" name="interviewDate"/>
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confinosessions" style="width: 460px !important"
+                  >Number of Session:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="confinosessions"
-                name="confinosessions"
+                id="numberOfSession"
+                name="numberOfSession"
               />
-            </div>
-            <hr style="border-top: 1px solid var(--primary-color)" />
+              </div>
+              <hr style="border-top: 1px solid var(--primary-color)" />
 
-            <div class="left-align single-column-span">
-              <label for="conficomplaint" style="width: 280px !important"
-                >Subject Complaint:</label
-              >
-              <input
+              <div class="left-align single-column-span">
+                <label for="conficomplaint" style="width: 280px !important"
+                  >Subject Complaint:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="conficomplaint"
-                name="conficomplaint"
+                id="subjectComplaint"
+                name="subjectComplaint"
               />
-            </div>
-            <div class="left-align single-column-span">
-              <label for="confiobjassess" style="width: 280px !important"
-                >Objective Assessment:</label
-              >
-              <input
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiobjassess" style="width: 280px !important"
+                  >Objective Assessment:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="confiobjassess"
-                name="confiobjassess"
+                id="objectiveAssessment"
+                name="objectiveAssessment"
               />
-            </div>
-            <div class="left-align single-column-span">
-              <label for="confipoa" style="width: 280px !important"
-                >Plan of Action:</label
-              >
-              <input
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confipoa" style="width: 280px !important"
+                  >Plan of Action:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="confipoa"
-                name="confipoa"
+                id="planOfAction"
+                name="planOfAction"
               />
-            </div>
-            <div class="left-align single-column-span">
-              <label for="confiprogress" style="width: 280px !important"
-                >Progress Made:</label
-              >
-              <input
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiprogress" style="width: 280px !important"
+                  >Progress Made:</label
+                >
+                <input
                 type="text"
                 class="form-width100 single-column-span"
-                id="confiprogress"
-                name="confiprogress"
+                id="progressMade"
+                name="progressMade"
               />
+              </div>
             </div>
           </div>
+          <button type="button" onclick="newCaseNote()"> add </button>
           <div class="single-column">
             <div
               style="
@@ -2523,6 +2526,7 @@ href="/static/fonts/custom-fonts.css"
   };
 </script>
 <script src={{ url_for('static', filename='javascript/add_row.js') }}></script>
+<script src={{ url_for('static', filename='javascript/new_case_note.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
 {% endblock %}
