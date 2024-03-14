@@ -20,7 +20,7 @@
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
       
-      <form method="post" action="{{ url_for('add_record') }}" autocomplete="off">  
+      <form id="submit_form" method="post" action="{{ url_for('add_record') }}" autocomplete="off">  
         {{ form.csrf_token }}
         {{ form.hidden_tag() }} 
       <div class="center">
@@ -120,7 +120,7 @@
                 </option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
-                <option value="LGBTQIA">LGBTQIA</option>
+                <option value="LGBTQIA+">LGBTQIA+</option>
                 <option value="Prefer Not to Say">Prefer Not to Say</option>
               </select>
             </div>
@@ -1928,19 +1928,17 @@
                 <option value="" disabled selected>
                   -Select Counselor-
                 </option>
-                <option value="super_admin">Emmanuelle Santiago</option>
-                <option value="admin1">Russel Ane Dela Cruz</option>
-                <option value="admin2">Jake Jason Queddeng</option>
-                <option value="admin3">Lizelle Anne Manabat</option>
+                <option value="Emmanuelle Santiago">Emmanuelle Santiago</option>
+                <option value="Russel Ane Dela Cruz">Russel Ane Dela Cruz</option>
+                <option value="Jake Jason Queddeng">Jake Jason Queddeng</option>
+                <option value="Lizelle Anne Manabat">Lizelle Anne Manabat</option>
               </select>
             </div>
             <div></div>
           </div>
           <div class="form-btn-container">
             <button class="update-btn" type="submit">Submit</button>
-            <a href="{{ url_for('login') }}">
-              <button class="cancel-btn">Cancel</button>
-            </a>
+            <button id="cancel-button" class="cancel-btn">Cancel</button>
           </div>
         </section>
         <!-- end: CONFIDENTIAL -->
@@ -1950,5 +1948,7 @@
       </form>
     </main>
     <script src={{ url_for('static', filename='javascript/add_row.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/add_success.js') }}></script>
+    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
   </body>
 </html>

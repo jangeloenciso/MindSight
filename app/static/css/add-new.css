@@ -393,3 +393,52 @@ th, td {
 
 
 }
+
+/* sweet alert/modal style */
+.swal2-popup {
+    color: var(--bg-orange);
+    font-size: 1.7rem;
+    background: var(--main-db-bg-color);
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px 15px 10px rgb(0 0 0 / 40%);
+    padding-bottom: 2em;
+    width: 40%;
+    height: auto;
+}
+
+.swal2-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: normal;
+    color: var(--primary-color);
+}
+
+.swal2-icon {
+    border: none;
+}
+
+.custom-icon {
+    aspect-ratio: 1/1;
+    width: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+.swal2-confirm.confirm-button-class,
+.swal2-cancel.cancel-button-class {
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+    border-radius: 1em;
+}
+
+.swal2-confirm.confirm-button-class {
+    color: var(--white);
+    background-color: var(--primary-color);
+
+}
+
+.swal2-cancel.cancel-button-class {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+}

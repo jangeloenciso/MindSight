@@ -997,7 +997,7 @@ def add_record():
 
         # Redirect the user to a page displaying the newly added record
         # return redirect(url_for('student_record', new_record_id=new_student.id))
-        return redirect(url_for('login'))
+        return jsonify({'success': True})
     else:
         logging.error("Form validation failed")
         logging.error(form.errors)
