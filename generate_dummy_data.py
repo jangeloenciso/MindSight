@@ -17,7 +17,7 @@ with app.app_context():
     db.session.query(FamilyBackground).delete()
     db.session.query(HealthInformation).delete()
     db.session.query(EducationalBackground).delete()
-    db.session.query(StudentVisits).delete()
+    db.session.query(Sessions).delete()
     db.session.query(HistoryInformation).delete()
     db.session.query(SocialHistory).delete()
     db.session.query(OccupationalHistory).delete()
@@ -39,13 +39,13 @@ with app.app_context():
         print(f"Generated Student ID: {student_id}")
         return student_id
 
-    def generate_fake_student_visit(student):
-        visit = StudentVisits(
-            student=student,
-            date_of_visit=random_date(date(2020, 1, 1), date(2023, 12, 31)),
-            nature_of_concern=fake.random_element(elements=["Academic", "Career", "Personal", "Social"])
-        )
-        db.session.add(visit)
+    # def generate_fake_student_visit(student):
+    #     visit = Sessions(
+    #         student=student,
+    #         date_of_visit=random_date(date(2020, 1, 1), date(2023, 12, 31)),
+    #         nature_of_concern=fake.random_element(elements=["Academic", "Career", "Personal", "Social"])
+    #     )
+    #     db.session.add(visit)
 
     def pick_course(college):
         course_prefix = college.lower()
