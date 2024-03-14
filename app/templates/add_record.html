@@ -25,6 +25,19 @@
         {{ form.hidden_tag() }} 
       <div class="center">
         <section class="basic-information">
+          <div class="single-column">
+            <div>
+            <label for="nature_of_concern">Nature of Concern:</label>
+            <select name="nature_of_concern" id="nature_of_concern">
+              <option disabled selected>-Select Nature of Concern-</option>
+              <option value="Academic">Academic</option>
+              <option value="Career">Career</option>
+              <option value="Personal">Personal</option>
+              <option value="Social">Social</option>
+            </select>
+            </div>
+            <div></div>
+          </div>
           <div class="double-column">
             <div>
               <label for="fname">First name:</label>
@@ -59,7 +72,7 @@
             <div>
               <label for="course">College/Department:</label>
               <select name="college" id="collegeDropDown" onchange="populateSecondDropdown()">
-                <option disabled selected>-Select-</option>
+                <option disabled selected>-Select College/Department-</option>
                 <option value="SHS">Senior High School</option>
                 <option value="JHS">Junior High School</option>
 
@@ -75,14 +88,16 @@
             <div>
               <label for="course">Course/Strand:</label>
               <select name="course" id="courseDropDown"> 
-                <option disabled selected>-Select-</option>
+                <option disabled selected>-Select Course/Strand-</option>
               </select>
             </div>
           </div>
           <div class="single-column">
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
-              {{ form.year_level(placeholder='Grade/Yr Level') }}
+              <select name="year_level" id="year_level"> 
+                <option disabled selected>-Select Year Level-</option>
+              </select>
             </div>
             <div></div>
           </div>
@@ -99,7 +114,15 @@
           <div class="double-column">
             <div>
               <label for="gender">Gender:</label>
-              {{ form.gender(placeholder='Gender') }}
+              <select name="gender" id="gender">
+                <option value="" disabled selected>
+                  -Select Gender-
+                </option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="LGBTQIA">LGBTQIA</option>
+                <option value="Prefer Not to Say">Prefer Not to Say</option>
+              </select>
             </div>
             <div>
 
@@ -1901,7 +1924,7 @@
                 style="width: auto !important; padding-top: 5px"
                 >Signature of the Counselor/Guidance Personnel</label
               >
-              <select name="counselor" id="counselor">
+              <select name="counselor" id="counselor" class="form-width100">
                 <option value="" disabled selected>
                   -Select Counselor-
                 </option>

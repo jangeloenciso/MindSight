@@ -85,6 +85,13 @@ def process_data(student_id=None, search_query=None):
                 'date_of_birth': record.date_of_birth,
                 'nationality': record.nationality,
                 'residence': record.residence,
+                'civil_status': record.civil_status,
+                'email_address': record.email_address,
+                'contact_number': record.contact_number,
+                'phone_number': record.phone_number,
+                'guardian_name': record.guardian_name,
+                'guardian_address': record.guardian_address,
+                'guardian_contact': record.guardian_contact,
 
                 # Family Background
                 # TODO: ADD THE NEW SHIT

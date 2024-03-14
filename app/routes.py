@@ -12,8 +12,10 @@ from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 from app.forms.forgot import ForgotPassword
 from app.forms.reset import ResetPassword
+from app.forms.upload import UploadFileForm
 from functools import wraps
-import logging
+from werkzeug.utils import secure_filename
+import logging, os
 from datetime import datetime
 
 
@@ -45,6 +47,7 @@ def permission_required(permission):
                 return redirect(url_for('dashboard'))
         return wrapper
     return decorator
+
 
 
 @app.route('/')
@@ -454,6 +457,62 @@ def full_record(student_id):
     return render_template('students/full_record.html', student_id=student_id, student_data=student_data)
 
 
+# Upload File
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg'} 
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/students/records/upload/<student_id>', methods=['GET', 'POST'])
+def upload_file(student_id):
+    app.logger.info(f"UPLOAD_FOLDER: {UPLOAD_FOLDER}")
+    
+    if 'file' not in request.files:
+        flash('No file part', 'danger')
+        return redirect(request.url)
+
+    file = request.files['file']
+
+    if file.filename == '':
+        flash('No selected file', 'danger')
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        destination = os.path.join(UPLOAD_FOLDER, filename)
+        app.logger.info(f"Destination path: {destination}")
+
+        os.makedirs(os.path.dirname(destination), exist_ok=True)
+        file.save(destination)
+
+        document = Document(filename=filename, path=destination, student_id=student_id)
+        db.session.add(document)
+        db.session.commit()
+
+        flash('File uploaded successfully', 'success')
+        return redirect(url_for('student_record', student_id=student_id))
+
+    flash('Invalid file type', 'danger')
+    return redirect(request.url)
+
+
+
+# View uploaded file
+@app.route('/get_uploaded_file_path/<student_id>')
+def get_uploaded_file_path(student_id):
+
+    document = Document.query.filter_by(student_id=student_id).first()
+
+    if document:
+        file_url = url_for('upload_file', student_id=student_id)
+        return jsonify({'file_url': file_url})
+    
+    else:
+        return jsonify({'error': 'Document not found'}), 404
+
+
+
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])
 @permission_required('edit')
 @login_required
@@ -809,7 +868,7 @@ def add_record():
         )
 
         additional_info = AdditionalInformation(
-            nature_of_concern=form.nature_of_concern.data,
+            nature_of_concern=request.form.get('nature_of_concern'),
             counselor=form.counselor.data,
             personal_agreement=form.personal_agreement.data,
             personal_agreement_date=form.personal_agreement_date.data,
@@ -860,7 +919,7 @@ def add_record():
             first_name=form.first_name.data,
             college=request.form.get('college'),
             course=request.form.get('course'),
-            year_level=form.year_level.data,
+            year_level=request.form.get('year_level'),
             campus=request.form.get('campus'),
             guardian_name = form.guardian_name.data,
             guardian_address = form.guardian_address.data,
@@ -868,7 +927,7 @@ def add_record():
 
             date_of_birth = request.form.get('date_of_birth'),
             age = form.age.data,
-            gender = form.gender.data,
+            gender = request.form.get('gender'),
             civil_status = request.form.get('civil'),
             nationality = form.nationality.data,
             religion = form.religion.data,

@@ -162,19 +162,31 @@ p {
 
 /* individual sizes per column */
 .grid-checkbox {
-    flex-basis: 1%;
+    flex-basis: 8%;
 }
 
 .grid-section {
-    flex-basis: 12%;
+    flex-basis: 18%;
 }
 
 .grid-name {
-    flex-basis: 14%;
+    flex-basis: 30%;
 }
 
 .grid-gender {
-    flex-basis: 54%;
+    flex-basis: 15%;
+}
+
+.grid-counselor {
+    flex-basis: 30%;
+}
+
+.grid-status {
+    flex-basis: 16%;
+}
+
+.grid-remark {
+    flex-basis: 20%;
 }
 
 .grid-row:nth-child(even) {
