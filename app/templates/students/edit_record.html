@@ -14,11 +14,6 @@ href="/static/fonts/custom-fonts.css"
   <div class="main">
     <div class="main-header">
       <span>Edit Record</span>
-      <div class="back-button">
-          <a href="{{ url_for ('student_record', student_id=student.student_id) }}">
-              <img src="/static/SVG/back_button.svg"/>
-          </a>
-      </div>
     </div>
     <div class="main-content">
       <header class="main-header-content">Client History and Information</header>
@@ -26,10 +21,30 @@ href="/static/fonts/custom-fonts.css"
 
       <!-- start: BASIC INFORMATION -->
       <header>Basic Information</header>
-      <form method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}" autocomplete="off"> 
+      <form id="Submit" method="POST" action="{{ url_for('edit_record', student_id=student.student_id) }}" autocomplete="off"> 
         {{ form.hidden_tag() }}
       <div class="center">
         <section class="basic-information">
+          <div class="double-column">
+            <div>
+              <label for="nature_of_concern">Nature of Concern:</label>
+              <select name="nature_of_concern" id="nature_of_concern">
+                <option value="" disabled {% if not student.nature_of_concern %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="Academic" {% if student.nature_of_concern == 'Academic' %} selected {% endif %}>Academic</option>
+                <option value="Career" {% if student.nature_of_concern == 'Career' %} selected {% endif %}>Career</option>
+                <option value="Personal" {% if student.nature_of_concern == 'Personal' %} selected {% endif %}>Personal</option>
+                <option value="Social" {% if student.nature_of_concern == 'Social' %} selected {% endif %}>Social</option>
+              </select>
+            </div>
+            <div>
+              <label for="status">Status:</label>
+              <select name="status" id="status">
+                <option value="" disabled {% if not student.nature_of_concern %} selected {% endif %}>-Select Status-</option>
+                <option value="Active" {% if student.status == 'Active' %} selected {% endif %}>Active</option>
+                <option value="Terminated" {% if student.status == 'Terminated' %} selected {% endif %}>Terminated</option>
+              </select>
+            </div>
+          </div>
           <div class="double-column">
             <div>
               <label for="fname">First name:</label>
@@ -71,7 +86,9 @@ href="/static/fonts/custom-fonts.css"
             </div>
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
-              {{ form.year_level(placeholder='Grade/Yr Level') }}
+              <select name="year_level" id="year_level"> 
+                <option disabled selected>-Select Year Level-</option>
+              </select>
             </div>
           </div>
           <div class="double-column">
@@ -87,7 +104,13 @@ href="/static/fonts/custom-fonts.css"
           <div class="double-column">
             <div>
               <label for="gender">Gender:</label>
-              {{ form.gender(placeholder='Gender') }}
+              <select name="gender" id="gender">
+                <option value="" disabled {% if not student.gender %} selected {% endif %}>-Select Gender-</option>
+                <option value="Female" {% if student.gender == 'Female' %} selected {% endif %}>Female</option>
+                <option value="Male" {% if student.gender == 'Male' %} selected {% endif %}>Male</option>
+                <option value="LGBTQIA+" {% if student.gender == 'LGBTQIA+' %} selected {% endif %}>LGBTQIA+</option>
+                <option value="Prefer Not to Say" {% if student.gender == 'Prefer Not to Say' %} selected {% endif %}>Prefer Not to Say</option>
+              </select>
             </div>
             <div>
               <label for="civil">Civil Status:</label>
@@ -118,7 +141,7 @@ href="/static/fonts/custom-fonts.css"
             </div>
             <div>
               <label for="pnumber">Phone Number:</label>
-              {{ form.contact_number(placeholder='02-12345') }}
+              {{ form.phone_number(placeholder='02-12345') }}
             </div>
           </div>
           <div class="double-column">
@@ -2289,7 +2312,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: auto !important; padding-top: 5px"
                 >Signature of the Counselor/Guidance Personnel</label
               >
-              {{ form.counselor(class='form-width100') }}
+              <select name="counselor" id="counselor" class="form-width100">
+                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
+                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
+                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
+                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
+              </select>
             </div>
             <div></div>
           </div>
@@ -2408,9 +2437,7 @@ href="/static/fonts/custom-fonts.css"
     </div>
     <div class="form-btn-container">
       <button class="update-btn" type="submit">UPDATE</button>
-      <a href="{{ url_for('student_record', student_id=student.student_id) }}">
-        <button class="cancel-btn">CANCEL</button>
-      </a>
+      <button class="cancel-btn" id="confirm">CANCEL</button>
     </div>
   </div>
 </form>
