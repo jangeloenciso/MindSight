@@ -2086,6 +2086,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="container">
             <div class="left-align">
               <label>Reason for Referral:</label>
+              {{ form.reason_for_referral(class="form-width100 single-column-span referral") }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align single-column-span">
@@ -2094,24 +2095,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Receiving Agency:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinforeceiving"
-                name="refinforeceiving"
-              />
+              {{ form.receiving_agency(class="form-width100 single-column-span referral") }}
               <label
                 for="refinfocontact"
                 style="width: 320px !important; padding-right: 10px"
                 >Contact No.:</label
               >
-              <input
-                type="tel"
-                class="form-width100 single-column-span referral"
-                id="refinfocontact"
-                name="refinfocontact"
-              />
+              {{ form.receiving_contact_number(class="form-width100 single-column-span referral") }}
             </div>
             <div class="left-align single-column-span">
               <label
@@ -2119,35 +2109,19 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 200px !important; padding-right: 10px"
                 >Name:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="width: 1110px; margin-right: 20px"
-                id="refinfoname"
-                name="refinfoname"
-              />
+              {{ form.receiving_name(class="form-width100 single-column-span referral") }}
               <label
                 for="refinfoemail"
                 style="width: 200px !important; padding-right: 10px"
                 >Email:</label
               >
-              <input
-                type="email"
-                class="form-width100 single-column-span referral"
-                id="refinfoemail"
-                name="refinfoemail"
-              />
+              {{ form.receiving_email(class="form-width100 single-column-span referral") }}
             </div>
             <div class="left-align single-column-span">
               <label for="refinfoofficeadd" style="width: 160px !important"
                 >Office Address:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="refinfoofficeadd"
-                name="refinfoofficeadd"
-              />
+              {{ form.office_address(class="form-width100 single-column-span referral") }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -2155,34 +2129,7 @@ href="/static/fonts/custom-fonts.css"
               <label for="refinfoas" style="width: 510px !important"
                 >Appointment Schedule:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="refinfoas"
-                name="refinfoas"
-              />
-              <label
-                for="refinfodate"
-                style="width: 210px !important; margin-left: 10px"
-                >Date:</label
-              >
-              <input
-                type="date"
-                class="form-width100 single-column-span"
-                id="refinfodate"
-                name="refinfodate"
-              />
-              <label
-                for="refinfotime"
-                style="width: 210px !important; margin-left: 10px"
-                >Time:</label
-              >
-              <input
-                type="time"
-                class="form-width100 single-column-span"
-                id="refinfotime"
-                name="refinfotime"
-              />
+              {{ form.appointment_schedule(class="form-width100 single-column-span referral") }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align">
@@ -2250,6 +2197,7 @@ href="/static/fonts/custom-fonts.css"
           <header>CONFIDENTIAL</header>
           <hr style="border-top: 1px solid var(--primary-color)" />
           <header>CASE NOTE</header>
+          {% if student.case_note == [] %}
           <div class="">
             <div id="caseNoteContainer" class="container">
               <div class="left-align single-column-span">
@@ -2328,6 +2276,112 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
+          <button type="button" onclick="newCaseNote()"> add </button>
+          <div class="single-column">
+            <div
+              style="
+                display: flex !important;
+                flex-direction: column-reverse !important;
+              "
+            >
+              <label
+                for="Counselorsignature"
+                style="width: auto !important; padding-top: 5px"
+                >Signature of the Counselor/Guidance Personnel</label
+              >
+              {{ form.counselor(class='form-width100') }}
+            </div>
+            <div></div>
+          </div>
+          {% else %}
+          {% for case_note in student.case_note %}
+          <div class="">
+            <div id="caseNoteContainer" class="container">
+              <div class="left-align single-column-span">
+                <label for="conficounselor" style="width: 460px !important"
+                  >Counselor/Psychometrician Name:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="counselorName"
+                name="counselorName"
+                value={{ case_note.counselor_name }}
+              />
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiinterview" style="width: 460px !important"
+                  >Date of Intake Interview:</label
+                >
+                <input class='form-width100 single-column-span' type="date" id="interviewDate" name="interviewDate"
+                value={{ case_note.interview_date }}/>
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confinosessions" style="width: 460px !important"
+                  >Number of Session:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="numberOfSession"
+                name="numberOfSession"
+                value={{ case_note.number_of_session }}
+              />
+              </div>
+              <hr style="border-top: 1px solid var(--primary-color)" />
+
+              <div class="left-align single-column-span">
+                <label for="conficomplaint" style="width: 280px !important"
+                  >Subject Complaint:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="subjectComplaint"
+                name="subjectComplaint"
+                value={{ case_note.subject_complaint }}
+              />
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiobjassess" style="width: 280px !important"
+                  >Objective Assessment:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="objectiveAssessment"
+                name="objectiveAssessment"
+                value={{ case_note.objective_assessment }}
+              />
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confipoa" style="width: 280px !important"
+                  >Plan of Action:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="planOfAction"
+                name="planOfAction"
+                value={{ case_note.plan_of_action }}
+              />
+              </div>
+              <div class="left-align single-column-span">
+                <label for="confiprogress" style="width: 280px !important"
+                  >Progress Made:</label
+                >
+                <input
+                type="text"
+                class="form-width100 single-column-span"
+                id="progressMade"
+                name="progressMade"
+                value={{ case_note.progress_made }}
+              />
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% endif %}
           <button type="button" onclick="newCaseNote()"> add </button>
           <div class="single-column">
             <div

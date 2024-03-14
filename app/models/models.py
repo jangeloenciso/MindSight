@@ -99,7 +99,7 @@ class BasicInformation(db.Model):
 
     referral_information = db.relationship('ReferralInformation', backref='student', uselist=False)
 
-    case_note = db.relationship('CaseNote', backref='student', uselist=False)
+    case_note = db.relationship('CaseNote', backref='student')
 
     sessions = db.relationship('Sessions', backref='student')
 

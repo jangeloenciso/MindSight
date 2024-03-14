@@ -531,14 +531,14 @@ def edit_record(student_id):
                 joinedload(BasicInformation.substance_abuse_history),
                 joinedload(BasicInformation.legal_history),
                 joinedload(BasicInformation.additional_information),
-                joinedload(BasicInformation.sessions)
+                joinedload(BasicInformation.sessions),
+                joinedload(BasicInformation.case_note)
             )
             .filter_by(student_id=student_id)
             .first()
         )
+
         
-        print("PRINTING")
-        print(student.student_id)
         
         # if not student:
         #     flash('Student not found', 'danger')
@@ -576,7 +576,7 @@ def edit_record(student_id):
                     existing_sibling.gender = sibling_genders[sibling_index]
                     existing_sibling.rel_qual = sibling_rel_quals[sibling_index]
                 else:
-                    if len(sibling_names) >= 1:
+                    if len(sibling_names) > 1:
                         new_sibling = Sibling(
                             name=sibling_name,
                             age=sibling_ages[sibling_index],
@@ -617,19 +617,20 @@ def edit_record(student_id):
             plan_of_action = request.form.getlist('planOfAction')
             progress_made = request.form.getlist('progressMade')
 
-            if len(counselor_list) > 1:
+            if any(counselor_list) or any(interview_date) or any(number_of_session) or any(subject_complaint) or any(objective_assessment) or any(plan_of_action) or any(progress_made):
                 for case_note in range(len(counselor_list)):
-                    new_case_note = CaseNote(
-                        counselor_name = counselor_list[case_note],
-                        interview_date = interview_date[case_note],
-                        number_of_session = number_of_session[case_note],
-                        subject_complaint = subject_complaint[case_note],
-                        objective_assessment = objective_assessment[case_note],
-                        plan_of_action = plan_of_action[case_note],
-                        progress_made = progress_made[case_note],
-                        student_id=student.student_id
-                    )
-                    db.session.add(new_case_note)
+                    if len(counselor_list) >= 1:
+                        new_case_note = CaseNote(
+                            counselor_name = counselor_list[case_note],
+                            interview_date = interview_date[case_note],
+                            number_of_session = number_of_session[case_note],
+                            subject_complaint = subject_complaint[case_note],
+                            objective_assessment = objective_assessment[case_note],
+                            plan_of_action = plan_of_action[case_note],
+                            progress_made = progress_made[case_note],
+                            student_id=student.student_id
+                        )
+                        db.session.add(new_case_note)
 
             session_date = request.form.getlist('sessionDate')
             session_time_start = request.form.getlist('sessionTimeStart')
