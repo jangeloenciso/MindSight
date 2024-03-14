@@ -45,7 +45,7 @@ def process_data(student_id=None, search_query=None):
             .options(joinedload(BasicInformation.substance_abuse_history))
             .options(joinedload(BasicInformation.legal_history))
             .options(joinedload(BasicInformation.additional_information))
-            .options(joinedload(BasicInformation.visits))
+            .options(joinedload(BasicInformation.sessions))
             .all()
         )
 
@@ -60,11 +60,7 @@ def process_data(student_id=None, search_query=None):
             substance_abuse_history = record.substance_abuse_history
             legal_history = record.legal_history
             additional_information = record.additional_information
-            student_visits = record.visits
 
-
-            nature_of_concern = [visit.nature_of_concern for visit in record.visits]
-            nature_of_concern_str = ', '.join(nature_of_concern)
             
             data_list.append({
                 # Student Information
@@ -100,7 +96,6 @@ def process_data(student_id=None, search_query=None):
                 # 'learning_styles': psychological_assessments.learning_styles,
                 # 'personality_test': psychological_assessments.personality_test,
                 # 'iq_test': psychological_assessments.iq_test,
-                'nature_of_concern': nature_of_concern_str,
             })
             
         df = pd.DataFrame(data_list)

@@ -101,7 +101,7 @@ class BasicInformation(db.Model):
 
     case_note = db.relationship('CaseNote', backref='student', uselist=False)
 
-    visits = db.relationship('StudentVisits', backref='student')
+    sessions = db.relationship('Sessions', backref='student')
 
 
 class HistoryInformation(db.Model):
@@ -439,12 +439,16 @@ class CaseNote(db.Model):
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 
-class StudentVisits(db.Model):
-    __tablename__ = 'student_visits'
+class Sessions(db.Model):
+    __tablename__ = 'sessions'
 
-    visit_id = db.Column(db.Integer, primary_key=True)
-    date_of_visit = db.Column(db.Date, nullable=False)
-    nature_of_concern = db.Column(db.String(100))
+    id = db.Column(db.Integer, primary_key=True)
+    
+    session_date = db.Column(db.Date())
+    session_time_start = db.Column(db.Time())
+    session_time_end = db.Column(db.Time())
+    session_follow_up = db.Column(db.String(500))
+    session_attended_by = db.Column(db.String(500))
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
