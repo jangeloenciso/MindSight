@@ -1,3 +1,35 @@
+document.getElementById('submit_form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            swal.fire({
+                title: 'Error!',
+                text: 'username or password is incorrect.',
+                iconHtml: '<img class="custom-icon" src="static/error.png">',
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonText: 'Try Again',
+                customClass: {
+                    cancelButton: 'cancel-button-class-error',
+                    title: 'title-error'
+                }
+            })
+        }
+        else {
+            window.location.href = 'dashboard';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
 document.getElementById('toggleConfirmation').addEventListener('click', function() {
     swal.fire({
         title: "Data Privacy Act of 2012",

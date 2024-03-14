@@ -268,9 +268,9 @@ input:-webkit-autofill {
 
 /* for modal style */
 .swal2-popup {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     width: auto;
-    color: var(--primary-color);
+    color: var(--bg-orange);
     background: var(--main-db-bg-color);
     border-radius: 1.2rem;
     box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
@@ -279,13 +279,13 @@ input:-webkit-autofill {
 }
 
 .swal2-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
     padding-bottom: 1em;
-    border-bottom: 2px solid var(--bg-orange);
 }
 
 .swal2-confirm.confirm-button-class,
+.swal2-cancel.cancel-button-class-error,
 .swal2-cancel.cancel-button-class {
     padding: 0.5em 2em;
     font-size: 1.2rem;
@@ -293,7 +293,8 @@ input:-webkit-autofill {
     font-weight: 400;
 }
 
-.swal2-confirm.confirm-button-class {
+.swal2-confirm.confirm-button-class,
+.swal2-cancel.cancel-button-class-error {
     color: var(--white);
     background-color: var(--primary-color);
 }
@@ -309,11 +310,24 @@ input:-webkit-autofill {
     margin: 0;
     width: 100%;
     text-align: justify;
+    border-top: 2px solid var(--bg-orange);
+    color: var(--primary-color);
+    font-size: 1.2rem;
 }
 
 .modal a {
     color: var(--primary-color);
 }
+
+.custom-icon {
+    aspect-ratio: 1/1;
+    width: 2em;
+}
+
+.swal2-title.title-error {
+    font-size: 2.5rem;
+}
+
 
 /* login button */
 .login-btn-container {
