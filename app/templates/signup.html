@@ -21,9 +21,11 @@ endblock %} {% block styles %}
               <p>Sign up</p>
 
               <select name="role" required>
-                <option value="" disabled selected>Select your role</option>
-                <option value="superadmin">Super Admin</option>
-                <option value="admin">Admin</option>
+                <option value="" disabled selected>Select Role</option>
+                <option value="admin1">Director</option>
+                <option value="admin2">Head, Counseling and Wellness</option>
+                <option value="admin3">GCSC Personnel-Pasig</option>
+                <option value="admin4">Registered Psychometrician</option>
               </select>
               {% for error in form.role.errors %}
               <div class="error-message">{{ error }}</div>
