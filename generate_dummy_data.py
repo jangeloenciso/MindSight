@@ -71,7 +71,7 @@ with app.app_context():
             # gpa=round(random.uniform(1.0, 5.0), 2),
             campus=fake.random_element(elements=["Boni", "Pasig"]),
             age=random.randint(18, 30),
-            gender=fake.random_element(elements=("Male", "Female", "LGBTQ")),
+            gender=fake.random_element(elements=("Male", "Female", "LGBTQIA+")),
             contact_number=fake.random_int(min=100000, max=99999999999),
             religion=fake.random_element(elements=religion_names),
             date_of_birth=random_date(date(1990, 1, 1), date(2005, 1, 1)),
