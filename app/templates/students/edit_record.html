@@ -1976,49 +1976,102 @@ href="/static/fonts/custom-fonts.css"
               <th>Follow-Up</th>
               <th>Attended by</th>
             </tr>
+            {% if student.sessions == [] %}
             <tr id="sessionsRow">
               <td id="sessionId" name="sessionId">Session 1</td>
               <td>
                 <input
                   type="date"
                   class="form-width100 single-column-span"
-                  id="ses1date"
-                  name="ses1date"
+                  id="sessionDate"
+                  name="sessionDate"
                 />
               </td>
               <td>
                 <input
                   type="time"
                   class="form-width100 single-column-span"
-                  id="ses1timestart"
-                  name="ses1timestart"
+                  id="sessionTimeStart"
+                  name="sessionTimeStart"
                 />
               </td>
               <td>
                 <input
                   type="time"
                   class="form-width100 single-column-span"
-                  id="ses1timeend"
-                  name="ses1timeend"
+                  id="sessionTimeEnd"
+                  name="sessionTimeEnd"
                 />
               </td>
               <td>
                 <input
                   type="text"
                   class="form-width100 single-column-span"
-                  id="ses1followup"
-                  name="ses1followup"
+                  id="sessionFollowUp"
+                  name="sessionFollowUp"
                 />
               </td>
               <td>
                 <input
                   type="text"
                   class="form-width100 single-column-span"
-                  id="ses1attendedby"
-                  name="ses1attendedby"
+                  id="sessionAttendedBy"
+                  name="sessionAttendedBy"
                 />
               </td>
             </tr>
+            {% else %}
+            {% for session in student.sessions %}
+            <tr id="sessionsRow" onload="createRow('sessionsTable', 'sessionsRow')">
+              <td id="sessionId" name="sessionId">Session {{ loop.index }}</td>
+              <td>
+                <input
+                  type="date"
+                  class="form-width100 single-column-span"
+                  id="sessionDate"
+                  name="sessionDate"
+                  value={{ session.session_date }}
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="sessionTimeStart"
+                  name="sessionTimeStart"
+                  value={{ session.session_time_start }}
+                />
+              </td>
+              <td>
+                <input
+                  type="time"
+                  class="form-width100 single-column-span"
+                  id="sessionTimeEnd"
+                  name="sessionTimeEnd"
+                  value={{ session.session_time_end }}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="sessionFollowUp"
+                  name="sessionFollowUp"
+                  value={{ session.session_follow_up }}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-width100 single-column-span"
+                  id="sessionAttendedBy"
+                  name="sessionAttendedBy"
+                  value={{ session.session_attended_by }}
+                />
+              </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
           </table>
           <button type="button" onclick="createRow('sessionsTable', 'sessionsRow')">Add</button>
           <button type="button" onclick="deleteRow('sessionsTable')">Delete</button>

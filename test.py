@@ -11,10 +11,10 @@ with sync_playwright() as p:
     page.click('button.swal2-confirm')
 
     # Basic Information
-    page.fill("input[name=first_name]", "Thor")
-    page.fill("input[name=last_name]", "Pirate")
+    page.fill("input[name=first_name]", "Ludwig")
+    page.fill("input[name=last_name]", "Ahgren")
 
-    page.fill("input[name=student_id]", "2012-121212")
+    page.fill("input[name=student_id]", "2012-000007")
 
     page.select_option("#collegeDropDown", "CEA")
     page.select_option("#courseDropDown", "Bachelor of Science in Electrical Engineering")
