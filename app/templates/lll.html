@@ -1,17 +1,17 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Students{%
     endblock %} {% block styles %}
-    <link rel="stylesheet" href="/static/css/level.css" />
+    <link rel="stylesheet" href="/static/css/graduate.css" />
     {% endblock %} {% block content %}
     
     <div class="right">
       <div class="main">
         <div class="main-header">
-          <span>EDUCATION LEVEL</span>
+          <span>STUDENT RECORDS - LIFELONG LEARNERS</span>
           <p>
-            Please click on the following <b>LEVEL</b> to view the corresponding
+            Please click on the following <b>LIFELONG LEARNERS</b> to view the corresponding
             records:
           </p>
-        
+         
           <div class="search-upload-container">
              <!-- search -->
             <div class="search-container">
@@ -29,24 +29,11 @@
     
         <!-- directory buttons -->
         <div class="main-buttons">
-            <a href="{{ url_for ('jhs') }}">
-              <button>Junior High
-              </button></a
-            >
-            <a href="{{ url_for ('shs') }}">
-                <button>Senior High
-                </button></a
-            >
-            <a href="{{ url_for ('colleges')}}">
-              <button>College
-              </button></a
-            >
-            <a href="{{ url_for ('graduate') }}">
-              <button>Graduate School
-              </button></a
-            >
-            <a href="{{ url_for ('lll') }}">
-              <button>Lifelong Learners
+          <a href="{{ url_for ('lll_records', college='LLL') }}">
+              <button>
+                <img src="/static/graduate.png" />
+                <span
+                  >Lifelong Learners</span>
               </button></a
             >
         </div>

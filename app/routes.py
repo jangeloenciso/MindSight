@@ -392,6 +392,26 @@ def graduate_records(college):
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
+@app.route('/LLL')
+@login_required
+def lll():
+    return render_template('lll.html')
+
+@app.route('/students/records/<college>')
+@login_required
+def lll_records(college):
+    data = data_to_dict()
+
+    def college_name(college):
+        college_dict = {
+            'LLL': 'Lifelong Learners',
+        }
+        return college_dict.get(college)
+
+    print(college_name(college))
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+
 
 @app.route('/students/records/view/<student_id>')
 @login_required

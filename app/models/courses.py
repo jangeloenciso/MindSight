@@ -58,5 +58,8 @@ course_names = {
         ],
         "Graduate School" : [
             "GRADUATE"
+        ],
+        "Lifelong Learners" : [
+            "LLL"
         ]
 }

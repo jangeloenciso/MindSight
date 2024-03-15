@@ -266,7 +266,7 @@ function populateSecondDropdown() {
         physicalEducationOption.value = "Bachelor of Science in Physical Education (Boni Campus)";
         courseDropDown.add(physicalEducationOption);
 
-    } else if (selectedValue === "Grad") {
+    } else if (selectedValue === "Grad" || selectedValue === "LLL") {
         // For Grad
 
         var disabledOption = document.createElement("option");

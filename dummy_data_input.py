@@ -100,3 +100,7 @@ grade_level = [
 graduate = [
     "GRADUATE"
 ]
+
+lifelong_learners = [
+    "LIFELONG LEARNERS"
+]
