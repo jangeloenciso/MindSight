@@ -402,6 +402,7 @@ class AdditionalInformation(db.Model):
     other_information = db.Column(db.String(500))
 
     status = db.Column(db.String(20))
+    remarks = db.Column(db.String(30))
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 

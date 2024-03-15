@@ -517,6 +517,9 @@ def edit_record(student_id):
             status = request.form.get('status')
             student.additional_information.status = status
 
+            remarks = request.form.get('remarks')
+            student.additional_information.remarks = remarks
+
             # TODO: Handle delete
             existing_siblings = student.family_background.siblings
 

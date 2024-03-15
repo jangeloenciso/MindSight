@@ -59,7 +59,7 @@
       <div class="grid-gender">Gender</div>
       <div class="grid-counselor">Counselor</div>
       <div class="grid-status">Status</div>
-      <div class="grid-remark">Remark</div>
+      <div class="grid-remark">Remarks</div>
     </div>
         <div class="row-container">
         {% for record in search_results %}
@@ -70,7 +70,7 @@
             <div class="grid-gender">{{ record.gender }}</div>
             <div class="grid-counselor">{{ record.counselor }}</div>
             <div class="grid-status">{{ record.status }}</div>
-            <div class="grid-remark"></div>
+            <div class="grid-remark">{{ record.remarks }}</div>
             </a>
         {% endfor %}
         </div>

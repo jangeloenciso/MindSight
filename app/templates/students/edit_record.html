@@ -67,6 +67,7 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="course">College/Department:</label>
               <select name="college" id="collegeDropDown" onchange="populateSecondDropdown()" onload="populateSecondDropdown()">
+                <option value="" disabled {% if not student.college %} selected {% endif %}>-Select College/Department-</option>
                 <option value="SHS" {% if student.college == 'SHS' %} selected {% endif %}>Senior High School</option>
                 <option value="JHS" {% if student.college == 'JHS' %} selected {% endif %}>Junior High School</option>
                 <option value="CEA" {% if student.college == 'CEA' %} selected {% endif %}>College of Engineering and Architecture</option>
@@ -75,6 +76,7 @@ href="/static/fonts/custom-fonts.css"
                 <option value="CAS" {% if student.college == 'CAS' %} selected {% endif %}>College of Arts and Sciences</option>
                 <option value="IHK" {% if student.college == 'IHK' %} selected {% endif %}>Institute of Human Kinetics</option>
                 <option value="Grad" {% if student.college == 'Grad' %} selected {% endif %}>Graduate School</option>
+                <option value="LLL" {% if student.college == 'LLL' %} selected {% endif %}>Lifelong Learners</option>
             </select>
             
             </div>
@@ -87,18 +89,18 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
               <select name="year_level" id="year_level"> 
-                <option disabled selected>-Select Year Level-</option>
+                <option disabled selected>{{ student.year_level }}</option>
               </select>
             </div>
           </div>
           <div class="double-column">
             <div>
               <label for="dob">Date of Birth:</label>
-              {{ form.date_of_birth(placeholder='Date of Birth') }}
+              {{ form.date_of_birth(placeholder='Date of Birth', onchange='setAge()', id='dob') }}
             </div>
             <div>
               <label for="age">Age:</label>
-              {{ form.age(placeholder='Age') }}
+              {{ form.age(placeholder='Age', id='age') }}
             </div>
           </div>
           <div class="double-column">
@@ -2313,7 +2315,7 @@ href="/static/fonts/custom-fonts.css"
                 >Signature of the Counselor/Guidance Personnel</label
               >
               <select name="counselor" id="counselor" class="form-width100">
-                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
                 <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
                 <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
                 <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
@@ -2412,11 +2414,12 @@ href="/static/fonts/custom-fonts.css"
           {% endfor %}
           {% endif %}
           <button type="button" onclick="newCaseNote()"> add </button>
-          <div class="single-column">
+          <div class="double-column">
             <div
               style="
                 display: flex !important;
                 flex-direction: column-reverse !important;
+                align-items: center;
               "
             >
               <label
@@ -2425,14 +2428,34 @@ href="/static/fonts/custom-fonts.css"
                 >Signature of the Counselor/Guidance Personnel</label
               >
               <select name="counselor" id="counselor" class="form-width100">
-                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
                 <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
                 <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
                 <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
                 <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
               </select>
             </div>
-            <div></div>
+            <!-- change if needed -->
+            <div
+              style="
+                display: flex !important;
+                flex-direction: column-reverse !important;
+                align-items: center;
+              "
+            >
+              <label
+                for="Counselorsignature"
+                style="width: auto !important; padding-top: 5px"
+                >Remarks</label
+              >
+              <select name="remarks" id="remarks" class="form-width100">
+                <option value="" disabled selected>-Select Remarks-</option>
+                <option value="For Follow-Up">For Follow-Up</option>
+                <option value="For Outside Referral">For Outside Referral</option>
+                <option value="Case Reopen">Case Reopen</option>
+                <!-- add if needed -->
+              </select>
+            </div>
           </div>
         </section>
         <!-- end: CONFIDENTIAL -->

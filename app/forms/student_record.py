@@ -228,6 +228,7 @@ class StudentRecordForm(FlaskForm):
     personal_agreement_date = DateTimeLocalField()
     
     status = StringField('Status', validators=[Optional()])
+    remarks = StringField('Remarks', validators=[Optional()])
 
     referral_source = StringField('', validators=[Optional()])
 
