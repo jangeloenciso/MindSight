@@ -135,45 +135,41 @@
 
 /* individual sizes per column */
 .grid-date {
-    flex-basis: 18%;
+    flex-basis: 13%;
 }
 
 .grid-section {
-    flex-basis: 30%;
-}
-
-.grid-college {
-    flex-basis: 30%;
+    flex-basis: 18%;
 }
 
 .grid-name {
-    flex-basis: 40%;
+    flex-basis: 20%;
+}
+
+.grid-college {
+    flex-basis: 33%;
 }
 
 .grid-gender {
-    flex-basis: 25%;
+    flex-basis: 15%;
 }
 
 .grid-counselor {
-    flex-basis: 40%;
+    flex-basis: 20%;
+}
+
+.grid-status {
+    flex-basis: 16%;
+}
+
+.grid-remark {
+    flex-basis: 20%;
 }
 
 .grid-row:nth-child(even) {
     background-color: #C5CFC6;
 }
 
-/* checkbox in odd rows */
-.grid-row input[type="checkbox"] {
-    transform: scale(1.7);
-    border-radius: 20px;
-    accent-color: var(--primary-color);
-}
-
-/* checkbox in even rows */
-.grid-row:nth-child(even) input[type="checkbox"] {
-    border-radius: 20px;
-    accent-color: var(--bg-orange);
-}
 
 /* Sidebar active indicator */
 .sidebar-buttons #admin-container::before {

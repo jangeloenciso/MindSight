@@ -41,10 +41,12 @@
     <div class="grid-header">
       <div class="grid-date">Date</div>
       <div class="grid-section">Student ID</div>
-      <div class="grid-college">College</div>
       <div class="grid-name">Name</div>
+      <div class="grid-college">College/Strand/Grade Level</div>
       <div class="grid-gender">Gender</div>
       <div class="grid-counselor">Counselor</div>
+      <div class="grid-status">Status</div>
+      <div class="grid-remark">Remarks</div>
     </div>
     <div class="grid-container">
       <!-- sample data rows -->
@@ -54,12 +56,16 @@
           href="{{ url_for('student_record', student_id=student.student_id) }}"
           class="grid-row"
         >
-          <div class="grid-date"></div>
+          <div class="grid-date">{{ student.date }}</div>
           <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-name">
+            {{ student.last_name }}, {{ student.first_name }}
+          </div>
           <div class="grid-college">{{ student.college }}</div>
-          <div class="grid-name">{{ student.last_name }}, {{ student.first_name }} </div>
-          <div class="grid-gender"> {{ student.gender }}</div>
-          <div class="grid-counselor"> {{ student.gender }}</div>
+          <div class="grid-gender">{{ student.gender }}</div>
+          <div class="grid-counselor">{{ student.counselor }}</div>
+          <div class="grid-status">{{ student.status }}</div>
+          <div class="grid-remark">{{ student.remarks }}</div>
         </a>
         {% endif %} {% endfor %}
         <!-- Add more rows as needed -->
