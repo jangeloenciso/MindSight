@@ -414,7 +414,7 @@ def graduate_records(college):
 def lll():
     return render_template('lll.html')
 
-@app.route('/students/records/<college>')
+@app.route('/students/records/LLL/<college>')
 @login_required
 def lll_records(college):
     data = data_to_dict()
