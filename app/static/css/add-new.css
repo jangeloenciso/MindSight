@@ -362,6 +362,11 @@ th, td {
 }
 
 
+select, button, input[type="checkbox"] {
+    cursor: pointer;
+}
+
+
 
 .update-btn {
     width: 200px;
