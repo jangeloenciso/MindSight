@@ -514,6 +514,8 @@ def edit_record(student_id):
             form.populate_obj(student.legal_history)
             form.populate_obj(student.additional_information)
 
+            status = request.form.get('status')
+            student.additional_information.status = status
 
             # TODO: Handle delete
             existing_siblings = student.family_background.siblings

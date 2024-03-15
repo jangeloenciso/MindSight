@@ -39,9 +39,9 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="status">Status:</label>
               <select name="status" id="status">
-                <option value="" disabled {% if not student.nature_of_concern %} selected {% endif %}>-Select Status-</option>
-                <option value="Active" {% if student.status == 'Active' %} selected {% endif %}>Active</option>
-                <option value="Terminated" {% if student.status == 'Terminated' %} selected {% endif %}>Terminated</option>
+                <option value="">-Select Status-</option>
+                <option value="Active">Active</option>
+                <option value="Terminated">Terminated</option>
               </select>
             </div>
           </div>
@@ -2424,7 +2424,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: auto !important; padding-top: 5px"
                 >Signature of the Counselor/Guidance Personnel</label
               >
-              {{ form.counselor(class='form-width100') }}
+              <select name="counselor" id="counselor" class="form-width100">
+                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
+                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
+                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
+                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
+              </select>
             </div>
             <div></div>
           </div>

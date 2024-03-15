@@ -98,7 +98,8 @@ def process_data(student_id=None, search_query=None):
                 # 'iq_test': psychological_assessments.iq_test,
 
                 'counselor': record.additional_information.counselor,
-                'nature_of_concern': record.additional_information.nature_of_concern
+                'nature_of_concern': record.additional_information.nature_of_concern,
+                'status': record.additional_information.status
             })
             
         df = pd.DataFrame(data_list)

@@ -401,6 +401,8 @@ class AdditionalInformation(db.Model):
     things_to_change = db.Column(db.String(500))
     other_information = db.Column(db.String(500))
 
+    status = db.Column(db.String(20))
+
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
 # TODO: Add this, also figure out if you're going to separate it or not
@@ -453,3 +455,19 @@ class Sessions(db.Model):
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
     # Plan of action, recommendation, if for follow up or not,
+
+
+    # Please ignore
+class Document(db.Model):
+    __tablename__ = 'documents'
+
+    file_id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(255), nullable=False)
+    path = db.Column(db.String(255), nullable=False)
+
+    student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
+
+    def __init__(self, filename, path, student_id):
+        self.filename = filename
+        self.path = path
+        self.student_id = student_id
