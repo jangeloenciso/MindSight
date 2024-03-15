@@ -1134,8 +1134,11 @@
                 
             </tr>
           </table>
-          <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
-          <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
+          
+          <div class="BtnContainer">
+            <button class="AddBtn Btn" type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD NEW ROW</button>
+            <button class="DelBtn Btn" type="button" onclick="deleteRow('siblingsTable')">REMOVE LAST ROW</button>
+           </div>
 
           <div class="left-align">
             <label for="famhistoryneglect1"
@@ -1833,9 +1836,10 @@
               </td>
             </tr>
           </table>
-
-          <button type="button" onclick="createRow('legalTable', 'legalRow')">ADD</button>
-          <button type="button" onclick="deleteRow('legalTable')">DELETE</button>
+          <div class="BtnContainer">
+          <button class="AddBtn Btn" type="button" onclick="createRow('legalTable', 'legalRow')">ADD NEW ROW</button>
+          <button class="DelBtn Btn" type="button" onclick="deleteRow('legalTable')">REMOVE LAST ROW</button>
+          </div>
         </section>
         <!-- end: Legal History -->
 

@@ -323,6 +323,46 @@ th, td {
 }
 
 
+/* Add and delete buttons */
+.BtnContainer {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    margin-bottom: 3em;
+}
+
+.Btn {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--fade-text-blue);
+    transition: var(--smooth-transition);
+}
+
+.Btn:hover {
+    transform: scale(1.05);
+}
+
+.AddBtn {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.AddBtn:hover {
+    background-color: #0E2E5E;
+}
+
+.DelBtn {
+    color: var(--primary-color);
+}
+
+.DelBtn:hover {
+    background-color: #D11A2A;
+    border: 1px solid #D11A2A;
+    color: var(--white);
+}
+
+
+
 .update-btn {
     width: 200px;
     padding: 7px 62px;
@@ -350,49 +390,6 @@ th, td {
     background-color: #084b65;
 }
 
-/* responsiveness */
-@media screen and (width <=1127px) {
-    .double-column, .single-column, .left-align, .left-align-checkbox {
-        justify-content: center;
-    }
-
-    .left-align, .left-align-checkbox {
-        width: 400px !important;
-        padding: 0;
-    }
-
-    .personalagree .container, .refinfo .container, .confidential .container {
-        width: 400px !important;
-    }
-
-
-
-    .left-align-checkbox li {
-        background-color: #f3ded0;
-        border-radius: 5px;
-    }
-
-    .single-column-span, .resp, .tri-column, .raisedby, .relby {
-        flex-direction: column;
-    }
-
-
-    .treatmenttype {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .treatmenttype label {
-        padding-right: 0;
-    }
-
-    .referral {
-        width: 358px !important;
-    }
-
-
-
-}
 
 /* sweet alert/modal style */
 .swal2-popup {
@@ -441,4 +438,48 @@ th, td {
     color: var(--primary-color);
     background-color: transparent;
     border: 2px solid var(--primary-color);
+}
+
+/* responsiveness */
+@media screen and (width <=1127px) {
+    .double-column, .single-column, .left-align, .left-align-checkbox {
+        justify-content: center;
+    }
+
+    .left-align, .left-align-checkbox {
+        width: 400px !important;
+        padding: 0;
+    }
+
+    .personalagree .container, .refinfo .container, .confidential .container {
+        width: 400px !important;
+    }
+
+
+
+    .left-align-checkbox li {
+        background-color: #f3ded0;
+        border-radius: 5px;
+    }
+
+    .single-column-span, .resp, .tri-column, .raisedby, .relby {
+        flex-direction: column;
+    }
+
+
+    .treatmenttype {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .treatmenttype label {
+        padding-right: 0;
+    }
+
+    .referral {
+        width: 358px !important;
+    }
+
+
+
 }
