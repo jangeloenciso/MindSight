@@ -6,7 +6,8 @@ college_names = [
     "IHK",
     "SHS",
     "JHS",
-    "GRAD"
+    "GRAD",
+    "LLL"
 ]
 
 ihk_courses = [
