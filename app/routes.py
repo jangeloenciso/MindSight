@@ -17,6 +17,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 import logging, os
 from datetime import datetime
+from sqlalchemy import desc
 
 
 SECURITY_QUESTIONS = {
@@ -209,7 +210,13 @@ def admin():
         user.full_name = user.first_name + ' ' + user.last_name
         user.role = ROLE.get(user.role, 'Unknown Role')
 
-    return render_template('admin.html', admin=admin)
+    
+    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+        .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
+        .order_by(desc(CaseNote.interview_date)).all()
+
+    return render_template('admin.html', admin=admin, students=students)
 
 
 @app.route('/admin/history')

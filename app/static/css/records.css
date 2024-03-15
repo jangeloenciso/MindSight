@@ -193,6 +193,15 @@ p {
     background-color: #C5CFC6;
 }
 
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}
+
+.grid-row:nth-child(even):hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
 /* checkbox in odd rows */
 .grid-row input[type="checkbox"] {
     transform: scale(1.7);
@@ -219,10 +228,6 @@ p {
 
 #students-container img, #students-container span {
     transform: translateX(-7px);
-}
-
-.grid-row:hover {
-    background-color: var(--bg-orange);
 }
 
 .back-button img {

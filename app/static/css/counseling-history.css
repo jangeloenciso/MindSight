@@ -135,27 +135,27 @@
 
 /* individual sizes per column */
 .grid-date {
-    flex-basis: 13%;
+    flex-basis: 14%;
 }
 
 .grid-section {
-    flex-basis: 18%;
+    flex-basis: 16%;
 }
 
 .grid-name {
-    flex-basis: 20%;
+    flex-basis: 25%;
 }
 
 .grid-college {
-    flex-basis: 33%;
+    flex-basis: 19%;
 }
 
 .grid-gender {
-    flex-basis: 15%;
+    flex-basis: 22%;
 }
 
 .grid-counselor {
-    flex-basis: 20%;
+    flex-basis: 26%;
 }
 
 .grid-status {
@@ -168,6 +168,15 @@
 
 .grid-row:nth-child(even) {
     background-color: #C5CFC6;
+}
+
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}
+
+.grid-row:nth-child(even):hover {
+    background-color: var(--primary-color);
+    color: var(--white);
 }
 
 
@@ -184,14 +193,6 @@
 
 #admin-container img, #admin-container span {
     transform: translateX(-7px);
-}
-
-.grid-row:hover {
-    background-color: var(--bg-orange);
-}
-
-.grid-row:nth-child(even):hover {
-    background-color: var(--primary-color);
 }
 
 .back-button img {

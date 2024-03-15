@@ -103,55 +103,87 @@
     color: var(--primary-color);
 }
 
-/* main table */
-table {
-    border-collapse: collapse;
-    width: 100%;
-    overflow: auto;
+/* grid rows */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    border: 3px solid var(--primary-color);
+    background-color: var(--primary-color);
+    overflow-y: auto;
+    padding-bottom: 10px;
 }
 
-
-/* keeps text to left */
-td, th {
-    text-align: left;
-    padding: 8px;
+.grid-header {
+    display: flex;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: bold;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
 }
 
-td{
+.grid-row {
+    display: flex;
+    background-color: var(--main-db-bg-color);
     color: var(--primary-color);
+    padding: 10px;
+    justify-content: space-between;
+    text-decoration: none;
 }
 
-tr:not(:first-child){
-    cursor: pointer;
+
+/* individual sizes per column */
+.grid-date {
+    flex-basis: 14%;
 }
 
-tr:hover {
-    background-color: var(--bg-orange) !important;
+.grid-section {
+    flex-basis: 16%;
 }
 
-/* keeps the header at the top */
-th {
-    position: sticky;
-    top: 0;
+.grid-name {
+    flex-basis: 25%;
+}
+
+.grid-college {
+    flex-basis: 19%;
+}
+
+.grid-gender {
+    flex-basis: 22%;
+}
+
+.grid-counselor {
+    flex-basis: 26%;
+}
+
+.grid-status {
+    flex-basis: 16%;
+}
+
+.grid-remark {
+    flex-basis: 20%;
+}
+
+.grid-row:nth-child(even) {
+    background-color: #C5CFC6;
+}
+
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}
+
+.grid-row:nth-child(even):hover {
     background-color: var(--primary-color);
     color: var(--white);
 }
 
-
 /* enables the scrolling automatically */
 .scrollable {
-    display: flex;
     overflow-y: auto;
-    width: auto;
-    background-color: #C5CFC6;
-    border: 3px solid var(--primary-color);
-    border-radius: 10px 0 0 10px;
 }
-
-tr:nth-child(even) {
-    background-color: var(--main-db-bg-color);
-}
-
 
 
 /* Sidebar active indicator */
