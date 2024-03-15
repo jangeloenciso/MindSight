@@ -296,3 +296,14 @@ function addOptions(selectElement, optionsArray) {
         selectElement.add(option);
     }
 }
+
+function setAge() {
+    var dob = new Date(document.getElementById('dob').value);
+    var today = new Date();
+    var age = today.getYear() - dob.getYear();
+    var month = today.getMonth() - dob.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
+    document.getElementById('age').value = age;
+}

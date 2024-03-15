@@ -104,11 +104,11 @@
           <div class="double-column">
             <div>
               <label for="dob">Date of Birth:</label>
-              {{ form.date_of_birth(placeholder='Date of Birth') }}
+              {{ form.date_of_birth(placeholder='Date of Birth', onchange='setAge()', id='dob') }}
             </div>
             <div>
               <label for="age">Age:</label>
-              {{ form.age(placeholder='Age') }}
+              {{ form.age(placeholder='Age', id='age') }}
             </div>
           </div>
           <div class="double-column">
