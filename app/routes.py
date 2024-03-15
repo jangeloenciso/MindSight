@@ -225,7 +225,15 @@ def counseling_history():
 
     full_name = request.args.get('full_name', default='', type=str)
 
-    return render_template('admin/counseling_history.html', full_name=full_name)
+    counselor_name = full_name
+
+    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+        .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+        .filter(AdditionalInformation.counselor == counselor_name) \
+        .order_by(desc(CaseNote.interview_date)).all()
+
+    return render_template('admin/counseling_history.html', full_name=full_name, students=students)
 
 
 

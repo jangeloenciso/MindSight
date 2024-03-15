@@ -42,7 +42,7 @@
       <div class="grid-date">Date</div>
       <div class="grid-section">Student ID</div>
       <div class="grid-name">Name</div>
-      <div class="grid-college">College</div>
+      <div class="grid-college">Level</div>
       <div class="grid-gender">Gender</div>
       <div class="grid-counselor">Counselor</div>
       <div class="grid-status">Status</div>
@@ -51,23 +51,23 @@
     <div class="grid-container">
       <!-- sample data rows -->
       <div class="row-container">
-        {% for student in data %} {% if student.college == college%}
+        {% for student, basic_info, add_info in students %}
         <a
-          href="{{ url_for('student_record', student_id=student.student_id) }}"
+          href="{{ url_for('student_record', student_id=student.student.student_id) }}"
           class="grid-row"
         >
-          <div class="grid-date">{{ student.date }}</div>
-          <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-date">{{ student.interview_date }}</div>
+          <div class="grid-section">{{ student.student.student_id }}</div>
           <div class="grid-name">
-            {{ student.last_name }}, {{ student.first_name }}
+            {{ basic_info.last_name }}, {{ basic_info.first_name }}
           </div>
-          <div class="grid-college">{{ student.college }}</div>
-          <div class="grid-gender">{{ student.gender }}</div>
-          <div class="grid-counselor">{{ student.counselor }}</div>
-          <div class="grid-status">{{ student.status }}</div>
-          <div class="grid-remark">{{ student.remarks }}</div>
+          <div class="grid-college">{{ basic_info.college }}</div>
+          <div class="grid-gender">{{ basic_info.gender }}</div>
+          <div class="grid-counselor">{{ add_info.counselor }}</div>
+          <div class="grid-status">{{ add_info.status }}</div>
+          <div class="grid-remark">{{ add_info.remarks }}</div>
         </a>
-        {% endif %} {% endfor %}
+        {% endfor %}
         <!-- Add more rows as needed -->
       </div>
     </div>
