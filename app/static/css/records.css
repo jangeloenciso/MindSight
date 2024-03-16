@@ -170,15 +170,15 @@ p {
 }
 
 .grid-name {
-    flex-basis: 30%;
+    flex-basis: 24%;
 }
 
 .grid-gender {
-    flex-basis: 15%;
+    flex-basis: 21%;
 }
 
 .grid-counselor {
-    flex-basis: 30%;
+    flex-basis: 24%;
 }
 
 .grid-status {

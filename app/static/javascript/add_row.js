@@ -49,6 +49,7 @@ function populateSecondDropdown() {
 
     // Clear existing options
     courseDropDown.innerHTML = "";
+    yearLevelDropDown.innerHTML = "";
 
     // Get selected value from first dropdown
     var selectedValue = collegeDropDown.value;
@@ -266,24 +267,33 @@ function populateSecondDropdown() {
         physicalEducationOption.value = "Bachelor of Science in Physical Education (Boni Campus)";
         courseDropDown.add(physicalEducationOption);
 
-    } else if (selectedValue === "Grad" || selectedValue === "LLL") {
-        // For Grad
+    } else if (selectedValue === "GRAD" || selectedValue === "LLL") {
+        // For Grad and LLL
 
-        var disabledOption = document.createElement("option");
-        disabledOption.text = "-Not Applicable-";
-        disabledOption.disabled = true;
-        disabledOption.selected = true;
-        courseDropDown.add(disabledOption);
+        var disabledCourseOption = document.createElement("option");
+        disabledCourseOption.text = "- Not Applicable -";
+        disabledCourseOption.disabled = true;
+        disabledCourseOption.selected = true;
+        courseDropDown.add(disabledCourseOption);
+
+
+       // Add "Not Applicable" option to year level dropdown
+        var disabledYearLevelOption = document.createElement("option");
+        disabledYearLevelOption.text = "- Not Applicable -";
+        disabledYearLevelOption.disabled = true;
+        disabledYearLevelOption.selected = true;
+        yearLevelDropDown.add(disabledYearLevelOption);
+
     }
 
 
     // For year level
-    yearLevelDropDown.innerHTML = "";
+    
     if (selectedValue === "SHS") {
         addOptions(yearLevelDropDown, ["11", "12"]);
     } else if (selectedValue === "JHS") {
         addOptions(yearLevelDropDown, ["7", "8", "9", "10"]);
-    } else {
+    } else if (selectedValue == 'CEA' || selectedValue == 'CBEA' || selectedValue == 'CED' || selectedValue == 'CAS' || selectedValue == 'IHK') {
         addOptions(yearLevelDropDown, ["1", "2", "3", "4", "5"]);
     }
 }
@@ -297,6 +307,7 @@ function addOptions(selectElement, optionsArray) {
     }
 }
 
+// For Age
 function setAge() {
     var dob = new Date(document.getElementById('dob').value);
     var today = new Date();
