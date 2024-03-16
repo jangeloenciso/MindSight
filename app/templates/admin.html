@@ -14,7 +14,11 @@ endblock %} {% block styles %}
       <a href="{{ url_for('counseling_history', full_name=user.full_name) }}">
         <button class="btn">
           <span class="name">{{ user.full_name }}</span> <br>
-          <span class="title">{{ user.role }}</span>
+          <span class="title">{{ user.role }}</span> <br><br>
+          <span>Active Cases:&nbsp;</span>
+          {% if students_count.get(user.full_name) %}
+            <span class="indicator">{{ students_count.get(user.full_name) }}</span>
+          {% endif %}
         </button>
       </a>
       {% endfor %}

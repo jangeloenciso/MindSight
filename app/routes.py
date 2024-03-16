@@ -17,7 +17,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 import logging, os
 from datetime import datetime
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 
 
 SECURITY_QUESTIONS = {
@@ -210,13 +210,20 @@ def admin():
         user.full_name = user.first_name + ' ' + user.last_name
         user.role = ROLE.get(user.role, 'Unknown Role')
 
-    
+    # query all counseled students and organize it by latest to oldest (date)
     students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
         .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
         .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
         .order_by(desc(CaseNote.interview_date)).all()
 
-    return render_template('admin.html', admin=admin, students=students)
+    # count the number of students counseled by each counselor
+    students_count = db.session.query(AdditionalInformation.counselor, func.count(CaseNote.id)) \
+        .join(CaseNote, CaseNote.student_id == AdditionalInformation.student_id) \
+        .group_by(AdditionalInformation.counselor).all()
+
+    students_count_dict = {counselor: count for counselor, count in students_count}
+
+    return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict)
 
 
 @app.route('/admin/history')
