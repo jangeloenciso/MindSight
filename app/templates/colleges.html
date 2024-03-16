@@ -6,7 +6,15 @@ endblock %} {% block styles %}
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>STUDENT RECORDS - COLLEGE</span>
+      <div class="title-back">
+        <span>STUDENT RECORDS - COLLEGE</span>
+      <div class="back-button">
+        <a href="{{ url_for('level') }}">
+            <img src="/static/SVG/back_button.svg" />
+        </a>
+      </div>
+      </div>
+      <div>
       <p>
         Please click on the following <b>COLLEGES</b> to view the corresponding
         records:
@@ -24,6 +32,7 @@ endblock %} {% block styles %}
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
 

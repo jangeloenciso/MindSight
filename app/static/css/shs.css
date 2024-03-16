@@ -35,12 +35,21 @@
     color: var(--primary-color);
 }
 
-.main-header span {
+.title-back {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
     font-size: 2.2em;
     font-weight: bold;
     border-bottom: 2px solid var(--bg-orange);
     display: flex;
     padding-bottom: 10px;
+}
+
+.title-back span {
+    width: 100%;
 }
 
 
