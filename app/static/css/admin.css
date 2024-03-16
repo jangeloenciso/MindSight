@@ -120,7 +120,6 @@
     color: var(--white);
     font-weight: bold;
     padding: 10px;
-    justify-content: space-between;
     border-radius: 10px 10px 0 0;
 }
 
@@ -129,42 +128,41 @@
     background-color: var(--main-db-bg-color);
     color: var(--primary-color);
     padding: 10px;
-    justify-content: space-between;
     text-decoration: none;
 }
 
 
 /* individual sizes per column */
 .grid-date {
-    flex-basis: 14%;
+    flex-basis: 13%;
 }
 
 .grid-section {
-    flex-basis: 16%;
+    flex-basis: 14%;
 }
 
 .grid-name {
-    flex-basis: 25%;
-}
-
-.grid-college {
-    flex-basis: 19%;
-}
-
-.grid-gender {
     flex-basis: 22%;
 }
 
+.grid-college {
+    flex-basis: 9%;
+}
+
+.grid-gender {
+    flex-basis: 19%;
+}
+
 .grid-counselor {
-    flex-basis: 26%;
+    flex-basis: 23%;
 }
 
 .grid-status {
-    flex-basis: 16%;
+    flex-basis: 14%;
 }
 
 .grid-remark {
-    flex-basis: 20%;
+    flex-basis: 19%;
 }
 
 .grid-row:nth-child(even) {
