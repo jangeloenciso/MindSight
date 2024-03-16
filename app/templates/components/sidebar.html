@@ -46,13 +46,11 @@
           >
         </li>
 
-        {% if current_user.role == 'superadmin' %}
         <li>
           <a href="{{ url_for('signup') }}" id="add-admin-container"
             ><img src="/static/add-user.png" /><span>Add&nbsp;admin</span></a
           >
         </li>
-        {% endif %}
         
         <li>
           <a href="#" onclick="confirmLogout()"

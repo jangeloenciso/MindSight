@@ -149,7 +149,7 @@ hr {
 
 /* individual sizes per column */
 .grid-date {
-    flex-basis: 13%;
+    flex-basis: 14%;
 }
 
 .grid-section {
