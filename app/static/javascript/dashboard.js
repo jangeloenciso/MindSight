@@ -307,7 +307,8 @@ function generateBarGraph(data, chartNumber) {
                     data: values,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
-                                    'rgba(96, 146, 192, 1)']
+                                      'rgba(96, 146, 192, 1)',
+                                      'rgba(160, 216, 224, 1)']
                 }]
             },
             options: {
