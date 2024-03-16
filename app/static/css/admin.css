@@ -77,6 +77,7 @@
     border: none;
     font-size: 1rem;
     cursor: pointer;
+    width: 100%;
 }
 
 .name {
@@ -84,10 +85,18 @@
     color: black;
 }
 
+.active {
+    color: var(--primary-color);
+}
+
 .indicator {
     color: var(--bg-orange); 
-    font-size: 1rem;
     font-weight: 800;
+}
+
+hr {
+    border-color: transparent;
+    background-color: var(--bg-orange);
 }
 
 .title{

@@ -211,15 +211,15 @@ def admin():
         user.role = ROLE.get(user.role, 'Unknown Role')
 
     # query all counseled students and organize it by latest to oldest (date)
-    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
-        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+    students = db.session.query(BasicInformation, AdditionalInformation) \
         .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
-        .order_by(desc(CaseNote.interview_date)).all()
+        .order_by(desc(AdditionalInformation.personal_agreement_date)).all()
+
 
     # count the number of students counseled by each counselor
-    students_count = db.session.query(AdditionalInformation.counselor, func.count(CaseNote.id)) \
-        .join(CaseNote, CaseNote.student_id == AdditionalInformation.student_id) \
+    students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
         .group_by(AdditionalInformation.counselor).all()
+
 
     students_count_dict = {counselor: count for counselor, count in students_count}
 
@@ -234,11 +234,11 @@ def counseling_history():
 
     counselor_name = full_name
 
-    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
-        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
-        .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+    students = db.session.query(BasicInformation, AdditionalInformation) \
+        .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
         .filter(AdditionalInformation.counselor == counselor_name) \
-        .order_by(desc(CaseNote.interview_date)).all()
+        .order_by(desc(AdditionalInformation.personal_agreement_date)).all()
+
 
     return render_template('admin/counseling_history.html', full_name=full_name, students=students)
 

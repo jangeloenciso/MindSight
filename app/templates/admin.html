@@ -14,8 +14,9 @@ endblock %} {% block styles %}
       <a href="{{ url_for('counseling_history', full_name=user.full_name) }}">
         <button class="btn">
           <span class="name">{{ user.full_name }}</span> <br>
-          <span class="title">{{ user.role }}</span> <br><br>
-          <span>Active Cases:&nbsp;</span>
+          <span class="title">{{ user.role }}</span>
+          <hr>
+          <span class="active">Active Cases:&nbsp;</span>
           {% if students_count.get(user.full_name) %}
             <span class="indicator">{{ students_count.get(user.full_name) }}</span>
           {% endif %}
@@ -42,16 +43,14 @@ endblock %} {% block styles %}
         <div class="grid-container">
           <!-- sample data rows -->
           <div class="row-container">
-            {% for student, basic_info, add_info in students %}
+            {% for basic_info, add_info in students %}
             <a
-              href="{{ url_for('student_record', student_id=student.student.student_id) }}"
+              href="{{ url_for('student_record', student_id=basic_info.student_id) }}"
               class="grid-row"
             >
-              <div class="grid-date">{{ student.interview_date }}</div>
-              <div class="grid-section">{{ student.student.student_id }}</div>
-              <div class="grid-name">
-                {{ basic_info.last_name }}, {{ basic_info.first_name }}
-              </div>
+              <div class="grid-date">{{ add_info.personal_agreement_date }}</div>
+              <div class="grid-section">{{ basic_info.student_id }}</div>
+              <div class="grid-name">{{ basic_info.last_name }}, {{ basic_info.first_name }}</div>
               <div class="grid-college">{{ basic_info.college }}</div>
               <div class="grid-gender">{{ basic_info.gender }}</div>
               <div class="grid-counselor">{{ add_info.counselor }}</div>
