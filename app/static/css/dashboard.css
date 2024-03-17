@@ -123,6 +123,12 @@
     column-gap: 20px;
 }
 
+/* experiences chart overflow */
+#chart{
+    height: 90%;
+    overflow-y: auto;
+}
+
 /* Sidebar active indicator */
 .sidebar-buttons #dashboard-container::before {
     content: "";
