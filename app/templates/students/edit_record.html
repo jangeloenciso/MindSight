@@ -1983,7 +1983,7 @@ href="/static/fonts/custom-fonts.css"
             </p>
 
             <div class="tac">
-              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True, disabled=True) }}
+              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True) }}
               <label for="taccheckbox">
                 I understand and agree to the information presented
                 above.</label
@@ -2112,7 +2112,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="container">
             <div class="left-align">
               <label>Reason for Referral:</label>
-              {{ form.reason_for_referral(class="form-width100 single-column-span referral") }}
+              {{ form.reason_for_referral(class="form-width100 single-column-span referral", value=student.referral_information.reason_for_referral) }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align single-column-span">
@@ -2121,13 +2121,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Receiving Agency:</label
               >
-              {{ form.receiving_agency(class="form-width100 single-column-span referral") }}
+              {{ form.receiving_agency(class="form-width100 single-column-span referral", value=student.referral_information.receiving_agency) }}
               <label
                 for="refinfocontact"
                 style="width: 320px !important; padding-right: 10px"
                 >Contact No.:</label
               >
-              {{ form.receiving_contact_number(class="form-width100 single-column-span referral") }}
+              {{ form.receiving_contact_number(class="form-width100 single-column-span referral", value=student.referral_information.receiving_contact_number) }}
             </div>
             <div class="left-align single-column-span">
               <label
@@ -2135,19 +2135,19 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 200px !important; padding-right: 10px"
                 >Name:</label
               >
-              {{ form.receiving_name(class="form-width100 single-column-span referral") }}
+              {{ form.receiving_name(class="form-width100 single-column-span referral", value=student.referral_information.receiving_name) }}
               <label
                 for="refinfoemail"
                 style="width: 200px !important; padding-right: 10px"
                 >Email:</label
               >
-              {{ form.receiving_email(class="form-width100 single-column-span referral") }}
+              {{ form.receiving_email(class="form-width100 single-column-span referral", value=student.referral_information.receiving_email) }}
             </div>
             <div class="left-align single-column-span">
               <label for="refinfoofficeadd" style="width: 160px !important"
                 >Office Address:</label
               >
-              {{ form.office_address(class="form-width100 single-column-span referral") }}
+              {{ form.office_address(class="form-width100 single-column-span referral", value=student.referral_information.office_address) }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -2155,7 +2155,7 @@ href="/static/fonts/custom-fonts.css"
               <label for="refinfoas" style="width: 510px !important"
                 >Appointment Schedule:</label
               >
-              {{ form.appointment_schedule(class="form-width100 single-column-span referral") }}
+              {{ form.appointment_schedule(class="form-width100 single-column-span referral", value=student.referral_information.appointment_schedule) }}
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align">
