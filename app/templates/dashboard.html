@@ -3,29 +3,6 @@ endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %} {% block content %}
-
-<style>
-  .progress-bar-container {
-    position: relative;
-    margin-bottom: 10px;
-  }
-  
-  .progress-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #307fe2;
-    color: white;
-    padding: 5px;
-  }
-  
-  .progress-bar-underlay {
-    background-color: black;
-    width: 100%;
-    padding: 5px;
-  }
-</style>
-
 <div class="right">
   <div class="column1">
     <div class="experience-container">
@@ -108,34 +85,48 @@ endblock %} {% block styles %}
 <script>
   const data = {{ data_json | tojson | safe }};
 
-  function createProgressBar(label, count) {
-    const container = document.createElement('div');
-    container.classList.add('progress-bar-container');
-  
-    const labelElement = document.createElement('div');
-    labelElement.classList.add('progress-bar-label');
-    labelElement.textContent = label;
-    container.appendChild(labelElement);
-  
-    const countElement = document.createElement('div');
-    countElement.classList.add('progress-bar-count');
-    countElement.textContent = count;
-    container.appendChild(countElement);
-  
-    const maxProgressBarWidth = 100;
-  
-    const progressBarWidth = Math.min(count * 4, maxProgressBarWidth);
-    const progressBar = document.createElement('div');
-    progressBar.classList.add('progress-bar');
-    progressBar.style.width = `${progressBarWidth}%`;
-    container.appendChild(progressBar);
-  
-    const progressBarUnderlay = document.createElement('div');
-    progressBarUnderlay.classList.add('progress-bar-underlay');
-    container.appendChild(progressBarUnderlay);
-  
-    return container;
-  }
+function createProgressBar(label, count) {
+  const container = document.createElement('div');
+  container.classList.add('progress-bar-container');
+
+  const labelElement = document.createElement('div');
+  labelElement.classList.add('progress-bar-label');
+  labelElement.textContent = label;
+  container.appendChild(labelElement);
+
+  const progressFlexContainer = document.createElement('div'); // Create progress flex container
+  progressFlexContainer.classList.add('progress-flex-container'); // Add class to progress flex container
+
+  const countElement = document.createElement('div');
+  countElement.classList.add('progress-bar-count');
+  countElement.textContent = count;
+  progressFlexContainer.appendChild(countElement); // Append count element to progress flex container
+
+  const barFlex = document.createElement('div'); // Create bar flex container
+  barFlex.classList.add('bar-flex'); // Add class to bar flex container
+
+  const maxProgressBarWidth = 100;
+
+  const progressBarWidth = Math.min(count * 4, maxProgressBarWidth);
+  const progressBar = document.createElement('div');
+  progressBar.classList.add('progress-bar');
+  progressBar.style.width = `${progressBarWidth}%`;
+  barFlex.appendChild(progressBar); // Append progress bar to bar flex container
+
+  const progressBarUnderlay = document.createElement('div');
+  progressBarUnderlay.classList.add('progress-bar-underlay');
+  barFlex.appendChild(progressBarUnderlay); // Append progress bar underlay to bar flex container
+
+  progressFlexContainer.appendChild(barFlex); // Append bar flex container to progress flex container
+
+  container.appendChild(progressFlexContainer); // Append progress flex container to main container
+
+  // Return the created container
+  return container;
+}
+
+
+
   
 
   function renderChart(data) {
