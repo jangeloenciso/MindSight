@@ -1,5 +1,5 @@
 {% extends "components/base.html" %}
-{% block title %} Mindsight - Nature of Concerns{% endblock %}
+{% block title %} Mindsight - Brief description of Concerns{% endblock %}
 
 {% block styles %}     
 <link rel="stylesheet" href="/static/css/experiences.css"/> 
@@ -11,7 +11,7 @@
     <div class="main">
         <div class="main-header">
             <span class="title">
-            <div>NATURE OF CONCERNS</div>
+            <div>BRIEF DESCRIPTION OF CONCERNS</div>
             <div class="back-button">
                 <a href="{{ url_for ('dashboard')}}">
                     <img src="/static/SVG/back_button.svg"/>
@@ -20,64 +20,23 @@
             </span>
         </div>
         <div class="content">
-            <div class="container">
-                <div class="box">
-                    <span>CAS</span>
-                    <canvas id="myChart5"></canvas>
-                </div>
-                <div class="box">
-                    <span>CBEA</span>
-                </div>
-                <div class="box">
-                    <span>CEA</span>  
-                </div>
-                <div class="box">
-                    <span>CED</span>  
-                </div>
-                <div class="box">
-                    <span>IHK</span>
-                </div>
+            <div class="box">
+                <span>Junior High</span>
+                <canvas id="myChart5"></canvas>
             </div>
-            <div class="container">
-                <div class="box">
-                    <span>STEM</span>
-                    <canvas id="myChart5"></canvas>
-                </div>
-                <div class="box">
-                    <span>ABM</span>
-                </div>
-                <div class="box">
-                    <span>HUMSS</span>  
-                </div>
-                <div class="box">
-                    <span>ICT</span>  
-                </div>
+            <div class="box">
+                <span>Senior High</span>
             </div>
-            <div class="container">
-                <div class="box">
-                    <span>Grade 7</span>
-                    <canvas id="myChart5"></canvas>
-                </div>
-                <div class="box">
-                    <span>Grade 8</span>
-                </div>
-                <div class="box">
-                    <span>Grade 9</span>  
-                </div>
-                <div class="box">
-                    <span>Grade 10</span>  
-                </div>
+            <div class="box">
+                <span>College</span>  
             </div>
-            <div class="container">
-                <div class="box">
-                    <span>Graduate School</span>
-                    <canvas id="myChart5"></canvas>
-                </div>
-                <div class="box">
-                    <span>Lifelong Learners</span>
-                </div>
+            <div class="box">
+                <span>Graduate</span>  
             </div>
-        </div>
+            <div class="box">
+                <span>Lifelong Learners</span>
+            </div>
+        </div> 
     </div>
 </div>
 
