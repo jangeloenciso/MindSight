@@ -12,7 +12,7 @@ class StudentRecordForm(FlaskForm):
     # college = StringField('Test', validators=[Optional()])
     # TODO: to check
     course = StringField('Course')
-    year_level = StringField('Year Level', validators=[Optional()])
+    year_level = IntegerField('Year Level', validators=[Optional()])
     # campus = StringField('Campus', validators=[Optional()])
     
     date_of_birth = DateField('Date of Birth', format="%Y-%m-%d", validators=[Optional()])

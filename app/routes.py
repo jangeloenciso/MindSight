@@ -17,7 +17,7 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 import logging, os
 from datetime import datetime
-from sqlalchemy import desc, func
+from sqlalchemy import desc, func, and_
 import base64
 
 
@@ -216,15 +216,17 @@ def admin():
         .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
         .order_by(desc(AdditionalInformation.personal_agreement_date)).all()
 
-
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
+        .filter(and_(AdditionalInformation.counselor != None, AdditionalInformation.status != 'terminated')) \
         .group_by(AdditionalInformation.counselor).all()
 
+    # filter out terminated students
+    active_students = [student for student in students if student[1].status != 'terminated']
 
     students_count_dict = {counselor: count for counselor, count in students_count}
 
-    return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict)
+    return render_template('admin.html', admin=admin, students=active_students, students_count=students_count_dict)
 
 
 @app.route('/admin/history')
@@ -330,48 +332,46 @@ def level():
 def jhs():
     return render_template('jhs.html')
 
-@app.route('/students/records/JHS/<college>')
+@app.route('/students/records/JHS/<int:year_level>')
 @login_required
-def jhs_records(college):
+def jhs_records(year_level):
     data = data_to_dict()
 
-    def college_name(college):
+    def college_name(year_level):
         college_dict = {
-            'SEVEN': 'Grade 7',
-            'EIGHT': 'Grade 8',
-            'NINE': 'Grade 9',
-            'TEN': 'Grade 10',
+            7: 'Grade 7',
+            8: 'Grade 8',
+            9: 'Grade 9',
+            10: 'Grade 10',
         }
-        return college_dict.get(college)
+        return college_dict.get(year_level)
 
-    print(college_name(college))
+    print(year_level)
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, get_back_url=get_back_url)
+    return render_template('students/records.html', year_level_name=college_name(year_level), year_level=year_level, data=data)
 
 @app.route('/SHS')
 @login_required
 def shs():
     return render_template('shs.html')
 
-@app.route('/students/records/SHS/<college>')
+@app.route('/students/records/SHS/<course>')
 @login_required
-def shs_records(college):
+def shs_records(course):
     data = data_to_dict()
 
-    def college_name(college):
+    def college_name(course):
         college_dict = {
             'STEM': 'Science, Technology, Engineering and Mathematics',
             'ABM': 'Accountancy, Business and Management',
             'HUMSS': 'Humanities and Social Sciences',
             'ICT': 'Information Communication and Technology',
         }
-        return college_dict.get(college)
+        return college_dict.get(course)
     
-    college_name_value = college_name(college)
+    print(college_name(course))
 
-    print(college_name(college))
-
-    return render_template('students/records.html', college_name=college_name_value, college=college, data=data, get_back_url=get_back_url)
+    return render_template('students/records.html', course_name=college_name(course), course=course, data=data)
 
 @app.route('/colleges')
 @login_required
@@ -395,7 +395,7 @@ def college_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, get_back_url=get_back_url)
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/graduate')
 @login_required
@@ -415,7 +415,7 @@ def graduate_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, get_back_url=get_back_url)
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 @app.route('/LLL')
 @login_required
@@ -435,22 +435,7 @@ def lll_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, get_back_url=get_back_url)
-
-
-# Back button in college
-def get_back_url(college):
-
-    if college == 'STEM' or college == 'ABM' or college == 'HUMSS' or college == 'ICT':
-        return url_for('shs', college='SHS')  
-    elif college == 'CEA' or college == 'CBEA' or college == 'CAS' or college == 'CED' or college == 'IHK':
-        return url_for('colleges', college='colleges') 
-    elif college == 'SEVEN' or college == 'EIGHT' or college == 'NINE' or college == 'TEN':
-        return url_for('jhs', college='JHS') 
-    elif college == 'GRAD':
-       return url_for('graduate')
-    elif college == 'LLL':
-       return url_for('lll')
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
 
 
 @app.route('/students/records/view/<student_id>')

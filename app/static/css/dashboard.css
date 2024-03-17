@@ -52,6 +52,7 @@
     margin-bottom: 0.3em;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 #experience, #college, #campus,
