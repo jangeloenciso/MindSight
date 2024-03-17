@@ -6,13 +6,23 @@ endblock %} {% block styles %}
 
 <style>
   .progress-bar-container {
+    position: relative;
     margin-bottom: 10px;
   }
-
+  
   .progress-bar {
-      background-color: #4CAF50;
-      color: white;
-      padding: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #307fe2;
+    color: white;
+    padding: 5px;
+  }
+  
+  .progress-bar-underlay {
+    background-color: black;
+    width: 100%;
+    padding: 5px;
   }
 </style>
 
@@ -27,7 +37,6 @@ endblock %} {% block styles %}
             </a>
           </div>
         </span>
-      <!-- <canvas id="myChart1"></canvas> -->
 
       <div id="chart"> </div>
       
@@ -102,42 +111,46 @@ endblock %} {% block styles %}
   function createProgressBar(label, count) {
     const container = document.createElement('div');
     container.classList.add('progress-bar-container');
-
+  
     const labelElement = document.createElement('div');
     labelElement.classList.add('progress-bar-label');
     labelElement.textContent = label;
     container.appendChild(labelElement);
-
+  
     const countElement = document.createElement('div');
     countElement.classList.add('progress-bar-count');
     countElement.textContent = count;
     container.appendChild(countElement);
-
+  
+    const maxProgressBarWidth = 100;
+  
+    const progressBarWidth = Math.min(count * 4, maxProgressBarWidth);
     const progressBar = document.createElement('div');
     progressBar.classList.add('progress-bar');
-    progressBar.style.width = `${count * 10}%`; // Adjust width based on count
+    progressBar.style.width = `${progressBarWidth}%`;
     container.appendChild(progressBar);
-
+  
+    const progressBarUnderlay = document.createElement('div');
+    progressBarUnderlay.classList.add('progress-bar-underlay');
+    container.appendChild(progressBarUnderlay);
+  
     return container;
   }
+  
 
   function renderChart(data) {
     const chartContainer = document.getElementById('chart');
-
-    // Clear previous content
+  
     chartContainer.innerHTML = '';
-
-    // Create progress bars for each data point
-    for (const label in data) {
-        if (data.hasOwnProperty(label)) {
-            const count = data[label];
-            const progressBar = createProgressBar(label, count);
-            chartContainer.appendChild(progressBar);
-        }
-    }
+  
+    const sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
+  
+    sortedData.forEach(([label, count]) => {
+      const progressBar = createProgressBar(label, count);
+      chartContainer.appendChild(progressBar);
+    });
   }
-
-  // Call renderChart function with the provided data
+  
   renderChart(data);
 </script>
 
