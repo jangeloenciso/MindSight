@@ -161,7 +161,8 @@ def reset_password(username):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    data_json = data_history_information()
+    return render_template('dashboard.html', data_json=data_json)
 
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required
@@ -1057,3 +1058,9 @@ def get_college_count(data_to_count):
     data = data_count(data_to_count)
     print(data)
     return jsonify(data)
+
+# @app.route('/get_data/<data_to_count>', methods=['GET'])
+# def get_college_count(data_to_count):
+#     data = data_count(data_to_count)
+#     print(data)
+#     return jsonify(data)
