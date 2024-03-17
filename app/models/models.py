@@ -53,7 +53,7 @@ class BasicInformation(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     college = db.Column(db.String(100), nullable=False)
     course = db.Column(db.String(100), nullable=True)
-    year_level = db.Column(db.String(20))
+    year_level = db.Column(db.Integer)
     campus = db.Column(db.String(20), nullable=False)
 
     date_of_birth = db.Column(db.Date)

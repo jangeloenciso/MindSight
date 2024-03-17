@@ -39,7 +39,7 @@
         <!-- directory buttons -->
         <div class="main-buttons">
             <div class="row">
-                <a href="{{ url_for ('shs_records', college='STEM') }}">
+                <a href="{{ url_for ('shs_records', course='STEM') }}">
                     <button>
                       <img src="/static/students/ced.png" />
                       <span
@@ -48,7 +48,7 @@
                       >
                     </button></a
                   >
-                  <a href="{{ url_for ('shs_records', college='ABM') }}">
+                  <a href="{{ url_for ('shs_records', course='ABM') }}">
                     <button>
                         <img src="/static/students/cbea.png" />
                       <span
@@ -60,7 +60,7 @@
             </div>
                 
             <div class="row">
-                <a href="{{ url_for ('shs_records', college='HUMSS') }}">
+                <a href="{{ url_for ('shs_records', course='HUMSS') }}">
                     <button>
                       <img src="/static/students/cas.png" />
                       <span
@@ -69,7 +69,7 @@
                       >
                     </button></a
                   >
-                  <a href="{{ url_for ('shs_records', college='ICT') }}">
+                  <a href="{{ url_for ('shs_records', course='ICT') }}">
                     <button>
                         <img src="/static/students/cea.png" />
                       <span
@@ -82,10 +82,4 @@
         </div>
       </div>
     </div>
-    
-    
-    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-    <script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
-    
     {% endblock %}
-    
