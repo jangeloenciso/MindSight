@@ -562,6 +562,14 @@ def edit_record(student_id):
             form.populate_obj(student.additional_information)
 
             referral = ReferralInformation(
+                reason_for_referral = form.reason_for_referral.data,
+                receiving_agency = form.receiving_agency.data,
+                receiving_contact_number = form.receiving_contact_number.data,
+                receiving_name = form.receiving_name.data,
+                receiving_email = form.receiving_email.data,
+                office_address = form.office_address.data,
+                appointment_schedule = form.appointment_schedule.data,
+
                 client_signature = base64.b64decode(request.form['clientSignatureInput']),
                 client_signature_date = request.form.get('refinfoclientdate'),
                 counselor_signature = base64.b64decode(request.form['counselorSignatureInput']),
