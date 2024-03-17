@@ -44,9 +44,8 @@
 .content {
     display: flex;
     flex-direction: row;
-    align-items: center;
     column-gap: 1em;
-    height: 100%;
+    height: 85%;
 }
 
 .back-button button {
@@ -55,7 +54,7 @@
 
 .back-button img {
     aspect-ratio: 1/1;
-    width: 0.7em; 
+    width: 0.7em;
     position: relative;
 
 }
@@ -95,6 +94,72 @@
 #myChart5 {
     width: 100%;
     height: 100%;
+}
+
+/* container of each experience type */
+.progress-bar-container {
+    position: relative;
+    margin-bottom: 5px;
+    background-color: var(--subtle-orange);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.progress-bar-label {
+    color: var(--primary-color);
+    font-family: Lexend-SemiBold;
+    display: flex;
+    margin-bottom: 1px;
+}
+
+.progress-bar-count {
+    color: var(--white);
+    padding: 0 20px;
+    border-radius: 1em;
+    background-color: var(--bg-orange);
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    position: relative;
+    transform: translateY(20px);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+}
+
+/* maximum value progress bar */
+.progress-bar-underlay {
+    background-color: #a0d8e0;
+    width: 100%;
+    padding: 10px;
+}
+
+.progress-bar, .progress-bar-underlay {
+    border-radius: 20px;
+}
+
+/* flexes "progress-bar-count" and "bar-flex" side-by-side */
+.progress-flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* flex container for progress-bar and progress-bar-underlay */
+.bar-flex {
+    width: 50%;
+    height: 20px;
+    transform: translateY(-20px);
+}
+
+/* chart containers */
+#jhs_container, #shs_container, #college_container, #grad_container, #lll_container {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 12px;
 }
 
 /* Sidebar active indicator */
