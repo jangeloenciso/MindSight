@@ -127,7 +127,7 @@
 .progress-bar-container {
     position: relative;
     margin-bottom: 5px;
-    background-color: #f5e4da;
+    background-color: var(--subtle-orange);
     padding: 5px;
     border-radius: 10px;
 }

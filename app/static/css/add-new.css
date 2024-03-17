@@ -463,7 +463,7 @@ select, button, input[type="checkbox"] {
 
 
     .left-align-checkbox li {
-        background-color: #f3ded0;
+        background-color: var(--subtle-orange);
         border-radius: 5px;
     }
 
