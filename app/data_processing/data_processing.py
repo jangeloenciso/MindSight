@@ -181,8 +181,28 @@ def data_count(query):
     data_dict = data_count.to_dict(orient='records')
     return data_dict
 
-def data_history_information():
+def data_history_information(college=None):
     df = process_data()
+    
+    # add something for college i cant make it work fuck me
+
+    if college == 'College':
+        college_departments = ['CBEA', 'CEA', 'CAS', 'IHK', 'CED']
+        df = df[df['college'].isin(college_departments)]
+
+    if college == 'SHS':
+        df = df[df['college'] == 'SHS']
+
+    if college == 'JHS':
+        df = df[df['college'] == 'JHS']
+    
+    if college == 'GRAD':
+        df = df[df['college'] == 'GRAD']
+
+    if college == 'LLL':
+        df = df[df['college'] == 'LLL']
+
+    print(df)
 
     data_dict = {
     'Substance abuse/dependence': int(df['substance_abuse'].sum()),

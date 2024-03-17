@@ -167,8 +167,16 @@ def dashboard():
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required
 def experiences():
+
+    jhs_data = data_history_information('JHS')
+    shs_data = data_history_information('SHS')
+    college_data = data_history_information('College')
+    grad_data = data_history_information('GRAD')
+    lll_data = data_history_information('LLL')
+
+    print(college_data)
     
-    return render_template('dashboard/experiences.html')
+    return render_template('dashboard/experiences.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 @app.route('/dashboard/college_summary', methods=['GET'])
 @login_required
