@@ -137,7 +137,6 @@ p {
     border: 3px solid var(--primary-color);
     background-color: var(--primary-color);
     overflow-y: auto;
-    padding-bottom: 10px;
 }
 
 .grid-header {
