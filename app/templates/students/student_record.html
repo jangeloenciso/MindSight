@@ -14,7 +14,19 @@
                 <div class="id"> <span>{{student_data[0]['student_id']}}</span></div>
             </div>
             <div class="back-button">
-                <a href="{{ url_for ('college_records', college=student_data[0]['college'])}}">
+                <a href="
+                  {% if student_data[0]['college'] in ['CEA', 'CBEA', 'CAS', 'CED', 'IHK'] %}
+                    {{ url_for ('college_records', college=student_data[0]['college']) }}
+                  {% elif student_data[0]['course'] in ['STEM', 'ABM', 'HUMSS', 'ICT'] %}
+                    {{ url_for ('shs_records', course=student_data[0]['course']) }}
+                  {% elif student_data[0]['year_level'] in [7, 8, 9, 10] %}
+                    {{ url_for ('jhs_records', year_level=student_data[0]['year_level']) }}
+                  {% elif student_data[0]['college'] == 'GRAD' %}
+                    {{ url_for ('graduate_records', college=student_data[0]['college']) }}
+                  {% else %}
+                    {{ url_for ('lll_records', college=student_data[0]['college']) }}
+                  {% endif %}
+                  ">
                     <img src="/static/SVG/back_button.svg"/>
                 </a>
             </div>
@@ -58,6 +70,11 @@
                 <img src="/static/SVG/view_button.svg"/>    
             </button>
           </a>
+          <!-- <button class="view-records" onclick="viewUploadedRecord('{{ student_id }}')">
+            <div class="title"><span>View uploaded record&nbsp;</span></div>
+            <img src="/static/SVG/view_button.svg"/>    
+          </button> -->
+        
             <div class="edit-print-button">
                 
                     <a href="{{ url_for('edit_record', student_id=student_data[0]['student_id']) }}">
@@ -72,14 +89,17 @@
                         <img src="{{url_for('static', filename='print-button.png')}}"/>
                       </div>
                     </a>
-             
-                
-                  <a href="">
-                    <div class="upload">
-                      <img src="{{url_for('static', filename='upload-button.png')}}"/>
-                    </div>
-                  </a>
-                
+                    
+
+                    <a href="">
+                      <div class="upload">
+                        <img src="{{ url_for('static', filename='upload-button.png') }}"/>
+                      </div>
+                    </a>
+                    
+                    <!-- <button class="upload" onclick="showFileUpload('{{ student_id }}', '{{ csrf_token() }}')">
+                      <img src="{{ url_for('static', filename='upload-button.png') }}"/>
+                    </button>                     -->
               
                 
                   <a href="">
@@ -170,7 +190,7 @@
                     </div>
                     <div>
                       <label for="pnumber">Phone Number:&nbsp;</label>
-                      <span>{{student_data[0]['contact_number']}}</span>
+                      <span>{{student_data[0]['phone_number']}}</span>
                     </div>
                     <div>
                       <label for="cnumber">Cellphone Number:&nbsp;</label>

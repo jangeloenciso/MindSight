@@ -1,4 +1,11 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - {{ college }}
+{% extends "components/base.html" %} {% block title %} Mindsight - {% if year_level %}
+{{ year_level }}
+{% elif course %}
+{{ course }}
+{% else %}
+{{ college }}
+{% endif %}
+
 {%endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/records.css" />
 {% endblock %} {% block content %}
@@ -6,9 +13,29 @@
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>{{ college_name }}</span>
+      <span>
+        {% if year_level %}
+        {{ year_level_name }}
+        {% elif course %}
+        {{ course_name }}
+        {% else %}
+        {{ college_name }}
+        {% endif %}
+      </span>
       <div class="back-button">
-        <a href="{{ get_back_url(college) }}">
+        <a href="
+          {% if year_level %}
+          {{ url_for('jhs') }}
+          {% elif course %}
+          {{ url_for('shs') }}
+          {% elif college == 'CEA' or college == 'CBEA' or college == 'CAS' or college == 'CED' or college == 'IHK' %}
+          {{ url_for('colleges') }}
+          {% elif college == 'GRAD' %}
+          {{ url_for('graduate') }}
+          {% elif college == 'LLL' %}
+          {{ url_for('lll') }}
+          {% endif %}"
+        >
             <img src="/static/SVG/back_button.svg" />
         </a>
       </div>
@@ -67,7 +94,8 @@
     <div class="grid-container">
       <!-- sample data rows -->
       <div class="row-container">
-        {% for student in data %} {% if student.college == college%}
+        {% for student in data %} 
+        {% if college and student.college == college or course and student.course == course %}
         <a
           href="{{ url_for('student_record', student_id=student.student_id) }}"
           class="grid-row"
@@ -82,8 +110,22 @@
           <div class="grid-status">{{ student.status }}</div>
           <div class="grid-remark">{{ student.remarks }}</div>
         </a>
+        {% elif year_level and student.year_level == year_level %}
+        <!-- For JHS Records -->
+        <a href="{{ url_for('student_record', student_id=student.student_id) }}" 
+          class="grid-row"
+        >
+          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-section">{{ student.student_id }}</div>
+          <div class="grid-name">
+            {{ student.last_name }}, {{ student.first_name }}
+          </div>
+          <div class="grid-gender">{{ student.gender }}</div>
+          <div class="grid-counselor">{{ student.counselor }}</div>
+          <div class="grid-status">{{ student.status }}</div>
+          <div class="grid-remark">{{ student.remarks }}</div>
+        </a>
         {% endif %} {% endfor %}
-        <!-- Add more rows as needed -->
       </div>
     </div>
   </div>

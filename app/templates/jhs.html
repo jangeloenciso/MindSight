@@ -39,14 +39,14 @@
         <!-- directory buttons -->
         <div class="main-buttons">
             <div class="row">
-                <a href="{{ url_for ('jhs_records', college='SEVEN') }}">
+                <a href="{{ url_for ('jhs_records', year_level=7) }}">
                     <button>
                       <img src="/static/seven.png" />
                       <span
                         >GRADE 7</span>
                     </button></a
                   >
-                  <a href="{{ url_for ('jhs_records', college='EIGHT') }}">
+                  <a href="{{ url_for ('jhs_records', year_level=8) }}">
                     <button>
                         <img src="/static/eight.png" />
                         <span
@@ -56,14 +56,14 @@
             </div>
                 
             <div class="row">
-                <a href="{{ url_for ('jhs_records', college='NINE') }}">
+                <a href="{{ url_for ('jhs_records', year_level=9) }}">
                     <button>
                       <img src="/static/nine.png" />
                       <span
                         >GRADE 9</span>
                     </button></a
                   >
-                  <a href="{{ url_for ('jhs_records', college='TEN') }}">
+                  <a href="{{ url_for ('jhs_records', year_level=10) }}">
                     <button>
                         <img src="/static/ten.png" />
                         <span
@@ -74,10 +74,4 @@
         </div>
       </div>
     </div>
-    
-    
-    <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-    <script src={{ url_for('static', filename='javascript/add_new.js') }}></script>
-    
     {% endblock %}
-    

@@ -37,14 +37,16 @@
     padding-bottom: 10px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.5em;
 }
 
 .content {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    column-gap: 1em;
+    height: 100%;
 }
 
 .back-button button {
@@ -62,13 +64,6 @@
     transform: translateX(-5px) scale(1.1);
 }
 
-.desc {
-    text-align: center;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
 
 .box {
     width: 19%;
@@ -77,13 +72,13 @@
     border: 2px solid var(--bg-orange);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 1em;
+    text-align: center;
 }
 
 .box span {
-    font-size: 2em;
+    font-size: 1.5rem;
     font-weight: bold;
     font-style: normal;
     line-height: normal;

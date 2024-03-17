@@ -53,7 +53,7 @@ class BasicInformation(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     college = db.Column(db.String(100), nullable=False)
     course = db.Column(db.String(100), nullable=True)
-    year_level = db.Column(db.String(20))
+    year_level = db.Column(db.Integer)
     campus = db.Column(db.String(20), nullable=False)
 
     date_of_birth = db.Column(db.Date)
@@ -70,6 +70,8 @@ class BasicInformation(db.Model):
     guardian_name = db.Column(db.String(50), nullable=True)
     guardian_address = db.Column(db.String(50), nullable=True)
     guardian_contact = db.Column(db.String(20), nullable=True)
+
+    student_signature = db.Column(db.LargeBinary)
 
 
     @validates('student_id')
@@ -420,8 +422,10 @@ class ReferralInformation(db.Model):
     office_address = db.Column(db.String(50), nullable=True)
     appointment_schedule = db.Column(db.DateTime, nullable=True)
     
-    client_signature = db.Column(db.String(50), nullable=True)
-    counselor_signature = db.Column(db.String(50), nullable=True)
+    client_signature = db.Column(db.LargeBinary)
+    client_signature_date = db.Column(db.Date)
+    counselor_signature = db.Column(db.LargeBinary)
+    counselor_signature_date = db.Column(db.Date)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
