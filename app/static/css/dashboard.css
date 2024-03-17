@@ -35,7 +35,7 @@
 
 .back-button img {
     aspect-ratio: 1/1;
-    width: 0.9em; 
+    width: 0.9em;
     rotate: -90deg;
     position: relative;
 
@@ -123,8 +123,63 @@
     column-gap: 20px;
 }
 
+/* container of each experience type */
+.progress-bar-container {
+    position: relative;
+    margin-bottom: 5px;
+    background-color: var(--subtle-orange);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.progress-bar-label {
+    color: var(--primary-color);
+    font-family: Lexend-SemiBold;
+}
+
+.progress-bar-count {
+    color: var(--white);
+    padding: 0 20px;
+    border-radius: 1em;
+    background-color: var(--bg-orange);
+    margin-right: 8px;
+}
+
+.progress-bar {
+    position: relative;
+    transform: translateY(20px);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+}
+
+/* maximum value progress bar */
+.progress-bar-underlay {
+    background-color: #a0d8e0;
+    width: 100%;
+    padding: 10px;
+}
+
+.progress-bar, .progress-bar-underlay {
+    border-radius: 20px;
+}
+
+/* flexes "progress-bar-count" and "bar-flex" side-by-side */
+.progress-flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* flex container for progress-bar and progress-bar-underlay */
+.bar-flex {
+    width: 50%;
+    height: 20px;
+    transform: translateY(-20px);
+}
+
+
 /* experiences chart overflow */
-#chart{
+#chart {
     height: 90%;
     overflow-y: auto;
 }
