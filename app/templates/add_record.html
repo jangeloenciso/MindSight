@@ -1915,6 +1915,14 @@
                 above.</label
               >
             </div>
+            <div> 
+              <label>Student's Signture: </label>
+                <input type="hidden" name="signatureCanvasInput" id="signatureCanvasInput">
+                <canvas id="signatureCanvas" width="317" height="40"></canvas>
+                <button type="button" onclick="clearSignature()">Clear</button>
+                <button type="button" onclick="saveSignature()">Save</button>
+            </div>
+            
             {{ form.personal_agreement_date() }}
           </div>     
           <div class="single-column">
@@ -1946,6 +1954,7 @@
             <button id="cancel-button" class="cancel-btn">Cancel</button>
           </div>
         </section>
+
         <!-- end: CONFIDENTIAL -->
 
         
@@ -1955,5 +1964,30 @@
     <script src={{ url_for('static', filename='javascript/add_row.js') }}></script>
     <script src={{ url_for('static', filename='javascript/add_success.js') }}></script>
     <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
+    <!-- Include SignaturePad library from CDN -->
+    <script src={{ url_for('static', filename='javascript/cdn/signature_pad.js') }}></script>
+    <script>
+      
+      var canvas = document.getElementById('signatureCanvas');
+      var signaturePad = new SignaturePad(canvas, {
+          backgroundColor: 'rgb(255, 255, 255)' // set background color
+      });
+
+
+      function clearSignature() {
+          signaturePad.clear();
+      }
+
+      function saveSignature() {
+          var signatureData = signaturePad.toDataURL();
+          var binaryData = atob(signatureData.split(',')[1]);
+          var encodedData = btoa(binaryData);
+          document.getElementById('signatureCanvasInput').value = encodedData;
+          console.log(encodedData)
+      }
+    </script>
+
+    
+
   </body>
 </html>

@@ -1874,7 +1874,7 @@ href="/static/fonts/custom-fonts.css"
                   <input class='form-width100 single-column-span' id="legalConviction" name="legalConviction"/>
                 </td>
                 <td>
-                  <input class='form-width100 single-column-span' type="date" id="legalDate" name="legalDate"/>
+                  <input class='form-width100 single-column-span' type="date" id="legalDate" name="legalDate" value=""/>
                 </td>
                 <td>
                   <input class='form-width100 single-column-span' id="legalOutcome" name="legalOutcome"/>
@@ -2010,6 +2010,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionDate"
                   name="sessionDate"
+                  value=""
                 />
               </td>
               <td>
@@ -2169,24 +2170,39 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Client Signature:</label
               >
-              <input
-                type="text"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinfoclientsig"
-                name="refinfoclientsig"
-              />
+              <input type="hidden" name="clientSignatureInput" id="clientSignatureInput">
+                <canvas id="clientSignatureCanvas" width="300" height="60"></canvas>
+                  <button 
+                    type="button" 
+                    onclick="clearSignature(clientSignaturePad)"
+                  >
+                    Clear
+                  </button>
+                  <button 
+                    type="button" 
+                    onclick="saveSignature(clientSignaturePad, 'clientSignatureInput')"
+                  >
+                    Save
+                  </button>
               <label
                 for="refinfocounselorsig"
                 style="width: 320px !important; padding-right: 10px"
                 >Counselor's Signature:</label
               >
-              <input
-                type="tel"
-                class="form-width100 single-column-span referral"
-                id="refinfocounselorsig"
-                name="refinfocounselorsig"
-              />
+                <input type="hidden" name="counselorSignatureInput" id="counselorSignatureInput">
+                <canvas id="counselorSignatureCanvas" width="300" height="60"></canvas>
+                <button 
+                  type="button" 
+                  onclick="clearSignature(counselorSignaturePad)"
+                >
+                  Clear
+                </button>
+                <button 
+                  type="button" 
+                  onclick="saveSignature(counselorSignaturePad, 'counselorSignatureInput')"
+                >
+                  Save
+                </button>
             </div>
             <div class="left-align single-column-span">
               <label
@@ -2200,6 +2216,7 @@ href="/static/fonts/custom-fonts.css"
                 style="margin-right: 20px"
                 id="refinfoclientdate"
                 name="refinfoclientdate"
+                value=""
               />
               <label
                 for="refinfocounselordate"
@@ -2211,6 +2228,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span referral"
                 id="refinfocounselordate"
                 name="refinfocounselordate"
+                value=""
               />
             </div>
           </div>
@@ -2480,4 +2498,32 @@ href="/static/fonts/custom-fonts.css"
 <script src={{ url_for('static', filename='javascript/new_case_note.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
 <script src={{ url_for('static', filename='javascript/edit_record.js') }}></script>
+<script src={{ url_for('static', filename='javascript/cdn/signature_pad.js') }}></script>
+
+<script>
+      
+  var clientSignatureCanvas = document.getElementById('clientSignatureCanvas');
+  var clientSignaturePad = new SignaturePad(clientSignatureCanvas, {
+      backgroundColor: 'rgb(255, 255, 255)' // set background color
+  });
+
+  var counselorSignatureCanvas = document.getElementById('counselorSignatureCanvas');
+  var counselorSignaturePad = new SignaturePad(counselorSignatureCanvas, {
+    backgroundColor: 'rgb(255, 255, 255)' // set background color
+});
+
+  function clearSignature(signaturePad) {
+    signaturePad.clear();
+  }
+
+  function saveSignature(signaturePad, inputId) {
+    console.log(signaturePad)
+    var signatureData = signaturePad.toDataURL();
+    var binaryData = atob(signatureData.split(',')[1]);
+    var encodedData = btoa(binaryData);
+    document.getElementById(inputId).value = encodedData;
+    console.log(encodedData)
+  }
+</script>
+
 {% endblock %}

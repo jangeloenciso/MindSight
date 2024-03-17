@@ -71,6 +71,8 @@ class BasicInformation(db.Model):
     guardian_address = db.Column(db.String(50), nullable=True)
     guardian_contact = db.Column(db.String(20), nullable=True)
 
+    student_signature = db.Column(db.LargeBinary)
+
 
     @validates('student_id')
     def validate_student_id(self, key, value):
@@ -420,8 +422,10 @@ class ReferralInformation(db.Model):
     office_address = db.Column(db.String(50), nullable=True)
     appointment_schedule = db.Column(db.DateTime, nullable=True)
     
-    client_signature = db.Column(db.String(50), nullable=True)
-    counselor_signature = db.Column(db.String(50), nullable=True)
+    client_signature = db.Column(db.LargeBinary)
+    client_signature_date = db.Column(db.Date)
+    counselor_signature = db.Column(db.LargeBinary)
+    counselor_signature_date = db.Column(db.Date)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 

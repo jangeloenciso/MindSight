@@ -18,6 +18,7 @@ from werkzeug.utils import secure_filename
 import logging, os
 from datetime import datetime
 from sqlalchemy import desc, func
+import base64
 
 
 SECURITY_QUESTIONS = {
@@ -458,9 +459,11 @@ def student_record(student_id):
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
 
+    student_signature_binary_data = student_data[0]['student_signature']
+    student_signature_base64 = base64.b64encode(student_signature_binary_data).decode('utf-8')
     print(student_id)
 
-    return render_template('students/student_record.html', student_id=student_id, student_data=student_data)
+    return render_template('students/student_record.html', student_id=student_id, student_data=student_data, student_signature = student_signature_base64)
 
 @app.route('/students/records/view/full_record/<student_id>', methods=['GET', 'POST'])
 @login_required
@@ -573,6 +576,17 @@ def edit_record(student_id):
             form.populate_obj(student.legal_history)
             form.populate_obj(student.additional_information)
 
+            referral = ReferralInformation(
+                client_signature = base64.b64decode(request.form['clientSignatureInput']),
+                client_signature_date = request.form.get('refinfoclientdate'),
+                counselor_signature = base64.b64decode(request.form['counselorSignatureInput']),
+                counselor_signature_date = request.form.get('refinfocounselordate'),
+
+                student_id = student_id
+            )
+
+            db.session.add(referral)
+            
             status = request.form.get('status')
             student.additional_information.status = status
 
@@ -940,30 +954,6 @@ def add_record():
             student_id=form.student_id.data
         )
 
-        # referral_information = ReferralInformation(
-        #     reason_for_referral=form.reason_for_referral.data,
-        #     receiving_agency=form.receiving_agency.data,
-        #     receiving_contact_number=form.receiving_contact_number.data,
-        #     receiving_name=form.receiving_name.data,
-        #     receiving_email=form.receiving_email.data,
-        #     office_address=form.office_address.data,
-        #     appointment_schedule=form.appointment_schedule.data,
-            
-        #     client_signature=form.client_signature.data,
-        #     counselor_signature=form.counselor_signature.data,
-        # )
-
-        # case_note = CaseNote(
-        #     counselor_name=form.counselor_name.data,
-        #     interview_date=request.form.get('confiinterview'),
-        #     number_of_session=form.number_of_session.data,
-
-        #     subject_complaint=form.subject_complaint.data,
-        #     objective_assessment=form.objective_assessment.data,
-        #     plan_of_action=form.plan_of_action.data,
-        #     progress_made=form.progress_made.data
-        # )
-
         new_student = BasicInformation(
             student_id=form.student_id.data,
             last_name=form.last_name.data,
@@ -987,6 +977,8 @@ def add_record():
             phone_number = form.phone_number.data,
             email_address = form.email_address.data,
 
+            student_signature = base64.b64decode(request.form['signatureCanvasInput']),
+
             history_information=history_info,
             health_information=health_info,
             family_background=family_background,
@@ -1000,7 +992,7 @@ def add_record():
             # case_note=case_note
         )
 
-
+        print(request.form.get('signatureCanvasInput'))
 
         # Add the new records to the database
         db.session.add(new_student)
@@ -1050,6 +1042,7 @@ def add_record():
         # return redirect(url_for('student_record', new_record_id=new_student.id))
         return jsonify({'success': True})
     else:
+        print(request.form.get('signatureCanvasInput'))
         logging.error("Form validation failed")
         logging.error(form.errors)
 
