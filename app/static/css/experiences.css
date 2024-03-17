@@ -44,7 +44,6 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     row-gap: 1em;
     overflow-y: scroll;
