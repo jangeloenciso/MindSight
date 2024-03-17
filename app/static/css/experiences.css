@@ -108,7 +108,7 @@
 .progress-bar-label {
     color: var(--primary-color);
     font-family: Lexend-SemiBold;
-    display: flex;
+    text-align: left;
     margin-bottom: 1px;
 }
 
