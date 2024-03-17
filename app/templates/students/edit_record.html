@@ -1983,13 +1983,13 @@ href="/static/fonts/custom-fonts.css"
             </p>
 
             <div class="tac">
-              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True) }}
+              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True, disabled=True) }}
               <label for="taccheckbox">
                 I understand and agree to the information presented
                 above.</label
               >
             </div>
-            {{ form.personal_agreement_date(value=student.additional_information.personal_agreement_date) }}
+            {{ form.personal_agreement_date(value=student.additional_information.personal_agreement_date, disabled=True) }}
           </div>
 
           <table id="sessionsTable">
@@ -2523,6 +2523,7 @@ href="/static/fonts/custom-fonts.css"
     var encodedData = btoa(binaryData);
     document.getElementById(inputId).value = encodedData;
     console.log(encodedData)
+    alert("Signature updated successfully!")
   }
 </script>
 
