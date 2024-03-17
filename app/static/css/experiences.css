@@ -37,14 +37,17 @@
     padding-bottom: 10px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.5em;
 }
 
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    row-gap: 1em;
+    overflow-y: scroll;
 }
 
 .back-button button {
@@ -77,9 +80,9 @@
     border: 2px solid var(--bg-orange);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 1em;
+    text-align: center;
 }
 
 .box span {
@@ -100,6 +103,16 @@
 #myChart5 {
     width: 100%;
     height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Sidebar active indicator */
