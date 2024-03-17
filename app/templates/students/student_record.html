@@ -15,11 +15,11 @@
             </div>
             <div class="back-button">
                 <a href="
-                  {% if student_data[0]['college'] == 'CEA' or student_data[0]['college'] == 'CBEA' or student_data[0]['college'] == 'CAS' or student_data[0]['college'] == 'CED' or student_data[0]['college'] == 'IHK' %}
+                  {% if student_data[0]['college'] in ['CEA', 'CBEA', 'CAS', 'CED', 'IHK'] %}
                     {{ url_for ('college_records', college=student_data[0]['college']) }}
-                  {% elif student_data[0]['course'] == 'STEM' or student_data[0]['course'] == 'ABM' or student_data[0]['course'] == 'HUMSS' or student_data[0]['course'] == 'ICT' %}
+                  {% elif student_data[0]['course'] in ['STEM', 'ABM', 'HUMSS', 'ICT'] %}
                     {{ url_for ('shs_records', course=student_data[0]['course']) }}
-                  {% elif student_data[0]['year_level'] == 7 or student_data[0]['year_level'] == 8 or student_data[0]['year_level'] == 9 or student_data[0]['year_level'] == 10  %}
+                  {% elif student_data[0]['year_level'] in [7, 8, 9, 10] %}
                     {{ url_for ('jhs_records', year_level=student_data[0]['year_level']) }}
                   {% elif student_data[0]['college'] == 'GRAD' %}
                     {{ url_for ('graduate_records', college=student_data[0]['college']) }}
