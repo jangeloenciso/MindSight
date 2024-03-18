@@ -337,6 +337,7 @@ th, td {
     border-radius: 5px;
     border: 1px solid var(--fade-text-blue);
     transition: var(--smooth-transition);
+    font-family: Lexend-Bold;
 }
 
 .Btn:hover {
