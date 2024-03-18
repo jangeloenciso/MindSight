@@ -51,20 +51,20 @@
     <div class="grid-container">
       <!-- sample data rows -->
       <div class="row-container">
-        {% for basic_info, add_info in students %}
-        <a
-          href="{{ url_for('student_record', student_id=basic_info.student_id) }}"
-          class="grid-row"
-        >
-          <div class="grid-date">{{ add_info.personal_agreement_date }}</div>
-          <div class="grid-section">{{ basic_info.student_id }}</div>
-          <div class="grid-name">{{ basic_info.last_name }}, {{ basic_info.first_name }}</div>
-          <div class="grid-college">{{ basic_info.college }}</div>
-          <div class="grid-gender">{{ basic_info.gender }}</div>
-          <div class="grid-counselor">{{ add_info.counselor }}</div>
-          <div class="grid-status">{{ add_info.status }}</div>
-          <div class="grid-remark">{{ add_info.remarks }}</div>
-        </a>
+        {% for student, basic_info, add_info in students %}
+          <a href="
+            {{ url_for('student_record', student_id=basic_info.student_id) }}" 
+            class="grid-row"
+          >
+            <div class="grid-date">{{ student.interview_date }}</div>
+            <div class="grid-section">{{ student.student_id }}</div>
+            <div class="grid-name">{{ basic_info.last_name }}, {{ basic_info.first_name }}</div>
+            <div class="grid-college">{{ basic_info.college }}</div>
+            <div class="grid-gender">{{ basic_info.gender }}</div>
+            <div class="grid-counselor">{{ add_info.counselor }}</div>
+            <div class="grid-status">{{ add_info.status }}</div>
+            <div class="grid-remark">{{ add_info.remarks }}</div>
+          </a>
         {% endfor %}
       </div>
     </div>
