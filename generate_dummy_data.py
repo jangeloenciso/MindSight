@@ -57,7 +57,7 @@ with app.app_context():
         else:
             return None
 
-    for _ in range(10):
+    for _ in range(100):
         family_name = fake.last_name()
         college = fake.random_element(elements=college_names)
 
@@ -277,6 +277,7 @@ with app.app_context():
             expectations=fake.sentence(),
             things_to_change=fake.sentence(),
             other_information=fake.sentence(),
+            nature_of_concern=fake.random_element(elements=("Academic","Personal","Career","Social")),
             student = student
         )
 
