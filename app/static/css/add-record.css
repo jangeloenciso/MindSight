@@ -518,6 +518,10 @@ NOTE: changing dimension could lead to irregular behavior of the paint cursor wh
         width: 358px !important;
     }
 
+    .radio-inline-container {
+        align-items: flex-start;
+    }
+
 
 
 }
