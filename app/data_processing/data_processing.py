@@ -232,7 +232,28 @@ def data_count_dict(query, college=None):
             "Agnostic",
             "Prefer not to say"
         ]
+        data_count = {category: 0 for category in categories}
 
+        counts_from_df = df[query].value_counts()
+
+        for category in categories:
+            if category in counts_from_df:
+                data_count[category] = int(counts_from_df[category])
+        return data_count
+
+    if query == 'gender':
+        categories = ["Male", "Female", "LGBTQIA+"]
+        data_count = {category: 0 for category in categories}
+
+        counts_from_df = df[query].value_counts()
+
+        for category in categories:
+            if category in counts_from_df:
+                data_count[category] = int(counts_from_df[category])
+        return data_count
+    
+    if query == 'campus':
+        categories = ["Boni", "Pasig"]
         data_count = {category: 0 for category in categories}
 
         counts_from_df = df[query].value_counts()

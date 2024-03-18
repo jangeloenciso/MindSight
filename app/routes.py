@@ -202,8 +202,14 @@ def nature_of_concern():
 @app.route('/dashboard/campus', methods=['GET'])
 @login_required
 def campus():
+
+    jhs_data = data_count_dict('campus', 'JHS')
+    shs_data = data_count_dict('campus', 'SHS')
+    college_data = data_count_dict('campus', 'College')
+    grad_data = data_count_dict('campus', 'GRAD')
+    lll_data = data_count_dict('campus', 'LLL')
     
-    return render_template('dashboard/campus.html')
+    return render_template('dashboard/campus.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 @app.route('/dashboard/religion', methods=['GET'])
 @login_required
@@ -220,8 +226,14 @@ def religion():
 @app.route('/dashboard/identity', methods=['GET'])
 @login_required
 def identity():
+
+    jhs_data = data_count_dict('gender', 'JHS')
+    shs_data = data_count_dict('gender', 'SHS')
+    college_data = data_count_dict('gender', 'College')
+    grad_data = data_count_dict('gender', 'GRAD')
+    lll_data = data_count_dict('gender', 'LLL')
     
-    return render_template('dashboard/identity.html')
+    return render_template('dashboard/identity.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 
 # pages for admin / viewing of students whose been counseled
