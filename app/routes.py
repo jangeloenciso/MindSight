@@ -1077,17 +1077,16 @@ def add_record():
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
-    print(data)
     return jsonify(data)
 
 @app.route('/get_data/<data_to_count>', methods=['GET'])
-def get_college_count(data_to_count):
+def get_data_count(data_to_count):
     data = data_count(data_to_count)
-    print(data)
     return jsonify(data)
 
-# @app.route('/get_data/<data_to_count>', methods=['GET'])
-# def get_college_count(data_to_count):
-#     data = data_count(data_to_count)
-#     print(data)
-#     return jsonify(data)
+@app.route('/get_data/compare/<data_to_count>/<selected_year1>/<selected_year2>', methods=['GET'])
+def get_data_year(data_to_count, selected_year1, selected_year2):
+    data1 = data_count(data_to_count, selected_year1)
+    data2 = data_count(data_to_count, selected_year2)
+    print("HI")
+    return jsonify({'data1': data1, 'data2': data2})

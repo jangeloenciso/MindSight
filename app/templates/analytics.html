@@ -1,7 +1,9 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
-endblock %} {% block styles %}
+{% extends "components/base.html" %}
+{% block title %} Mindsight - Analytics{% endblock %}
+{% block styles %}
 <link rel="stylesheet" href="/static/css/analytics.css" />
-{% endblock %} {% block content %}
+{% endblock %}
+{% block content %}
 <div class="right">
   <div class="main-content">
     <span id="analytics">Analytics</span>
@@ -9,14 +11,14 @@ endblock %} {% block styles %}
       <div class="semester-left">
         <div class="first-Semester">
           <select id="first-semester">
-            <option value="1">First Semester</option>
-            <option value="2">Second Semester</option>
-          </select>
-          <select id="year">
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
+            <option value="2024">2024</option>
           </select>
         </div>
         <div class="compare">
@@ -24,14 +26,14 @@ endblock %} {% block styles %}
         </div>
         <div class="second-semester">
           <select id="second-semester">
-            <option value="1">First Semester</option>
-            <option value="2">Second Semester</option>
-          </select>
-          <select id="year">
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
+            <option value="2024">2024</option>
           </select>
         </div>
       </div>
@@ -48,7 +50,7 @@ endblock %} {% block styles %}
         <!-- Experiences -->
         <div class="experience-container">
           <span class="title" id="experience">Experiences</span>
-          <!-- <canvas id="myChart1" height="40" width="100"></canvas> -->
+          <canvas id="myChart1" height="40" width="100"></canvas>
         </div>
         <!-- College -->
         <div class="college-container">
@@ -85,4 +87,36 @@ endblock %} {% block styles %}
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/analytics.js') }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listeners to both select elements
+    document.getElementById('first-semester').addEventListener('change', function() {
+      console.log("changed")
+      updateCharts();
+    });
+
+    document.getElementById('second-semester').addEventListener('change', function() {
+      updateCharts();
+    });
+
+    // Fetch and generate charts initially
+    updateCharts();
+  });
+
+  function updateCharts() {
+    let selectedYear1 = document.getElementById('first-semester').value;
+    let selectedYear2 = document.getElementById('second-semester').value;
+
+    // Log the selected years for testing
+    console.log("Selected Year 1:", selectedYear1);
+    console.log("Selected Year 2:", selectedYear2);
+
+    fetchAndGenerateChart(1, selectedYear1, selectedYear2);
+    fetchAndGenerateChart(2, selectedYear1, selectedYear2);
+    fetchAndGenerateChart(3, selectedYear1, selectedYear2);
+    fetchAndGenerateChart(4, selectedYear1, selectedYear2);
+    fetchAndGenerateChart(5, selectedYear1, selectedYear2);
+    fetchAndGenerateChart(6, selectedYear1, selectedYear2);
+}
+</script>
 {% endblock %}

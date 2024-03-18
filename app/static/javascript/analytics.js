@@ -1,39 +1,41 @@
 let chart1, chart2, chart3, chart4, chart5, chart6;
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetchAndGenerateChart(1);
-    fetchAndGenerateChart(2);
-    fetchAndGenerateChart(3);
-    fetchAndGenerateChart(4);
-    fetchAndGenerateChart(5);
-    fetchAndGenerateChart(6);
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     fetchAndGenerateChart(1);
+//     fetchAndGenerateChart(2);
+//     fetchAndGenerateChart(3);
+//     fetchAndGenerateChart(4);
+//     fetchAndGenerateChart(5);
+//     fetchAndGenerateChart(6);
+// });
 
-function fetchAndGenerateChart(chartNumber) {
+function fetchAndGenerateChart(chartNumber, selectedYear1, selectedYear2) {
 
     let dataEndpoint;
     if (chartNumber === 1){
-        dataEndpoint = '/get_data/religion'; 
+        dataEndpoint = `/get_data/compare/nature_of_concern/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 2 ) {
-        dataEndpoint = '/get_data/college'; 
+        dataEndpoint = `/get_data/compare/college/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 3) {
-        dataEndpoint = '/get_data/campus'; 
+        dataEndpoint = `/get_data/compare/campus/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 4) {
-        dataEndpoint = '/get_data/religion'; 
+        dataEndpoint = `/get_data/compare/religion/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 5) {
-        dataEndpoint = '/get_data/nature_of_concern'; 
+        dataEndpoint = `/get_data/compare/nature_of_concern/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 6) {
-        dataEndpoint = '/get_data/gender'; 
+        dataEndpoint = `/get_data/compare/gender/${selectedYear1}/${selectedYear2}`; 
     }
 
     fetch(dataEndpoint)
         .then(response => response.json())
         .then(data => {
-            generateBarGraph(data, chartNumber);
+            let data1 = data.data1;
+            let data2 = data.data2;
+            generateBarGraph(data1, data2, chartNumber);
         });
 }
 
-function generateBarGraph(data, chartNumber) {
+function generateBarGraph(data1, data2, chartNumber) {
     let chartContainer = `myChart${chartNumber}`;
     let ctx = document.getElementById(chartContainer).getContext('2d');
 
@@ -42,18 +44,22 @@ function generateBarGraph(data, chartNumber) {
             chart1.destroy();
         }
 
-        var labels = data.map(item => item.religion); 
-        var values = data.map(item => item.student_count); 
+        var labels = data1.map(item => item.nature_of_concern); 
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart1 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
-                    backgroundColor: 'rgba(9, 83, 113, 1)',
-                    borderColor: 'rgba(160, 216, 224, 1)'
-            }]
+                    data: values1,
+                    backgroundColor: 'rgba(9, 83, 113, 1)'
+                },
+                {
+                    data: values2,
+                    backgroundColor: 'rgba(219, 147, 84, 1)'
+                }]
             },
             options: {
                 indexAxis: 'y',
@@ -85,24 +91,26 @@ function generateBarGraph(data, chartNumber) {
                 }
             }
         });
+        
 
     } else if (chartNumber === 2) {
         if (chart2) {
             chart2.destroy();
         }
 
-        var labels = data.map(item => item.college);
-        var values = data.map(item => item.student_count);
+        var labels = data1.map(item => item.college); 
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart2 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
+                    data: values1,
                     backgroundColor: 'rgba(9, 83, 113, 1)'
                 }, {
-                    data: values,
+                    data: values2,
                     backgroundColor: 'rgba(219, 147, 84, 1)'
                 }]
             },
@@ -140,22 +148,21 @@ function generateBarGraph(data, chartNumber) {
             chart3.destroy();
         }
 
-        var labels = data.map(item => item.campus);
-        var values = data.map(item => item.student_count);
+        var labels = data1.map(item => item.campus);
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart3 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
-                    backgroundColor: ['rgba(9, 83, 113, 1)',
-                                     'rgba(9, 83, 113, 1)']
-                }, {
-                    data: values,
-                    backgroundColor:['rgba(219, 147, 84, 1)',
-                                     'rgba(219, 147, 84, 1)']
-                                     
+                    data: values1,
+                    backgroundColor: 'rgba(9, 83, 113, 1)'
+                },
+                {
+                    data: values2,
+                    backgroundColor: 'rgba(219, 147, 84, 1)'
                 }]
             },
             options: {
@@ -192,18 +199,19 @@ function generateBarGraph(data, chartNumber) {
             chart4.destroy();
         }
 
-        var labels = data.map(item => item.religion); 
-        var values = data.map(item => item.student_count); 
+        var labels = data1.map(item => item.religion); 
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart4 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
+                    data: values1,
                     backgroundColor: 'rgba(9, 83, 113, 1)',
                 }, {
-                    data: values,
+                    data: values2,
                     backgroundColor:'rgba(219, 147, 84, 1)',
             }]
             },
@@ -242,21 +250,22 @@ function generateBarGraph(data, chartNumber) {
             chart5.destroy();
         }
 
-        var labels = data.map(item => item.nature_of_concern); 
-        var values = data.map(item => item.student_count); 
+        var labels = data1.map(item => item.nature_of_concern); 
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart5 = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
+                    data: values1,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
                                       'rgba(96, 146, 192, 1)',
                                       'rgba(160, 216, 224, 1)']
                 }, {
-                    data: values,
+                    data: values2,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
                                       'rgba(96, 146, 192, 1)',
@@ -268,7 +277,7 @@ function generateBarGraph(data, chartNumber) {
                 responsive: true,
                 plugins: {
                     legend: {
-                        display: false
+                        display: true
                     }
                 }
                 // animations: {
@@ -303,21 +312,22 @@ function generateBarGraph(data, chartNumber) {
             chart6.destroy();
         }
 
-        var labels = data.map(item => item.gender); 
-        var values = data.map(item => item.student_count); 
+        var labels = data1.map(item => item.gender); 
+        var values1 = data1.map(item => item.student_count); 
+        var values2 = data2.map(item => item.student_count); 
 
         chart6 = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: values,
+                    data: values1,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
                                       'rgba(96, 146, 192, 1)',
                                       'rgba(160, 216, 224, 1)']
                 }, {
-                    data: values,
+                    data: values2,
                     backgroundColor: ['rgba(219, 147, 84, 1)',
                                       'rgba(9, 83, 113, 1)',
                                       'rgba(96, 146, 192, 1)',

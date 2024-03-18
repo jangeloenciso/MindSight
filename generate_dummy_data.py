@@ -47,6 +47,9 @@ with app.app_context():
     #     )
     #     db.session.add(visit)
 
+    start_date = datetime(2021, 1, 1)
+    end_date = datetime(2024, 12, 31)
+
     def pick_course(college):
         course_prefix = college.lower()
 
@@ -79,6 +82,7 @@ with app.app_context():
             residence=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
             email_address=fake.email(),
             civil_status=fake.random_element(elements=("Single", "Married", "Divorced", "Widowed")),
+            submitted_on=fake.date_time_between(start_date=start_date, end_date=end_date)
         )
 
         db.session.add(student)

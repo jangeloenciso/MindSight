@@ -88,6 +88,7 @@ def process_data(student_id=None, search_query=None):
                 'guardian_name': record.guardian_name,
                 'guardian_address': record.guardian_address,
                 'guardian_contact': record.guardian_contact,
+                'submitted_on': record.submitted_on,
 
                 # Family Background
                 # TODO: ADD THE NEW SHIT
@@ -172,8 +173,15 @@ def data_analytics(first_metric, second_metric):
     return data_dict
 
 # Works with ChartJS
-def data_count(query):
+def data_count(query, selected_year=None):
     df = process_data()
+
+    # print(selected_year)
+
+    if selected_year:
+        df['year'] = pd.to_datetime(df['submitted_on']).dt.year
+        df = df[df['year'] == int(selected_year)]
+        print(df)
 
     data_count = df[query].value_counts().reset_index()
     data_count.columns = [query, 'student_count']
