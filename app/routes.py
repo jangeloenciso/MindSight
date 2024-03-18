@@ -190,8 +190,14 @@ def college_summaries():
 @app.route('/dashboard/nature_of_concern', methods=['GET'])
 @login_required
 def nature_of_concern():
+
+    jhs_data = data_count_dict('nature_of_concern', 'JHS')
+    shs_data = data_count_dict('nature_of_concern', 'SHS')
+    college_data = data_count_dict('nature_of_concern', 'College')
+    grad_data = data_count_dict('nature_of_concern', 'GRAD')
+    lll_data = data_count_dict('nature_of_concern', 'LLL')
     
-    return render_template('dashboard/nature_concern.html')
+    return render_template('dashboard/nature_concern.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 @app.route('/dashboard/campus', methods=['GET'])
 @login_required

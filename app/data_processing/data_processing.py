@@ -182,11 +182,42 @@ def data_count(query):
     return data_dict
 
 # Works with the progress bars
-def data_count_dict(query):
+def data_count_dict(query, college=None):
     df = process_data()
+
+    if college == 'College':
+        college_departments = ['CBEA', 'CEA', 'CAS', 'IHK', 'CED']
+        df = df[df['college'].isin(college_departments)]
+
+    if college == 'SHS':
+        df = df[df['college'] == 'SHS']
+
+    if college == 'JHS':
+        df = df[df['college'] == 'JHS']
+    
+    if college == 'GRAD':
+        df = df[df['college'] == 'GRAD']
+
+    if college == 'LLL':
+        df = df[df['college'] == 'LLL']
+
+
+    if query == 'nature_of_concern':
+        categories = ['Academic', 'Career', 'Social', 'Personal']
+
+        data_count = {category: 0 for category in categories}
+
+        counts_from_df = df[query].value_counts()
+
+        for category in categories:
+            if category in counts_from_df:
+                data_count[category] = int(counts_from_df[category])
+        return data_count
 
     data_count = df[query].value_counts().to_dict()
     return data_count
+
+
 
 def data_history_information(college=None):
     df = process_data()
