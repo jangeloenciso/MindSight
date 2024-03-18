@@ -250,9 +250,10 @@ def admin():
         user.role = ROLE.get(user.role, 'Unknown Role')
 
     # query all counseled students and organize it by latest to oldest (date)
-    students = db.session.query(BasicInformation, AdditionalInformation) \
-        .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
-        .order_by(desc(AdditionalInformation.personal_agreement_date)).all()
+    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+        .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+        .order_by(desc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
@@ -260,7 +261,7 @@ def admin():
         .group_by(AdditionalInformation.counselor).all()
 
     # filter out terminated students
-    active_students = [student for student in students if student[1].status != 'terminated']
+    active_students = [student for student in students if student[2].status != 'terminated']
 
     students_count_dict = {counselor: count for counselor, count in students_count}
 
@@ -275,10 +276,11 @@ def counseling_history():
 
     counselor_name = full_name
 
-    students = db.session.query(BasicInformation, AdditionalInformation) \
+    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+        .join(CaseNote, BasicInformation.student_id == CaseNote.student_id) \
         .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
         .filter(AdditionalInformation.counselor == counselor_name) \
-        .order_by(desc(AdditionalInformation.personal_agreement_date)).all()
+        .order_by(desc(CaseNote.interview_date)).all()
 
 
     return render_template('admin/counseling_history.html', full_name=full_name, students=students)
@@ -530,13 +532,12 @@ def upload_file(student_id):
 
 @app.route('/upload/<student_id>/<filename>')
 def uploaded_file(student_id, filename):
-    print(student_id, filename)
 
     document = Document.query.filter_by(student_id=student_id, filename=filename).first()
 
     if document:
-        print(filename)
-        print(student_id)
+        print(f"Document found: {document}")
+        
         return send_from_directory(app.config['UPLOAD_FOLDER'], document.path)
     else:
         return "File not found", 404
