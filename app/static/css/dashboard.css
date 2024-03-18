@@ -45,7 +45,6 @@
     font-size: 25px;
     color: var(--primary-color);
     font-style: normal;
-    font-weight: 800;
     line-height: normal;
     border-bottom: 2px solid var(--bg-orange);
     padding-bottom: 0.3em;
@@ -53,6 +52,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.title div{
+    font-family: Lexend-Black;
 }
 
 #experience, #college, #campus,
@@ -172,7 +175,7 @@
 
 /* flex container for progress-bar and progress-bar-underlay */
 .bar-flex {
-    width: 50%;
+    width: 100%;
     height: 20px;
     transform: translateY(-20px);
 }

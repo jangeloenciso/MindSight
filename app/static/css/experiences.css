@@ -149,7 +149,7 @@
 
 /* flex container for progress-bar and progress-bar-underlay */
 .bar-flex {
-    width: 50%;
+    width: 70%;
     height: 20px;
     transform: translateY(-20px);
 }
