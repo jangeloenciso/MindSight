@@ -208,8 +208,14 @@ def campus():
 @app.route('/dashboard/religion', methods=['GET'])
 @login_required
 def religion():
+
+    jhs_data = data_count_dict('religion', 'JHS')
+    shs_data = data_count_dict('religion', 'SHS')
+    college_data = data_count_dict('religion', 'College')
+    grad_data = data_count_dict('religion', 'GRAD')
+    lll_data = data_count_dict('religion', 'LLL')
     
-    return render_template('dashboard/religion.html')
+    return render_template('dashboard/religion.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 @app.route('/dashboard/identity', methods=['GET'])
 @login_required
