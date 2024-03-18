@@ -48,7 +48,7 @@ function generateBarGraph(data1, data2, chartNumber) {
     let values1 = Object.values(data1);
     let values2 = Object.values(data2);
 
-    ctx.canvas.width = 500;
+    ctx.canvas.width = 1250; //Adjust as needed. Width set at 1250 due to long texts
     ctx.canvas.height = 2000;
         chart1 = new Chart(ctx, {
             type: 'bar',
