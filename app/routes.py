@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request, jsonify
+from flask import render_template, url_for, redirect, flash, request, jsonify, send_from_directory
 from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
@@ -36,6 +36,8 @@ ROLE = {
     'admin4': 'Registered Psychometrician',
 }
 
+
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf'}
 
 
 @app.route('/')
@@ -496,60 +498,48 @@ def full_record(student_id):
     return render_template('students/full_record.html', student_id=student_id, student_data=student_data)
 
 
-# Upload File
-UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
-ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg'} 
-
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+   return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/students/records/upload/<student_id>', methods=['GET', 'POST'])
+@app.route('/upload/<student_id>', methods=['POST'])
 def upload_file(student_id):
-    app.logger.info(f"UPLOAD_FOLDER: {UPLOAD_FOLDER}")
-    
+
+    print(student_id)
     if 'file' not in request.files:
-        flash('No file part', 'danger')
-        return redirect(request.url)
-
+        return jsonify({'error': 'No file part'}), 400
+    
     file = request.files['file']
-
     if file.filename == '':
-        flash('No selected file', 'danger')
-        return redirect(request.url)
+        return jsonify({'error': 'No selected file'}), 400
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        destination = os.path.join(UPLOAD_FOLDER, filename)
-        app.logger.info(f"Destination path: {destination}")
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        file.save(file_path)
 
-        os.makedirs(os.path.dirname(destination), exist_ok=True)
-        file.save(destination)
 
-        document = Document(filename=filename, path=destination, student_id=student_id)
-        db.session.add(document)
+        new_document = Document(filename=filename, path=file_path, student_id=student_id)
+        db.session.add(new_document)
         db.session.commit()
 
-        flash('File uploaded successfully', 'success')
-        return redirect(url_for('student_record', student_id=student_id))
+        return jsonify({'message': 'File uploaded successfully'}), 200
+    else:
+        return jsonify({'error': 'File upload failed'}), 500
+    
 
-    flash('Invalid file type', 'danger')
-    return redirect(request.url)
+@app.route('/upload/<student_id>/<filename>')
+def uploaded_file(student_id, filename):
+    print(student_id, filename)
 
-
-
-# View uploaded file
-@app.route('/get_uploaded_file_path/<student_id>')
-def get_uploaded_file_path(student_id):
-
-    # TODO: Ano to
-    document = Document.query.filter_by(student_id=student_id).first()
+    document = Document.query.filter_by(student_id=student_id, filename=filename).first()
 
     if document:
-        file_url = url_for('upload_file', student_id=student_id)
-        return jsonify({'file_url': file_url})
-    
+        print(filename)
+        print(student_id)
+        return send_from_directory(app.config['UPLOAD_FOLDER'], document.path)
     else:
-        return jsonify({'error': 'Document not found'}), 404
+        return "File not found", 404
 
 
 
@@ -1000,7 +990,7 @@ def add_record():
             gender = request.form.get('gender'),
             civil_status = request.form.get('civil'),
             nationality = form.nationality.data,
-            religion = form.religion.data,
+            religion = request.form.get('religion'),
             residence = form.residence.data,
             contact_number = form.contact_number.data,
             phone_number = form.phone_number.data,

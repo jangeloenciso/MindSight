@@ -123,7 +123,7 @@ href="/static/fonts/custom-fonts.css"
                 <option value="Widowed" {% if student.civil_status == 'Widowed' %} selected {% endif %}>Widowed</option>
                 <option value="Separated" {% if student.civil_status == 'Separated' %} selected {% endif %}>Separated</option>
                 <option value="Divorced" {% if student.civil_status == 'Divorced' %} selected {% endif %}>Divorced</option>
-            </select>
+              </select>
             </div>
           </div>
           <div class="double-column">
@@ -133,7 +133,24 @@ href="/static/fonts/custom-fonts.css"
             </div>
             <div>
               <label for="religion">Religion:</label>
-              {{ form.religion(placeholder='Religion') }}
+              <select name="religion" id="religion">
+                <option value="" disabled {% if not student.religion %} selected {% endif %}>-Select Religion-</option>
+                <option value="Roman Catholic" {% if student.religion == 'Roman Catholic' %} selected {% endif %}>Roman Catholic</option>
+                <option value="Iglesia ni Cristo" {% if student.religion == 'Iglesia ni Cristo' %} selected {% endif %}>Iglesia ni Cristo</option>
+                <option value="Islam" {% if student.religion == 'Islam' %} selected {% endif %}>Islam</option>
+                <option value="Aglipay" {% if student.religion == 'Aglipay' %} selected {% endif %}>Aglipay</option>
+                <option value="Agnostic" {% if student.religion == 'Agnostic' %} selected {% endif %}>Agnostic</option>
+                <option value="Atheist" {% if student.religion == 'Atheist' %} selected {% endif %}>Atheist</option>
+                <option value="Bible Baptist Church" {% if student.religion == 'Bible Baptist Church' %} selected {% endif %}>Bible Baptist Church</option>
+                <option value="Church of Christ" {% if student.religion == 'Church of Christ' %} selected {% endif %}>Church of Christ</option>
+                <option value="Iglesia Filipina Independiente" {% if student.religion == 'Iglesia Filipina Independiente' %} selected {% endif %}>Iglesia Filipina Independiente</option>
+                <option value="Jehova's Witness" {% if student.religion == "Jehova's Witness" %} selected {% endif %}>Jehova's Witness</option>
+                <option value="Mormonism" {% if student.religion == 'Mormonism' %} selected {% endif %}>Mormonism</option>
+                <option value="Seventh-day Adventist" {% if student.religion == 'Seventh-day Adventist' %} selected {% endif %}>Seventh-day Adventist</option>
+                <option value="United Church of Christ in the Philippines" {% if student.religion == 'United Church of Christ in the Philippines' %} selected {% endif %}>United Church of Christ in the Philippines</option>
+                <option value="Prefer not to say" {% if student.religion == 'Prefer not to say' %} selected {% endif %}>Prefer not to say</option>
+                <option value="Other" {% if student.religion == 'Other' %} selected {% endif %}>Other</option>
+              </select>
             </div>
           </div>
           <div class="double-column">
