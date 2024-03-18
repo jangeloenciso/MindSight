@@ -77,17 +77,21 @@ course_lists = {
 }
 
 religion_names = [
-    "Roman Catholicism",
+    "Roman Catholic",
     "Islam",
-    "Philippine Independent Church (Aglipayan)",
     "Iglesia ni Cristo",
     "Seventh-day Adventist",
-    "Evangelical Christianity",
-    "Latter-day Saints (Mormonism)",
-    "Orthodox Christianity",
-    "Other Christian Denominations",
-    "Indigenous Beliefs and Animistic Religions",
-    "Buddhism",
+    "Aglipay",
+    "Iglesia Filipina Independiente",
+    "Bible Baptist Church",
+    "United Church of Christ in the Philippines",
+    "Jehova's Witness",
+    "Church of Christ",
+    "Mormonism",
+    "Other",
+    "Atheist",
+    "Agnostic",
+    "Prefer not to say"
 ]
 
 strands = [
