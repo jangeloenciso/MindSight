@@ -48,6 +48,8 @@ function generateBarGraph(data1, data2, chartNumber) {
     let values1 = Object.values(data1);
     let values2 = Object.values(data2);
 
+    ctx.canvas.width = 500;
+    ctx.canvas.height = 2000;
         chart1 = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -63,7 +65,7 @@ function generateBarGraph(data1, data2, chartNumber) {
             },
             options: {
                 indexAxis: 'y',
-                responsive: true,
+                responsive: false, // Set responsive to false to prevent automatic resizing
                 plugins: {
                     legend: {
                         display: false
