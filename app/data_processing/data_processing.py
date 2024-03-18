@@ -16,7 +16,7 @@ def process_data(student_id=None, search_query=None):
             # print("printing student")
             # print(query)
 
-        print(search_query)
+        # print(search_query)
             
         if search_query:
             query = (
@@ -171,7 +171,7 @@ def data_analytics(first_metric, second_metric):
 
     return data_dict
 
-
+# Works with ChartJS
 def data_count(query):
     df = process_data()
 
@@ -180,6 +180,13 @@ def data_count(query):
 
     data_dict = data_count.to_dict(orient='records')
     return data_dict
+
+# Works with the progress bars
+def data_count_dict(query):
+    df = process_data()
+
+    data_count = df[query].value_counts().to_dict()
+    return data_count
 
 def data_history_information(college=None):
     df = process_data()
@@ -202,7 +209,7 @@ def data_history_information(college=None):
     if college == 'LLL':
         df = df[df['college'] == 'LLL']
 
-    print(df)
+    # print(df)
 
     data_dict = {
     'Substance abuse/dependence': int(df['substance_abuse'].sum()),

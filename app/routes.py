@@ -161,8 +161,11 @@ def reset_password(username):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    data_json = data_history_information()
-    return render_template('dashboard.html', data_json=data_json)
+    history_data = data_history_information()
+    concerns_data = data_count_dict('nature_of_concern')
+    religion_data = data_count_dict('religion')
+
+    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, religion_data=religion_data)
 
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required

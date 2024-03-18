@@ -179,9 +179,13 @@
 
 
 /* experiences chart overflow */
-#chart {
+#chart, #history_container, #concerns_container, #religion_container {
     height: 90%;
     overflow-y: auto;
+}
+
+#religion_container {
+    height: 80%
 }
 
 /* Sidebar active indicator */
