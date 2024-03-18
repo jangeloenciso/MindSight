@@ -94,29 +94,20 @@ p {
     aspect-ratio: 1 / 1;
 }
 
-
-/* archive icon container */
-.archive-flex-container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    margin-bottom: 8px;
-}
-
-
 /* archive icon */
 .archive-container {
     display: flex;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1/1;
-    width: 2.5em;
+    width: 3.0em;
     background-color: var(--primary-color);
     padding: 5px;
     cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
     transition: var(--smooth-transition);
+    margin-left: 20px;
 }
 
 .archive-container:hover {
@@ -126,6 +117,11 @@ p {
 .archive-container img {
     aspect-ratio: 1/1;
     width: 20px;
+}
+
+/* "filter by" and "archive container" */
+.filter{
+    display: flex;
 }
 
 
@@ -253,5 +249,5 @@ select {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
