@@ -355,7 +355,7 @@ th, td {
     color: var(--primary-color);
 }
 
-.DelBtn:hover {
+.DelBtn:hover, .sign-clear:hover {
     background-color: #D11A2A;
     border: 1px solid #D11A2A;
     color: var(--white);
@@ -368,7 +368,7 @@ select, button, input[type="checkbox"] {
 
 
 
-.update-btn {
+.update-btn, .sign-save {
     width: 200px;
     padding: 7px 62px;
     font-family: Lexend-regular;
@@ -380,7 +380,11 @@ select, button, input[type="checkbox"] {
     border: none;
 }
 
-.cancel-btn {
+.sign-clear {
+    width: auto !important;
+}
+
+.cancel-btn, .sign-clear {
     width: 200px;
     padding: 7px 62px;
     font-family: Lexend-regular;
@@ -391,10 +395,38 @@ select, button, input[type="checkbox"] {
     color: var(--primary-color);
 }
 
-.update-btn:hover {
+.update-btn:hover, .sign-save:hover {
     background-color: #084b65;
 }
 
+/* main canvas signature styling 
+NOTE: changing dimension could lead to irregular behavior of the paint cursor while signing. */
+#signatureCanvas {
+    height: 150px;
+    width: 300px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 5px;
+}
+
+/* signature button container flex box */
+.signature-btn-container {
+    margin: 10px 0;
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+
+.signature-btn-container button {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--fade-text-blue);
+    transition: var(--smooth-transition);
+    text-align: center;
+}
+
+.personal-agreement-date input {
+    width: 300px;
+}
 
 /* sweet alert/modal style */
 .swal2-popup {
