@@ -111,6 +111,11 @@ input, select {
     color: var(--fade-text-blue);
 }
 
+/* align the padding of inputs with the dropdowns in the basic information section */
+.basic-information input:not([type="select"]):not([type="radio"]):not([type="checkbox"]) {
+    padding-left: 15px !important;
+}
+
 /* input placeholder style */
 input::placeholder {
     opacity: 0.5;
