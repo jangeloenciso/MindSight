@@ -282,7 +282,11 @@ with app.app_context():
             things_to_change=fake.sentence(),
             other_information=fake.sentence(),
             nature_of_concern=fake.random_element(elements=("Academic","Personal","Career","Social")),
+            personal_agreement = True,
+            personal_agreement_date=fake.date_time_between(start_date=start_date, end_date=end_date),
+            
             student = student
+
         )
 
         # for _ in range(1):
