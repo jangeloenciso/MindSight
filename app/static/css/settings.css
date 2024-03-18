@@ -36,8 +36,7 @@
 
 .main-header span {
     font-size: 2.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-family: Lexend-Black;
 }
 
 * {
@@ -57,19 +56,21 @@
     font-size: 1.4em;
     font-family: Lexend-medium;
     color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
 /* inputs section */
 .right-content {
     display: flex;
-    margin-left: auto;
-    width: 70%;
+    width: 100%;
     flex-direction: column;
-    padding: 0 20px 0 40px;
     row-gap: 10px;
     color: var(--primary-color);
+    align-items: center;
+}
 
-    /* font-weight: 500; */
+#confirmation {
+    width: 70%;
 }
 
 

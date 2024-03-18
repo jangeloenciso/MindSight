@@ -33,7 +33,7 @@
 }
 
 .main-header span {
-    justify-content: center;
+    font-family: Lexend-Black;
     font-size: 2.2em;
     font-weight: bold;
     border-bottom: 2px solid var(--bg-orange);

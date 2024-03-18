@@ -5,6 +5,9 @@ endblock %} {% block styles %}
 {% endblock %} {% block content %}
 <div class="right">
   <div class="main">
+    <div class="main-header">
+      <span>ADD NEW ADMIN</span>
+    </div>
     <div class="scroll-content">
       <section>
         <section class="right-main">
@@ -17,8 +20,6 @@ endblock %} {% block styles %}
               method="POST"
             >
               {{ form.hidden_tag() }}
-
-              <p>Sign up</p>
 
               <select name="role" required>
                 <option value="" disabled selected>Select Role</option>

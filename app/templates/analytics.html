@@ -1,9 +1,7 @@
-{% extends "components/base.html" %}
-{% block title %} Mindsight - Analytics{% endblock %}
-{% block styles %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Analytics{%
+endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/analytics.css" />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <div class="right">
   <div class="main-content">
     <span id="analytics">Analytics</span>
@@ -65,7 +63,9 @@
         <!-- Religion -->
         <div class="religion-container">
           <span class="title" id="religion">Religion</span>
-          <canvas id="myChart4" height="40" width="100"></canvas>
+          <div style="height: 200px; overflow: auto">
+            <canvas id="myChart4"></canvas>
+          </div>
         </div>
         <!-- Identity -->
         <div class="identity-container">
@@ -80,24 +80,28 @@
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/analytics.js') }}"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Attach event listeners to both select elements
-    document.getElementById('first-semester').addEventListener('change', function() {
-      console.log("changed")
-      updateCharts();
-    });
+    document
+      .getElementById("first-semester")
+      .addEventListener("change", function () {
+        console.log("changed");
+        updateCharts();
+      });
 
-    document.getElementById('second-semester').addEventListener('change', function() {
-      updateCharts();
-    });
+    document
+      .getElementById("second-semester")
+      .addEventListener("change", function () {
+        updateCharts();
+      });
 
     // Fetch and generate charts initially
     updateCharts();
   });
 
   function updateCharts() {
-    let selectedYear1 = document.getElementById('first-semester').value;
-    let selectedYear2 = document.getElementById('second-semester').value;
+    let selectedYear1 = document.getElementById("first-semester").value;
+    let selectedYear2 = document.getElementById("second-semester").value;
 
     // Log the selected years for testing
     console.log("Selected Year 1:", selectedYear1);
@@ -109,6 +113,6 @@
     fetchAndGenerateChart(4, selectedYear1, selectedYear2);
     fetchAndGenerateChart(5, selectedYear1, selectedYear2);
     fetchAndGenerateChart(6, selectedYear1, selectedYear2);
-}
+  }
 </script>
 {% endblock %}

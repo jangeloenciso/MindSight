@@ -8,6 +8,47 @@
     --smooth-transition: cubic-bezier(0.18, 0.89, 0.47, 1) 0.2s;
 }
 
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+
+    /* positions right div properly */
+    margin-left: 73px;
+    padding: 40px;
+}
+
+.main {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: #faf4f4;
+}
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+    color: var(--primary-color);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
+    padding: 0 0 0.5em;
+}
+
+.main-header span {
+    font-size: 2.2rem;
+    font-family: Lexend-Black;
+}
+
 * {
     box-sizing: border-box;
     font-family: Lexend-Regular;
@@ -107,7 +148,7 @@ body {
 }
 
 .rsub-container {
-    width: 65%;
+    width: 75%;
     height: auto;
     display: flex;
     flex-direction: column;
