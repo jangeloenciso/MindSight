@@ -1086,7 +1086,11 @@ def get_data_count(data_to_count):
 
 @app.route('/get_data/compare/<data_to_count>/<selected_year1>/<selected_year2>', methods=['GET'])
 def get_data_year(data_to_count, selected_year1, selected_year2):
-    data1 = data_count(data_to_count, selected_year1)
-    data2 = data_count(data_to_count, selected_year2)
-    print("HI")
+
+    if data_to_count == 'experiences':
+        data1 = data_history_information(selected_year=selected_year1)
+        data2 = data_history_information(selected_year=selected_year2)
+    else:
+        data1 = data_count(data_to_count, selected_year1)
+        data2 = data_count(data_to_count, selected_year2)
     return jsonify({'data1': data1, 'data2': data2})

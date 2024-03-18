@@ -150,6 +150,16 @@ option {
     margin: 0 auto;
 }
 
+.experience-container {
+    overflow: auto;
+}
+
+#myChart1 {
+    position: relative;
+    width: 100%;
+    height: auto; /* Let the height be determined by the content */
+}
+
 /* Sidebar active indicator */
 .sidebar-buttons #analytics-container::before {
     content: "";

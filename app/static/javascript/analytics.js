@@ -13,7 +13,7 @@ function fetchAndGenerateChart(chartNumber, selectedYear1, selectedYear2) {
 
     let dataEndpoint;
     if (chartNumber === 1){
-        dataEndpoint = `/get_data/compare/nature_of_concern/${selectedYear1}/${selectedYear2}`; 
+        dataEndpoint = `/get_data/compare/experiences/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 2 ) {
         dataEndpoint = `/get_data/compare/college/${selectedYear1}/${selectedYear2}`; 
     } else if (chartNumber === 3) {
@@ -44,9 +44,9 @@ function generateBarGraph(data1, data2, chartNumber) {
             chart1.destroy();
         }
 
-        var labels = data1.map(item => item.nature_of_concern); 
-        var values1 = data1.map(item => item.student_count); 
-        var values2 = data2.map(item => item.student_count); 
+        let labels = Object.keys(data1);
+        let values1 = Object.values(data1);
+        let values2 = Object.values(data2);
 
         chart1 = new Chart(ctx, {
             type: 'bar',
@@ -63,7 +63,7 @@ function generateBarGraph(data1, data2, chartNumber) {
             },
             options: {
                 indexAxis: 'y',
-                responsive: true,
+                responsive: false,
                 plugins: {
                     legend: {
                         display: false

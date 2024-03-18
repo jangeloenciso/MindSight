@@ -276,10 +276,14 @@ def data_count_dict(query, college=None):
 
 
 
-def data_history_information(college=None):
+def data_history_information(college=None, selected_year=None):
     df = process_data()
     
     # add something for college i cant make it work fuck me
+
+    if selected_year:
+        df['year'] = pd.to_datetime(df['submitted_on']).dt.year
+        df = df[df['year'] == int(selected_year)]
 
     if college == 'College':
         college_departments = ['CBEA', 'CEA', 'CAS', 'IHK', 'CED']
