@@ -998,6 +998,8 @@ def add_record():
 
             student_signature = base64.b64decode(request.form['signatureCanvasInput']),
 
+            submitted_on = datetime.now(),
+
             history_information=history_info,
             health_information=health_info,
             family_background=family_background,

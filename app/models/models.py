@@ -4,6 +4,7 @@ import re
 from sqlalchemy import event
 from sqlalchemy.orm import validates
 from werkzeug.security import generate_password_hash
+from datetime import datetime
 from . import courses
 
 class User(UserMixin, db.Model):
@@ -72,6 +73,8 @@ class BasicInformation(db.Model):
     guardian_contact = db.Column(db.String(20), nullable=True)
 
     student_signature = db.Column(db.LargeBinary)
+
+    submitted_on = db.Column(db.DateTime, default=datetime.now)
 
 
     @validates('student_id')
