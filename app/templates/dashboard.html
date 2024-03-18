@@ -108,34 +108,32 @@ function createProgressBar(label, count) {
   labelElement.textContent = label;
   container.appendChild(labelElement);
 
-  const progressFlexContainer = document.createElement('div'); // Create progress flex container
-  progressFlexContainer.classList.add('progress-flex-container'); // Add class to progress flex container
+  const progressFlexContainer = document.createElement('div');
+  progressFlexContainer.classList.add('progress-flex-container');
 
   const countElement = document.createElement('div');
   countElement.classList.add('progress-bar-count');
   countElement.textContent = count;
-  progressFlexContainer.appendChild(countElement); // Append count element to progress flex container
+  progressFlexContainer.appendChild(countElement);
 
-  const barFlex = document.createElement('div'); // Create bar flex container
-  barFlex.classList.add('bar-flex'); // Add class to bar flex container
-
+  const barFlex = document.createElement('div');
+  barFlex.classList.add('bar-flex');
   const maxProgressBarWidth = 100;
 
   const progressBarWidth = Math.min(count * 4, maxProgressBarWidth);
   const progressBar = document.createElement('div');
   progressBar.classList.add('progress-bar');
   progressBar.style.width = `${progressBarWidth}%`;
-  barFlex.appendChild(progressBar); // Append progress bar to bar flex container
+  barFlex.appendChild(progressBar);
 
   const progressBarUnderlay = document.createElement('div');
   progressBarUnderlay.classList.add('progress-bar-underlay');
-  barFlex.appendChild(progressBarUnderlay); // Append progress bar underlay to bar flex container
+  barFlex.appendChild(progressBarUnderlay);
 
-  progressFlexContainer.appendChild(barFlex); // Append bar flex container to progress flex container
+  progressFlexContainer.appendChild(barFlex);
 
-  container.appendChild(progressFlexContainer); // Append progress flex container to main container
-
-  // Return the created container
+  container.appendChild(progressFlexContainer);
+  
   return container;
 }
 
