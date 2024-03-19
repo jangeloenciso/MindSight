@@ -1200,9 +1200,11 @@ href="/static/fonts/custom-fonts.css"
             {% endfor %}
             {% endif %}
           </table>
-          <button type="button" onclick="createRow('siblingsTable', 'siblingRow')">ADD</button>
-          <button type="button" onclick="deleteRow('siblingsTable')">DELETE</button>
 
+          <div class="BtnContainer">
+          <button class="AddBtn Btn" type="button" onclick="createRow('siblingsTable', 'siblingRow')">Add New Row</button>
+          <button class="DelBtn Btn" type="button" onclick="deleteRow('siblingsTable')">Remove Last Row</button>
+        </div>
           <div class="left-align">
             <label for="famhistoryneglect1"
               >Any history of neglect, and/o physical, verbal, emotional,
@@ -1929,8 +1931,10 @@ href="/static/fonts/custom-fonts.css"
             {% endfor %}
             {% endif %}
           </table>
-          <button type="button" onclick="createRow('legalTable', 'legalRow')">ADD</button>
-          <button type="button" onclick="deleteRow('legalTable')">DELETE</button>
+          <div class="BtnContainer">
+          <button class="AddBtn Btn" type="button" onclick="createRow('legalTable', 'legalRow')">Add New Row</button>
+          <button class="DelBtn Btn" type="button" onclick="deleteRow('legalTable')">Remove Last Row</button>
+        </div>
         </section>
         <!-- end: Legal History -->
 
@@ -2116,9 +2120,12 @@ href="/static/fonts/custom-fonts.css"
             {% endfor %}
             {% endif %}
           </table>
-          <button type="button" onclick="createRow('sessionsTable', 'sessionsRow')">Add</button>
-          <button type="button" onclick="deleteRow('sessionsTable')">Delete</button>
-          <button type="button" onclick="createRow('sessionsTable', 'sessionsRow', true)"> Termination</button>
+
+          <div class="BtnContainer">
+          <button class="AddBtn Btn" type="button" onclick="createRow('sessionsTable', 'sessionsRow')">Add Session Row</button>
+          <button class="AddBtn Btn" type="button" onclick="createRow('sessionsTable', 'sessionsRow', true)">Add Termination Row</button>
+          <button class="DelBtn Btn" type="button" onclick="deleteRow('sessionsTable')">Remove Last Row</button>
+        </div>
         </section>
         <!-- end: Personal Agreements -->
 
@@ -2181,73 +2188,92 @@ href="/static/fonts/custom-fonts.css"
                 to the above agency.</label
               >
             </div>
-            <div class="left-align single-column-span">
+            <div style="display: flex; flex-direction: row;">
+            <div class="left-align single-column-span" style="flex-direction: column; width: 50%;">
+              <div>
               <label
                 for="refinfoclientsig"
                 style="width: 500px !important; padding-right: 10px"
                 >Client Signature:</label
               >
               <input type="hidden" name="clientSignatureInput" id="clientSignatureInput">
-                <canvas id="clientSignatureCanvas" width="300" height="60"></canvas>
+                <canvas id="clientSignatureCanvas"></canvas>
+              </div>
+              <div class="signature-btn-container">
                   <button 
-                    type="button" 
+                    type="button"
+                    class="sign-clear"
                     onclick="clearSignature(clientSignaturePad)"
                   >
                     Clear
                   </button>
                   <button 
-                    type="button" 
+                    type="button"
+                    class="sign-save"
                     onclick="saveSignature(clientSignaturePad, 'clientSignatureInput')"
                   >
                     Save
                   </button>
+                </div>
+                <div>
+                  <label
+                    for="refinfoclientdate"
+                    style="width: 200px !important; padding-right: 10px"
+                    >Date:</label
+                  >
+                  <input
+                    type="date"
+                    class="form-width100 single-column-span referral"
+                    style="margin-right: 20px; width: 300px;"
+                    id="refinfoclientdate"
+                    name="refinfoclientdate"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="left-align single-column-span" style="flex-direction: column; width: 50%;">
+                <div>
               <label
                 for="refinfocounselorsig"
                 style="width: 320px !important; padding-right: 10px"
                 >Counselor's Signature:</label
               >
                 <input type="hidden" name="counselorSignatureInput" id="counselorSignatureInput">
-                <canvas id="counselorSignatureCanvas" width="300" height="60"></canvas>
+                <canvas id="counselorSignatureCanvas"></canvas>
+              </div>
+              <div class="signature-btn-container">
                 <button 
-                  type="button" 
+                  type="button"
+                  class="sign-clear"
                   onclick="clearSignature(counselorSignaturePad)"
                 >
                   Clear
                 </button>
                 <button 
-                  type="button" 
+                  type="button"
+                  class="sign-save"
                   onclick="saveSignature(counselorSignaturePad, 'counselorSignatureInput')"
                 >
                   Save
                 </button>
+              </div>
+              <div>
+                <label
+                  for="refinfocounselordate"
+                  style="width: 300px !important; padding-right: 10px"
+                  >Date:</label
+                >
+                <input
+                  type="date"
+                  class="form-width100 single-column-span referral"
+                  style="margin-right: 20px; width: 300px;"
+                  id="refinfocounselordate"
+                  name="refinfocounselordate"
+                  value=""
+                />
+              </div>
             </div>
-            <div class="left-align single-column-span">
-              <label
-                for="refinfoclientdate"
-                style="width: 500px !important; padding-right: 10px"
-                >Date:</label
-              >
-              <input
-                type="date"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinfoclientdate"
-                name="refinfoclientdate"
-                value=""
-              />
-              <label
-                for="refinfocounselordate"
-                style="width: 320px !important; padding-right: 10px"
-                >Date:</label
-              >
-              <input
-                type="date"
-                class="form-width100 single-column-span referral"
-                id="refinfocounselordate"
-                name="refinfocounselordate"
-                value=""
-              />
-            </div>
+          </div>
           </div>
         </section>
         <!-- end: Referral Information -->
@@ -2336,7 +2362,7 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
-          <button type="button" onclick="newCaseNote()"> add </button>
+          <button class="AddBtn Btn" type="button" onclick="newCaseNote()"> Add New Case Note </button>
           <div class="single-column">
             <div
               style="
@@ -2446,30 +2472,9 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
-          {% endfor %}
-          {% endif %}
-          <button type="button" onclick="newCaseNote()"> add </button>
-          <div class="double-column">
-            <div
-              style="
-                display: flex !important;
-                flex-direction: column-reverse !important;
-                align-items: center;
-              "
-            >
-              <label
-                for="Counselorsignature"
-                style="width: auto !important; padding-top: 5px"
-                >Signature of the Counselor/Guidance Personnel</label
-              >
-              <select name="counselor" id="counselor" class="form-width100">
-                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
-                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
-                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
-                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
-                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
-              </select>
-            </div>
+          
+          
+           
             <!-- change if needed -->
             <div
               style="
@@ -2479,7 +2484,7 @@ href="/static/fonts/custom-fonts.css"
               "
             >
               <label
-                for="Counselorsignature"
+                for="remarks"
                 style="width: auto !important; padding-top: 5px"
                 >Remarks</label
               >
@@ -2491,7 +2496,7 @@ href="/static/fonts/custom-fonts.css"
                 <!-- add if needed -->
               </select>
             </div>
-          </div>
+          
         </section>
         <!-- end: CONFIDENTIAL -->
         
