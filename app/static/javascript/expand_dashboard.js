@@ -33,10 +33,14 @@ barFlex.classList.add('bar-flex');
 
 const maxProgressBarWidth = 100;
 
-const progressBarWidth = Math.min(count * 4, maxProgressBarWidth);
+const progressBarWidth = Math.min(count * 2, maxProgressBarWidth);
 const progressBar = document.createElement('div');
 progressBar.classList.add('progress-bar');
-progressBar.style.width = `${progressBarWidth}%`;
+if (count == 0) {
+  progressBar.style.visibility = 'hidden';
+} else {
+  progressBar.style.width = `${progressBarWidth}%`;
+}
 barFlex.appendChild(progressBar);
 
 const progressBarUnderlay = document.createElement('div');
