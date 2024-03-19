@@ -402,10 +402,10 @@ def shs_records(course):
 
     def college_name(course):
         college_dict = {
-            'STEM': 'Science, Technology, Engineering and Mathematics',
-            'ABM': 'Accountancy, Business and Management',
-            'HUMSS': 'Humanities and Social Sciences',
-            'ICT': 'Information Communication and Technology',
+            'STEM': 'STEM: Science, Technology, Engineering and Mathematics',
+            'ABM': 'ABM: Accountancy, Business and Management',
+            'HUMSS': 'HUMSS: Humanities and Social Sciences',
+            'ICT': 'ICT: Information Communication and Technology',
         }
         return college_dict.get(course)
     
@@ -425,11 +425,11 @@ def college_records(college):
 
     def college_name(college):
         college_dict = {
-            'CEA': 'College of Engineering and Architecture',
-            'CBEA': 'College of Business Entrepreneurship and Accountancy',
-            'CAS': 'College of Arts and Sciences',
-            'CED': 'College of Education',
-            'IHK': 'Institute of Human Kinetics',
+            'CEA': 'CEA: College of Engineering and Architecture',
+            'CBEA': 'CBEA: College of Business Entrepreneurship and Accountancy',
+            'CAS': 'CAS: College of Arts and Sciences',
+            'CED': 'CED: College of Education',
+            'IHK': 'IHK: Institute of Human Kinetics',
         }
         return college_dict.get(college)
 
@@ -469,7 +469,7 @@ def lll_records(college):
 
     def college_name(college):
         college_dict = {
-            'LLL': 'Lifelong Learners',
+            'LLL': 'LLL: Lifelong Learners',
         }
         return college_dict.get(college)
 
