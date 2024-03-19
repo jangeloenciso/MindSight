@@ -2363,7 +2363,7 @@ href="/static/fonts/custom-fonts.css"
             </div>
           </div>
           <button class="AddBtn Btn" type="button" onclick="newCaseNote()"> Add New Case Note </button>
-          <div class="single-column">
+          <div class="single-column" style="align-items: flex-start; margin-top: 20px;">
             <div
               style="
                 display: flex !important;
@@ -2383,7 +2383,18 @@ href="/static/fonts/custom-fonts.css"
                 <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
               </select>
             </div>
-            <div></div>
+            <div style="display: flex; flex-direction: column-reverse;"><label
+              for="remarks"
+              style="width: auto !important; padding-top: 5px"
+              >Remarks</label
+            >
+            <select name="remarks" id="remarks" class="form-width100">
+              <option value="" disabled selected>-Select Remarks-</option>
+              <option value="For Follow-Up">For Follow-Up</option>
+              <option value="For Outside Referral">For Outside Referral</option>
+              <option value="Case Reopen">Case Reopen</option>
+              <!-- add if needed -->
+            </select></div>
           </div>
           {% else %}
           {% for case_note in student.case_note %}
@@ -2472,30 +2483,8 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
-          
-          
-           
-            <!-- change if needed -->
-            <div
-              style="
-                display: flex !important;
-                flex-direction: column-reverse !important;
-                align-items: center;
-              "
-            >
-              <label
-                for="remarks"
-                style="width: auto !important; padding-top: 5px"
-                >Remarks</label
-              >
-              <select name="remarks" id="remarks" class="form-width100">
-                <option value="" disabled selected>-Select Remarks-</option>
-                <option value="For Follow-Up">For Follow-Up</option>
-                <option value="For Outside Referral">For Outside Referral</option>
-                <option value="Case Reopen">Case Reopen</option>
-                <!-- add if needed -->
-              </select>
-            </div>
+          {% endfor %}
+          {% endif %}
           
         </section>
         <!-- end: CONFIDENTIAL -->
