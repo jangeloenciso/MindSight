@@ -40,7 +40,9 @@ ROLE = {
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf'}
 
 # TODO: Need change to your directory folder for the upload file (fixed kasi)
-UPLOAD_FOLDER = 'C:\\Users\\LENOVO\\Documents\\GitHub\\MindSight\\uploads'
+
+app_dir = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(app_dir, 'uploads')
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -527,6 +529,8 @@ def upload_file(student_id):
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
+
+    print(UPLOAD_FOLDER)
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
