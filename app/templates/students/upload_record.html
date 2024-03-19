@@ -61,39 +61,54 @@ document.querySelectorAll('.delete').forEach(button => {
         const filename = this.dataset.filename;
         const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-        fetch(`/students/records/upload_record/delete_file/${filename}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken
+        swal.fire({
+            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+            title: 'Are you sure to delete this file?',
+            text: "You're about to delete a file",
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            customClass: {
+                confirmButton: `confirm-button-class`,
+                cancelButton: 'cancel-button-class'
             }
-        })
-        .then(response => {
-            if (response.ok) {
-                this.parentElement.remove();
-                swal.fire({
-                    iconHtml: '<img class="custom-icon" src="static/popup.png">',
-                    title: 'Success!',
-                    text: 'File deleted successfully',
-                });
-            } else {
-                Swal.fire({
-                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
-                    title: 'Error!',
-                    text: 'Failed to delete file',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/students/records/upload_record/delete_file/${filename}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        this.parentElement.remove();
+                        swal.fire({
+                            iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                            title: 'Success!',
+                            text: 'File deleted successfully',
+                        });
+                    } else {
+                        swal.fire({
+                            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                            title: 'Error!',
+                            text: 'Failed to delete file',
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal.fire({
+                        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                        title: 'Error!',
+                        text: 'An error occurred while deleting the file',
+                    });
                 });
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            swal.fire({
-                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
-                title: 'Error!',
-                text: 'An error occurred while deleting the file',
-            });
         });
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("upload-button").addEventListener("click", function() {
