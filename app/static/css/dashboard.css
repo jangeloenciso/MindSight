@@ -1,6 +1,5 @@
 .right {
     display: flex;
-    justify-content: center;
     width: calc(100% - 73px);
     height: 100vh;
 
@@ -24,7 +23,7 @@
     flex-direction: column;
 }
 
-.column2 {
+.column2, .column3 {
     row-gap: 20px;
 }
 
@@ -54,7 +53,7 @@
     align-items: center;
 }
 
-.title div{
+.title div {
     font-family: Lexend-Black;
 }
 
@@ -71,8 +70,8 @@
 }
 
 
-/* White bg css */
-.experience-container, .college-container, .identity-container, .nature-container, .religion-container, .campus-container {
+/* White bg */
+.experience-container, .level-container, .identity-container, .concern-container, .religion-container, .campus-container {
     background-color: var(--white);
 }
 
@@ -84,7 +83,7 @@
     padding: 0.8em;
 }
 
-.college-container {
+.level-container {
     width: 100%;
     height: 50%;
     border-radius: 20px;
@@ -100,7 +99,7 @@
     padding: 0.8em;
 }
 
-.nature-container, .identity-container {
+.identity-container {
     width: 100%;
     height: 50%;
     border-radius: 20px;
@@ -108,13 +107,23 @@
     padding: 0.8em;
 }
 
-.nature-container {
-    margin-bottom: 1em;
+.concern-container {
+    height: calc(50% - 20px);
+    border-radius: 20px;
+    border: 3px solid var(--bg-orange);
+    padding: 0.8em;
+    display: flex;
+    flex-direction: column;
+}
+
+#concerns_container {
+    height: 100%;
+    overflow-y: auto;
 }
 
 #myChart6 {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 220px;
+    max-height: 220px;
     margin: 0 auto;
 }
 
@@ -182,13 +191,14 @@
 
 
 /* experiences chart overflow */
-#chart, #history_container, #concerns_container, #religion_container {
+#chart, #history_container {
     height: 90%;
     overflow-y: auto;
 }
 
 #religion_container {
-    height: 80%
+    height: 80%;
+    overflow-y: auto;
 }
 
 /* Sidebar active indicator */
