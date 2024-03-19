@@ -146,8 +146,8 @@ with app.app_context():
             previous_treatments_learned=fake.sentence(),
             previous_treatments_like_to_continue=fake.sentence(),
             previous_hospital_stays_psych=fake.boolean(),
-            current_thoughts_to_harm=fake.boolean(),
-            past_thoughts_to_harm=fake.boolean(),
+            current_thoughts_to_harm=fake.random_element(elements=("Yes", "No")),
+            past_thoughts_to_harm=fake.random_element(elements=("Yes", "No")),
             student_id=student.student_id
         )
 
