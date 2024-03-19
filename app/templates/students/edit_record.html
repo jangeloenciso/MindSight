@@ -2003,14 +2003,16 @@ href="/static/fonts/custom-fonts.css"
               unless I am violating codes of abuse, harm to myself or others.
             </p>
 
+            <input type="hidden" name="personal_agreement" value="{{ student.additional_information.personal_agreement }}">
             <div class="tac">
-              {{ form.personal_agreement(checked=student.additional_information.personal_agreement == True) }}
+              <input type="checkbox" id="taccheckbox" name="taccheckbox" checked="{{ student.additional_information.personal_agreement }}" disabled>
               <label for="taccheckbox">
-                I understand and agree to the information presented
-                above.</label
-              >
+                I understand and agree to the information presented above.
+              </label>
             </div>
-            {{ form.personal_agreement_date(value=student.additional_information.personal_agreement_date, disabled=True) }}
+            <input type="hidden" name="personal_agreement_date" value="{{ student.additional_information.personal_agreement_date }}">
+            <span>{{ student.additional_information.personal_agreement_date }}</span>
+
           </div>
 
           <table id="sessionsTable">
@@ -2362,40 +2364,6 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
-          <button class="AddBtn Btn" type="button" onclick="newCaseNote()"> Add New Case Note </button>
-          <div class="single-column" style="align-items: flex-start; margin-top: 20px;">
-            <div
-              style="
-                display: flex !important;
-                flex-direction: column-reverse !important;
-              "
-            >
-              <label
-                for="Counselorsignature"
-                style="width: auto !important; padding-top: 5px"
-                >Signature of the Counselor/Guidance Personnel</label
-              >
-              <select name="counselor" id="counselor" class="form-width100">
-                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
-                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
-                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
-                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
-                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
-              </select>
-            </div>
-            <div style="display: flex; flex-direction: column-reverse;"><label
-              for="remarks"
-              style="width: auto !important; padding-top: 5px"
-              >Remarks</label
-            >
-            <select name="remarks" id="remarks" class="form-width100">
-              <option value="" disabled selected>-Select Remarks-</option>
-              <option value="For Follow-Up">For Follow-Up</option>
-              <option value="For Outside Referral">For Outside Referral</option>
-              <option value="Case Reopen">Case Reopen</option>
-              <!-- add if needed -->
-            </select></div>
-          </div>
           {% else %}
           {% for case_note in student.case_note %}
           <div class="">
@@ -2485,29 +2453,40 @@ href="/static/fonts/custom-fonts.css"
           </div>
           {% endfor %}
           {% endif %}
-          
-           
-            <!-- change if needed -->
+          <button class="AddBtn Btn" type="button" onclick="newCaseNote()"> Add New Case Note </button>
+          <div class="single-column" style="align-items: flex-start; margin-top: 20px;">
             <div
               style="
                 display: flex !important;
                 flex-direction: column-reverse !important;
-                align-items: center;
               "
             >
               <label
-                for="remarks"
+                for="Counselorsignature"
                 style="width: auto !important; padding-top: 5px"
-                >Remarks</label
+                >Signature of the Counselor/Guidance Personnel</label
               >
-              <select name="remarks" id="remarks" class="form-width100">
-                <option value="" disabled selected>-Select Remarks-</option>
-                <option value="For Follow-Up">For Follow-Up</option>
-                <option value="For Outside Referral">For Outside Referral</option>
-                <option value="Case Reopen">Case Reopen</option>
-                <!-- add if needed -->
+              <select name="counselor" id="counselor" class="form-width100">
+                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
+                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
+                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
+                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
+                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
               </select>
             </div>
+            <div style="display: flex; flex-direction: column-reverse;"><label
+              for="remarks"
+              style="width: auto !important; padding-top: 5px"
+              >Remarks</label
+            >
+            <select name="remarks" id="remarks" class="form-width100">
+              <option value="" disabled selected>-Select Remarks-</option>
+              <option value="For Follow-Up">For Follow-Up</option>
+              <option value="For Outside Referral">For Outside Referral</option>
+              <option value="Case Reopen">Case Reopen</option>
+              <!-- add if needed -->
+            </select></div>
+          </div>
           
         </section>
         <!-- end: CONFIDENTIAL -->

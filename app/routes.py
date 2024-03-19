@@ -1039,6 +1039,9 @@ def add_record():
         )
 
         additional_info = AdditionalInformation(
+            personal_agreement=form.personal_agreement.data,
+            personal_agreement_date=form.personal_agreement_date.data,
+
             nature_of_concern=request.form.get('nature_of_concern'),
             counselor=form.counselor.data,
 
