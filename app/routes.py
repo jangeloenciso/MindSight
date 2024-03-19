@@ -37,7 +37,7 @@ ROLE = {
 }
 
 
-ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf'}
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
 # TODO: Need change to your directory folder for the upload file (fixed kasi)
 
