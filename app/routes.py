@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request, jsonify, send_from_directory
+from flask import render_template, url_for, redirect, flash, request, jsonify, send_file
 from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
@@ -39,6 +39,8 @@ ROLE = {
 
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'pdf'}
 
+# TODO: Need change to your directory folder for the upload file (fixed kasi)
+UPLOAD_FOLDER = 'C:\\Users\\LENOVO\\Documents\\GitHub\\MindSight\\uploads'
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
@@ -402,10 +404,10 @@ def shs_records(course):
 
     def college_name(course):
         college_dict = {
-            'STEM': 'STEM: Science, Technology, Engineering and Mathematics',
-            'ABM': 'ABM: Accountancy, Business and Management',
-            'HUMSS': 'HUMSS: Humanities and Social Sciences',
-            'ICT': 'ICT: Information Communication and Technology',
+            'STEM': 'Science, Technology, Engineering and Mathematics',
+            'ABM': 'Accountancy, Business and Management',
+            'HUMSS': 'Humanities and Social Sciences',
+            'ICT': 'Information Communication and Technology',
         }
         return college_dict.get(course)
     
@@ -425,11 +427,11 @@ def college_records(college):
 
     def college_name(college):
         college_dict = {
-            'CEA': 'CEA: College of Engineering and Architecture',
-            'CBEA': 'CBEA: College of Business Entrepreneurship and Accountancy',
-            'CAS': 'CAS: College of Arts and Sciences',
-            'CED': 'CED: College of Education',
-            'IHK': 'IHK: Institute of Human Kinetics',
+            'CEA': 'College of Engineering and Architecture',
+            'CBEA': 'College of Business Entrepreneurship and Accountancy',
+            'CAS': 'College of Arts and Sciences',
+            'CED': 'College of Education',
+            'IHK': 'Institute of Human Kinetics',
         }
         return college_dict.get(college)
 
@@ -469,7 +471,7 @@ def lll_records(college):
 
     def college_name(college):
         college_dict = {
-            'LLL': 'LLL: Lifelong Learners',
+            'LLL': 'Lifelong Learners',
         }
         return college_dict.get(college)
 
@@ -499,11 +501,23 @@ def full_record(student_id):
     
     return render_template('students/full_record.html', student_id=student_id, student_data=student_data)
 
-
+# extensions for accepted documents
 def allowed_file(filename):
    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/upload/<student_id>', methods=['POST'])
+# upload template
+@app.route('/students/records/upload_record/<student_id>', methods=['GET', 'POST'])
+def upload_record(student_id):
+
+    data = process_data(student_id)
+    student_data = data.to_dict(orient='records')
+
+    documents = Document.query.filter_by(student_id=student_id).all()
+
+    return render_template('students/upload_record.html', student_id=student_id, student_data=student_data, documents=documents)
+
+# upload of documents
+@app.route('/students/records/upload_record/upload_file/<student_id>', methods=['POST'])
 def upload_file(student_id):
 
     print(student_id)
@@ -516,11 +530,12 @@ def upload_file(student_id):
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+
+        # saves file
         file.save(file_path)
 
-
+        # add new document and store in database
         new_document = Document(filename=filename, path=file_path, student_id=student_id)
         db.session.add(new_document)
         db.session.commit()
@@ -528,20 +543,39 @@ def upload_file(student_id):
         return jsonify({'message': 'File uploaded successfully'}), 200
     else:
         return jsonify({'error': 'File upload failed'}), 500
-    
 
-@app.route('/upload/<student_id>/<filename>')
-def uploaded_file(student_id, filename):
+# viewing of uploaded file
+@app.route('/students/records/upload_record/view_document/<student_id>/<filename>')
+def view_file(student_id, filename):
 
     document = Document.query.filter_by(student_id=student_id, filename=filename).first()
-
+    
     if document:
-        print(f"Document found: {document}")
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        print(file_path)
+
+        if os.path.exists(file_path):
+            return send_file(file_path, mimetype='image/png/jpg/jpeg')
         
-        return send_from_directory(app.config['UPLOAD_FOLDER'], document.path)
+        else:
+            return "File not found", 404
     else:
         return "File not found", 404
 
+# archiving of uploaded file
+@app.route('/students/records/upload_record/delete_file/<filename>', methods=['POST'])
+def delete_file(filename):
+
+    print(filename)
+    file_path = os.path.join(UPLOAD_FOLDER, filename)
+        
+    # check if file exists
+    if os.path.exists(file_path):
+        # delete the file
+        os.remove(file_path)
+        return jsonify({'message': 'File deleted successfully'}), 200
+    else:
+        return jsonify({'error': 'File not found'}), 404
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])

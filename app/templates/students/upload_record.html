@@ -1,0 +1,173 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - {{ student_data[0]['student_id'] }}{%endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/upload-record.css" />
+<link rel="stylesheet" href="..//static/fonts/custom-fonts.css" />
+<link
+rel="stylesheet"
+type="text/css"
+href="/static/fonts/custom-fonts.css"
+/>
+<link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+{% endblock %} {% block content %}
+<div class="right">
+  <div class="main">
+    <div class="main-header">
+        <div class="title-back">
+            <span>UPLOADED DOCUMENTS</span>
+            <div class="back-button">
+                <a href="{{ url_for('student_record', student_id=student_data[0]['student_id']) }}">
+                    <img src="/static/SVG/back_button.svg"/>
+                </a>
+            </div>
+        </div>
+        <div>
+        <p>
+          Add and View uploaded files
+        </p>
+        </div>
+    </div>
+    <div class="main-content">
+        <a href="#" id="upload-button">
+            <button class="upload">
+              <img src="{{ url_for('static', filename='upload-button.png') }}"/>
+              <span>Upload File</span>
+            </button>
+        </a>
+        <input type="file" id="file-input" style="display: none;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <div class="all-files">
+            {% for document in documents %}
+            {% if not document.deleted %}
+            <div class="file-delete">
+                <div class="file-container">
+                    <a href="#" class="view-document" data-filename="{{ document.filename }}">
+                        {{ document.filename }}
+                    </a>
+                </div>
+                <button class="delete" data-filename="{{ document.filename }}">
+                    <img src="{{ url_for('static', filename='bin.png') }}"/>
+                </button>
+            </div>
+            {% endif %} {% endfor %}
+        </div>    
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.querySelectorAll('.delete').forEach(button => {
+    button.addEventListener('click', function() {
+        const filename = this.dataset.filename;
+        const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        fetch(`/students/records/upload_record/delete_file/${filename}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                this.parentElement.remove();
+                swal.fire({
+                    iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                    title: 'Success!',
+                    text: 'File deleted successfully',
+                });
+            } else {
+                Swal.fire({
+                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                    title: 'Error!',
+                    text: 'Failed to delete file',
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal.fire({
+                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                title: 'Error!',
+                text: 'An error occurred while deleting the file',
+            });
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("upload-button").addEventListener("click", function() {
+        document.getElementById("file-input").click();
+    });
+
+    document.getElementById("file-input").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        const student_id = "{{ student_id }}";
+        const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        fetch(`/students/records/upload_record/upload_file/${student_id}`, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })    
+        .then(response => {
+            if (response.ok) {
+                // File uploaded successfully
+                swal.fire({
+                    iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                    title: 'File Uploaded!',
+                    text: 'Your file has been successfully uploaded.'
+                });
+            } else {
+                // File upload failed
+                swal.fire({
+                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                    title: 'Upload Failed',
+                    text: 'Failed to upload the file. Please try again.'
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            swal.fire({
+                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                title: 'Upload Failed',
+                text: 'An error occurred while uploading the file. Please try again.'
+            });
+        });
+        console.log('File selected:', file);
+    });
+});
+
+document.querySelectorAll('.view-document').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const student_id = "{{ student_id }}";
+        const filename = this.dataset.filename;
+
+        fetch(`/students/records/upload_record/view_document/${student_id}/${filename}`)
+        .then(response => {
+            if (response.ok) {
+                return response.blob();
+            } else {
+                throw new Error('Failed to fetch document content');
+            }
+        })
+        .then(blob => {
+            const imageUrl = URL.createObjectURL(blob);
+            swal.fire({
+                imageUrl: imageUrl,
+                customClass :{
+                    imageUrl: 'imageURl'
+                }
+            });
+        })
+    });
+});
+</script>
+{% endblock %}

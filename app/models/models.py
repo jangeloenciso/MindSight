@@ -108,6 +108,8 @@ class BasicInformation(db.Model):
 
     sessions = db.relationship('Sessions', backref='student')
 
+    documents = db.relationship('Document', backref='basic_information', lazy=True)
+
 
 class HistoryInformation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -470,8 +472,8 @@ class Document(db.Model):
     __tablename__ = 'documents'
 
     file_id = db.Column(db.Integer, primary_key=True)
-    filename = db.Column(db.String(255), nullable=False)
-    path = db.Column(db.String(255), nullable=False)
+    filename = db.Column(db.String(255), nullable=True)
+    path = db.Column(db.String(255), nullable=True)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
