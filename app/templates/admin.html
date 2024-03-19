@@ -17,8 +17,10 @@ endblock %} {% block styles %}
           <span class="title">{{ user.role }}</span>
           <hr>
           <span class="active">Active Cases:&nbsp;</span>
-          {% if students_count.get(user.full_name) %}
-            <span class="indicator">{{ students_count.get(user.full_name) }}</span>
+          {% if active_students.get(user.full_name) %}
+            <span class="indicator">{{ active_students.get(user.full_name) }}</span>
+          {% else %}
+            <span class="indicator">0</span>
           {% endif %}
         </button>
       </a>

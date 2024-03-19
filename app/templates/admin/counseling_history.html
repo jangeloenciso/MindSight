@@ -6,18 +6,30 @@
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <!-- TODO: counselor name -->
-      <span>{{ full_name }}</span>
-      <div class="back-button">
-        <a href="{{ url_for ('admin') }}">
-          <img src="/static/SVG/back_button.svg" />
-        </a>
+      <div class="title-back">
+        <span>{{ full_name }}</span>
+          <div class="back-button">
+            <a href="{{ url_for ('admin') }}">
+              <img src="/static/SVG/back_button.svg" />
+            </a>
+          </div>
+      </div>
+      <div>
+        <p>
+          Your counseling history...
+        </p>
       </div>
     </div>
     
-
     <div class="bottom-header">
-      <div class="text"><span>Your counseling history..</span></div>
+      <div class="text">
+        <span>Active Cases:&nbsp;</span>
+        {% if active_cases_count %}
+          <span class="indicator">{{ active_cases_count }}</span>
+        {% else %}
+          <span class="indicator">0</span>
+        {% endif %}
+      </div>
 
       <div class="search-container">
         <form method="GET" action="{{ url_for('search', query=query) }}">

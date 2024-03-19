@@ -265,11 +265,18 @@ def admin():
         .group_by(AdditionalInformation.counselor).all()
 
     # filter out terminated students
-    active_students = [student for student in students if student[2].status != 'terminated']
+    active_students = {}
+    for student in students:
+        counselor = student[2].counselor
+        if student[2].status != 'terminated':
+            if counselor not in active_students:
+                active_students[counselor] = 1
+            else:
+                active_students[counselor] += 1
 
     students_count_dict = {counselor: count for counselor, count in students_count}
 
-    return render_template('admin.html', admin=admin, students=active_students, students_count=students_count_dict)
+    return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict, active_students=active_students)
 
 
 @app.route('/admin/history')
@@ -286,8 +293,9 @@ def counseling_history():
         .filter(AdditionalInformation.counselor == counselor_name) \
         .order_by(desc(CaseNote.interview_date)).all()
 
+    active_cases_count = sum(1 for student in students if student[2].status != 'terminated')
 
-    return render_template('admin/counseling_history.html', full_name=full_name, students=students)
+    return render_template('admin/counseling_history.html', full_name=full_name, students=students, active_cases_count=active_cases_count)
 
 
 
