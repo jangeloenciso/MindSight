@@ -231,6 +231,7 @@ label {
     display: flex;
     flex-direction: row;
     padding-right: 20px;
+    align-items: center;
 }
 
 .radio-inline-container label {
@@ -240,7 +241,7 @@ label {
 .radio-inline-container input:not([type="text"]) {
     display: flex;
     width: 20px !important;
-    aspect-ratio: 1/1;
+    height: 20px;
 }
 
 
