@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request, jsonify, send_file
+from flask import render_template, url_for, redirect, flash, request, jsonify, send_file, session
 from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
@@ -39,10 +39,12 @@ ROLE = {
 
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
-# TODO: Need change to your directory folder for the upload file (fixed kasi)
-
 app_dir = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(app_dir, 'uploads')
+
+@app.before_request
+def before_request():
+    session.permanent = True
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
