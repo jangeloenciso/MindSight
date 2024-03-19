@@ -767,29 +767,36 @@ def edit_record(student_id):
                     )
                     db.session.add(new_case_note)
 
+            existing_sessions = student.sessions
+
             session_date = request.form.getlist('sessionDate')
             session_time_start = request.form.getlist('sessionTimeStart')
             session_time_end = request.form.getlist('sessionTimeEnd')
             session_follow_up = request.form.getlist('sessionFollowUp')
             session_attended_by = request.form.getlist('sessionAttendedBy')
 
-            # Delete existing sessions
-            for existing_session in student.sessions:
-                db.session.delete(existing_session)
-
-            # Add new sessions
-            for session_index in range(len(session_date)):
-                new_session = Sessions(
-                    session_date=session_date[session_index],
-                    session_time_start=session_time_start[session_index],
-                    session_time_end=session_time_end[session_index],
-                    session_follow_up=session_follow_up[session_index],
-                    session_attended_by=session_attended_by[session_index],
-                    student_id=student.student_id
-                )
-                db.session.add(new_session)
+            for session_index, date in enumerate(session_date):
+                if date:
+                    if session_index < len(existing_sessions):
+                        existing_session = existing_sessions[session_index]
+                        existing_session.session_date = date
+                        existing_session.session_time_start = session_time_start[session_index]
+                        existing_session.session_time_end = session_time_end[session_index]
+                        existing_session.session_follow_up = session_follow_up[session_index]
+                        existing_session.session_attended_by = session_attended_by[session_index]
+                    else:
+                        new_session = Sessions(
+                            session_date=date,
+                            session_time_start=session_time_start[session_index],
+                            session_time_end=session_time_end[session_index],
+                            session_follow_up=session_follow_up[session_index],
+                            session_attended_by=session_attended_by[session_index],
+                            student_id=student.student_id
+                        )
+                        db.session.add(new_session)
 
             db.session.commit()
+
 
 
             db.session.commit()
