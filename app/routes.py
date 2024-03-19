@@ -373,6 +373,22 @@ def print_record(student_id):
 
     return render_template('print_record.html', student_data=student_data)
 
+@app.route('/report/print')
+@login_required
+def generate_report():
+
+    current_year = datetime.now().year
+
+    student_count = BasicInformation.query.filter(
+    db.extract('year', BasicInformation.submitted_on) == current_year
+    ).count()
+
+    data1 = data_count('nature_of_concern', current_year)
+    data2 = data_count('substance_abuse', current_year)
+
+    print('HAHA')
+
+    return render_template('generate_report.html', student_count=student_count, data1=data1, data2=data2)
 
 # Student components
 
@@ -646,12 +662,19 @@ def edit_record(student_id):
                 appointment_schedule = form.appointment_schedule.data,
 
                 client_signature = base64.b64decode(request.form['clientSignatureInput']),
-                client_signature_date = request.form.get('refinfoclientdate'),
+
                 counselor_signature = base64.b64decode(request.form['counselorSignatureInput']),
-                counselor_signature_date = request.form.get('refinfocounselordate'),
+                
 
                 student_id = student_id
             )
+
+            client_signature_date = request.form.get('refinfoclientdate')
+            counselor_signature_date = request.form.get('refinfocounselordate')
+
+            if client_signature_date:
+                student.referral_information.client_signature_date = client_signature_date
+                student.referral_information.counselor_signature_date = counselor_signature_date
 
             db.session.add(referral)
             
@@ -701,14 +724,15 @@ def edit_record(student_id):
                     existing_conviction.conviction_date = conviction_dates[conviction_index]
                     existing_conviction.conviction_outcome = conviction_outcomes[conviction_index]
                 else:
-                    if len(convictions) >= 1:
-                        new_conviction = Conviction(
-                            conviction=conviction,
-                            conviction_date=conviction_dates[conviction_index],
-                            conviction_outcome=conviction_outcomes[conviction_index],
-                            legal_history=student.legal_history
-                        )
-                        db.session.add(new_conviction)
+                    if conviction_dates[conviction_index]:
+                        if len(convictions) >= 1:
+                            new_conviction = Conviction(
+                                conviction=conviction,
+                                conviction_date=conviction_dates[conviction_index],
+                                conviction_outcome=conviction_outcomes[conviction_index],
+                                legal_history=student.legal_history
+                            )
+                            db.session.add(new_conviction)
         
             counselor_list = request.form.getlist('counselorName')
             interview_date = request.form.getlist('interviewDate')
@@ -748,13 +772,16 @@ def edit_record(student_id):
             for session in range(len(session_date)):
                 print("SESSIONS")
                 new_session = Sessions(
-                    session_date = session_date[session],
                     session_time_start=session_time_start[session],
                     session_time_end=session_time_end[session],
                     session_follow_up=session_follow_up[session],
                     session_attended_by=session_attended_by[session],
                     student_id=student.student_id
                 )
+
+                if session_date:
+                    session_date = session_date[session]
+
                 if new_session not in student.sessions:
                     print(new_session)
                     db.session.add(new_session)
