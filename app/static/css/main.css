@@ -26,3 +26,42 @@ body {
     height: 100vh;
     background-color: var(--main-db-bg-color);
 }
+
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+/* Button */
+::-webkit-scrollbar-button {
+    background: #ccc; /* Color of the scrollbar button (arrows) */
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+    background: #eee; /* Color of the scrollbar corner */
+}
+
+/* Resizer */
+::-webkit-resizer {
+    background: #ddd; /* Color of the scrollbar resizer */
+}
+
+/* Overflow area when content is scrolled beyond the visible area */
+::-webkit-scrollbar-corner:window-inactive {
+    background: #eee; /* Color of the scrollbar corner when window is inactive */
+}
