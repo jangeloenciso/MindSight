@@ -62,8 +62,8 @@ def process_data(student_id=None, search_query=None):
             additional_information = record.additional_information
 
             
-            data_list.append({
-                # Student Information
+            basic_information_data = {
+                # Basic Information
                 'student_id': record.student_id,
                 'last_name': record.last_name,
                 'first_name': record.first_name,
@@ -73,7 +73,6 @@ def process_data(student_id=None, search_query=None):
                 'campus': record.campus,
                 'student_signature': record.student_signature,
 
-                # Personal Information
                 'age': record.age,
                 'gender': record.gender,
                 'contact_number': record.contact_number,
@@ -89,15 +88,15 @@ def process_data(student_id=None, search_query=None):
                 'guardian_address': record.guardian_address,
                 'guardian_contact': record.guardian_contact,
                 'submitted_on': record.submitted_on,
+                
+                # Additional Information
+                'counselor': record.additional_information.counselor,
+                'nature_of_concern': record.additional_information.nature_of_concern,
+                'status': record.additional_information.status,
+                'remarks': record.additional_information.remarks
+            }
 
-                # Family Background
-                # TODO: ADD THE NEW SHIT
-
-                # # Psychological Assessments
-                # 'learning_styles': psychological_assessments.learning_styles,
-                # 'personality_test': psychological_assessments.personality_test,
-                # 'iq_test': psychological_assessments.iq_test,
-
+            history_information_data = {
                 # History Information
                 'substance_abuse': history_information.substance_abuse,
                 'substance_abuse': history_information.substance_abuse,
@@ -146,14 +145,15 @@ def process_data(student_id=None, search_query=None):
                 'job_problems': history_information.job_problems,
                 'other': history_information.other,
 
+                'previous_treatments' : history_information.previous_treatments
+            }
 
+            merged_data = {
+                **basic_information_data,
+                **history_information_data
+            }
 
-                # Additional Information
-                'counselor': record.additional_information.counselor,
-                'nature_of_concern': record.additional_information.nature_of_concern,
-                'status': record.additional_information.status,
-                'remarks': record.additional_information.remarks
-            })
+            data_list.append(merged_data)
             
         df = pd.DataFrame(data_list)
         return df
@@ -338,13 +338,16 @@ def data_history_information(college=None, selected_year=None):
         'Feelings of frustration': int(df['feelings_of_frustration'].sum()),
         'Feelings of being cheated': int(df['feelings_of_being_cheated'].sum()),
         'Perfectionism': int(df['perfectionism'].sum()),
-        'that someone is watching you, out to get you or hurt you': int(df['counting_washing_checking'].sum()),
-        'Rituals of counting things, washing hands, checking locks, doors, stove, etc./Overly concerned about germs': int(df['distorted_body_image'].sum()),
-        'Distorted body image (believe you are heavier or less attractive than others say you are)': int(df['concerns_about_dieting'].sum()),
-        'Concerns about dieting': int(df['loss_of_control_over_eating'].sum()),
-        'Feelings of loss of control over eating': int(df['binge_eating_or_purging'].sum()),
-        'Binge eating/Purging': int(df['rules_about_eating'].sum()),
-        'Rules about eating/Compensating for eating': int(df['compensating_for_eating'].sum()),
+
+
+        'Rituals of counting things, washing hands, checking locks, doors, stove, etc./Overly concerned about germs': int(df['counting_washing_checking'].sum()),
+        'Distorted body image': int(df['distorted_body_image'].sum()),
+        'Concerns about dieting': int(df['concerns_about_dieting'].sum()),
+        'Feelings of loss of control over eating': int(df['loss_of_control_over_eating'].sum()),
+
+
+        'Binge eating/Purging': int(df['binge_eating_or_purging'].sum()),
+        'Rules about eating/Compensating for eating': int(df['rules_about_eating'].sum()),
         'Excessive exercise': int(df['excessive_exercise'].sum()),
         'Indecisiveness about career': int(df['indecisiveness_about_career'].sum()),
         'Job problems': int(df['job_problems'].sum())
