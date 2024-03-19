@@ -743,19 +743,29 @@ def edit_record(student_id):
             progress_made = request.form.getlist('progressMade')
 
             if any(counselor_list) or any(interview_date) or any(number_of_session) or any(subject_complaint) or any(objective_assessment) or any(plan_of_action) or any(progress_made):
-                for case_note in range(len(counselor_list)):
-                    if len(counselor_list) >= 1:
-                        new_case_note = CaseNote(
-                            counselor_name = counselor_list[case_note],
-                            interview_date = interview_date[case_note],
-                            number_of_session = number_of_session[case_note],
-                            subject_complaint = subject_complaint[case_note],
-                            objective_assessment = objective_assessment[case_note],
-                            plan_of_action = plan_of_action[case_note],
-                            progress_made = progress_made[case_note],
-                            student_id=student.student_id
-                        )
-                        db.session.add(new_case_note)
+                for case_note_index, counselor_name in enumerate(counselor_list):
+                    existing_case_note = CaseNote.query.filter_by(
+                    counselor_name=counselor_name,
+                    interview_date=interview_date[case_note_index],
+                    number_of_session=number_of_session[case_note_index],
+                    subject_complaint=subject_complaint[case_note_index],
+                    objective_assessment=objective_assessment[case_note_index],
+                    plan_of_action=plan_of_action[case_note_index],
+                    progress_made=progress_made[case_note_index],
+                    student_id=student.student_id
+                ).first()
+                if not existing_case_note:
+                    new_case_note = CaseNote(
+                        counselor_name=counselor_name,
+                        interview_date=interview_date[case_note_index],
+                        number_of_session=number_of_session[case_note_index],
+                        subject_complaint=subject_complaint[case_note_index],
+                        objective_assessment=objective_assessment[case_note_index],
+                        plan_of_action=plan_of_action[case_note_index],
+                        progress_made=progress_made[case_note_index],
+                        student_id=student.student_id
+                    )
+                    db.session.add(new_case_note)
 
             session_date = request.form.getlist('sessionDate')
             session_time_start = request.form.getlist('sessionTimeStart')
