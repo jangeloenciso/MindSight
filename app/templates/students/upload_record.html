@@ -178,8 +178,11 @@ document.querySelectorAll('.view-document').forEach(link => {
             swal.fire({
                 imageUrl: imageUrl,
                 customClass :{
-                    imageUrl: 'imageURl'
-                }
+                    imageUrl: 'imageURl',
+                    confirmButton: `confirm-button-class`,
+                },
+                showConfirmButton: true,
+                confirmButtonText: 'Close'
             });
         })
     });
