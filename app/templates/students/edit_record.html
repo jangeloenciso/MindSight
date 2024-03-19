@@ -29,11 +29,11 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="nature_of_concern">Nature of Concern:</label>
               <select name="nature_of_concern" id="nature_of_concern">
-                <option value="" disabled {% if not student.nature_of_concern %} selected {% endif %}>-Select Nature of Concern-</option>
-                <option value="Academic" {% if student.nature_of_concern == 'Academic' %} selected {% endif %}>Academic</option>
-                <option value="Career" {% if student.nature_of_concern == 'Career' %} selected {% endif %}>Career</option>
-                <option value="Personal" {% if student.nature_of_concern == 'Personal' %} selected {% endif %}>Personal</option>
-                <option value="Social" {% if student.nature_of_concern == 'Social' %} selected {% endif %}>Social</option>
+                <option value="" disabled {% if not student.additional_information.nature_of_concern %} selected {% endif %}>-Select Nature of Concern-</option>
+                <option value="Academic" {% if student.additional_information.nature_of_concern == 'Academic' %} selected {% endif %}>Academic</option>
+                <option value="Career" {% if student.additional_information.nature_of_concern == 'Career' %} selected {% endif %}>Career</option>
+                <option value="Personal" {% if student.additional_information.nature_of_concern == 'Personal' %} selected {% endif %}>Personal</option>
+                <option value="Social" {% if student.additional_information.nature_of_concern == 'Social' %} selected {% endif %}>Social</option>
               </select>
             </div>
             <div>
@@ -89,7 +89,7 @@ href="/static/fonts/custom-fonts.css"
             <div>
               <label for="yearlevel">Grade/Yr Level:</label>
               <select name="year_level" id="year_level"> 
-                <option disabled selected>{{ student.year_level }}</option>
+                <option selected>{{ student.year_level }}</option>
               </select>
             </div>
           </div>
@@ -2486,6 +2486,29 @@ href="/static/fonts/custom-fonts.css"
           {% endfor %}
           {% endif %}
           
+           
+            <!-- change if needed -->
+            <div
+              style="
+                display: flex !important;
+                flex-direction: column-reverse !important;
+                align-items: center;
+              "
+            >
+              <label
+                for="remarks"
+                style="width: auto !important; padding-top: 5px"
+                >Remarks</label
+              >
+              <select name="remarks" id="remarks" class="form-width100">
+                <option value="" disabled selected>-Select Remarks-</option>
+                <option value="For Follow-Up">For Follow-Up</option>
+                <option value="For Outside Referral">For Outside Referral</option>
+                <option value="Case Reopen">Case Reopen</option>
+                <!-- add if needed -->
+              </select>
+            </div>
+          
         </section>
         <!-- end: CONFIDENTIAL -->
         
@@ -2500,11 +2523,7 @@ href="/static/fonts/custom-fonts.css"
   </div>
 </form>
 </div>
-<script>
-  window.onload = function() {
-      populateSecondDropdown();
-  };
-</script>
+
 <script src={{ url_for('static', filename='javascript/add_row.js') }}></script>
 <script src={{ url_for('static', filename='javascript/new_case_note.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
