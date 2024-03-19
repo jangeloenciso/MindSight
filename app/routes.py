@@ -799,8 +799,9 @@ def edit_record(student_id):
             db.session.commit()
             print('Student record updated successfully', 'success')
             return redirect(url_for('student_record', student_id=student_id))
-        
-        print(form.errors)
+        else:
+            errors = form.errors
+            print(form.errors)
 
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
@@ -1040,8 +1041,6 @@ def add_record():
         additional_info = AdditionalInformation(
             nature_of_concern=request.form.get('nature_of_concern'),
             counselor=form.counselor.data,
-            personal_agreement=form.personal_agreement.data,
-            personal_agreement_date=form.personal_agreement_date.data,
 
             referral_source = form.referral_source.data,
 
@@ -1059,6 +1058,8 @@ def add_record():
             student_id=form.student_id.data
         )
 
+        date_of_birth = request.form.get('date_of_birth')
+
         new_student = BasicInformation(
             student_id=form.student_id.data,
             last_name=form.last_name.data,
@@ -1071,7 +1072,6 @@ def add_record():
             guardian_address = form.guardian_address.data,
             guardian_contact = form.guardian_contact.data,
 
-            date_of_birth = request.form.get('date_of_birth'),
             age = form.age.data,
             gender = request.form.get('gender'),
             civil_status = request.form.get('civil'),
@@ -1099,7 +1099,8 @@ def add_record():
             # case_note=case_note
         )
 
-        print(request.form.get('signatureCanvasInput'))
+        if date_of_birth:
+            new_student.date_of_birth = date_of_birth
 
         # Add the new records to the database
         db.session.add(new_student)
@@ -1149,12 +1150,12 @@ def add_record():
         # return redirect(url_for('student_record', new_record_id=new_student.id))
         return jsonify({'success': True})
     else:
+        errors = form.errors
         print(request.form.get('signatureCanvasInput'))
         logging.error("Form validation failed")
-        logging.error(form.errors)
+        logging.error('ERRORS:', form.errors)
 
-    # If the form is not submitted or not validated, or if it's a GET request, render the add record template
-    return render_template('add_record.html', form=form)
+    return render_template('add_record.html', form=form, errors=errors)
 
 
 
