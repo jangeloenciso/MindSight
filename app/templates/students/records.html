@@ -17,9 +17,11 @@
         {% if year_level %}
         {{ year_level_name }}
         {% elif course %}
-        {{ course_name }}
-        {% else %}
+        {{ course }}: {{ course_name }}
+        {% elif college == 'GRAD' or college == 'LLL' %}
         {{ college_name }}
+        {% else %}
+        {{ college }}: {{ college_name }}
         {% endif %}
       </span>
       <div class="back-button">
