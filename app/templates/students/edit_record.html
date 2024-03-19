@@ -2472,7 +2472,8 @@ href="/static/fonts/custom-fonts.css"
               </div>
             </div>
           </div>
-          
+          {% endfor %}
+          {% endif %}
           
            
             <!-- change if needed -->
@@ -2511,8 +2512,7 @@ href="/static/fonts/custom-fonts.css"
   </div>
 </form>
 </div>
-<script>
-</script>
+
 <script src={{ url_for('static', filename='javascript/add_row.js') }}></script>
 <script src={{ url_for('static', filename='javascript/new_case_note.js') }}></script>
 <script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
