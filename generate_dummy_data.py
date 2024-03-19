@@ -1,5 +1,6 @@
 # Generates 200 dummy records for testing
 
+import os
 import random
 from datetime import date, timedelta
 from faker import Faker
@@ -82,7 +83,8 @@ with app.app_context():
             residence=fake.random_element(elements=("Family Home", "Guardian's Home", "School Dormitory", "Dormitory", "Others")),
             email_address=fake.email(),
             civil_status=fake.random_element(elements=("Single", "Married", "Divorced", "Widowed")),
-            submitted_on=fake.date_time_between(start_date=start_date, end_date=end_date)
+            submitted_on=fake.date_time_between(start_date=start_date, end_date=end_date),
+            student_signature=os.urandom(1000)
         )
 
         db.session.add(student)
