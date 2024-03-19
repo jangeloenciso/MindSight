@@ -773,28 +773,24 @@ def edit_record(student_id):
             session_follow_up = request.form.getlist('sessionFollowUp')
             session_attended_by = request.form.getlist('sessionAttendedBy')
 
-            print(len(session_date))
-            
-            # EXTREMELY BAD PRACTICE BUT IM TOO TIRED
-            for session in student.sessions:
-                db.session.delete(session)
+            # Delete existing sessions
+            for existing_session in student.sessions:
+                db.session.delete(existing_session)
 
-            for session in range(len(session_date)):
-                print("SESSIONS")
+            # Add new sessions
+            for session_index in range(len(session_date)):
                 new_session = Sessions(
-                    session_time_start=session_time_start[session],
-                    session_time_end=session_time_end[session],
-                    session_follow_up=session_follow_up[session],
-                    session_attended_by=session_attended_by[session],
+                    session_date=session_date[session_index],
+                    session_time_start=session_time_start[session_index],
+                    session_time_end=session_time_end[session_index],
+                    session_follow_up=session_follow_up[session_index],
+                    session_attended_by=session_attended_by[session_index],
                     student_id=student.student_id
                 )
+                db.session.add(new_session)
 
-                if session_date:
-                    session_date = session_date[session]
+            db.session.commit()
 
-                if new_session not in student.sessions:
-                    print(new_session)
-                    db.session.add(new_session)
 
             db.session.commit()
             print('Student record updated successfully', 'success')
