@@ -145,7 +145,9 @@ def process_data(student_id=None, search_query=None):
                 'job_problems': history_information.job_problems,
                 'other': history_information.other,
 
-                'previous_treatments' : history_information.previous_treatments
+                'previous_treatments' : history_information.previous_treatments,
+                'current_thoughts_to_harm' : history_information.current_thoughts_to_harm,
+                'past_thoughts_to_harm' : history_information.past_thoughts_to_harm,
             }
 
             merged_data = {
@@ -167,8 +169,14 @@ def data_to_dict():
     
 def data_analytics(first_metric, second_metric):
     df = process_data()
-    data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
-    data_dict = data_mean.to_dict(orient='records')
+    if df[second_metric].dtype in [int, float, bool]:
+        data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
+        data_dict = data_mean.to_dict(orient='records')
+        print(data_dict)
+    else:
+        data_count = df[df[second_metric] == 'Yes'].groupby(first_metric)[second_metric].value_counts().unstack(fill_value=0).reset_index()
+        data_dict = data_count.to_dict(orient='records')
+        print(data_dict)
 
     return data_dict
 

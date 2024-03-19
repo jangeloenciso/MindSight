@@ -64,6 +64,9 @@ endblock %} {% block styles %}
             <option value="job_problems">Job problems</option>
 
             <option value="previous_treatments">Previous treatments</option>
+            <option value="current_thoughts_to_harm">Current thoughts to harm</option>
+            <option value="past_thoughts_to_harm">Past thoughts to harm</option>
+            
 
             
           </select>
@@ -71,7 +74,7 @@ endblock %} {% block styles %}
       </div>
       <div class="metrics-button">
         <a href="{{ url_for ('analytics') }}">
-          <button class="metrics">Choose Data to Compare</button>
+          <button class="metrics">Analytics Overview</button>
         </a>
       </div>
     </div>

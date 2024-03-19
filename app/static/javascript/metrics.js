@@ -1,7 +1,7 @@
 
 let chart;
 
-var metricNames = [
+var boolMetrics = [
     'substance_abuse',
     'addiction',
     'depression_sad_down_feelings',
@@ -44,8 +44,14 @@ var metricNames = [
     'rules_about_eating',
     'excessive_exercise',
     'indecisiveness_about_career',
-    'job_problems'
+    'job_problems',
 ];
+
+var weirdBoolMetrics = [
+    'previous_treatments',
+    'current_thoughts_to_harm',
+    'past_thoughts_to_harm'
+]
 
 
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -86,9 +92,17 @@ function generateBarGraph(data, firstMetricValue, secondMetricValue) {
     }
 
     var labels = data.map(item => item[firstMetricValue]);
-    var values = data.map(item => item[secondMetricValue]);
+    
+    if (boolMetrics.includes(secondMetricValue)) {
+        var values = data.map(item => item[secondMetricValue]);
+    }
 
-    console.log(labels);
+    
+    if (weirdBoolMetrics.includes(secondMetricValue)) {
+        var values = data.map(item => item['Yes']);
+    }
+
+    console.log(values)
 
     var colors = [
         'rgba(9, 83, 113, 1)',
@@ -116,7 +130,7 @@ function generateBarGraph(data, firstMetricValue, secondMetricValue) {
                     callbacks: {
                         label: function(context) {
                             var value = context.parsed.y;
-                            if (metricNames.includes(secondMetricValue)) {
+                            if (boolMetrics.includes(secondMetricValue)) {
                                 // Calculate the percentage based on the maximum value
                                 return (value * 100).toFixed(2) + '%';
                             }
@@ -137,12 +151,15 @@ function generateBarGraph(data, firstMetricValue, secondMetricValue) {
                 },
                 y: {
                     beginAtZero: true,
-                    max: 1,
+                    max: function() {
+                        if (boolMetrics.includes(secondMetricValue)){
+                            return 1;
+                        }
+                    },
                     ticks: {
                         color: 'rgba(219, 147, 84, 1)',
                         callback: function(value) {
-                            console.log(firstMetricValue)
-                            if (metricNames.includes(secondMetricValue)){
+                            if (boolMetrics.includes(secondMetricValue)){
                                 return value * 100 + '%';
                             }
                             return value
