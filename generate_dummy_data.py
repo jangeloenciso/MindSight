@@ -25,6 +25,7 @@ with app.app_context():
     db.session.query(SubstanceAbuseHistory).delete()
     db.session.query(LegalHistory).delete()
     db.session.query(AdditionalInformation).delete()
+    db.session.query(Document).delete()
     db.session.query(BasicInformation).delete()
     db.session.commit()
 
