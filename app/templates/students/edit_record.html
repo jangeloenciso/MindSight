@@ -40,8 +40,8 @@ href="/static/fonts/custom-fonts.css"
               <label for="status">Status:</label>
               <select name="status" id="status">
                 <option value="" disabled selected>-Select Status-</option>
-                <option value="Active">Active</option>
-                <option value="Terminated">Terminated</option>
+                <option value="Active" {% if student.additional_information.status == 'Active' %} selected {% endif %}>Active</option>
+                <option value="Terminated" {% if student.additional_information.status == 'Terminated' %} selected {% endif %}>Terminated</option>
               </select>
             </div>
           </div>
