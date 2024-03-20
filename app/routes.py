@@ -263,14 +263,14 @@ def admin():
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
-        .filter(and_(AdditionalInformation.counselor != None, AdditionalInformation.status != 'terminated')) \
+        .filter(and_(AdditionalInformation.counselor != None, AdditionalInformation.status != 'Terminated')) \
         .group_by(AdditionalInformation.counselor).all()
 
     # filter out terminated students
     active_students = {}
     for student in students:
         counselor = student[2].counselor
-        if student[2].status != 'terminated':
+        if student[2].status != 'Terminated':
             if counselor not in active_students:
                 active_students[counselor] = 1
             else:
@@ -295,7 +295,7 @@ def counseling_history():
         .filter(AdditionalInformation.counselor == counselor_name) \
         .order_by(desc(CaseNote.interview_date)).all()
 
-    active_cases_count = sum(1 for student in students if student[2].status != 'terminated')
+    active_cases_count = sum(1 for student in students if student[2].status != 'Terminated')
 
     return render_template('admin/counseling_history.html', full_name=full_name, students=students, active_cases_count=active_cases_count)
 
@@ -356,7 +356,7 @@ def search():
 
     student_id = [record['student_id'] for record in search_results]
 
-    records = BasicInformation.query.filter(
+    records = BasicInformation.query.join(AdditionalInformation).filter(
         BasicInformation.student_id.in_(student_id), 
         BasicInformation.archived == False).all()
 
@@ -424,10 +424,10 @@ def jhs_records(year_level):
 
     student_id = [student.student_id for student in BasicInformation.query.filter_by(year_level=year_level).all()]
 
-    records = BasicInformation.query.filter(
-        BasicInformation.year_level==year_level, 
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.year_level == year_level, 
         BasicInformation.student_id.in_(student_id), 
-        BasicInformation.archived==False).all()
+        BasicInformation.archived == False).all()
 
     return render_template('students/records.html', year_level_name=college_name(year_level), year_level=year_level, data=data, records=records, student_id=student_id)
 
@@ -454,10 +454,10 @@ def shs_records(course):
 
     student_id = [student.student_id for student in BasicInformation.query.filter_by(course=course).all()]
 
-    records = BasicInformation.query.filter(
-        BasicInformation.course==course, 
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.course == course, 
         BasicInformation.student_id.in_(student_id), 
-        BasicInformation.archived==False).all()
+        BasicInformation.archived == False).all()
 
     return render_template('students/records.html', course_name=college_name(course), course=course, data=data, records=records, student_id=student_id)
 
@@ -485,10 +485,10 @@ def college_records(college):
 
     student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
 
-    records = BasicInformation.query.filter(
-        BasicInformation.college==college, 
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.college == college, 
         BasicInformation.student_id.in_(student_id), 
-        BasicInformation.archived==False).all()
+        BasicInformation.archived == False).all()
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
@@ -512,10 +512,10 @@ def graduate_records(college):
 
     student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
 
-    records = BasicInformation.query.filter(
-        BasicInformation.college==college, 
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.college == college, 
         BasicInformation.student_id.in_(student_id), 
-        BasicInformation.archived==False).all()
+        BasicInformation.archived == False).all()
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
@@ -539,10 +539,10 @@ def lll_records(college):
 
     student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
 
-    records = BasicInformation.query.filter(
-        BasicInformation.college==college, 
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.college == college, 
         BasicInformation.student_id.in_(student_id), 
-        BasicInformation.archived==False).all()
+        BasicInformation.archived == False).all()
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
@@ -875,7 +875,8 @@ def edit_record(student_id):
 
             db.session.commit()
             print('Student record updated successfully', 'success')
-            return redirect(url_for('student_record', student_id=student_id))
+            return jsonify({'success': True})
+            # return redirect(url_for('student_record', student_id=student_id))
         else:
             errors = form.errors
             print(form.errors)

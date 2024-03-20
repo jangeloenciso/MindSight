@@ -107,9 +107,9 @@
             {{ student.last_name }}, {{ student.first_name }}
           </div>
           <div class="grid-gender">{{ student.gender }}</div>
-          <div class="grid-counselor">{{ student.counselor }}</div>
-          <div class="grid-status">{{ student.status }}</div>
-          <div class="grid-remark">{{ student.remarks }}</div>
+          <div class="grid-counselor">{{ student.additional_information.counselor }}</div>
+          <div class="grid-status">{{ student.additional_information.status }}</div>
+          <div class="grid-remark">{{ student.additional_information.remarks }}</div>
         </a>
         {% elif year_level and student.year_level == year_level %}
         <!-- For JHS Records -->
@@ -122,9 +122,9 @@
             {{ student.last_name }}, {{ student.first_name }}
           </div>
           <div class="grid-gender">{{ student.gender }}</div>
-          <div class="grid-counselor">{{ student.counselor }}</div>
-          <div class="grid-status">{{ student.status }}</div>
-          <div class="grid-remark">{{ student.remarks }}</div>
+          <div class="grid-counselor">{{ student.additional_information.counselor }}</div>
+          <div class="grid-status">{{ student.additional_information.status }}</div>
+          <div class="grid-remark">{{ student.additional_information.remarks }}</div>
         </a>
         {% endif %} 
         {% endfor %}

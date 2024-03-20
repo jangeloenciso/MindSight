@@ -37,40 +37,124 @@
             <option value="student_no">Student No.</option>
             <option value="concern">Nature of Concern</option>
           </select>
-          <div class="archive-container">
-            <img
-              src="/static/archive-button.png"
-              alt="archive"
-              class="archive-button"
-            />
-          </div>
+          <a href="#" id="archive-button"> 
+            <div class="archive-container">
+              <img
+                src="/static/archive-button.png"
+                alt="archive"
+                class="archive-button"
+              />
+            </div>
+          </a>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         </div>
       </div>
 
-<div class="grid-container">
-    <div class="grid-header">
-      <div class="grid-checkbox"></div>
-      <div class="grid-section">Student ID</div>
-      <div class="grid-name">Name</div>
-      <div class="grid-gender">Gender</div>
-      <div class="grid-counselor">Counselor</div>
-      <div class="grid-status">Status</div>
-      <div class="grid-remark">Remarks</div>
-    </div>
-        <div class="row-container">
-        {% for student in records %}
-            <a href="{{ url_for('student_record', student_id=student.student_id) }}" class="grid-row">
-              <div class="grid-checkbox"><input type="checkbox" /></div>
-              <div class="grid-section">{{ student.student_id }}</div>
-              <div class="grid-name">{{ student.last_name }}, {{ student.first_name }}</div>
-              <div class="grid-gender">{{ student.gender }}</div>
-              <div class="grid-counselor">{{ student.counselor }}</div>
-              <div class="grid-status">{{ student.status }}</div>
-              <div class="grid-remark">{{ student.remarks }}</div>
-            </a>
-        {% endfor %}
-        </div>
+      <div class="grid-container">
+          <div class="grid-header">
+            <div class="grid-checkbox"></div>
+            <div class="grid-section">Student ID</div>
+            <div class="grid-name">Name</div>
+            <div class="grid-gender">Gender</div>
+            <div class="grid-counselor">Counselor</div>
+            <div class="grid-status">Status</div>
+            <div class="grid-remark">Remarks</div>
+          </div>
+              <div class="row-container">
+              {% for student in records %}
+                  <a href="{{ url_for('student_record', student_id=student.student_id) }}" class="grid-row">
+                    <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
+                    <div class="grid-section">{{ student.student_id }}</div>
+                    <div class="grid-name">
+                      {{ student.last_name }}, {{ student.first_name }}
+                    </div>
+                    <div class="grid-gender">{{ student.gender }}</div>
+                    <div class="grid-counselor">{{ student.additional_information.counselor }}</div>
+                    <div class="grid-status">{{ student.additional_information.status }}</div>
+                    <div class="grid-remark">{{ student.additional_information.remarks }}</div>
+                  </a>
+              {% endfor %}
+              </div>
+      </div>
+  </div>
 </div>
-</div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll(".archive-button").forEach(button => {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+        const selectedRecords = [];
+        
+        document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
+            selectedRecords.push(checkbox.dataset.studentId);
+        });
+  
+        if (selectedRecords.length === 0) {
+            swal.fire({
+                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                title: 'Error!',
+                text: 'Please select at least one record to archive',
+            });
+            return;
+        }
+  
+        swal.fire({
+            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+            title: 'Are you sure?',
+            text: "You're about to archive all selected records",
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            customClass: {
+              confirmButton: `confirm-button-class`,
+              cancelButton: 'cancel-button-class'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+              fetch('/students/records/bulk_archive', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': csrfToken
+                  },
+                  body: JSON.stringify({ records: selectedRecords })
+              })
+              .then(response => {
+                  if (response.ok) {
+                    swal.fire({
+                          iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                          title: 'Success!',
+                          text: 'Records archived successfully.',
+                          showConfirmButton: false,
+                          timer: 1500,
+                          timerProgressBar: true,
+                      }).then(() => {
+                            window.location.reload();
+                      });
+                  } else {
+                      swal.fire({
+                          iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                          title: 'Error!',
+                          text: 'Failed to archive records',
+                          customClass: {
+                            confirmButton: `confirm-button-class`,
+                          }
+                      });
+                  }
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  swal.fire({
+                      iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                      title: 'Error!',
+                      text: 'An error occurred while archiving records',
+                  });
+              });
+            }
+        });
+      });
+    });
+  });
+  
+  </script>
 {% endblock %}

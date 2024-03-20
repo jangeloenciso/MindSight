@@ -2467,11 +2467,11 @@ href="/static/fonts/custom-fonts.css"
                 >Signature of the Counselor/Guidance Personnel</label
               >
               <select name="counselor" id="counselor" class="form-width100">
-                <option value="" disabled {% if not student.counselor %} selected {% endif %}>-Select Counselor-</option>
-                <option value="Emmanuelle Santiago" {% if student.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
-                <option value="Russel Ane Dela Cruz" {% if student.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
-                <option value="Jake Jason Queddeng" {% if student.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
-                <option value="Lizelle Anne Manabat" {% if student.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
+                <option value="" disabled {% if not student.additional_information.counselor %} selected {% endif %}>-Select Counselor-</option>
+                <option value="Emmanuelle Santiago" {% if student.additional_information.counselor == 'Emmanuelle Santiago' %} selected {% endif %}>Emmanuelle Santiago</option>
+                <option value="Russel Ane Dela Cruz" {% if student.additional_information.counselor == 'Russel Ane Dela Cruz' %} selected {% endif %}>Russel Ane Dela Cruz</option>
+                <option value="Jake Jason Queddeng" {% if student.additional_information.counselor == 'Jake Jason Queddeng' %} selected {% endif %}>Jake Jason Queddeng</option>
+                <option value="Lizelle Anne Manabat" {% if student.additional_information.counselor == 'Lizelle Anne Manabat' %} selected {% endif %}>Lizelle Anne Manabat</option>
               </select>
             </div>
             <div style="display: flex; flex-direction: column-reverse;"><label
