@@ -23,7 +23,6 @@ document.getElementById('confirm').addEventListener('click', function(event) {
 
 document.getElementById('Submit').addEventListener('submit', function(event) {
     event.preventDefault();
-    const student_id = "{{ student_id }}"
 
     fetch(this.action, {
         method: this.method,
@@ -39,7 +38,7 @@ document.getElementById('Submit').addEventListener('submit', function(event) {
                 timer: 1500,
                 timerProgressBar: true,
             }).then(() => {
-                window.location.href = `/students/records/view/${student_id}`;
+                window.location.href = `/students/records/view/${data.student_id}`;
             });
         }
     })

@@ -873,7 +873,7 @@ def edit_record(student_id):
 
             db.session.commit()
             print('Student record updated successfully', 'success')
-            return jsonify({'success': True})
+            return jsonify({'success': True, 'student_id': student_id})
             # return redirect(url_for('student_record', student_id=student_id))
         else:
             errors = form.errors
