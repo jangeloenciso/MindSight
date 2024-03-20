@@ -1,5 +1,5 @@
-// Event listener for the confirmation button
-document.getElementById('confirm').addEventListener('click', function() {
+document.getElementById('confirm').addEventListener('click', function(event) {
+    event.preventDefault();
     swal.fire({
         title: 'DISCARD CHANGES?',
         text: "Any changes you've made will be gone.",
@@ -20,8 +20,10 @@ document.getElementById('confirm').addEventListener('click', function() {
 });
 
 
-document.getElementById('toggleSubmit').addEventListener('submit', function(event) {
+
+document.getElementById('Submit').addEventListener('submit', function(event) {
     event.preventDefault();
+    const student_id = "{{ student_id }}"
 
     fetch(this.action, {
         method: this.method,
@@ -37,7 +39,7 @@ document.getElementById('toggleSubmit').addEventListener('submit', function(even
                 timer: 1500,
                 timerProgressBar: true,
             }).then(() => {
-                window.location.href = "/students/records/edit/<student_id>";
+                window.location.href = `/students/records/view/${student_id}`;
             });
         }
     })
