@@ -64,7 +64,7 @@ document.querySelectorAll('.delete').forEach(button => {
         swal.fire({
             iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
             title: 'Are you sure?',
-            text: "You're about to delete this file",
+            text: "You're about to archive this file.",
             showCancelButton: true,
             confirmButtonText: 'Yes',
             customClass: {
@@ -82,17 +82,18 @@ document.querySelectorAll('.delete').forEach(button => {
                 })
                 .then(response => {
                     if (response.ok) {
-                        this.parentElement.remove();
                         swal.fire({
                             iconHtml: '<img class="custom-icon" src="static/popup.png">',
                             title: 'Success!',
-                            text: 'File deleted successfully',
+                            text: 'File archived successfully.',
+                        }).then(() => {
+                            window.location.reload();
                         });
                     } else {
                         swal.fire({
                             iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
                             title: 'Error!',
-                            text: 'Failed to delete file',
+                            text: 'Failed to archived the file.',
                         });
                     }
                 })
@@ -101,7 +102,7 @@ document.querySelectorAll('.delete').forEach(button => {
                     swal.fire({
                         iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
                         title: 'Error!',
-                        text: 'An error occurred while deleting the file',
+                        text: 'An error occurred while archiving the file.',
                     });
                 });
             }
@@ -135,8 +136,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 // File uploaded successfully
                 swal.fire({
                     iconHtml: '<img class="custom-icon" src="static/popup.png">',
-                    title: 'File Uploaded!',
-                    text: 'Your file has been successfully uploaded.'
+                    title: 'Awesome!',
+                    text: 'File uploaded successfully.'
+                }).then(() => {
+                    window.location.reload();
                 });
             } else {
                 // File upload failed

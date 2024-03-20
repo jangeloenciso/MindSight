@@ -58,15 +58,15 @@
       <div class="grid-remark">Remarks</div>
     </div>
         <div class="row-container">
-        {% for record in search_results %}
-            <a href="{{ url_for('student_record', student_id=record.student_id) }}" class="grid-row">
-            <div class="grid-checkbox"><input type="checkbox" /></div>
-            <div class="grid-section">{{ record.student_id }}</div>
-            <div class="grid-name">{{ record.last_name }}, {{ record.first_name }}</div>
-            <div class="grid-gender">{{ record.gender }}</div>
-            <div class="grid-counselor">{{ record.counselor }}</div>
-            <div class="grid-status">{{ record.status }}</div>
-            <div class="grid-remark">{{ record.remarks }}</div>
+        {% for student in records %}
+            <a href="{{ url_for('student_record', student_id=student.student_id) }}" class="grid-row">
+              <div class="grid-checkbox"><input type="checkbox" /></div>
+              <div class="grid-section">{{ student.student_id }}</div>
+              <div class="grid-name">{{ student.last_name }}, {{ student.first_name }}</div>
+              <div class="grid-gender">{{ student.gender }}</div>
+              <div class="grid-counselor">{{ student.counselor }}</div>
+              <div class="grid-status">{{ student.status }}</div>
+              <div class="grid-remark">{{ student.remarks }}</div>
             </a>
         {% endfor %}
         </div>

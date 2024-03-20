@@ -354,9 +354,13 @@ def search():
     search_data = process_data(search_query=query)
     search_results = search_data.to_dict(orient='records')
 
-    print(search_results)
+    student_id = [record['student_id'] for record in search_results]
 
-    return render_template('search.html', search_results=search_results, query=query)
+    records = BasicInformation.query.filter(
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived == False).all()
+
+    return render_template('search.html', search_results=search_results, query=query, records=records)
 
 @app.route('/students/records/view/<student_id>/print')
 @login_required
@@ -418,7 +422,14 @@ def jhs_records(year_level):
 
     print(year_level)
 
-    return render_template('students/records.html', year_level_name=college_name(year_level), year_level=year_level, data=data)
+    student_id = [student.student_id for student in BasicInformation.query.filter_by(year_level=year_level).all()]
+
+    records = BasicInformation.query.filter(
+        BasicInformation.year_level==year_level, 
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived==False).all()
+
+    return render_template('students/records.html', year_level_name=college_name(year_level), year_level=year_level, data=data, records=records, student_id=student_id)
 
 @app.route('/SHS')
 @login_required
@@ -441,7 +452,14 @@ def shs_records(course):
     
     print(college_name(course))
 
-    return render_template('students/records.html', course_name=college_name(course), course=course, data=data)
+    student_id = [student.student_id for student in BasicInformation.query.filter_by(course=course).all()]
+
+    records = BasicInformation.query.filter(
+        BasicInformation.course==course, 
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived==False).all()
+
+    return render_template('students/records.html', course_name=college_name(course), course=course, data=data, records=records, student_id=student_id)
 
 @app.route('/colleges')
 @login_required
@@ -465,7 +483,14 @@ def college_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+    student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
+
+    records = BasicInformation.query.filter(
+        BasicInformation.college==college, 
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived==False).all()
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
 @app.route('/graduate')
 @login_required
@@ -485,7 +510,14 @@ def graduate_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+    student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
+
+    records = BasicInformation.query.filter(
+        BasicInformation.college==college, 
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived==False).all()
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
 @app.route('/LLL')
 @login_required
@@ -505,7 +537,50 @@ def lll_records(college):
 
     print(college_name(college))
 
-    return render_template('students/records.html', college_name=college_name(college), college=college, data=data)
+    student_id = [student.student_id for student in BasicInformation.query.filter_by(college=college).all()]
+
+    records = BasicInformation.query.filter(
+        BasicInformation.college==college, 
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived==False).all()
+
+    return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
+
+# bulk archive student record
+@app.route('/students/records/bulk_archive', methods=['POST'])
+@login_required
+def bulk_archive_records():
+
+    selected_records = request.json.get('records', [])
+    print(selected_records)
+
+    for student_id in selected_records:
+        student = BasicInformation.query.filter_by(student_id=student_id).first()
+        print(student)
+
+        if student:
+
+            student.archive()
+        
+        else: 
+            return jsonify({'error': True})
+        
+    return jsonify({'success': True})
+
+
+# archive student record
+@app.route('/students/records/view/archive/<student_id>', methods=['POST'])
+@login_required
+def archive_record(student_id):
+
+    student = BasicInformation.query.filter_by(student_id=student_id).first()
+
+    if not student:
+        return jsonify({'error': True})
+    
+    student.archive()
+
+    return jsonify({'success': True})
 
 
 @app.route('/students/records/view/<student_id>')
@@ -519,6 +594,7 @@ def student_record(student_id):
     print(student_id)
 
     return render_template('students/student_record.html', student_id=student_id, student_data=student_data, student_signature = student_signature_base64)
+
 
 @app.route('/students/records/view/full_record/<student_id>', methods=['GET', 'POST'])
 @login_required
@@ -540,7 +616,7 @@ def upload_record(student_id):
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
 
-    documents = Document.query.filter_by(student_id=student_id).all()
+    documents = Document.query.filter_by(student_id=student_id, archived=False).all()
 
     return render_template('students/upload_record.html', student_id=student_id, student_data=student_data, documents=documents)
 
@@ -596,16 +672,14 @@ def view_file(student_id, filename):
 @app.route('/students/records/upload_record/delete_file/<filename>', methods=['POST'])
 def delete_file(filename):
 
-    print(filename)
-    file_path = os.path.join(UPLOAD_FOLDER, filename)
-        
-    # check if file exists
-    if os.path.exists(file_path):
-        # delete the file
-        os.remove(file_path)
-        return jsonify({'message': 'File deleted successfully'}), 200
+    file = Document.query.filter_by(filename=filename).first()
+
+    if file:
+        file.archived = True
+        db.session.commit()
+        return jsonify({'success': True})
     else:
-        return jsonify({'error': 'File not found'}), 404
+        return jsonify({'error': True})
 
 
 @app.route('/students/records/edit/<student_id>', methods=['GET', 'POST'])

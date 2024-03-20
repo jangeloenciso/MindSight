@@ -69,13 +69,16 @@
           <option value="student_no">Student No.</option>
           <option value="concern">Nature of Concern</option>
         </select>
-        <div class="archive-container">
-          <img
-            src="/static/archive-button.png"
-            alt="archive"
-            class="archive-button"
-          />
-        </div>
+        <a href="#" id="archive-button"> 
+          <div class="archive-container">
+            <img
+              src="/static/archive-button.png"
+              alt="archive"
+              class="archive-button"
+            />
+          </div>
+        </a>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       </div>
     </div>
 
@@ -92,13 +95,13 @@
     <div class="grid-container">
       <!-- sample data rows -->
       <div class="row-container">
-        {% for student in data %} 
+        {% for student in records %}
         {% if college and student.college == college or course and student.course == course %}
         <a
           href="{{ url_for('student_record', student_id=student.student_id) }}"
           class="grid-row"
         >
-          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
           <div class="grid-section">{{ student.student_id }}</div>
           <div class="grid-name">
             {{ student.last_name }}, {{ student.first_name }}
@@ -113,7 +116,7 @@
         <a href="{{ url_for('student_record', student_id=student.student_id) }}" 
           class="grid-row"
         >
-          <div class="grid-checkbox"><input type="checkbox" /></div>
+          <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
           <div class="grid-section">{{ student.student_id }}</div>
           <div class="grid-name">
             {{ student.last_name }}, {{ student.first_name }}
@@ -123,10 +126,90 @@
           <div class="grid-status">{{ student.status }}</div>
           <div class="grid-remark">{{ student.remarks }}</div>
         </a>
-        {% endif %} {% endfor %}
+        {% endif %} 
+        {% endfor %}
       </div>
     </div>
   </div>
-
-  {% endblock %}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll(".archive-button").forEach(button => {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+      const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+      const selectedRecords = [];
+      
+      document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
+          selectedRecords.push(checkbox.dataset.studentId);
+      });
+
+      if (selectedRecords.length === 0) {
+          swal.fire({
+              iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+              title: 'Error!',
+              text: 'Please select at least one record to archive',
+          });
+          return;
+      }
+
+      swal.fire({
+          iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+          title: 'Are you sure?',
+          text: "You're about to archive all selected records",
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          customClass: {
+            confirmButton: `confirm-button-class`,
+            cancelButton: 'cancel-button-class'
+          }
+      }).then((result) => {
+          if (result.isConfirmed) {
+            fetch('/students/records/bulk_archive', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ records: selectedRecords })
+            })
+            .then(response => {
+                if (response.ok) {
+                  swal.fire({
+                        iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                        title: 'Success!',
+                        text: 'Records archived successfully.',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    }).then(() => {
+                          window.location.reload();
+                    });
+                } else {
+                    swal.fire({
+                        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                        title: 'Error!',
+                        text: 'Failed to archive records',
+                        customClass: {
+                          confirmButton: `confirm-button-class`,
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                swal.fire({
+                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                    title: 'Error!',
+                    text: 'An error occurred while archiving records',
+                });
+            });
+          }
+      });
+    });
+  });
+});
+
+</script>
+{% endblock %}

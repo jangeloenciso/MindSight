@@ -93,11 +93,13 @@
               </a>
                      
                     
-              <a href="">
+              <a href="#" id="archive-button">
                 <div class="archive">
-                  <img src="{{url_for('static', filename='archive-button.png')}}"/>
+                    <img src="{{ url_for('static', filename='archive-button.png') }}" />
                 </div>
               </a>
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
             </div>
         </div>
         
@@ -203,7 +205,85 @@
         </div>
     </div>
 </div>
+</div>
 
-<script src={{ url_for('static', filename='javascript/cdn/sweetalert2.all.min.js') }}></script>
-<script src={{ url_for('static', filename='javascript/student_record.js') }}></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("archive-button").addEventListener("click", function(event) {
+    event.preventDefault();
+        const student_id = "{{ student_id }}";
+
+        const year_level = "{{ student_data[0]['year_level'] }}";
+        const college = "{{ student_data[0]['college'] }}";
+        const course = "{{ student_data[0]['course'] }}";
+
+        console.log("Year Level:", year_level);
+        console.log("Course:", course);
+        console.log("College:", college);
+
+        const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+        swal.fire({
+            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+            title: 'Are you sure?',
+            text: "You're about to archive this record.",
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            customClass: {
+                confirmButton: `confirm-button-class`,
+                cancelButton: 'cancel-button-class'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/students/records/view/archive/${student_id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        swal.fire({
+                            iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                            title: 'Success!',
+                            text: 'Record successfully archived.',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                        }).then(() => {
+                            if (college === 'CEA' || college === 'CBEA' || college === 'CAS' || college === 'CED' || college === 'IHK') {
+                                window.location.href = `/students/records/COLLEGE/${college}`;
+                            } else if (college === 'GRAD') {
+                                window.location.href = `/students/records/GRADUATE/${college}`;
+                            } else if (college === 'LLL') {
+                                window.location.href = `/students/records/LLL/${college}`;
+                            } else if (course === 'STEM' || course === 'ABM' || course === 'HUMSS' || course === 'ICT') {
+                                window.location.href = `/students/records/SHS/${course}`;
+                            } else if (year_level === 7 || year_level === 8 || year_level === 9 || year_level === 10) {
+                                window.location.href = `/students/records/JHS/${year_level}`;
+                            }
+                        });
+                    } else {
+                        swal.fire({
+                            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                            title: 'Error!',
+                            text: 'Failed to archive record.',
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal.fire({
+                        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                        title: 'Error!',
+                        text: 'An error occurred while archiving the file.',
+                    });
+                });
+            }
+        });
+    });
+
+  });
+</script>
 {% endblock %}

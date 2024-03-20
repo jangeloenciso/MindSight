@@ -76,6 +76,12 @@ class BasicInformation(db.Model):
 
     submitted_on = db.Column(db.DateTime, default=datetime.now)
 
+    archived = db.Column(db.Boolean, default=False) 
+
+    def archive(self):
+        self.archived = True
+        db.session.commit()
+
 
     @validates('student_id')
     def validate_student_id(self, key, value):
@@ -474,6 +480,8 @@ class Document(db.Model):
     file_id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(255), nullable=True)
     path = db.Column(db.String(255), nullable=True)
+
+    archived = db.Column(db.Boolean, default=False)
 
     student_id = db.Column(db.String(20), db.ForeignKey('basic_information.student_id'))
 
