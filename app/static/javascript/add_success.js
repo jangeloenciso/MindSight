@@ -3,7 +3,7 @@ document.getElementById('cancel-button').addEventListener('click', function() {
     swal.fire({
         title: 'DISCARD CHANGES?',
         text: "Any changes you've made will be gone.",
-        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
         confirmButtonText: 'DISCARD',
         showCancelButton: true,
         cancelButtonText: 'STAY',

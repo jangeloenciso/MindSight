@@ -3,7 +3,7 @@ document.getElementById('confirm').addEventListener('click', function(event) {
     swal.fire({
         title: 'DISCARD CHANGES?',
         text: "Any changes you've made will be gone.",
-        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
         confirmButtonText: 'DISCARD',
         showCancelButton: true,
         cancelButtonText: 'STAY',
@@ -33,7 +33,7 @@ document.getElementById('Submit').addEventListener('submit', function(event) {
         if (data.success) {
             swal.fire({
                 title: 'RECORD UPDATED SUCCESSFULLY',
-                iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                 showConfirmButton: false,
                 timer: 1500,
                 timerProgressBar: true,
