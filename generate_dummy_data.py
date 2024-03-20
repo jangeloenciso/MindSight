@@ -72,7 +72,6 @@ with app.app_context():
             first_name=fake.first_name(),
             college=college,
             course=pick_course(college),
-            year_level=str(random.randint(1, 4)),
             # gpa=round(random.uniform(1.0, 5.0), 2),
             campus=fake.random_element(elements=["Boni", "Pasig"]),
             age=random.randint(18, 30),
@@ -87,6 +86,15 @@ with app.app_context():
             submitted_on=fake.date_time_between(start_date=start_date, end_date=end_date),
             student_signature=os.urandom(1000)
         )
+        
+        if college in ["CEA", "CBEA", "CAS", "CED", "IHK"]:
+            student.year_level = str(random.randint(1, 4))
+        elif college == "JHS":
+            student.year_level = str(random.randint(7, 10))
+        elif college == "SHS":
+            student.year_level = str(random.randint(11, 12))
+        else:
+            student.year_level = None
 
         db.session.add(student)
         db.session.commit()
@@ -287,7 +295,10 @@ with app.app_context():
             nature_of_concern=fake.random_element(elements=("Academic","Personal","Career","Social")),
             personal_agreement = True,
             personal_agreement_date=fake.date_time_between(start_date=start_date, end_date=end_date),
-            
+            counselor=fake.random_element(elements=("Emmanuelle Santiago","Russel Ane Dela Cruz","Jake Jason Queddeng","Lizelle Anne Manabat")),
+            status=fake.random_element(elements=("Active","Terminated")),
+            remarks=fake.random_element(elements=("For Follow-Up","For Outside Referral","Case Reopen")),
+
             student = student
 
         )
