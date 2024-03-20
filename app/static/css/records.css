@@ -123,8 +123,8 @@ p {
 /* "filter by" and "archive container" */
 .filter{
     display: flex;
+    align-items: center;
 }
-
 
 /* grid rows */
 .grid-container {
