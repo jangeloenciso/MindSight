@@ -37,12 +37,12 @@ endblock %} {% block styles %}
         
             <div class="single-row">
                 <label for="password">New password</label>
-                {{ form.password }}
+                {{ form.password(id='password') }}
             </div>
 
             <div class="single-row">
               <label for="confirm_password">Confirm new password</label>
-              {{ form.confirm }}
+              {{ form.confirm(id='confirm') }}
             </div>
 
             <div class="single-row">

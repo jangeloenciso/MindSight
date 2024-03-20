@@ -323,8 +323,7 @@ def settings():
 
     if form.validate_on_submit():
         if not bcrypt.check_password_hash(current_user.password, form.current_password.data):
-            flash('Incorrect password. Please try again.', 'danger')
-            return redirect(url_for('settings'))
+            return jsonify({'error': True})
         
         current_user.first_name = form.first_name.data
         current_user.last_name = form.last_name.data
@@ -339,7 +338,6 @@ def settings():
         # Commit changes to the database
         db.session.commit()
         return jsonify({'success': True})
-
 
     return render_template('settings.html', form=form)
 
