@@ -11,20 +11,26 @@
             Please click on the following <b>LEVEL</b> to view the corresponding
             records:
           </p>
-        
-          <div class="search-upload-container">
-             <!-- search -->
-            <div class="search-container">
-              <form method="GET" action="{{ url_for('search', query=query) }}">
-                <div class="search-bar">
-                  <input type="text" placeholder="Search" name="query" value="{{query}}"/>
-                  <button type="submit">
-                    <img src="/static/students/search.png" alt="search" />
-                  </button>
-                </div>
-              </form>
+          
+            <div class="search-archive-container">
+              <!-- search -->
+              <div class="search-container">
+                <form method="GET" action="{{ url_for('search', query=query) }}">
+                  <div class="search-bar">
+                    <input type="text" placeholder="Search" name="query" value="{{query}}"/>
+                    <button type="submit">
+                      <img src="/static/students/search.png" alt="search" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <!-- change this to an icon or whatever -->
+              <a href="{{ url_for('view_archived') }}" class="retrieve-button">
+                <span class="archive">View archived records</span>
+              </a>
             </div>
-          </div>
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
         </div>
     
         <!-- directory buttons -->

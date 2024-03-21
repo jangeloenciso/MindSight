@@ -86,11 +86,33 @@
     aspect-ratio: 1 / 1;
 }
 
-.search-upload-container {
+.search-archive-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.search-archive-container a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.archive  {
+    font-weight: normal;
+}
+
+/* archive icon */
+.retrieve-button {
+    width: auto;
+    padding: 1em;
+    background-color: var(--primary-color);
+    border-radius: 2em;
+    transition: var(--smooth-transition);
+}
+
+.retrieve-button:hover {
+    background-color: var(--bg-orange);
 }
 
 

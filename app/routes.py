@@ -360,6 +360,44 @@ def search():
 
     return render_template('search.html', search_results=search_results, query=query, records=records)
 
+# view archived records
+@app.route('/students/records/archived/', methods=['GET'])
+@login_required
+def view_archived():
+    data = data_to_dict()
+
+    student_id = [record['student_id'] for record in data]
+
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived == True).all()
+
+    return render_template('students/archive_record.html', records=records)
+
+
+# retrieve all archived records
+@app.route('/students/records/bulk_retrieve', methods=['POST'])
+@login_required
+def bulk_retrieve_records():
+
+    selected_records = request.json.get('records', [])
+    print(selected_records)
+
+    for student_id in selected_records:
+        student = BasicInformation.query.filter_by(student_id=student_id).first()
+        print(student)
+
+        if student:
+
+            student.archived = False
+            db.session.commit()
+        
+        else: 
+            return jsonify({'error': True})
+        
+    return jsonify({'success': True})
+
+
 @app.route('/students/records/view/<student_id>/print')
 @login_required
 def print_record(student_id):
@@ -558,7 +596,8 @@ def bulk_archive_records():
 
         if student:
 
-            student.archive()
+            student.archived = True
+            db.session.commit()
         
         else: 
             return jsonify({'error': True})
@@ -576,7 +615,8 @@ def archive_record(student_id):
     if not student:
         return jsonify({'error': True})
     
-    student.archive()
+    student.archived = True
+    db.session.commit()
 
     return jsonify({'success': True})
 
