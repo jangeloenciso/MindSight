@@ -841,6 +841,10 @@ def edit_record(student_id):
                             family_background=student.family_background
                         )
                         db.session.add(new_sibling)
+            if len(sibling_names) < len(existing_siblings):
+        # Delete sibling records that were removed from the form
+                for sibling in existing_siblings[len(sibling_names):]:
+                    db.session.delete(sibling)
 
             existing_convictions = student.legal_history.convictions
             
@@ -865,6 +869,9 @@ def edit_record(student_id):
                                 legal_history=student.legal_history
                             )
                             db.session.add(new_conviction)
+            if len(convictions) < len(existing_convictions):
+                for conviction in existing_convictions[len(convictions):]:
+                    db.session.delete(conviction)   
         
             counselor_list = request.form.getlist('counselorName')
             interview_date = request.form.getlist('interviewDate')
