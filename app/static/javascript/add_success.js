@@ -14,7 +14,7 @@ document.getElementById('cancel-button').addEventListener('click', function() {
     }).then((result) => {
         if (result.isConfirmed) {
             // If confirmed, go back to the previous page
-            window.location.href = 'login';
+            window.location.assign('/login');
         }
     });
 });
@@ -32,12 +32,12 @@ document.getElementById('submit_form').addEventListener('submit', function(event
         if (data.success) {
             swal.fire({
                 title: 'New record added successfully.',
-                iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                 showConfirmButton: false,
                 timer: 1500,
                 timerProgressBar: true,
             }).then(() => {
-                window.location.href = "login";
+                window.location.assign('/login');
             });
         }
     })

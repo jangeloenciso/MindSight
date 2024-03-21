@@ -438,7 +438,7 @@ NOTE: changing dimension could lead to irregular behavior of the paint cursor wh
 /* sweet alert/modal style */
 .swal2-popup {
     color: var(--bg-orange);
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     background: var(--main-db-bg-color);
     border-radius: 1.5rem;
     box-shadow: 2px 2px 15px 10px rgb(0 0 0 / 40%);
@@ -448,7 +448,7 @@ NOTE: changing dimension could lead to irregular behavior of the paint cursor wh
 }
 
 .swal2-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     line-height: normal;
     color: var(--primary-color);

@@ -11,7 +11,7 @@ document.getElementById('submit_form').addEventListener('submit', function(event
             swal.fire({
                 title: 'Error!',
                 text: 'username or password is incorrect.',
-                iconHtml: '<img class="custom-icon" src="static/error.png">',
+                iconHtml: '<img class="custom-icon" src="/static/error.png">',
                 showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Try Again',
