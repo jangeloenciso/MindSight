@@ -35,7 +35,7 @@ document.getElementById('Submit').addEventListener('submit', function(event) {
                 title: 'RECORD UPDATED SUCCESSFULLY',
                 iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 2000,
                 timerProgressBar: true,
             }).then(() => {
                 window.location.href = `/students/records/view/${data.student_id}`;

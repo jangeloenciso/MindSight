@@ -515,7 +515,7 @@ NOTE: changing dimension could lead to irregular behavior of the paint cursor wh
 .swal2-popup {
     font-size: 1.1rem;
     width: 40%;
-    color: var(--primary-color);
+    color: var(--bg-orange);
     background: var(--main-db-bg-color);
     border-radius: 1.2rem;
     box-shadow: 3px 3px 25px 12px rgb(0 0 0 / 40%);
