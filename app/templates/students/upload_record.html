@@ -62,7 +62,7 @@ document.querySelectorAll('.delete').forEach(button => {
         const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
         swal.fire({
-            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
             title: 'Are you sure?',
             text: "You're about to archive this file.",
             showCancelButton: true,
@@ -83,26 +83,39 @@ document.querySelectorAll('.delete').forEach(button => {
                 .then(response => {
                     if (response.ok) {
                         swal.fire({
-                            iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                            iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                             title: 'Success!',
                             text: 'File archived successfully.',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
                         }).then(() => {
                             window.location.reload();
                         });
                     } else {
                         swal.fire({
-                            iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                             title: 'Error!',
-                            text: 'Failed to archived the file.',
+                            text: 'Failed to archived the file, please try again.',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Try again',
+                            customClass: {
+                                confirmButton: `confirm-button-class`,
+                            }
                         });
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     swal.fire({
-                        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                         title: 'Error!',
                         text: 'An error occurred while archiving the file.',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Try again',
+                        customClass: {
+                            confirmButton: `confirm-button-class`,
+                        }
                     });
                 });
             }
@@ -135,27 +148,40 @@ document.addEventListener("DOMContentLoaded", function() {
             if (response.ok) {
                 // File uploaded successfully
                 swal.fire({
-                    iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                    iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                     title: 'Awesome!',
-                    text: 'File uploaded successfully.'
+                    text: 'File uploaded successfully.',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
                 }).then(() => {
                     window.location.reload();
                 });
             } else {
                 // File upload failed
                 swal.fire({
-                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                    iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                     title: 'Upload Failed',
-                    text: 'Failed to upload the file. Please try again.'
+                    text: 'Failed to upload the file, please try again.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Try again',
+                    customClass: {
+                        confirmButton: `confirm-button-class`,
+                    }
                 });
             }
         })
         .catch(error => {
             console.error('Error:', error);
             swal.fire({
-                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                 title: 'Upload Failed',
-                text: 'An error occurred while uploading the file. Please try again.'
+                text: 'An error occurred while uploading the file, please try again.',
+                showConfirmButton: true,
+                confirmButtonText: 'Try again',
+                customClass: {
+                    confirmButton: `confirm-button-class`,
+                }
             });
         });
         console.log('File selected:', file);

@@ -147,15 +147,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (selectedRecords.length === 0) {
           swal.fire({
-              iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+              iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
               title: 'Error!',
               text: 'Please select at least one record to archive',
+              confirmButtonText: 'Okay',
+              customClass: {
+                  confirmButton: `confirm-button-class`,
+              }
           });
           return;
       }
 
       swal.fire({
-          iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+          iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
           title: 'Are you sure?',
           text: "You're about to archive all selected records",
           showCancelButton: true,
@@ -177,22 +181,24 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => {
                 if (response.ok) {
                   swal.fire({
-                        iconHtml: '<img class="custom-icon" src="static/popup.png">',
+                        iconHtml: '<img class="custom-icon" src="/static/popup.png">',
                         title: 'Success!',
                         text: 'Records archived successfully.',
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 2000,
                         timerProgressBar: true,
                     }).then(() => {
                           window.location.reload();
                     });
                 } else {
                     swal.fire({
-                        iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                         title: 'Error!',
-                        text: 'Failed to archive records',
+                        text: 'Failed to archive records, please try again.',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Okay',
                         customClass: {
-                          confirmButton: `confirm-button-class`,
+                            confirmButton: `confirm-button-class`,
                         }
                     });
                 }
@@ -200,9 +206,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error:', error);
                 swal.fire({
-                    iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                    iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
                     title: 'Error!',
                     text: 'An error occurred while archiving records',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Try again',
+                    customClass: {
+                        confirmButton: `confirm-button-class`,
+                    }
                 });
             });
           }
