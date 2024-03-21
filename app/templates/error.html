@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/custom-fonts.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+    <link rel="stylesheet" href="../static/css/error.css" />
+    <title>Error - 404 Page</title>
+  </head>
+
+  <body>
+    <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+    <div class="full-container">
+        <div class="container">
+            <div class="error-container">
+                <h1>4</h1>
+                <img class="img404" src="../static/SVG/EYE LOGO.svg" />
+                <h1>4</h1>
+            </div>
+        </div>
+        <div class="message-container">
+            <div class="message">
+                <span>Oops...</span>
+                <h1>It looks like you're out of your mind.</h1>
+                <p>The page you were looking for doesn't exist.</p>
+            </div>
+            <a class="button" href="{{ url_for('login') }}">TAKE ME HOME, COUNTRY ROAD</a>
+        </div>
+    </div>
+    <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
+  </body>
+</html>

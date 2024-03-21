@@ -1,0 +1,100 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    transition: var(--smooth-transition);
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-color: #DB9354;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* SVGs */
+.svg-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 25%;
+    pointer-events: none;
+}
+
+.svg-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 40%;
+    pointer-events: none;
+    transform: scaleX(-1)
+}
+
+
+.full-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
+
+
+.container {
+    background-color: var(--white);
+    width: auto;
+    height: auto;
+    padding: 1em;
+}
+
+.img404 {
+    aspect-ratio: 1/2;
+    width: 10em;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.error-container h1 {
+    font-size: 5rem;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.message-container span {
+    font-size: 3rem;
+    font-family: Lexend-Black;
+}
+
+.message-container h1 {
+    font-size: 1.7rem;
+    font-family: Lexend-Medium;
+}
+
+.message-container p {
+    font-size: 1.5rem;
+}
+
+.button {
+    color: var(--white);
+    background-color: var(--primary-color);
+    text-decoration: none;
+    padding: 1em;
+    border-radius: 1.5em;
+}
+
