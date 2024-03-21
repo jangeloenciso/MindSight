@@ -45,6 +45,8 @@ def process_data(student_id=None, search_query=None):
             .options(joinedload(BasicInformation.substance_abuse_history))
             .options(joinedload(BasicInformation.legal_history))
             .options(joinedload(BasicInformation.additional_information))
+            .options(joinedload(BasicInformation.referral_information))
+            .options(joinedload(BasicInformation.case_note))
             .options(joinedload(BasicInformation.sessions))
             .all()
         )
@@ -60,6 +62,9 @@ def process_data(student_id=None, search_query=None):
             substance_abuse_history = record.substance_abuse_history
             legal_history = record.legal_history
             additional_information = record.additional_information
+            referral_information = record.referral_information
+            case_note = record.case_note
+            sessions = record.sessions
 
             
             basic_information_data = {
@@ -87,17 +92,16 @@ def process_data(student_id=None, search_query=None):
                 'guardian_name': record.guardian_name,
                 'guardian_address': record.guardian_address,
                 'guardian_contact': record.guardian_contact,
-                'submitted_on': record.submitted_on,
-                
-                # Additional Information
-                'counselor': record.additional_information.counselor,
-                'nature_of_concern': record.additional_information.nature_of_concern,
-                'status': record.additional_information.status,
-                'remarks': record.additional_information.remarks
+                'submitted_on': record.submitted_on
             }
 
             history_information_data = {
                 # History Information
+                'information_provider': history_information.information_provider,
+                'current_problem': history_information.current_problem,
+                'problem_length': history_information.problem_length,
+                'stressors': history_information.stressors,
+
                 'substance_abuse': history_information.substance_abuse,
                 'substance_abuse': history_information.substance_abuse,
                 'addiction': history_information.addiction,
@@ -146,13 +150,222 @@ def process_data(student_id=None, search_query=None):
                 'other': history_information.other,
 
                 'previous_treatments' : history_information.previous_treatments,
+                'previous_treatments_likes_dislikes': history_information.previous_treatments_likes_dislikes,
+                'previous_treatments_learned': history_information.previous_treatments_learned,
+                'previous_treatments_like_to_continue': history_information.previous_treatments_like_to_continue,
+
+                'previous_hospital_stays_psych': history_information.previous_hospital_stays_psych,
                 'current_thoughts_to_harm' : history_information.current_thoughts_to_harm,
-                'past_thoughts_to_harm' : history_information.past_thoughts_to_harm,
+                'past_thoughts_to_harm' : history_information.past_thoughts_to_harm
             }
+
+            health_information_data = {  
+                # Health Information   
+                'medication_and_dose': health_information.medication_and_dose,
+
+                'serious_ch_illnesses_history': health_information.serious_ch_illnesses_history,
+                'head_injuries': health_information.head_injuries,
+                'lose_consciousness': health_information.lose_consciousness,
+                'convulsions_or_seizures': health_information.convulsions_or_seizures,
+                'fever': health_information.fever,
+                'allergies': health_information.allergies,
+
+                'current_physical_health': health_information.current_physical_health,
+                'last_check_up': health_information.last_check_up,
+                'has_physician': health_information.has_physician,
+                'physician_name': health_information.physician_name,
+                'physician_email': health_information.physician_email,
+                'physician_number': health_information.physician_number
+            }
+
+            family_background_data = {
+                # Family Background
+                'birth_location': family_background.birth_location,
+                'raised_by': family_background.raised_by,
+                'rel_qual_mother': family_background.rel_qual_mother,
+                'rel_qual_father': family_background.rel_qual_father,
+                'rel_qual_step_parent': family_background.rel_qual_step_parent,
+                'rel_qual_other': family_background.rel_qual_other,
+
+                'family_abuse_history': family_background.family_abuse_history,
+                'family_mental_history': family_background.family_mental_history,
+                'additional_information': family_background.additional_information,
+                'siblings': family_background.siblings
+            }
+
+            social_history_data = {
+                # Social History
+                'relationship_with_peers': social_history.relationship_with_peers,
+                'social_support_network': social_history.social_support_network,
+                'hobbies_or_interests': social_history.hobbies_or_interests,
+                'cultural_concerns': social_history.cultural_concerns
+            }
+
+            educational_background_data = {
+                # Educational Background
+                'educational_history': educational_background.educational_history,
+                'highest_level_achieved': educational_background.highest_level_achieved,
+                'additional_information_education': educational_background.additional_information
+            }
+
+            occupational_history_data = {
+                # Occupational History
+                'employment_status': occupational_history.employment_status,
+                'satisfaction': occupational_history.satisfaction,
+                'satisfaction_reason': occupational_history.satisfaction_reason
+            }
+
+            substance_abuse_history_data = {
+                # Substance Abuse History
+                'struggled_with_substance_abuse': substance_abuse_history.struggled_with_substance_abuse,
+                'alcohol': substance_abuse_history.alcohol,
+                'alcohol_age_first_use': substance_abuse_history.alcohol_age_first_use,
+                'alcohol_frequency_of_use': substance_abuse_history.alcohol_frequency_of_use,
+                'alcohol_amount_used': substance_abuse_history.alcohol_amount_used,
+                'alcohol_way_of_intake': substance_abuse_history.alcohol_way_of_intake,
+
+                'cigarette': substance_abuse_history.cigarette,
+                'cigarette_age_first_use': substance_abuse_history.cigarette_age_first_use,
+                'cigarette_frequency_of_use': substance_abuse_history.cigarette_frequency_of_use,
+                'cigarette_amount_used': substance_abuse_history.cigarette_amount_used,
+                'cigarette_way_of_intake': substance_abuse_history.cigarette_way_of_intake,
+
+                'marijuana': substance_abuse_history.marijuana,
+                'marijuana_age_first_use': substance_abuse_history.marijuana_age_first_use,
+                'marijuana_frequency_of_use': substance_abuse_history.marijuana_frequency_of_use,
+                'marijuana_amount_used': substance_abuse_history.marijuana_amount_used,
+                'marijuana_way_of_intake': substance_abuse_history.marijuana_way_of_intake,
+
+                'cocaine': substance_abuse_history.cocaine,
+                'cocaine_age_first_use': substance_abuse_history.cocaine_age_first_use,
+                'cocaine_frequency_of_use': substance_abuse_history.cocaine_frequency_of_use,
+                'cocaine_amount_used': substance_abuse_history.cocaine_amount_used,
+                'cocaine_way_of_intake': substance_abuse_history.cocaine_way_of_intake,
+
+                'heroin': substance_abuse_history.heroin,
+                'heroin_age_first_use': substance_abuse_history.heroin_age_first_use,
+                'heroin_frequency_of_use': substance_abuse_history.heroin_frequency_of_use,
+                'heroin_amount_used': substance_abuse_history.heroin_amount_used,
+                'heroin_way_of_intake': substance_abuse_history.heroin_way_of_intake,
+
+                'amphetamines': substance_abuse_history.amphetamines,
+                'amphetamines_age_first_use': substance_abuse_history.amphetamines_age_first_use,
+                'amphetamines_frequency_of_use': substance_abuse_history.amphetamines_frequency_of_use,
+                'amphetamines_amount_used': substance_abuse_history.amphetamines_amount_used,
+                'amphetamines_way_of_intake': substance_abuse_history.amphetamines_way_of_intake,
+
+                'club_drugs': substance_abuse_history.club_drugs,
+                'club_drugs_age_first_use': substance_abuse_history.club_drugs_age_first_use,
+                'club_drugs_frequency_of_use': substance_abuse_history.club_drugs_frequency_of_use,
+                'club_drugs_amount_used': substance_abuse_history.club_drugs_amount_used,
+                'club_drugs_way_of_intake': substance_abuse_history.club_drugs_way_of_intake,
+
+                'pain_meds': substance_abuse_history.pain_meds,
+                'pain_meds_age_first_use': substance_abuse_history.pain_meds_age_first_use,
+                'pain_meds_frequency_of_use': substance_abuse_history.pain_meds_frequency_of_use,
+                'pain_meds_amount_used': substance_abuse_history.pain_meds_amount_used,
+                'pain_meds_way_of_intake': substance_abuse_history.pain_meds_way_of_intake,
+
+                'benzo': substance_abuse_history.benzo,
+                'benzo_age_first_use': substance_abuse_history.benzo_age_first_use,
+                'benzo_frequency_of_use': substance_abuse_history.benzo_frequency_of_use,
+                'benzo_amount_used': substance_abuse_history.benzo_amount_used,
+                'benzo_way_of_intake': substance_abuse_history.benzo_way_of_intake,
+
+                'hallucinogens': substance_abuse_history.hallucinogens,
+                'hallucinogens_age_first_use': substance_abuse_history.hallucinogens_age_first_use,
+                'hallucinogens_frequency_of_use': substance_abuse_history.hallucinogens_frequency_of_use,
+                'hallucinogens_amount_used': substance_abuse_history.hallucinogens_amount_used,
+                'hallucinogens_way_of_intake': substance_abuse_history.hallucinogens_way_of_intake,
+
+                'other_meds': substance_abuse_history.other_meds,
+                'other_meds_age_first_use': substance_abuse_history.other_meds_age_first_use,
+                'other_meds_frequency_of_use': substance_abuse_history.other_meds_frequency_of_use,
+                'other_meds_amount_used': substance_abuse_history.other_meds_amount_used,
+                'other_meds_way_of_intake': substance_abuse_history.other_meds_way_of_intake,
+
+                'treatment_program_name': substance_abuse_history.treatment_program_name,
+                'treatment_type': substance_abuse_history.treatment_type,
+                'treatment_date': substance_abuse_history.treatment_date,
+                'treatment_outcome': substance_abuse_history.treatment_outcome
+            }
+
+            legal_history_data = {
+                # Legal History
+                'pending_criminal_charges': legal_history.pending_criminal_charges,
+                'on_probation': legal_history.on_probation,
+                'has_been_arrested': legal_history.has_been_arrested,
+
+                'convictions': legal_history.convictions
+            }
+
+            additional_information_data = {
+                # Additional Information
+                'nature_of_concern': additional_information.nature_of_concern,
+                'counselor': additional_information.counselor,
+                'personal_agreement': additional_information.personal_agreement,
+                'personal_agreement_date': additional_information.personal_agreement_date,
+                'status': additional_information.status,
+                'remarks': additional_information.remarks,
+                'referral_source': additional_information.referral_source,
+                'emergency_name': additional_information.emergency_name,
+                'emergency_relationship': additional_information.emergency_relationship,
+                'emergency_address': additional_information.emergency_address,
+                'emergency_contact': additional_information.emergency_contact,
+                'to_work_on': additional_information.to_work_on,
+                'expectations': additional_information.expectations,
+                'things_to_change': additional_information.things_to_change,
+                'other_information': additional_information.other_information,
+            }
+
+            # referral_information_data = {
+            #     'reason_for_referral': referral_information.reason_for_referral,
+            #     'receiving_agency': referral_information.receiving_agency,
+            #     'receiving_contact_number': referral_information.receiving_contact_number,
+            #     'receiving_name': referral_information.receiving_name,
+            #     'receiving_email': referral_information.receiving_email,
+            #     'office_address': referral_information.office_address,
+            #     'appointment_schedule': referral_information.appointment_schedule,
+
+            #     'client_signature': referral_information.client_signature,
+            #     'client_signature_date': referral_information.client_signature_date,
+            #     'counselor_signature': referral_information.counselor_signature,
+            #     'counselor_signature_date': referral_information.counselor_signature_date
+            # }
+
+            # case_note_data = {
+            #     'counselor_name': case_note.counselor_name,
+            #     'interview_date': case_note.interview_date,
+            #     'number_of_session': case_note.number_of_session,
+
+            #     'subject_complaint': case_note.subject_complaint,
+            #     'objective_assessment': case_note.objective_assessment,
+            #     'plan_of_action': case_note.plan_of_action,
+            #     'progress_made': case_note.progress_made
+            # }
+
+            # sessions_data = {
+            #     'session_date': sessions.session_date,
+            #     'session_time_start': sessions.session_time_start,
+            #     'session_time_end': sessions.session_time_end,
+            #     'session_follow_up': sessions.session_follow_up,
+            #     'session_attended_by': sessions.session_attended_by
+            # }
 
             merged_data = {
                 **basic_information_data,
-                **history_information_data
+                **history_information_data,
+                **health_information_data,
+                **family_background_data,
+                **social_history_data,
+                **educational_background_data,
+                **occupational_history_data,
+                **substance_abuse_history_data,
+                **legal_history_data,
+                **additional_information_data,
+                # **referral_information_data,
+                # # **case_note_data,
+                # **sessions_data
             }
 
             data_list.append(merged_data)

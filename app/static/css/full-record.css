@@ -130,6 +130,10 @@ hr {
     /* background-color: rgba(0, 0, 255, 0.249); */
 }
 
+.main-content span {
+    color: var(--bg-orange);
+}
+
 /* double-column format */
 .double-column {
     display: flex;
@@ -160,9 +164,6 @@ hr {
     justify-content: space-between;
 }
 
-.double-column span {
-    color: var(--bg-orange);
-}
 
 .double-column1 div{
     margin-bottom: 7px;
@@ -170,9 +171,6 @@ hr {
     flex-direction: row;
 }
 
-.double-column1 span {
-    color: var(--bg-orange);
-}
 
 .column {
     width: 100%;
@@ -226,7 +224,6 @@ label {
 .left-align1 span {
     color: var(--primary-color);
 }
-
 
 
 
@@ -454,7 +451,9 @@ th, td {
 
 }
 
-
+.checkbox-agreement {
+    color: var(--bg-orange);
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
