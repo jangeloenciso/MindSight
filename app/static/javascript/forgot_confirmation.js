@@ -13,7 +13,7 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
             swal.fire({
                 title: 'Error!',
                 text: 'User does not exist.',
-                iconHtml: '<img class="custom-icon" src="static/error.png">',
+                iconHtml: '<img class="custom-icon" src="/static/error.png">',
                 showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Try Again',
@@ -24,7 +24,7 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
         }
         else {
             // Redirect to the reset password page with the username
-            window.location.href = "/reset-password/" + encodeURIComponent(username);
+            window.location.assign('/reset-password');
         }
     });
 });

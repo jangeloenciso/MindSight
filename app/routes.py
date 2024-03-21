@@ -15,7 +15,7 @@ from app.forms.reset import ResetPassword
 from app.forms.upload import UploadFileForm
 from functools import wraps
 from werkzeug.utils import secure_filename
-import logging, os
+import logging, os, secrets
 from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
@@ -123,7 +123,10 @@ def forgot_password():
         user = User.query.filter_by(username=_username).first()
         
         if user:
-            return jsonify({'success': True})
+            generate_token = secrets.token_urlsafe(32)
+            session['_token'] = generate_token
+            session['_username'] = _username
+            return jsonify({'success': True, 'token': generate_token})
         
         else:
             print('User does not exist.', 'error')
@@ -131,37 +134,54 @@ def forgot_password():
     
     return render_template('forgot.html', form=form)
 
-# TODO: Accessible directly through the URL. Enhance security
-@app.route('/reset-password/<username>', methods=['POST', 'GET'])
-def reset_password(username):
+
+@app.route('/reset-password', methods=['POST', 'GET'])
+def reset_password():
 
     form = ResetPassword()
+    token = session.get('_token')
+    username = session.get('_username')
+
+    if not token or not username:
+        print('Invalid link', 'error')
+        return redirect(url_for('error'))
 
     user = User.query.filter_by(username=username).first()
-
-    if not user:
-        flash('User not found', 'error')
-        return redirect(url_for('login'))
     
     if form.validate_on_submit():
+        print('validated')
+
+        if session.get('_token') != request.form.get('token'):
+            print(session.get('_token'))
+            print('Invalid link', 'error')
+            return redirect(url_for('error'))
 
         if bcrypt.check_password_hash(user.security_answer, form.security_answer.data):
             new_password = form.password.data
             hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
             user.password = hashed_password
 
+            session.pop('_token')
+            session.pop('_username')
+
             # Commit changes to the database
             db.session.commit()
             return jsonify({'success': True})
     
         else:
-            print('Incorrect security answer.')
-            return jsonify({'error': True})
+            print('Incorrect security answer', 'error')
+            return jsonify({'error': 'Incorrect security answer'})
     
     _security_question = user.security_question
     security_question = SECURITY_QUESTIONS.get(_security_question, 'Unknown Question')
 
-    return render_template('reset.html', form=form, security_question=security_question, username=username)
+    return render_template('reset.html', form=form, security_question=security_question, username=username, token=token)
+
+
+@app.route('/404')
+def error():
+    return render_template('error.html')
+
 
 # Pages
 
