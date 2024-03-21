@@ -35,13 +35,13 @@
 
         <div class="secAnswer">{{ form.security_answer }}</div>
         <div>
-          <label for="password">New Password</label> {{ form.password }}
+          <label for="password">New Password</label> {{ form.password(id='password') }}
         </div>
 
         <div>
-          <label for="confirm">Confirm New Password</label> {{ form.confirm }}
+          <label for="confirm">Confirm New Password</label> {{ form.confirm(id='confirm') }}
         </div>
-
+        <input type="hidden" name="token" value="{{ token }}">
         <button type="submit">RESET PASSWORD</button>
       </main>
     </form>
