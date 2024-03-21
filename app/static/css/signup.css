@@ -341,6 +341,9 @@ input:-webkit-autofill {
     height: 100vh;
 }
 
+.scroll-content {
+    overflow-y: scroll;
+}
 
 /* Sidebar active indicator */
 .sidebar-buttons #add-admin-container::before {
