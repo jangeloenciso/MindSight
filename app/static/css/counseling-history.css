@@ -45,6 +45,10 @@
     padding: 0 0 0.5em;
 }
 
+.title-back span {
+    font-family: Lexend-Black;
+}
+
 /* header */
 .main-header {
     display: flex;
