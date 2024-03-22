@@ -139,6 +139,7 @@
 /* section margins */
 .overview {
     margin-top: 24px;
+    max-height: 285px;
 }
 
 .account {
