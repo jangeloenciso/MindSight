@@ -65,7 +65,7 @@
         <a
           href="#"
           class="grid-row"
-          onclick="retrieveRecord('{{ student.student_id }}')"
+          onclick="handleClick(event, '{{ student.student_id }}')"
         >
           <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
           <div class="grid-section">{{ student.student_id }}</div>
@@ -167,6 +167,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+function handleClick(event, studentId) {
+    // Check if checkbox has been clicked
+    if (event.target.tagName === 'INPUT') {
+        return;
+    }
+    
+    // Prevent the default behavior of the anchor tag
+    event.preventDefault();
+    
+    // Call the retrieveRecord function
+    retrieveRecord(studentId);
+}
 
 function retrieveRecord(student_id) {
   swal.fire({
