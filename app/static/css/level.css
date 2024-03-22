@@ -104,12 +104,15 @@
 /* archive icon */
 .retrieve-button {
     width: auto;
-    font-family: Lexend-SemiBold;
     font-size: 0.5em;
     padding: 5px;
     background-color: var(--primary-color);
     transition: var(--smooth-transition);
     border-radius: 1em;
+}
+
+.retrieve-button span {
+    font-family: Lexend-SemiBold;
 }
 
 .retrieve-button:hover {
