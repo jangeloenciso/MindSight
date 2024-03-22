@@ -1515,6 +1515,7 @@ href="/static/fonts/custom-fonts.css"
               >
             </div>
             <input type="hidden" name="personal_agreement_date" value="{{student_data[0]['personal_agreement_date']}}">
+            <span>{{ student_signature | safe }}</span>
             <span>{{student_data[0]['personal_agreement_date']}}</span>
           </div>
 
@@ -1552,7 +1553,8 @@ href="/static/fonts/custom-fonts.css"
           </table>
         </section>
         <!-- end: Personal Agreements -->
-
+        
+        {% if student.referral_information is not none %}
         <!-- start: Referral Information -->
         <section class="refinfo">
           <header>Referral Information</header>
@@ -1560,7 +1562,7 @@ href="/static/fonts/custom-fonts.css"
           <div class="container">
             <div class="left-align">
               <label>Reason for Referral:</label>
-              <span>{{student_data[0]['reason_for_referral']}}</span>
+              <span>{{student.referral_information.reason_for_referral}}</span>
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align single-column-span">
@@ -1569,13 +1571,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Receiving Agency:</label
               >
-              <span>{{student_data[0]['receiving_agency']}}</span>
+              <span>{{student.referral_information.receiving_agency}}</span>
               <label
                 for="refinfocontact"
                 style="width: 320px !important; padding-right: 10px"
                 >Contact No.:</label
               >
-              <span>{{student_data[0]['receiving_contact_number']}}</span>
+              <span>{{student.referral_information.receiving_contact_number}}</span>
             </div>
             <div class="left-align single-column-span">
               <label
@@ -1583,19 +1585,19 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 200px !important; padding-right: 10px"
                 >Name:</label
               >
-              <span>{{student_data[0]['receiving_name']}}</span>
+              <span>{{student.referral_information.receiving_name}}</span>
               <label
                 for="refinfoemail"
                 style="width: 200px !important; padding-right: 10px"
                 >Email:</label
               >
-              <span>{{student_data[0]['receiving_email']}}</span>
+              <span>{{student.referral_information.receiving_email}}</span>
             </div>
             <div class="left-align single-column-span">
               <label for="refinfoofficeadd" style="width: 160px !important"
                 >Office Address:</label
               >
-              <span>{{student_data[0]['office_address']}}</span>
+              <span>{{student.referral_information.office_address}}</span>
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -1603,7 +1605,7 @@ href="/static/fonts/custom-fonts.css"
               <label for="refinfoas" style="width: 510px !important"
                 >Appointment Schedule:</label
               >
-              <span>{{student_data[0]['appointment_schedule']}}</span>
+              <span>{{student.referral_information.appointment_schedule}}</span>
             </div>
             <hr style="border-top: 1px solid var(--primary-color)" />
             <div class="left-align">
@@ -1618,13 +1620,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Client Signature:</label
               >
-              <span>{{student_data[0]['student_signature']}}</span>
+              <span>{{ client_signature | safe }}</span>
               <label
                 for="refinfocounselorsig"
                 style="width: 320px !important; padding-right: 10px"
                 >Counselor's Signature:</label
               >
-              <span>{{student_data[0]['counselor_signature']}}</span>
+              <span>{{ counselor_signature | safe }}</span>
             </div>
             <div class="left-align single-column-span">
               <label
@@ -1632,17 +1634,18 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Date:</label
               >
-              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student_data[0]['client_signature_date']}}</span>
+              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student.referral_information.client_signature_date}}</span>
               <label
                 for="refinfocounselordate"
                 style="width: 320px !important; padding-right: 10px"
                 >Date:</label
               >
-              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student_data[0]['counselor_signature_date']}}</span>
+              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student.referral_information.counselor_signature_date}}</span>
             </div>
           </div>
         </section>
         <!-- end: Referral Information -->
+        {% endif %}
 
         <!-- start: CONFIDENTIAL -->
         <section class="confidential">

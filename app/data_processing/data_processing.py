@@ -318,20 +318,23 @@ def process_data(student_id=None, search_query=None):
                 'other_information': additional_information.other_information,
             }
 
-            # referral_information_data = {
-            #     'reason_for_referral': referral_information.reason_for_referral,
-            #     'receiving_agency': referral_information.receiving_agency,
-            #     'receiving_contact_number': referral_information.receiving_contact_number,
-            #     'receiving_name': referral_information.receiving_name,
-            #     'receiving_email': referral_information.receiving_email,
-            #     'office_address': referral_information.office_address,
-            #     'appointment_schedule': referral_information.appointment_schedule,
+            referral_information_data = {}
 
-            #     'client_signature': referral_information.client_signature,
-            #     'client_signature_date': referral_information.client_signature_date,
-            #     'counselor_signature': referral_information.counselor_signature,
-            #     'counselor_signature_date': referral_information.counselor_signature_date
-            # }
+            if referral_information:
+                referral_information_data = {
+                    'reason_for_referral': referral_information.reason_for_referral,
+                    'receiving_agency': referral_information.receiving_agency,
+                    'receiving_contact_number': referral_information.receiving_contact_number,
+                    'receiving_name': referral_information.receiving_name,
+                    'receiving_email': referral_information.receiving_email,
+                    'office_address': referral_information.office_address,
+                    'appointment_schedule': referral_information.appointment_schedule,
+
+                    'client_signature': referral_information.client_signature,
+                    'client_signature_date': referral_information.client_signature_date,
+                    'counselor_signature': referral_information.counselor_signature,
+                    'counselor_signature_date': referral_information.counselor_signature_date
+    }
 
             # case_note_data = {
             #     'counselor_name': case_note.counselor_name,
@@ -363,7 +366,7 @@ def process_data(student_id=None, search_query=None):
                 **substance_abuse_history_data,
                 **legal_history_data,
                 **additional_information_data,
-                # **referral_information_data,
+                **referral_information_data,
                 # # **case_note_data,
                 # **sessions_data
             }

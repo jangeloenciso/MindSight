@@ -674,10 +674,53 @@ def student_record(student_id):
 @login_required
 def full_record(student_id):
 
+
+    student = (
+            BasicInformation.query
+            .options(
+                joinedload(BasicInformation.family_background),
+                joinedload(BasicInformation.health_information),
+                joinedload(BasicInformation.educational_background),
+                joinedload(BasicInformation.social_history),
+                joinedload(BasicInformation.history_information),
+                joinedload(BasicInformation.occupational_history),
+                joinedload(BasicInformation.substance_abuse_history),
+                joinedload(BasicInformation.legal_history),
+                joinedload(BasicInformation.additional_information),
+                joinedload(BasicInformation.sessions),
+                joinedload(BasicInformation.case_note)
+            )
+            .filter_by(student_id=student_id)
+            .first()
+        )
+
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
+    # print(student_data[0]['client_signature'])
+
+    binary_student_signature = student_data[0]['student_signature']
+    binary_student_signature_data = base64.b64encode(binary_student_signature).decode('utf-8')
+
+    student_signature = f'<img src="data:image/jpeg;base64,{binary_student_signature_data}" alt="Client Signature">'
+
+    client_signature = None
+    counselor_signature = None
     
-    return render_template('students/full_record.html', student_id=student_id, student_data=student_data)
+    if student.referral_information:
+        binary_client_signature = student_data[0]['client_signature']
+        binary_client_signature_data = base64.b64encode(binary_client_signature).decode('utf-8')
+
+        client_signature = f'<img src="data:image/jpeg;base64,{binary_client_signature_data}" alt="Client Signature">'
+
+
+        binary_counselor_signature = student.referral_information.counselor_signature
+        binary_counselor_signature_data = base64.b64encode(binary_counselor_signature).decode('utf-8')
+
+        counselor_signature = f'<img src="data:image/jpeg;base64,{binary_counselor_signature_data}" alt="Counselor Signature">'
+
+    print(student.referral_information)
+    
+    return render_template('students/full_record.html', student_id=student_id, student_data=student_data, student=student, client_signature=client_signature, counselor_signature=counselor_signature, student_signature=student_signature)
 
 # extensions for accepted documents
 def allowed_file(filename):
