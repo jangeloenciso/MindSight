@@ -14,21 +14,18 @@
   <body>
     <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
     <div class="full-container">
-        <div class="container">
-            <div class="error-container">
-                <h1>4</h1>
-                <img class="img404" src="../static/SVG/EYE LOGO.svg" />
-                <h1>4</h1>
-            </div>
+      <div class="container-404">
+        <h1>4</h1>
+        <div class="eye-container">
+          <img src="../static/SVG/EYE LOGO.svg" />
         </div>
-        <div class="message-container">
-            <div class="message">
-                <span>Oops...</span>
-                <h1>It looks like you're out of your mind.</h1>
-                <p>The page you were looking for doesn't exist.</p>
-            </div>
-            <a class="button" href="{{ url_for('login') }}">TAKE ME HOME, COUNTRY ROAD</a>
-        </div>
+        <h1>4</h1>
+      </div>
+      <p class="sorry-text">SORRY!</p>
+      <p class="description-text">
+        The page you requested isn't here,<br />but we can find your way back.
+      </p>
+      <a class="button" href="{{ url_for('login') }}"> Let's Start Over </a>
     </div>
     <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
   </body>
