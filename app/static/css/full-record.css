@@ -26,6 +26,8 @@
     padding-bottom: 1em;
 }
 
+
+
 p {
     color: var(--primary-color);
     font-size: 1.1rem;
@@ -34,7 +36,8 @@ p {
 
 .main-header span {
     font-size: 2.2em;
-    font-weight: bold;
+    font-family: Lexend-Black;
+    text-transform: uppercase;
 }
 
 .main {
@@ -123,7 +126,7 @@ hr {
 .referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo, .personalagree, .refinfo, .confidential {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 95%;
     align-items: center;
     justify-content: center;
 
@@ -137,10 +140,17 @@ hr {
 /* double-column format */
 .double-column {
     display: flex;
-    width: 80%;
+    width: 95%;
     padding: 0 20px;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.double-column2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
 }
 
 .double-column div {
@@ -152,7 +162,7 @@ hr {
 .basic-information {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 95%;
     align-items: center;
     justify-content: center;
 }

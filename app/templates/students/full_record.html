@@ -1,6 +1,6 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - {{ student_data[0]['student_id'] }}{%endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/full-record.css" />
-<link rel="stylesheet" href="..//static/fonts/custom-fonts.css" />
+<link rel="stylesheet" href="/static/fonts/custom-fonts.css" />
 <link
 rel="stylesheet"
 type="text/css"
@@ -41,7 +41,7 @@ href="/static/fonts/custom-fonts.css"
                 <span>{{student_data[0]['last_name']}}</span>
               </div>
               <div>
-                <label for="course">College/Department:&nbsp;</label>
+                <label for="course">College/Department:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <span>{{student_data[0]['course']}}</span>
               </div>
               <div>
@@ -93,7 +93,7 @@ href="/static/fonts/custom-fonts.css"
               <div style="margin-bottom: 27px;">
               </div>
               <div>
-                <label for="yearlevel">Course/Strand:&nbsp;</label>
+                <label for="yearlevel">Course/Strand:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <span>{{student_data[0]['course']}}</span>
               </div>
               <div style="margin-bottom: 27px;">
@@ -606,7 +606,7 @@ href="/static/fonts/custom-fonts.css"
             <span>{{student_data[0]['medication_and_dose']}}</span>
           </div>
           <div class="left-align single-column-span">
-            <label for="childhoodill" style="width: 420px !important"
+            <label for="childhoodill" style="width: 300px !important"
               >History of serious childhood illness:</label
             >
             <span>{{student_data[0]['serious_ch_illnesses_history']}}</span>
@@ -620,15 +620,12 @@ href="/static/fonts/custom-fonts.css"
           </div>
 
           <div class="left-align single-column-span">
-            <label for="headinjury" style="width: 600px !important"
+            <label for="headinjury" style="width: 350px !important"
               >Have you experienced any head injuries?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['head_injuries']}}</span>
               </div>
-            
-            </div>
           </div>
 
           <div class="left-align">
@@ -636,41 +633,33 @@ href="/static/fonts/custom-fonts.css"
           </div>
 
           <div class="left-align single-column-span">
-            <label for="losscons" style="width: 600px !important"
+            <label for="losscons" style="width: 296px !important"
               >If yes, did you lose consciousness?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['lose_consciousness']}}</span>
               </div>
-            
-            </div>
           </div>
           <div class="left-align single-column-span">
-            <label for="expseizures" style="width: 600px !important"
+            <label for="expseizures" style="width: 400px !important"
               >Have you experienced convulsions or seizures?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['convulsions_or_seizures']}}</span>
               </div>
-            
-            </div>
           </div>
           <div class="left-align single-column-span">
-            <label for="hasfever" style="width: 600px !important"
+            <label for="hasfever" style="width: 272px !important"
               >If yes, did you also have fever?</label
             >
-            <div class="radio-inline-container">
+
               <div>
                 <span>{{student_data[0]['fever']}}</span>
               </div>
-            
-            </div>
           </div>
 
           <div class="left-align single-column-span">
-            <label for="allergies" style="width: 310px !important"
+            <label for="allergies" style="width: 238px !important"
               >List any allergies you have:</label
             >
             <span>{{student_data[0]['allergies']}}</span>
@@ -687,7 +676,7 @@ href="/static/fonts/custom-fonts.css"
           </div>
 
           <div class="left-align single-column-span">
-            <label for="lastcheckup" style="width: 1270px !important"
+            <label for="lastcheckup" style="width: 590px !important"
               >What was the date of your last physical or routine health “check
               up”?</label
             >
@@ -695,15 +684,12 @@ href="/static/fonts/custom-fonts.css"
           </div>
 
           <div class="left-align single-column-span">
-            <label for="physician" style="width: 600px !important"
+            <label for="physician" style="width: 336px !important"
               >Do you have a primary care physician?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['has_physician']}}</span>
               </div>
-            
-            </div>
           </div>
           <div class="left-align">
             <label>If yes, complete the following:</label>
@@ -737,21 +723,19 @@ href="/static/fonts/custom-fonts.css"
         <header>Family History</header>
         <section class="famhistory">
           <div class="left-align single-column-span">
-            <label for="birthloc" style="width: 160px !important"
+            <label for="birthloc" style="width: 140px !important"
               >Birth Location:</label
             >
             <span>{{student_data[0]['birth_location']}}</span>
           </div>
 
           <div class="left-align single-column-span">
-            <label for="raised" style="width: 120px !important"
+            <label for="raised" style="width: 100px !important"
               >Raised by:
             </label>
-            <div class="radio-inline-container raisedby">
               <div>
                 <span>{{student_data[0]['raised_by']}}</span>
               </div>
-            </div>
           </div>
 
           <div class="left-align">
@@ -763,40 +747,32 @@ href="/static/fonts/custom-fonts.css"
 
           <!-- Relationhip Mother -->
           <div class="left-align single-column-span">
-            <label for="raised" style="width: 120px !important">Mother</label>
-            <div class="radio-inline-container relby">
+            <label for="raised" style="width: 72px !important">Mother</label>
               <div>
                 <span>{{student_data[0]['rel_qual_mother']}}</span>
               </div>
-        
-            </div>
           </div>
           <!-- Relationhip Father -->
           <div class="left-align single-column-span">
-            <label for="raised" style="width: 120px !important">Father</label>
-            <div class="radio-inline-container relby">
+            <label for="raised" style="width: 72px !important">Father</label>
               <div>
                 <span>{{student_data[0]['rel_qual_father']}}</span>
               </div>
-            </div>
           </div>
           <!-- Relationhip Step-Parent -->
           <div class="left-align single-column-span">
-            <label for="raised" style="width: 120px !important"
+            <label for="raised" style="width: 112px !important"
               >Step-Parent</label
             >
-            <div class="radio-inline-container relby">
               <div>
                 <span>{{student_data[0]['rel_qual_step_parent']}}</span>
               </div>
-              
-            </div>
           </div>
           
           <!-- TODO: Connect to backend -->
           <div class="left-align single-column-span">
             <label
-                  style="width: auto !important; padding-right: 10px"
+                  style="width: auto !important; padding-right: 12px"
                   for="raisedother"
                   >Other</label
                 >
@@ -1402,34 +1378,28 @@ href="/static/fonts/custom-fonts.css"
         <header>Legal History</header>
         <section class="legalhistory">
           <div class="left-align single-column-span">
-            <label for="legalpending" style="width: 900px !important"
+            <label for="legalpending" style="width: 455px !important"
               >Do you currently have any pending criminal charges?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['pending_criminal_charges']}}</span>
               </div>
-            </div>
           </div>
           <div class="left-align single-column-span">
-            <label for="legalprobation" style="width: 900px !important"
+            <label for="legalprobation" style="width: 200px !important"
               >Are you on probation?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['on_probation']}}</span>
               </div>
-            </div>
           </div>
           <div class="left-align single-column-span">
-            <label for="legalarrest" style="width: 900px !important"
+            <label for="legalarrest" style="width: 438px !important"
               >Have you ever been arrested/convicted of a crime?</label
             >
-            <div class="radio-inline-container">
               <div>
                 <span>{{student_data[0]['has_been_arrested']}}</span>
               </div>
-            </div>
           </div>
 
           <div class="left-align single-column-span">
@@ -1559,18 +1529,27 @@ href="/static/fonts/custom-fonts.css"
             </tr>
 
             <tr id="sessionsRow">
-              <td id="sessionId" name="sessionId">Session 1</td>
-              <!-- TODO: put answer -->
-            </tr>
-
-            <tr id="sessionsRow" onload="createRow('sessionsTable', 'sessionsRow')">
-              <!-- TODO: put answer -->
+              <td>
+                <!-- TODO: put answer -->
+              </td>
+              <td>
+                <!-- TODO: put answer -->
+              </td>
+              <td>
+                <!-- TODO: put answer -->
+              </td>
+              <td>
+                <!-- TODO: put answer -->
+              </td>
+              <td>
+                <!-- TODO: put answer -->
+              </td>
+              <td>
+                <!-- TODO: put answer -->
+              </td>
             </tr>
 
           </table>
-          <!-- <button type="button" onclick="createRow('sessionsTable', 'sessionsRow')">Add</button>
-          <button type="button" onclick="deleteRow('sessionsTable')">Delete</button>
-          <button type="button" onclick="createRow('sessionsTable', 'sessionsRow', true)"> Termination</button> -->
         </section>
         <!-- end: Personal Agreements -->
 
@@ -1653,26 +1632,13 @@ href="/static/fonts/custom-fonts.css"
                 style="width: 500px !important; padding-right: 10px"
                 >Date:</label
               >
-              <input
-                type="date"
-                class="form-width100 single-column-span referral"
-                style="margin-right: 20px"
-                id="refinfoclientdate"
-                name="refinfoclientdate"
-                value=""
-              />
+              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student_data[0]['client_signature_date']}}</span>
               <label
                 for="refinfocounselordate"
                 style="width: 320px !important; padding-right: 10px"
                 >Date:</label
               >
-              <input
-                type="date"
-                class="form-width100 single-column-span referral"
-                id="refinfocounselordate"
-                name="refinfocounselordate"
-                value=""
-              />
+              <span class="form-width100 single-column-span referral" style="margin-right: 20px">{{student_data[0]['counselor_signature_date']}}</span>
             </div>
           </div>
         </section>
@@ -1690,29 +1656,19 @@ href="/static/fonts/custom-fonts.css"
                 <label for="conficounselor" style="width: 460px !important"
                   >Counselor/Psychometrician Name:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="counselorName"
-                name="counselorName"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['counselor_name']}}</span>
               </div>
               <div class="left-align single-column-span">
                 <label for="confiinterview" style="width: 460px !important"
                   >Date of Intake Interview:</label
                 >
-                <input class='form-width100 single-column-span' type="date" id="interviewDate" name="interviewDate"/>
+                <span class='form-width100 single-column-span'>{{student_data[0]['interview_date']}}</span>
               </div>
               <div class="left-align single-column-span">
                 <label for="confinosessions" style="width: 460px !important"
                   >Number of Session:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="numberOfSession"
-                name="numberOfSession"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['number_of_session']}}</span>
               </div>
               <hr style="border-top: 1px solid var(--primary-color)" />
 
@@ -1720,117 +1676,29 @@ href="/static/fonts/custom-fonts.css"
                 <label for="conficomplaint" style="width: 280px !important"
                   >Subject Complaint:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="subjectComplaint"
-                name="subjectComplaint"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['subject_complaint']}}</span>
               </div>
               <div class="left-align single-column-span">
                 <label for="confiobjassess" style="width: 280px !important"
                   >Objective Assessment:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="objectiveAssessment"
-                name="objectiveAssessment"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['objective_assessment']}}</span>
               </div>
               <div class="left-align single-column-span">
                 <label for="confipoa" style="width: 280px !important"
-                  >Plan of Action:</label
+                  >Action Taken:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="planOfAction"
-                name="planOfAction"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['plan_of_action']}}</span>
               </div>
               <div class="left-align single-column-span">
                 <label for="confiprogress" style="width: 280px !important"
                   >Progress Made:</label
                 >
-                <input
-                type="text"
-                class="form-width100 single-column-span"
-                id="progressMade"
-                name="progressMade"
-              />
+              <span class="form-width100 single-column-span">{{student_data[0]['progress_made']}}</span>
               </div>
             </div>
           </div>
-          <button type="button" onclick="newCaseNote()"> add </button>
-          <div class="single-column">
-            <div
-              style="
-                display: flex !important;
-                flex-direction: column-reverse !important;
-              "
-            >
-              <label
-                for="Counselorsignature"
-                style="width: auto !important; padding-top: 5px"
-                >Signature of the Counselor/Guidance Personnel</label
-              >
-              <span>{{student_data[0]['counselor']}}</span>
-            </div>
-            <div></div>
-          </div>
-
-          <div class="">
-            <div id="caseNoteContainer" class="container">
-              <div class="left-align single-column-span">
-                <label for="conficounselor" style="width: 460px !important"
-                  >Counselor/Psychometrician Name:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <div class="left-align single-column-span">
-                <label for="confiinterview" style="width: 460px !important"
-                  >Date of Intake Interview:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <div class="left-align single-column-span">
-                <label for="confinosessions" style="width: 460px !important"
-                  >Number of Session:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <hr style="border-top: 1px solid var(--primary-color)" />
-
-              <div class="left-align single-column-span">
-                <label for="conficomplaint" style="width: 280px !important"
-                  >Subject Complaint:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <div class="left-align single-column-span">
-                <label for="confiobjassess" style="width: 280px !important"
-                  >Objective Assessment:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <div class="left-align single-column-span">
-                <label for="confipoa" style="width: 280px !important"
-                  >Plan of Action:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-              <div class="left-align single-column-span">
-                <label for="confiprogress" style="width: 280px !important"
-                  >Progress Made:</label
-                >
-                <!-- TODO: put answer -->
-              </div>
-            </div>
-          </div>
-
-          <button type="button" onclick="newCaseNote()"> add </button>
-          <div class="double-column">
+          <div class="double-column2">
             <div
               style="
                 display: flex !important;
