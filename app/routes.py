@@ -276,10 +276,17 @@ def admin():
         user.role = ROLE.get(user.role, 'Unknown Role')
 
     # query all counseled students and organize it by latest to oldest (date)
-    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
-        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
-        .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
-        .order_by(desc(CaseNote.interview_date)).all()
+    # Subquery to get the maximum interview_date for each student
+        subquery = db.session.query(CaseNote.student_id, func.max(CaseNote.interview_date).label('max_interview_date')) \
+                            .group_by(CaseNote.student_id).subquery()
+
+        # query to get the last case note for each student
+        students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+                            .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+                            .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+                            .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
+                                                subquery.c.max_interview_date == CaseNote.interview_date)) \
+                            .order_by(desc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
@@ -297,6 +304,8 @@ def admin():
                 active_students[counselor] += 1
 
     students_count_dict = {counselor: count for counselor, count in students_count}
+
+    print(students)
 
     return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict, active_students=active_students)
 
@@ -1363,6 +1372,7 @@ def add_record():
     return render_template('add_record.html', form=form, errors=errors)
 
 
+# @app.route('/generate_report')
 
 # API endpoints
 
