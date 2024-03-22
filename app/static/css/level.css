@@ -36,12 +36,14 @@
 .main-header span {
     font-size: 2.2em;
     font-weight: bold;
-    border-bottom: 2px solid var(--bg-orange);
     display: flex;
-    padding-bottom: 10px;
     font-family: Lexend-Black;
 }
 
+.main-header span:first-child {
+    border-bottom: 2px solid var(--bg-orange);
+    padding-bottom: 10px;
+}
 
 /* search */
 .search-container {
@@ -98,23 +100,34 @@
     color: var(--white);
 }
 
-.archive  {
-    font-weight: normal;
-}
 
 /* archive icon */
 .retrieve-button {
     width: auto;
-    padding: 1em;
+    font-family: Lexend-Bold;
+    font-size: 0.5em;
+    padding: 5px;
     background-color: var(--primary-color);
-    border-radius: 2em;
     transition: var(--smooth-transition);
+    border-radius: 1em;
 }
 
 .retrieve-button:hover {
-    background-color: var(--bg-orange);
+    background-color: var(--primary-color-hover);
 }
 
+.archive {
+    display: flex;
+    flex-direction: row;
+    font-weight: normal;
+    column-gap: 10px;
+    padding: 1em;
+}
+
+.archive img {
+    height: 20px;
+    width: 20px;
+}
 
 /* directory buttons */
 .main-buttons {

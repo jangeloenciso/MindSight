@@ -26,7 +26,7 @@
               </div>
               <!-- change this to an icon or whatever -->
               <a href="{{ url_for('view_archived') }}" class="retrieve-button">
-                <span class="archive">View archived records</span>
+                <div class="archive"></span><img  src="../static/archive-button.png" alt=""><span>View Archived Records</span></div>
               </a>
             </div>
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
