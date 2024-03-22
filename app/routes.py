@@ -219,6 +219,7 @@ def dashboard():
     print("Overall Monthly Total:", dict(overall_monthly_total))
 
     return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total)
+
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required
 def experiences():
@@ -1435,9 +1436,47 @@ def add_record():
 
     return render_template('add_record.html', form=form, errors=errors)
 
+@app.route('/dashboard/cases')
+def cases():
+    year = datetime.now().year
 
-@app.route('/generate_report')
-def generate_report():
+    # Define the college groups to combine counts
+    college_groups = {
+        'College': ["CEA", "CBEA", "IHK", "CAS", "CED"],
+        'SHS': ["SHS"],
+        'JHS': ["JHS"],
+        'GRAD': ["GRAD"],
+        'LLL': ["LLL"]
+    }
+
+    total_cases_dict = {}
+    overall_total = defaultdict(int)
+    overall_monthly_total = defaultdict(int)
+
+    for group_name, colleges in college_groups.items():
+        group_total = {}
+        for time_period in ['yearly', 'monthly']:
+            if time_period == 'monthly':
+                group_total[time_period] = {}
+                for month in range(1, 13):
+                    month_total = sum(get_total_cases(college=college, time_period=time_period, year=year, month=month) for college in colleges)
+                    group_total[time_period][month] = month_total
+                    overall_total[time_period] += month_total
+                    overall_monthly_total[month] += month_total 
+            else:
+                group_total[time_period] = sum(get_total_cases(college=college, time_period=time_period, year=year) for college in colleges)
+                overall_total[time_period] += group_total[time_period]
+        total_cases_dict[group_name] = group_total
+
+    print("Overall Total:", dict(overall_total))
+    print("Group-wise Total:", total_cases_dict)
+    print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
+
+    return render_template('cases.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
+
+
+@app.route('/print_report')
+def print_report():
     year = 2024
 
     college_names = [
@@ -1476,6 +1515,7 @@ def generate_report():
     print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
 
     return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
+
 
 
 
