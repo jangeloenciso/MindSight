@@ -1,0 +1,33 @@
+<h1>Total number of clients for the year {{ year }}</h1>
+Total: {{ overall_total.yearly }}
+<h3>Overall Monthly Total:</h3>
+<ul>
+    {% for month_num, month_total in overall_monthly_total.items() %}
+        {% set month_name = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}[month_num] %}
+        <li>{{ month_name }}: {{ month_total }}</li>
+    {% endfor %}
+</ul>
+
+<h1>Total number of clients per level:</h1>
+<ul>
+
+    {% for college, totals in college_totals.items() %}
+        <li>{{ college }}</li>
+        <ul>
+            {% for time_period, total in totals.items() %}
+                {% if time_period == 'monthly' %}
+                    <li>{{ time_period }}:</li>
+                    <ul>
+                        {% for month_num, month_total in total.items() %}
+                            {% set month_name = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}[month_num] %}
+                            <li>{{ month_name }}: {{ month_total }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <li>{{ time_period }}: {{ total }}</li>
+                {% endif %}
+            {% endfor %}
+            <li>Total: {{ totals["total"] }}</li>
+        </ul>
+    {% endfor %}
+</ul>

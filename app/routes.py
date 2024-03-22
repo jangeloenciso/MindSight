@@ -19,6 +19,7 @@ import logging, os, secrets
 from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
+from collections import defaultdict
 
 
 SECURITY_QUESTIONS = {
@@ -470,23 +471,6 @@ def print_record(student_id):
         return redirect(url_for('students'))
 
     return render_template('print_record.html', student_data=student_data)
-
-@app.route('/report/print')
-@login_required
-def generate_report():
-
-    current_year = datetime.now().year
-
-    student_count = BasicInformation.query.filter(
-    db.extract('year', BasicInformation.submitted_on) == current_year
-    ).count()
-
-    data1 = data_count('nature_of_concern', current_year)
-    data2 = data_count('substance_abuse', current_year)
-
-    print('HAHA')
-
-    return render_template('generate_report.html', student_count=student_count, data1=data1, data2=data2)
 
 # Student components
 
@@ -1385,7 +1369,48 @@ def add_record():
     return render_template('add_record.html', form=form, errors=errors)
 
 
-# @app.route('/generate_report')
+@app.route('/generate_report')
+def generate_report():
+    year = 2024
+
+    college_names = [
+        "CEA",
+        "CBEA",
+        "CED",
+        "CAS",
+        "IHK",
+        "SHS",
+        "JHS",
+        "GRAD",
+        "LLL"
+    ]
+
+    total_cases_dict = {}
+    overall_total = defaultdict(int)
+    overall_monthly_total = defaultdict(int)  # Initialize overall monthly total
+
+    for college in college_names:
+        college_total = {}
+        for time_period in ['yearly', 'monthly']:  # Remove 'quarterly' from the time periods
+            if time_period == 'monthly':
+                college_total[time_period] = {}  # Initialize a nested dictionary for monthly totals
+                for month in range(1, 13):
+                    month_total = get_total_cases(college=college, time_period=time_period, year=year, month=month)
+                    college_total[time_period][month] = month_total
+                    overall_total[time_period] += month_total
+                    overall_monthly_total[month] += month_total  # Add the monthly total to the overall monthly total
+            else:
+                college_total[time_period] = get_total_cases(college=college, time_period=time_period, year=year)
+                overall_total[time_period] += college_total[time_period]
+        total_cases_dict[college] = college_total
+
+    print("Overall Total:", dict(overall_total))
+    print("College-wise Total:", total_cases_dict)
+    print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
+
+    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
+
+
 
 # API endpoints
 

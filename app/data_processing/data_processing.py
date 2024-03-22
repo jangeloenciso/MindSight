@@ -4,6 +4,7 @@ from flask import jsonify
 from app import app, db
 from app.models.models import *
 from sqlalchemy.orm import joinedload
+from sqlalchemy import func
 
 def process_data(student_id=None, search_query=None):
     with app.app_context():
@@ -580,3 +581,29 @@ def data_history_information(college=None, selected_year=None):
 
     return data_dict
 
+
+
+
+def get_total_cases(college=None, time_period=None, year=None, month=None):  # Add month parameter
+    with app.app_context():
+        query = db.session.query(func.count(BasicInformation.student_id))
+
+        if college:
+            query = query.filter(BasicInformation.college == college)
+
+        if time_period and year:
+            if time_period == 'yearly':
+                query = query.filter(func.extract('year', BasicInformation.submitted_on) == year)
+            elif time_period == 'quarterly':
+                query = query.filter(func.extract('quarter', BasicInformation.submitted_on) == year)
+            elif time_period == 'monthly':
+                query = query.filter(func.extract('year', BasicInformation.submitted_on) == year)
+                if month:  # Filter by specific month
+                    query = query.filter(func.extract('month', BasicInformation.submitted_on) == month)
+            elif time_period == 'semestral':
+                # Assuming semesterly refers to two semesters in a year
+                query = query.filter(func.extract('year', BasicInformation.submitted_on) == year)
+                query = query.filter(func.extract('month', BasicInformation.submitted_on).between(1, 6))
+
+        total_cases = query.scalar()
+        return total_cases
