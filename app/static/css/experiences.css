@@ -27,10 +27,8 @@
 
 /* header */
 .main-header span {
-    font-size: 2.2em;
-    font-weight: bold;
-    font-style: normal;
-    line-height: normal;
+    font-size: 2rem;
+    font-family: Lexend-Black;
     color: var(--primary-color);
     border-bottom: 2px solid var(--bg-orange);
     display: flex;
