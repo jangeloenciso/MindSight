@@ -131,6 +131,10 @@
     column-gap: 0.5em;
 }
 
+.edit-print-button div:hover{
+    background-color: var(--bg-orange);
+}
+
 /* edit and print button images */
 .edit-print-button div {
     display: flex;
