@@ -298,7 +298,7 @@ function generateBarGraph(data1, data2, chartNumber) {
         responsive: true,
         plugins: {
           legend: {
-            display: true,
+            display: false,
           },
         },
         // animations: {
