@@ -1768,6 +1768,7 @@ th, td {
                   unless I am violating codes of abuse, harm to myself or others.
                 </p>
     
+                
                 <div class="tac">
                   <input type="checkbox" id="taccheckbox" name="taccheckbox" checked="{{student_data[0]['personal_agreement']}}" disabled>
                   <label for="taccheckbox">
@@ -1775,6 +1776,7 @@ th, td {
                     above.</label
                   >
                 </div>
+                <div>{{ student_signature | safe }}</div>
                 <input type="hidden" name="personal_agreement_date" value="{{student_data[0]['personal_agreement_date']}}">
                 <span>{{student_data[0]['personal_agreement_date']}}</span>
               </div>
@@ -1803,6 +1805,7 @@ th, td {
             <!-- end: Personal Agreements -->
     
             <!-- start: Referral Information -->
+            {% if student.referral_information is not none %}
             <section class="refinfo">
               <header>Referral Information</header>
     
@@ -1867,13 +1870,13 @@ th, td {
                     style="width: 500px !important; padding-right: 10px"
                     >Client Signature:</label
                   >
-                  <span>{{student_data[0]['student_signature']}}</span>
+                  <span>{{ client_signature | safe }}</span>
                   <label
                     for="refinfocounselorsig"
                     style="width: 320px !important; padding-right: 10px"
                     >Counselor's Signature:</label
                   >
-                  <span>{{student_data[0]['counselor_signature']}}</span>
+                  <span>{{ counselor_signature | safe }}{{student_data[0]['counselor_signature']}}</span>
                 </div>
                 <div class="left-align single-column-span">
                   <label
@@ -1891,6 +1894,7 @@ th, td {
                 </div>
               </div>
             </section>
+            {% endif %}
             <!-- end: Referral Information -->
     
             <!-- start: CONFIDENTIAL -->
