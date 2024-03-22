@@ -34,7 +34,6 @@
     display: flex;
     padding-bottom: 10px;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 0.5em;
 }
@@ -44,6 +43,44 @@
     flex-direction: row;
     column-gap: 1em;
     height: 85%;
+}
+
+/* print report button style */
+.print-report-container {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.print-report-container button {
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    font-weight: normal;
+    column-gap: 10px;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--smooth-transition);
+}
+
+.print-report-container button:hover{
+    background-color: var(--primary-color-hover);
+}
+
+.print-report-container img {
+    height: 20px;
+    width: 20px;
+}
+
+.print-report-container p{
+    margin: 0;
+}
+
+.back-button {
+    margin-left: auto;
 }
 
 .back-button button {
