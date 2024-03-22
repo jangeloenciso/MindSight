@@ -196,7 +196,7 @@
     overflow-y: auto;
 }
 
-#religion_container {
+#religion_container, #cases_container {
     height: 80%;
     overflow-y: auto;
 }

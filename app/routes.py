@@ -20,6 +20,7 @@ from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
 from collections import defaultdict
+from calendar import month_name
 
 
 SECURITY_QUESTIONS = {
@@ -186,16 +187,38 @@ def error():
 
 # Pages
 
-# for dashboard / case overview pages
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    year = 2024
     history_data = data_history_information()
     concerns_data = data_count_dict('nature_of_concern')
     religion_data = data_count_dict('religion')
 
-    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, religion_data=religion_data)
+    college_names = [
+        "CEA",
+        "CBEA",
+        "CED",
+        "CAS",
+        "IHK",
+        "SHS",
+        "JHS",
+        "GRAD",
+        "LLL"
+    ]
 
+    overall_monthly_total = defaultdict(int)  # Initialize overall monthly total
+
+    month_names = {i: month_name[i] for i in range(1, 13)}
+
+    for college in college_names:
+        for month in range(1, 13):
+            month_total = get_total_cases(college=college, time_period='monthly', year=year, month=month)
+            overall_monthly_total[month_names[month]] += month_total  # Add the monthly total to the overall monthly total
+
+    print("Overall Monthly Total:", dict(overall_monthly_total))
+
+    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total)
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required
 def experiences():
