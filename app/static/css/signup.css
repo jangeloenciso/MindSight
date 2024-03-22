@@ -326,7 +326,7 @@ input:-webkit-autofill {
 }
 
 .signup-button:not([disabled]):hover  {
-    background-color: #0E2E5E !important;
+    background-color: var(--primary-color-hover) !important;
 }
 
 /* signup button disabled state */

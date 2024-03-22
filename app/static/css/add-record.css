@@ -355,7 +355,7 @@ th, td {
 }
 
 .AddBtn:hover {
-    background-color: #0E2E5E;
+    background-color: var(--primary-color-hover);
 }
 
 .DelBtn {
