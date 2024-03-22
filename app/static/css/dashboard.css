@@ -215,3 +215,8 @@
 #dashboard-container img, #dashboard-container span {
     transform: translateX(-7px);
 }
+
+.print-button {
+    transform: scale(0.9);
+    rotate: 90deg;
+}
