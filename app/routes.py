@@ -279,6 +279,7 @@ def admin():
     students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
         .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
         .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+        .filter(BasicInformation.archived != True) \
         .order_by(desc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
@@ -312,7 +313,7 @@ def counseling_history():
     students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
         .join(CaseNote, BasicInformation.student_id == CaseNote.student_id) \
         .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
-        .filter(AdditionalInformation.counselor == counselor_name) \
+        .filter(BasicInformation.archived != True, AdditionalInformation.counselor == counselor_name) \
         .order_by(desc(CaseNote.interview_date)).all()
 
     active_cases_count = sum(1 for student in students if student[2].status != 'Terminated')
