@@ -395,7 +395,7 @@ def view_archived():
     return render_template('students/archive_record.html', records=records)
 
 
-# retrieve all archived records
+# retrieve all archived records(bulk)
 @app.route('/students/records/bulk_retrieve', methods=['POST'])
 @login_required
 def bulk_retrieve_records():
@@ -415,6 +415,22 @@ def bulk_retrieve_records():
         else: 
             return jsonify({'error': True})
         
+    return jsonify({'success': True})
+
+
+# retrieve record when record clicked(individual)
+@app.route('/students/records/retrieve/<student_id>', methods=['POST'])
+@login_required
+def retrieve_record(student_id):
+
+    student = BasicInformation.query.filter_by(student_id=student_id).first()
+
+    if not student:
+        return jsonify({'error': True})
+    
+    student.archived = False
+    db.session.commit()
+
     return jsonify({'success': True})
 
 
@@ -625,7 +641,7 @@ def bulk_archive_records():
     return jsonify({'success': True})
 
 
-# archive student record
+# archive student record(individual)
 @app.route('/students/records/view/archive/<student_id>', methods=['POST'])
 @login_required
 def archive_record(student_id):

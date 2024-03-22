@@ -63,8 +63,9 @@
       <div class="row-container">
         {% for student in records %}
         <a
-          href="{{ url_for('student_record', student_id=student.student_id) }}"
+          href="#"
           class="grid-row"
+          onclick="retrieveRecord('{{ student.student_id }}')"
         >
           <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
           <div class="grid-section">{{ student.student_id }}</div>
@@ -166,6 +167,77 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+function retrieveRecord(student_id) {
+  swal.fire({
+    iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+    text: 'You need to retrieve this record to view.',
+    confirmButtonText: 'Retrieve',
+    showCancelButton: true,
+    customClass: {
+      confirmButton: `confirm-button-class`,
+      cancelButton: `cancel-button-class`
+    }
+  }).then(response => {
+    if (response.isConfirmed) {
+      const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+      fetch(`/students/records/retrieve/${student_id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({ student_id: student_id })
+      })
+      .then(response => {
+        if (response.ok){
+          swal.fire({
+            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+            title: 'Are you sure?',
+            text: "You're about to retrieve this record.",
+            confirmButtonText: 'Yes',
+            showCancelButton: true,
+            customClass: {
+              confirmButton: `confirm-button-class`,
+              cancelButton: `cancel-button-class`
+          }
+          }).then(() => {
+            swal.fire({
+              iconHtml: '<img class="custom-icon" src="/static/popup.png">',
+              title: 'Success!',
+              text: 'Record retrieved successfully.',
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              window.location.reload();
+            });
+          });
+        } else {
+          swal.fire({
+            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+            title: 'Error!',
+            text: 'Failed to retrieve record, please try again.',
+            confirmButtonText: 'Try again',
+            showConfirmButton: true,
+            customClass: {
+              confirmButton: `confirm-button-class`
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        swal.fire({
+          iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+          title: 'Error!',
+          text: 'An error occurred while retrieving record.'
+        });
+      });
+    }
+  });
+}
 
 </script>
 {% endblock %}
