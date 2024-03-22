@@ -360,6 +360,11 @@ th, td {
     color: var(--primary-color);
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .tac {
     display: flex;

@@ -40,14 +40,14 @@ endblock %} {% block styles %}
       </div>
       <div class="religion-container">
         <span class="title" id="religion">
-          <div>Religion</div>
+          <div>Cases</div>
           <div class="back-button">
-            <a href="{{ url_for ('religion')}}">
+            <a href="{{ url_for ('generate_report')}}">
                 <img src="/static/SVG/back_button.svg"/>
             </a>
           </div>
         </span>
-        <div id="religion_container" height="100" width="100"></div>
+        <div id="cases_container" height="100" width="100"></div>
       </div>
     </div>
   </div>
@@ -84,20 +84,42 @@ endblock %} {% block styles %}
 <script>
   const history_data = {{ history_data | tojson | safe }};
   const concerns_data = {{ concerns_data | tojson | safe }};
-  const religion_data = {{ religion_data | tojson | safe }};
+  const overall_monthly_total = {{ overall_monthly_total | tojson | safe }};
 
   function renderChart(data, container) {
     const chartContainer = document.getElementById(container);
-  
     chartContainer.innerHTML = '';
-  
-    const sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
-  
+
+    let sortedData;
+    if (data === overall_monthly_total) {
+        // Convert month names to numerical representation for sorting
+        const monthNames = {
+            January: 1,
+            February: 2,
+            March: 3,
+            April: 4,
+            May: 5,
+            June: 6,
+            July: 7,
+            August: 8,
+            September: 9,
+            October: 10,
+            November: 11,
+            December: 12
+        };
+
+        sortedData = Object.entries(data).sort((a, b) => {
+            return monthNames[a[0]] - monthNames[b[0]];
+        });
+    } else {
+        sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
+    }
+
     sortedData.forEach(([label, count]) => {
-      const progressBar = createProgressBar(label, count);
-      chartContainer.appendChild(progressBar);
+        const progressBar = createProgressBar(label, count);
+        chartContainer.appendChild(progressBar);
     });
-  }
+}
   
 function createProgressBar(label, count) {
   const container = document.createElement('div');
@@ -143,7 +165,7 @@ function createProgressBar(label, count) {
 
   renderChart(history_data, 'history_container');
   renderChart(concerns_data, 'concerns_container');
-  renderChart(religion_data, 'religion_container');
+  renderChart(overall_monthly_total, 'cases_container');
 </script>
 
 

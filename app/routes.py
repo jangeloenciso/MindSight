@@ -20,6 +20,7 @@ from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
 from collections import defaultdict
+from calendar import month_name
 
 
 SECURITY_QUESTIONS = {
@@ -186,16 +187,38 @@ def error():
 
 # Pages
 
-# for dashboard / case overview pages
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    year = 2024
     history_data = data_history_information()
     concerns_data = data_count_dict('nature_of_concern')
     religion_data = data_count_dict('religion')
 
-    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, religion_data=religion_data)
+    college_names = [
+        "CEA",
+        "CBEA",
+        "CED",
+        "CAS",
+        "IHK",
+        "SHS",
+        "JHS",
+        "GRAD",
+        "LLL"
+    ]
 
+    overall_monthly_total = defaultdict(int)  # Initialize overall monthly total
+
+    month_names = {i: month_name[i] for i in range(1, 13)}
+
+    for college in college_names:
+        for month in range(1, 13):
+            month_total = get_total_cases(college=college, time_period='monthly', year=year, month=month)
+            overall_monthly_total[month_names[month]] += month_total  # Add the monthly total to the overall monthly total
+
+    print("Overall Monthly Total:", dict(overall_monthly_total))
+
+    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total)
 @app.route('/dashboard/experiences', methods=['GET'])
 @login_required
 def experiences():
@@ -460,6 +483,50 @@ def retrieve_record(student_id):
 @app.route('/students/records/view/<student_id>/print')
 @login_required
 def print_record(student_id):
+
+    student = (
+            BasicInformation.query
+            .options(
+                joinedload(BasicInformation.family_background),
+                joinedload(BasicInformation.health_information),
+                joinedload(BasicInformation.educational_background),
+                joinedload(BasicInformation.social_history),
+                joinedload(BasicInformation.history_information),
+                joinedload(BasicInformation.occupational_history),
+                joinedload(BasicInformation.substance_abuse_history),
+                joinedload(BasicInformation.legal_history),
+                joinedload(BasicInformation.additional_information),
+                joinedload(BasicInformation.sessions),
+                joinedload(BasicInformation.case_note)
+            )
+            .filter_by(student_id=student_id)
+            .first()
+        )
+
+    data = process_data(student_id)
+    student_data = data.to_dict(orient='records')
+    # print(student_data[0]['client_signature'])
+
+    binary_student_signature = student_data[0]['student_signature']
+    binary_student_signature_data = base64.b64encode(binary_student_signature).decode('utf-8')
+
+    student_signature = f'<img src="data:image/jpeg;base64,{binary_student_signature_data}" alt="Client Signature">'
+
+    client_signature = None
+    counselor_signature = None
+    
+    if student.referral_information:
+        binary_client_signature = student_data[0]['client_signature']
+        binary_client_signature_data = base64.b64encode(binary_client_signature).decode('utf-8')
+
+        client_signature = f'<img src="data:image/jpeg;base64,{binary_client_signature_data}" alt="Client Signature">'
+
+
+        binary_counselor_signature = student.referral_information.counselor_signature
+        binary_counselor_signature_data = base64.b64encode(binary_counselor_signature).decode('utf-8')
+
+        counselor_signature = f'<img src="data:image/jpeg;base64,{binary_counselor_signature_data}" alt="Counselor Signature">'
+    
     data = process_data(student_id)
     student_data = data.to_dict(orient='records')
 
@@ -470,7 +537,7 @@ def print_record(student_id):
         print("mayo amp")
         return redirect(url_for('students'))
 
-    return render_template('print_record.html', student_data=student_data)
+    return render_template('print_record.html', student_data=student_data, student=student, client_signature=client_signature, counselor_signature=counselor_signature, student_signature=student_signature)
 
 # Student components
 
