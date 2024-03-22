@@ -310,8 +310,6 @@ def admin():
     return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict, active_students=active_students)
 
 
-from sqlalchemy.sql import func
-
 @app.route('/admin/history')
 @login_required
 def counseling_history():
