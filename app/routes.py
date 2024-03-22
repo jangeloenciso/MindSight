@@ -310,23 +310,38 @@ def admin():
     return render_template('admin.html', admin=admin, students=students, students_count=students_count_dict, active_students=active_students)
 
 
+from sqlalchemy.sql import func
+
 @app.route('/admin/history')
 @login_required
 def counseling_history():
-
     full_name = request.args.get('full_name', default='', type=str)
 
     counselor_name = full_name
 
+    # Subquery to get the maximum interview_date for each student
+    subquery = db.session.query(CaseNote.student_id, func.max(CaseNote.interview_date).label('max_interview_date')) \
+                         .group_by(CaseNote.student_id).subquery()
+
+    # Query to get the last case note for each student
     students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
-        .join(CaseNote, BasicInformation.student_id == CaseNote.student_id) \
-        .join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id) \
-        .filter(BasicInformation.archived != True, AdditionalInformation.counselor == counselor_name) \
-        .order_by(desc(CaseNote.interview_date)).all()
+                         .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+                         .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+                         .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
+                                              subquery.c.max_interview_date == CaseNote.interview_date)) \
+                         .filter(BasicInformation.archived != True) \
+                         .order_by(desc(CaseNote.interview_date))
+
+    # Filter by counselor_name if provided
+    if counselor_name:
+        students = students.filter(AdditionalInformation.counselor == counselor_name)
+
+    students = students.all()
 
     active_cases_count = sum(1 for student in students if student[2].status != 'Terminated')
 
     return render_template('admin/counseling_history.html', full_name=full_name, students=students, active_cases_count=active_cases_count)
+
 
 
 
