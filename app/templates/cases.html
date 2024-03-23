@@ -8,13 +8,13 @@ endblock %} {% block styles %}
     <div class="main">
         <div class="main-header">
             <span>
+                Total Cases: <span id="total-cases"></span>
                 <select id="cases-year">
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                 </select>
-                Total Cases: <span id="total-cases"></span>
                 <a href="{{ url_for ('print_report')}}" class="print-report-container">
                     <button>
                         <img src="/static/print-button.png" />

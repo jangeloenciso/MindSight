@@ -26,7 +26,7 @@
 
 
 /* header */
-.main-header span {
+.main-header span:first-child {
     font-size: 2rem;
     font-family: Lexend-Black;
     color: var(--primary-color);
@@ -36,6 +36,20 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 0.5em;
+}
+
+#total-cases{
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+    font-size: 2rem;
+    font-family: Lexend-Black;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .content {
@@ -98,7 +112,16 @@
     transform: translateX(-5px) scale(1.1);
 }
 
-
+select{
+    width: auto;
+    height: auto;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    transition: var(--smooth-transition);
+}
 .box {
     width: 19%;
     height: 100%;
