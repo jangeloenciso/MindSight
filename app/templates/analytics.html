@@ -39,7 +39,15 @@ endblock %} {% block styles %}
       <div class="row1">
         <!-- Experiences -->
         <div class="experience-container">
-          <span class="title" id="experience">Experiences</span>
+          <span class="title" id="experience">
+            <div>Experiences</div>
+            <div class="back-button">
+              <a href="{{ url_for ('experiences_expand')}}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div>
+          </span>
+          
           <div style="height: 200px; overflow: auto">
           <canvas id="myChart1"></canvas>
         </div>
@@ -64,7 +72,14 @@ endblock %} {% block styles %}
         </div>
         <!-- Religion -->
         <div class="religion-container">
-          <span class="title" id="religion">Religion</span>
+          <span class="title" id="experience">
+            <div>Religion</div>
+            <div class="back-button">
+              <a href="{{ url_for ('religion_expand')}}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div>
+          </span>
           <div style="height: 200px; overflow: auto">
             <canvas id="myChart4"></canvas>
           </div>

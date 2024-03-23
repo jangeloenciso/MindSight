@@ -24,17 +24,6 @@
     align-items: center;
 }
 
-.title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
-    text-align: left;
-    border-bottom: 2px solid var(--bg-orange);
-    padding-bottom: 0.3em;
-    margin-bottom: 0.3em;
-}
 
 .semester-left {
     display: flex;
@@ -111,6 +100,12 @@ option {
     padding: 0.8em;
 }
 
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .campus-container {
     width: 20%;
     height: 100%;
@@ -181,4 +176,32 @@ option {
 /* White bg css */
 .experience-container, .college-container, .campus-container, .nature-container, .religion-container, .identity-container{
     background-color: var(--white);
+}
+
+.back-button button {
+    cursor: pointer;
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 0.9em;
+    rotate: -90deg;
+    position: relative;
+
+}
+
+.title {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: bold;
+        line-height: normal;
+        text-align: left;
+        border-bottom: 2px solid var(--bg-orange);
+        padding-bottom: 0.3em;
+        margin-bottom: 0.3em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 }

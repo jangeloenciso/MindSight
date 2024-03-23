@@ -380,6 +380,16 @@ def metrics():
     return render_template('metrics.html')
 
 
+@app.route('/analytics/experiences')
+@login_required
+def experiences_expand():
+    return render_template('experiences_expand.html')
+
+@app.route('/analytics/religion')
+@login_required
+def religion_expand():
+    return render_template('religion_expand.html')
+
 # settings page
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required

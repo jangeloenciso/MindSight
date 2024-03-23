@@ -1,0 +1,264 @@
+.right {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 73px);
+    height: 100vh;
+    /* positions right div properly */
+    margin-left: 73px;
+    padding: 40px;
+}
+
+
+
+.main {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    background-color: var(--white);
+}
+
+
+
+/* Counselor buttons */
+.counselors {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    column-gap: 1.2em;
+}
+
+.counselors a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid var(--primary-color);
+    border-radius: 10px;
+    flex: 1;
+    flex-basis: 25%;
+    padding: 10px;
+    transition: var(--smooth-transition);
+    text-decoration: none;
+}
+
+.counselors a:hover {
+    border: 3px solid var(--bg-orange);
+}
+
+.btn {
+    background:none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.name {
+    text-transform: capitalize;
+    color: black;
+}
+
+.active {
+    color: var(--primary-color);
+}
+
+.indicator {
+    color: var(--bg-orange); 
+    font-weight: 800;
+}
+
+hr {
+    border-color: transparent;
+    background-color: var(--bg-orange);
+}
+
+.title{
+    color: var(--primary-color);
+}
+
+/* records container */
+.recent-records {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin-top: 5px;
+}
+
+/* "Recent counselors who counseled.." */
+.recent-records span {
+    margin: 20px 0;
+    font-family: Lexend-Bold;
+    color: var(--primary-color);
+}
+
+/* grid rows */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    border: 3px solid var(--primary-color);
+    background-color: var(--primary-color);
+    overflow-y: auto;
+}
+
+.grid-header {
+    display: flex;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.grid-row {
+    display: flex;
+    background-color: var(--main-db-bg-color);
+    color: var(--primary-color);
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+/* individual sizes per column */
+.grid-date {
+    flex-basis: 14%;
+}
+
+.grid-section {
+    flex-basis: 14%;
+}
+
+.grid-name {
+    flex-basis: 22%;
+}
+
+.grid-college {
+    flex-basis: 9%;
+}
+
+.grid-gender {
+    flex-basis: 19%;
+}
+
+.grid-counselor {
+    flex-basis: 23%;
+}
+
+.grid-status {
+    flex-basis: 14%;
+}
+
+.grid-remark {
+    flex-basis: 19%;
+}
+
+.grid-row:nth-child(even) {
+    background-color: #C5CFC6;
+}
+
+.grid-row:hover {
+    background-color: var(--bg-orange);
+}
+
+.grid-row:nth-child(even):hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* enables the scrolling automatically */
+.scrollable {
+    overflow-y: auto;
+}
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #analytics-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#analytics-container img, #analytics-container span {
+    transform: translateX(-7px);
+}
+
+/* header */
+.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    color: var(--primary-color);
+    margin-bottom: 1em;
+    border-bottom: 2px solid var(--bg-orange);
+    padding-bottom: 1em;
+}
+
+.main-header span {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: Lexend-Black;
+}
+
+.semester-left {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.semester-content {
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#compare {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+
+select, .metrics {
+    width: auto;
+    height: auto;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    transition: var(--smooth-transition);
+}
+
+.metrics:hover {
+    background-color: var(--bg-orange);
+    border: none;
+}
+
+option {
+    background-color: #FFF;
+    color: var(--primary-color);
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 1.3em;
+    cursor: pointer;
+}

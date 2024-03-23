@@ -1,0 +1,83 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Experiences{%
+    endblock %} {% block styles %}
+    <link rel="stylesheet" href="/static/css/experiences-expand.css" />
+    {% endblock %} {% block content %}
+    <div class="right">
+      <div class="main">
+        <div class="main-header">
+            <span>EXPERIENCES</span>
+            <div class="back-button">
+                <a href="{{ url_for('analytics') }}">
+                    <img src="/static/SVG/back_button.svg"/>
+                </a>
+            </div>
+        </div>
+        <div class="semester-content">
+            <div class="semester-left">
+              <div class="first-Semester">
+                <select id="first-semester">
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+              <div class="compare">
+                <span id="compare">Compare to</span>
+              </div>
+              <div class="second-semester">
+                <select id="second-semester">
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+            </div>
+        </div>
+        <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; overflow: auto">
+            <canvas id="myChart1"></canvas>
+      </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/analytics_expand.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Attach event listeners to both select elements
+          document
+            .getElementById("first-semester")
+            .addEventListener("change", function () {
+              console.log("changed");
+              updateCharts();
+            });
+      
+          document
+            .getElementById("second-semester")
+            .addEventListener("change", function () {
+              updateCharts();
+            });
+      
+          // Fetch and generate charts initially
+          updateCharts();
+        });
+      
+        function updateCharts() {
+          let selectedYear1 = document.getElementById("first-semester").value;
+          let selectedYear2 = document.getElementById("second-semester").value;
+      
+          // Log the selected years for testing
+          console.log("Selected Year 1:", selectedYear1);
+          console.log("Selected Year 2:", selectedYear2);
+      
+          fetchAndGenerateChart(1, selectedYear1, selectedYear2);
+          fetchAndGenerateChart(2, selectedYear1, selectedYear2);
+          fetchAndGenerateChart(3, selectedYear1, selectedYear2);
+          fetchAndGenerateChart(4, selectedYear1, selectedYear2);
+          fetchAndGenerateChart(5, selectedYear1, selectedYear2);
+          fetchAndGenerateChart(6, selectedYear1, selectedYear2);
+        }
+      </script>
+    {% endblock %}
+    
