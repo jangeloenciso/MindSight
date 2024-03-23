@@ -1436,45 +1436,6 @@ def add_record():
 
     return render_template('add_record.html', form=form, errors=errors)
 
-@app.route('/dashboard/cases')
-def cases():
-    year = datetime.now().year
-
-    # Define the college groups to combine counts
-    college_groups = {
-        'College': ["CEA", "CBEA", "IHK", "CAS", "CED"],
-        'SHS': ["SHS"],
-        'JHS': ["JHS"],
-        'GRAD': ["GRAD"],
-        'LLL': ["LLL"]
-    }
-
-    total_cases_dict = {}
-    overall_total = defaultdict(int)
-    overall_monthly_total = defaultdict(int)
-
-    for group_name, colleges in college_groups.items():
-        group_total = {}
-        for time_period in ['yearly', 'monthly']:
-            if time_period == 'monthly':
-                group_total[time_period] = {}
-                for month in range(1, 13):
-                    month_total = sum(get_total_cases(college=college, time_period=time_period, year=year, month=month) for college in colleges)
-                    group_total[time_period][month] = month_total
-                    overall_total[time_period] += month_total
-                    overall_monthly_total[month] += month_total 
-            else:
-                group_total[time_period] = sum(get_total_cases(college=college, time_period=time_period, year=year) for college in colleges)
-                overall_total[time_period] += group_total[time_period]
-        total_cases_dict[group_name] = group_total
-
-    print("Overall Total:", dict(overall_total))
-    print("Group-wise Total:", total_cases_dict)
-    print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
-
-    return render_template('cases.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
-
-
 @app.route('/print_report')
 def print_report():
     year = 2024
@@ -1516,10 +1477,57 @@ def print_report():
 
     return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
 
+@app.route('/dashboard/cases')
+def cases():
+    return render_template('cases.html')
+
 
 
 
 # API endpoints
+@app.route('/get_cases/<selected_year>', methods=['GET'])
+def get_cases(selected_year=None):
+    year = selected_year
+    if selected_year is None:
+        year = datetime.now().year
+
+    # Define the college groups to combine counts
+    college_groups = {
+        'College': ["CEA", "CBEA", "IHK", "CAS", "CED"],
+        'SHS': ["SHS"],
+        'JHS': ["JHS"],
+        'GRAD': ["GRAD"],
+        'LLL': ["LLL"]
+    }
+
+    total_cases_dict = {}
+    overall_total = defaultdict(int)
+    overall_monthly_total = defaultdict(int)
+
+    for group_name, colleges in college_groups.items():
+        group_total = {}
+        for time_period in ['yearly', 'monthly']:
+            if time_period == 'monthly':
+                group_total[time_period] = {}
+                for month in range(1, 13):
+                    month_total = sum(get_total_cases(college=college, time_period=time_period, year=year, month=month) for college in colleges)
+                    group_total[time_period][month] = month_total
+                    overall_total[time_period] += month_total
+                    overall_monthly_total[month] += month_total 
+            else:
+                group_total[time_period] = sum(get_total_cases(college=college, time_period=time_period, year=year) for college in colleges)
+                overall_total[time_period] += group_total[time_period]
+        total_cases_dict[group_name] = group_total
+
+    print("Overall Total:", dict(overall_total))
+    print("Group-wise Total:", total_cases_dict)
+    print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
+    combined_data = {
+        'total_cases_dict': total_cases_dict,
+        'overall_total': dict(overall_total)
+    }
+    return jsonify(combined_data)
+
 
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
 def get_data(first_metric, second_metric):
