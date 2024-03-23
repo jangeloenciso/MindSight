@@ -67,9 +67,10 @@ select, .metrics {
     background-color: var(--primary-color);
     color: #FFF;
     border: none;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 0.5em 1em;
     transition: var(--smooth-transition);
+    cursor: pointer;
 }
 
 .metrics:hover {

@@ -121,6 +121,7 @@ select{
     border-radius: 20px;
     padding: 0.5em 1em;
     transition: var(--smooth-transition);
+    cursor: pointer;
 }
 .box {
     width: 19%;
