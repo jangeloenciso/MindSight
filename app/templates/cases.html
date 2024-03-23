@@ -13,47 +13,47 @@ endblock %} {% block styles %}
                     <option value="2023">2023</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
-                  </select>
+                </select>
                 Total Cases: <span id="total-cases"></span>
                 <a href="{{ url_for ('print_report')}}" class="print-report-container">
                     <button>
-                      <img src="/static/print-button.png" />
-                      <p>Print Report</p>
+                        <img src="/static/print-button.png" />
+                        <p>Print Report</p>
                     </button>
-                  </a>
-                <div class="back-button">
-                <a href="{{ url_for ('dashboard')}}">
-                    <img src="/static/SVG/back_button.svg"/>
                 </a>
+                <div class="back-button">
+                    <a href="{{ url_for ('dashboard')}}">
+                        <img src="/static/SVG/back_button.svg"/>
+                    </a>
                 </div>
             </span>
         </div>
-      </span>
+        <!-- Closing div tag for main-header was missing -->
+        <div class="content">
+            <div class="box">
+                <span>Junior High</span>
+                <div id="jhs_container"></div>
+            </div>
+            <div class="box">
+                <span>Senior High</span>
+                <div id="shs_container"></div>
+            </div>
+            <div class="box">
+                <span>College</span>
+                <div id="college_container"></div>
+            </div>
+            <div class="box">
+                <span>Graduate</span>
+                <div id="grad_container"></div>
+            </div>
+            <div class="box">
+                <span>Lifelong Learners</span>
+                <div id="lll_container"></div>
+            </div>
+        </div>
     </div>
-    <div class="content">
-      <div class="box">
-        <span>Junior High</span>
-        <div id="jhs_container"></div>
-      </div>
-      <div class="box">
-        <span>Senior High</span>
-        <div id="shs_container"></div>
-      </div>
-      <div class="box">
-        <span>College</span>
-        <div id="college_container"></div>
-      </div>
-      <div class="box">
-        <span>Graduate</span>
-        <div id="grad_container"></div>
-      </div>
-      <div class="box">
-        <span>Lifelong Learners</span>
-        <div id="lll_container"></div>
-      </div>
-    </div>
-  </div>
 </div>
+
 
 <script src="{{ url_for('static', filename='javascript/cases.js') }}"></script>
 
