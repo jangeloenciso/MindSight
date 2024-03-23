@@ -1436,9 +1436,9 @@ def add_record():
 
     return render_template('add_record.html', form=form, errors=errors)
 
-@app.route('/print_report')
-def print_report():
-    year = 2024
+@app.route('/print_report/<selected_year>')
+def print_report(selected_year):
+    year = selected_year
 
     college_names = [
         "CEA",
@@ -1521,7 +1521,7 @@ def get_cases(selected_year=None):
 
     print("Overall Total:", dict(overall_total))
     print("Group-wise Total:", total_cases_dict)
-    print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
+    print("Overall Monthly Total:", dict(overall_monthly_total))
     combined_data = {
         'total_cases_dict': total_cases_dict,
         'overall_total': dict(overall_total)

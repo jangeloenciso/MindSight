@@ -8,7 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharts();
       });
 
-})
+    document
+    .getElementById("print-button")
+    .addEventListener("click", function() {
+        let selected_year = document.getElementById("cases-year").value
+        console.log(selected_year)
+        window.location.href = `/print_report/${selected_year}`
+    });
+});
 
 function updateCharts() {
     let selected_year = document.getElementById("cases-year").value
