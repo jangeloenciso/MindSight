@@ -396,7 +396,13 @@ def religion_expand():
 def settings():
 
     form = EditCredentials(request.form)
-
+    
+    if request.method == 'GET':
+        form.first_name.data = current_user.first_name
+        form.last_name.data = current_user.last_name
+        form.username.data = current_user.username 
+        form.email.data = current_user.email
+        
 
     if form.validate_on_submit():
         if not bcrypt.check_password_hash(current_user.password, form.current_password.data):
