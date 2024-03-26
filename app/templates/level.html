@@ -35,27 +35,113 @@
     
         <!-- directory buttons -->
         <div class="main-buttons">
-            <a href="{{ url_for ('jhs') }}">
-              <button>Junior High
-              </button></a
-            >
-            <a href="{{ url_for ('shs') }}">
-                <button>Senior High
+          <div class="dropdown-button">
+            <button onclick="toggleDropdown('jhsDropdown')">Junior High</button>
+            <div id="jhsDropdown" class="dropdown-content">
+              <a href="{{ url_for ('jhs_records', year_level=7) }}">
+                <button>
+                  <span>GRADE 7</span>
                 </button></a
-            >
-            <a href="{{ url_for ('colleges')}}">
-              <button>College
-              </button></a
-            >
-            <a href="{{ url_for ('graduate') }}">
-              <button>Graduate School
-              </button></a
-            >
-            <a href="{{ url_for ('lll') }}">
-              <button>Lifelong Learners
-              </button></a
-            >
+              >
+              <a href="{{ url_for ('jhs_records', year_level=8) }}">
+                <button>
+                    <span>GRADE 8</span>
+                </button></a
+              >
+              <a href="{{ url_for ('jhs_records', year_level=9) }}">
+                <button>
+                  <span>GRADE 9</span>
+                </button></a
+              >
+              <a href="{{ url_for ('jhs_records', year_level=10) }}">
+                <button>
+                    <span>GRADE 10</span>
+                </button></a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown-button">
+            <button onclick="toggleDropdown('shsDropdown')">Senior High</button>
+            <div id="shsDropdown" class="dropdown-content">
+              <a href="{{ url_for ('shs_records', course='STEM') }}">
+                <button>
+                  <span>Science, Technology, Engineering and Mathematics (STEM)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('shs_records', course='ABM') }}">
+                <button>
+                    <span>Accountancy, Business and Management (ABM)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('shs_records', course='HUMSS') }}">
+                <button>
+                  <span>Humanities and Social Sciences (HUMSS)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('shs_records', course='ICT') }}">
+                <button>
+                    <span>Information Communication and Technology (ICT)</span>
+                </button></a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown-button">
+            <button onclick="toggleDropdown('collegeDropdown')">College</button>
+            <div id="collegeDropdown" class="dropdown-content">
+              <a href="{{ url_for ('college_records', college='CEA')}}">
+                <button>
+                  <span>College of Engineering and Architecture (CEA)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('college_records', college='CBEA')}}">
+                <button>
+                    <span>College of Business Entrepreneurship and Accountancy (CBEA)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('college_records', college='CAS')}}">
+                <button>
+                  <span>College of Arts and Sciences (CAS)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('college_records', college='CED')}}">
+                <button>
+                    <span>College of Education (CAS)</span>
+                </button></a
+              >
+              <a href="{{ url_for ('college_records', college='IHK')}}">
+                <button>
+                    <span>Institute of Human Kinetics (IHK)</span>
+                </button></a
+              >
+            </div>
+          </div>
+
+          <a href="{{ url_for ('graduate_records', college='GRAD')}}">
+            <button>
+              <span>Graduate</span>
+            </button></a
+          >
+
+          <a href="{{ url_for ('lll_records', college='LLL')}}">
+            <button>
+              <span>Lifelong Learners</span>
+            </button></a
+          >
+
         </div>
       </div>
     </div>
+
+    <script>
+      function toggleDropdown(dropdownId) {
+        var dropdownContent = document.getElementById(dropdownId);
+        if (dropdownContent.style.display === "flex") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "flex";
+        }
+      }
+    </script>
     {% endblock %}
