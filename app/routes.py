@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from app.models.models import *
 from sqlalchemy.orm import joinedload
-from flask import render_template, url_for, redirect, flash, request, jsonify, send_file, session
+from flask import render_template, url_for, redirect, flash, request, jsonify, send_file, session, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from .data_processing import *
 from .forms import *
@@ -15,12 +15,16 @@ from app.forms.reset import ResetPassword
 from app.forms.upload import UploadFileForm
 from functools import wraps
 from werkzeug.utils import secure_filename
-import logging, os, secrets
+import logging, os, secrets, smtplib, pyotp, time
 from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
 from collections import defaultdict
 from calendar import month_name
+from flask_mail import Mail
+from email.mime.text import MIMEText
+
+mail = Mail(app)
 
 
 SECURITY_QUESTIONS = {
@@ -119,17 +123,27 @@ def logout():
 @app.route('/forgot-password', methods=['POST', 'GET'])
 def forgot_password():
     form = ForgotPassword()
-
-    if form.validate_on_submit():
+    
+    if request.method == 'POST' and form.validate_on_submit():
         _username = form.username.data
         user = User.query.filter_by(username=_username).first()
-        
+            
         if user:
-            generate_token = secrets.token_urlsafe(32)
-            session['_token'] = generate_token
-            session['_username'] = _username
-            return jsonify({'success': True, 'token': generate_token})
-        
+            secret = pyotp.random_base32()
+            totp = pyotp.TOTP(secret)
+
+            otp_value = totp.now()
+
+            session['otp_secret_forgot'] = secret 
+            session['otp_time_forgot'] = time.time()
+            session['username'] = _username
+    
+            email = user.email
+            send_otp_to_email_forgot(email, otp_value)
+            print(otp_value)
+
+            return jsonify({'success': True})
+            
         else:
             print('User does not exist.', 'error')
             return jsonify({'error': True})
@@ -137,34 +151,73 @@ def forgot_password():
     return render_template('forgot.html', form=form)
 
 
+def send_otp_to_email_forgot(email, otp):
+
+    sender = current_app.config['MAIL_USERNAME']
+    recipients = [email]
+    password = current_app.config['MAIL_PASSWORD']
+
+    msg = MIMEText(f'Your OTP Verification is: {otp}')
+    msg['Subject'] = 'OTP Verification'
+    msg['From'] = sender
+    msg['To'] = ', '.join(recipients)
+
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtp_server:
+        smtp_server.ehlo() 
+        smtp_server.starttls()
+        smtp_server.login(sender, password)
+        smtp_server.sendmail(sender, recipients, msg.as_string())
+
+
+@app.route('/otp_forgot-password', methods=['POST', 'GET'])
+def otp_forgot():
+
+    if request.method == 'POST':
+        otp = request.json.get('otp') 
+    
+        stored_otp = session.get('otp_secret_forgot')
+        otp_time = session.get('otp_time_forgot')
+        
+        print(otp)
+        session_timeout = current_app.config.get('SESSION_TIMEOUT')
+        session_timeout_seconds = session_timeout.total_seconds()
+
+        if stored_otp and otp_time and (time.time() - otp_time) <= session_timeout_seconds:
+            totp = pyotp.TOTP(stored_otp)
+            otp_number = totp.now()
+            print(otp_number)
+            if totp.verify(otp):
+                print('success')
+                return redirect(url_for('reset_password'))
+            
+        session.pop('otp_secret_forgot', None)
+        session.pop('otp_time_forgot', None)
+
+        return jsonify({'error': True})   
+    
+    return render_template('otp_forgot.html')
+
+
+# TODO: to be fixed (form not validating)
 @app.route('/reset-password', methods=['POST', 'GET'])
 def reset_password():
 
     form = ResetPassword()
-    token = session.get('_token')
-    username = session.get('_username')
 
-    if not token or not username:
-        print('Invalid link', 'error')
-        return redirect(url_for('error'))
-
+    username = session.get('username')
     user = User.query.filter_by(username=username).first()
+    print('Username:', user.username)
     
     if form.validate_on_submit():
         print('validated')
-
-        if session.get('_token') != request.form.get('token'):
-            print(session.get('_token'))
-            print('Invalid link', 'error')
-            return redirect(url_for('error'))
 
         if bcrypt.check_password_hash(user.security_answer, form.security_answer.data):
             new_password = form.password.data
             hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
             user.password = hashed_password
 
-            session.pop('_token')
-            session.pop('_username')
+            session.pop('otp_secret_forgot', None)
+            session.pop('otp_time_forgot', None)
 
             # Commit changes to the database
             db.session.commit()
@@ -177,9 +230,9 @@ def reset_password():
     _security_question = user.security_question
     security_question = SECURITY_QUESTIONS.get(_security_question, 'Unknown Question')
 
-    return render_template('reset.html', form=form, security_question=security_question, username=username, token=token)
+    return render_template('reset.html', form=form, security_question=security_question)
 
-
+# 404 Page
 @app.route('/404')
 def error():
     return render_template('error.html')
@@ -423,6 +476,69 @@ def settings():
         return jsonify({'success': True})
 
     return render_template('settings.html', form=form)
+
+
+@login_required
+def send_otp_to_email(email, otp):
+
+    sender = current_app.config['MAIL_USERNAME']
+    recipients = [email]
+    password = current_app.config['MAIL_PASSWORD']
+
+    msg = MIMEText(f'Your OTP Verification is: {otp}')
+    msg['Subject'] = 'OTP Verification'
+    msg['From'] = sender
+    msg['To'] = ', '.join(recipients)
+
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtp_server:
+        smtp_server.ehlo() 
+        smtp_server.starttls()
+        smtp_server.login(sender, password)
+        smtp_server.sendmail(sender, recipients, msg.as_string())
+
+
+
+@app.route('/otp', methods=['POST'])
+@login_required
+def otp():
+    secret = pyotp.random_base32()
+    totp = pyotp.TOTP(secret)
+
+    otp_value = totp.now()
+
+    session['otp_secret'] = secret 
+    session['otp_time'] = time.time()
+
+
+    email = current_user.email
+    send_otp_to_email(email, otp_value)
+    print(otp_value)
+
+    return jsonify({'success': True})
+
+@app.route('/verify_otp', methods=['POST'])
+@login_required
+def verify_otp():
+    otp = request.json.get('otp') 
+    
+    stored_otp = session.get('otp_secret')
+    otp_time = session.get('otp_time')
+    
+    print(otp)
+    session_timeout = current_app.config.get('SESSION_TIMEOUT')
+    session_timeout_seconds = session_timeout.total_seconds()
+
+    if stored_otp and otp_time and (time.time() - otp_time) <= session_timeout_seconds:
+        totp = pyotp.TOTP(stored_otp)
+        print(totp)
+        if totp.verify(otp):
+            print('success')
+            return jsonify({'success': True})
+        
+    session.pop('otp_secret', None)
+    session.pop('otp_time', None)
+
+    return jsonify({'error': True})
 
 
 @app.route('/students/records/search/', methods=['GET'])

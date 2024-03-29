@@ -34,6 +34,12 @@ endblock %} {% block styles %}
                 <label for="email">Email</label>
                 {{ form.email }}
             </div>
+
+            <div class="single-row">
+              <label for="otp">OTP</label>
+              <input type="number" id="otp" placeholder="Enter OTP" required>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         
             <div class="single-row">
                 <label for="password">New password</label>
@@ -50,6 +56,7 @@ endblock %} {% block styles %}
               {{ form.current_password }}
             </div>
         
+            <button type="button" id="send-otp-btn" class="update-btn">Send OTP</button>
             <button type="submit" class="update-btn">Update</button>
         </form>
         
