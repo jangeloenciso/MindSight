@@ -45,7 +45,10 @@ href="/static/fonts/custom-fonts.css"
                     </a>
                 </div>
                 <button class="delete" data-filename="{{ document.filename }}">
-                    <img src="{{ url_for('static', filename='bin.png') }}"/>
+                    <img
+                        src="/static/archive-button.png"
+                        alt="archive"
+                    />
                 </button>
             </div>
             {% endif %} {% endfor %}
