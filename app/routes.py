@@ -199,9 +199,9 @@ def otp_forgot():
 
 
 # TODO: to be fixed (form not validating)
-@app.route('/reset-password', methods=['POST', 'GET'])
+@app.route('/reset-password', methods=['GET', 'POST'])
 def reset_password():
-
+    
     form = ResetPassword()
 
     username = session.get('username')
@@ -1214,11 +1214,64 @@ def edit_record(student_id):
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
 
+@app.route('/student_id_form', methods=['POST', 'GET'])
+def student_id_form():
+
+    if request.method == 'POST':
+        student_id = request.form.get('student_id')
+        print(student_id)
+        if student_id:
+            return redirect(url_for('add_record', student_id=student_id))
+        else:
+            return render_template('student_id.html', student_id=student_id)
+        
+    return render_template('student_id.html')
+
+# TODO: prepopulate other fields if and only if student already exist
 @app.route('/add', methods=['GET', 'POST'])
 def add_record():
+    student_id = request.args.get('student_id')
     form = StudentRecordForm()
 
+    with db.session.no_autoflush:
+        student = (
+            BasicInformation.query
+            .options(
+                joinedload(BasicInformation.family_background),
+                joinedload(BasicInformation.health_information),
+                joinedload(BasicInformation.educational_background),
+                joinedload(BasicInformation.social_history),
+                joinedload(BasicInformation.history_information),
+                joinedload(BasicInformation.occupational_history),
+                joinedload(BasicInformation.substance_abuse_history),
+                joinedload(BasicInformation.legal_history),
+                joinedload(BasicInformation.additional_information),
+                joinedload(BasicInformation.sessions),
+                joinedload(BasicInformation.case_note)
+            )
+            .filter_by(student_id=student_id)
+            .first()
+        )
+
+    if student_id:
+        existing_student = BasicInformation.query.filter_by(student_id=student_id).first()
+        if existing_student:
+            form = StudentRecordForm(obj=existing_student)
+        else:
+            form.student_id.data = student_id
+
     if form.validate_on_submit():
+        form.populate_obj(student.family_background)
+        form.populate_obj(student.health_information)
+        form.populate_obj(student.educational_background)
+        form.populate_obj(student.social_history)
+        form.populate_obj(student.history_information)
+        form.populate_obj(student.occupational_history)
+        form.populate_obj(student.substance_abuse_history)
+        form.populate_obj(student.legal_history)
+        form.populate_obj(student.additional_information)
+
+
         history_info = HistoryInformation(
             # -- DONE: verified 'other' field --works.
             # TODO: Frontend, remove/disable checkbox for other
@@ -1566,7 +1619,7 @@ def add_record():
         logging.error("Form validation failed")
         logging.error('ERRORS:', form.errors)
 
-    return render_template('add_record.html', form=form, errors=errors)
+    return render_template('add_record.html', form=form, errors=errors, student_id=student_id)
 
 @app.route('/print_report/<selected_year>')
 def print_report(selected_year):

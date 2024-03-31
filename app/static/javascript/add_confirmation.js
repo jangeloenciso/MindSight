@@ -18,11 +18,12 @@ document.getElementById('submit_form').addEventListener('submit', function(event
                 customClass: {
                     cancelButton: 'cancel-button-class-error',
                     title: 'title-error'
-                }
+                },
+                allowOutsideClick: false
             })
         }
         else {
-            window.location.href = 'dashboard';
+            window.location.assign('/dashboard');
         }
     })
     .catch(error => {
@@ -56,11 +57,10 @@ document.getElementById('toggleConfirmation').addEventListener('click', function
             confirmButton: `confirm-button-class`,
             cancelButton: 'cancel-button-class'
             },
+    allowOutsideClick: false
     }).then((result) => {
         if (result.isConfirmed) {
-            // If confirmed, redirect to the student_record page
-            window.location.href= 'add';
-        } else if (result.dismiss === swal.DismissReason.cancel) {
+            window.location.assign('/student_id_form');
         }
-    });
-});
+    })
+})
