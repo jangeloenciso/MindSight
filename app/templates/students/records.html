@@ -25,19 +25,7 @@
         {% endif %}
       </span>
       <div class="back-button">
-        <a href="
-          {% if year_level %}
-          {{ url_for('jhs') }}
-          {% elif course %}
-          {{ url_for('shs') }}
-          {% elif college == 'CEA' or college == 'CBEA' or college == 'CAS' or college == 'CED' or college == 'IHK' %}
-          {{ url_for('colleges') }}
-          {% elif college == 'GRAD' %}
-          {{ url_for('graduate') }}
-          {% elif college == 'LLL' %}
-          {{ url_for('lll') }}
-          {% endif %}"
-        >
+        <a href="{{ url_for('level') }}">
             <img src="/static/SVG/back_button.svg" />
         </a>
       </div>
@@ -84,7 +72,7 @@
 
     <!-- flex grid -->
     <div class="grid-header">
-      <div class="grid-checkbox"></div>
+      <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" id="select-all"/></div>
       <div class="grid-section">Student ID</div>
       <div class="grid-name">Name</div>
       <div class="grid-gender">Gender</div>
@@ -135,6 +123,16 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Select all checkbox
+  const selectAllCheckbox = document.getElementById('select-all');
+
+  selectAllCheckbox.addEventListener('change', function() {
+    const checkboxes = document.querySelectorAll('.record-checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = selectAllCheckbox.checked;
+    });
+  });
+
   document.querySelectorAll(".archive-container").forEach(button => {
     button.addEventListener("click", function(event) {
       event.preventDefault();
@@ -142,81 +140,84 @@ document.addEventListener('DOMContentLoaded', function() {
       const selectedRecords = [];
       
       document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
-          selectedRecords.push(checkbox.dataset.studentId);
+        selectedRecords.push(checkbox.dataset.studentId);
       });
 
+      console.log('Selected Records:', selectedRecords);
+      
       if (selectedRecords.length === 0) {
-          swal.fire({
-              iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-              title: 'Error!',
-              text: 'Please select at least one record to archive',
-              confirmButtonText: 'Okay',
-              customClass: {
-                  confirmButton: `confirm-button-class`,
-              }
-          });
-          return;
+        swal.fire({
+          iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+          title: 'Error!',
+          text: 'Please select at least one record to archive',
+          confirmButtonText: 'Okay',
+          customClass: {
+            confirmButton: `confirm-button-class`,
+          }
+        });
+        return;
       }
 
       swal.fire({
-          iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-          title: 'Are you sure?',
-          text: "You're about to archive all selected records",
-          showCancelButton: true,
-          confirmButtonText: 'Yes',
-          customClass: {
-            confirmButton: `confirm-button-class`,
-            cancelButton: 'cancel-button-class'
-          }
+        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+        title: 'Are you sure?',
+        text: "You're about to archive all selected records",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        customClass: {
+          confirmButton: `confirm-button-class`,
+          cancelButton: 'cancel-button-class'
+        }
       }).then((result) => {
-          if (result.isConfirmed) {
-            fetch('/students/records/bulk_archive', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
-                },
-                body: JSON.stringify({ records: selectedRecords })
-            })
-            .then(response => {
-                if (response.ok) {
-                  swal.fire({
-                        iconHtml: '<img class="custom-icon" src="/static/popup.png">',
-                        title: 'Success!',
-                        text: 'Records archived successfully.',
-                        showConfirmButton: false,
-                        timer: 2000,
-                        timerProgressBar: true,
-                    }).then(() => {
-                          window.location.reload();
-                    });
-                } else {
-                    swal.fire({
-                        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-                        title: 'Error!',
-                        text: 'Failed to archive records, please try again.',
-                        showConfirmButton: true,
-                        confirmButtonText: 'Okay',
-                        customClass: {
-                            confirmButton: `confirm-button-class`,
-                        }
-                    });
+        if (result.isConfirmed) {
+          console.log('Sending POST request with payload:', { records: selectedRecords }); // Log POST request payload
+          fetch('/students/records/bulk_archive', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ records: selectedRecords })
+          })
+          .then(response => {
+            if (response.ok) {
+              swal.fire({
+                iconHtml: '<img class="custom-icon" src="/static/popup.png">',
+                title: 'Success!',
+                text: 'Records archived successfully.',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+              }).then(() => {
+                window.location.reload();
+              });
+            } else {
+              swal.fire({
+                iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                title: 'Error!',
+                text: 'Failed to archive records, please try again.',
+                showConfirmButton: true,
+                confirmButtonText: 'Okay',
+                customClass: {
+                  confirmButton: `confirm-button-class`,
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                swal.fire({
-                    iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-                    title: 'Error!',
-                    text: 'An error occurred while archiving records',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Try again',
-                    customClass: {
-                        confirmButton: `confirm-button-class`,
-                    }
-                });
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            swal.fire({
+              iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+              title: 'Error!',
+              text: 'An error occurred while archiving records',
+              showConfirmButton: true,
+              confirmButtonText: 'Try again',
+              customClass: {
+                confirmButton: `confirm-button-class`,
+              }
             });
-          }
+          });
+        }
       });
     });
   });

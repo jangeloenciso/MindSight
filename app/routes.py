@@ -169,12 +169,11 @@ def send_otp_to_email_forgot(email, otp):
         smtp_server.sendmail(sender, recipients, msg.as_string())
 
 
-@app.route('/otp_forgot-password', methods=['POST', 'GET'])
+@app.route('/otp_forgot-password', methods=['GET', 'POST'])
 def otp_forgot():
-
-    if request.method == 'POST':
-        otp = request.json.get('otp') 
     
+    if request.method == 'POST':
+        otp = request.form.get('otp')
         stored_otp = session.get('otp_secret_forgot')
         otp_time = session.get('otp_time_forgot')
         
@@ -189,16 +188,21 @@ def otp_forgot():
             if totp.verify(otp):
                 print('success')
                 return redirect(url_for('reset_password'))
-            
+
+        else:
+            return jsonify({'error': True})
+        
         session.pop('otp_secret_forgot', None)
         session.pop('otp_time_forgot', None)
 
-        return jsonify({'error': True})   
+    # else:
+    #     print('error: request is not POST')
+    #     return jsonify({'error': True})
     
     return render_template('otp_forgot.html')
 
 
-# TODO: to be fixed (form not validating)
+
 @app.route('/reset-password', methods=['GET', 'POST'])
 def reset_password():
     
@@ -226,6 +230,7 @@ def reset_password():
         else:
             print('Incorrect security answer', 'error')
             return jsonify({'error': 'Incorrect security answer'})
+        
     
     _security_question = user.security_question
     security_question = SECURITY_QUESTIONS.get(_security_question, 'Unknown Question')
@@ -679,10 +684,6 @@ def print_record(student_id):
 def level():
     return render_template('level.html')
 
-@app.route('/JHS')
-@login_required
-def jhs():
-    return render_template('jhs.html')
 
 @app.route('/students/records/JHS/<int:year_level>')
 @login_required
@@ -709,10 +710,6 @@ def jhs_records(year_level):
 
     return render_template('students/records.html', year_level_name=college_name(year_level), year_level=year_level, data=data, records=records, student_id=student_id)
 
-@app.route('/SHS')
-@login_required
-def shs():
-    return render_template('shs.html')
 
 @app.route('/students/records/SHS/<course>')
 @login_required
@@ -739,10 +736,6 @@ def shs_records(course):
 
     return render_template('students/records.html', course_name=college_name(course), course=course, data=data, records=records, student_id=student_id)
 
-@app.route('/colleges')
-@login_required
-def colleges():
-    return render_template('colleges.html')
 
 @app.route('/students/records/COLLEGE/<college>')
 @login_required
