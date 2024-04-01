@@ -128,8 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   selectAllCheckbox.addEventListener('change', function() {
     const checkboxes = document.querySelectorAll('.record-checkbox');
-    checkboxes.forEach(checkbox => {
-      checkbox.checked = selectAllCheckbox.checked;
+    checkboxes.forEach((checkbox, index) => {
+      if (index !== 0) {
+        checkbox.checked = selectAllCheckbox.checked;
+        checkbox.dispatchEvent(new Event('change'));
+      }
     });
   });
 
@@ -139,8 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const csrfToken = document.querySelector('input[name="csrf_token"]').value;
       const selectedRecords = [];
       
-      document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
-        selectedRecords.push(checkbox.dataset.studentId);
+      document.querySelectorAll('.record-checkbox:checked').forEach((checkbox, index) => {
+        if (index !== 0) {
+          selectedRecords.push(checkbox.dataset.studentId);
+        }
       });
 
       console.log('Selected Records:', selectedRecords);

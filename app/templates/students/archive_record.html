@@ -50,7 +50,7 @@
 
     <!-- flex grid -->
     <div class="grid-header">
-      <div class="grid-checkbox"></div>
+      <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" id="select-all"/></div>
       <div class="grid-section">Student ID</div>
       <div class="grid-name">Name</div>
       <div class="grid-gender">Gender</div>
@@ -85,16 +85,33 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Select all checkbox
+  const selectAllCheckbox = document.getElementById('select-all');
+
+  selectAllCheckbox.addEventListener('change', function() {
+    const checkboxes = document.querySelectorAll('.record-checkbox');
+    checkboxes.forEach((checkbox, index) => {
+      if (index !== 0) {
+        checkbox.checked = selectAllCheckbox.checked;
+        checkbox.dispatchEvent(new Event('change'));
+      }
+    });
+  });
+
   document.querySelectorAll(".archive-container").forEach(button => {
     button.addEventListener("click", function(event) {
       event.preventDefault();
       const csrfToken = document.querySelector('input[name="csrf_token"]').value;
       const selectedRecords = [];
       
-      document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
+      document.querySelectorAll('.record-checkbox:checked').forEach((checkbox, index) => {
+        if (index !== 0) {
           selectedRecords.push(checkbox.dataset.studentId);
+        }
       });
 
+      console.log('Selected Records:', selectedRecords);
+      
       if (selectedRecords.length === 0) {
           swal.fire({
               iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
@@ -167,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
 
 function handleClick(event, studentId) {
     // Check if checkbox has been clicked
