@@ -4,78 +4,135 @@ endblock %} {% block styles %}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %} {% block content %}
 <div class="right">
-  <div class="column1">
-    <div class="experience-container">
-        <span class="title" id="experience">
-          <div>Experiences</div>
-          <div class="back-button">
-            <a href="{{ url_for ('experiences')}}">
-                <img src="/static/SVG/back_button.svg"/>
-            </a>
-          </div>
-        </span>
+    <!-- <div class="title-date">
+      <span>
+        Dashboard
+      </span>
+      <span class="date">
+        3/29/24 1:56 PM
+      </span>
+    </div> -->
+    <div class="column1">
+      <div class="experience-container">
+          <span class="title" id="experience">
+            <div>Experiences</div>
+            <!-- <div class="back-button">
+              <a href="{{ url_for ('experiences')}}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div> -->
+          </span>
 
-      <div id="history_container"> </div>
-      
+        <div id="history_container"> </div>
+        
+      </div>
     </div>
-  </div>
-  <div class="column2">
-    <div class="level-container">
-      <span class="title" id="college">
-        <div>Level Summaries</div>
-      </span>
-      <canvas id="myChart2"></canvas>
+    <div class="column2">
+      <div class="row1">
+        <div class="total-cases">
+          <div class="total-cases-container">
+            <span class="title-total-cases">
+              <div class="cases">Total Cases:&nbsp;</div>
+            </span>
+            <span class="title-total-cases" id="total-cases"></span>
+          </div>
+          <canvas id="myChart2" height="120"></canvas>
+        </div>
+        <div class="terminated-cases">
+          <span class="title" id="terminated-cases">
+            <div>Terminated</div>
+          </span>
+
+        </div>
+      </div>
+      <div class="row2">
+        <div class="bottom-container">
+          <div class="container">
+            <span class="title" id="campus">
+              <div>Campus</div>
+            </span>
+
+          </div>
+          <div class="vl"></div>
+          <div class="container">
+            <span class="title" id="concern">
+              <div>Concern</div>
+            </span>
+
+          </div>
+          <div class="vl"></div>
+          <div class="container">
+            <span class="title" id="identity">
+              <div>Identity</div>
+            </span>
+
+          </div>
+          <div class="vl"></div>
+          <div class="container">
+            <span class="title" id="religion">
+              <div>Religion</div>
+            </span>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="campus-container">
-        <span class="title" id="campus">
-          <div>Campus</div>
+    <!-- <div class="column2">
+      <div class="level-container">
+        <span class="title" id="college">
+          <div>Level Summaries</div>
+        </span>
+        <canvas id="myChart2"></canvas>
+      </div>
+      <div class="row">
+        <div class="campus-container">
+          <span class="title" id="campus">
+            <div>Campus</div>
+            <div class="back-button">
+              <a href="{{ url_for ('campus')}}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div>
+          </span>
+          <canvas id="myChart3" height="100" width="100"></canvas>
+        </div>
+        <div class="religion-container">
+          <span class="title" id="religion">
+            <div>Cases</div>
+            <div class="back-button">
+              <a href="{{ url_for ('cases')}}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div>
+          </span>
+          <div id="cases_container" height="100" width="100"></div>
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="column3">
+      <div class="concern-container">
+        <span class="title" id="nature">
+          <div>Brief description of Concerns</div>
           <div class="back-button">
-            <a href="{{ url_for ('campus')}}">
+            <a href="{{ url_for ('nature_of_concern')}}">
                 <img src="/static/SVG/back_button.svg"/>
             </a>
           </div>
         </span>
-        <canvas id="myChart3" height="100" width="100"></canvas>
+        <div id="concerns_container"></div>
       </div>
-      <div class="religion-container">
-        <span class="title" id="religion">
-          <div>Cases</div>
+      <div class="identity-container">
+        <span class="title" id="identity">
+          <div>Identity</div>
           <div class="back-button">
-            <a href="{{ url_for ('cases')}}">
+            <a href="{{ url_for ('identity')}}">
                 <img src="/static/SVG/back_button.svg"/>
             </a>
           </div>
         </span>
-        <div id="cases_container" height="100" width="100"></div>
+        <canvas id="myChart6"></canvas>
       </div>
-    </div>
-  </div>
-  <div class="column3">
-    <div class="concern-container">
-      <span class="title" id="nature">
-        <div>Brief description of Concerns</div>
-        <div class="back-button">
-          <a href="{{ url_for ('nature_of_concern')}}">
-              <img src="/static/SVG/back_button.svg"/>
-          </a>
-        </div>
-      </span>
-      <div id="concerns_container"></div>
-    </div>
-    <div class="identity-container">
-      <span class="title" id="identity">
-        <div>Identity</div>
-        <div class="back-button">
-          <a href="{{ url_for ('identity')}}">
-              <img src="/static/SVG/back_button.svg"/>
-          </a>
-        </div>
-      </span>
-      <canvas id="myChart6"></canvas>
-    </div>
-  </div>
-  </div>
+    </div> -->
 </div>
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>

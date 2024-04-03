@@ -103,7 +103,7 @@ function generateBarGraph(data, chartNumber) {
         var values = data.map(item => item.student_count);
 
         chart2 = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
