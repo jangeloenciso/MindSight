@@ -234,9 +234,8 @@ label {
     display: inline-block;
 }
 
-
-/* roundes checkboxes but eliminates the checkmark */
-.checkbox-round {
+/* Universal style for all radio buttons */
+.radio-btn {
     width: auto;
     aspect-ratio: 1/1;
     background-color: white;
@@ -249,8 +248,17 @@ label {
     cursor: pointer;
 }
 
-.checkbox-round:checked {
+.radio-btn:checked {
     background-color: #0075ff;
+}
+
+/* Experiences checkbox styling */
+.checkbox-exp {
+    width: 20px;
+    aspect-ratio: 1/1;
+    vertical-align: middle;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
 }
 
 
