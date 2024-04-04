@@ -156,13 +156,15 @@ def send_otp_to_email_forgot(email, otp):
     sender = current_app.config['MAIL_USERNAME']
     recipients = [email]
     password = current_app.config['MAIL_PASSWORD']
+    server = current_app.config['MAIL_SERVER']
+    port = current_app.config['MAIL_PORT']
 
     msg = MIMEText(f'Your OTP Verification is: {otp}')
     msg['Subject'] = 'OTP Verification'
     msg['From'] = sender
     msg['To'] = ', '.join(recipients)
 
-    with smtplib.SMTP(current_app.config['MAIL_SERVER'], current_app.config['MAIL_PORT']) as smtp_server:
+    with smtplib.SMTP(server, port) as smtp_server:
         smtp_server.ehlo() 
         smtp_server.starttls()
         smtp_server.login(sender, password)
