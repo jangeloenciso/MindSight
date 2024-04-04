@@ -11,39 +11,48 @@ endblock %} {% block styles %}
       <section>
         <div class="left-header">User Profile Details</div>
         <div class="right-content">
-          
-          <form id="confirmation" action="{{ url_for('settings') }}" method="POST">
+          <form
+            id="confirmation"
+            action="{{ url_for('settings') }}"
+            method="POST"
+          >
             {{ form.hidden_tag() }}
-        
+
             <div class="single-row">
-                <label for="ufname">First name</label>
-                {{ form.first_name }}
+              <label for="ufname">First name</label>
+              {{ form.first_name(autocomplete='off') }}
             </div>
-        
+
             <div class="single-row">
-                <label for="ulname">Last name</label>
-                {{ form.last_name }}
+              <label for="ulname">Last name</label>
+              {{ form.last_name(autocomplete='off') }}
             </div>
-        
+
             <div class="single-row">
-                <label for="username">Username</label>
-                {{ form.username }}
+              <label for="username">Username</label>
+              {{ form.username(autocomplete='off') }}
             </div>
-        
+
             <div class="single-row">
-                <label for="email">Email</label>
-                {{ form.email }}
+              <label for="email">Email</label>
+              {{ form.email(autocomplete='off') }}
             </div>
 
             <div class="single-row">
               <label for="otp">OTP</label>
-              <input type="number" id="otp" placeholder="Enter OTP" required>
+              <input
+                type="number"
+                id="otp"
+                placeholder="Enter OTP"
+                autocomplete="off"
+                required
+              />
             </div>
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
             <div class="single-row">
-                <label for="password">New password</label>
-                {{ form.password(id='password') }}
+              <label for="password">New password</label>
+              {{ form.password(id='password') }}
             </div>
 
             <div class="single-row">
@@ -55,11 +64,12 @@ endblock %} {% block styles %}
               <label for="current_password">Old password</label>
               {{ form.current_password }}
             </div>
-        
-            <button type="button" id="send-otp-btn" class="update-btn">Send OTP</button>
+
+            <button type="button" id="send-otp-btn" class="update-btn">
+              Send OTP
+            </button>
             <button type="submit" class="update-btn">Update</button>
-        </form>
-        
+          </form>
         </div>
       </section>
     </div>

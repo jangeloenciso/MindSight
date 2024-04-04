@@ -1,6 +1,6 @@
 <!-- right -->
-{% extends "components/base.html" %} {% block title %} Mindsight - Add New Admin{%
-endblock %} {% block styles %}
+{% extends "components/base.html" %} {% block title %} Mindsight - Add New
+Admin{% endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/signup.css" />
 {% endblock %} {% block content %}
 <div class="right">
@@ -36,6 +36,7 @@ endblock %} {% block styles %}
                 type="text"
                 placeholder="First Name"
                 name="first_name"
+                autocomplete="off"
                 required
               />
               {% for error in form.first_name.errors %}
@@ -46,6 +47,7 @@ endblock %} {% block styles %}
                 type="text"
                 placeholder="Last Name"
                 name="last_name"
+                autocomplete="off"
                 required
               />
               {% for error in form.last_name.errors %}
@@ -56,6 +58,7 @@ endblock %} {% block styles %}
                 type="text"
                 placeholder="Username"
                 name="username"
+                autocomplete="off"
                 required
               />
               {% for error in form.username.errors %}
@@ -68,6 +71,7 @@ endblock %} {% block styles %}
                   class="styled-input"
                   placeholder="Email"
                   name="email"
+                  autocomplete="off"
                   required
                 />
                 {% for error in form.email.errors %}
@@ -122,12 +126,24 @@ endblock %} {% block styles %}
               </div>
 
               <select name="security_question" required>
-                <option value="" disabled selected>Select Security Question</option>
-                <option value="question1">In what city did your parents meet?</option>
-                <option value="question2">Where did you go on your first solo trip?</option>
-                <option value="question3">What was the first dish you learned to cook?</option>
-                <option value="question4">What was the name of your first stuffed toy?</option>
-                <option value="question5">What was the title of the first book you read?</option>
+                <option value="" disabled selected>
+                  Select Security Question
+                </option>
+                <option value="question1">
+                  In what city did your parents meet?
+                </option>
+                <option value="question2">
+                  Where did you go on your first solo trip?
+                </option>
+                <option value="question3">
+                  What was the first dish you learned to cook?
+                </option>
+                <option value="question4">
+                  What was the name of your first stuffed toy?
+                </option>
+                <option value="question5">
+                  What was the title of the first book you read?
+                </option>
               </select>
               {% for error in form.role.errors %}
               <div class="error-message">{{ error }}</div>
@@ -137,6 +153,7 @@ endblock %} {% block styles %}
                 type="text"
                 placeholder="e.g dubai"
                 name="security_answer"
+                autocomplete="off"
                 required
               />
 
