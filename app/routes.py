@@ -162,29 +162,29 @@ def send_otp_to_email_forgot(email, otp):
     msg['From'] = sender
     msg['To'] = ', '.join(recipients)
 
-    with smtplib.SMTP('smtp.gmail.com', 587) as smtp_server:
+    with smtplib.SMTP(current_app.config['MAIL_SERVER'], current_app.config['MAIL_PORT']) as smtp_server:
         smtp_server.ehlo() 
         smtp_server.starttls()
         smtp_server.login(sender, password)
         smtp_server.sendmail(sender, recipients, msg.as_string())
 
 
-@app.route('/otp_forgot-password', methods=['GET', 'POST'])
+@app.route('/otp_forgot-password', methods=['POST'])
 def otp_forgot():
     
     if request.method == 'POST':
-        otp = request.form.get('otp')
+        otp = request.json.get('otp')
         stored_otp = session.get('otp_secret_forgot')
         otp_time = session.get('otp_time_forgot')
         
-        print(otp)
+        print('OTP', otp)
         session_timeout = current_app.config.get('SESSION_TIMEOUT')
         session_timeout_seconds = session_timeout.total_seconds()
 
         if stored_otp and otp_time and (time.time() - otp_time) <= session_timeout_seconds:
             totp = pyotp.TOTP(stored_otp)
             otp_number = totp.now()
-            print(otp_number)
+            print('OTP Now', otp_number)
             if totp.verify(otp):
                 print('success')
                 return redirect(url_for('reset_password'))
@@ -195,9 +195,9 @@ def otp_forgot():
         session.pop('otp_secret_forgot', None)
         session.pop('otp_time_forgot', None)
 
-    # else:
-    #     print('error: request is not POST')
-    #     return jsonify({'error': True})
+    else:
+        print('error: request is not POST')
+        return jsonify({'error': True})
     
     return render_template('otp_forgot.html')
 
