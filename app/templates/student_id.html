@@ -13,19 +13,49 @@
 
   <body>
     <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
-      <main>
-        <div class="logo-container">
-          <img src="../static/SVG/EYE LOGO.svg" />
-        </div>
-        <div>
-            <p class="header">Student ID</p>
-            <form action="{{ url_for('student_id_form') }}" method="POST">
-                <input type="text" id="student_id" name="student_id" required>
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                <button type="submit">SUBMIT</button>
-            </form>
-        </div>
-      </main>
+    <main>
+      <div class="logo-container">
+        <img src="../static/SVG/EYE LOGO.svg" />
+      </div>
+      <div>
+        <p class="header">Student ID</p>
+        <form
+          id="studentId"
+          action="{{ url_for('student_id_form') }}"
+          method="POST"
+        >
+          <input
+            type="text"
+            id="studentIdInput"
+            name="student_id"
+            placeholder="xxxx-xxxxxx"
+            required
+          />
+          <span id="error-msg" class="error"></span>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </main>
     <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
   </body>
+
+  <script>
+    // student id validation
+    const form = document.getElementById("studentId");
+    const studentIdInput = document.getElementById("studentIdInput");
+    const errorMsg = document.getElementById("error-msg");
+
+    form.addEventListener("submit", function (event) {
+      const regex = /^\d{4}-\d{6}$/; // Regular expression pattern
+
+      if (!regex.test(studentIdInput.value)) {
+        alert(
+          "Invalid student ID format. Please enter in the format xxxx-xxxxxx."
+        );
+        event.preventDefault(); // Prevent form submission if format is incorrect
+        studentIdInput.focus();
+      }
+    });
+  </script>
 </html>
