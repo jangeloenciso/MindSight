@@ -158,7 +158,9 @@ p {
 
 /* individual sizes per column */
 .grid-checkbox {
-    flex-basis: 8%;
+    display: flex;
+    column-gap: 10px;
+    flex-basis: 13%;
 }
 
 .grid-section {
@@ -170,7 +172,7 @@ p {
 }
 
 .grid-gender {
-    flex-basis: 21%;
+    flex-basis: 17%;
 }
 
 .grid-counselor {
@@ -199,7 +201,7 @@ p {
 }
 
 /* checkbox in odd rows */
-.grid-row input[type="checkbox"] {
+input[type="checkbox"] {
     transform: scale(1.7);
     border-radius: 20px;
     accent-color: var(--primary-color);
