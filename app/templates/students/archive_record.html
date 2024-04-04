@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   selectAllCheckbox.addEventListener('change', function() {
     const checkboxes = document.querySelectorAll('.record-checkbox');
-    checkboxes.forEach((checkbox, index) => {
-      if (index !== 0) {
+    checkboxes.forEach(checkbox => {
+      if (checkbox !== selectAllCheckbox) {
         checkbox.checked = selectAllCheckbox.checked;
         checkbox.dispatchEvent(new Event('change'));
       }
@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const csrfToken = document.querySelector('input[name="csrf_token"]').value;
       const selectedRecords = [];
       
-      document.querySelectorAll('.record-checkbox:checked').forEach((checkbox, index) => {
-        if (index !== 0) {
+      document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
+        if (checkbox !== selectAllCheckbox) {
           selectedRecords.push(checkbox.dataset.studentId);
         }
       });
