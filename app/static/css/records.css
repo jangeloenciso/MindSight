@@ -213,6 +213,10 @@ input[type="checkbox"] {
     accent-color: var(--bg-orange);
 }
 
+#select-all {
+    accent-color: var(--bg-orange);
+}
+
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
     content: "";
