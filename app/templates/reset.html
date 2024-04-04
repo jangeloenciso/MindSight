@@ -15,15 +15,10 @@
 
     <form
       id="confirmation_reset"
-      action="{{ url_for('reset_password', username=username) }}"
+      action="{{ url_for('reset_password') }}"
       method="POST"
     >
       <main>
-        <div class="back-container">
-          <a href="{{ url_for ('forgot_password')}}">
-            <img src="../static/SVG/back_button.svg" id="back_button" />
-          </a>
-        </div>
         <div class="logo-container">
           <img src="../static/SVG/EYE LOGO.svg" />
         </div>
@@ -35,13 +30,14 @@
 
         <div class="secAnswer">{{ form.security_answer }}</div>
         <div>
-          <label for="password">New Password</label> {{ form.password(id='password') }}
+          <label for="password">New Password</label> 
+          {{ form.password(id='password') }}
         </div>
 
         <div>
-          <label for="confirm">Confirm New Password</label> {{ form.confirm(id='confirm') }}
+          <label for="confirm">Confirm New Password</label> 
+          {{ form.confirm(id='confirm') }}
         </div>
-        <input type="hidden" name="token" value="{{ token }}">
         <button type="submit">RESET PASSWORD</button>
       </main>
     </form>

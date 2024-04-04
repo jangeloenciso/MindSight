@@ -3,5 +3,5 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class ForgotPassword(FlaskForm):    
-    username = StringField('Username', validators=[DataRequired()])
+    email_address = StringField('Email Address', validators=[DataRequired()])
     submit = SubmitField('Submit')

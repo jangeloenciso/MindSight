@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/custom-fonts.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
+    <link rel="stylesheet" href="../static/css/forgot.css" />
+    <title>Mindsight - OTP Verification</title>
+  </head>
+
+  <body>
+    <img class="svg-top" src="../static/SVG/svg-login-top.svg" />
+      <main>
+        <div class="logo-container">
+          <img src="../static/SVG/EYE LOGO.svg" />
+        </div>
+        <div>
+          <p class="header">OTP Verification</p>
+          <form id="confirmation_otp">
+            <label for="otp">OTP</label>
+            <input type="number" id="otp">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit">VERIFY</button>
+          </form>
+        </div>
+      </main>
+    <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
+
+    <script src="../static/javascript/otp_verification.js"></script>
+    <script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
+  </body>
+</html>
+

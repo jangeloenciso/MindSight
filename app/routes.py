@@ -125,14 +125,15 @@ def forgot_password():
     form = ForgotPassword()
     
     if request.method == 'POST' and form.validate_on_submit():
-        _username = form.username.data
-        user = User.query.filter_by(username=_username).first()
+        _email = form.email_address.data
+        user = User.query.filter_by(email=_email).first()
             
         if user:
             secret = pyotp.random_base32()
             totp = pyotp.TOTP(secret)
 
             otp_value = totp.now()
+            _username = user.username
 
             session['otp_secret_forgot'] = secret 
             session['otp_time_forgot'] = time.time()
@@ -150,9 +151,8 @@ def forgot_password():
     
     return render_template('forgot.html', form=form)
 
-
+# Send OTP to the registered email address
 def send_otp_to_email_forgot(email, otp):
-
     sender = current_app.config['MAIL_USERNAME']
     recipients = [email]
     password = current_app.config['MAIL_PASSWORD']
@@ -170,44 +170,37 @@ def send_otp_to_email_forgot(email, otp):
         smtp_server.login(sender, password)
         smtp_server.sendmail(sender, recipients, msg.as_string())
 
+# Render OTP form
+@app.route('/otp_forgot-password', methods=['GET'])
+def display_otp_form():
 
-@app.route('/otp_forgot-password', methods=['POST'])
-def otp_forgot():
-    
-    if request.method == 'POST':
-        otp = request.json.get('otp')
-        stored_otp = session.get('otp_secret_forgot')
-        otp_time = session.get('otp_time_forgot')
-        
-        print('OTP', otp)
-        session_timeout = current_app.config.get('SESSION_TIMEOUT')
-        session_timeout_seconds = session_timeout.total_seconds()
-
-        if stored_otp and otp_time and (time.time() - otp_time) <= session_timeout_seconds:
-            totp = pyotp.TOTP(stored_otp)
-            otp_number = totp.now()
-            print('OTP Now', otp_number)
-            if totp.verify(otp):
-                print('success')
-                return redirect(url_for('reset_password'))
-
-        else:
-            return jsonify({'error': True})
-        
-        session.pop('otp_secret_forgot', None)
-        session.pop('otp_time_forgot', None)
-
-    else:
-        print('error: request is not POST')
-        return jsonify({'error': True})
-    
     return render_template('otp_forgot.html')
 
+# Validate the OTP
+@app.route('/otp_forgot-password', methods=['POST'])
+def verify_otp_forgot():
+    otp = request.json.get('otp')
+    stored_otp = session.get('otp_secret_forgot')
+    otp_time = session.get('otp_time_forgot')
+    
+    print('OTP', otp)
+    session_timeout = current_app.config.get('SESSION_TIMEOUT')
+    session_timeout_seconds = session_timeout.total_seconds()
+
+    if stored_otp and otp_time and (time.time() - otp_time) <= session_timeout_seconds:
+        totp = pyotp.TOTP(stored_otp)
+        otp_number = totp.now()
+        print('OTP Now', otp_number)
+        if totp.verify(otp):
+            print('success')
+            return jsonify({'success': True})
+
+    print('error: OTP verification failed')
+    return jsonify({'error': True})
 
 
 @app.route('/reset-password', methods=['GET', 'POST'])
 def reset_password():
-    
     form = ResetPassword()
 
     username = session.get('username')
