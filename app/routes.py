@@ -511,6 +511,7 @@ def otp_settings():
 
     return jsonify({'success': True})
 
+
 @app.route('/verify_otp', methods=['POST'])
 @login_required
 def verify_otp_settings():

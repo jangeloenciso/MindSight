@@ -12,13 +12,14 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
                 title: 'Error!',
                 text: 'User does not exist.',
                 iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Try Again',
                 customClass: {
                     cancelButton: 'cancel-button-class'
                 }
             });
-        } else if (data.success) {
+        } else {
             swal.fire({
                 title: 'OTP Sent!',
                 text: 'Please check your email for the OTP.',
@@ -32,8 +33,6 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
                     window.location.assign('/otp_forgot-password');
                 }
             });
-        } else {
-            swal.fire('Error', 'Failed to send OTP. Please try again.', 'error');
         }
     })
     .catch(error => {
