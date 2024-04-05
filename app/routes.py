@@ -12,19 +12,14 @@ from app.forms.student_record import StudentRecordForm
 from app.forms.edit_credentials import EditCredentials
 from app.forms.forgot import ForgotPassword
 from app.forms.reset import ResetPassword
-from app.forms.upload import UploadFileForm
-from functools import wraps
 from werkzeug.utils import secure_filename
-import logging, os, secrets, smtplib, pyotp, time
+import logging, os, smtplib, pyotp, time
 from datetime import datetime
 from sqlalchemy import desc, func, and_
 import base64
 from collections import defaultdict
 from calendar import month_name
-from flask_mail import Mail
 from email.mime.text import MIMEText
-
-mail = Mail(app)
 
 
 SECURITY_QUESTIONS = {
@@ -34,14 +29,6 @@ SECURITY_QUESTIONS = {
             'question4': 'What was the name of your first stuffed toy?',
             'question5': 'What was the title of the first book you read?'
 }
-
-ROLE = {
-    'admin1': 'Director',
-    'admin2': 'Head, Counseling and Wellness',
-    'admin3': 'GCSC Personnel-Pasig',
-    'admin4': 'Registered Psychometrician',
-}
-
 
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
@@ -160,7 +147,7 @@ def send_otp_to_email_forgot(email, otp):
     port = current_app.config['MAIL_PORT']
 
     msg = MIMEText(f'Your OTP Verification is: {otp}')
-    msg['Subject'] = 'OTP Verification'
+    msg['Subject'] = 'Mindsight OTP Verification'
     msg['From'] = sender
     msg['To'] = ', '.join(recipients)
 
@@ -479,28 +466,28 @@ def settings():
 
 
 @login_required
-def send_otp_to_email(email, otp):
-
+def send_otp_to_email_settings(email, otp):
     sender = current_app.config['MAIL_USERNAME']
     recipients = [email]
     password = current_app.config['MAIL_PASSWORD']
+    server = current_app.config['MAIL_SERVER']
+    port = current_app.config['MAIL_PORT']
 
     msg = MIMEText(f'Your OTP Verification is: {otp}')
-    msg['Subject'] = 'OTP Verification'
+    msg['Subject'] = 'Mindsight OTP Verification'
     msg['From'] = sender
     msg['To'] = ', '.join(recipients)
 
-    with smtplib.SMTP('smtp.gmail.com', 587) as smtp_server:
+    with smtplib.SMTP(server, port) as smtp_server:
         smtp_server.ehlo() 
         smtp_server.starttls()
         smtp_server.login(sender, password)
         smtp_server.sendmail(sender, recipients, msg.as_string())
 
 
-
 @app.route('/otp', methods=['POST'])
 @login_required
-def otp():
+def otp_settings():
     secret = pyotp.random_base32()
     totp = pyotp.TOTP(secret)
 
@@ -511,14 +498,14 @@ def otp():
 
 
     email = current_user.email
-    send_otp_to_email(email, otp_value)
+    send_otp_to_email_settings(email, otp_value)
     print(otp_value)
 
     return jsonify({'success': True})
 
 @app.route('/verify_otp', methods=['POST'])
 @login_required
-def verify_otp():
+def verify_otp_settings():
     otp = request.json.get('otp') 
     
     stored_otp = session.get('otp_secret')
