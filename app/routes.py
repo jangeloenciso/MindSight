@@ -22,6 +22,14 @@ from calendar import month_name
 from email.mime.text import MIMEText
 
 
+ROLE = {
+    'admin1': 'Director',
+    'admin2': 'Head, Counseling and Wellness',
+    'admin3': 'GCSC Personnel-Pasig',
+    'admin4': 'Registered Psychometrician',
+}
+
+
 SECURITY_QUESTIONS = {
             'question1': 'In what city did your parents meet?',
             'question2': 'Where did you go on your first solo trip?',

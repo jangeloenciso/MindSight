@@ -36,7 +36,6 @@ Admin{% endblock %} {% block styles %}
                 type="text"
                 placeholder="First Name"
                 name="first_name"
-                autocomplete="off"
                 required
               />
               {% for error in form.first_name.errors %}
@@ -47,7 +46,6 @@ Admin{% endblock %} {% block styles %}
                 type="text"
                 placeholder="Last Name"
                 name="last_name"
-                autocomplete="off"
                 required
               />
               {% for error in form.last_name.errors %}
@@ -58,7 +56,6 @@ Admin{% endblock %} {% block styles %}
                 type="text"
                 placeholder="Username"
                 name="username"
-                autocomplete="off"
                 required
               />
               {% for error in form.username.errors %}
@@ -71,7 +68,6 @@ Admin{% endblock %} {% block styles %}
                   class="styled-input"
                   placeholder="Email"
                   name="email"
-                  autocomplete="off"
                   required
                 />
                 {% for error in form.email.errors %}
