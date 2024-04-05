@@ -9,11 +9,7 @@ class SignupForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(message="Please enter your email"), Email(message="Please enter a valid email address")])
     password = PasswordField('Password', validators=[DataRequired(message="Please enter your password"), Length(min=7, message="Password must be at least 7 characters long")])
     confirm = PasswordField('Confirm Password', validators=[DataRequired(message="Please confirm your password"), EqualTo('password', message="Passwords must match")])
-    role = SelectField('Role', choices=[('admin1', 'Director'), 
-                                        ('admin2', 'Head, Counseling and Wellness'), 
-                                        ('admin3', 'GCSC Personnel-Pasig'), 
-                                        ('admin4', 'Registered Psychometrician')
-                                        ], validators=[DataRequired(message="Please select your role")])
+    role = StringField('Role', validators=[DataRequired()])
     security_question = SelectField('Security Question', choices=[
         ('question1', 'In what city did your parents meet?'),
         ('question2', 'Where did you go on your first solo trip?'),

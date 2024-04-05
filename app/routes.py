@@ -266,12 +266,7 @@ def dashboard():
 
     print("Overall Monthly Total:", dict(overall_monthly_total))
 
-    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total)
-
-@app.route('/dashboard/experiences', methods=['GET'])
-@login_required
-def experiences():
-
+    #
     jhs_data = data_history_information('JHS')
     shs_data = data_history_information('SHS')
     college_data = data_history_information('College')
@@ -279,62 +274,32 @@ def experiences():
     lll_data = data_history_information('LLL')
 
     print(college_data)
-    
-    return render_template('dashboard/experiences.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
-
-@app.route('/dashboard/college_summary', methods=['GET'])
-@login_required
-def college_summaries():
-    
-    return render_template('dashboard/college_summaries.html')
-
-@app.route('/dashboard/nature_of_concern', methods=['GET'])
-@login_required
-def nature_of_concern():
 
     jhs_data = data_count_dict('nature_of_concern', 'JHS')
     shs_data = data_count_dict('nature_of_concern', 'SHS')
     college_data = data_count_dict('nature_of_concern', 'College')
     grad_data = data_count_dict('nature_of_concern', 'GRAD')
     lll_data = data_count_dict('nature_of_concern', 'LLL')
-    
-    return render_template('dashboard/nature_concern.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
-
-@app.route('/dashboard/campus', methods=['GET'])
-@login_required
-def campus():
 
     jhs_data = data_count_dict('campus', 'JHS')
     shs_data = data_count_dict('campus', 'SHS')
     college_data = data_count_dict('campus', 'College')
     grad_data = data_count_dict('campus', 'GRAD')
     lll_data = data_count_dict('campus', 'LLL')
-    
-    return render_template('dashboard/campus.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
-
-@app.route('/dashboard/religion', methods=['GET'])
-@login_required
-def religion():
 
     jhs_data = data_count_dict('religion', 'JHS')
     shs_data = data_count_dict('religion', 'SHS')
     college_data = data_count_dict('religion', 'College')
     grad_data = data_count_dict('religion', 'GRAD')
     lll_data = data_count_dict('religion', 'LLL')
-    
-    return render_template('dashboard/religion.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
-
-@app.route('/dashboard/identity', methods=['GET'])
-@login_required
-def identity():
 
     jhs_data = data_count_dict('gender', 'JHS')
     shs_data = data_count_dict('gender', 'SHS')
     college_data = data_count_dict('gender', 'College')
     grad_data = data_count_dict('gender', 'GRAD')
     lll_data = data_count_dict('gender', 'LLL')
-    
-    return render_template('dashboard/identity.html', jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
+
+    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total, jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 
 # pages for admin / viewing of students whose been counseled
@@ -346,7 +311,6 @@ def admin():
 
     for user in admin:
         user.full_name = user.first_name + ' ' + user.last_name
-        user.role = ROLE.get(user.role, 'Unknown Role')
 
     # query all counseled students and organize it by latest to oldest (date)
     # Subquery to get the maximum interview_date for each student
