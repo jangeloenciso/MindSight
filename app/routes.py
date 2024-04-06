@@ -260,17 +260,14 @@ def dashboard():
 
     print("Overall Monthly Total:", dict(overall_monthly_total))
 
-    #
-    jhs_data = data_history_information('JHS')
-    shs_data = data_history_information('SHS')
-    college_data = data_history_information('College')
-    grad_data = data_history_information('GRAD')
-    lll_data = data_history_information('LLL')
-
     # Fetching terminated cases data for each college
     terminated_data = {college: data_count_dict('status', college) for college in college_names}
-    
-    print(college_data)
+
+    jhs_data = data_count_dict('status', 'JHS')
+    shs_data = data_count_dict('status', 'SHS')
+    college_data = data_count_dict('status', 'College')
+    grad_data = data_count_dict('status', 'GRAD')
+    lll_data = data_count_dict('status', 'LLL')
 
     return render_template('dashboard.html', terminated_data=terminated_data, religion_data=religion_data, identity_data=identity_data, campus_data=campus_data, history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total, jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 

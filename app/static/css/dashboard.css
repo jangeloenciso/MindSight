@@ -41,6 +41,7 @@
 
 .row2 {
     height: 35%;
+    width: 100%;
 }
 
 .title-date span {
@@ -56,6 +57,7 @@
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid var(--bg-orange);
+    margin-bottom: 1em;
 }
 
 .title-total-cases div {
@@ -70,17 +72,6 @@
     color: var(--bg-orange);
 }
 
-.back-button button {
-    cursor: pointer;
-}
-
-.back-button img {
-    aspect-ratio: 1/1;
-    width: 0.9em;
-    rotate: -90deg;
-    position: relative;
-
-}
 
 .title {
     font-size: 25px;
@@ -96,21 +87,9 @@
     font-family: Lexend-Black;
 }
 
-#experience, #college, #campus,
-#nature, #religion, #identity {
-    display: flex;
-    width: 100%;
-}
-
-#myChart1, #myChart2, #myChart3,
-#myChart4, #myChart5 {
-    width: auto;
-    height: auto;
-}
-
 
 /* White bg */
-.experience-container, .total-cases, .terminated-cases, .bottom-container, .level-container, .identity-container, .concern-container, .religion-container, .campus-container {
+.experience-container, .total-cases, .terminated-cases, .bottom-container {
     background-color: var(--white);
 }
 
@@ -129,8 +108,10 @@
     padding: 0.8em;
 }
 
+
 .bottom-container {
     justify-content: space-evenly;
+    width: 100%;
 }
 
 .total-cases {
@@ -149,52 +130,8 @@
 
 .vl {
     rotate: -90;
-    width: 3px;
+    width: 1px;
     background-color: var(--bg-orange);
-}
-
-.level-container {
-    width: 100%;
-    height: 50%;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.campus-container, .religion-container {
-    width: calc(50% - 10px);
-    height: 100%;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.identity-container {
-    width: 100%;
-    height: 50%;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.concern-container {
-    height: calc(50% - 20px);
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-    display: flex;
-    flex-direction: column;
-}
-
-#concerns_container {
-    height: 100%;
-    overflow-y: auto;
-}
-
-#myChart6 {
-    max-width: 220px;
-    max-height: 220px;
-    margin: 0 auto;
 }
 
 
@@ -214,6 +151,9 @@
 .progress-bar-label {
     color: var(--primary-color);
     font-family: Lexend-SemiBold;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .progress-bar-count {
@@ -222,25 +162,6 @@
     border-radius: 1em;
     background-color: var(--bg-orange);
     margin-right: 8px;
-}
-
-.progress-bar {
-    position: relative;
-    transform: translateY(20px);
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-}
-
-/* maximum value progress bar */
-.progress-bar-underlay {
-    background-color: #a0d8e0;
-    width: 100%;
-    padding: 10px;
-}
-
-.progress-bar, .progress-bar-underlay {
-    border-radius: 20px;
 }
 
 /* flexes "progress-bar-count" and "bar-flex" side-by-side */
@@ -253,7 +174,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: auto;
+    width: 100%;
+}
+
+.content {
+    width: 85%;
+    height: 100%;
 }
 
 #title {
@@ -269,20 +195,6 @@
 }
 
 
-
-/* flex container for progress-bar and progress-bar-underlay */
-.bar-flex {
-    width: 100%;
-    height: 20px;
-    transform: translateY(-20px);
-}
-
-
-/* experiences chart overflow */
-#chart, #history_container, #campus-container, #terminated_container, #religion_container {
-    height: 90%;
-    overflow-y: auto;
-}
 
 /* Sidebar active indicator */
 .sidebar-buttons #dashboard-container::before {

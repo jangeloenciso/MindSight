@@ -15,10 +15,11 @@ endblock %} {% block styles %}
     </div> -->
     <div class="column1">
       <div class="experience-container">
-          <span class="title" id="experience">
+        <div class="total-cases-container">
+          <span class="title-total-cases" id="experiences">
             <div>Experiences</div>
           </span>
-
+        </div>
         <div id="history_container"> </div>
         
       </div>
@@ -35,14 +36,25 @@ endblock %} {% block styles %}
           <canvas id="myChart2" height="120"></canvas>
         </div>
         <div class="terminated-cases">
-          <span class="title" id="terminated-cases">
-            <div>Terminated</div>
-          </span>
-          <div class="content">
-            <div class="box">
-              <div id="terminated_container"></div>
-            </div>
+          <div class="total-cases-container">
+            <span class="title-total-cases" id="terminated">
+              <div>Terminated</div>
+            </span>
           </div>
+                <span>Junior High</span>
+                <div id="jhs_container"></div>
+    
+                <span>Senior High</span>
+                <div id="shs_container"></div>
+  
+                <span>College</span> 
+                <div id="college_container"></div> 
+
+                <span>Graduate</span> 
+                <div id="grad_container"></div>
+
+                <span>Lifelong Learners</span>
+                <div id="lll_container"></div>
         </div>
       </div>
       <div class="row2">
@@ -84,7 +96,7 @@ endblock %} {% block styles %}
             <span id="title">
               <div>Religion</div>
             </span>
-            <div class="religion-content">
+            <div class="content">
               <div class="box">
                 <div id="religion_container"></div>
               </div>
@@ -99,7 +111,7 @@ endblock %} {% block styles %}
 <script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/expand_dashboard.js') }}"></script>
 
-<script>
+<script> 
   const jhs_data = {{ jhs_data | tojson | safe }};
   const shs_data = {{ shs_data | tojson | safe }};
   const college_data = {{ college_data | tojson | safe }};
@@ -169,13 +181,16 @@ function createProgressBar(label, count) {
   
   return container;
 }
-
+  renderChart(jhs_data, 'jhs_container');
+  renderChart(shs_data, 'shs_container');
+  renderChart(college_data, 'college_container');
+  renderChart(grad_data, 'grad_container');
+  renderChart(lll_data, 'lll_container');
   renderChart(history_data, 'history_container');
   renderChart(concerns_data, 'concerns_container');
   renderChart(identity_data, 'identity_container');
   renderChart(campus_data, 'campus_container');
   renderChart(religion_data, 'religion_container');
-  renderChart(terminated_data, 'terminated_container');
   renderChart(overall_monthly_total, 'cases_container');
 </script>
 

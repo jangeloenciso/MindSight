@@ -469,10 +469,9 @@ def data_count_dict(query, college=None):
 
         counts_from_df = df[query].value_counts()
 
-        for category in categories:
-            if category in counts_from_df:
-                data_count[category] = int(counts_from_df[category])
-        return data_count
+        # Sort the dictionary by values in descending order and select the top 6
+        top_6_religions = dict(sorted(counts_from_df.items(), key=lambda item: item[1], reverse=True)[:5])
+        return top_6_religions
 
     if query == 'gender':
         categories = ["Male", "Female", "LGBTQIA+"]
@@ -497,7 +496,8 @@ def data_count_dict(query, college=None):
         return data_count
     
     if query == 'status':
-        categories = ["Active", "Terminated"]
+        df = df[df['status'] == 'Terminated']
+        categories = ["Terminated"]
         data_count = {category: 0 for category in categories}
 
         counts_from_df = df[query].value_counts()
@@ -589,8 +589,10 @@ def data_history_information(college=None, selected_year=None):
         'Job problems': int(df['job_problems'].sum())
     }
 
+    # Sort the dictionary by values in descending order and select the top 10
+    top_10_experiences = dict(sorted(data_dict.items(), key=lambda item: item[1], reverse=True)[:10])
 
-    return data_dict
+    return top_10_experiences
 
 
 
