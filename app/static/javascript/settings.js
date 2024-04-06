@@ -13,7 +13,7 @@ document.getElementById('send-otp-btn').addEventListener('click', function() {
             if (data.success) {
                 swal.fire({
                     title: 'OTP Sent!',
-                    text: 'Please check your email for the OTP.',
+                    text: 'Please check the OTP sent to the email you registered.',
                     iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
                     showConfirmButton: true,
                     customClass: {
