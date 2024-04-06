@@ -1,6 +1,7 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Dashboard{%
 endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
+<link rel="stylesheet" href="/static/css/experience.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %} {% block content %}
 <div class="right">
@@ -16,11 +17,6 @@ endblock %} {% block styles %}
       <div class="experience-container">
           <span class="title" id="experience">
             <div>Experiences</div>
-            <!-- <div class="back-button">
-              <a href="{{ url_for ('experiences')}}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
-            </div> -->
           </span>
 
         <div id="history_container"> </div>
@@ -42,105 +38,79 @@ endblock %} {% block styles %}
           <span class="title" id="terminated-cases">
             <div>Terminated</div>
           </span>
-
+          <div class="content">
+            <div class="box">
+              <div id="terminated_container"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row2">
         <div class="bottom-container">
           <div class="container">
-            <span class="title" id="campus">
+            <span id="title">
               <div>Campus</div>
             </span>
-
+            <div class="content">
+              <div class="box">
+                <div id="campus_container"> </div>
+              </div>
+            </div> 
           </div>
           <div class="vl"></div>
           <div class="container">
-            <span class="title" id="concern">
+            <span id="title">
               <div>Concern</div>
             </span>
-
+            <div class="content">
+              <div class="box">
+                <div id="concerns_container"></div>
+              </div>
+            </div>
           </div>
           <div class="vl"></div>
           <div class="container">
-            <span class="title" id="identity">
+            <span id="title">
               <div>Identity</div>
             </span>
-
+            <div class="content">
+              <div class="box">
+                <div id="identity_container"></div>
+              </div>
+            </div>
           </div>
           <div class="vl"></div>
           <div class="container">
-            <span class="title" id="religion">
+            <span id="title">
               <div>Religion</div>
             </span>
-
+            <div class="religion-content">
+              <div class="box">
+                <div id="religion_container"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="column2">
-      <div class="level-container">
-        <span class="title" id="college">
-          <div>Level Summaries</div>
-        </span>
-        <canvas id="myChart2"></canvas>
-      </div>
-      <div class="row">
-        <div class="campus-container">
-          <span class="title" id="campus">
-            <div>Campus</div>
-            <div class="back-button">
-              <a href="{{ url_for ('campus')}}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
-            </div>
-          </span>
-          <canvas id="myChart3" height="100" width="100"></canvas>
-        </div>
-        <div class="religion-container">
-          <span class="title" id="religion">
-            <div>Cases</div>
-            <div class="back-button">
-              <a href="{{ url_for ('cases')}}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
-            </div>
-          </span>
-          <div id="cases_container" height="100" width="100"></div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="column3">
-      <div class="concern-container">
-        <span class="title" id="nature">
-          <div>Brief description of Concerns</div>
-          <div class="back-button">
-            <a href="{{ url_for ('nature_of_concern')}}">
-                <img src="/static/SVG/back_button.svg"/>
-            </a>
-          </div>
-        </span>
-        <div id="concerns_container"></div>
-      </div>
-      <div class="identity-container">
-        <span class="title" id="identity">
-          <div>Identity</div>
-          <div class="back-button">
-            <a href="{{ url_for ('identity')}}">
-                <img src="/static/SVG/back_button.svg"/>
-            </a>
-          </div>
-        </span>
-        <canvas id="myChart6"></canvas>
-      </div>
-    </div> -->
 </div>
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/expand_dashboard.js') }}"></script>
 
 <script>
+  const jhs_data = {{ jhs_data | tojson | safe }};
+  const shs_data = {{ shs_data | tojson | safe }};
+  const college_data = {{ college_data | tojson | safe }};
+  const grad_data = {{ grad_data | tojson | safe }};
+  const lll_data = {{ lll_data | tojson | safe }};
+  const identity_data = {{ identity_data | tojson | safe }};
+  const campus_data = {{ campus_data | tojson | safe }};
+  const religion_data = {{ religion_data | tojson | safe }};
   const history_data = {{ history_data | tojson | safe }};
   const concerns_data = {{ concerns_data | tojson | safe }};
+  const terminated_data = {{ terminated_data | tojson | safe }};
   const overall_monthly_total = {{ overall_monthly_total | tojson | safe }};
 
   function renderChart(data, container) {
@@ -195,26 +165,6 @@ function createProgressBar(label, count) {
   countElement.textContent = count;
   progressFlexContainer.appendChild(countElement);
 
-  const barFlex = document.createElement('div');
-  barFlex.classList.add('bar-flex');
-  const maxProgressBarWidth = 100;
-
-  const progressBarWidth = Math.min(count * 1, maxProgressBarWidth);
-  const progressBar = document.createElement('div');
-  progressBar.classList.add('progress-bar');
-  if (count == 0) {
-    progressBar.style.visibility = 'hidden';
-  } else {
-    progressBar.style.width = `${progressBarWidth}%`;
-  }
-  barFlex.appendChild(progressBar);
-
-  const progressBarUnderlay = document.createElement('div');
-  progressBarUnderlay.classList.add('progress-bar-underlay');
-  barFlex.appendChild(progressBarUnderlay);
-
-  progressFlexContainer.appendChild(barFlex);
-
   container.appendChild(progressFlexContainer);
   
   return container;
@@ -222,6 +172,10 @@ function createProgressBar(label, count) {
 
   renderChart(history_data, 'history_container');
   renderChart(concerns_data, 'concerns_container');
+  renderChart(identity_data, 'identity_container');
+  renderChart(campus_data, 'campus_container');
+  renderChart(religion_data, 'religion_container');
+  renderChart(terminated_data, 'terminated_container');
   renderChart(overall_monthly_total, 'cases_container');
 </script>
 

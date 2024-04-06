@@ -234,6 +234,8 @@ def dashboard():
     history_data = data_history_information()
     concerns_data = data_count_dict('nature_of_concern')
     religion_data = data_count_dict('religion')
+    campus_data = data_count_dict('campus')
+    identity_data = data_count_dict('gender')
 
     college_names = [
         "CEA",
@@ -265,33 +267,12 @@ def dashboard():
     grad_data = data_history_information('GRAD')
     lll_data = data_history_information('LLL')
 
+    # Fetching terminated cases data for each college
+    terminated_data = {college: data_count_dict('status', college) for college in college_names}
+    
     print(college_data)
 
-    jhs_data = data_count_dict('nature_of_concern', 'JHS')
-    shs_data = data_count_dict('nature_of_concern', 'SHS')
-    college_data = data_count_dict('nature_of_concern', 'College')
-    grad_data = data_count_dict('nature_of_concern', 'GRAD')
-    lll_data = data_count_dict('nature_of_concern', 'LLL')
-
-    jhs_data = data_count_dict('campus', 'JHS')
-    shs_data = data_count_dict('campus', 'SHS')
-    college_data = data_count_dict('campus', 'College')
-    grad_data = data_count_dict('campus', 'GRAD')
-    lll_data = data_count_dict('campus', 'LLL')
-
-    jhs_data = data_count_dict('religion', 'JHS')
-    shs_data = data_count_dict('religion', 'SHS')
-    college_data = data_count_dict('religion', 'College')
-    grad_data = data_count_dict('religion', 'GRAD')
-    lll_data = data_count_dict('religion', 'LLL')
-
-    jhs_data = data_count_dict('gender', 'JHS')
-    shs_data = data_count_dict('gender', 'SHS')
-    college_data = data_count_dict('gender', 'College')
-    grad_data = data_count_dict('gender', 'GRAD')
-    lll_data = data_count_dict('gender', 'LLL')
-
-    return render_template('dashboard.html', history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total, jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
+    return render_template('dashboard.html', terminated_data=terminated_data, religion_data=religion_data, identity_data=identity_data, campus_data=campus_data, history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total, jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
 
 
 # pages for admin / viewing of students whose been counseled
@@ -1441,7 +1422,8 @@ def add_record():
 
         additional_info = AdditionalInformation(
             personal_agreement=form.personal_agreement.data,
-            personal_agreement_date=form.personal_agreement_date.data,
+            personal_agreement_date=request.form.get('personal_agreement_date'),
+            # personal_agreement_date = form.personal_agreement_date.data,
 
             nature_of_concern=request.form.get('nature_of_concern'),
             counselor=form.counselor.data,
@@ -1559,7 +1541,9 @@ def add_record():
         logging.error("Form validation failed")
         logging.error('ERRORS:', form.errors)
 
-    return render_template('add_record.html', form=form, errors=errors, student_id=student_id)
+    current_date_and_time = datetime.now().strftime('%Y-%m-%dT%H:%M')
+
+    return render_template('add_record.html', form=form, errors=errors, student_id=student_id, current_date_and_time=current_date_and_time)
 
 @app.route('/print_report/<selected_year>')
 def print_report(selected_year):
@@ -1601,10 +1585,6 @@ def print_report(selected_year):
     print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
 
     return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
-
-@app.route('/dashboard/cases')
-def cases():
-    return render_template('cases.html')
 
 
 

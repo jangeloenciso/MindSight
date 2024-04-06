@@ -495,6 +495,17 @@ def data_count_dict(query, college=None):
             if category in counts_from_df:
                 data_count[category] = int(counts_from_df[category])
         return data_count
+    
+    if query == 'status':
+        categories = ["Active", "Terminated"]
+        data_count = {category: 0 for category in categories}
+
+        counts_from_df = df[query].value_counts()
+
+        for category in categories:
+            if category in counts_from_df:
+                data_count[category] = int(counts_from_df[category])
+        return data_count
 
     data_count = df[query].value_counts().to_dict()
     return data_count

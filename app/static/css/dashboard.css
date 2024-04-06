@@ -129,6 +129,10 @@
     padding: 0.8em;
 }
 
+.bottom-container {
+    justify-content: space-evenly;
+}
+
 .total-cases {
     width: 80%;
 }
@@ -201,6 +205,10 @@
     background-color: var(--subtle-orange);
     padding: 5px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .progress-bar-label {
@@ -241,6 +249,27 @@
     flex-direction: row;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
+
+#title {
+    font-size: 25px;
+    color: var(--primary-color);
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 0.3em;
+}
+
+#title div {
+    font-family: Lexend-Black;
+}
+
+
+
 /* flex container for progress-bar and progress-bar-underlay */
 .bar-flex {
     width: 100%;
@@ -250,13 +279,8 @@
 
 
 /* experiences chart overflow */
-#chart, #history_container {
+#chart, #history_container, #campus-container, #terminated_container, #religion_container {
     height: 90%;
-    overflow-y: auto;
-}
-
-#religion_container, #cases_container {
-    height: 80%;
     overflow-y: auto;
 }
 
