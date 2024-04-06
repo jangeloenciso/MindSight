@@ -2150,7 +2150,8 @@
                 </button>
               </div>
               <div class="personal-agreement-date">
-                {{ form.personal_agreement_date() }}
+                <input type="datetime-local" disabled id="personal_agreement_date" name="personal_agreement_date" value="{{ current_date_and_time }}">
+                <!-- {{ form.personal_agreement_date() }} -->
               </div>
             </div>
             <div class="form-btn-container">
