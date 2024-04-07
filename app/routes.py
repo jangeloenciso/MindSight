@@ -489,6 +489,27 @@ def search():
 
     return render_template('search.html', search_results=search_results, query=query, records=records)
 
+
+# Search archived records
+@app.route('/students/records/archived/search/', methods=['GET'])
+@login_required
+def search_archived():
+    query = request.args.get('query')
+
+    print(query)
+
+    search_data = process_data(search_query=query)
+    search_results = search_data.to_dict(orient='records')
+
+    student_id = [record['student_id'] for record in search_results]
+
+    records = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.student_id.in_(student_id), 
+        BasicInformation.archived == True).all()
+        
+
+    return render_template('search_archived.html', search_results=search_results, query=query, records=records)
+
 # view archived records
 @app.route('/students/records/archived/', methods=['GET'])
 @login_required

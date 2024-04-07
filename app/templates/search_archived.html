@@ -1,0 +1,277 @@
+{% extends "components/base.html" %} {% block title %} Mindsight - Search Archived{{ college }} {%endblock %} {% block styles %}
+<link rel="stylesheet" href="/static/css/search.css" />
+{% endblock %} {% block content %}
+<div class="right">
+    <div class="main">
+      <div class="main-header">
+          <span>Search Archived Records</span>
+
+          <div class="back-button">
+              <a href="{{ url_for ('view_archived') }}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+          </div>
+      </div>
+      <hr>
+      <div class="search-upload-container">
+        <div class="search-container">
+          <form method="GET" action="{{ url_for('search_archived', query=query) }}">
+            <div class="search-bar">
+              <input
+                type="text"
+                placeholder="Search"
+                name="query"
+                value="{{query}}"
+              />
+              <button type="submit">
+                <img src="/static/students/search.png" alt="search" />
+              </button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="filter">
+          <!-- <select name="filterby">
+            <option value="" disabled selected>Filter by:</option>
+            <option value="date">Date</option>
+            <option value="control_no">Control No.</option>
+            <option value="student_no">Student No.</option>
+            <option value="concern">Nature of Concern</option>
+          </select> -->
+          <a href="#" id="archive-button"> 
+            <div class="archive-container">
+              <img
+                src="/static/unarchive-button.png"
+                alt="archive"
+                class="archive-button"
+              />
+            </div>
+          </a>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </div>
+      </div>
+
+      <!-- flex grid -->
+    <div class="grid-header">
+        <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" name="select-all" id="select-all"/><label for="select-all">Select all</label></div>
+        <div class="grid-section">Student ID</div>
+        <div class="grid-name">Name</div>
+        <div class="grid-college">College</div>
+        <div class="grid-gender">Gender</div>
+        <div class="grid-counselor">Counselor</div>
+        <div class="grid-status">Status</div>
+        <div class="grid-remark">Remarks</div>
+      </div>
+      <div class="grid-container">
+        <!-- sample data rows -->
+        <div class="row-container">
+          {% for student in records %}
+          <a
+            href="#"
+            class="grid-row"
+            onclick="handleClick(event, '{{ student.student_id }}')"
+          >
+            <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" data-student-id="{{ student.student_id }}"/></div>
+            <div class="grid-section">{{ student.student_id }}</div>
+            <div class="grid-name">
+              {{ student.last_name }}, {{ student.first_name }}
+            </div>
+            <div class="grid-college">{{ student.college }}</div>
+            <div class="grid-gender">{{ student.gender }}</div>
+            <div class="grid-counselor">{{ student.additional_information.counselor }}</div>
+            <div class="grid-status">{{ student.additional_information.status }}</div>
+            <div class="grid-remark">{{ student.additional_information.remarks }}</div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all checkbox
+      const selectAllCheckbox = document.getElementById('select-all');
+    
+      selectAllCheckbox.addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('.record-checkbox');
+        checkboxes.forEach(checkbox => {
+          if (checkbox !== selectAllCheckbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+            checkbox.dispatchEvent(new Event('change'));
+          }
+        });
+      });
+    
+      document.querySelectorAll(".archive-container").forEach(button => {
+        button.addEventListener("click", function(event) {
+          event.preventDefault();
+          const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+          const selectedRecords = [];
+          
+          document.querySelectorAll('.record-checkbox:checked').forEach(checkbox => {
+            if (checkbox !== selectAllCheckbox) {
+              selectedRecords.push(checkbox.dataset.studentId);
+            }
+          });
+    
+          console.log('Selected Records:', selectedRecords);
+          
+          if (selectedRecords.length === 0) {
+              swal.fire({
+                  iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                  title: 'Error!',
+                  text: 'Please select at least one record to retrieve',
+                  showConfirmButton: true,
+                  confirmButtonText: 'Try again',
+                  customClass: {
+                    confirmButton: `confirm-button-class`,
+                  }
+              });
+              return;
+          }
+    
+          swal.fire({
+              iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+              title: 'Are you sure?',
+              text: "You're about to retrieve all selected records",
+              showCancelButton: true,
+              confirmButtonText: 'Yes',
+              customClass: {
+                confirmButton: `confirm-button-class`,
+                cancelButton: 'cancel-button-class'
+              }
+          }).then((result) => {
+              if (result.isConfirmed) {
+                fetch('/students/records/bulk_retrieve', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: JSON.stringify({ records: selectedRecords })
+                })
+                .then(response => {
+                    if (response.ok) {
+                      swal.fire({
+                            iconHtml: '<img class="custom-icon" src="/static/popup.png">',
+                            title: 'Success!',
+                            text: 'Records retrieve successfully.',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                        }).then(() => {
+                              window.location.reload();
+                        });
+                    } else {
+                        swal.fire({
+                            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                            title: 'Error!',
+                            text: 'Failed to retrieve records, please try again.',
+                            confirmButtonText: 'Try again',
+                            showConfirmButton: true,
+                            customClass: {
+                              confirmButton: `confirm-button-class`,
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal.fire({
+                        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                        title: 'Error!',
+                        text: 'An error occurred while retrieving records',
+                    });
+                });
+              }
+          });
+        });
+      });
+    });
+    
+    function handleClick(event, studentId) {
+        // Check if checkbox has been clicked
+        if (event.target.tagName === 'INPUT') {
+            return;
+        }
+        
+        // Prevent the default behavior of the anchor tag
+        event.preventDefault();
+        
+        // Call the retrieveRecord function
+        retrieveRecord(studentId);
+    }
+    
+    function retrieveRecord(student_id) {
+      swal.fire({
+        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+        text: 'You need to retrieve this record to view.',
+        confirmButtonText: 'Retrieve',
+        showCancelButton: true,
+        customClass: {
+          confirmButton: `confirm-button-class`,
+          cancelButton: `cancel-button-class`
+        }
+      }).then(response => {
+        if (response.isConfirmed) {
+          const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+    
+          fetch(`/students/records/retrieve/${student_id}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ student_id: student_id })
+          })
+          .then(response => {
+            if (response.ok){
+              swal.fire({
+                iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                title: 'Are you sure?',
+                text: "You're about to retrieve this record.",
+                confirmButtonText: 'Yes',
+                showCancelButton: true,
+                customClass: {
+                  confirmButton: `confirm-button-class`,
+                  cancelButton: `cancel-button-class`
+              }
+              }).then(() => {
+                swal.fire({
+                  iconHtml: '<img class="custom-icon" src="/static/popup.png">',
+                  title: 'Success!',
+                  text: 'Record retrieved successfully.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                  timerProgressBar: true
+                }).then(() => {
+                  window.location.reload();
+                });
+              });
+            } else {
+              swal.fire({
+                iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                title: 'Error!',
+                text: 'Failed to retrieve record, please try again.',
+                confirmButtonText: 'Try again',
+                showConfirmButton: true,
+                customClass: {
+                  confirmButton: `confirm-button-class`
+                }
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            swal.fire({
+              iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+              title: 'Error!',
+              text: 'An error occurred while retrieving record.'
+            });
+          });
+        }
+      });
+    }
+    
+    </script>
+{% endblock %}

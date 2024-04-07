@@ -1,7 +1,7 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Archived
 
 {%endblock %} {% block styles %}
-<link rel="stylesheet" href="/static/css/records.css" />
+<link rel="stylesheet" href="/static/css/search.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
@@ -20,7 +20,7 @@
     <!-- <p>The records below are for <b>xxx - YEAR.</b></p> -->
     <div class="search-upload-container">
       <div class="search-container">
-        <form method="GET" action="{{ url_for('search', query=query) }}">
+        <form method="GET" action="{{ url_for('search_archived', query=query) }}">
           <div class="search-bar">
             <input
               type="text"
@@ -53,6 +53,7 @@
       <div class="grid-checkbox"><input type="checkbox" class="record-checkbox" name="select-all" id="select-all"/><label for="select-all">Select all</label></div>
       <div class="grid-section">Student ID</div>
       <div class="grid-name">Name</div>
+      <div class="grid-college">College</div>
       <div class="grid-gender">Gender</div>
       <div class="grid-counselor">Counselor</div>
       <div class="grid-status">Status</div>
@@ -72,6 +73,7 @@
           <div class="grid-name">
             {{ student.last_name }}, {{ student.first_name }}
           </div>
+          <div class="grid-college">{{ student.college }}</div>
           <div class="grid-gender">{{ student.gender }}</div>
           <div class="grid-counselor">{{ student.additional_information.counselor }}</div>
           <div class="grid-status">{{ student.additional_information.status }}</div>
