@@ -20,20 +20,26 @@ def process_data(student_id=None, search_query=None):
         # print(search_query)
             
         if search_query:
-            query = (
-                query
-                .filter(
-                    (BasicInformation.student_id.ilike(f"%{search_query}%")) |
-                    (BasicInformation.first_name.ilike(f"%{search_query}%")) |
-                    (BasicInformation.last_name.ilike(f"%{search_query}%")) |
-                    (BasicInformation.course.ilike(f"%{search_query}%")) |
-                    (BasicInformation.year_level.ilike(f"%{search_query}%")) |
-                    (BasicInformation.campus.ilike(f"%{search_query}%")) |
-                    (BasicInformation.gender.ilike(f"%{search_query}%")) |
-                    (BasicInformation.religion.ilike(f"%{search_query}%")) |
-                    (BasicInformation.nationality.ilike(f"%{search_query}%"))
-            )
-        )
+            if "college" in search_query.lower():
+                # If the search query is 'college', group them
+                college_departments = ['CBEA', 'CEA', 'CAS', 'IHK', 'CED']
+                query = query.filter(BasicInformation.college.in_(college_departments))
+            else:
+                query = (
+                    query
+                    .filter(
+                        (BasicInformation.student_id.ilike(f"%{search_query}%")) |
+                        (BasicInformation.first_name.ilike(f"%{search_query}%")) |
+                        (BasicInformation.last_name.ilike(f"%{search_query}%")) |
+                        (BasicInformation.course.ilike(f"%{search_query}%")) |
+                        (BasicInformation.college.ilike(f"%{search_query}%")) |
+                        (BasicInformation.year_level.ilike(f"%{search_query}%")) |
+                        (BasicInformation.campus.ilike(f"%{search_query}%")) |
+                        (BasicInformation.gender.ilike(f"%{search_query}%")) |
+                        (BasicInformation.religion.ilike(f"%{search_query}%")) |
+                        (BasicInformation.nationality.ilike(f"%{search_query}%"))
+                    )
+                )
 
         data = (
             query
