@@ -164,23 +164,23 @@ p {
 }
 
 .grid-section {
-    flex-basis: 16%;
-}
-
-.grid-name {
-    flex-basis: 24%;
-}
-
-.grid-college {
     flex-basis: 14%;
 }
 
+.grid-name {
+    flex-basis: 23%;
+}
+
+.grid-college{
+    flex-basis: 12%;
+}
+
 .grid-gender {
-    flex-basis: 19%;
+    flex-basis: 12%;
 }
 
 .grid-counselor {
-    flex-basis: 24%;
+    flex-basis: 22%;
 }
 
 .grid-status {
