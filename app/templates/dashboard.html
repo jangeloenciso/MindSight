@@ -1,8 +1,6 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Dashboard{%
 endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
-<link rel="stylesheet" href="/static/css/experience.css" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %} {% block content %}
 <div class="right">
     <!-- <div class="title-date">
@@ -33,7 +31,7 @@ endblock %} {% block styles %}
             </span>
             <span class="title-total-cases" id="total-cases"></span>
           </div>
-          <canvas id="myChart2" height="120"></canvas>
+          <canvas id="myChart1" height="120"></canvas>
         </div>
         <div class="terminated-cases">
           <div class="total-cases-container">
@@ -41,20 +39,20 @@ endblock %} {% block styles %}
               <div>Terminated</div>
             </span>
           </div>
-                <span>Junior High</span>
-                <div id="jhs_container"></div>
+          <span>Junior High</span>
+            <div id="jhs_container"></div>
     
-                <span>Senior High</span>
-                <div id="shs_container"></div>
+          <span>Senior High</span>
+            <div id="shs_container"></div>
   
-                <span>College</span> 
-                <div id="college_container"></div> 
+          <span>College</span> 
+            <div id="college_container"></div> 
 
-                <span>Graduate</span> 
-                <div id="grad_container"></div>
+          <span>Graduate</span> 
+            <div id="grad_container"></div>
 
-                <span>Lifelong Learners</span>
-                <div id="lll_container"></div>
+          <span>Lifelong Learners</span>
+            <div id="lll_container"></div>
         </div>
       </div>
       <div class="row2">
@@ -109,7 +107,6 @@ endblock %} {% block styles %}
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
-<script src="{{ url_for('static', filename='javascript/expand_dashboard.js') }}"></script>
 
 <script> 
   const jhs_data = {{ jhs_data | tojson | safe }};
@@ -158,40 +155,40 @@ endblock %} {% block styles %}
         const progressBar = createProgressBar(label, count);
         chartContainer.appendChild(progressBar);
     });
-}
+  }
   
-function createProgressBar(label, count) {
-  const container = document.createElement('div');
-  container.classList.add('progress-bar-container');
+  function createProgressBar(label, count) {
+    const container = document.createElement('div');
+    container.classList.add('progress-bar-container');
 
-  const labelElement = document.createElement('div');
-  labelElement.classList.add('progress-bar-label');
-  labelElement.textContent = label;
-  container.appendChild(labelElement);
+    const labelElement = document.createElement('div');
+    labelElement.classList.add('progress-bar-label');
+    labelElement.textContent = label;
+    container.appendChild(labelElement);
 
-  const progressFlexContainer = document.createElement('div');
-  progressFlexContainer.classList.add('progress-flex-container');
+    const progressFlexContainer = document.createElement('div');
+    progressFlexContainer.classList.add('progress-flex-container');
 
-  const countElement = document.createElement('div');
-  countElement.classList.add('progress-bar-count');
-  countElement.textContent = count;
-  progressFlexContainer.appendChild(countElement);
+    const countElement = document.createElement('div');
+    countElement.classList.add('progress-bar-count');
+    countElement.textContent = count;
+    progressFlexContainer.appendChild(countElement);
 
-  container.appendChild(progressFlexContainer);
-  
-  return container;
-}
-  renderChart(jhs_data, 'jhs_container');
-  renderChart(shs_data, 'shs_container');
-  renderChart(college_data, 'college_container');
-  renderChart(grad_data, 'grad_container');
-  renderChart(lll_data, 'lll_container');
-  renderChart(history_data, 'history_container');
-  renderChart(concerns_data, 'concerns_container');
-  renderChart(identity_data, 'identity_container');
-  renderChart(campus_data, 'campus_container');
-  renderChart(religion_data, 'religion_container');
-  renderChart(overall_monthly_total, 'cases_container');
+    container.appendChild(progressFlexContainer);
+    
+    return container;
+  }
+    renderChart(jhs_data, 'jhs_container');
+    renderChart(shs_data, 'shs_container');
+    renderChart(college_data, 'college_container');
+    renderChart(grad_data, 'grad_container');
+    renderChart(lll_data, 'lll_container');
+    renderChart(history_data, 'history_container');
+    renderChart(concerns_data, 'concerns_container');
+    renderChart(identity_data, 'identity_container');
+    renderChart(campus_data, 'campus_container');
+    renderChart(religion_data, 'religion_container');
+    renderChart(overall_monthly_total, 'cases_container');
 </script>
 
 
