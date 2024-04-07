@@ -117,6 +117,11 @@
     width: 20%;
 }
 
+.terminated-cases span{
+    color: var(--primary-color);
+    font-family: Lexend-SemiBold;
+}
+
 .bottom-container {
     display: flex;
     flex-direction: row;
@@ -147,7 +152,7 @@
 .progress-bar-label {
     color: var(--primary-color);
     font-family: Lexend-SemiBold;
-    font-size: 12px;
+    font-size: 0.7em;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -182,10 +187,14 @@
 
 #title {
     font-size: 25px;
+    width: 90%;
     color: var(--primary-color);
     font-style: normal;
     line-height: normal;
     margin-bottom: 0.3em;
+    text-align: center;
+    border-bottom: solid 2px var(--bg-orange);
+    padding-bottom: 0.3em;
 }
 
 #title div {
