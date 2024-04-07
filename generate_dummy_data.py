@@ -296,8 +296,8 @@ with app.app_context():
             personal_agreement = True,
             personal_agreement_date=fake.date_time_between(start_date=start_date, end_date=end_date),
             counselor=fake.random_element(elements=("Emmanuelle Santiago","Russel Ane Dela Cruz","Jake Jason Queddeng","Lizelle Anne Manabat")),
-            status=fake.random_element(elements=("Active","Terminated")),
-            remarks=fake.random_element(elements=("For Follow-Up","For Outside Referral","Case Reopen")),
+            status=fake.random_element(elements=("Active","Inactive","Terminated")),
+            remarks=fake.random_element(elements=("For Follow-Up","For Outside Referral","Case Reopen","Case Closed")),
 
             student = student
 

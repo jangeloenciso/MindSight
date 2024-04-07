@@ -41,6 +41,7 @@ href="/static/fonts/custom-fonts.css"
               <select name="status" id="status">
                 <option value="" disabled selected>-Select Status-</option>
                 <option value="Active" {% if student.additional_information.status == 'Active' %} selected {% endif %}>Active</option>
+                <option value="Inactive" {% if student.additional_information.status == 'Inactive' %} selected {% endif %}>Inactive</option>
                 <option value="Terminated" {% if student.additional_information.status == 'Terminated' %} selected {% endif %}>Terminated</option>
               </select>
             </div>
@@ -2484,6 +2485,7 @@ href="/static/fonts/custom-fonts.css"
               <option value="For Follow-Up">For Follow-Up</option>
               <option value="For Outside Referral">For Outside Referral</option>
               <option value="Case Reopen">Case Reopen</option>
+              <option value="Case Closed">Case Closed</option>
               <!-- add if needed -->
             </select></div>
           </div>
