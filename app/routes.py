@@ -564,6 +564,47 @@ def retrieve_record(student_id):
     return jsonify({'success': True})
 
 
+@app.route('/students/records/sort/<string:sort_by>', methods=['GET'])
+@login_required
+def sort_records(sort_by):
+    # Query records based on the sorting parameter
+    if sort_by == 'student_id':
+        records = BasicInformation.query.join(AdditionalInformation).order_by(BasicInformation.student_id.asc()).all()
+    elif sort_by == 'name':
+        records = BasicInformation.query.join(AdditionalInformation).order_by(BasicInformation.last_name.asc(), BasicInformation.first_name.asc()).all()
+    elif sort_by == 'active_cases':
+        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Active').all()
+    elif sort_by == 'inactive_cases':
+        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Inactive').all()
+    elif sort_by == 'terminated_cases':
+        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Terminated').all()
+    else:
+        return jsonify({'error': 'Invalid sorting parameter'}), 400
+
+    # Convert records to dictionaries
+    records_dict = []
+    for record in records:
+        record_info = {
+            'student_id': record.student_id,
+            'last_name': record.last_name,
+            'first_name': record.first_name,
+            'gender': record.gender, 
+            'counselor': record.additional_information.counselor if record.additional_information else None,
+            'status': record.additional_information.status if record.additional_information else None,
+            'remarks': record.additional_information.remarks if record.additional_information else None,
+            'active_cases': record.additional_information.status if record.additional_information and record.additional_information.status == 'Active' else None,
+            'inactive_cases': record.additional_information.status if record.additional_information and record.additional_information.status == 'Inactive' else None,
+            'terminated_cases': record.additional_information.status if record.additional_information and record.additional_information.status == 'Terminated' else None,
+        }
+        records_dict.append(record_info)
+
+
+    print("Sorted Records:", records_dict)
+    return jsonify(records_dict)
+
+
+
+
 @app.route('/students/records/view/<student_id>/print')
 @login_required
 def print_record(student_id):
