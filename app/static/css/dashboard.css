@@ -145,6 +145,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
@@ -154,6 +155,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-right: 8px;
 }
 
 .progress-bar-count {
@@ -161,7 +163,7 @@
     padding: 0 20px;
     border-radius: 1em;
     background-color: var(--bg-orange);
-    margin-right: 8px;
+    height: fit-content;
 }
 
 /* flexes "progress-bar-count" and "bar-flex" side-by-side */
