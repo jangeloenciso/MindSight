@@ -155,22 +155,28 @@
               <div>
                 <label for="religion">Religion:</label>
                 <select name="religion" id="religion">
-                  <option value="" disabled selected>
-                    -Select Religion-
-                  </option>
+                  <option value="" disabled selected>-Select Religion-</option>
                   <option value="Roman Catholic">Roman Catholic</option>
                   <option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
                   <option value="Islam">Islam</option>
                   <option value="Aglipay">Aglipay</option>
                   <option value="Agnostic">Agnostic</option>
                   <option value="Atheist">Atheist</option>
-                  <option value="Bible Baptist Church">Bible Baptist Church</option>
+                  <option value="Bible Baptist Church">
+                    Bible Baptist Church
+                  </option>
                   <option value="Church of Christ">Church of Christ</option>
-                  <option value="Iglesia Filipina Independiente">Iglesia Filipina Independiente</option>
+                  <option value="Iglesia Filipina Independiente">
+                    Iglesia Filipina Independiente
+                  </option>
                   <option value="Jehova's Witness">Jehova's Witness</option>
                   <option value="Mormonism">Mormonism</option>
-                  <option value="Seventh-day Adventist">Seventh-day Adventist</option>
-                  <option value="United Church of Christ in the Philippines">United Church of Christ in the Philippines</option>
+                  <option value="Seventh-day Adventist">
+                    Seventh-day Adventist
+                  </option>
+                  <option value="United Church of Christ in the Philippines">
+                    United Church of Christ in the Philippines
+                  </option>
                   <option value="Prefer not to say">Prefer not to say</option>
                   <option value="Other">Other</option>
                 </select>
@@ -300,13 +306,13 @@
               >
               <div class="radio-inline-container">
                 <div>
-                  {{ form.information_provider(class='radio-btn',
-                  type='radio', id='client', value='client') }}
+                  {{ form.information_provider(class='radio-btn', type='radio',
+                  id='client', value='client') }}
                   <label for="client">The client</label>
                 </div>
                 <div>
-                  {{ form.information_provider(class='radio-btn',
-                  type='radio', id='cguardian', value='cguardian') }}
+                  {{ form.information_provider(class='radio-btn', type='radio',
+                  id='cguardian', value='cguardian') }}
                   <label for="cguardian">The client's guardian</label>
                 </div>
                 <div>
@@ -388,12 +394,14 @@
               </li>
 
               <li>
-                {{ form.depression_sad_down_feelings(class='checkbox-exp', id='exp3') }}
+                {{ form.depression_sad_down_feelings(class='checkbox-exp',
+                id='exp3') }}
                 <label for="exp3">Depression/Sad/Down Feelings</label>
               </li>
 
               <li>
-                {{ form.high_low_energy_level(class='checkbox-exp', id='exp4') }}
+                {{ form.high_low_energy_level(class='checkbox-exp', id='exp4')
+                }}
                 <label for="exp4">High/Low energy level</label>
               </li>
 
@@ -408,7 +416,8 @@
               </li>
 
               <li>
-                {{ form.difficulty_enjoying_things(class='checkbox-exp', id='exp7') }}
+                {{ form.difficulty_enjoying_things(class='checkbox-exp',
+                id='exp7') }}
                 <label for="exp7">Difficulty enjoying things</label>
               </li>
 
@@ -423,7 +432,8 @@
               </li>
 
               <li>
-                {{ form.withdrawing_from_people(class='checkbox-exp', id='exp10') }}
+                {{ form.withdrawing_from_people(class='checkbox-exp',
+                id='exp10') }}
                 <label for="exp10">Withdrawing from people/Isolation</label>
               </li>
 
@@ -433,7 +443,8 @@
               </li>
 
               <li>
-                {{ form.black_and_white_thinking(class='checkbox-exp', id='exp12') }}
+                {{ form.black_and_white_thinking(class='checkbox-exp',
+                id='exp12') }}
                 <label for="exp12"
                   >Black and white thinking/All or nothing thinking</label
                 >
@@ -445,17 +456,20 @@
               </li>
 
               <li>
-                {{ form.change_in_weight_or_appetite(class='checkbox-exp', id='exp14') }}
+                {{ form.change_in_weight_or_appetite(class='checkbox-exp',
+                id='exp14') }}
                 <label for="exp14">Change in weight or appetite</label>
               </li>
 
               <li>
-                {{ form.change_in_sleeping_pattern(class='checkbox-exp', id='exp15') }}
+                {{ form.change_in_sleeping_pattern(class='checkbox-exp',
+                id='exp15') }}
                 <label for="exp15">Change in sleeping pattern</label>
               </li>
 
               <li>
-                {{ form.suicidal_thoughts_or_plans(class='checkbox-exp', id='exp16') }}
+                {{ form.suicidal_thoughts_or_plans(class='checkbox-exp',
+                id='exp16') }}
                 <label for="exp16"
                   >Suicidal thoughts or plans/Thoughts of hurting
                   yourself</label
@@ -468,7 +482,8 @@
               </li>
 
               <li>
-                {{ form.homicidal_thoughts_or_plans(class='checkbox-exp', id='exp18') }}
+                {{ form.homicidal_thoughts_or_plans(class='checkbox-exp',
+                id='exp18') }}
                 <label for="exp18"
                   >Homicidal thoughts or plans/Thoughts of hurting others</label
                 >
@@ -482,27 +497,30 @@
               </li>
 
               <li>
-                {{ form.feelings_of_hopelessness(class='checkbox-exp', id='exp20') }}
+                {{ form.feelings_of_hopelessness(class='checkbox-exp',
+                id='exp20') }}
                 <label for="exp20"
                   >Feelings of hopelessness/Worthlessness</label
                 >
               </li>
 
               <li>
-                {{ form.feelings_of_shame_or_guilt(class='checkbox-exp', id='exp21') }}
+                {{ form.feelings_of_shame_or_guilt(class='checkbox-exp',
+                id='exp21') }}
                 <label for="exp21">Feelings of shame or guilt</label>
               </li>
 
               <li>
-                {{ form.feelings_of_inadequacy(class='checkbox-exp', id='exp22') }}
+                {{ form.feelings_of_inadequacy(class='checkbox-exp', id='exp22')
+                }}
                 <label for="exp22"
                   >Feelings of inadequacy/Low self-esteem</label
                 >
               </li>
 
               <li>
-                {{ form.anxious_nervous_tense_feelings(class='checkbox-exp', id='exp23')
-                }}
+                {{ form.anxious_nervous_tense_feelings(class='checkbox-exp',
+                id='exp23') }}
                 <label for="exp23">Anxious/Nervous/Tense feelings</label>
               </li>
 
@@ -512,35 +530,40 @@
               </li>
 
               <li>
-                {{ form.racing_or_scrambled_thoughts(class='checkbox-exp', id='exp25') }}
+                {{ form.racing_or_scrambled_thoughts(class='checkbox-exp',
+                id='exp25') }}
                 <label for="exp25">Racing or scrambled thoughts</label>
               </li>
 
               <li>
-                {{ form.bad_or_unwanted_thoughts(class='checkbox-exp', id='exp26') }}
+                {{ form.bad_or_unwanted_thoughts(class='checkbox-exp',
+                id='exp26') }}
                 <label for="exp26">Bad or unwanted thoughts</label>
               </li>
 
               <li>
-                {{ form.flashbacks_or_nightmares(class='checkbox-exp', id='exp27') }}
+                {{ form.flashbacks_or_nightmares(class='checkbox-exp',
+                id='exp27') }}
                 <label for="exp27">Flashback/Nightmares</label>
               </li>
 
               <li>
-                {{ form.muscle_tensions_aches(class='checkbox-exp', id='exp28') }}
+                {{ form.muscle_tensions_aches(class='checkbox-exp', id='exp28')
+                }}
                 <label for="exp28">Muscle tensions, aches, etc.</label>
               </li>
 
               <li>
-                {{ form.hearing_voices_or_seeing_things(class='checkbox-exp', id='exp29')
-                }}
+                {{ form.hearing_voices_or_seeing_things(class='checkbox-exp',
+                id='exp29') }}
                 <label for="exp29"
                   >Hearing voices/Seeing things not there</label
                 >
               </li>
 
               <li>
-                {{ form.thoughts_of_running_away(class='checkbox-exp', id='exp30') }}
+                {{ form.thoughts_of_running_away(class='checkbox-exp',
+                id='exp30') }}
                 <label for="exp30">Thoughts of running away</label>
               </li>
 
@@ -553,12 +576,14 @@
               </li>
 
               <li>
-                {{ form.feelings_of_frustration(class='checkbox-exp', id='exp32') }}
+                {{ form.feelings_of_frustration(class='checkbox-exp',
+                id='exp32') }}
                 <label for="exp32">Feelings of frustation</label>
               </li>
 
               <li>
-                {{ form.feelings_of_being_cheated(class='checkbox-exp', id='exp33') }}
+                {{ form.feelings_of_being_cheated(class='checkbox-exp',
+                id='exp33') }}
                 <label for="exp33">Feelings of being cheated</label>
               </li>
 
@@ -568,7 +593,8 @@
               </li>
 
               <li>
-                {{ form.counting_washing_checking(class='checkbox-exp', id='exp35') }}
+                {{ form.counting_washing_checking(class='checkbox-exp',
+                id='exp35') }}
                 <label for="exp35"
                   >Rituals of counting things, washing hands, checking locks,
                   doors, stove, etc./Overly concerned about germs.</label
@@ -576,7 +602,8 @@
               </li>
 
               <li>
-                {{ form.distorted_body_image(class='checkbox-exp', id='exp36') }}
+                {{ form.distorted_body_image(class='checkbox-exp', id='exp36')
+                }}
                 <label for="exp36"
                   >Distorted body image (believe you are heavier or less
                   attractive than others say you are)</label
@@ -584,19 +611,22 @@
               </li>
 
               <li>
-                {{ form.concerns_about_dieting(class='checkbox-exp', id='exp37') }}
+                {{ form.concerns_about_dieting(class='checkbox-exp', id='exp37')
+                }}
                 <label for="exp37">Concerns about dieting</label>
               </li>
 
               <li>
-                {{ form.loss_of_control_over_eating(class='checkbox-exp', id='exp38') }}
+                {{ form.loss_of_control_over_eating(class='checkbox-exp',
+                id='exp38') }}
                 <label for="exp38"
                   >Feelings of loss of control over eating</label
                 >
               </li>
 
               <li>
-                {{ form.binge_eating_or_purging(class='checkbox-exp', id='exp39') }}
+                {{ form.binge_eating_or_purging(class='checkbox-exp',
+                id='exp39') }}
                 <label for="exp39">Binge eating/Purging</label>
               </li>
 
@@ -613,7 +643,8 @@
               </li>
 
               <li>
-                {{ form.indecisiveness_about_career(class='checkbox-exp', id='exp42') }}
+                {{ form.indecisiveness_about_career(class='checkbox-exp',
+                id='exp42') }}
                 <label for="exp42">Indecisiveness about career</label>
               </li>
 
@@ -645,13 +676,13 @@
               </label>
               <div class="radio-inline-container">
                 <div>
-                  {{ form.previous_treatments(class='radio-btn',
-                  type='radio', id='prevtreatmentyes', value='Yes') }}
+                  {{ form.previous_treatments(class='radio-btn', type='radio',
+                  id='prevtreatmentyes', value='Yes') }}
                   <label for="prevtreatmentyes">Yes</label>
                 </div>
                 <div>
-                  {{ form.previous_treatments(class='radio-btn',
-                  type='radio', id='prevtreatmentno', value='No') }}
+                  {{ form.previous_treatments(class='radio-btn', type='radio',
+                  id='prevtreatmentno', value='No') }}
                   <label for="prevtreatmentno">No</label>
                 </div>
               </div>
@@ -746,13 +777,13 @@
               </label>
               <div class="radio-inline-container">
                 <div>
-                  {{ form.past_thoughts_to_harm(class='radio-btn',
-                  type='radio', id='pastharmyes', value='Yes') }}
+                  {{ form.past_thoughts_to_harm(class='radio-btn', type='radio',
+                  id='pastharmyes', value='Yes') }}
                   <label for="pastharmyes">Yes</label>
                 </div>
                 <div>
-                  {{ form.past_thoughts_to_harm(class='radio-btn',
-                  type='radio', id='pastharmno', value='No') }}
+                  {{ form.past_thoughts_to_harm(class='radio-btn', type='radio',
+                  id='pastharmno', value='No') }}
                   <label for="pastharmno">No</label>
                 </div>
               </div>
@@ -817,15 +848,15 @@
               >
               <div class="radio-inline-container">
                 <div>
-                  {{ form.lose_consciousness(class='radio-btn',
-                  type='radio', id='lossconsyes', value='Yes') }}
+                  {{ form.lose_consciousness(class='radio-btn', type='radio',
+                  id='lossconsyes', value='Yes') }}
                   <label style="width: auto !important" for="lossconsyes"
                     >Yes</label
                   >
                 </div>
                 <div>
-                  {{ form.lose_consciousness(class='radio-btn',
-                  type='radio', id='lossconsno', value='No') }}
+                  {{ form.lose_consciousness(class='radio-btn', type='radio',
+                  id='lossconsno', value='No') }}
                   <label for="lossconsno">No</label>
                 </div>
               </div>
@@ -1136,36 +1167,36 @@
               >
               <div class="radio-inline-container relby">
                 <div>
-                  {{ form.rel_qual_step_parent(class='radio-btn',
-                  type='radio', id='relstepparentgood', value='Good') }}
+                  {{ form.rel_qual_step_parent(class='radio-btn', type='radio',
+                  id='relstepparentgood', value='Good') }}
                   <label style="width: auto !important" for="relstepparentgood"
                     >Good</label
                   >
                 </div>
                 <div>
-                  {{ form.rel_qual_step_parent(class='radio-btn',
-                  type='radio', id='relstepparentfair', value='Fair') }}
+                  {{ form.rel_qual_step_parent(class='radio-btn', type='radio',
+                  id='relstepparentfair', value='Fair') }}
                   <label style="width: auto !important" for="relstepparentfair"
                     >Fair</label
                   >
                 </div>
                 <div>
-                  {{ form.rel_qual_step_parent(class='radio-btn',
-                  type='radio', id='relstepparentpoor', value='Poor') }}
+                  {{ form.rel_qual_step_parent(class='radio-btn', type='radio',
+                  id='relstepparentpoor', value='Poor') }}
                   <label style="width: auto !important" for="relstepparentpoor"
                     >Poor</label
                   >
                 </div>
                 <div>
-                  {{ form.rel_qual_step_parent(class='radio-btn',
-                  type='radio', id='relstepparentclose', value='Close') }}
+                  {{ form.rel_qual_step_parent(class='radio-btn', type='radio',
+                  id='relstepparentclose', value='Close') }}
                   <label style="width: auto !important" for="relstepparentclose"
                     >Close</label
                   >
                 </div>
                 <div>
-                  {{ form.rel_qual_step_parent(class='radio-btn',
-                  type='radio', id='relstepparentdistant', value='Distant') }}
+                  {{ form.rel_qual_step_parent(class='radio-btn', type='radio',
+                  id='relstepparentdistant', value='Distant') }}
                   <label
                     style="width: auto !important"
                     for="relstepparentdistant"
@@ -1353,34 +1384,33 @@
               <label>When attending school were you:</label>
               <div class="radio-inline-container resp">
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend1', value='In regular classes') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend1', value='In regular classes') }}
                   <label for="educattend1">In regular classes</label>
                 </div>
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend2', value='Advanced classes') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend2', value='Advanced classes') }}
                   <label for="educattend2">Advanced classes</label>
                 </div>
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend3', value='Home Study') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend3', value='Home Study') }}
                   <label for="educattend3">Home Study</label>
                 </div>
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend4', value='Ever suspended') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend4', value='Ever suspended') }}
                   <label for="educattend4">Ever suspended</label>
                 </div>
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend5', value='Special classes') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend5', value='Special classes') }}
                   <label for="educattend5">Special classes</label>
                 </div>
                 <div>
-                  {{ form.educational_history(class='radio-btn',
-                  type='radio', id='educattend6', value='Placed in alternative
-                  school') }}
+                  {{ form.educational_history(class='radio-btn', type='radio',
+                  id='educattend6', value='Placed in alternative school') }}
                   <label for="educattend6">Placed in alternative school</label>
                 </div>
               </div>
@@ -1420,30 +1450,28 @@
               <label>What is your current employment status? </label>
               <div class="radio-inline-container resp">
                 <div>
-                  {{ form.employment_status(class='radio-btn',
-                  type='radio', id='employmentstat1', value='Employed
-                  Full-Time') }}
+                  {{ form.employment_status(class='radio-btn', type='radio',
+                  id='employmentstat1', value='Employed Full-Time') }}
                   <label for="employmentstat1">Employed Full-Time</label>
                 </div>
                 <div>
-                  {{ form.employment_status(class='radio-btn',
-                  type='radio', id='employmentstat2', value='Employed
-                  Part-Time') }}
+                  {{ form.employment_status(class='radio-btn', type='radio',
+                  id='employmentstat2', value='Employed Part-Time') }}
                   <label for="employmentstat2">Employed Part-time</label>
                 </div>
                 <div>
-                  {{ form.employment_status(class='radio-btn',
-                  type='radio', id='employmentstat3', value='Unemployed') }}
+                  {{ form.employment_status(class='radio-btn', type='radio',
+                  id='employmentstat3', value='Unemployed') }}
                   <label for="employmentstat3">Unemployed</label>
                 </div>
                 <div>
-                  {{ form.employment_status(class='radio-btn',
-                  type='radio', id='employmentstat4', value='Self-employed') }}
+                  {{ form.employment_status(class='radio-btn', type='radio',
+                  id='employmentstat4', value='Self-employed') }}
                   <label for="employmentstat4">Self-employed</label>
                 </div>
                 <div>
-                  {{ form.employment_status(class='radio-btn',
-                  type='radio', id='employmentstat5', value='Student') }}
+                  {{ form.employment_status(class='radio-btn', type='radio',
+                  id='employmentstat5', value='Student') }}
                   <label for="employmentstat5">Student</label>
                 </div>
               </div>
@@ -1983,15 +2011,15 @@
               >
               <div class="radio-inline-container">
                 <div>
-                  {{ form.has_been_arrested(class='radio-btn',
-                  type='radio', id='legalarrestyes', value='Yes') }}
+                  {{ form.has_been_arrested(class='radio-btn', type='radio',
+                  id='legalarrestyes', value='Yes') }}
                   <label style="width: auto !important" for="legalarrestyes"
                     >Yes</label
                   >
                 </div>
                 <div>
-                  {{ form.has_been_arrested(class='radio-btn',
-                  type='radio', id='legalarrestno', value='No') }}
+                  {{ form.has_been_arrested(class='radio-btn', type='radio',
+                  id='legalarrestno', value='No') }}
                   <label for="legalarrestno">No</label>
                 </div>
               </div>
@@ -2150,7 +2178,13 @@
                 </button>
               </div>
               <div class="personal-agreement-date">
-                <input type="datetime-local" disabled id="personal_agreement_date" name="personal_agreement_date" value="{{ current_date_and_time }}">
+                <input
+                  type="datetime-local"
+                  disabled
+                  id="personal_agreement_date"
+                  name="personal_agreement_date"
+                  value="{{ current_date_and_time }}"
+                />
                 <!-- {{ form.personal_agreement_date() }} -->
               </div>
             </div>
