@@ -147,6 +147,7 @@
 .progress-bar-label {
     color: var(--primary-color);
     font-family: Lexend-SemiBold;
+    font-size: 12px;
     width: 100%;
     justify-content: center;
     align-items: center;
