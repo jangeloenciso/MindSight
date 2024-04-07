@@ -476,8 +476,8 @@ def data_count_dict(query, college=None):
         counts_from_df = df[query].value_counts()
 
         # Sort the dictionary by values in descending order and select the top 6
-        top_6_religions = dict(sorted(counts_from_df.items(), key=lambda item: item[1], reverse=True)[:5])
-        return top_6_religions
+        top_4_religions = dict(sorted(counts_from_df.items(), key=lambda item: item[1], reverse=True)[:4])
+        return top_4_religions
 
     if query == 'gender':
         categories = ["Male", "Female", "LGBTQIA+"]
