@@ -64,12 +64,7 @@
     font-size: 25px;
     color: var(--primary-color);
     font-family: Lexend-Black;
-}
-
-.title-total-cases {
-    font-size: 25px;
-    font-family: Lexend-Black;
-    color: var(--bg-orange);
+    padding-bottom: 0.3em;
 }
 
 
