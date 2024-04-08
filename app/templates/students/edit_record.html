@@ -1179,13 +1179,13 @@ href="/static/fonts/custom-fonts.css"
             {% for sibling in student.family_background.siblings %}
             <tr id="siblingRow">
               <td>
-                <input class='form-width100 single-column-span' id="siblingName" name="siblingName" value={{ sibling.name }} />
+                <input class='form-width100 single-column-span' id="siblingName" name="siblingName" value="{{ sibling.name }}" />
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge" value={{ sibling.age }} />
+                <input class='form-width100 single-column-span' id="siblingAge" name="siblingAge" value="{{ sibling.age }}" />
               </td>
               <td>
-                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" value={{ sibling.gender }} />
+                <input class='form-width100 single-column-span' id="siblingGender" name="siblingGender" value="{{ sibling.gender }}" />
               </td>
               <td>
                 <select name="rel_qual" id="civil">
@@ -1909,7 +1909,7 @@ href="/static/fonts/custom-fonts.css"
                   type="text"
                   class="form-width100 single-column-span"
                   id="legalConviction" name="legalConviction"
-                  value={{ conviction.conviction }}
+                  value="{{ conviction.conviction }}"
                 />
               </td>
               <td>
@@ -1917,7 +1917,7 @@ href="/static/fonts/custom-fonts.css"
                   type="date"
                   class="form-width100 single-column-span"
                   id="legalDate" name="legalDate"
-                  value={{ conviction.conviction_date }}
+                  value="{{ conviction.conviction_date }}"
                 />
               </td>
               <td>
@@ -1925,7 +1925,7 @@ href="/static/fonts/custom-fonts.css"
                   type="text"
                   class="form-width100 single-column-span"
                   id="legalOutcome" name="legalOutcome"
-                  value={{ conviction.conviction_outcome }}
+                  value="{{ conviction.conviction_outcome }}"
                 />
               </td>
             </tr>
@@ -2080,7 +2080,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionDate"
                   name="sessionDate"
-                  value={{ session.session_date }}
+                  value="{{ session.session_date }}"
                 />
               </td>
               <td>
@@ -2089,7 +2089,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionTimeStart"
                   name="sessionTimeStart"
-                  value={{ session.session_time_start }}
+                  value="{{ session.session_time_start }}"
                 />
               </td>
               <td>
@@ -2098,7 +2098,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionTimeEnd"
                   name="sessionTimeEnd"
-                  value={{ session.session_time_end }}
+                  value="{{ session.session_time_end }}"
                 />
               </td>
               <td>
@@ -2107,7 +2107,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionFollowUp"
                   name="sessionFollowUp"
-                  value={{ session.session_follow_up }}
+                  value="{{ session.session_follow_up }}"
                 />
               </td>
               <td>
@@ -2116,7 +2116,7 @@ href="/static/fonts/custom-fonts.css"
                   class="form-width100 single-column-span"
                   id="sessionAttendedBy"
                   name="sessionAttendedBy"
-                  value={{ session.session_attended_by }}
+                  value="{{ session.session_attended_by }}"
                 />
               </td>
             </tr>
@@ -2378,7 +2378,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="counselorName"
                 name="counselorName"
-                value={{ case_note.counselor_name }}
+                value="{{ case_note.counselor_name }}"
               />
               </div>
               <div class="left-align single-column-span">
@@ -2386,7 +2386,7 @@ href="/static/fonts/custom-fonts.css"
                   >Date of Intake Interview:</label
                 >
                 <input class='form-width100 single-column-span' type="date" id="interviewDate" name="interviewDate"
-                value={{ case_note.interview_date }} />
+                value="{{ case_note.interview_date }}" />
               </div>
               <div class="left-align single-column-span">
                 <label for="confinosessions" style="width: 460px !important"
@@ -2397,7 +2397,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="numberOfSession"
                 name="numberOfSession"
-                value={{ case_note.number_of_session }}
+                value="{{ case_note.number_of_session }}"
               />
               </div>
               <hr style="border-top: 1px solid var(--primary-color)" />
@@ -2411,7 +2411,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="subjectComplaint"
                 name="subjectComplaint"
-                value={{ case_note.subject_complaint }}
+                value="{{ case_note.subject_complaint }}"
               />
               </div>
               <div class="left-align single-column-span">
@@ -2423,7 +2423,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="objectiveAssessment"
                 name="objectiveAssessment"
-                value={{ case_note.objective_assessment }}
+                value="{{ case_note.objective_assessment }}"
               />
               </div>
               <div class="left-align single-column-span">
@@ -2435,7 +2435,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="planOfAction"
                 name="planOfAction"
-                value={{ case_note.plan_of_action }}
+                value="{{ case_note.plan_of_action }}"
               />
               </div>
               <div class="left-align single-column-span">
@@ -2447,7 +2447,7 @@ href="/static/fonts/custom-fonts.css"
                 class="form-width100 single-column-span"
                 id="progressMade"
                 name="progressMade"
-                value={{ case_note.progress_made }}
+                value="{{ case_note.progress_made }}"
               />
               </div>
             </div>
