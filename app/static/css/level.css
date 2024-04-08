@@ -22,6 +22,9 @@
     background-color: var(--white);
 }
 
+* {
+    transition: var(--smooth-transition);
+}
 
 
 /* header */
@@ -132,72 +135,148 @@
     width: 20px;
 }
 
-/* directory buttons */
-.main-buttons {
+/* main navigational container */
+.directory-container {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    row-gap: 1em;
-    overflow-y: scroll;
-}
-
-.main-buttons button {
-    height: 100%;
-    text-align: left;
-    padding: 1.4em 0 1.4em 2em;
-}
-
-.main-buttons button, .main-buttons a {
-    border-radius: 20px;
-    color: white;
-    font-size: 1.2rem;
+    overflow-y: auto;
+    border-radius: 17px;
     background-color: var(--primary-color);
-    border: none;
-    font-weight: bold;
-    transition: var(--smooth-transition);
+}
+
+.directory-container .dir-left {
+    flex-grow: 2.5;
+}
+
+.directory-container .dir-right {
+    flex-grow: 7.5;
+}
+
+
+
+/* main level left containers */
+.list-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    margin: 0;
+    list-style: none;
+    padding-right: 20px;
+}
+
+/* list header */
+.list-container-header {
+    font-family: Lexend-SemiBold;
+    color: var(--white);
+    font-size: 1.5em;
+    padding-top: 10px;
+}
+
+/* ul list style */
+.list-level {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.list-level li {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    color: var(--text-white-dim);
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+/* box hover effects */
+.list-level li:hover, .dir-right ul li:hover {
+    background-color: var(--bg-orange);
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.grad-school-link:hover, .lll-school-link:hover {
+    color: #fff;
+}
+
+
+/* right arrow img style */
+.list-level li img {
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+}
+
+
+/* per ul right container */
+.dir-right ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    position: absolute;
+    color: var(--text-white-dim);
+    list-style: none;
+    font-size: 1.2em;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.dir-right ul li {
+    padding: 10px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-.main-buttons button {
-    height: 100% !important;
-    width: 100% !important;
-    background-color: transparent;
+/* remove link color */
+a {
+    text-decoration: none;
+    color: var(--text-white-dim);
 }
 
 
-/* buttom borders */
-.main-buttons a {
-    border: 3px solid var(--white);
-    transition: var(--smooth-transition);
-}
-
-.main-buttons a:hover {
-    border: 3px dashed var(--white);
-    background-color: #073f55;
-    transition: var(--smooth-transition);
-}
-
-.dropdown-content {
+.dir-right ul {
     display: none;
-    flex-direction: column;
-    position: absolute;
-    min-width: 160px;
-    z-index: 1;
+}
+
+.dir-right ul.active {
+    display: block;
+}
+
+/* navigation links are dynamically positioned to the right upon hover. */
+/* specific measurements. do not change */
+.jhs-list-hover {
+    margin-top: 3%;
+}
+
+.shs-list-hover {
+    margin-top: 7.99%;
+}
+
+.college-list-hover {
+    margin-top: 13%;
+}
+
+.college-list-hover li {
+    font-size: 0.65em;
+}
+
+
+
+/* sets graduate school and lll styling to correspond with the JS and css rules */
+.grad-school-li, .lll-school-li {
+    padding: 0 !important;
+}
+
+.grad-school-link, .lll-school-link {
     width: 100%;
+    padding: 10px;
 }
 
-
-.dropdown-button {
-    background-color: var(--primary-color);
-    border-radius: 20px;
-}
-
-.dropdown-button:hover {
-    border: 3px dashed var(--white);
-    background-color: #073f55;
-    transition: var(--smooth-transition);
-}
 
 /* Sidebar active indicator */
 .sidebar-buttons #students-container::before {
