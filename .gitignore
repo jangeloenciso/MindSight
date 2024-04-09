@@ -4,3 +4,4 @@ notes
 config.py
 /migrations
 app/uploads
+run.py
