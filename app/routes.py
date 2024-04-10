@@ -623,9 +623,6 @@ def sort_records(sort_by):
     return jsonify(records_dict)
 
 
-
-
-
 @app.route('/students/records/view/<student_id>/print')
 @login_required
 def print_record(student_id):
