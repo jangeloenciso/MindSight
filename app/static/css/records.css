@@ -200,6 +200,21 @@ p {
     color: var(--white);
 }
 
+/* for the JS styling */
+.grid-container .row-container:nth-child(even) .grid-row:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.grid-container .row-container:nth-child(even) .grid-row {
+    background-color: #C5CFC6;
+}
+
+.grid-container .row-container:nth-child(even) input[type="checkbox"] {
+    border-radius: 20px;
+    accent-color: var(--bg-orange);
+}
+
 /* checkbox in odd rows */
 input[type="checkbox"] {
     transform: scale(1.7);
