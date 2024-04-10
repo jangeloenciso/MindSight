@@ -588,7 +588,9 @@ def sort_records(sort_by):
     if year_level:
         query = query.filter(BasicInformation.year_level == year_level)
 
-    if sort_by == 'student_id':
+    if sort_by == 'date':
+        records = query.order_by(AdditionalInformation.personal_agreement_date.asc()).all()
+    elif sort_by == 'student_id':
         records = query.order_by(BasicInformation.student_id.asc()).all()
     elif sort_by == 'name':
         records = query.order_by(BasicInformation.last_name.asc(), BasicInformation.first_name.asc()).all()
@@ -605,6 +607,7 @@ def sort_records(sort_by):
     records_dict = []
     for record in records:
         record_info = {
+            'date': record.additional_information.personal_agreement_date if record.additional_information else None,
             'student_id': record.student_id,
             'last_name': record.last_name,
             'first_name': record.first_name,
