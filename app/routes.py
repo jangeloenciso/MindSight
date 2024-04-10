@@ -611,6 +611,7 @@ def sort_records(sort_by):
             'student_id': record.student_id,
             'last_name': record.last_name,
             'first_name': record.first_name,
+            'college': record.college,
             'gender': record.gender,
             'counselor': record.additional_information.counselor if record.additional_information else None,
             'status': record.additional_information.status if record.additional_information else None,
