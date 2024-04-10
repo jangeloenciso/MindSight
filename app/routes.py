@@ -567,17 +567,37 @@ def retrieve_record(student_id):
 @app.route('/students/records/sort/<string:sort_by>', methods=['GET'])
 @login_required
 def sort_records(sort_by):
+    college = request.args.get('college')
+    course = request.args.get('course')
+    year_level = request.args.get('year_level')
+
+    print('college',college)
+    print('course',course)
+    print('year',year_level)
     # Query records based on the sorting parameter
+    query = BasicInformation.query.join(AdditionalInformation).filter(
+        BasicInformation.archived == False
+    )
+
+    if college:
+        query = query.filter(BasicInformation.college == college)
+
+    if course:
+        query = query.filter(BasicInformation.course == course)
+
+    if year_level:
+        query = query.filter(BasicInformation.year_level == year_level)
+
     if sort_by == 'student_id':
-        records = BasicInformation.query.join(AdditionalInformation).order_by(BasicInformation.student_id.asc()).filter(BasicInformation.archived == False).all()
+        records = query.order_by(BasicInformation.student_id.asc()).all()
     elif sort_by == 'name':
-        records = BasicInformation.query.join(AdditionalInformation).order_by(BasicInformation.last_name.asc(), BasicInformation.first_name.asc()).filter(BasicInformation.archived == False).all()
+        records = query.order_by(BasicInformation.last_name.asc(), BasicInformation.first_name.asc()).all()
     elif sort_by == 'active_cases':
-        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Active', BasicInformation.archived == False).all()
+        records = query.filter(AdditionalInformation.status == 'Active').all()
     elif sort_by == 'inactive_cases':
-        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Inactive', BasicInformation.archived == False).all()
+        records = query.filter(AdditionalInformation.status == 'Inactive').all()
     elif sort_by == 'terminated_cases':
-        records = BasicInformation.query.join(AdditionalInformation).filter(AdditionalInformation.status == 'Terminated', BasicInformation.archived == False).all()
+        records = query.filter(AdditionalInformation.status == 'Terminated').all()
     else:
         return jsonify({'error': 'Invalid sorting parameter'}), 400
 
@@ -588,7 +608,7 @@ def sort_records(sort_by):
             'student_id': record.student_id,
             'last_name': record.last_name,
             'first_name': record.first_name,
-            'gender': record.gender, 
+            'gender': record.gender,
             'counselor': record.additional_information.counselor if record.additional_information else None,
             'status': record.additional_information.status if record.additional_information else None,
             'remarks': record.additional_information.remarks if record.additional_information else None,
@@ -601,6 +621,7 @@ def sort_records(sort_by):
 
     print("Sorted Records:", records_dict)
     return jsonify(records_dict)
+
 
 
 
