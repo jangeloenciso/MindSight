@@ -341,26 +341,34 @@ def process_data(student_id=None, search_query=None):
                     'client_signature_date': referral_information.client_signature_date,
                     'counselor_signature': referral_information.counselor_signature,
                     'counselor_signature_date': referral_information.counselor_signature_date
-    }
+                }
 
-            # case_note_data = {
-            #     'counselor_name': case_note.counselor_name,
-            #     'interview_date': case_note.interview_date,
-            #     'number_of_session': case_note.number_of_session,
+            case_note_data = {}
 
-            #     'subject_complaint': case_note.subject_complaint,
-            #     'objective_assessment': case_note.objective_assessment,
-            #     'plan_of_action': case_note.plan_of_action,
-            #     'progress_made': case_note.progress_made
-            # }
+            if case_note:
+                first_case_note = case_note[0]
+                case_note_data = {
+                    'counselor_name': first_case_note.counselor_name,
+                    'interview_date': first_case_note.interview_date,
+                    'number_of_session': first_case_note.number_of_session,
 
-            # sessions_data = {
-            #     'session_date': sessions.session_date,
-            #     'session_time_start': sessions.session_time_start,
-            #     'session_time_end': sessions.session_time_end,
-            #     'session_follow_up': sessions.session_follow_up,
-            #     'session_attended_by': sessions.session_attended_by
-            # }
+                    'subject_complaint': first_case_note.subject_complaint,
+                    'objective_assessment': first_case_note.objective_assessment,
+                    'plan_of_action': first_case_note.plan_of_action,
+                    'progress_made': first_case_note.progress_made
+                }
+
+            sessions_data = {}
+
+            if sessions:
+                first_session = sessions[0]
+                sessions_data = {
+                    'session_date': first_session.session_date,
+                    'session_time_start': first_session.session_time_start,
+                    'session_time_end': first_session.session_time_end,
+                    'session_follow_up': first_session.session_follow_up,
+                    'session_attended_by': first_session.session_attended_by
+                }
 
             merged_data = {
                 **basic_information_data,
@@ -374,8 +382,8 @@ def process_data(student_id=None, search_query=None):
                 **legal_history_data,
                 **additional_information_data,
                 **referral_information_data,
-                # # **case_note_data,
-                # **sessions_data
+                **case_note_data,
+                **sessions_data
             }
 
             data_list.append(merged_data)
