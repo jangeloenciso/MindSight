@@ -25,12 +25,26 @@ endblock %} {% block styles %}
         </button>
       </a>
       {% endfor %}
-
     </nav>
 
     <div class="recent-records">
-      <span>Recent counselors who counseled..</span>
-
+      <div class="recent-status">
+          <span>Recent counselors who counseled..</span>
+        <div class="legend">
+          <div class="green">
+            <div></div>
+            <span>Active</span>
+          </div>
+          <div class="orange">
+            <div></div>
+            <span>Inactive</span>
+          </div>
+          <div class="red">
+            <div></div>
+            <span>Terminated</span>
+          </div>
+        </div>
+      </div>
         <!-- flex grid -->
         <div class="grid-header">
           <div class="grid-date">Date</div>
@@ -56,7 +70,7 @@ endblock %} {% block styles %}
                   <div class="grid-college">{{ basic_info.college }}</div>
                   <div class="grid-gender">{{ basic_info.gender }}</div>
                   <div class="grid-counselor">{{ add_info.counselor }}</div>
-                  <div class="grid-status">{{ add_info.status }}</div>
+                  <div class="grid-status {{ add_info.status | lower }}">{{ add_info.status }}</div>
                   <div class="grid-remark">{{ add_info.remarks }}</div>
               </a>
             {% endfor %}

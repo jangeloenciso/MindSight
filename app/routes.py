@@ -280,35 +280,37 @@ def admin():
     admin = User.query.all()
 
     for user in admin:
-        user.full_name = user.first_name + ' ' + user.last_name
+        user.full_name = user.first_name + '' + user.last_name
 
     # query all counseled students and organize it by latest to oldest (date)
     # Subquery to get the maximum interview_date for each student
-        subquery = db.session.query(CaseNote.student_id, func.max(CaseNote.interview_date).label('max_interview_date')) \
-                            .group_by(CaseNote.student_id).subquery()
+    subquery = db.session.query(CaseNote.student_id, func.max(CaseNote.interview_date).label('max_interview_date')) \
+                        .group_by(CaseNote.student_id).subquery()
 
         # query to get the last case note for each student
-        students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
-                            .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
-                            .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
-                            .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
-                                                subquery.c.max_interview_date == CaseNote.interview_date)).filter(BasicInformation.archived != True) \
-                            .order_by(desc(CaseNote.interview_date)).all()
+    students = db.session.query(CaseNote, BasicInformation, AdditionalInformation) \
+                        .join(BasicInformation, CaseNote.student_id == BasicInformation.student_id) \
+                        .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
+                        .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
+                                                subquery.c.max_interview_date == CaseNote.interview_date)).filter(BasicInformation.archived == False) \
+                        .order_by(desc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
         .filter(and_(AdditionalInformation.counselor != None, AdditionalInformation.status != 'Terminated')) \
         .group_by(AdditionalInformation.counselor).all()
 
-    # filter out terminated students
     active_students = {}
     for student in students:
         counselor = student[2].counselor
-        if student[2].status != 'Terminated':
+        status = student[2].status
+        if status not in ['Terminated', 'Inactive']:
             if counselor not in active_students:
                 active_students[counselor] = 1
             else:
                 active_students[counselor] += 1
+
+    print(active_students)
 
     students_count_dict = {counselor: count for counselor, count in students_count}
 
@@ -896,7 +898,8 @@ def full_record(student_id):
                 joinedload(BasicInformation.legal_history),
                 joinedload(BasicInformation.additional_information),
                 joinedload(BasicInformation.sessions),
-                joinedload(BasicInformation.case_note)
+                joinedload(BasicInformation.case_note),
+                joinedload(BasicInformation.sessions)
             )
             .filter_by(student_id=student_id)
             .first()

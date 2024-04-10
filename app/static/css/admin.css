@@ -118,6 +118,47 @@ hr {
     color: var(--primary-color);
 }
 
+.green, .orange, .red {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.green div, .orange div, .red div {
+    width: 20px;
+    height: 20px;
+    border-color: transparent;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.green div {
+    background-color: green;
+}
+
+.orange div {
+    background-color: orange;
+}
+
+.red div {
+    background-color: red;
+}
+
+.recent-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.legend {
+    display: flex;
+    flex-direction: row;
+}
+
+
 /* grid rows */
 .grid-container {
     display: flex;
@@ -196,6 +237,21 @@ hr {
 .scrollable {
     overflow-y: auto;
 }
+
+
+/* color for status */
+.grid-status.active {
+    color: green;
+}
+
+.grid-status.inactive {
+    color: orange;
+}
+
+.grid-status.terminated {
+    color: red;
+}
+
 
 
 /* Sidebar active indicator */
