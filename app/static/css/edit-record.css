@@ -290,6 +290,15 @@ label {
     background-color: #0075ff;
 }
 
+/* Experiences checkbox styling */
+.checkbox-exp {
+    width: 20px;
+    aspect-ratio: 1/1;
+    vertical-align: middle;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+}
+
 
 /* style for spanning the label and input at the same line */
 .single-column-span {
