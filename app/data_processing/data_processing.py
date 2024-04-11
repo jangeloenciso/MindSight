@@ -102,112 +102,103 @@ def process_data(student_id=None, search_query=None):
                 'submitted_on': record.submitted_on
             }
 
-            history_information_data = {}
+            history_information_data = {
+                # History Information
+                'information_provider': history_information.information_provider,
+                'current_problem': history_information.current_problem,
+                'problem_length': history_information.problem_length,
+                'stressors': history_information.stressors,
 
-            if history_information:
-                history_information_data = {
-                    # History Information
-                    'information_provider': history_information.information_provider,
-                    'current_problem': history_information.current_problem,
-                    'problem_length': history_information.problem_length,
-                    'stressors': history_information.stressors,
+                'substance_abuse': history_information.substance_abuse,
+                'substance_abuse': history_information.substance_abuse,
+                'addiction': history_information.addiction,
+                'depression_sad_down_feelings': history_information.depression_sad_down_feelings,
+                'high_low_energy_level': history_information.high_low_energy_level,
+                'angry_irritable': history_information.angry_irritable,
+                'loss_of_interest': history_information.loss_of_interest,
+                'difficulty_enjoying_things': history_information.difficulty_enjoying_things,
+                'crying_spells': history_information.crying_spells,
+                'decreased_motivation': history_information.decreased_motivation,
+                'withdrawing_from_people': history_information.withdrawing_from_people,
+                'mood_swings': history_information.mood_swings,
+                'black_and_white_thinking': history_information.black_and_white_thinking,
+                'negative_thinking': history_information.negative_thinking,
+                'change_in_weight_or_appetite': history_information.change_in_weight_or_appetite,
+                'change_in_sleeping_pattern': history_information.change_in_sleeping_pattern,
+                'suicidal_thoughts_or_plans': history_information.suicidal_thoughts_or_plans,
+                'self_harm': history_information.self_harm,
+                'homicidal_thoughts_or_plans': history_information.homicidal_thoughts_or_plans,
+                'difficulty_focusing': history_information.difficulty_focusing,
+                'feelings_of_hopelessness': history_information.feelings_of_hopelessness,
+                'feelings_of_shame_or_guilt': history_information.feelings_of_shame_or_guilt,
+                'feelings_of_inadequacy': history_information.feelings_of_inadequacy,
+                'anxious_nervous_tense_feelings': history_information.anxious_nervous_tense_feelings,
+                'panic_attacks': history_information.panic_attacks,
+                'racing_or_scrambled_thoughts': history_information.racing_or_scrambled_thoughts,
+                'bad_or_unwanted_thoughts': history_information.bad_or_unwanted_thoughts,
+                'flashbacks_or_nightmares': history_information.flashbacks_or_nightmares,
+                'muscle_tensions_aches': history_information.muscle_tensions_aches,
+                'hearing_voices_or_seeing_things': history_information.hearing_voices_or_seeing_things,
+                'thoughts_of_running_away': history_information.thoughts_of_running_away,
+                'paranoid_thoughts': history_information.paranoid_thoughts,
+                'feelings_of_frustration': history_information.feelings_of_frustration,
+                'feelings_of_being_cheated': history_information.feelings_of_being_cheated,
+                'perfectionism': history_information.perfectionism,
+                'counting_washing_checking': history_information.counting_washing_checking,
+                'distorted_body_image': history_information.distorted_body_image,
+                'concerns_about_dieting': history_information.concerns_about_dieting,
+                'loss_of_control_over_eating': history_information.loss_of_control_over_eating,
+                'binge_eating_or_purging': history_information.binge_eating_or_purging,
+                'rules_about_eating': history_information.rules_about_eating,
+                'compensating_for_eating': history_information.compensating_for_eating,
+                'excessive_exercise': history_information.excessive_exercise,
+                'indecisiveness_about_career': history_information.indecisiveness_about_career,
+                'job_problems': history_information.job_problems,
+                'other': history_information.other,
 
-                    'substance_abuse': history_information.substance_abuse,
-                    'substance_abuse': history_information.substance_abuse,
-                    'addiction': history_information.addiction,
-                    'depression_sad_down_feelings': history_information.depression_sad_down_feelings,
-                    'high_low_energy_level': history_information.high_low_energy_level,
-                    'angry_irritable': history_information.angry_irritable,
-                    'loss_of_interest': history_information.loss_of_interest,
-                    'difficulty_enjoying_things': history_information.difficulty_enjoying_things,
-                    'crying_spells': history_information.crying_spells,
-                    'decreased_motivation': history_information.decreased_motivation,
-                    'withdrawing_from_people': history_information.withdrawing_from_people,
-                    'mood_swings': history_information.mood_swings,
-                    'black_and_white_thinking': history_information.black_and_white_thinking,
-                    'negative_thinking': history_information.negative_thinking,
-                    'change_in_weight_or_appetite': history_information.change_in_weight_or_appetite,
-                    'change_in_sleeping_pattern': history_information.change_in_sleeping_pattern,
-                    'suicidal_thoughts_or_plans': history_information.suicidal_thoughts_or_plans,
-                    'self_harm': history_information.self_harm,
-                    'homicidal_thoughts_or_plans': history_information.homicidal_thoughts_or_plans,
-                    'difficulty_focusing': history_information.difficulty_focusing,
-                    'feelings_of_hopelessness': history_information.feelings_of_hopelessness,
-                    'feelings_of_shame_or_guilt': history_information.feelings_of_shame_or_guilt,
-                    'feelings_of_inadequacy': history_information.feelings_of_inadequacy,
-                    'anxious_nervous_tense_feelings': history_information.anxious_nervous_tense_feelings,
-                    'panic_attacks': history_information.panic_attacks,
-                    'racing_or_scrambled_thoughts': history_information.racing_or_scrambled_thoughts,
-                    'bad_or_unwanted_thoughts': history_information.bad_or_unwanted_thoughts,
-                    'flashbacks_or_nightmares': history_information.flashbacks_or_nightmares,
-                    'muscle_tensions_aches': history_information.muscle_tensions_aches,
-                    'hearing_voices_or_seeing_things': history_information.hearing_voices_or_seeing_things,
-                    'thoughts_of_running_away': history_information.thoughts_of_running_away,
-                    'paranoid_thoughts': history_information.paranoid_thoughts,
-                    'feelings_of_frustration': history_information.feelings_of_frustration,
-                    'feelings_of_being_cheated': history_information.feelings_of_being_cheated,
-                    'perfectionism': history_information.perfectionism,
-                    'counting_washing_checking': history_information.counting_washing_checking,
-                    'distorted_body_image': history_information.distorted_body_image,
-                    'concerns_about_dieting': history_information.concerns_about_dieting,
-                    'loss_of_control_over_eating': history_information.loss_of_control_over_eating,
-                    'binge_eating_or_purging': history_information.binge_eating_or_purging,
-                    'rules_about_eating': history_information.rules_about_eating,
-                    'compensating_for_eating': history_information.compensating_for_eating,
-                    'excessive_exercise': history_information.excessive_exercise,
-                    'indecisiveness_about_career': history_information.indecisiveness_about_career,
-                    'job_problems': history_information.job_problems,
-                    'other': history_information.other,
+                'previous_treatments' : history_information.previous_treatments,
+                'previous_treatments_likes_dislikes': history_information.previous_treatments_likes_dislikes,
+                'previous_treatments_learned': history_information.previous_treatments_learned,
+                'previous_treatments_like_to_continue': history_information.previous_treatments_like_to_continue,
 
-                    'previous_treatments' : history_information.previous_treatments,
-                    'previous_treatments_likes_dislikes': history_information.previous_treatments_likes_dislikes,
-                    'previous_treatments_learned': history_information.previous_treatments_learned,
-                    'previous_treatments_like_to_continue': history_information.previous_treatments_like_to_continue,
-
-                    'previous_hospital_stays_psych': history_information.previous_hospital_stays_psych,
-                    'current_thoughts_to_harm' : history_information.current_thoughts_to_harm,
-                    'past_thoughts_to_harm' : history_information.past_thoughts_to_harm
-                }
+                'previous_hospital_stays_psych': history_information.previous_hospital_stays_psych,
+                'current_thoughts_to_harm' : history_information.current_thoughts_to_harm,
+                'past_thoughts_to_harm' : history_information.past_thoughts_to_harm
+            }
             
-            health_information_data = {}
+            health_information_data = {  
+                # Health Information   
+                'medication_and_dose': health_information.medication_and_dose,
 
-            if health_information:
-                health_information_data = {  
-                    # Health Information   
-                    'medication_and_dose': health_information.medication_and_dose,
+                'serious_ch_illnesses_history': health_information.serious_ch_illnesses_history,
+                'head_injuries': health_information.head_injuries,
+                'lose_consciousness': health_information.lose_consciousness,
+                'convulsions_or_seizures': health_information.convulsions_or_seizures,
+                'fever': health_information.fever,
+                'allergies': health_information.allergies,
 
-                    'serious_ch_illnesses_history': health_information.serious_ch_illnesses_history,
-                    'head_injuries': health_information.head_injuries,
-                    'lose_consciousness': health_information.lose_consciousness,
-                    'convulsions_or_seizures': health_information.convulsions_or_seizures,
-                    'fever': health_information.fever,
-                    'allergies': health_information.allergies,
+                'current_physical_health': health_information.current_physical_health,
+                'last_check_up': health_information.last_check_up,
+                'has_physician': health_information.has_physician,
+                'physician_name': health_information.physician_name,
+                'physician_email': health_information.physician_email,
+                'physician_number': health_information.physician_number
+            }
 
-                    'current_physical_health': health_information.current_physical_health,
-                    'last_check_up': health_information.last_check_up,
-                    'has_physician': health_information.has_physician,
-                    'physician_name': health_information.physician_name,
-                    'physician_email': health_information.physician_email,
-                    'physician_number': health_information.physician_number
-                }
+            family_background_data = {
+                # Family Background
+                'birth_location': family_background.birth_location,
+                'raised_by': family_background.raised_by,
+                'rel_qual_mother': family_background.rel_qual_mother,
+                'rel_qual_father': family_background.rel_qual_father,
+                'rel_qual_step_parent': family_background.rel_qual_step_parent,
+                'rel_qual_other': family_background.rel_qual_other,
 
-            family_background_data = {}
-
-            if family_background:
-                family_background_data = {
-                    # Family Background
-                    'birth_location': family_background.birth_location,
-                    'raised_by': family_background.raised_by,
-                    'rel_qual_mother': family_background.rel_qual_mother,
-                    'rel_qual_father': family_background.rel_qual_father,
-                    'rel_qual_step_parent': family_background.rel_qual_step_parent,
-                    'rel_qual_other': family_background.rel_qual_other,
-
-                    'family_abuse_history': family_background.family_abuse_history,
-                    'family_mental_history': family_background.family_mental_history,
-                    'additional_information': family_background.additional_information,
-                    'siblings': family_background.siblings
-                }
+                'family_abuse_history': family_background.family_abuse_history,
+                'family_mental_history': family_background.family_mental_history,
+                'additional_information': family_background.additional_information,
+                'siblings': family_background.siblings
+            }
 
             social_history_data = {
                 # Social History
