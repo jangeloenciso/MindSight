@@ -441,9 +441,9 @@ def data_count(query, selected_year=None):
 def data_count_dict(query, college=None):
     df = process_data()
 
-    print("Query:", query)  # Print query parameter
-    df = process_data()
-    print("Columns:", df.columns) 
+    if query not in df.columns:
+        print(f"Column '{query}' does not exist in DataFrame.")
+        return {} 
 
     if college == 'College':
         college_departments = ['CBEA', 'CEA', 'CAS', 'IHK', 'CED']
