@@ -1214,7 +1214,7 @@ def edit_record(student_id):
             # return redirect(url_for('student_record', student_id=student_id))
         else:
             errors = form.errors
-            print(form.errors)
+            print(errors)
 
     return render_template('students/edit_record.html', form=form, student_id=student_id, student=student)
 
@@ -1623,7 +1623,7 @@ def add_record():
         errors = form.errors
         print(request.form.get('signatureCanvasInput'))
         logging.error("Form validation failed")
-        logging.error('ERRORS:', form.errors)
+        logging.error('ERRORS: %s', form.errors)
 
     current_date_and_time = datetime.now().strftime('%Y-%m-%dT%H:%M')
 
