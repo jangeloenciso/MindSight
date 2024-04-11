@@ -174,7 +174,7 @@ select{
     font-family: Lexend-SemiBold;
     text-align: left;
     margin-bottom: 1px;
-    font-size: 0.7em;
+    font-size: 1em;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -182,6 +182,7 @@ select{
 }
 
 .progress-bar-count {
+    font-size: 1.3em;
     color: var(--white);
     padding: 0 20px;
     border-radius: 1em;
