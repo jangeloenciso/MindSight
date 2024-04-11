@@ -162,6 +162,10 @@ select{
     background-color: var(--subtle-orange);
     padding: 5px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .progress-bar-label {
