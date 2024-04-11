@@ -79,6 +79,26 @@ function createProgressBar(label, count) {
     countElement.textContent = count;
     progressFlexContainer.appendChild(countElement);
 
+    const barFlex = document.createElement('div');
+    barFlex.classList.add('bar-flex');
+    const maxProgressBarWidth = 100;
+
+    const progressBarWidth = Math.min(count * 1, maxProgressBarWidth);
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('progress-bar');
+    if (count == 0) {
+    progressBar.style.visibility = 'hidden';
+    } else {
+    progressBar.style.width = `${progressBarWidth}%`;
+    }
+    barFlex.appendChild(progressBar);
+
+    const progressBarUnderlay = document.createElement('div');
+    progressBarUnderlay.classList.add('progress-bar-underlay');
+    barFlex.appendChild(progressBarUnderlay);
+
+    progressFlexContainer.appendChild(barFlex);
+
     container.appendChild(progressFlexContainer);
     
     return container;
