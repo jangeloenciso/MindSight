@@ -6,7 +6,7 @@ endblock %} {% block styles %}
 <div class="right">
   <div class="main">
     <div class="main-header">
-      <span>EDUCATION LEVEL</span>
+      <span>EDUCATIONAL LEVEL</span>
       <p>
         Please click on the following <b>LEVEL</b> to view the corresponding
         records:
@@ -45,17 +45,26 @@ endblock %} {% block styles %}
     <div class="directory-container">
       <section class="dir-left">
         <ul class="list-container">
-          <li class="list-container-header">School Level</li>
           <ul class="list-level">
             <li>Junior High <img src="/static/right-arrow.png" /></li>
             <li>Senior High <img src="/static/right-arrow.png" /></li>
             <li>College <img src="/static/right-arrow.png" /></li>
-            <li class="grad-school-li"><a class="grad-school-link" href="{{ url_for ('graduate_records', college='GRAD')}}">
-              Graduate School</a
-            ></li>
-            <li class="lll-school-li"><a class="lll-school-link" href="{{ url_for ('lll_records', college='LLL')}}">
-              Lifelong Learners</a
-            ></li>
+            <li class="grad-school-li">
+              <a
+                class="grad-school-link"
+                href="{{ url_for ('graduate_records', college='GRAD')}}"
+              >
+                Graduate School</a
+              >
+            </li>
+            <li class="lll-school-li">
+              <a
+                class="lll-school-link"
+                href="{{ url_for ('lll_records', college='LLL')}}"
+              >
+                Lifelong Learners</a
+              >
+            </li>
           </ul>
         </ul>
       </section>

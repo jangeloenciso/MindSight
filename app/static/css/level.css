@@ -166,14 +166,6 @@
     padding-right: 20px;
 }
 
-/* list header */
-.list-container-header {
-    font-family: Lexend-SemiBold;
-    color: var(--white);
-    font-size: 1.5em;
-    padding-top: 10px;
-}
-
 /* ul list style */
 .list-level {
     height: inherit;
@@ -250,15 +242,15 @@ a {
 /* navigation links are dynamically positioned to the right upon hover. */
 /* specific measurements. do not change */
 .jhs-list-hover {
-    margin-top: 3%;
+    margin-top: 10px;
 }
 
 .shs-list-hover {
-    margin-top: 7.99%;
+    margin-top: 6%;
 }
 
 .college-list-hover {
-    margin-top: 13%;
+    margin-top: 11.5%;
 }
 
 .college-list-hover li {
