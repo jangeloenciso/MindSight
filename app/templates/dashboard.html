@@ -26,10 +26,17 @@ endblock %} {% block styles %}
       <div class="row1">
         <div class="total-cases">
           <div class="total-cases-container">
-            <span class="title-total-cases">
-              <div class="cases">Total Cases:&nbsp;</div>
-            </span>
-            <span class="title-total-cases" id="total-cases"></span>
+            <div class="total-cases-number">
+              <span class="title-total-cases">
+                <div>Total Cases:&nbsp;</div>
+              </span>
+              <span class="title-total-cases" id="total-cases"></span>
+            </div>
+            <div class="back-button">
+              <a href="{{ url_for('cases') }}">
+                  <img src="/static/SVG/back_button.svg"/>
+              </a>
+            </div>
           </div>
           <canvas id="myChart1" height="120"></canvas>
         </div>
