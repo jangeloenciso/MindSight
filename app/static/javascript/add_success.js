@@ -39,6 +39,12 @@ document.getElementById('submit_form').addEventListener('submit', function(event
             }).then(() => {
                 window.location.assign('/login');
             });
+        } else {
+            swal.fire({
+                title: 'Error.',
+                iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+                showConfirmButton: true,
+            })
         }
     })
     .catch(error => {
