@@ -56,6 +56,8 @@
 .total-cases-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 2px solid var(--bg-orange);
     margin-bottom: 1em;
 }
@@ -80,6 +82,22 @@
 
 .title div {
     font-family: Lexend-Black;
+}
+
+.total-cases-number {
+    display: flex;
+    flex-direction: row;
+}
+
+.back-button button {
+    cursor: pointer;
+}
+
+.back-button img {
+    aspect-ratio: 1/1;
+    width: 1.3em;
+    rotate: -90deg;
+    position: relative;
 }
 
 
@@ -142,21 +160,13 @@
     background-color: var(--subtle-orange);
     padding: 5px;
     border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
 }
 
 .progress-bar-label {
     color: var(--primary-color);
     font-family: Lexend-SemiBold;
-    font-size: 0.7em;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
+    text-align: left;
+    margin-bottom: 1px;
 }
 
 .progress-bar-count {
@@ -164,13 +174,41 @@
     padding: 0 20px;
     border-radius: 1em;
     background-color: var(--bg-orange);
-    height: fit-content;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    position: relative;
+    transform: translateY(20px);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+}
+
+/* maximum value progress bar */
+.progress-bar-underlay {
+    background-color: #a0d8e0;
+    width: 100%;
+    padding: 10px;
+}
+
+.progress-bar, .progress-bar-underlay {
+    border-radius: 20px;
 }
 
 /* flexes "progress-bar-count" and "bar-flex" side-by-side */
 .progress-flex-container {
     display: flex;
     flex-direction: row;
+}
+
+/* flex container for progress-bar and progress-bar-underlay */
+.bar-flex {
+    width: 70%;
+    height: 20px;
+    transform: translateY(-20px);
 }
 
 .container {
