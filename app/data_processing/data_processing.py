@@ -412,20 +412,37 @@ def data_analytics(first_metric, second_metric):
     return data_dict
 
 # Works with ChartJS
-def data_count(query, selected_year=None):
+def data_count(query, status=None, selected_year=None):
     df = process_data()
 
-    # print(selected_year)
-
     if selected_year:
-        df['year'] = pd.to_datetime(df['submitted_on']).dt.year
-        df = df[df['year'] == int(selected_year)]
-        print(df)
+        # Check if the selected_year is a valid year
+        try:
+            year = int(selected_year)
+        except ValueError:
+            # Handle the case where selected_year is not a valid year
+            # For example, if selected_year is a college name
+            year = None
+
+        if year:
+            df['year'] = pd.to_datetime(df['submitted_on']).dt.year
+            df = df[df['year'] == year]
+            print(df)
+
+    if status:
+        df = df[df['status'] == status]
 
     data_count = df[query].value_counts().reset_index()
     data_count.columns = [query, 'student_count']
 
     data_dict = data_count.to_dict(orient='records')
+    
+    # Count the number of students for each college
+    college_counts = df['college'].value_counts().reset_index()
+    college_counts.columns = ['college', 'student_count']
+
+    # Convert the result to a dictionary with college names as keys and counts as values
+    data_dict = {row['college']: row['student_count'] for _, row in college_counts.iterrows()}
     return data_dict
 
 # Works with the progress bars
