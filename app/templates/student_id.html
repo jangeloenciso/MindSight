@@ -46,22 +46,53 @@
     <img class="svg-bottom" src="../static/SVG/svg-login-bottom.svg" />
   </body>
 
-  <script>
-    // student id validation
-    const form = document.getElementById("studentId");
-    const studentIdInput = document.getElementById("studentIdInput");
-    const errorMsg = document.getElementById("error-msg");
+<script src="{{url_for('static', filename='javascript/cdn/sweetalert2.all.min.js')}}"></script>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+  const form = document.getElementById("studentId");
+  
+  form.addEventListener("submit", function (event) {
+    const regex = /^\d{4}-\d{6}$/; // Regular expression pattern
 
-    form.addEventListener("submit", function (event) {
-      const regex = /^\d{4}-\d{6}$/; // Regular expression pattern
+    if (!regex.test(form.student_id.value)) {
+      alert("Invalid student ID format. Please enter in the format xxxx-xxxxxx.");
+      event.preventDefault(); // Prevent form submission if format is incorrect
+      form.student_id.focus();
+      return; // Stop further execution
+    }
 
-      if (!regex.test(studentIdInput.value)) {
-        alert(
-          "Invalid student ID format. Please enter in the format xxxx-xxxxxx."
-        );
-        event.preventDefault(); // Prevent form submission if format is incorrect
-        studentIdInput.focus();
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Fetch the form data and send it to the server
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        swal.fire({
+          title: 'Student already exists',
+          text: 'You can log in to view the record of the student.',
+          iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
+          showConfirmButton: true,
+          confirmButtonText: 'LOG IN',
+          customClass: {
+            confirmButton: 'confirm-button-class'
+          }
+        }).then((response) => {
+          if (response.isConfirmed) {
+            window.location.href = '/login'; // Redirect to /login if confirmed
+          }
+        });
+        console.error('Error:', data);
       }
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
-  </script>
+  });
+});
+</script>
 </html>
