@@ -1,2007 +1,1213 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/static/SVG/EYE LOGO.svg" />
     <title>{{student_data[0]['student_id']}}</title>
 
     <!-- Styles for printing -->
     <style>
-        @media print {
-            body {
-                font-size: 12pt;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: #095371;;
-            }
-
-            /* Add other print-specific styles here */
-            
-/* header */
-.main-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    color: var(--primary-color);
-    margin-bottom: 1em;
-    border-bottom: 2px solid var(--bg-orange);
-    padding-bottom: 1em;
-}
-
-p {
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-.main-header span {
-    font-size: 16pt;
-    font-weight: bold;
-}
-
-.main {
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    border: 3px solid var(--bg-orange);
-    padding: 20px;
-    background-color: var(--white);
-}
-
-* {
-    transition: var(--smooth-transition);
-    box-sizing: border-box;
-}
-            /* top header font size */
-.main-header-content {
-    font-size: 18pt !important;
-}
-
-/* style for all text headers */
-header {
-    text-align: center;
-    font-family: Lexend-bold;
-    font-size: 16pt;
-    color: var(--primary-color);
-    margin: 10px 0;
-}
-
-hr {
-    border-top: 1px solid var(--bg-orange);
-    width: 100%;
-}
-
-.main-content {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.main-content span {
-  color: #DB9354;
-}
-
-.double-column1 span {
-  color: #DB9354;
-}
-
-/* keeps everything aligned */
-.center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* main styling layout per section */
-.referral, .emergency, .historyinfo, .prevtreatment, .medhistory, .famhistory, .sochistory, .educhistory, .occuhistory, .subsabuse, .legalhistory, .additionalinfo, .personalagree, .refinfo, .confidential {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-
-    /* background-color: rgba(0, 0, 255, 0.249); */
-}
-
-/* double-column format */
-.double-column {
-    display: flex;
-    width: 100%;
-    padding: 0 20px;
-    flex-direction: row;
-}
-
-.double-column div {
-    width: auto;
-    display: flex;
-    margin-bottom: 7px;
-}
-
-.basic-information {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.column {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.double-column span {
-    color: #DB9354;
-    font-size: 12pt;
-}
-
-.double-column2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.double-column1 div{
-    margin-bottom: 7px;
-    display: flex;
-    flex-direction: row;
-}
-
-.double-column1 span {
-    color: #DB9354;
-    font-size: 12pt;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.column {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.single-column {
-    display: flex;
-    width: 100%;
-    padding: 0 20px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.single-column div {
-    width: 400px;
-    display: flex;
-    margin-bottom: 7px;
-}
-
-.single-column div:last-child {
-    margin-bottom: 0;
-}
-
-.form-width100 {
-    display: flex;
-    width: 100%;
-}
-
-
-label {
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-}
-
-.left-align {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
-    padding: 0 20px;
-    margin-bottom: 7px;
-    color: var(--primary-color);
-}
-
-.left-align1 span {
-    color: var(--primary-color);
-}
-
-
-
-
-/* left-align referral label main style */
-.referral label, .left-align label {
-    width: 100% !important;
-    margin-bottom: 7px;
-}
-
-
-
-/* radio container style */
-.radio-inline-container {
-    display: flex;
-    flex-direction: row;
-    padding-right: 20px;
-    align-items: center;
-
-}
-
-.radio-inline-container div {
-    display: flex;
-    flex-direction: row;
-    padding-right: 20px;
-}
-
-.radio-inline-container label {
-    margin: 0 !important;
-}
-
-.radio-inline-container input:not([type="text"]) {
-    display: flex;
-    width: 20px !important;
-    aspect-ratio: 1/1;
-}
-
-
-/* left align style for the list of checkboxes */
-.left-align-checkbox {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
-    padding: 0 20px;
-    margin-bottom: 7px;
-    color: var(--primary-color);
-    list-style: none;
-    margin: 0;
-}
-
-.left-align-checkbox li {
-    column-gap: 5px;
-    margin-bottom: 7px;
-
-}
-
-.left-align-checkbox label {
-    width: auto !important;
-    font-family: Lexend-regular;
-    display: inline-block;
-}
-
-
-/* roundes checkboxes but eliminates the checkmark */
-.checkbox-round {
-    width: auto;
-    aspect-ratio: 1/1;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid var(--primary-color);
-    appearance: none;
-    appearance: none;
-    outline: none;
-    cursor: pointer;
-}
-
-.checkbox-round:checked {
-    background-color: #0075ff;
-}
-
-
-/* style for spanning the label and input at the same line */
-.single-column-span {
-    flex-direction: row;
-}
-
-.single-column-span label {
-    width: 200px !important;
-}
-
-
-/* for three column layouts */
-.tri-column {
-    display: flex;
-}
-
-
-
-/* table format */
-table {
-    border-collapse: collapse;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 7px;
-}
-
-th, td {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 7px 10px;
-    text-align: center;
-}
-
-
-/* personal agreements container style */
-.personalagree .container, .refinfo .container, .confidential .container {
-    width: calc(100% - 40px);
-    height: auto;
-    margin: 20px 0;
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    padding: 10px 20px;
-    color: var(--primary-color);
-}
-
-
-.tac {
-    display: flex;
-}
-
-.tac label {
-    width: auto !important;
-}
-
-.tac input {
-    width: 20px;
-    aspect-ratio: 1/1;
-    margin-right: 10px;
-}
-
-.tacdatetime {
-    margin-top: 10px;
-    width: 342px;
-}
-
-
-
-
-/* responsiveness */
-@media screen and (width <=1127px) {
-    .double-column, .single-column, .left-align, .left-align-checkbox {
-        justify-content: center;
-    }
-
-    .left-align, .left-align-checkbox {
-        width: 400px !important;
-        padding: 0;
-    }
-
-    .personalagree .container, .refinfo .container, .confidential .container {
-        width: 400px !important;
-    }
-
-
-
-    .left-align-checkbox li {
-        background-color: #f3ded0;
-        border-radius: 5px;
-    }
-
-    .single-column-span, .resp, .tri-column, .raisedby, .relby {
-        flex-direction: column;
-    }
-
-
-    .treatmenttype {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .treatmenttype label {
-        padding-right: 0;
-    }
-
-    .referral {
-        width: 358px !important;
-    }
-
-
-
-}
-}
-
-
-
-
-</style>
-</head>
-
-<body>
-
-        <div class="main-content">
-          <header class="main-header-content">Client History and Information</header>
-          <hr />
-    
-          <!-- start: BASIC INFORMATION -->
-          <header>Basic Information</header>  
-          <div class="center">
-            <section class="basic-information">
-              <div class="column">
-                <div class="double-column1">
-                  <div>
-                    <label for="fname">Nature of Concern:&nbsp;</label>
-                    <span>{{student_data[0]['nature_of_concern']}}</span>
-                  </div>
-                  <div>
-                    <label for="fname">First name:&nbsp;</label>
-                    <span>{{student_data[0]['first_name']}}</span>
-                  </div>
-                  <div>
-                    <label for="course">Last Name:&nbsp;</label>
-                    <span>{{student_data[0]['last_name']}}</span>
-                  </div>
-                  <div>
-                    <label for="course">College/Department:&nbsp;</label>
-                    <span>{{student_data[0]['course']}}</span>
-                  </div>
-                  <div>
-                    <label for="yearlevel">Grade/Yr Level:&nbsp;</label>
-                    <span>{{student_data[0]['year_level']}}</span>
-                  </div>
-                  <div>
-                    <label for="dob">Date of Birth:&nbsp;</label>
-                    <span>{{student_data[0]['date_of_birth']}}</span>
-                  </div>
-                  <div>
-                    <label for="gender">Gender:&nbsp;</label>
-                    <span>{{student_data[0]['gender']}}</span>
-                  </div>
-                  <div>
-                    <label for="nationality">Nationality:&nbsp;</label>
-                    <span>{{student_data[0]['nationality']}}</span>
-                  </div>
-                  <div>
-                    <label for="address">Home Address:&nbsp;</label>
-                    <span>{{student_data[0]['residence']}}</span>
-                  </div>
-                  <div>
-                    <label for="email">Email Address:&nbsp;</label>
-                    <span>{{student_data[0]['email_address']}}</span>
-                  </div>
-                  <div class="left-align1">
-                    <span>If the above client is a minor complete the following:</span>
-                  </div>
-                  <div>
-                    <label for="guardian">Name of Guardian:&nbsp;</label>
-                    <span>{{student_data[0]['guardian_name']}}</span>
-                  </div>
-                  <div>
-                    <label for="guardianadd">Address of Guardian:&nbsp;</label>
-                    <span>{{student_data[0]['guardian_address']}}</span>
-                  </div>
-                </div>
-    
-                <div class="double-column1">
-                  <div>
-                    <label for="fname">Status:&nbsp;</label>
-                    <span>{{student_data[0]['status']}}</span>
-                  </div>
-                  <div>
-                    <label for="studNumber">Student's Number:&nbsp;</label>
-                    <span>{{student_data[0]['student_id']}}</span>
-                  </div>
-                  <div style="margin-bottom: 27px;">
-                  </div>
-                  <div>
-                    <label for="yearlevel">Course/Strand:&nbsp;</label>
-                    <span>{{student_data[0]['course']}}</span>
-                  </div>
-                  <div style="margin-bottom: 27px;">
-                  </div>
-                  <div>
-                    <label for="age">Age:&nbsp;</label>
-                    <span>{{student_data[0]['age']}}</span>
-                  </div>
-                  <div>
-                    <label for="civil">Civil Status:&nbsp;</label>
-                    <span>{{student_data[0]['civil_status']}}</span>
-                  </div>
-                  <div>
-                    <label for="religion">Religion:&nbsp;</label>
-                    <span>{{student_data[0]['religion']}}</span>
-                  </div>
-                  <div>
-                    <label for="pnumber">Phone Number:&nbsp;</label>
-                    <span>{{student_data[0]['phone_number']}}</span>
-                  </div>
-                  <div>
-                    <label for="cnumber">Cellphone Number:&nbsp;</label>
-                    <span>{{student_data[0]['contact_number']}}</span>
-                  </div>
-                  <div style="margin-bottom: 35px;">
-                  </div>
-                  <div>
-                    <label for="gcnumber">Guardian's Contact No.:&nbsp;</label>
-                    <span>{{student_data[0]['guardian_contact']}}</span>
-                  </div>
-                </div>
-              </div>
-              
-    
-    
-            </section>
-            <!-- end: BASIC INFORMATION -->
-    
-            <!-- start: REFERAL SOURCE -->
-            <header>Referral Source</header>
-            <div class="referral">
-              <div class="left-align">
-                <label for="referrer"
-                  >Who referred you to our office, or how did you learn about our
-                  service?</label
-                >
-                <span>{{student_data[0]['referral_source']}}</span>
-              </div>
-            </div>
-    
-            <!-- end: REFERAL SOURCE -->
-    
-            <!-- start: Emergency Contact Information -->
-            <header>Emergency Contact Information</header>
-            <div class="emergency">
-              <div class="left-align">
-                <label
-                  >In case of an emergency, who should we contact?</label
-                >
-              </div>
-    
-              <div class="double-column">
-                <div>
-                  <label for="emername">Name:&nbsp;</label>
-                  <span>{{student_data[0]['emergency_name']}}</span>
-                </div>
-                <div>
-                  <label for="emerrel">Relationship:&nbsp;</label>
-                  <span>{{student_data[0]['emergency_relationship']}}</span>
-                </div>
-              </div>
-              <div class="double-column">
-                <div>
-                  <label for="dob">Address:&nbsp;</label>
-                  <span>{{student_data[0]['emergency_address']}}</span>
-                </div>
-                <div>
-                  <label for="emercell">Cellphone No.:&nbsp;</label>
-                  <span>{{student_data[0]['emergency_contact']}}</span>
-                </div>
-              </div>
-            </div>
-    
-            <!-- end: Emergency Contact Information -->
-    
-            <!-- start: History Information -->
-            <header>History Information</header>
-            <div class="historyinfo">
-              <div class="left-align">
-                <label
-                  >Who is providing the history information?</label
-                >
-                <!-- TODO: FIX THIS SHIT dapat pag selected si client/guardian yun ang ilagay -->
-                <span>{{student_data[0]['information_provider']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label for="problem1"
-                  >Please describe the current complaint or problem as specifically
-                  as you can, in your own words.</label
-                >
-                <span>{{student_data[0]['current_problem']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="problem2"
-                  >How long have you experienced this problem, or when did you first
-                  notice it?</label
-                >
-                <span>{{student_data[0]['problem_length']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="problem3"
-                  >What stressors may have contributed to the current complaint or
-                  problem?</label
-                >
-                <span>{{student_data[0]['stressors']}}</span>
-              </div>
-    
-              <!-- long checkbox form -->
-              <div class="left-align">
-                <label for="left-align-checkbox" style="margin: 0"
-                  >Check all the words/phrases that describe what you are
-                  experiencing and explain if possible.
-                </label>
-              </div>
-    
-              <ul class="left-align-checkbox">
-                {% if student_data[0]['substance_abuse'] %}
-                <li>
-                  <span>Substance Abuse</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['addiction'] %}
-                <li>
-                  <span>Addiction (internet, porn, shopping, exercise, gaming, gambling, etc.)</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['depression_sad_down_feelings'] %}
-                <li>
-                  <span>Depression/Sad/Down Feelings</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['high_low_energy_level'] %}
-                <li>
-                  <span>High/Low energy level</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['angry_irritable'] %}
-                <li>
-                  <span>Angry/Irritable</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['loss_of_interest'] %}
-                <li>
-                  <span>Lost of interest in activities</span>                         
-                </li>
-                {% endif %}
-                {% if student_data[0]['difficulty_enjoying_things'] %}
-                <li>
-                  <span>Difficulty enjoying things</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['crying_spells'] %}
-                <li>
-                  <span>Crying spells</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['decreased_motivation'] %}
-                <li>
-                  <span>Decreased Motivation</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['withdrawing_from_people'] %}
-                <li>
-                  <span>Withdrawing from people/Isolation</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['mood_swings'] %}
-                <li>
-                  <span>Mood Swings</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['black_and_white_thinking'] %}
-                <li>
-                  <span>Black and white thinking/All or nothing thinking</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['negative_thinking'] %}
-                <li>
-                  <span>Negative thinking</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['change_in_weight_or_appetite'] %}
-                <li>
-                  <span>Change in weight or appetite</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['change_in_sleeping_pattern'] %}
-                <li>
-                  <span>Change in sleeping pattern</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['suicidal_thoughts_or_plans'] %}
-                <li>
-                  <span>Suicidal thoughts or plans/Thoughts of hurting yourself</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['self_harm'] %}
-                <li>
-                  <span>Self-harm/Cutting/Burning yourself</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['homicidal_thoughts_or_plans'] %}
-                <li>
-                  <span>Homicidal thoughts or plans/Thoughts of hurting others</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['difficulty_focusing'] %}
-                <li>
-                  <span>Poor concentration/Difficulty focusing</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['feelings_of_hopelessness'] %}
-                <li>
-                  <span>Feelings of hopelessness/Worthlessness</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['feelings_of_shame_or_guilt'] %}
-                <li>
-                  <span>Feelings of shame or guilt</span> 
-                </li>
-                {% endif %}
-                {% if student_data[0]['feelings_of_inadequacy'] %}
-                <li>
-                  <span>Feelings of inadequacy/Low self-esteem</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['anxious_nervous_tense_feelings'] %}
-                <li>
-                  <span>Anxious/Nervous/Tense feelings</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['panic_attacks'] %}
-                <li>
-                  <span>Panic attacks</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['racing_or_scrambled_thoughts'] %}
-                <li>
-                  <span>Racing or scrambled thoughts</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['bad_or_unwanted_thoughts'] %}
-                <li>
-                  <span>Bad or unwanted thoughts</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['flashbacks_or_nightmares'] %}
-                <li>
-                  <span>Flashback/Nightmares</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['muscle_tensions_aches'] %}
-                <li>
-                  <span>Muscle tensions, aches, etc.</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['hearing_voices_or_seeing_things'] %}
-                <li>
-                  <span>Hearing voices/Seeing things not there</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['thoughts_of_running_away'] %}
-                <li>
-                  <span>Thoughts of running away</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['paranoid_thoughts'] %}
-                <li>
-                  <span>Paranoid thoughts/Thoughts that someone is watching you, out to
-                    get you or hurt you.</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['feelings_of_frustration'] %}
-                <li>
-                  <span>Feelings of frustation</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['feelings_of_being_cheated'] %}
-                <li>
-                  <span>Feelings of being cheated</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['perfectionism'] %}
-                <li>
-                  <span>Perfectionism</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['counting_washing_checking'] %}
-                <li>
-                  <span>Rituals of counting things, washing hands, checking locks,
-                    doors, stove, etc./Overly concerned about germs.</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['distorted_body_image'] %}
-                <li>
-                  <span>Distorted body image (believe you are heavier or less
-                    attractive than others say you are)</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['concerns_about_dieting'] %}
-                <li>
-                  <span>Concerns about dieting</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['loss_of_control_over_eating'] %}
-                <li>
-                  <span>Feelings of loss of control over eating</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['binge_eating_or_purging'] %}
-                <li>
-                  <span>Binge eating/Purging</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['rules_about_eating'] %}
-                <li>
-                  <span>Rules about eating/Compensating for eating</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['excessive_exercise'] %}
-                <li>
-                  <span>Excessive exercise</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['indecisiveness_about_career'] %}
-                <li>
-                  <span>Indecisiveness about career</span>
-                </li>
-                {% endif %}
-                {% if student_data[0]['job_problems'] %}
-                <li>
-                  <span>Job Problems</span>
-                </li>
-                {% endif %}
-                <li>
-                  <span>{{student_data[0]['other']}}</span>
-                </li>
-              </ul>
-            </div>
-            <!-- end: History Information -->
-    
-            <!-- start: Previous Treatment -->
-            <header>Previous Treatment</header>
-            <section class="prevtreatment">
-              <div class="left-align">
-                <label
-                  >Have you received or participated in previous counseling and/or
-                  therapy?
-                </label>
-                <div class="radio-inline-container">
-                  <div>
-                    <span>{{student_data[0]['previous_treatments']}}</span>
-                  </div>  
-                </div>
-              </div>
-    
-              <div class="left-align">
-                <label for="prevtreatment1"
-                  >What did you like/dislike about previous treatment?</label
-                >
-                <span>{{student_data[0]['previous_treatments_likes_dislikes']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="prevtreatment2"
-                  >What did you learn about yourself through previous
-                  counseling/treatment that may help you?</label
-                >
-                <span>{{student_data[0]['previous_treatments_learned']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="prevtreatment3"
-                  >Is there any type of treatment you would like to continue?</label
-                >
-                <span>{{student_data[0]['previous_treatments_like_to_continue']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label
-                  >Have you had hospital stays for psychological concerns?
-                </label>
-                <div class="radio-inline-container">
-                  <div>
-                    <span>{{student_data[0]['previous_hospital_stays_psych']}}</span>
-                  </div>
-                
-                </div>
-              </div>
-              <div class="left-align">
-                <label
-                  >Are you currently experiencing thoughts of harming either
-                  yourself or someone else?
-                </label>
-                <div class="radio-inline-container">
-                  <div>
-                    <div>
-                      <span>{{student_data[0]['current_thoughts_to_harm']}}</span>
-                    </div>
-    
-              </div>
-              
-              </div>
-              <div>
-                <label
-                  >Have you in the past experienced thoughts of harming either
-                  yourself or someone else?
-                </label>
-                <div class="radio-inline-container">
-                  <div>
-                    <span>{{student_data[0]['past_thoughts_to_harm']}}</span>
-                  </div>
-                
-                </div>
-              </div>
-            </section>
-            <!-- end: Previous Treatment -->
-    
-            <!-- start: Medical History -->
-            <header>Medical History</header>
-            <section class="medhistory">
-              <div class="left-align">
-                <label>List any current or important past medications.</label>
-              </div>
-              <div class="left-align single-column-span">
-                <label for="medsndose">Medication & Dose:&nbsp;</label>
-                <span>{{student_data[0]['medication_and_dose']}}</span>
-              </div>
-              <div class="left-align single-column-span">
-                <label for="childhoodill" style="width: 300px !important"
-                  >History of serious childhood illness:&nbsp;</label
-                >
-                <span>{{student_data[0]['serious_ch_illnesses_history']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label
-                  >Other health concerns, serious illness, conditions, or major
-                  operations requiring hospitalization during your life time:</label
-                >
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="headinjury" style="width: 340px !important"
-                  >Have you experienced any head injuries?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['head_injuries']}}</span>
-                  </div>
-              </div>
-    
-              <div class="left-align">
-                <label>Important Details:</label>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="losscons" style="width: 292px !important"
-                  >If yes, did you lose consciousness?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['lose_consciousness']}}</span>
-                  </div>
-
-              </div>
-              <div class="left-align single-column-span">
-                <label for="expseizures" style="width: 392px !important"
-                  >Have you experienced convulsions or seizures?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['convulsions_or_seizures']}}</span>
-                  </div>
-
-              </div>
-              <div class="left-align single-column-span">
-                <label for="hasfever" style="width: 262px !important"
-                  >If yes, did you also have fever?&nbsp;</label
-                >
-
-                  <div>
-                    <span>{{student_data[0]['fever']}}</span>
-                  </div>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="allergies" style="width: 232px !important"
-                  >List any allergies you have:&nbsp;</label
-                >
-                <span>{{student_data[0]['allergies']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label>How would you rate your current physical health? </label>
-                <div class="radio-inline-container resp">
-                  <div>
-                    <span>{{student_data[0]['current_physical_health']}}</span>
-                  </div>
-                
-                </div>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="lastcheckup" style="width: 540px !important"
-                  >What was the date of your last physical or routine health “check
-                  up”?&nbsp;</label
-                >
-                <span>{{student_data[0]['last_check_up']}}</span>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="physician" style="width: 322px !important"
-                  >Do you have a primary care physician?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['has_physician']}}</span>
-                  </div>
-              </div>
-              <div class="left-align">
-                <label>If yes, complete the following:</label>
-              </div>
-    
-              <div class="tri-column">
-                <div>
-                  <div class="left-align single-column-span">
-                    <label for="physname">Name:&nbsp;</label>
-                    <span>{{student_data[0]['physician_name']}}</span>
-                  </div>
-                </div>
-                <div>
-                  <div class="left-align single-column-span">
-                    <label for="physemail">Email:&nbsp;</label>
-                    <span>{{student_data[0]['physician_email']}}</span>
-                  </div>
-                </div>
-                <div>
-                  <div class="left-align single-column-span">
-                    <label for="physnum">Contact Number:&nbsp;</label>
-                    <span>{{student_data[0]['physician_number']}}</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-    
-            <!-- end: Medical History -->
-    
-            <!-- start: Family History -->
-            <header>Family History</header>
-            <section class="famhistory">
-              <div class="left-align single-column-span">
-                <label for="birthloc" style="width: 130px !important"
-                  >Birth Location:&nbsp;</label
-                >
-                <span>{{student_data[0]['birth_location']}}</span>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label for="raised" style="width: 93px !important"
-                  >Raised by:&nbsp;
-                </label>
-                  <div>
-                    <span>{{student_data[0]['raised_by']}}</span>
-                  </div>
-              </div>
-    
-              <div class="left-align">
-                <label
-                  >Relationship with parent figures: (INDICATE if good, fair, poor,
-                  close, distant, etc.)</label
-                >
-              </div>
-    
-              <!-- Relationhip Mother -->
-              <div class="left-align single-column-span">
-                <label for="raised" style="width: 62px !important">Mother&nbsp;</label>
-                  <div>
-                    <span>{{student_data[0]['rel_qual_mother']}}</span>
-                  </div>
-              </div>
-              <!-- Relationhip Father -->
-              <div class="left-align single-column-span">
-                <label for="raised" style="width: 62px !important">Father&nbsp;</label>
-                  <div>
-                    <span>{{student_data[0]['rel_qual_father']}}</span>
-                  </div>
-              </div>
-              <!-- Relationhip Step-Parent -->
-              <div class="left-align single-column-span">
-                <label for="raised" style="width: 110px !important"
-                  >Step-Parent&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['rel_qual_step_parent']}}</span>
-                  </div>
-              </div>
-              
-              <!-- TODO: Connect to backend -->
-              <div class="left-align single-column-span">
-                <label
-                      style="width: auto !important; padding-right: 8px"
-                      for="raisedother"
-                      >Other&nbsp;</label
-                    >
-                <span>{{student_data[0]['rel_qual_other']}}</span>
-              </div>
-            
-    
-              <div class="left-align">
-                <label for="prevtreatment1"
-                  >List your siblings and describe your relationship with them.<br />(INDICATE
-                  if good, fair, poor, close, distant, etc. as nature of
-                  relationship.)
-                </label>
-              </div>
-        
-              <table id="siblingsTable">
-                <tr>
-                  <th>Name of Sibling</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Nature of Relationship</th>
-                </tr>
-    
-                <tr id="siblingRow">
-                  <td>
-                  <!-- TODO: put answer -->
-                  </td>
-                  <td>
-                    <!-- TODO: put answer -->
-                  </td>
-                  <td>
-                    <!-- TODO: put answer -->
-                  </td>
-                  <td>
-                    <!-- TODO: put answer -->
-                  </td>
-                </tr>
-    
-              </table>
-    
-    
-              <div class="left-align">
-                <label for="famhistoryneglect1"
-                  >Any history of neglect, and/o physical, verbal, emotional,
-                  spiritual, or sexual abuse?
-                </label>
-                <span>{{student_data[0]['family_abuse_history']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="famhistoryneglect2"
-                  >Any family history of substance abuse, mental illness, suicide,
-                  or violence?
-                </label>
-                <span>{{student_data[0]['family_mental_history']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="famhistoryneglect3"
-                  >Any Additional Family Information:
-                </label>
-                <span>{{student_data[0]['additional_information_family']}}</span>
-              </div>
-            </section>
-    
-            <!-- end: Family History -->
-    
-            <!-- start: Social History -->
-            <header>Social History</header>
-            <section class="sochistory">
-              <div class="left-align">
-                <label for="sochistory1"
-                  >Describe your relationship with peers and/or friends?</label
-                >
-                <span>{{student_data[0]['relationship_with_peers']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="sochistory2"
-                  >How would you describe your social support network?</label
-                >
-                <span>{{student_data[0]['social_support_network']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="sochistory3"
-                  >Describe your hobbies/interests:</label
-                >
-                <span>{{student_data[0]['hobbies_or_interests']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="sochistory4"
-                  >Describe any cultural concerns:</label
-                >
-                <span>{{student_data[0]['cultural_concerns']}}</span>
-              </div>
-            </section>
-    
-            <!-- end: Social History -->
-    
-            <!-- start: Educational History -->
-            <header>Educational History</header>
-    
-            <section class="educhistory">
-              <div class="left-align">
-                <label>When attending school were you:</label>
-                <div class="radio-inline-container resp">
-                  <div>
-                    <span>{{student_data[0]['educational_history']}}</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="left-align">
-                <label for="educhighest"
-                  >What is the highest educational level you have completed?
-                </label>
-                <span>{{student_data[0]['highest_level_achieved']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label for="educinfo"
-                  >Give any additional important educational information (i.e. Did
-                  you like school? Have a learning disability?)</label
-                >
-                <span>{{student_data[0]['additional_information_education']}}</span>
-              </div>
-            </section>
-            <!-- end: Educational History -->
-    
-            <!-- start: Occupational History -->
-            <header>Occupational History</header>
-            <section class="occuhistory">
-              <div class="left-align">
-                <label>What is your current employment status? </label>
-                <div class="radio-inline-container resp">
-                  <div>
-                    <span>{{student_data[0]['employment_status']}}</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="left-align">
-                <label for="employmentsatis"
-                  >Are you satisfied with your employment? why?
-                </label>
-                <span>{{student_data[0]['satisfaction']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="employmentsatisifnot">If not, why? </label>
-                <span>{{student_data[0]['satisfaction_reason']}}</span>
-              </div>
-            </section>
-    
-            <!-- end: Occupational History -->
-    
-            <!-- start: Substance Abuse History -->
-            <!-- TODO: ADD CIGARETTE -->
-            <header>Substance Abuse History</header>
-            <section class="subsabuse">
-              <div class="left-align">
-                <label
-                  >Are you currently or have you ever struggled with substance
-                  abuse?<br />
-                  (alcohol, tobacco, marijuana, caffeine, or other)
-                </label>
-                <div class="radio-inline-container">
-                  <div>
-                    <span>{{student_data[0]['struggled_with_substance_abuse']}}</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="left-align">
-                <label
-                  >If you answered yes, please complete the following substance
-                  abuse history chart.
-                </label>
-              </div>
-    
-              <table>
-                <tr>
-                  <th>Substance</th>
-                  <th>Ever Used<br />(Yes/No)</th>
-                  <th>Age of First Use</th>
-                  <th>Frequency of Use (Daily, Weekly, Monthly)</th>
-                  <th>Amount Used</th>
-                  <th>How did you use it (smoked, injected, etc.)</th>
-                </tr>
-                <tr>
-                  <td>Alcohol</td>
-                  <td>
-                    {% if student_data[0]['alcohol'] == 'Yes' %}
-                    <span>Yes</span>
-                    {% elif student_data[0]['alcohol'] == 'No' %}
-                    <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['alcohol_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['alcohol_frequency_of_use'] == 'Daily' %}
-                    <span>Daily</span>
-                    {% elif student_data[0]['alcohol_frequency_of_use'] == 'Weekly' %}
-                    <span>Weekly</span>
-                    {% elif student_data[0]['alcohol_frequency_of_use'] == 'Monthly' %}
-                    <span>Monthly</span>
-                    {% else %}
-                    <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['alcohol_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['alcohol_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <tr>
-                    <td>Cigarette</td>
-                    <td>
-                      {% if student_data[0]['cigarette'] == 'Yes' %}
-                      <span>Yes</span>
-                      {% elif student_data[0]['cigarette'] == 'No' %}
-                      <span>No</span>
-                      {% endif %}
-                    </td>
-                    <td>
-                      <span>{{student_data[0]['cigarette_frequency_of_use']}}</span>
-                    </td>
-                    <td>
-                      {% if student_data[0]['cigarette_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                      {% elif student_data[0]['cigarette_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                      {% elif student_data[0]['cigarette_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                      {% else %}
-                      <span>N/A</span>
-                      {% endif %}
-                    </td>
-                    <td>
-                      <span>{{student_data[0]['cigarette_amount_used']}}</span>
-                    </td>
-                    <td>
-                      <span>{{student_data[0]['cigarette_way_of_intake']}}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                  <td>Marijuana</td>
-                  <td>
-                    {% if student_data[0]['marijuana'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['marijuana'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['marijuana_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['marijuana_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['marijuana_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['marijuana_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['marijuana_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['marijuana_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cocaine or Crack</td>
-                  <td>
-                    {% if student_data[0]['cocaine'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['cocaine'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['cocaine_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['cocaine_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['cocaine_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['cocaine_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['cocaine_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['cocaine_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Heroin</td>
-                  <td>
-                    {% if student_data[0]['heroin'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['heroin'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['heroin_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['heroin_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['heroin_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['heroin_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['heroin_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['heroin_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Amphetamines</td>
-                  <td>
-                    {% if student_data[0]['amphetamines'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['amphetamines'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['amphetamines_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['amphetamines_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['amphetamines_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['amphetamines_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['amphetamines_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['amphetamines_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Club Drugs (Ecstasy, Inhalants, etc.)</td>
-                  <td>
-                    {% if student_data[0]['club_drugs'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['club_drugs'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['club_drugs_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['club_drugs_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['club_drugs_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['club_drugs_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['club_drugs_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['club_drugs_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Pain Medication (Oxycontin, Vicodin, etc.)</td>
-                  <td>
-                    {% if student_data[0]['pain_meds'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['pain_meds'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['pain_meds_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['pain_meds_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['pain_meds_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['pain_meds_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['pain_meds_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['pain_meds_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Benzodiazepines</td>
-                  <td>
-                    {% if student_data[0]['benzo'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['benzo'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['benzo_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['benzo_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['benzo_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['benzo_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['benzo_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['benzo_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Hallucinogens</td>
-                  <td>
-                    {% if student_data[0]['hallucinogens'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['hallucinogens'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['hallucinogens_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['hallucinogens_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['hallucinogens_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['hallucinogens_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['hallucinogens_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['hallucinogens_way_of_intake']}}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Other
-                  </td>
-                  <td>
-                    {% if student_data[0]['other_meds'] == 'Yes' %}
-                      <span>Yes</span>
-                    {% elif student_data[0]['other_meds'] == 'No' %}
-                      <span>No</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['other_meds_age_first_use']}}</span>
-                  </td>
-                  <td>
-                    {% if student_data[0]['other_meds_frequency_of_use'] == 'Daily' %}
-                      <span>Daily</span>
-                    {% elif student_data[0]['other_meds_frequency_of_use'] == 'Weekly' %}
-                      <span>Weekly</span>
-                    {% elif student_data[0]['other_meds_frequency_of_use'] == 'Monthly' %}
-                      <span>Monthly</span>
-                    {% else %}
-                      <span>N/A</span>
-                    {% endif %}
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['other_meds_amount_used']}}</span>
-                  </td>
-                  <td>
-                    <span>{{student_data[0]['other_meds_way_of_intake']}}</span>
-                  </td>
-                </tr>
-              </table>
-              <div class="left-align">
-                <label for="subsabuseprogram"
-                  >Have ever received treatment for a substance abuse issue?<br />Name
-                  of Treatment Program
-                </label>
-                <span>{{student_data[0]['treatment_program_name']}}</span>
-              </div>
-    
-              <div class="left-align">
-                <label>Type of Treatment </label>
-                <div class="radio-inline-container treatmenttype">
-                  <div>
-                    <span>{{student_data[0]['treatment_type']}}</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="left-align">
-                <label for="subsabusetreatmentdate"
-                  >Date of Treatment (Month, Year)
-                </label>
-                <span>{{student_data[0]['treatment_date']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="subsabuseoutcome"
-                  >Outcome?
-                </label>
-                <span>{{student_data[0]['treatment_outcome']}}</span>
-              </div>
-            </section>
-            <!-- end: Substance Abuse History -->
-    
-            <!-- start: Legal History -->
-            <header>Legal History</header>
-            <section class="legalhistory">
-              <div class="left-align single-column-span">
-                <label for="legalpending" style="width: 442px !important"
-                  >Do you currently have any pending criminal charges?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['pending_criminal_charges']}}</span>
-                  </div>
-              </div>
-              <div class="left-align single-column-span">
-                <label for="legalprobation" style="width: 192px !important"
-                  >Are you on probation?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['on_probation']}}</span>
-                  </div>
-              </div>
-              <div class="left-align single-column-span">
-                <label for="legalarrest" style="width: 422px !important"
-                  >Have you ever been arrested/convicted of a crime?&nbsp;</label
-                >
-                  <div>
-                    <span>{{student_data[0]['has_been_arrested']}}</span>
-                  </div>
-              </div>
-    
-              <div class="left-align single-column-span">
-                <label>If yes, complete chart.</label>
-              </div>
-    
-              <table id="legalTable">
-                <tr>
-                  <th>List any Arrest/Conviction</th>
-                  <th>Date of Arrests/Convictions</th>
-                  <th>Outcome</th>
-                </tr>
-    
-                  <tr id="legalRow">
-                    <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                    <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                    <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                  </tr>
-                </table>
-    
-                <tr id="legalRow">
-                  <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                    <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                    <td>
-                    <!-- TODO: put answer -->
-                    </td>
-                </tr>
-    
-              </table>
-            </section>
-            <!-- end: Legal History -->
-    
-            <!-- start: Additional Information -->
-            <header>Additional Information</header>
-            <section class="additionalinfo">
-              <div class="left-align">
-                <label for="additionalinfo1"
-                  >What you would like to work on in counseling?
-                </label>
-                <span>{{student_data[0]['to_work_on']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="additionalinfo2"
-                  >What expectations do you have for counseling?
-                </label>
-                <span>{{student_data[0]['expectations']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="additionalinfo3"
-                  >Name 3 things you would like to change about yourself.
-                </label>
-                <span>{{student_data[0]['things_to_change']}}</span>
-              </div>
-              <div class="left-align">
-                <label for="additionalinfo4"
-                  >Is there any additional information that you believe it is
-                  important for your counselor to know in order to provide you with
-                  the best care possible?
-                </label>
-                <span>{{student_data[0]['other_information']}}</span>
-              </div>
-            </section>
-            <!-- end: Additional Information -->
-    
-            <!-- start: Personal Agreements -->
-            <section class="personalagree">
-              <div class="container">
-                <header>PERSONAL AGREEMENTS</header>
-                <p>
-                  I understand that I may be asked to do certain "homework
-                  exercises" Such as reading, changing behaviors and otherwise
-                  acting in my own best interest. I understand that I am entirely
-                  responsible for my own actions and I will always make my own final
-                  decisions regarding counseling.<br /><br />I understand that there
-                  will be psychological testing as need arises. I further understand
-                  that much of the work done will be to resolve issues and will
-                  depend on my honesty, and willingness to do the things I need to
-                  do to move forward even if it is painful and difficult.<br /><br />I
-                  understand that whatever I say in a session is strictly
-                  confidential and will not be released to anyone without my consent
-                  unless I am violating codes of abuse, harm to myself or others.
-                </p>
-    
-                
-                <div class="tac">
-                  <input type="checkbox" id="taccheckbox" name="taccheckbox" checked="{{student_data[0]['personal_agreement']}}" disabled>
-                  <label for="taccheckbox">
-                    I understand and agree to the information presented
-                    above.</label
-                  >
-                </div>
-                <div>{{ student_signature | safe }}</div>
-                <input type="hidden" name="personal_agreement_date" value="{{student_data[0]['personal_agreement_date']}}">
-                <span>{{student_data[0]['personal_agreement_date']}}</span>
-              </div>
-    
-              <table id="sessionsTable">
-                <tr>
-                  <th>Sessions</th>
-                  <th>Date</th>
-                  <th>Time Started</th>
-                  <th>Time Ended</th>
-                  <th>Follow-Up</th>
-                  <th>Attended by</th>
-                </tr>
-    
-                <tr id="sessionsRow">
-                  <td id="sessionId" name="sessionId"></td>
-                  <!-- TODO: put answer -->
-                </tr>
-    
-                <tr id="sessionsRow" onload="createRow('sessionsTable', 'sessionsRow')">
-                  <!-- TODO: put answer -->
-                </tr>
-    
-              </table>
-            </section>
-            <!-- end: Personal Agreements -->
-    
-            <!-- start: Referral Information -->
-            {% if student.referral_information is not none %}
-            <section class="refinfo">
-              <header>Referral Information</header>
-    
-              <div class="container">
-                <div class="left-align">
-                  <label>Reason for Referral:</label>
-                  <span>{{student_data[0]['reason_for_referral']}}</span>
-                </div>
-                <hr style="border-top: 1px solid var(--primary-color)" />
-                <div class="left-align single-column-span">
-                  <label
-                    for="refinforeceiving"
-                    style="width: 500px !important; padding-right: 10px"
-                    >Receiving Agency:</label
-                  >
-                  <span>{{student_data[0]['receiving_agency']}}</span>
-                  <label
-                    for="refinfocontact"
-                    style="width: 320px !important; padding-right: 10px"
-                    >Contact No.:</label
-                  >
-                  <span>{{student_data[0]['receiving_contact_number']}}</span>
-                </div>
-                <div class="left-align single-column-span">
-                  <label
-                    for="refinfoname"
-                    style="width: 200px !important; padding-right: 10px"
-                    >Name:</label
-                  >
-                  <span>{{student_data[0]['receiving_name']}}</span>
-                  <label
-                    for="refinfoemail"
-                    style="width: 200px !important; padding-right: 10px"
-                    >Email:</label
-                  >
-                  <span>{{student_data[0]['receiving_email']}}</span>
-                </div>
-                <div class="left-align single-column-span">
-                  <label for="refinfoofficeadd" style="width: 160px !important"
-                    >Office Address:</label
-                  >
-                  <span>{{student_data[0]['office_address']}}</span>
-                </div>
-                <hr style="border-top: 1px solid var(--primary-color)" />
-    
-                <div class="left-align single-column-span">
-                  <label for="refinfoas" style="width: 510px !important"
-                    >Appointment Schedule:</label
-                  >
-                  <span>{{student_data[0]['appointment_schedule']}}</span>
-                </div>
-                <hr style="border-top: 1px solid var(--primary-color)" />
-                <div class="left-align">
-                  <label
-                    >Authorization for Referral: I authorize my case to be referred
-                    to the above agency.</label
-                  >
-                </div>
-                <div class="left-align single-column-span">
-                  <label
-                    for="refinfoclientsig"
-                    style="width: 500px !important; padding-right: 10px"
-                    >Client Signature:</label
-                  >
-                  <span>{{ client_signature | safe }}</span>
-                  <label
-                    for="refinfocounselorsig"
-                    style="width: 320px !important; padding-right: 10px"
-                    >Counselor's Signature:</label
-                  >
-                  <span>{{ counselor_signature | safe }}</span>
-                </div>
-                <div class="left-align single-column-span">
-                  <label
-                    for="refinfoclientdate"
-                    style="width: 500px !important; padding-right: 10px"
-                    >Date:</label
-                  >
-                  <span>{{student_data[0]['client_signature_date']}}</span>
-                  <label
-                    for="refinfocounselordate"
-                    style="width: 320px !important; padding-right: 10px"
-                    >Date:</label
-                  >
-                  <span>{{student_data[0]['counselor_signature_date']}}</span>
-                </div>
-              </div>
-            </section>
-            {% endif %}
-            <!-- end: Referral Information -->
-    
-            <!-- start: CONFIDENTIAL -->
-            <section class="confidential">
-              <header>CONFIDENTIAL</header>
-              <hr style="border-top: 1px solid var(--primary-color)" />
-              <header>CASE NOTE</header>
-    
-              <div class="">
-                <div id="caseNoteContainer" class="container">
-                  <div class="left-align single-column-span">
-                    <label for="conficounselor" style="width: 460px !important"
-                      >Counselor/Psychometrician Name:</label
-                    >
-                    <span>{{student_data[0]['counselor_name']}}</span>
-                  </div>
-                  <div class="left-align single-column-span">
-                    <label for="confiinterview" style="width: 460px !important"
-                      >Date of Intake Interview:</label
-                    >
-                    <span>{{student_data[0]['interview_date']}}</span>
-                  </div>
-                  <div class="left-align single-column-span">
-                    <label for="confinosessions" style="width: 460px !important"
-                      >Number of Session:</label
-                    >
-                    <span>{{student_data[0]['number_of_session']}}</span>
-                  </div>
-                  <hr style="border-top: 1px solid var(--primary-color)" />
-    
-                  <div class="left-align single-column-span">
-                    <label for="conficomplaint" style="width: 280px !important"
-                      >Subject Complaint:</label
-                    >
-                    <span>{{student_data[0]['subject_complaint']}}</span>
-                  </div>
-                  <div class="left-align single-column-span">
-                    <label for="confiobjassess" style="width: 280px !important"
-                      >Objective Assessment:</label
-                    >
-                    <span>{{student_data[0]['objective_assessment']}}</span>
-                  </div>
-                  <div class="left-align single-column-span">
-                    <label for="confipoa" style="width: 280px !important"
-                      >Action Taken:</label
-                    >
-                    <span>{{student_data[0]['plan_of_action']}}</span>
-                  </div>
-                  <div class="left-align single-column-span">
-                    <label for="confiprogress" style="width: 280px !important"
-                      >Progress Made:</label
-                    >
-                    <span>{{student_data[0]['progress_made']}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="double-column2">
-                <div
-                  style="
-                    display: flex !important;
-                    flex-direction: column-reverse !important;
-                    align-items: center;
-                  "
-                >
-                  <label
-                    for="Counselorsignature"
-                    style="width: auto !important; padding-top: 5px"
-                    >Signature of the Counselor/Guidance Personnel</label
-                  >
-                  <span>{{student_data[0]['counselor']}}</span>
-                </div>
-                <!-- change if needed -->
-                <div
-                  style="
-                    display: flex !important;
-                    flex-direction: column-reverse !important;
-                    align-items: center;
-                  "
-                >
-                  <label
-                    for="Counselorsignature"
-                    style="width: auto !important; padding-top: 5px"
-                    >Remarks</label
-                  >
-                  <span>{{student_data[0]['remarks']}}</span>
-                </div>
-              </div>
-            </section>
-            <!-- end: CONFIDENTIAL -->
-            
-            
-          </div>
-          
-        </div>
-
-    <script>
+      @media print {
+        body {
+          font-size: 12pt;
+          font-family: Arial, sans-serif;
+        }
+
+        .flex {
+          display: flex;
+          .end {
+            margin-left: auto;
+          }
+        }
+
+        /* header for each section */
+        header {
+          color: #333333;
+          font-size: 1.4em;
+          text-align: center;
+          margin: 20px 0 10px 0;
+        }
+
+        header {
+          background-color: #cdcdcd4f;
+        }
+
+        /* Field label  */
+        label {
+          color: #181818;
+        }
+
+        /* Input data */
+        span {
+          color: #000000;
+          font-weight: bold;
+        }
+
+        /* Style for the table */
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        /* Style for table headers */
+        th {
+          background-color: #333333;
+          color: #ffffff;
+          text-align: center;
+          padding: 8px;
+        }
+
+        /* Alternate row color */
+        tr:nth-child(even) {
+          background-color: #f2f2f2; /* Light gray */
+        }
+
+        /* Style for table data */
+        td {
+          border: 1px solid #dddddd; /* Light gray border */
+          text-align: center;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header style="background-color: transparent !important">
+      Client History and Information
+    </header>
+    <hr />
+
+    <!-- start: BASIC INFORMATION -->
+    <header>Basic Information</header>
+    <div class="flex">
+      <label for="fname">Full Name:&nbsp;</label>
+      <span
+        >{{student_data[0]['first_name']}}
+        {{student_data[0]['last_name']}}</span
+      >
+
+      <label for="studNumber" class="end">Student's Number:&nbsp;</label>
+      <span>{{student_data[0]['student_id']}}</span>
+    </div>
+
+    <label for="status">Status:&nbsp;</label>
+    <span>{{student_data[0]['status']}}</span><br />
+    <label for="noc">Nature of Concern:&nbsp;</label>
+    <span>{{student_data[0]['nature_of_concern']}}</span>
+    <br />
+
+    <label for="course">College/Department:&nbsp;</label>
+    <span>{{student_data[0]['course']}}</span><br />
+
+    <label for="yearlevel">Course/Strand:&nbsp;</label>
+    <span>{{student_data[0]['course']}}</span><br />
+
+    <label for="yearlevel">Grade/Yr Level:&nbsp;</label>
+    <span>{{student_data[0]['year_level']}}</span><br />
+
+    <label for="dob">Date of Birth:&nbsp;</label>
+    <span>{{student_data[0]['date_of_birth']}}</span><br />
+    <label for="age">Age:&nbsp;</label>
+    <span>{{student_data[0]['age']}}</span><br />
+
+    <label for="gender">Gender:&nbsp;</label>
+    <span>{{student_data[0]['gender']}}</span><br />
+
+    <label for="nationality">Nationality:&nbsp;</label>
+    <span>{{student_data[0]['nationality']}}</span><br />
+
+    <label for="address">Home Address:&nbsp;</label>
+    <span>{{student_data[0]['residence']}}</span><br />
+
+    <label for="email">Email Address:&nbsp;</label>
+    <span>{{student_data[0]['email_address']}}</span><br />
+
+    <label for="pnumber">Phone Number:&nbsp;</label>
+    <span>{{student_data[0]['phone_number']}}</span><br />
+
+    <label for="cnumber">Cellphone Number:&nbsp;</label>
+    <span>{{student_data[0]['contact_number']}}</span><br />
+
+    <label for="civil">Civil Status:&nbsp;</label>
+    <span>{{student_data[0]['civil_status']}}</span><br />
+
+    <label for="religion">Religion:&nbsp;</label>
+    <span>{{student_data[0]['religion']}}</span><br /><br />
+
+    <span
+      >If the above client is a minor the following below should have
+      information:</span
+    ><br />
+
+    <label for="guardian">Name of Guardian:&nbsp;</label>
+    <span>{{student_data[0]['guardian_name']}}</span><br />
+
+    <label for="guardianadd">Address of Guardian:&nbsp;</label>
+    <span>{{student_data[0]['guardian_address']}}</span><br />
+
+    <label for="gcnumber">Guardian's Contact No.:&nbsp;</label>
+    <span>{{student_data[0]['guardian_contact']}}</span><br />
+
+    <!-- end: BASIC INFORMATION -->
+
+    <!-- start: REFERAL SOURCE -->
+    <header>Referral Source</header>
+
+    <label for="referrer">Referral source: </label>
+    <span>{{student_data[0]['referral_source']}}</span>
+
+    <!-- end: REFERAL SOURCE -->
+
+    <!-- start: Emergency Contact Information -->
+    <header>Emergency Contact Information</header>
+
+    <label for="emername">Name:&nbsp;</label>
+    <span>{{student_data[0]['emergency_name']}}</span><br />
+
+    <label for="emerrel">Relationship:&nbsp;</label>
+    <span>{{student_data[0]['emergency_relationship']}}</span><br />
+
+    <label for="dob">Address:&nbsp;</label>
+    <span>{{student_data[0]['emergency_address']}}</span><br />
+
+    <label for="emercell">Cellphone No.:&nbsp;</label>
+    <span>{{student_data[0]['emergency_contact']}}</span>
+
+    <!-- end: Emergency Contact Information -->
+
+    <!-- start: History Information -->
+    <header>History Information</header>
+
+    <label>History information provider:</label>
+    <span>{{student_data[0]['information_provider']}}</span><br />
+
+    <label for="problem1">Problem/complaint:</label>
+    <span>{{student_data[0]['current_problem']}}</span><br />
+
+    <label for="problem2">Duration of the problem/complaint:</label>
+    <span>{{student_data[0]['problem_length']}}</span><br />
+
+    <label for="problem3">Factors contributing to the current issue: </label>
+    <span>{{student_data[0]['stressors']}}</span><br /><br />
+
+    <!-- long checkbox form -->
+
+    <label>Applicable words/phrases describing the experience: </label>
+
+    <ul>
+      {% if student_data[0]['substance_abuse'] %}
+      <li>
+        <span>Substance Abuse</span>
+      </li>
+      {% endif %} {% if student_data[0]['addiction'] %}
+      <li>
+        <span
+          >Addiction (internet, porn, shopping, exercise, gaming, gambling,
+          etc.)</span
+        >
+      </li>
+      {% endif %} {% if student_data[0]['depression_sad_down_feelings'] %}
+      <li>
+        <span>Depression/Sad/Down Feelings</span>
+      </li>
+      {% endif %} {% if student_data[0]['high_low_energy_level'] %}
+      <li>
+        <span>High/Low energy level</span>
+      </li>
+      {% endif %} {% if student_data[0]['angry_irritable'] %}
+      <li>
+        <span>Angry/Irritable</span>
+      </li>
+      {% endif %} {% if student_data[0]['loss_of_interest'] %}
+      <li>
+        <span>Lost of interest in activities</span>
+      </li>
+      {% endif %} {% if student_data[0]['difficulty_enjoying_things'] %}
+      <li>
+        <span>Difficulty enjoying things</span>
+      </li>
+      {% endif %} {% if student_data[0]['crying_spells'] %}
+      <li>
+        <span>Crying spells</span>
+      </li>
+      {% endif %} {% if student_data[0]['decreased_motivation'] %}
+      <li>
+        <span>Decreased Motivation</span>
+      </li>
+      {% endif %} {% if student_data[0]['withdrawing_from_people'] %}
+      <li>
+        <span>Withdrawing from people/Isolation</span>
+      </li>
+      {% endif %} {% if student_data[0]['mood_swings'] %}
+      <li>
+        <span>Mood Swings</span>
+      </li>
+      {% endif %} {% if student_data[0]['black_and_white_thinking'] %}
+      <li>
+        <span>Black and white thinking/All or nothing thinking</span>
+      </li>
+      {% endif %} {% if student_data[0]['negative_thinking'] %}
+      <li>
+        <span>Negative thinking</span>
+      </li>
+      {% endif %} {% if student_data[0]['change_in_weight_or_appetite'] %}
+      <li>
+        <span>Change in weight or appetite</span>
+      </li>
+      {% endif %} {% if student_data[0]['change_in_sleeping_pattern'] %}
+      <li>
+        <span>Change in sleeping pattern</span>
+      </li>
+      {% endif %} {% if student_data[0]['suicidal_thoughts_or_plans'] %}
+      <li>
+        <span>Suicidal thoughts or plans/Thoughts of hurting yourself</span>
+      </li>
+      {% endif %} {% if student_data[0]['self_harm'] %}
+      <li>
+        <span>Self-harm/Cutting/Burning yourself</span>
+      </li>
+      {% endif %} {% if student_data[0]['homicidal_thoughts_or_plans'] %}
+      <li>
+        <span>Homicidal thoughts or plans/Thoughts of hurting others</span>
+      </li>
+      {% endif %} {% if student_data[0]['difficulty_focusing'] %}
+      <li>
+        <span>Poor concentration/Difficulty focusing</span>
+      </li>
+      {% endif %} {% if student_data[0]['feelings_of_hopelessness'] %}
+      <li>
+        <span>Feelings of hopelessness/Worthlessness</span>
+      </li>
+      {% endif %} {% if student_data[0]['feelings_of_shame_or_guilt'] %}
+      <li>
+        <span>Feelings of shame or guilt</span>
+      </li>
+      {% endif %} {% if student_data[0]['feelings_of_inadequacy'] %}
+      <li>
+        <span>Feelings of inadequacy/Low self-esteem</span>
+      </li>
+      {% endif %} {% if student_data[0]['anxious_nervous_tense_feelings'] %}
+      <li>
+        <span>Anxious/Nervous/Tense feelings</span>
+      </li>
+      {% endif %} {% if student_data[0]['panic_attacks'] %}
+      <li>
+        <span>Panic attacks</span>
+      </li>
+      {% endif %} {% if student_data[0]['racing_or_scrambled_thoughts'] %}
+      <li>
+        <span>Racing or scrambled thoughts</span>
+      </li>
+      {% endif %} {% if student_data[0]['bad_or_unwanted_thoughts'] %}
+      <li>
+        <span>Bad or unwanted thoughts</span>
+      </li>
+      {% endif %} {% if student_data[0]['flashbacks_or_nightmares'] %}
+      <li>
+        <span>Flashback/Nightmares</span>
+      </li>
+      {% endif %} {% if student_data[0]['muscle_tensions_aches'] %}
+      <li>
+        <span>Muscle tensions, aches, etc.</span>
+      </li>
+      {% endif %} {% if student_data[0]['hearing_voices_or_seeing_things'] %}
+      <li>
+        <span>Hearing voices/Seeing things not there</span>
+      </li>
+      {% endif %} {% if student_data[0]['thoughts_of_running_away'] %}
+      <li>
+        <span>Thoughts of running away</span>
+      </li>
+      {% endif %} {% if student_data[0]['paranoid_thoughts'] %}
+      <li>
+        <span
+          >Paranoid thoughts/Thoughts that someone is watching you, out to get
+          you or hurt you.</span
+        >
+      </li>
+      {% endif %} {% if student_data[0]['feelings_of_frustration'] %}
+      <li>
+        <span>Feelings of frustation</span>
+      </li>
+      {% endif %} {% if student_data[0]['feelings_of_being_cheated'] %}
+      <li>
+        <span>Feelings of being cheated</span>
+      </li>
+      {% endif %} {% if student_data[0]['perfectionism'] %}
+      <li>
+        <span>Perfectionism</span>
+      </li>
+      {% endif %} {% if student_data[0]['counting_washing_checking'] %}
+      <li>
+        <span
+          >Rituals of counting things, washing hands, checking locks, doors,
+          stove, etc./Overly concerned about germs.</span
+        >
+      </li>
+      {% endif %} {% if student_data[0]['distorted_body_image'] %}
+      <li>
+        <span
+          >Distorted body image (believe you are heavier or less attractive than
+          others say you are)</span
+        >
+      </li>
+      {% endif %} {% if student_data[0]['concerns_about_dieting'] %}
+      <li>
+        <span>Concerns about dieting</span>
+      </li>
+      {% endif %} {% if student_data[0]['loss_of_control_over_eating'] %}
+      <li>
+        <span>Feelings of loss of control over eating</span>
+      </li>
+      {% endif %} {% if student_data[0]['binge_eating_or_purging'] %}
+      <li>
+        <span>Binge eating/Purging</span>
+      </li>
+      {% endif %} {% if student_data[0]['rules_about_eating'] %}
+      <li>
+        <span>Rules about eating/Compensating for eating</span>
+      </li>
+      {% endif %} {% if student_data[0]['excessive_exercise'] %}
+      <li>
+        <span>Excessive exercise</span>
+      </li>
+      {% endif %} {% if student_data[0]['indecisiveness_about_career'] %}
+      <li>
+        <span>Indecisiveness about career</span>
+      </li>
+      {% endif %} {% if student_data[0]['job_problems'] %}
+      <li>
+        <span>Job Problems</span>
+      </li>
+      {% endif %}
+      <li>
+        <span>{{student_data[0]['other']}}</span>
+      </li>
+    </ul>
+
+    <!-- end: History Information -->
+
+    <!-- start: Previous Treatment -->
+    <header>Previous Treatment</header>
+
+    <label>Prior counseling or therapy received: </label>
+
+    <span>{{student_data[0]['previous_treatments']}}</span><br />
+
+    <label for="prevtreatment1">Previous treatment likes and dislikes:</label>
+    <span>{{student_data[0]['previous_treatments_likes_dislikes']}}</span><br />
+
+    <label for="prevtreatment2"
+      >Insights gained from previous counseling/treatment:</label
+    >
+    <span>{{student_data[0]['previous_treatments_learned']}}</span><br />
+
+    <label for="prevtreatment3"
+      >Preference for continuing any specific type of treatment:</label
+    >
+    <span>{{student_data[0]['previous_treatments_like_to_continue']}}</span
+    ><br />
+
+    <label>Past hospitalizations for psychological reasons:</label>
+
+    <span>{{student_data[0]['previous_hospital_stays_psych']}}</span><br />
+
+    <label
+      >Currently experiencing thoughts of self-harm or harm to others:
+    </label>
+
+    <span>{{student_data[0]['current_thoughts_to_harm']}}</span><br />
+
+    <label>
+      Past experience with thoughts of self-harm or harm to others:
+    </label>
+
+    <span>{{student_data[0]['past_thoughts_to_harm']}}</span><br />
+
+    <!-- end: Previous Treatment -->
+
+    <!-- start: Medical History -->
+    <header>Medical History</header>
+
+    <label>List of current or important past medications:</label><br />
+
+    <label for="medsndose">Medication & Dose:&nbsp;</label>
+    <span>{{student_data[0]['medication_and_dose']}}</span><br />
+
+    <label for="childhoodill"
+      >History of serious childhood illness:&nbsp;</label
+    >
+    <span>{{student_data[0]['serious_ch_illnesses_history']}}</span><br /><br />
+
+    <label
+      >Other health concerns, serious illness, conditions, or major operations
+      requiring hospitalization during your life time:</label
+    ><br />
+
+    <label for="headinjury"
+      >Have you experienced any head injuries?&nbsp;</label
+    >
+
+    <span>{{student_data[0]['head_injuries']}}</span><br /><br />
+
+    <label>Important Details:</label><br />
+
+    <label for="losscons">If yes, did you lose consciousness?&nbsp;</label>
+
+    <span>{{student_data[0]['lose_consciousness']}}</span><br />
+
+    <label for="expseizures"
+      >Have you experienced convulsions or seizures?&nbsp;</label
+    >
+
+    <span>{{student_data[0]['convulsions_or_seizures']}}</span><br />
+
+    <label for="hasfever">If yes, did you also have fever?&nbsp;</label>
+
+    <span>{{student_data[0]['fever']}}</span><br />
+
+    <label for="allergies">List any allergies you have:&nbsp;</label>
+    <span>{{student_data[0]['allergies']}}</span><br />
+
+    <label>How would you rate your current physical health? </label>
+
+    <span>{{student_data[0]['current_physical_health']}}</span><br />
+
+    <label for="lastcheckup"
+      >What was the date of your last physical or routine health “check
+      up”?&nbsp;
+    </label>
+    <span>{{student_data[0]['last_check_up']}}</span><br />
+
+    <label for="physician">Do you have a primary care physician?&nbsp;</label>
+
+    <span>{{student_data[0]['has_physician']}}</span><br /><br />
+
+    <label>If yes, complete the following:</label><br />
+
+    <label for="physname">Name:&nbsp;</label>
+    <span>{{student_data[0]['physician_name']}}</span><br />
+
+    <label for="physemail">Email:&nbsp;</label>
+    <span>{{student_data[0]['physician_email']}}</span><br />
+
+    <label for="physnum">Contact Number:&nbsp;</label>
+    <span>{{student_data[0]['physician_number']}}</span><br />
+
+    <!-- end: Medical History -->
+
+    <!-- start: Family History -->
+    <header>Family History</header>
+
+    <label for="birthloc">Birth Location:&nbsp;</label>
+    <span>{{student_data[0]['birth_location']}}</span><br />
+
+    <label for="raised">Raised by:&nbsp; </label>
+
+    <span>{{student_data[0]['raised_by']}}</span><br />
+
+    <label>Relationship with parent figures:</label><br />
+
+    <!-- Relationhip Mother -->
+
+    <label for="raised">Mother:&nbsp;</label>
+
+    <span>{{student_data[0]['rel_qual_mother']}}</span><br />
+
+    <!-- Relationhip Father -->
+
+    <label for="raised">Father:&nbsp;</label>
+
+    <span>{{student_data[0]['rel_qual_father']}}</span><br />
+
+    <!-- Relationhip Step-Parent -->
+
+    <label for="raised">Step-Parent:&nbsp;</label>
+
+    <span>{{student_data[0]['rel_qual_step_parent']}}</span><br />
+
+    <label for="raisedother">Other&nbsp;</label>
+    <span>{{student_data[0]['rel_qual_other']}}</span><br />
+
+    <label for="prevtreatment1"
+      >List your siblings and describe your relationship with them.
+      <br />(INDICATE if good, fair, poor, close, distant, etc. as nature of
+      relationship.)
+    </label>
+
+    <br /><br />
+    <table>
+      <tr>
+        <th>Name of Sibling</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Nature of Relationship</th>
+      </tr>
+
+      <tr id="siblingRow">
+        <td>
+          <!-- TODO: put answer -->
+        </td>
+        <td>
+          <!-- TODO: put answer -->
+        </td>
+        <td>
+          <!-- TODO: put answer -->
+        </td>
+        <td>
+          <!-- TODO: put answer -->
+        </td>
+      </tr>
+    </table>
+    <br />
+
+    <label for="famhistoryneglect1"
+      >Any history of neglect, and/o physical, verbal, emotional, spiritual, or
+      sexual abuse?
+    </label>
+    <span>{{student_data[0]['family_abuse_history']}}</span><br />
+
+    <label for="famhistoryneglect2"
+      >Any family history of substance abuse, mental illness, suicide, or
+      violence?
+    </label>
+    <span>{{student_data[0]['family_mental_history']}}</span><br />
+
+    <label for="famhistoryneglect3">Any Additional Family Information: </label>
+    <span>{{student_data[0]['additional_information_family']}}</span><br />
+
+    <!-- end: Family History -->
+
+    <!-- start: Social History -->
+    <header>Social History</header>
+
+    <label for="sochistory1"
+      >Describe your relationship with peers and/or friends?</label
+    >
+    <span>{{student_data[0]['relationship_with_peers']}}</span><br />
+
+    <label for="sochistory2"
+      >How would you describe your social support network?</label
+    >
+    <span>{{student_data[0]['social_support_network']}}</span><br />
+
+    <label for="sochistory3">Describe your hobbies/interests:</label>
+    <span>{{student_data[0]['hobbies_or_interests']}}</span><br />
+
+    <label for="sochistory4">Describe any cultural concerns:</label>
+    <span>{{student_data[0]['cultural_concerns']}}</span><br />
+
+    <!-- end: Social History -->
+
+    <!-- start: Educational History -->
+    <header>Educational History</header>
+
+    <label>Schooling status:</label>
+
+    <span>{{student_data[0]['educational_history']}}</span><br />
+
+    <label for="educhighest"
+      >What is the highest educational level you have completed?
+    </label>
+    <span>{{student_data[0]['highest_level_achieved']}}</span><br />
+
+    <label for="educinfo"
+      >Give any additional important educational information (i.e. Did you like
+      school? Have a learning disability?)</label
+    >
+    <span>{{student_data[0]['additional_information_education']}}</span><br />
+
+    <!-- end: Educational History -->
+
+    <!-- start: Occupational History -->
+    <header>Occupational History</header>
+
+    <label>Current employment status: </label>
+
+    <span>{{student_data[0]['employment_status']}}</span><br />
+
+    <label for="employmentsatis"
+      >Are you satisfied with your employment? why?
+    </label>
+    <span>{{student_data[0]['satisfaction']}}</span><br />
+
+    <label for="employmentsatisifnot">If not, why? </label>
+    <span>{{student_data[0]['satisfaction_reason']}}</span><br />
+
+    <!-- end: Occupational History -->
+
+    <!-- start: Substance Abuse History -->
+    <!-- TODO: ADD CIGARETTE -->
+    <header>Substance Abuse History</header>
+
+    <label
+      >Are you currently or have you ever struggled with substance abuse? <br />
+      (alcohol, tobacco, marijuana, caffeine, or other)
+    </label>
+
+    <span>{{student_data[0]['struggled_with_substance_abuse']}}</span
+    ><br /><br />
+
+    <label
+      >If you answered yes, please complete the following substance abuse
+      history chart.
+    </label>
+
+    <br /><br />
+    <table>
+      <tr>
+        <th>Substance</th>
+        <th>Ever Used <br />(Yes/No)</th>
+        <th>Age of First Use</th>
+        <th>Frequency of Use (Daily, Weekly, Monthly)</th>
+        <th>Amount Used</th>
+        <th>How did you use it (smoked, injected, etc.)</th>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Alcohol</td>
+        <td>
+          {% if student_data[0]['alcohol'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['alcohol'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['alcohol_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['alcohol_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif student_data[0]['alcohol_frequency_of_use']
+          == 'Weekly' %} <span>Weekly</span> {% elif
+          student_data[0]['alcohol_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['alcohol_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['alcohol_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td style="font-weight: bold">Cigarette</td>
+        <td>
+          {% if student_data[0]['cigarette'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['cigarette'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['cigarette_frequency_of_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['cigarette_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['cigarette_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['cigarette_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['cigarette_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['cigarette_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Marijuana</td>
+        <td>
+          {% if student_data[0]['marijuana'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['marijuana'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['marijuana_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['marijuana_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['marijuana_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['marijuana_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['marijuana_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['marijuana_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Cocaine or Crack</td>
+        <td>
+          {% if student_data[0]['cocaine'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['cocaine'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['cocaine_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['cocaine_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif student_data[0]['cocaine_frequency_of_use']
+          == 'Weekly' %} <span>Weekly</span> {% elif
+          student_data[0]['cocaine_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['cocaine_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['cocaine_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Heroin</td>
+        <td>
+          {% if student_data[0]['heroin'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['heroin'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['heroin_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['heroin_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif student_data[0]['heroin_frequency_of_use']
+          == 'Weekly' %} <span>Weekly</span> {% elif
+          student_data[0]['heroin_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['heroin_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['heroin_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Amphetamines</td>
+        <td>
+          {% if student_data[0]['amphetamines'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['amphetamines'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['amphetamines_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['amphetamines_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['amphetamines_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['amphetamines_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['amphetamines_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['amphetamines_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Club Drugs (Ecstasy, Inhalants, etc.)</td>
+        <td>
+          {% if student_data[0]['club_drugs'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['club_drugs'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['club_drugs_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['club_drugs_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['club_drugs_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['club_drugs_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['club_drugs_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['club_drugs_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">
+          Pain Medication (Oxycontin, Vicodin, etc.)
+        </td>
+        <td>
+          {% if student_data[0]['pain_meds'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['pain_meds'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['pain_meds_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['pain_meds_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['pain_meds_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['pain_meds_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['pain_meds_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['pain_meds_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Benzodiazepines</td>
+        <td>
+          {% if student_data[0]['benzo'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['benzo'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['benzo_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['benzo_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif student_data[0]['benzo_frequency_of_use']
+          == 'Weekly' %} <span>Weekly</span> {% elif
+          student_data[0]['benzo_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['benzo_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['benzo_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Hallucinogens</td>
+        <td>
+          {% if student_data[0]['hallucinogens'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['hallucinogens'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['hallucinogens_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['hallucinogens_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['hallucinogens_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['hallucinogens_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['hallucinogens_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['hallucinogens_way_of_intake']}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Other</td>
+        <td>
+          {% if student_data[0]['other_meds'] == 'Yes' %}
+          <span>Yes</span> {% elif student_data[0]['other_meds'] == 'No' %}
+          <span>No</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['other_meds_age_first_use']}}</span>
+        </td>
+        <td>
+          {% if student_data[0]['other_meds_frequency_of_use'] == 'Daily' %}
+          <span>Daily</span> {% elif
+          student_data[0]['other_meds_frequency_of_use'] == 'Weekly' %}
+          <span>Weekly</span> {% elif
+          student_data[0]['other_meds_frequency_of_use'] == 'Monthly' %}
+          <span>Monthly</span> {% else %} <span>N/A</span> {% endif %}
+        </td>
+        <td>
+          <span>{{student_data[0]['other_meds_amount_used']}}</span>
+        </td>
+        <td>
+          <span>{{student_data[0]['other_meds_way_of_intake']}}</span>
+        </td>
+      </tr>
+    </table>
+    <br />
+
+    <label for="subsabuseprogram"
+      >Have ever received treatment for a substance abuse issue? <br />Name of
+      Treatment Program
+    </label>
+    <span>{{student_data[0]['treatment_program_name']}}</span><br />
+
+    <label>Type of Treatment </label>
+
+    <span>{{student_data[0]['treatment_type']}}</span><br />
+
+    <label for="subsabusetreatmentdate">Date of Treatment (Month, Year) </label>
+    <span>{{student_data[0]['treatment_date']}}</span><br />
+
+    <label for="subsabuseoutcome">Outcome? </label>
+    <span>{{student_data[0]['treatment_outcome']}}</span><br />
+
+    <!-- end: Substance Abuse History -->
+
+    <!-- start: Legal History -->
+    <header>Legal History</header>
+    <section class="legalhistory">
+      <label for="legalpending"
+        >Do you currently have any pending criminal charges?&nbsp;</label
+      >
+
+      <span>{{student_data[0]['pending_criminal_charges']}}</span><br />
+
+      <label for="legalprobation">Are you on probation?&nbsp;</label>
+
+      <span>{{student_data[0]['on_probation']}}</span><br />
+
+      <label for="legalarrest"
+        >Have you ever been arrested/convicted of a crime?&nbsp;</label
+      >
+
+      <span>{{student_data[0]['has_been_arrested']}}</span><br />
+
+      <label>If yes, complete chart.</label>
+
+      <br /><br />
+      <table>
+        <tr>
+          <th>List any Arrest/Conviction</th>
+          <th>Date of Arrests/Convictions</th>
+          <th>Outcome</th>
+        </tr>
+
+        <tr id="legalRow">
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+        </tr>
+
+        <tr id="legalRow">
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+          <td>
+            <!-- TODO: put answer -->
+          </td>
+        </tr>
+      </table>
+      <br />
+
+      <!-- end: Legal History -->
+
+      <!-- start: Additional Information -->
+      <header>Additional Information</header>
+
+      <label for="additionalinfo1"
+        >What you would like to work on in counseling?
+      </label>
+      <span>{{student_data[0]['to_work_on']}}</span><br />
+
+      <label for="additionalinfo2"
+        >What expectations do you have for counseling?
+      </label>
+      <span>{{student_data[0]['expectations']}}</span><br />
+
+      <label for="additionalinfo3"
+        >Name 3 things you would like to change about yourself.
+      </label>
+      <span>{{student_data[0]['things_to_change']}}</span><br />
+
+      <label for="additionalinfo4"
+        >Is there any additional information that you believe it is important
+        for your counselor to know in order to provide you with the best care
+        possible?
+      </label>
+      <span>{{student_data[0]['other_information']}}</span><br />
+
+      <!-- end: Additional Information -->
+
+      <!-- start: Personal Agreements -->
+
+      <header>PERSONAL AGREEMENTS</header>
+      <p>
+        I understand that I may be asked to do certain "homework exercises" Such
+        as reading, changing behaviors and otherwise acting in my own best
+        interest. I understand that I am entirely responsible for my own actions
+        and I will always make my own final decisions regarding counseling.
+        <br />
+        <br />I understand that there will be psychological testing as need
+        arises. I further understand that much of the work done will be to
+        resolve issues and will depend on my honesty, and willingness to do the
+        things I need to do to move forward even if it is painful and difficult.
+        <br />
+        <br />I understand that whatever I say in a session is strictly
+        confidential and will not be released to anyone without my consent
+        unless I am violating codes of abuse, harm to myself or others.
+      </p>
+
+      <input
+        type="checkbox"
+        id="taccheckbox"
+        name="taccheckbox"
+        checked="{{student_data[0]['personal_agreement']}}"
+        disabled
+      />
+      <label for="taccheckbox">
+        I understand and agree to the information presented above. </label
+      ><br />
+
+      {{ student_signature | safe }}
+      <input
+        type="hidden"
+        name="personal_agreement_date"
+        value="{{student_data[0]['personal_agreement_date']}}"
+      /><br />
+      <span>{{student_data[0]['personal_agreement_date']}}</span>
+
+      <br /><br />
+      <table>
+        <tr>
+          <th>Sessions</th>
+          <th>Date</th>
+          <th>Time Started</th>
+          <th>Time Ended</th>
+          <th>Follow-Up</th>
+          <th>Attended by</th>
+        </tr>
+
+        <tr id="sessionsRow">
+          <td id="sessionId" name="sessionId"></td>
+          <!-- TODO: put answer -->
+        </tr>
+
+        <tr id="sessionsRow" onload="createRow('sessionsTable', 'sessionsRow')">
+          <!-- TODO: put answer -->
+        </tr>
+      </table>
+      <br />
+
+      <!-- end: Personal Agreements -->
+
+      <!-- start: Referral Information -->
+      {% if student.referral_information is not none %}
+
+      <header>Referral Information</header>
+
+      <label>Reason for Referral:</label>
+      <span>{{student_data[0]['reason_for_referral']}}</span>
+
+      <hr style="border-top: 1px solid var(--primary-color)" />
+
+      <label for="refinforeceiving">Receiving Agency:</label>
+      <span>{{student_data[0]['receiving_agency']}}</span>
+      <label for="refinfocontact">Contact No.:</label>
+      <span>{{student_data[0]['receiving_contact_number']}}</span>
+
+      <label for="refinfoname">Name:</label>
+      <span>{{student_data[0]['receiving_name']}}</span>
+      <label for="refinfoemail">Email:</label>
+      <span>{{student_data[0]['receiving_email']}}</span>
+
+      <label for="refinfoofficeadd">Office Address:</label>
+      <span>{{student_data[0]['office_address']}}</span>
+
+      <hr style="border-top: 1px solid var(--primary-color)" />
+
+      <label for="refinfoas">Appointment Schedule:</label>
+      <span>{{student_data[0]['appointment_schedule']}}</span>
+
+      <hr style="border-top: 1px solid var(--primary-color)" />
+
+      <label
+        >Authorization for Referral: I authorize my case to be referred to the
+        above agency.</label
+      ><br /><br />
+
+      <label for="refinfoclientsig">Client Signature:</label>
+      <span>{{ client_signature | safe }}</span><br />
+      <label for="refinfoclientdate">Date:</label>
+      <span>{{student_data[0]['client_signature_date']}}</span><br /><br />
+
+      <label for="refinfocounselorsig">Counselor's Signature:</label>
+      <span>{{ counselor_signature | safe }}</span><br />
+      <label for="refinfocounselordate">Date:</label>
+      <span>{{student_data[0]['counselor_signature_date']}}</span><br />
+      {% endif %}
+      <!-- end: Referral Information -->
+
+      <!-- start: CONFIDENTIAL -->
+
+      <header
+        style="background-color: transparent !important; font-weight: bold"
+      >
+        CONFIDENTIAL
+      </header>
+      <hr style="border-top: 1px solid var(--primary-color)" />
+      <header>CASE NOTE</header>
+
+      <label for="conficounselor">Counselor/Psychometrician Name:</label>
+      <span>{{student_data[0]['counselor_name']}}</span><br />
+
+      <label for="confiinterview">Date of Intake Interview:</label>
+      <span>{{student_data[0]['interview_date']}}</span><br />
+
+      <label for="confinosessions">Number of Session:</label>
+      <span>{{student_data[0]['number_of_session']}}</span><br />
+
+      <hr style="border-top: 1px solid var(--primary-color)" />
+
+      <label for="conficomplaint">Subject Complaint:</label>
+      <span>{{student_data[0]['subject_complaint']}}</span><br />
+
+      <label for="confiobjassess">Objective Assessment:</label>
+      <span>{{student_data[0]['objective_assessment']}}</span><br />
+
+      <label for="confipoa">Action Taken:</label>
+      <span>{{student_data[0]['plan_of_action']}}</span><br />
+
+      <label for="confiprogress">Progress Made:</label>
+      <span>{{student_data[0]['progress_made']}}</span><br />
+
+      <label for="Counselorsignature"
+        >Signature of the Counselor/Guidance Personnel</label
+      >
+      <span>{{student_data[0]['counselor']}}</span><br />
+
+      <label for="Counselorsignature">Remarks</label>
+      <span>{{student_data[0]['remarks']}}</span>
+
+      <!-- end: CONFIDENTIAL -->
+
+      <script>
         // Trigger print window when the page loads
         window.onload = function () {
-            window.print();
-            // Handle window after print
-            window.onafterprint = function () {
-                // Redirect to the previous page
-                window.history.back();
-            };
+          window.print();
+          // Handle window after print
+          window.onafterprint = function () {
+            // Redirect to the previous page
+            window.history.back();
+          };
         };
-    </script>
-
-</body>
-
+      </script>
+    </section>
+  </body>
 </html>
