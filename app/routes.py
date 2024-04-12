@@ -15,7 +15,7 @@ from app.forms.reset import ResetPassword
 from werkzeug.utils import secure_filename
 import logging, os, smtplib, pyotp, time
 from datetime import datetime
-from sqlalchemy import desc, func, and_
+from sqlalchemy import desc, asc, func, and_
 import base64
 from collections import defaultdict
 from calendar import month_name
@@ -319,7 +319,7 @@ def admin():
     admin = User.query.all()
 
     for user in admin:
-        user.full_name = user.first_name + '' + user.last_name
+        user.full_name = user.first_name + ' ' + user.last_name
 
     # query all counseled students and organize it by latest to oldest (date)
     # Subquery to get the maximum interview_date for each student
@@ -332,7 +332,7 @@ def admin():
                         .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
                         .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
                                                 subquery.c.max_interview_date == CaseNote.interview_date)).filter(BasicInformation.archived == False) \
-                        .order_by(desc(CaseNote.interview_date)).all()
+                        .order_by(asc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
@@ -376,7 +376,7 @@ def counseling_history():
                          .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
                                               subquery.c.max_interview_date == CaseNote.interview_date)) \
                          .filter(BasicInformation.archived != True) \
-                         .order_by(desc(CaseNote.interview_date))
+                         .order_by(asc(CaseNote.interview_date))
 
     # Filter by counselor_name if provided
     if counselor_name:
@@ -1766,6 +1766,32 @@ def get_data(first_metric, second_metric):
 def get_data_count(data_to_count):
     data = data_count(data_to_count)
     return jsonify(data)
+
+@app.route('/get_data/college')
+def get_college_data():
+    college_names = [
+        "CEA",
+        "CBEA",
+        "CED",
+        "CAS",
+        "IHK",
+        "SHS",
+        "JHS",
+        "GRAD",
+        "LLL"
+    ]
+
+    college_data = {}
+    statuses = ['Active', 'Inactive', 'Terminated']
+    for college in college_names:
+        college_data[college] = {}
+        for status in statuses:
+            college_data[college][status] = data_count('status', status, college)
+
+    print(college_data)
+    return jsonify(college_data)
+
+
 
 @app.route('/get_data/compare/<data_to_count>/<selected_year1>/<selected_year2>', methods=['GET'])
 def get_data_year(data_to_count, selected_year1, selected_year2):
