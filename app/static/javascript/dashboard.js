@@ -15,35 +15,62 @@ function fetchAndGenerateChart(chartNumber) {
             return response.json();
         })
         .then(data => {
-            generateBarGraph(data, chartNumber);
+            generateLineGraph(data, chartNumber);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 }
 
-function generateBarGraph(data, chartNumber) {
+function generateLineGraph(data, chartNumber) { // Change function name to generateLineGraph
     const chartContainer = `myChart${chartNumber}`;
     const ctx = document.getElementById(chartContainer).getContext('2d');
 
+    const collegeNames = Object.keys(data);
+    const activeCounts = collegeNames.map(college => data[college]['Active'][college]);
+    const inactiveCounts = collegeNames.map(college => data[college]['Inactive'][college]);
+    const terminatedCounts = collegeNames.map(college => data[college]['Terminated'][college]);
+    
+    console.log('Active', activeCounts);
+    console.log('Inactive', inactiveCounts);
+    console.log('Terminated', terminatedCounts);
+    
     if (chartNumber === 1) {
         if (chart1) {
             chart1.destroy();
         }
 
-        const labels = data.map(item => item.college); 
-        const values = data.map(item => item.student_count); 
-
         chart1 = new Chart(ctx, {
-            type: 'line', // Change the chart type to line
+            type: 'line',
             data: {
-                labels: labels,
+                labels: collegeNames,
                 datasets: [{
-                    label: 'Student Count',
-                    data: values,
-                    backgroundColor: 'rgba(9, 83, 113, 0.2)', // Fill color under the line
-                    borderColor: 'rgba(9, 83, 113, 1)', // Line color
-                    borderWidth: 2
+                    label: 'Active',
+                    data: activeCounts,
+                    backgroundColor: 'rgba(0, 128, 0, 0.2)',
+                    borderColor: 'rgba(0, 128, 0, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(0, 128, 0, 0.3)',
+                    pointBorderWidth: 0.3,
+                    tension: 0.3
+                }, {
+                    label: 'Inactive',
+                    data: inactiveCounts,
+                    backgroundColor: 'rgba(86, 86, 86, 0.2)',
+                    borderColor: 'rgba(86, 86, 86, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(157, 169, 158, 0.3)',
+                    pointBorderWidth: 0.3,
+                    tension: 0.3
+                }, {
+                    label: 'Terminated',
+                    data: terminatedCounts,
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 0, 0, 0.3)',
+                    pointBorderWidth: 0.3,
+                    tension: 0.3
                 }]
             },
             options: {
@@ -66,7 +93,16 @@ function generateBarGraph(data, chartNumber) {
                             color: 'rgba(190, 205, 211, 1)'
                         }
                     }
-                }
+                },
+                // animations: {
+                //     tension: {
+                //       duration: 1000,
+                //       easing: 'easeInBounce',
+                //       from: 1,
+                //       to: 0,
+                //       loop: true
+                //     }
+                //   },
             }
         });
     }
