@@ -150,6 +150,14 @@ button[type="submit"]:hover{
     background-color: var(--primary-color);
 }
 
+.swal2-confirm.confirm-button-class {
+    padding: 0.5em 1.5em;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
 .swal2-icon {
     border: none;
 }
