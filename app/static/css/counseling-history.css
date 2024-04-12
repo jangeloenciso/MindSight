@@ -221,6 +221,19 @@ p {
     color: var(--white);
 }
 
+/* color for status */
+.grid-status.active {
+    color: green;
+}
+
+.grid-status.inactive {
+    color: #565656;    ;
+}
+
+.grid-status.terminated {
+    color: red;
+}
+
 
 /* Sidebar active indicator */
 .sidebar-buttons #admin-container::before {

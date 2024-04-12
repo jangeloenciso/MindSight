@@ -140,7 +140,7 @@ hr {
 }
 
 .orange div {
-    background-color: orange;
+    background-color: #565656;
 }
 
 .red div {
@@ -245,7 +245,7 @@ hr {
 }
 
 .grid-status.inactive {
-    color: orange;
+    color: #565656;    ;
 }
 
 .grid-status.terminated {
