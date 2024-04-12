@@ -384,7 +384,7 @@ def counseling_history():
 
     students = students.all()
 
-    active_cases_count = sum(1 for student in students if student[2].status != 'Terminated')
+    active_cases_count = sum(1 for student in students if student[2].status != 'Terminated' and student[2].status != 'Inactive')
 
     return render_template('admin/counseling_history.html', full_name=full_name, students=students, active_cases_count=active_cases_count)
 
