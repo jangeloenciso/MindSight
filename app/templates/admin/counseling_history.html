@@ -74,7 +74,7 @@
             <div class="grid-college">{{ basic_info.college }}</div>
             <div class="grid-gender">{{ basic_info.gender }}</div>
             <div class="grid-counselor">{{ add_info.counselor }}</div>
-            <div class="grid-status">{{ add_info.status }}</div>
+            <div class="grid-status {{ add_info.status | lower }}">{{ add_info.status }}</div>
             <div class="grid-remark">{{ add_info.remarks }}</div>
           </a>
         {% endfor %}
