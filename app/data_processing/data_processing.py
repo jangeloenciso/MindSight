@@ -432,10 +432,10 @@ def data_count(query, status=None, selected_year=None):
     if status:
         df = df[df['status'] == status]
 
-    data_count = df[query].value_counts().reset_index()
-    data_count.columns = [query, 'student_count']
+    # data_count = df[query].value_counts().reset_index()
+    # data_count.columns = [query, 'student_count']
 
-    data_dict = data_count.to_dict(orient='records')
+    # data_dict = data_count.to_dict(orient='records')
     
     # Count the number of students for each college
     college_counts = df['college'].value_counts().reset_index()
@@ -446,7 +446,7 @@ def data_count(query, status=None, selected_year=None):
     return data_dict
 
 # Works with the progress bars
-def data_count_dict(query, college=None):
+def data_count_dict(query, college=None, year=None):
     df = process_data()
 
     if query not in df.columns:
@@ -469,6 +469,8 @@ def data_count_dict(query, college=None):
     if college == 'LLL':
         df = df[df['college'] == 'LLL']
 
+    if year:
+        df = df[df['submitted_on'].dt.year == year]
 
     if query == 'nature_of_concern':
         categories = ['Academic', 'Career', 'Social', 'Personal']
@@ -547,7 +549,7 @@ def data_count_dict(query, college=None):
 
 
 
-def data_history_information(college=None, selected_year=None):
+def data_history_information(college=None, selected_year=None, year=None):
     df = process_data()
     
     # add something for college i cant make it work fuck me
@@ -571,6 +573,9 @@ def data_history_information(college=None, selected_year=None):
 
     if college == 'LLL':
         df = df[df['college'] == 'LLL']
+
+    if year:
+        df = df[df['submitted_on'].dt.year == year]
 
     # print(df)
     # Verify if the column 'substance_abuse' exists before accessing it

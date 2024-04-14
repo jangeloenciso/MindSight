@@ -231,11 +231,11 @@ def error():
 @login_required
 def dashboard():
     year = 2024
-    history_data = data_history_information()
-    concerns_data = data_count_dict('nature_of_concern')
-    religion_data = data_count_dict('religion')
-    campus_data = data_count_dict('campus')
-    identity_data = data_count_dict('gender')
+    history_data = data_history_information(year=year)
+    concerns_data = data_count_dict('nature_of_concern', year=year)
+    religion_data = data_count_dict('religion', year=year)
+    campus_data = data_count_dict('campus', year=year)
+    identity_data = data_count_dict('gender', year=year)
 
     college_names = [
         "CEA",
@@ -261,13 +261,13 @@ def dashboard():
     print("Overall Monthly Total:", dict(overall_monthly_total))
 
     # Fetching terminated cases data for each college
-    terminated_data = {college: data_count_dict('status', college) for college in college_names}
+    terminated_data = {college: data_count_dict('status', college, year=year) for college in college_names}
 
-    jhs_data = data_count_dict('status', 'JHS')
-    shs_data = data_count_dict('status', 'SHS')
-    college_data = data_count_dict('status', 'College')
-    grad_data = data_count_dict('status', 'GRAD')
-    lll_data = data_count_dict('status', 'LLL')
+    jhs_data = data_count_dict('status', 'JHS', year=year)
+    shs_data = data_count_dict('status', 'SHS', year=year)
+    college_data = data_count_dict('status', 'College', year=year)
+    grad_data = data_count_dict('status', 'GRAD', year=year)
+    lll_data = data_count_dict('status', 'LLL', year=year)
 
     return render_template('dashboard.html', terminated_data=terminated_data, 
                            religion_data=religion_data, 
@@ -1840,12 +1840,19 @@ def get_college_data():
         "LLL"
     ]
 
+    selected_year = 2024
+
     college_data = {}
     statuses = ['Active', 'Inactive', 'Terminated']
     for college in college_names:
         college_data[college] = {}
         for status in statuses:
             college_data[college][status] = data_count('status', status, college)
+
+    for college in college_names:
+        college_data[college] = {}
+        for status in statuses:
+            college_data[college][status] = data_count('status', status, selected_year)
 
     print(college_data)
     return jsonify(college_data)
