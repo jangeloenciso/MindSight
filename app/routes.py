@@ -1297,8 +1297,12 @@ def add_record():
             .first()
         )
 
+    if request.method == 'POST':
+        print('POST method')
+    else:
+        print('not POST method')
 
-    if request.method == 'POST' and form.validate_on_submit():
+    if form.validate_on_submit():
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
@@ -1691,6 +1695,9 @@ def print_report(selected_year):
 
     for college in college_names:
         college_total = {}
+        college_active_total = 0 
+        college_inactive_total = 0 
+        college_terminated_total = 0 
         for time_period in ['yearly', 'monthly']:  # Remove 'quarterly' from the time periods
             if time_period == 'monthly':
                 college_total[time_period] = {}  # Initialize a nested dictionary for monthly totals
@@ -1709,11 +1716,19 @@ def print_report(selected_year):
                     overall_monthly_active_total[month] += monthly_active_total
                     overall_monthly_inactive_total[month] += monthly_inactive_total
                     overall_monthly_terminated_total[month] += monthly_terminated_total
+
+                    # Update college overall active, inactive, and terminated totals
+                    college_active_total += monthly_active_total
+                    college_inactive_total += monthly_inactive_total
+                    college_terminated_total += monthly_terminated_total
             else:
                 college_total[time_period] = get_total_cases(college=college, time_period=time_period, year=year)
                 overall_total[time_period] += college_total[time_period]
 
         total_cases_dict[college] = college_total
+        total_cases_dict[college]['overall_active'] = college_active_total
+        total_cases_dict[college]['overall_inactive'] = college_inactive_total
+        total_cases_dict[college]['overall_terminated'] = college_terminated_total
 
         # Calculate overall active, inactive, and terminated cases
     for college in college_names:
@@ -1729,7 +1744,16 @@ def print_report(selected_year):
     print("Overall Inactive:", overall_inactive_total) # Print the overall inactive
     print("Overall Terminated:", overall_terminated_total) # Print the overall terminated
 
-    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total), overall_active_total=overall_active_total, overall_inactive_total=overall_inactive_total, overall_terminated_total=overall_terminated_total, overall_monthly_active_total=overall_monthly_active_total, overall_monthly_inactive_total=overall_monthly_inactive_total, overall_monthly_terminated_total=overall_monthly_terminated_total)
+    return render_template('generate_report.html', year=year, 
+                           overall_total=dict(overall_total), 
+                           college_totals=total_cases_dict, 
+                           overall_monthly_total=dict(overall_monthly_total), 
+                           overall_active_total=overall_active_total, 
+                           overall_inactive_total=overall_inactive_total, 
+                           overall_terminated_total=overall_terminated_total, 
+                           overall_monthly_active_total=overall_monthly_active_total, 
+                           overall_monthly_inactive_total=overall_monthly_inactive_total, 
+                           overall_monthly_terminated_total=overall_monthly_terminated_total)
 
 
 # API endpoints

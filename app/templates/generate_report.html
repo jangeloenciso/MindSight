@@ -157,6 +157,8 @@
     </tbody>
   </table>
 
+  <!-- Displays the heading for the overall monthly active, inactive, and terminated cases -->
+  <h3 class="section-header">Overall Monthly Cases:</h3>
   <!-- Create a table to display the monthly totals for active, inactive, and terminated cases -->
   <table class="table-bottom-margin">
     <thead>
@@ -201,6 +203,32 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Displays the heading for the overall cases for every college -->
+  <h3 class="section-header">Overall Cases for every College:</h3>
+  <table class="table-bottom-margin">
+    <thead>
+      <!-- Table header with columns for Cases and each college -->
+      <tr>
+        <th>Cases</th>
+        {% for college in college_totals.keys() %}
+        <th>{{ college }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Create rows for Active, Inactive, and Terminated Cases -->
+      {% for status in ['Active', 'Inactive', 'Terminated'] %}
+      <tr>
+        <td>{{ status }}</td>
+        {% for college, college_data in college_totals.items() %}
+        {% set status_total = college_data['overall_' ~ status.lower()] %}
+        <td>{{ status_total }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>  
 
   <script>
     // Trigger print window when the page loads
