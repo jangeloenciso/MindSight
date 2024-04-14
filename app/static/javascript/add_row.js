@@ -293,7 +293,9 @@ function populateSecondDropdown() {
         addOptions(yearLevelDropDown, ["11", "12"]);
     } else if (selectedValue === "JHS") {
         addOptions(yearLevelDropDown, ["7", "8", "9", "10"]);
-    } else if (selectedValue == 'CEA' || selectedValue == 'CBEA' || selectedValue == 'CED' || selectedValue == 'CAS' || selectedValue == 'IHK') {
+    } else if (selectedValue == 'CBEA' || selectedValue == 'CED' || selectedValue == 'CAS' || selectedValue == 'IHK') {
+        addOptions(yearLevelDropDown, ["1", "2", "3", "4"]);
+    } else if (selectedValue == 'CEA') {
         addOptions(yearLevelDropDown, ["1", "2", "3", "4", "5"]);
     }
 }
