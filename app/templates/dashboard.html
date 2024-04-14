@@ -1,9 +1,21 @@
 {% extends "components/base.html" %} {% block title %} Mindsight - Dashboard{%
 endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
+<style>
+  /* Add CSS styles for the loading spinner */
+  .spinner {
+    display: block;
+    width: 80px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(33vw, 30vh);
+  }
+</style>
 {% endblock %} {% block content %}
 <div class="right">
-    <!-- <div class="title-date">
+  <!-- <div class="title-date">
       <span>
         Dashboard
       </span>
@@ -11,112 +23,110 @@ endblock %} {% block styles %}
         3/29/24 1:56 PM
       </span>
     </div> -->
-    <div class="column1">
-      <div class="experience-container">
+  <div class="column1">
+    <div class="experience-container">
+      <div class="total-cases-container">
+        <span class="title-total-cases" id="experiences">
+          <div>Experiences</div>
+        </span>
+      </div>
+      <div id="history_container"></div>
+    </div>
+  </div>
+  <div class="column2">
+    <div class="row1">
+      <div class="total-cases">
         <div class="total-cases-container">
-          <span class="title-total-cases" id="experiences">
-            <div>Experiences</div>
+          <div class="total-cases-number">
+            <span class="title-total-cases">
+              <div>Total Cases:&nbsp;</div>
+            </span>
+            <span class="title-total-cases" id="total-cases"></span>
+          </div>
+          <div class="back-button">
+            <a href="{{ url_for('cases') }}">
+              <img src="/static/SVG/back_button.svg" />
+            </a>
+          </div>
+        </div>
+        <canvas id="myChart1" height="120"></canvas>
+      </div>
+      <div class="terminated-cases">
+        <div class="total-cases-container">
+          <span class="title-total-cases" id="terminated">
+            <div>Terminated</div>
           </span>
         </div>
-        <div id="history_container"> </div>
-        
+        <span>Junior High</span>
+        <div id="jhs_container"></div>
+
+        <span>Senior High</span>
+        <div id="shs_container"></div>
+
+        <span>College</span>
+        <div id="college_container"></div>
+
+        <span>Graduate</span>
+        <div id="grad_container"></div>
+
+        <span>Lifelong Learners</span>
+        <div id="lll_container"></div>
       </div>
     </div>
-    <div class="column2">
-      <div class="row1">
-        <div class="total-cases">
-          <div class="total-cases-container">
-            <div class="total-cases-number">
-              <span class="title-total-cases">
-                <div>Total Cases:&nbsp;</div>
-              </span>
-              <span class="title-total-cases" id="total-cases"></span>
-            </div>
-            <div class="back-button">
-              <a href="{{ url_for('cases') }}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
+    <div class="row2">
+      <div class="bottom-container">
+        <div class="container">
+          <span id="title">
+            <div>Campus</div>
+          </span>
+          <div class="content">
+            <div class="box">
+              <div id="campus_container"></div>
             </div>
           </div>
-          <canvas id="myChart1" height="120"></canvas>
         </div>
-        <div class="terminated-cases">
-          <div class="total-cases-container">
-            <span class="title-total-cases" id="terminated">
-              <div>Terminated</div>
-            </span>
+        <div class="vl"></div>
+        <div class="container">
+          <span id="title">
+            <div>Concern</div>
+          </span>
+          <div class="content">
+            <div class="box">
+              <div id="concerns_container"></div>
+            </div>
           </div>
-          <span>Junior High</span>
-            <div id="jhs_container"></div>
-    
-          <span>Senior High</span>
-            <div id="shs_container"></div>
-  
-          <span>College</span> 
-            <div id="college_container"></div> 
-
-          <span>Graduate</span> 
-            <div id="grad_container"></div>
-
-          <span>Lifelong Learners</span>
-            <div id="lll_container"></div>
         </div>
-      </div>
-      <div class="row2">
-        <div class="bottom-container">
-          <div class="container">
-            <span id="title">
-              <div>Campus</div>
-            </span>
-            <div class="content">
-              <div class="box">
-                <div id="campus_container"> </div>
-              </div>
-            </div> 
-          </div>
-          <div class="vl"></div>
-          <div class="container">
-            <span id="title">
-              <div>Concern</div>
-            </span>
-            <div class="content">
-              <div class="box">
-                <div id="concerns_container"></div>
-              </div>
+        <div class="vl"></div>
+        <div class="container">
+          <span id="title">
+            <div>Identity</div>
+          </span>
+          <div class="content">
+            <div class="box">
+              <div id="identity_container"></div>
             </div>
           </div>
-          <div class="vl"></div>
-          <div class="container">
-            <span id="title">
-              <div>Identity</div>
-            </span>
-            <div class="content">
-              <div class="box">
-                <div id="identity_container"></div>
-              </div>
-            </div>
-          </div>
-          <div class="vl"></div>
-          <div class="container">
-            <span id="title">
-              <div>Religion</div>
-            </span>
-            <div class="content">
-              <div class="box">
-                <div id="religion_container"></div>
-              </div>
+        </div>
+        <div class="vl"></div>
+        <div class="container">
+          <span id="title">
+            <div>Religion</div>
+          </span>
+          <div class="content">
+            <div class="box">
+              <div id="religion_container"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
 
-
-<script> 
+<script>
   const jhs_data = {{ jhs_data | tojson | safe }};
   const shs_data = {{ shs_data | tojson | safe }};
   const college_data = {{ college_data | tojson | safe }};
@@ -164,7 +174,7 @@ endblock %} {% block styles %}
         chartContainer.appendChild(progressBar);
     });
   }
-  
+
   function renderTotal(data) {
     let overallTotal = 0;
     for (const monthTotal of Object.values(data)) {
@@ -192,7 +202,7 @@ endblock %} {% block styles %}
     progressFlexContainer.appendChild(countElement);
 
     container.appendChild(progressFlexContainer);
-    
+
     return container;
   }
     renderTotal(overall_monthly_total);
@@ -207,8 +217,5 @@ endblock %} {% block styles %}
     renderChart(campus_data, 'campus_container');
     renderChart(religion_data, 'religion_container');
 </script>
-
-
-
 
 {% endblock %}
