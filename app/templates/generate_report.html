@@ -23,6 +23,25 @@
         page-break-before: always;
       }
     }
+
+    .title-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-header {
+      line-height: 0.4;
+    }
+    .text-center {
+      text-align: center;
+    }
+
+    .table-bottom-margin {
+      margin-bottom: 40px;
+    }
+
+    .separation-center {
+      width: 50%;
+    }
   </style>
 </head>
 
@@ -36,18 +55,14 @@
   </div>
 
   <!-- Displays the heading with the total number of clients for the specified year -->
-  <h1 style="text-align: center">
-    Total number of clients for the year {{ year }}
-  </h1>
+  <h1 class="text-center">Total number of clients for the year {{ year }}</h1>
   <!-- Displays the overall total number of clients for the entire year -->
-  <h2 style="text-align: center; margin-bottom: 40px">
-    Overall yearly total: {{ overall_total.yearly }}
-  </h2>
+  <h2 class="title-header">Overall yearly total: {{ overall_total.yearly }}</h2>
 
   <!-- Displays the heading for the overall monthly total -->
-  <h3 style="line-height: 0.4">Overall Monthly Total:</h3>
+  <h3 class="section-header">Overall Monthly Total:</h3>
   <!-- Creates a table to display the overall monthly total -->
-  <table style="margin-bottom: 40px">
+  <table class="table-bottom-margin">
     <thead>
       <!-- Table header with columns for Month and Total -->
       <tr>
@@ -72,9 +87,9 @@
   </table>
 
   <!-- Displays the heading for the total number of clients per level -->
-  <h3 style="line-height: 0.4">Total number of clients per level:</h3>
+  <h3 class="section-header">Total number of clients per level:</h3>
   <!-- Creates a table to display the total number of clients per level -->
-  <table style="margin-bottom: 40px">
+  <table class="table-bottom-margin">
     <thead>
       <!-- Table header with columns for Colleges and each month -->
       <tr>
@@ -113,120 +128,79 @@
   <!-- Apply the page break -->
   <div class="page-break"></div>
 
-<!-- for cases -->
-<!-- Displays the heading for the overall active, inactive, and terminated cases -->
-<h3 style="line-height: 0.4">Overall Cases:</h3>
-<!-- Creates a table to display the overall active, inactive, and terminated cases -->
-<table style="margin-bottom: 40px">
-  <thead>
-    <!-- Table header with columns for Case Type and Total -->
-    <tr>
-      <th>Case Type</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Table rows for overall active, inactive, and terminated cases -->
-    <tr>
-      <td>Active</td>
-      <td>{{ overall_active_total }}</td>
-    </tr>
-    <tr>
-      <td>Inactive</td>
-      <td>{{ overall_inactive_total }}</td>
-    </tr>
-    <tr>
-      <td>Terminated</td>
-      <td>{{ overall_terminated_total }}</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- for cases -->
+  <!-- Displays the heading for the overall active, inactive, and terminated cases -->
+  <h3 class="section-header">Overall Cases:</h3>
+  <!-- Creates a table to display the overall active, inactive, and terminated cases -->
+  <table class="table-bottom-margin">
+    <thead>
+      <!-- Table header with columns for Case Type and Total -->
+      <tr>
+        <th>Case Type</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table rows for overall active, inactive, and terminated cases -->
+      <tr>
+        <td>Active</td>
+        <td class="separation-center">{{ overall_active_total }}</td>
+      </tr>
+      <tr>
+        <td>Inactive</td>
+        <td class="separation-center">{{ overall_inactive_total }}</td>
+      </tr>
+      <tr>
+        <td>Terminated</td>
+        <td class="separation-center">{{ overall_terminated_total }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- Displays the heading for the monthly total for active cases -->
-<h3 style="line-height: 0.4">Monthly Total for Active Cases:</h3>
-<!-- Creates a table to display the monthly total for active cases -->
-<table style="margin-bottom: 40px">
-  <thead>
-    <!-- Table header with columns for Month and Total -->
-    <tr>
-      <th>Month</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Iterates over each month and its total in the monthly total for active cases -->
-    {% for month_num, month_total in overall_monthly_active_total.items() %}
-    <!-- Sets the month name based on the month number -->
-    {% set month_name = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
-    5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10:
-    'October', 11: 'November', 12: 'December'}[month_num] %}
-    <!-- Creates a row with the month name and its total -->
-    <tr>
-      <td>{{ month_name }}</td>
-      <td style="width: 50%">{{ month_total }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-
-<!-- Displays the heading for the monthly total for inactive cases -->
-<h3 style="line-height: 0.4">Monthly Total for Inactive Cases:</h3>
-<!-- Creates a table to display the monthly total for inactive cases -->
-<table style="margin-bottom: 40px">
-  <thead>
-    <!-- Table header with columns for Month and Total -->
-    <tr>
-      <th>Month</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Iterates over each month and its total in the monthly total for inactive cases -->
-    {% for month_num, month_total in overall_monthly_inactive_total.items() %}
-    <!-- Sets the month name based on the month number -->
-    {% set month_name = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
-    5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10:
-    'October', 11: 'November', 12: 'December'}[month_num] %}
-    <!-- Creates a row with the month name and its total -->
-    <tr>
-      <td>{{ month_name }}</td>
-      <td style="width: 50%">{{ month_total }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<!-- Apply the page break -->
-<div class="page-break"></div>
-
-<!-- Displays the heading for the monthly total for terminated cases -->
-<h3 style="line-height: 0.4">Monthly Total for Terminated Cases:</h3>
-<!-- Creates a table to display the monthly total for terminated cases -->
-<table style="margin-bottom: 40px">
-  <thead>
-    <!-- Table header with columns for Month and Total -->
-    <tr>
-      <th>Month</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Iterates over each month and its total in the monthly total for terminated cases -->
-    {% for month_num, month_total in overall_monthly_terminated_total.items() %}
-    <!-- Sets the month name based on the month number -->
-    {% set month_name = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
-    5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10:
-    'October', 11: 'November', 12: 'December'}[month_num] %}
-    <!-- Creates a row with the month name and its total -->
-    <tr>
-      <td>{{ month_name }}</td>
-      <td style="width: 50%">{{ month_total }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
+  <!-- Create a table to display the monthly totals for active, inactive, and terminated cases -->
+  <table class="table-bottom-margin">
+    <thead>
+      <!-- Table headers with columns for Cases and each Month -->
+      <tr>
+        <th>Cases</th>
+        {% for month_num in range(1, 13) %} {% set month_name = {1: 'January',
+        2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July',
+        8: 'August', 9: 'September', 10: 'October', 11: 'November', 12:
+        'December'}[month_num] %}
+        <th>{{ month_name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Create a row for Active Cases -->
+      <tr>
+        <td>Active</td>
+        {% for month_num in range(1, 13) %} {% set month_total =
+        overall_monthly_active_total[month_num] if
+        overall_monthly_active_total.get(month_num) else 0 %}
+        <td>{{ month_total }}</td>
+        {% endfor %}
+      </tr>
+      <!-- Create a row for Inactive Cases -->
+      <tr>
+        <td>Inactive</td>
+        {% for month_num in range(1, 13) %} {% set month_total =
+        overall_monthly_inactive_total[month_num] if
+        overall_monthly_inactive_total.get(month_num) else 0 %}
+        <td>{{ month_total }}</td>
+        {% endfor %}
+      </tr>
+      <!-- Create a row for Terminated Cases -->
+      <tr>
+        <td>Terminated</td>
+        {% for month_num in range(1, 13) %} {% set month_total =
+        overall_monthly_terminated_total[month_num] if
+        overall_monthly_terminated_total.get(month_num) else 0 %}
+        <td>{{ month_total }}</td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
 
   <script>
     // Trigger print window when the page loads
