@@ -269,7 +269,18 @@ def dashboard():
     grad_data = data_count_dict('status', 'GRAD')
     lll_data = data_count_dict('status', 'LLL')
 
-    return render_template('dashboard.html', terminated_data=terminated_data, religion_data=religion_data, identity_data=identity_data, campus_data=campus_data, history_data=history_data, concerns_data=concerns_data, overall_monthly_total=overall_monthly_total, jhs_data=jhs_data, shs_data=shs_data, college_data=college_data, grad_data=grad_data, lll_data=lll_data)
+    return render_template('dashboard.html', terminated_data=terminated_data, 
+                           religion_data=religion_data, 
+                           identity_data=identity_data, 
+                           campus_data=campus_data, 
+                           history_data=history_data, 
+                           concerns_data=concerns_data, 
+                           overall_monthly_total=overall_monthly_total, 
+                           jhs_data=jhs_data, 
+                           shs_data=shs_data,
+                           college_data=college_data,
+                           grad_data=grad_data, 
+                           lll_data=lll_data)
 
 
 @app.route('/dashboard/cases')
