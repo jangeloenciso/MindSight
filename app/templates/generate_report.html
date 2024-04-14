@@ -16,6 +16,13 @@
     .flex {
       display: flex;
     }
+
+    /* Apply page break only for letter size */
+    @media print and (min-width: 7.7in) and (max-width: 7.8in) and (max-height: 11in) {
+      .page-break {
+        page-break-before: always;
+      }
+    }
   </style>
 </head>
 
@@ -67,7 +74,7 @@
   <!-- Displays the heading for the total number of clients per level -->
   <h3 style="line-height: 0.4">Total number of clients per level:</h3>
   <!-- Creates a table to display the total number of clients per level -->
-  <table>
+  <table style="margin-bottom: 40px">
     <thead>
       <!-- Table header with columns for Colleges and each month -->
       <tr>
@@ -103,36 +110,37 @@
     </tbody>
   </table>
 
-<!-- for cases -->
-<!-- Displays the heading for the overall active, inactive, and terminated cases -->
-<h3 style="line-height: 0.4">Overall Cases:</h3>
-<!-- Creates a table to display the overall active, inactive, and terminated cases -->
-<table style="margin-bottom: 40px">
-  <thead>
-    <!-- Table header with columns for Case Type and Total -->
-    <tr>
-      <th>Case Type</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Table rows for overall active, inactive, and terminated cases -->
-    <tr>
-      <td>Active</td>
-      <td>{{ overall_active_total }}</td>
-    </tr>
-    <tr>
-      <td>Inactive</td>
-      <td>{{ overall_inactive_total }}</td>
-    </tr>
-    <tr>
-      <td>Terminated</td>
-      <td>{{ overall_terminated_total }}</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Apply the page break -->
+  <div class="page-break"></div>
 
-
+  <!-- for cases -->
+  <!-- Displays the heading for the overall active, inactive, and terminated cases -->
+  <h3 style="line-height: 0.4">Overall Cases:</h3>
+  <!-- Creates a table to display the overall active, inactive, and terminated cases -->
+  <table style="margin-bottom: 40px">
+    <thead>
+      <!-- Table header with columns for Case Type and Total -->
+      <tr>
+        <th>Case Type</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table rows for overall active, inactive, and terminated cases -->
+      <tr>
+        <td>Active</td>
+        <td>{{ overall_active_total }}</td>
+      </tr>
+      <tr>
+        <td>Inactive</td>
+        <td>{{ overall_inactive_total }}</td>
+      </tr>
+      <tr>
+        <td>Terminated</td>
+        <td>{{ overall_terminated_total }}</td>
+      </tr>
+    </tbody>
+  </table>
 
   <script>
     // Trigger print window when the page loads
