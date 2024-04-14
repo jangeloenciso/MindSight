@@ -103,6 +103,37 @@
     </tbody>
   </table>
 
+<!-- for cases -->
+<!-- Displays the heading for the overall active, inactive, and terminated cases -->
+<h3 style="line-height: 0.4">Overall Cases:</h3>
+<!-- Creates a table to display the overall active, inactive, and terminated cases -->
+<table style="margin-bottom: 40px">
+  <thead>
+    <!-- Table header with columns for Case Type and Total -->
+    <tr>
+      <th>Case Type</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table rows for overall active, inactive, and terminated cases -->
+    <tr>
+      <td>Active</td>
+      <td>{{ overall_active_total }}</td>
+    </tr>
+    <tr>
+      <td>Inactive</td>
+      <td>{{ overall_inactive_total }}</td>
+    </tr>
+    <tr>
+      <td>Terminated</td>
+      <td>{{ overall_terminated_total }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
   <script>
     // Trigger print window when the page loads
     window.onload = function () {

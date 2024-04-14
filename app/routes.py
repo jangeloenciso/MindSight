@@ -15,7 +15,7 @@ from app.forms.reset import ResetPassword
 from werkzeug.utils import secure_filename
 import logging, os, smtplib, pyotp, time
 from datetime import datetime
-from sqlalchemy import desc, asc, func, and_
+from sqlalchemy import desc, func, and_
 import base64
 from collections import defaultdict
 from calendar import month_name
@@ -332,7 +332,7 @@ def admin():
                         .join(AdditionalInformation, CaseNote.student_id == AdditionalInformation.student_id) \
                         .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
                                                 subquery.c.max_interview_date == CaseNote.interview_date)).filter(BasicInformation.archived == False) \
-                        .order_by(asc(CaseNote.interview_date)).all()
+                        .order_by(desc(CaseNote.interview_date)).all()
 
     # count the number of students counseled by each counselor
     students_count = db.session.query(AdditionalInformation.counselor, func.count(AdditionalInformation.id)) \
@@ -376,7 +376,7 @@ def counseling_history():
                          .join(subquery, and_(subquery.c.student_id == CaseNote.student_id,
                                               subquery.c.max_interview_date == CaseNote.interview_date)) \
                          .filter(BasicInformation.archived != True) \
-                         .order_by(asc(CaseNote.interview_date))
+                         .order_by(desc(CaseNote.interview_date))
 
     # Filter by counselor_name if provided
     if counselor_name:
@@ -813,10 +813,6 @@ def college_records(college):
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
-@app.route('/graduate')
-@login_required
-def graduate():
-    return render_template('graduate.html')
 
 @app.route('/students/records/GRADUATE/<college>')
 @login_required
@@ -840,10 +836,6 @@ def graduate_records(college):
 
     return render_template('students/records.html', college_name=college_name(college), college=college, data=data, records=records, student_id=student_id)
 
-@app.route('/LLL')
-@login_required
-def lll():
-    return render_template('lll.html')
 
 @app.route('/students/records/LLL/<college>')
 @login_required
@@ -1264,18 +1256,22 @@ def student_id_form():
     if request.method == 'POST':
         student_id = request.form.get('student_id')
         print(student_id)
-        if student_id:
+        existing_student = BasicInformation.query.filter_by(student_id=student_id).first()
+        if not existing_student:
             return redirect(url_for('add_record', student_id=student_id))
         else:
-            return render_template('student_id.html', student_id=student_id)
-        
+            return jsonify({'error': True})
+    
     return render_template('student_id.html')
 
-# TODO: prepopulate other fields if and only if student already exist
+
 @app.route('/add', methods=['GET', 'POST'])
 def add_record():
     student_id = request.args.get('student_id')
-    form = StudentRecordForm()
+    print('student id', student_id)
+    form = StudentRecordForm(request.form)
+
+    form.student_id.data = student_id
 
     with db.session.no_autoflush:
         student = (
@@ -1297,14 +1293,8 @@ def add_record():
             .first()
         )
 
-    if student_id:
-        existing_student = BasicInformation.query.filter_by(student_id=student_id).first()
-        if existing_student:
-            form = StudentRecordForm(obj=existing_student)
-        else:
-            form.student_id.data = student_id
 
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         form.populate_obj(student.family_background)
         form.populate_obj(student.health_information)
         form.populate_obj(student.educational_background)
@@ -1545,8 +1535,7 @@ def add_record():
 
         additional_info = AdditionalInformation(
             personal_agreement=form.personal_agreement.data,
-            personal_agreement_date=request.form.get('personal_agreement_date'),
-            # personal_agreement_date = form.personal_agreement_date.data,
+            personal_agreement_date = form.personal_agreement_date.data,
 
             nature_of_concern=request.form.get('nature_of_concern'),
             counselor=form.counselor.data,
@@ -1664,9 +1653,8 @@ def add_record():
         logging.error("Form validation failed")
         logging.error('ERRORS: %s', form.errors)
 
-    current_date_and_time = datetime.now().strftime('%Y-%m-%dT%H:%M')
+    return render_template('add_record.html', form=form, errors=errors, student_id=student_id)
 
-    return render_template('add_record.html', form=form, errors=errors, student_id=student_id, current_date_and_time=current_date_and_time)
 
 @app.route('/print_report/<selected_year>')
 def print_report(selected_year):
@@ -1688,6 +1676,11 @@ def print_report(selected_year):
     overall_total = defaultdict(int)
     overall_monthly_total = defaultdict(int)  # Initialize overall monthly total
 
+    # Add calculation for overall active, inactive, and terminated cases
+    overall_active_total = 0
+    overall_inactive_total = 0
+    overall_terminated_total = 0
+
     for college in college_names:
         college_total = {}
         for time_period in ['yearly', 'monthly']:  # Remove 'quarterly' from the time periods
@@ -1698,18 +1691,26 @@ def print_report(selected_year):
                     college_total[time_period][month] = month_total
                     overall_total[time_period] += month_total
                     overall_monthly_total[month] += month_total  # Add the monthly total to the overall monthly total
+
+                    # Calculate overall active, inactive, and terminated cases
+                    overall_active_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Active')
+                    overall_inactive_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Inactive')
+                    overall_terminated_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Terminated')
+
             else:
                 college_total[time_period] = get_total_cases(college=college, time_period=time_period, year=year)
                 overall_total[time_period] += college_total[time_period]
+
         total_cases_dict[college] = college_total
 
     print("Overall Total:", dict(overall_total))
     print("College-wise Total:", total_cases_dict)
     print("Overall Monthly Total:", dict(overall_monthly_total))  # Print the overall monthly total
+    print("Overall Active:", overall_active_total) # Print the overall active
+    print("Overall Inactive:", overall_inactive_total) # Print the overall inactive
+    print("Overall Terminated:", overall_terminated_total) # Print the overall terminated
 
-    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total))
-
-
+    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total), overall_active_total=overall_active_total, overall_inactive_total=overall_inactive_total, overall_terminated_total=overall_terminated_total)
 
 
 # API endpoints

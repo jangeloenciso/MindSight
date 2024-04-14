@@ -638,12 +638,18 @@ def data_history_information(college=None, selected_year=None):
 
 
 
-def get_total_cases(college=None, time_period=None, year=None, month=None):  # Add month parameter
+def get_total_cases(college=None, time_period=None, year=None, month=None, status=None):  # Add month parameter
     with app.app_context():
         query = db.session.query(func.count(BasicInformation.student_id))
 
+        # Join AdditionalInformation table
+        query = query.join(AdditionalInformation, BasicInformation.student_id == AdditionalInformation.student_id)
+
         if college:
             query = query.filter(BasicInformation.college == college)
+
+        if status:
+            query = query.filter(AdditionalInformation.status == status)
 
         if time_period and year:
             if time_period == 'yearly':
