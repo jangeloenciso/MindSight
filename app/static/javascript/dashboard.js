@@ -41,13 +41,13 @@ function generateLineGraph(data, chartNumber) { // Change function name to gener
         }
 
         chart1 = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: collegeNames,
                 datasets: [{
                     label: 'Active',
                     data: activeCounts,
-                    backgroundColor: 'rgba(0, 128, 0, 0.2)',
+                    backgroundColor: 'rgba(0, 128, 0, 0.3)',
                     borderColor: 'rgba(0, 128, 0, 1)',
                     borderWidth: 2,
                     pointBackgroundColor: 'rgba(0, 128, 0, 0.3)',
@@ -56,7 +56,7 @@ function generateLineGraph(data, chartNumber) { // Change function name to gener
                 }, {
                     label: 'Inactive',
                     data: inactiveCounts,
-                    backgroundColor: 'rgba(86, 86, 86, 0.2)',
+                    backgroundColor: 'rgba(86, 86, 86, 0.3)',
                     borderColor: 'rgba(86, 86, 86, 1)',
                     borderWidth: 2,
                     pointBackgroundColor: 'rgba(157, 169, 158, 0.3)',
@@ -65,7 +65,7 @@ function generateLineGraph(data, chartNumber) { // Change function name to gener
                 }, {
                     label: 'Terminated',
                     data: terminatedCounts,
-                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    backgroundColor: 'rgba(255, 0, 0, 0.3)',
                     borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 2,
                     pointBackgroundColor: 'rgba(255, 0, 0, 0.3)',
