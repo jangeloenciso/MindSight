@@ -21,8 +21,8 @@
 
       <form
         id="submit_form"
-        method="post"
-        action="{{ url_for('add_record') }}"
+        method="POST"
+        action="{{ url_for('add_record', student_id=student_id) }}"
         autocomplete="off"
       >
         {{ form.csrf_token }} {{ form.hidden_tag() }}
@@ -2178,14 +2178,7 @@
                 </button>
               </div>
               <div class="personal-agreement-date">
-                <input
-                  type="datetime-local"
-                  disabled
-                  id="personal_agreement_date"
-                  name="personal_agreement_date"
-                  value="{{ current_date_and_time }}"
-                />
-                <!-- {{ form.personal_agreement_date() }} -->
+                {{ form.personal_agreement_date(disabled=True) }}
               </div>
             </div>
             <div class="form-btn-container">

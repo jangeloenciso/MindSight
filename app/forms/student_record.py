@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, FloatField, BooleanField, DateField, TextAreaField, SelectField, HiddenField, DateTimeField, DateTimeLocalField, validators
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 class StudentRecordForm(FlaskForm):
     # # College Information
@@ -233,7 +233,7 @@ class StudentRecordForm(FlaskForm):
     nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
     counselor = StringField('Counselor', validators=[Optional()])
     personal_agreement = BooleanField(validators=[DataRequired()])
-    personal_agreement_date = DateTimeLocalField(validators=[Optional()])
+    personal_agreement_date = DateTimeLocalField(validators=[DataRequired()], default=datetime.today)
     
     status = StringField('Status', validators=[Optional()])
     remarks = StringField('Remarks', validators=[Optional()])
