@@ -1674,7 +1674,10 @@ def print_report(selected_year):
 
     total_cases_dict = {}
     overall_total = defaultdict(int)
-    overall_monthly_total = defaultdict(int)  # Initialize overall monthly total
+    overall_monthly_total = defaultdict(int) # Initialize overall monthly total
+    overall_monthly_active_total = defaultdict(int) # Initialize overall monthly active total
+    overall_monthly_inactive_total = defaultdict(int) # Initialize overall monthly inactive total
+    overall_monthly_terminated_total = defaultdict(int) # Initialize overall monthly terminated total
 
     # Add calculation for overall active, inactive, and terminated cases
     overall_active_total = 0
@@ -1692,16 +1695,27 @@ def print_report(selected_year):
                     overall_total[time_period] += month_total
                     overall_monthly_total[month] += month_total  # Add the monthly total to the overall monthly total
 
-                    # Calculate overall active, inactive, and terminated cases
-                    overall_active_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Active')
-                    overall_inactive_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Inactive')
-                    overall_terminated_total += get_total_cases(college=college, time_period=time_period, year=year, month=month, status='Terminated')
-
+                    # Calculate monthly totals for active, inactive, and terminated cases
+                    monthly_active_total = get_total_cases(college=college, time_period='monthly', year=year, month=month, status='Active')
+                    monthly_inactive_total = get_total_cases(college=college, time_period='monthly', year=year, month=month, status='Inactive')
+                    monthly_terminated_total = get_total_cases(college=college, time_period='monthly', year=year, month=month, status='Terminated')
+                    
+                    # Update overall monthly totals for active, inactive, and terminated cases
+                    overall_monthly_active_total[month] += monthly_active_total
+                    overall_monthly_inactive_total[month] += monthly_inactive_total
+                    overall_monthly_terminated_total[month] += monthly_terminated_total
             else:
                 college_total[time_period] = get_total_cases(college=college, time_period=time_period, year=year)
                 overall_total[time_period] += college_total[time_period]
 
         total_cases_dict[college] = college_total
+
+        # Calculate overall active, inactive, and terminated cases
+    for college in college_names:
+        overall_active_total += get_total_cases(college=college, time_period='yearly', year=year, status='Active')
+        overall_inactive_total += get_total_cases(college=college, time_period='yearly', year=year, status='Inactive')
+        overall_terminated_total += get_total_cases(college=college, time_period='yearly', year=year, status='Terminated')
+
 
     print("Overall Total:", dict(overall_total))
     print("College-wise Total:", total_cases_dict)
@@ -1710,7 +1724,7 @@ def print_report(selected_year):
     print("Overall Inactive:", overall_inactive_total) # Print the overall inactive
     print("Overall Terminated:", overall_terminated_total) # Print the overall terminated
 
-    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total), overall_active_total=overall_active_total, overall_inactive_total=overall_inactive_total, overall_terminated_total=overall_terminated_total)
+    return render_template('generate_report.html', year=year, overall_total=dict(overall_total), college_totals=total_cases_dict, overall_monthly_total=dict(overall_monthly_total), overall_active_total=overall_active_total, overall_inactive_total=overall_inactive_total, overall_terminated_total=overall_terminated_total, overall_monthly_active_total=overall_monthly_active_total, overall_monthly_inactive_total=overall_monthly_inactive_total, overall_monthly_terminated_total=overall_monthly_terminated_total)
 
 
 # API endpoints
