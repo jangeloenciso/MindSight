@@ -273,6 +273,7 @@ def dashboard():
 
 
 @app.route('/dashboard/cases')
+@login_required
 def cases():
     year = datetime.now().year
 
@@ -448,7 +449,6 @@ def settings():
     return render_template('settings.html', form=form)
 
 
-@login_required
 def send_otp_to_email_settings(email, otp):
     sender = current_app.config['MAIL_USERNAME']
     recipients = [email]
@@ -970,6 +970,7 @@ def allowed_file(filename):
 
 # upload template
 @app.route('/students/records/upload_record/<student_id>', methods=['GET', 'POST'])
+@login_required
 def upload_record(student_id):
 
     data = process_data(student_id)
@@ -981,6 +982,7 @@ def upload_record(student_id):
 
 # upload of documents
 @app.route('/students/records/upload_record/upload_file/<student_id>', methods=['POST'])
+@login_required
 def upload_file(student_id):
 
     print(student_id)
@@ -1011,6 +1013,7 @@ def upload_file(student_id):
 
 # viewing of uploaded file
 @app.route('/students/records/upload_record/view_document/<student_id>/<filename>')
+@login_required
 def view_file(student_id, filename):
 
     document = Document.query.filter_by(student_id=student_id, filename=filename).first()
@@ -1029,6 +1032,7 @@ def view_file(student_id, filename):
 
 # archiving of uploaded file
 @app.route('/students/records/upload_record/delete_file/<filename>', methods=['POST'])
+@login_required
 def delete_file(filename):
 
     file = Document.query.filter_by(filename=filename).first()
@@ -1657,6 +1661,7 @@ def add_record():
 
 
 @app.route('/print_report/<selected_year>')
+@login_required
 def print_report(selected_year):
     year = selected_year
 
@@ -1729,6 +1734,7 @@ def print_report(selected_year):
 
 # API endpoints
 @app.route('/get_cases/<selected_year>', methods=['GET'])
+@login_required
 def get_cases(selected_year=None):
     year = selected_year
     if selected_year is None:
@@ -1773,16 +1779,19 @@ def get_cases(selected_year=None):
 
 
 @app.route('/get_data/<first_metric>/<second_metric>', methods=['GET'])
+@login_required
 def get_data(first_metric, second_metric):
     data = data_analytics(first_metric, second_metric)
     return jsonify(data)
 
 @app.route('/get_data/<data_to_count>', methods=['GET'])
+@login_required
 def get_data_count(data_to_count):
     data = data_count(data_to_count)
     return jsonify(data)
 
 @app.route('/get_data/college')
+@login_required
 def get_college_data():
     college_names = [
         "CEA",
@@ -1809,6 +1818,7 @@ def get_college_data():
 
 
 @app.route('/get_data/compare/<data_to_count>/<selected_year1>/<selected_year2>', methods=['GET'])
+@login_required
 def get_data_year(data_to_count, selected_year1, selected_year2):
 
     if data_to_count == 'experiences':
