@@ -78,7 +78,7 @@
 .rows {
     width: 100%;
     height: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .row1, .row2, .row3 {
@@ -233,14 +233,17 @@ a.view {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    justify-content: center;
 }
 
 .column {
     width: 90%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    overflow: auto;
+    font-size: 0.9em;
+    
 }
 
 .double-column div{

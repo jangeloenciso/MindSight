@@ -1,20 +1,27 @@
-{% extends "components/base.html" %} {% block title %} Mindsight - {{ student_data[0]['student_id'] }}{%endblock %} {% block styles %}
+{% extends "components/base.html" %} {% block title %} Mindsight - {{
+student_data[0]['student_id'] }}{%endblock %} {% block styles %}
 <link rel="stylesheet" href="/static/css/student-record.css" />
 {% endblock %} {% block content %}
 
 <div class="right">
-    <div class="main">
-        <!-- Header -->
-        <div class="main-header">
-            <div class="college"> <span>{{student_data[0]['college']}}</span> </div>
-            <div class="name"> <span>{{student_data[0]['first_name']}} {{student_data[0]['last_name']}}</span> </div>
-            <div class="vl"></div>
-            <div class="student-id">
-                <div class="id"> <span>Student ID:&nbsp; </span></div>
-                <div class="id"> <span>{{student_data[0]['student_id']}}</span></div>
-            </div>
-            <div class="back-button">
-                <a href="
+  <div class="main">
+    <!-- Header -->
+    <div class="main-header">
+      <div class="college"><span>{{student_data[0]['college']}}</span></div>
+      <div class="name">
+        <span
+          >{{student_data[0]['first_name']}}
+          {{student_data[0]['last_name']}}</span
+        >
+      </div>
+      <div class="vl"></div>
+      <div class="student-id">
+        <div class="id"><span>Student ID:&nbsp; </span></div>
+        <div class="id"><span>{{student_data[0]['student_id']}}</span></div>
+      </div>
+      <div class="back-button">
+        <a
+          href="
                   {% if student_data[0]['college'] in ['CEA', 'CBEA', 'CAS', 'CED', 'IHK'] %}
                     {{ url_for ('college_records', college=student_data[0]['college']) }}
                   {% elif student_data[0]['course'] in ['STEM', 'ABM', 'HUMSS', 'ICT'] %}
@@ -26,191 +33,200 @@
                   {% else %}
                     {{ url_for ('lll_records', college=student_data[0]['college']) }}
                   {% endif %}
-                  ">
-                    <img src="/static/SVG/back_button.svg"/>
-                </a>
-            </div>
-        </div>
-
-        <!-- Nature, Identity, Campus, and Age -->
-        <div class="rows">
-            <div class="row1">
-                <div class="nature-content">
-                    <div class="title"><span>Nature of Concern:&nbsp;</span></div>
-                    <div class="answer"><span>{{student_data[0]['nature_of_concern']}}</span></div>
-                </div>
-                <div class="identity-content">
-                    <div class="title"><span>Identity:&nbsp;</span></div>
-                    <div class="answer"><span>{{student_data[0]['gender']}}</span></div>
-                </div>
-            </div>
-            <div class="row2">
-                <div class="campus-content">
-                    <div class="title"><span>Campus:&nbsp;</span></div>
-                    <div class="answer"><span>{{student_data[0]['campus']}}</span></div>
-                </div>
-                <div class="age-content">
-                    <div class="title"><span>Age:&nbsp;</span></div>
-                    <div class="answer"><span>{{student_data[0]['age']}}</span></div>
-                </div>
-            </div>
-            <div class="row3">
-                <div class="counselor">
-                    <div class="title"><span>Counselor:&nbsp;</span></div>
-                    <div class="answer"><span>{{student_data[0]['counselor']}}</span></div>
-                </div>
-            </div>
-        </div> 
-
-        <!-- Full records -->
-        <div class="full-records-button">
-          <a class="view" href="{{ url_for('full_record', student_id=student_data[0]['student_id']) }}">
-            <button class="view-records">
-                <div class="title"><span>View full record&nbsp;</span></div>
-                <img src="/static/SVG/view_button.svg"/>    
-            </button>
-          </a>
-        
-            <div class="edit-print-button">
-              <a href="{{ url_for('edit_record', student_id=student_data[0]['student_id']) }}">
-                <div class="edit">
-                  <img src="{{url_for('static', filename='edit-button.png')}}"/>
-                </div>
-              </a>
-                
-                
-              <a href="{{ url_for('print_record', student_id=student_data[0]['student_id']) }}">
-                <div class="print">
-                  <img src="{{url_for('static', filename='print-button.png')}}"/>
-                </div>
-              </a>
-                    
-
-              <a href="{{ url_for('upload_record', student_id=student_data[0]['student_id']) }}">
-                <div class="upload">
-                  <img src="{{ url_for('static', filename='upload-button.png') }}"/>
-                </div>
-              </a>
-                     
-                    
-              <a href="#" id="archive-button">
-                <div class="archive">
-                    <img src="{{ url_for('static', filename='archive-button.png') }}" />
-                </div>
-              </a>
-              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-
-            </div>
-        </div>
-        
-        <div class="full-records">
-            <header class="main-header-content">Client History and Information</header>
-            <hr />
-      
-            <!-- start: BASIC INFORMATION -->
-            <header>Basic Information</header>  
-            <div class="center">
-              <section class="basic-information">
-                <div class="column">
-                  <div class="double-column">
-                    <div>
-                      <label for="fname">First name:&nbsp;</label>
-                      <span>{{student_data[0]['first_name']}}</span>
-                    </div>
-                    <div>
-                      <label for="course">Last Name:&nbsp;</label>
-                      <span>{{student_data[0]['last_name']}}</span>
-                    </div>
-                    <div>
-                      <label for="course">Course/Department:&nbsp;</label>
-                      <span>{{student_data[0]['course']}}</span>
-                    </div>
-                    <div>
-                      <label for="dob">Date of Birth:&nbsp;</label>
-                      <span>{{student_data[0]['date_of_birth']}}</span>
-                    </div>
-                    <div>
-                      <label for="gender">Gender:&nbsp;</label>
-                      <span>{{student_data[0]['gender']}}</span>
-                    </div>
-                    <div>
-                      <label for="nationality">Nationality:&nbsp;</label>
-                      <span>{{student_data[0]['nationality']}}</span>
-                    </div>
-                    <div>
-                      <label for="address">Home Address:&nbsp;</label>
-                      <span>{{student_data[0]['residence']}}</span>
-                    </div>
-                    <div>
-                      <label for="email">Email Address:&nbsp;</label>
-                      <span>{{student_data[0]['email_address']}}</span>
-                    </div>
-                    <div class="left-align">
-                      <span>If the above client is a minor complete the following:</span>
-                    </div>
-                    <div>
-                      <label for="guardian">Name of Guardian:&nbsp;</label>
-                      <span>{{student_data[0]['guardian_name']}}</span>
-                    </div>
-                    <div>
-                      <label for="guardianadd">Address of Guardian:&nbsp;</label>
-                      <span>{{student_data[0]['guardian_address']}}</span>
-                    </div>
-                  </div>
-  
-                  <div class="double-column">
-                    <div>
-                      <label for="studNumber">Student's Number:&nbsp;</label>
-                      <span>{{student_data[0]['student_id']}}</span>
-                    </div>
-                    <div style="margin-bottom: 35px;">
-                    </div>
-                    <div>
-                      <label for="yearlevel">Grade/Yr Level:&nbsp;</label>
-                      <span>{{student_data[0]['year_level']}}</span>
-                    </div>
-                    <div>
-                      <label for="age">Age:&nbsp;</label>
-                      <span>{{student_data[0]['age']}}</span>
-                    </div>
-                    <div>
-                      <label for="civil">Civil Status:&nbsp;</label>
-                      <span>{{student_data[0]['civil_status']}}</span>
-                    </div>
-                    <div>
-                      <label for="religion">Religion:&nbsp;</label>
-                      <span>{{student_data[0]['religion']}}</span>
-                    </div>
-                    <div>
-                      <label for="pnumber">Phone Number:&nbsp;</label>
-                      <span>{{student_data[0]['phone_number']}}</span>
-                    </div>
-                    <div>
-                      <label for="cnumber">Cellphone Number:&nbsp;</label>
-                      <span>{{student_data[0]['contact_number']}}</span>
-                    </div>
-                    <div style="margin-bottom: 35px;">
-                    </div>
-                    <div>
-                      <label for="gcnumber">Guardian's Contact No.:&nbsp;</label>
-                      <span>{{student_data[0]['guardian_contact']}}</span>
-                    </div>
-                  </div>
-                </div>
-                
-      
-  
-              </section>
-              <!-- end: BASIC INFORMATION -->
-        </div>
+                  "
+        >
+          <img src="/static/SVG/back_button.svg" />
+        </a>
+      </div>
     </div>
-</div>
+
+    <!-- Nature, Identity, Campus, and Age -->
+    <div class="rows">
+      <div class="row1">
+        <div class="nature-content">
+          <div class="title"><span>Nature of Concern:&nbsp;</span></div>
+          <div class="answer">
+            <span>{{student_data[0]['nature_of_concern']}}</span>
+          </div>
+        </div>
+        <div class="identity-content">
+          <div class="title"><span>Identity:&nbsp;</span></div>
+          <div class="answer"><span>{{student_data[0]['gender']}}</span></div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="campus-content">
+          <div class="title"><span>Campus:&nbsp;</span></div>
+          <div class="answer"><span>{{student_data[0]['campus']}}</span></div>
+        </div>
+        <div class="age-content">
+          <div class="title"><span>Age:&nbsp;</span></div>
+          <div class="answer"><span>{{student_data[0]['age']}}</span></div>
+        </div>
+      </div>
+      <div class="row3">
+        <div class="counselor">
+          <div class="title"><span>Counselor:&nbsp;</span></div>
+          <div class="answer">
+            <span>{{student_data[0]['counselor']}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full records -->
+    <div class="full-records-button">
+      <a
+        class="view"
+        href="{{ url_for('full_record', student_id=student_data[0]['student_id']) }}"
+      >
+        <button class="view-records">
+          <div class="title"><span>View full record&nbsp;</span></div>
+          <img src="/static/SVG/view_button.svg" />
+        </button>
+      </a>
+      <header class="main-header-content">
+        Client History and Information
+      </header>
+
+      <div class="edit-print-button">
+        <a
+          href="{{ url_for('edit_record', student_id=student_data[0]['student_id']) }}"
+        >
+          <div class="edit">
+            <img src="{{url_for('static', filename='edit-button.png')}}" />
+          </div>
+        </a>
+
+        <a
+          href="{{ url_for('print_record', student_id=student_data[0]['student_id']) }}"
+        >
+          <div class="print">
+            <img src="{{url_for('static', filename='print-button.png')}}" />
+          </div>
+        </a>
+
+        <a
+          href="{{ url_for('upload_record', student_id=student_data[0]['student_id']) }}"
+        >
+          <div class="upload">
+            <img src="{{ url_for('static', filename='upload-button.png') }}" />
+          </div>
+        </a>
+
+        <a href="#" id="archive-button">
+          <div class="archive">
+            <img src="{{ url_for('static', filename='archive-button.png') }}" />
+          </div>
+        </a>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      </div>
+    </div>
+
+    <div class="full-records">
+      <!-- start: BASIC INFORMATION -->
+      <!-- <header>Basic Information</header> -->
+      <div class="center">
+        <section class="basic-information">
+          <div class="column">
+            <div class="double-column">
+              <div>
+                <label for="fname">First name:&nbsp;</label>
+                <span>{{student_data[0]['first_name']}}</span>
+              </div>
+              <div>
+                <label for="course">Last Name:&nbsp;</label>
+                <span>{{student_data[0]['last_name']}}</span>
+              </div>
+              <div>
+                <label for="course">Course/Department:&nbsp;</label>
+                <span>{{student_data[0]['course']}}</span>
+              </div>
+              <div>
+                <label for="dob">Date of Birth:&nbsp;</label>
+                <span>{{student_data[0]['date_of_birth']}}</span>
+              </div>
+              <div>
+                <label for="gender">Gender:&nbsp;</label>
+                <span>{{student_data[0]['gender']}}</span>
+              </div>
+              <div>
+                <label for="nationality">Nationality:&nbsp;</label>
+                <span>{{student_data[0]['nationality']}}</span>
+              </div>
+              <div>
+                <label for="address">Home Address:&nbsp;</label>
+                <span>{{student_data[0]['residence']}}</span>
+              </div>
+              <div>
+                <label for="email">Email Address:&nbsp;</label>
+                <span>{{student_data[0]['email_address']}}</span>
+              </div>
+              <div class="left-align">
+                <span
+                  >If the above client is a minor complete the following:</span
+                >
+              </div>
+              <div>
+                <label for="guardian">Name of Guardian:&nbsp;</label>
+                <span>{{student_data[0]['guardian_name']}}</span>
+              </div>
+              <div>
+                <label for="guardianadd">Address of Guardian:&nbsp;</label>
+                <span>{{student_data[0]['guardian_address']}}</span>
+              </div>
+            </div>
+
+            <div class="double-column">
+              <div>
+                <label for="studNumber">Student's Number:&nbsp;</label>
+                <span>{{student_data[0]['student_id']}}</span>
+              </div>
+              <div style="margin-bottom: 35px"></div>
+              <div>
+                <label for="yearlevel">Grade/Yr Level:&nbsp;</label>
+                <span>{{student_data[0]['year_level']}}</span>
+              </div>
+              <div>
+                <label for="age">Age:&nbsp;</label>
+                <span>{{student_data[0]['age']}}</span>
+              </div>
+              <div>
+                <label for="civil">Civil Status:&nbsp;</label>
+                <span>{{student_data[0]['civil_status']}}</span>
+              </div>
+              <div>
+                <label for="religion">Religion:&nbsp;</label>
+                <span>{{student_data[0]['religion']}}</span>
+              </div>
+              <div>
+                <label for="pnumber">Phone Number:&nbsp;</label>
+                <span>{{student_data[0]['phone_number']}}</span>
+              </div>
+              <div>
+                <label for="cnumber">Cellphone Number:&nbsp;</label>
+                <span>{{student_data[0]['contact_number']}}</span>
+              </div>
+              <div style="margin-bottom: 35px"></div>
+              <div>
+                <label for="gcnumber">Guardian's Contact No.:&nbsp;</label>
+                <span>{{student_data[0]['guardian_contact']}}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- end: BASIC INFORMATION -->
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("archive-button").addEventListener("click", function(event) {
-    event.preventDefault();
+  document.addEventListener("DOMContentLoaded", function () {
+    document
+      .getElementById("archive-button")
+      .addEventListener("click", function (event) {
+        event.preventDefault();
         const student_id = "{{ student_id }}";
 
         const year_level = "{{ student_data[0]['year_level'] }}";
@@ -221,79 +237,103 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Course:", course);
         console.log("College:", college);
 
-        const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+        const csrfToken = document.querySelector(
+          'input[name="csrf_token"]'
+        ).value;
 
-        swal.fire({
+        swal
+          .fire({
             iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-            title: 'Are you sure?',
+            title: "Are you sure?",
             text: "You're about to archive this record.",
             showCancelButton: true,
-            confirmButtonText: 'Yes',
+            confirmButtonText: "Yes",
             customClass: {
-                confirmButton: `confirm-button-class`,
-                cancelButton: 'cancel-button-class'
-            }
-        }).then((result) => {
+              confirmButton: `confirm-button-class`,
+              cancelButton: "cancel-button-class",
+            },
+          })
+          .then((result) => {
             if (result.isConfirmed) {
-                fetch(`/students/records/view/archive/${student_id}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        swal.fire({
-                            iconHtml: '<img class="custom-icon" src="/static/popup.png">',
-                            title: 'Success!',
-                            text: 'Record successfully archived.',
-                            showConfirmButton: false,
-                            timer: 2000,
-                            timerProgressBar: true,
-                        }).then(() => {
-                            if (college === 'CEA' || college === 'CBEA' || college === 'CAS' || college === 'CED' || college === 'IHK') {
-                                window.location.href = `/students/records/COLLEGE/${college}`;
-                            } else if (college === 'GRAD') {
-                                window.location.href = `/students/records/GRADUATE/${college}`;
-                            } else if (college === 'LLL') {
-                                window.location.href = `/students/records/LLL/${college}`;
-                            } else if (course === 'STEM' || course === 'ABM' || course === 'HUMSS' || course === 'ICT') {
-                                window.location.href = `/students/records/SHS/${course}`;
-                            } else if (year_level === '7' || year_level === '8' || year_level === '9' || year_level === '10') {
-                                window.location.href = `/students/records/JHS/${year_level}`;
-                            }
-                        });
-                    } else {
-                        swal.fire({
-                            iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-                            title: 'Error!',
-                            text: 'Failed to archive record, please try again.',
-                            confirmButtonText: 'Try again',
-                            showConfirmButton: true,
-                            customClass: {
-                              confirmButton: `confirm-button-class`,
-                            }
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    swal.fire({
-                        iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-                        title: 'Error!',
-                        text: 'An error occurred while archiving the file.',
-                        confirmButtonText: 'Try again',
-                        showConfirmButton: true,
-                        customClass: {
-                          confirmButton: `confirm-button-class`,
+              fetch(`/students/records/view/archive/${student_id}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-CSRFToken": csrfToken,
+                },
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    swal
+                      .fire({
+                        iconHtml:
+                          '<img class="custom-icon" src="/static/popup.png">',
+                        title: "Success!",
+                        text: "Record successfully archived.",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                      })
+                      .then(() => {
+                        if (
+                          college === "CEA" ||
+                          college === "CBEA" ||
+                          college === "CAS" ||
+                          college === "CED" ||
+                          college === "IHK"
+                        ) {
+                          window.location.href = `/students/records/COLLEGE/${college}`;
+                        } else if (college === "GRAD") {
+                          window.location.href = `/students/records/GRADUATE/${college}`;
+                        } else if (college === "LLL") {
+                          window.location.href = `/students/records/LLL/${college}`;
+                        } else if (
+                          course === "STEM" ||
+                          course === "ABM" ||
+                          course === "HUMSS" ||
+                          course === "ICT"
+                        ) {
+                          window.location.href = `/students/records/SHS/${course}`;
+                        } else if (
+                          year_level === "7" ||
+                          year_level === "8" ||
+                          year_level === "9" ||
+                          year_level === "10"
+                        ) {
+                          window.location.href = `/students/records/JHS/${year_level}`;
                         }
+                      });
+                  } else {
+                    swal.fire({
+                      iconHtml:
+                        '<img class="custom-icon" src="/static/exclamation.png">',
+                      title: "Error!",
+                      text: "Failed to archive record, please try again.",
+                      confirmButtonText: "Try again",
+                      showConfirmButton: true,
+                      customClass: {
+                        confirmButton: `confirm-button-class`,
+                      },
                     });
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  swal.fire({
+                    iconHtml:
+                      '<img class="custom-icon" src="/static/exclamation.png">',
+                    title: "Error!",
+                    text: "An error occurred while archiving the file.",
+                    confirmButtonText: "Try again",
+                    showConfirmButton: true,
+                    customClass: {
+                      confirmButton: `confirm-button-class`,
+                    },
+                  });
                 });
             }
-        });
-    });
-
+          });
+      });
   });
 </script>
 {% endblock %}
