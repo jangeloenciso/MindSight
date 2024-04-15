@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function showLoadingAnimation(containerId) {
   const container = document.getElementById(containerId);
   const spinner = document.createElement("img");
-  spinner.src = "https://media.tenor.com/jfmI0j5FcpAAAAAM/loading-wtf.gif"; // URL of loader image
-  //   replace src with "/static/loader.gif" lol
+  spinner.src = "/static/loader.gif"; // URL of loader image
+
   spinner.className = "spinner";
   container.appendChild(spinner);
 }
