@@ -74,28 +74,29 @@ option {
 
 
 .row-container {
-    margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    height: 90%;
-    row-gap: 20px;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    column-gap: 20px;
 }
 
 .row1, .row2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    column-gap: 20px;
     width: 100%;
-    height: 50%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--white);
+    border: 3px solid var(--bg-orange);
+    padding: 20px;
+    overflow-y: scroll;
 }
 
-.experience-container, .college-container {
-    width: 40%;
+.cases-container, .college-container, .campus-container, .nature-container, .identity-container {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 3px solid var(--bg-orange);
     padding: 0.8em;
 }
@@ -104,36 +105,6 @@ option {
     display: flex;
     width: 100%;
     justify-content: space-between;
-}
-
-.campus-container {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.nature-container, .identity-container {
-    width: 31%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
-}
-
-.religion-container {
-    width: 38%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 3px solid var(--bg-orange);
-    padding: 0.8em;
 }
 
 #experience, #college, #campus,

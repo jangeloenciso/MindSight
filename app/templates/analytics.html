@@ -37,60 +37,54 @@ endblock %} {% block styles %}
     <!-- TODO: Make it responsive -->
     <div class="row-container">
       <div class="row1">
-        <!-- Experiences -->
-        <div class="experience-container">
-          <span class="title" id="experience">
-            <div>Experiences</div>
-            <div class="back-button">
-              <a href="{{ url_for ('experiences_expand')}}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
-            </div>
-          </span>
-          
-          <div style="height: 200px; overflow: auto">
-          <canvas id="myChart1"></canvas>
+        <div class="cases-container">
+          <span class="title">Cases</span>
+          <div id="cases_container">
+
+          </div>
         </div>
-        </div>
-        <!-- College -->
         <div class="college-container">
-          <span class="title" id="college">Level Summaries</span>
-          <canvas id="myChart2" height="38" width="100"></canvas>
+          <span class="title">Levels</span>
+          <div id="levels_container"></div>
         </div>
-        <!--Campus-->
         <div class="campus-container">
-          <span class="title" id="campus">Campus</span>
-          <canvas id="myChart3" height="78" width="100"></canvas>
+          <span class="title">Campus</span>
+          <div id="campus_container"></div>
+        </div>
+        <div class="nature-container">
+          <span class="title">Concerns</span>
+          <div id="nature_container"></div>
+        </div>
+        <div class="identity-container">
+          <span class="title">Identity</span>
+          <div id="identity_container"></div>
         </div>
       </div>
 
       <div class="row2">
-        <!-- Nature -->
+        <div class="cases-container">
+          <span class="title">Cases</span>
+          <div id="cases_container2"></div>
+        </div>
+        <div class="college-container">
+          <span class="title">Levels</span>
+          <div id="levels_container2"></div>
+        </div>
+        <div class="campus-container">
+          <span class="title">Campus</span>
+          <div id="campus_container2"></div>
+        </div>
         <div class="nature-container">
-          <span class="title" id="nature">Brief description of Concerns</span>
-          <canvas id="myChart5"></canvas>
+          <span class="title">Concerns</span>
+          <div id="nature_container2"></div>
         </div>
-        <!-- Religion -->
-        <div class="religion-container">
-          <span class="title" id="experience">
-            <div>Religion</div>
-            <div class="back-button">
-              <a href="{{ url_for ('religion_expand')}}">
-                  <img src="/static/SVG/back_button.svg"/>
-              </a>
-            </div>
-          </span>
-          <div style="height: 200px; overflow: auto">
-            <canvas id="myChart4"></canvas>
-          </div>
-        </div>
-        <!-- Identity -->
         <div class="identity-container">
-          <span class="title" id="identity">Identity</span>
-          <canvas id="myChart6"></canvas>
+          <span class="title">Identity</span>
+          <div id="identity_container2"></div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
