@@ -231,11 +231,11 @@ def error():
 @login_required
 def dashboard():
     year = 2024
-    history_data = data_history_information(year=year)
-    concerns_data = data_count_dict('nature_of_concern', year=year)
-    religion_data = data_count_dict('religion', year=year)
-    campus_data = data_count_dict('campus', year=year)
-    identity_data = data_count_dict('gender', year=year)
+    history_data = data_history_information(selected_year=year)
+    concerns_data = data_count_dict('nature_of_concern', selected_year=year)
+    religion_data = data_count_dict('religion', selected_year=year)
+    campus_data = data_count_dict('campus', selected_year=year)
+    identity_data = data_count_dict('gender', selected_year=year)
 
     college_names = [
         "CEA",
@@ -261,13 +261,13 @@ def dashboard():
     print("Overall Monthly Total:", dict(overall_monthly_total))
 
     # Fetching terminated cases data for each college
-    terminated_data = {college: data_count_dict('status', college, year=year) for college in college_names}
+    terminated_data = {college: data_count_dict('status', college, selected_year=year) for college in college_names}
 
-    jhs_data = data_count_dict('status', 'JHS', year=year)
-    shs_data = data_count_dict('status', 'SHS', year=year)
-    college_data = data_count_dict('status', 'College', year=year)
-    grad_data = data_count_dict('status', 'GRAD', year=year)
-    lll_data = data_count_dict('status', 'LLL', year=year)
+    jhs_data = data_count_dict('status', 'JHS', selected_year=year)
+    shs_data = data_count_dict('status', 'SHS', selected_year=year)
+    college_data = data_count_dict('status', 'College', selected_year=year)
+    grad_data = data_count_dict('status', 'GRAD', selected_year=year)
+    lll_data = data_count_dict('status', 'LLL', selected_year=year)
 
     return render_template('dashboard.html', terminated_data=terminated_data, 
                            religion_data=religion_data, 

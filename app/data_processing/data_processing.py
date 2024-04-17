@@ -446,7 +446,7 @@ def data_count(query, status=None, selected_year=None):
     return data_dict
 
 # Works with the progress bars
-def data_count_dict(query, college=None, year=None):
+def data_count_dict(query, college=None, selected_year=None):
     df = process_data()
 
     if query not in df.columns:
@@ -469,8 +469,8 @@ def data_count_dict(query, college=None, year=None):
     if college == 'LLL':
         df = df[df['college'] == 'LLL']
 
-    if year:
-        df = df[df['submitted_on'].dt.year == year]
+    if selected_year:
+        df = df[df['submitted_on'].dt.year == selected_year]
 
     if query == 'nature_of_concern':
         categories = ['Academic', 'Career', 'Social', 'Personal']
@@ -549,10 +549,8 @@ def data_count_dict(query, college=None, year=None):
 
 
 
-def data_history_information(college=None, selected_year=None, year=None):
+def data_history_information(college=None, selected_year=None):
     df = process_data()
-    
-    # add something for college i cant make it work fuck me
 
     if selected_year:
         df['year'] = pd.to_datetime(df['submitted_on']).dt.year
@@ -573,9 +571,6 @@ def data_history_information(college=None, selected_year=None, year=None):
 
     if college == 'LLL':
         df = df[df['college'] == 'LLL']
-
-    if year:
-        df = df[df['submitted_on'].dt.year == year]
 
     # print(df)
     # Verify if the column 'substance_abuse' exists before accessing it
