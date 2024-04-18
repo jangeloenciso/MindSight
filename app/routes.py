@@ -230,7 +230,7 @@ def error():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    year = 2024
+    year = datetime.now().year
     history_data = data_history_information(selected_year=year)
     concerns_data = data_count_dict('nature_of_concern', selected_year=year)
     religion_data = data_count_dict('religion', selected_year=year)
@@ -1840,7 +1840,7 @@ def get_college_data():
         "LLL"
     ]
 
-    selected_year = 2024
+    selected_year = datetime.now().year
 
     college_data = {}
     statuses = ['Active', 'Inactive', 'Terminated']

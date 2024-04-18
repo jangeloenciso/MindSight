@@ -400,6 +400,12 @@ def data_to_dict():
     
 def data_analytics(first_metric, second_metric):
     df = process_data()
+
+    # Check if the DataFrame is empty
+    if df.empty:
+        print("DataFrame is empty. No data to process.")
+        return {}
+
     if df[second_metric].dtype in [int, float, bool]:
         data_mean = df.groupby(first_metric)[second_metric].mean().reset_index()
         data_dict = data_mean.to_dict(orient='records')
@@ -414,6 +420,16 @@ def data_analytics(first_metric, second_metric):
 # Works with ChartJS
 def data_count(query, status=None, selected_year=None):
     df = process_data()
+
+    # Check if the DataFrame is empty
+    if df.empty:
+        print("DataFrame is empty. No data to process.")
+        return {}
+    
+    if query not in df.columns:
+        print(f"Column '{query}' does not exist in DataFrame.")
+        return {} 
+
 
     if selected_year:
         # Check if the selected_year is a valid year
@@ -470,7 +486,8 @@ def data_count_dict(query, college=None, selected_year=None):
         df = df[df['college'] == 'LLL']
 
     if selected_year:
-        df = df[df['submitted_on'].dt.year == selected_year]
+        df['year'] = pd.to_datetime(df['submitted_on']).dt.year
+        df = df[df['year'] == int(selected_year)]
 
     if query == 'nature_of_concern':
         categories = ['Academic', 'Career', 'Social', 'Personal']
@@ -552,6 +569,11 @@ def data_count_dict(query, college=None, selected_year=None):
 def data_history_information(college=None, selected_year=None):
     df = process_data()
 
+    # Check if the DataFrame is empty
+    if df.empty:
+        print("DataFrame is empty. No data to process.")
+        return {}
+
     if selected_year:
         df['year'] = pd.to_datetime(df['submitted_on']).dt.year
         df = df[df['year'] == int(selected_year)]
@@ -573,62 +595,55 @@ def data_history_information(college=None, selected_year=None):
         df = df[df['college'] == 'LLL']
 
     # print(df)
-    # Verify if the column 'substance_abuse' exists before accessing it
-    if 'substance_abuse' in df.columns:
-        data_dict = {
-            'Substance abuse/dependence': int(df['substance_abuse'].sum()),
-            'Addiction': int(df['addiction'].sum()),
-            'Depression/Sad/Down feelings': int(df['depression_sad_down_feelings'].sum()),
-            'High/Low energy level': int(df['high_low_energy_level'].sum()),
-            'Angry/Irritable': int(df['angry_irritable'].sum()),
-            'Loss of interest in activities': int(df['loss_of_interest'].sum()),
-            'Difficulty enjoying things': int(df['difficulty_enjoying_things'].sum()),
-            'Crying spells': int(df['crying_spells'].sum()),
-            'Decreased motivation': int(df['decreased_motivation'].sum()),
-            'Withdrawing from people/Isolation': int(df['withdrawing_from_people'].sum()),
-            'Mood Swings': int(df['mood_swings'].sum()),
-            'Black and white thinking/All or nothing thinking': int(df['black_and_white_thinking'].sum()),
-            'Negative thinking': int(df['negative_thinking'].sum()),
-            'Change in weight or appetite': int(df['change_in_weight_or_appetite'].sum()),
-            'Change in sleeping pattern': int(df['change_in_sleeping_pattern'].sum()),
-            'Suicidal thoughts or plans/Thoughts of hurting yourself': int(df['suicidal_thoughts_or_plans'].sum()),
-            'Self-harm/Cutting/Burning yourself': int(df['self_harm'].sum()),
-            'Homicidal thoughts or plans/Thoughts of hurting others': int(df['homicidal_thoughts_or_plans'].sum()),
-            'Poor concentration/Difficulty focusing': int(df['difficulty_focusing'].sum()),
-            'Feelings of hopelessness/Worthlessness': int(df['feelings_of_hopelessness'].sum()),
-            'Feelings of shame or guilt': int(df['feelings_of_shame_or_guilt'].sum()),
-            'Feelings of inadequacy/Low self-esteem': int(df['feelings_of_inadequacy'].sum()),
-            'Anxious/Nervous/Tense feelings': int(df['anxious_nervous_tense_feelings'].sum()),
-            'Panic attacks': int(df['panic_attacks'].sum()),
-            'Racing or scrambled thoughts': int(df['racing_or_scrambled_thoughts'].sum()),
-            'Bad or unwanted thoughts': int(df['bad_or_unwanted_thoughts'].sum()),
-            'Flashbacks/Nightmares': int(df['flashbacks_or_nightmares'].sum()),
-            'Muscle tensions, aches, etc.': int(df['muscle_tensions_aches'].sum()),
-            'Hearing voices/Seeing things not there': int(df['hearing_voices_or_seeing_things'].sum()),
-            'Thoughts of running away': int(df['thoughts_of_running_away'].sum()),
-            'Paranoid thoughts/Thoughts': int(df['paranoid_thoughts'].sum()),
-            'Feelings of frustration': int(df['feelings_of_frustration'].sum()),
-            'Feelings of being cheated': int(df['feelings_of_being_cheated'].sum()),
-            'Perfectionism': int(df['perfectionism'].sum()),
+    data_dict = {
+        'Substance abuse/dependence': int(df['substance_abuse'].sum()),
+        'Addiction': int(df['addiction'].sum()),
+        'Depression/Sad/Down feelings': int(df['depression_sad_down_feelings'].sum()),
+        'High/Low energy level': int(df['high_low_energy_level'].sum()),
+        'Angry/Irritable': int(df['angry_irritable'].sum()),
+        'Loss of interest in activities': int(df['loss_of_interest'].sum()),
+        'Difficulty enjoying things': int(df['difficulty_enjoying_things'].sum()),
+        'Crying spells': int(df['crying_spells'].sum()),
+        'Decreased motivation': int(df['decreased_motivation'].sum()),
+        'Withdrawing from people/Isolation': int(df['withdrawing_from_people'].sum()),
+        'Mood Swings': int(df['mood_swings'].sum()),
+        'Black and white thinking/All or nothing thinking': int(df['black_and_white_thinking'].sum()),
+        'Negative thinking': int(df['negative_thinking'].sum()),
+        'Change in weight or appetite': int(df['change_in_weight_or_appetite'].sum()),
+        'Change in sleeping pattern': int(df['change_in_sleeping_pattern'].sum()),
+        'Suicidal thoughts or plans/Thoughts of hurting yourself': int(df['suicidal_thoughts_or_plans'].sum()),
+        'Self-harm/Cutting/Burning yourself': int(df['self_harm'].sum()),
+        'Homicidal thoughts or plans/Thoughts of hurting others': int(df['homicidal_thoughts_or_plans'].sum()),
+        'Poor concentration/Difficulty focusing': int(df['difficulty_focusing'].sum()),
+        'Feelings of hopelessness/Worthlessness': int(df['feelings_of_hopelessness'].sum()),
+        'Feelings of shame or guilt': int(df['feelings_of_shame_or_guilt'].sum()),
+        'Feelings of inadequacy/Low self-esteem': int(df['feelings_of_inadequacy'].sum()),
+        'Anxious/Nervous/Tense feelings': int(df['anxious_nervous_tense_feelings'].sum()),
+        'Panic attacks': int(df['panic_attacks'].sum()),
+        'Racing or scrambled thoughts': int(df['racing_or_scrambled_thoughts'].sum()),
+        'Bad or unwanted thoughts': int(df['bad_or_unwanted_thoughts'].sum()),
+        'Flashbacks/Nightmares': int(df['flashbacks_or_nightmares'].sum()),
+        'Muscle tensions, aches, etc.': int(df['muscle_tensions_aches'].sum()),
+        'Hearing voices/Seeing things not there': int(df['hearing_voices_or_seeing_things'].sum()),
+        'Thoughts of running away': int(df['thoughts_of_running_away'].sum()),
+        'Paranoid thoughts/Thoughts': int(df['paranoid_thoughts'].sum()),
+        'Feelings of frustration': int(df['feelings_of_frustration'].sum()),
+        'Feelings of being cheated': int(df['feelings_of_being_cheated'].sum()),
+        'Perfectionism': int(df['perfectionism'].sum()),
 
 
-            'Rituals of counting things, washing hands, checking locks, doors, stove, etc./Overly concerned about germs': int(df['counting_washing_checking'].sum()),
-            'Distorted body image': int(df['distorted_body_image'].sum()),
-            'Concerns about dieting': int(df['concerns_about_dieting'].sum()),
-            'Feelings of loss of control over eating': int(df['loss_of_control_over_eating'].sum()),
+        'Rituals of counting things, washing hands, checking locks, doors, stove, etc./Overly concerned about germs': int(df['counting_washing_checking'].sum()),
+        'Distorted body image': int(df['distorted_body_image'].sum()),
+        'Concerns about dieting': int(df['concerns_about_dieting'].sum()),
+        'Feelings of loss of control over eating': int(df['loss_of_control_over_eating'].sum()),
 
 
-            'Binge eating/Purging': int(df['binge_eating_or_purging'].sum()),
-            'Rules about eating/Compensating for eating': int(df['rules_about_eating'].sum()),
-            'Excessive exercise': int(df['excessive_exercise'].sum()),
-            'Indecisiveness about career': int(df['indecisiveness_about_career'].sum()),
-            'Job problems': int(df['job_problems'].sum())
+        'Binge eating/Purging': int(df['binge_eating_or_purging'].sum()),
+        'Rules about eating/Compensating for eating': int(df['rules_about_eating'].sum()),
+        'Excessive exercise': int(df['excessive_exercise'].sum()),
+        'Indecisiveness about career': int(df['indecisiveness_about_career'].sum()),
+        'Job problems': int(df['job_problems'].sum())
         }
-    else:
-        # Log a message if the column doesn't exist
-        logging.error("Column 'substance_abuse' does not exist in DataFrame")
-        # Return an empty dictionary or handle the error as appropriate for your use case
-        return {}
     
     # Sort the dictionary by values in descending order and select the top 10
     top_10_experiences = dict(sorted(data_dict.items(), key=lambda item: item[1], reverse=True)[:10])
