@@ -146,15 +146,14 @@ button[type="submit"]:hover{
 .swal2-cancel.cancel-button-class {
     padding: 0.5em 2em;
     font-size: 1.2rem;
-    color: var(--white);
-    background-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
 }
 
 .swal2-confirm.confirm-button-class {
-    padding: 0.5em 1.5em;
-    font-size: 1.5rem;
-    font-weight: 800;
-    border-radius: 10px;
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
     background-color: var(--primary-color);
 }
 
