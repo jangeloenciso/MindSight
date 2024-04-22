@@ -682,3 +682,18 @@ def get_total_cases(college=None, time_period=None, year=None, month=None, statu
 
         total_cases = query.scalar()
         return total_cases
+    
+def data_count_analytics(query, selected_year=None):
+    df = process_data()
+
+    if selected_year:
+        df['year'] = pd.to_datetime(df['submitted_on']).dt.year
+        df = df[df['year'] == int(selected_year)]
+        print(df)
+
+        data_count = df[query].value_counts().reset_index()
+        data_count.columns = [query, 'student_count']
+
+        data_dict = data_count.to_dict(orient='records')
+
+    return data_dict
