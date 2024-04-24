@@ -64,23 +64,23 @@ endblock %} {% block styles %}
       <div class="row2">
         <div class="box">
           <span class="title">Cases</span>
-          <div id="cases_container">Place content here.</div>
+          <div id="cases_container-2">Place content here.</div>
         </div>
         <div class="box">
           <span class="title">Levels</span>
-          <div id="levels_container">Place content here.</div>
+          <div id="levels_container-2">Place content here.</div>
         </div>
         <div class="box">
           <span class="title">Campus</span>
-          <div id="campus_container">Place content here.</div>
+          <div id="campus_container-2">Place content here.</div>
         </div>
         <div class="box">
           <span class="title">Concerns</span>
-          <div id="nature_container">Place content here.</div>
+          <div id="nature_container-2">Place content here.</div>
         </div>
         <div class="box">
           <span class="title">Identity</span>
-          <div id="identity_container">Place content here.</div>
+          <div id="identity_container-2">Place content here.</div>
         </div>
       </div>
     </div>
@@ -89,6 +89,7 @@ endblock %} {% block styles %}
 
 <script src="{{ url_for('static', filename='javascript/cdn/chartjs.js') }}"></script>
 <script src="{{ url_for('static', filename='javascript/analytics.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/analytics2.js') }}"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Attach event listeners to both select elements
@@ -117,12 +118,11 @@ endblock %} {% block styles %}
     console.log("Selected Year 1:", selectedYear1);
     console.log("Selected Year 2:", selectedYear2);
 
-    fetchAndGenerateChart(1, selectedYear1, selectedYear2);
-    fetchAndGenerateChart(2, selectedYear1, selectedYear2);
-    fetchAndGenerateChart(3, selectedYear1, selectedYear2);
-    fetchAndGenerateChart(4, selectedYear1, selectedYear2);
-    fetchAndGenerateChart(5, selectedYear1, selectedYear2);
-    fetchAndGenerateChart(6, selectedYear1, selectedYear2);
+    fetchData(1, selectedYear1, selectedYear2);
+    fetchData(2, selectedYear1, selectedYear2);
+    fetchData(3, selectedYear1, selectedYear2);
+    fetchData(4, selectedYear1, selectedYear2);
+    fetchData(5, selectedYear1, selectedYear2);
   }
 </script>
 {% endblock %}
