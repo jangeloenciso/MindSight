@@ -60,8 +60,38 @@ function displayData(data1, data2, divNumber) {
 }
 
 function displayExperiences(labels, values1, values2) {
-    for(let i = 0; i < labels.length; i++) {
+    // for(let i = 0; i < labels.length; i++) {
+    //     console.log(labels[i], values1[i], values2[i]);
+    // }
+
+    let htmlContainer1 = document.getElementById('cases_container')
+    let htmlContainer2 = document.getElementById('cases_container-2')
+
+    for (let i = 0; i < labels.length; i++) {
+        let div1 = document.createElement("div");
+        let div2 = document.createElement("div");
+        let span1 = document.createElement("span");
+        let span2 = document.createElement("span");
+        let span3 = document.createElement("span");
+        let span4 = document.createElement("span");
+
+        span1.textContent = `${labels[i]}`;
+        span2.textContent = `${values1[i]}`;
+
+        span3.textContent = `${labels[i]}`;
+        span4.textContent = `${values2[i]}`;
+
+        div1.appendChild(span1);
+        div1.appendChild(span2);
+
+        div2.appendChild(span3);
+        div2.appendChild(span4);
+
         console.log(labels[i], values1[i], values2[i]);
+    
+        // Append div to the levelsContainer
+        htmlContainer1.appendChild(div1);
+        htmlContainer2.appendChild(div2);
     }
 }
 
@@ -85,10 +115,8 @@ function displayGenericData(labels, values1, values2, property, divContainer) {
         let span3 = document.createElement("span");
         let span4 = document.createElement("span");
 
-        span1.textContent = `${labels[i]}`;
         span2.textContent = `${values1[i][property]} - ${values1[i].student_count}`;
 
-        span3.textContent = `${labels[i]}`;
         span4.textContent = `${values2[i][property]} - ${values2[i].student_count}`;
 
         div1.appendChild(span1);
