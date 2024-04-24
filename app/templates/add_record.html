@@ -22,7 +22,7 @@
       <form
         id="submit_form"
         method="POST"
-        action="{{ url_for('add_record', student_id=student_id) }}"
+        action="{{ url_for('add_record') }}"
         autocomplete="off"
       >
         {{ form.csrf_token }} {{ form.hidden_tag() }}
@@ -48,7 +48,7 @@
               </div>
               <div>
                 <label for="studNumber">Student Number:</label>
-                {{ form.student_id(placeholder='XXXX-XXXXXX') }}
+                {{ form.student_id(value=student_id, readonly=true) }}
               </div>
             </div>
 
@@ -58,7 +58,7 @@
                 {{ form.last_name(placeholder='Last Name') }}
               </div>
               <div>
-                <label for="studNumber">Campus</label>
+                <label for="studNumber">Campus:</label>
                 <select name="campus" id="campusDropDown">
                   <option disabled>-Select Campus-</option>
                   <option value="Boni" selected>Boni</option>
@@ -2178,7 +2178,7 @@
                 </button>
               </div>
               <div class="personal-agreement-date">
-                {{ form.personal_agreement_date(disabled=True) }}
+                {{ form.personal_agreement_date(readonly=true) }}
               </div>
             </div>
             <div class="form-btn-container">

@@ -76,17 +76,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
           title: 'Student already exists',
           text: 'You can log in to view the record of the student.',
           iconHtml: '<img class="custom-icon" src="/static/exclamation.png">',
-          showConfirmButton: true,
+          showCancelButton: true,
           confirmButtonText: 'LOG IN',
+          cancelButtonText: 'CANCEL',
           customClass: {
-            confirmButton: 'confirm-button-class'
+            confirmButton: 'confirm-button-class',
+            cancelButton: 'cancel-button-class'
           }
         }).then((response) => {
           if (response.isConfirmed) {
-            window.location.href = '/login'; // Redirect to /login if confirmed
+            window.location.assign('/login'); // Redirect to /login if confirmed
           }
         });
         console.error('Error:', data);
+      } else {
+          window.location.assign('/add?student_id=' + form.student_id.value); // Redirect to add record page with student_id parameter
       }
     })
     .catch(error => {

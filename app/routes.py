@@ -1273,57 +1273,21 @@ def student_id_form():
         print(student_id)
         existing_student = BasicInformation.query.filter_by(student_id=student_id).first()
         if not existing_student:
-            return redirect(url_for('add_record', student_id=student_id))
+            return jsonify({'success': True})
         else:
             return jsonify({'error': True})
-    
+
     return render_template('student_id.html')
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_record():
+    form = StudentRecordForm()
+
     student_id = request.args.get('student_id')
     print('student id', student_id)
-    form = StudentRecordForm(request.form)
-
-    form.student_id.data = student_id
-
-    with db.session.no_autoflush:
-        student = (
-            BasicInformation.query
-            .options(
-                joinedload(BasicInformation.family_background),
-                joinedload(BasicInformation.health_information),
-                joinedload(BasicInformation.educational_background),
-                joinedload(BasicInformation.social_history),
-                joinedload(BasicInformation.history_information),
-                joinedload(BasicInformation.occupational_history),
-                joinedload(BasicInformation.substance_abuse_history),
-                joinedload(BasicInformation.legal_history),
-                joinedload(BasicInformation.additional_information),
-                joinedload(BasicInformation.sessions),
-                joinedload(BasicInformation.case_note)
-            )
-            .filter_by(student_id=student_id)
-            .first()
-        )
-
-    if request.method == 'POST':
-        print('POST method')
-    else:
-        print('not POST method')
 
     if form.validate_on_submit():
-        form.populate_obj(student.family_background)
-        form.populate_obj(student.health_information)
-        form.populate_obj(student.educational_background)
-        form.populate_obj(student.social_history)
-        form.populate_obj(student.history_information)
-        form.populate_obj(student.occupational_history)
-        form.populate_obj(student.substance_abuse_history)
-        form.populate_obj(student.legal_history)
-        form.populate_obj(student.additional_information)
-
 
         history_info = HistoryInformation(
             # -- DONE: verified 'other' field --works.

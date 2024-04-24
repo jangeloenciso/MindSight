@@ -528,7 +528,7 @@ def data_count_dict(query, college=None, selected_year=None):
         return top_4_religions
 
     if query == 'gender':
-        categories = ["Male", "Female", "LGBTQIA+"]
+        categories = ["Male", "Female", "LGBTQIA+", "Prefer Not to Say"]
         data_count = {category: 0 for category in categories}
 
         counts_from_df = df[query].value_counts()
