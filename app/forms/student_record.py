@@ -4,11 +4,6 @@ from wtforms import StringField, IntegerField, FloatField, BooleanField, DateFie
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp
 from datetime import date, timedelta, datetime
 
-class PhilippineDateTimeLocalField(DateTimeLocalField):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.timezone = timezone('Asia/Manila')
-
 class StudentRecordForm(FlaskForm):
     # # College Information
     # college_name = StringField('College Name', validators=[DataRequired()])
@@ -239,7 +234,7 @@ class StudentRecordForm(FlaskForm):
     nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
     counselor = StringField('Counselor', validators=[Optional()])
     personal_agreement = BooleanField(validators=[DataRequired()])
-    personal_agreement_date = PhilippineDateTimeLocalField(validators=[DataRequired()], default=datetime.today)
+    personal_agreement_date = DateTimeLocalField(validators=[DataRequired()], default=datetime.now(timezone('Asia/Manila')))
     
     status = StringField('Status', validators=[Optional()])
     remarks = StringField('Remarks', validators=[Optional()])
