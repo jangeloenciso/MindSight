@@ -17,15 +17,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    row-gap: 10px;
 }
 
 .semester-content {
-    height: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 7px;
+    border-radius: 15px;
+    background-color: #d0d2c8;
 }
 
 
@@ -42,7 +42,7 @@
 
 #analytics {
     font-size: 1.5rem !important;
-    height: 5%;
+    margin-bottom: 5px;
     font-family: Lexend-Black;
 }
 
@@ -55,15 +55,14 @@
 }
 
 select, .metrics {
-    width: auto;
-    height: auto;
     background-color: var(--primary-color);
     color: #FFF;
     border: none;
     border-radius: 20px;
-    padding: 0.5em 1em;
+    padding: 0.5em 1.5em;
     transition: var(--smooth-transition);
     cursor: pointer;
+    font-family: Lexend-Bold;
 }
 
 .metrics:hover {
@@ -76,81 +75,60 @@ option {
     color: var(--primary-color);
 }
 
+.compare img {
+    height: 32px;
+    aspect-ratio: 1/1;
+}
 
-.row-container {
-    display: flex;
-    flex-direction: row;
-    column-gap: 20px;
+
+/* Analytics column separator */
+.analytics-container {
+    margin-top: 18px;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: calc(60% - 7.5px) calc(40% - 7.5px);
+    grid-gap: 15px;
     height: 100%;
+    /* adjust the height to "auto" to make the content adaptable and visually contained within the parent div */
 }
 
-.box {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    margin: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #f9f9f9;
+.analytics-container section {
+    /* background-color: rgb(255 0 0 / 16.4%); */
 }
 
-.box span {
-    width: 20%;
+
+/* main container for column 1 */
+.col-1 {
+    display: grid;
+    grid-template-rows: calc(70% - 7.5px) calc(30% - 7.5px);
+    grid-gap: 15px;
 }
 
-/* box content */
-.box div {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 0 10px;
-    max-width: 80%;
-    max-height: 60px;
-    overflow-y: auto;
-}
-
-.row1, .row2 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background-color: var(--white);
+/* style for content for each box inside col-1 */
+.col-1 article {
     border: 3px solid var(--bg-orange);
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-/* Sidebar active indicator */
-.sidebar-buttons #analytics-container::before {
-    content: "";
-    position: relative;
-    left: 0;
-    height: 25px;
-    border-left: 7px solid var(--bg-orange);
-    border-radius: 0 3px 3px 0;
-    transform: translateX(-25px);
+    border-radius: 10px;
+    padding: 1em;
 }
 
 
-/* White bg css */
-.experience-container, .college-container, .campus-container, .nature-container, .religion-container, .identity-container {
-    background-color: var(--white);
+/* main container for column 2 */
+.col-2 {
+    display: grid;
+    grid-template-rows: calc(40% - 10px) calc(25% - 10px) calc(35% - 10px);
+
+    /* NOTE: The grid gap total is 30px, due from the existence of two existing gaps, meaning (2 gaps * 15 (grid-gap) = 30px).
+    So, 10px must be subtracted from each box in the grid template. 
+    You may deduct an unequal number of pixels for each box, but ensure that the total deduction amounts to 30px.
+    
+    The grid-gap setting is likely causing issues in the dashboard section, which is why the boxes occasionally behave strangely. (FIXED)
+    Keep this comment for future maintenance. */
+    grid-gap: 15px;
 }
 
-
-.title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
-    text-align: left;
-    border-right: 2px solid var(--bg-orange);
+/* style for content for each box inside col-2 */
+.col-2 article {
+    border: 3px solid var(--bg-orange);
+    border-radius: 10px;
+    padding: 1em;
 }
