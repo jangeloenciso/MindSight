@@ -234,7 +234,7 @@ class StudentRecordForm(FlaskForm):
     nature_of_concern = StringField('Nature of Concern', validators=[Optional()])
     counselor = StringField('Counselor', validators=[Optional()])
     personal_agreement = BooleanField(validators=[DataRequired()])
-    personal_agreement_date = DateTimeLocalField(validators=[DataRequired()], default=datetime.now(timezone('Asia/Manila')))
+    personal_agreement_date = DateTimeLocalField(validators=[DataRequired()], default=datetime.now(timezone('Asia/Kuala_Lumpur')))
     
     status = StringField('Status', validators=[Optional()])
     remarks = StringField('Remarks', validators=[Optional()])
