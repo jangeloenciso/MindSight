@@ -32,107 +32,108 @@ function fetchData(divNumber, selectedYear1, selectedYear2) {
 
 function displayData(data1, data2, divNumber) {
     let labels = Object.keys(data1);
+    let labels2 = Object.keys(data2);
     let values1 = Object.values(data1);
     let values2 = Object.values(data2);
 
     switch(divNumber) {
         case 1:
             console.log('EXPERIENCES');
-            displayExperiences(labels, values1, values2);
+            // displayGenericData(labels, values1, values2, 'college', 'experiences');
+            displayExperiences(labels, labels2, values1, values2);
             break;
         case 2:
             console.log('COLLEGE/LEVEL');
-            displayGenericData(labels, values1, values2, 'college', 'levels_container');
+            displayGenericData(labels, values1, values2, 'college', 'levels');
             break;
         case 3:
             console.log('CAMPUS');
-            displayGenericData(labels, values1, values2, 'campus', 'campus_container');
+            displayGenericData(labels, values1, values2, 'campus', 'campus');
             break;
         case 4:
             console.log('NATURE OF CONCERN');
-            displayGenericData(labels, values1, values2, 'nature_of_concern', 'nature_container');
+            displayGenericData(labels, values1, values2, 'nature_of_concern', 'nature');
             break;
         case 5:
             console.log('GENDER');
-            displayGenericData(labels, values1, values2, 'gender', 'identity_container');
+            displayGenericData(labels, values1, values2, 'gender', 'identity');
             break;
     }
 }
 
-function displayExperiences(labels, values1, values2) {
-    // for(let i = 0; i < labels.length; i++) {
-    //     console.log(labels[i], values1[i], values2[i]);
-    // }
+function displayExperiences(labels, labels2, values1, values2) {
+    let divContainer = "experiences";
 
-    let htmlContainer1 = document.getElementById('cases_container')
-    let htmlContainer2 = document.getElementById('cases_container-2')
+    let data1 = labels.map((label, index) => ({ label: label, value: values1[index] }));
+    let data2 = labels2.map((label, index) => ({ label: label, value: values2[index] }));
 
-    for (let i = 0; i < labels.length; i++) {
-        let div1 = document.createElement("div");
-        let div2 = document.createElement("div");
-        let span1 = document.createElement("span");
-        let span2 = document.createElement("span");
-        let span3 = document.createElement("span");
-        let span4 = document.createElement("span");
+    data1.sort((a, b) => b.value - a.value);
+    data2.sort((a, b) => b.value - a.value);
 
-        span1.textContent = `${labels[i]}`;
-        span2.textContent = `${values1[i]}`;
-
-        span3.textContent = `${labels[i]}`;
-        span4.textContent = `${values2[i]}`;
-
-        div1.appendChild(span1);
-        div1.appendChild(span2);
-
-        div2.appendChild(span3);
-        div2.appendChild(span4);
-
-        console.log(labels[i], values1[i], values2[i]);
-    
-        // Append div to the levelsContainer
-        htmlContainer1.appendChild(div1);
-        htmlContainer2.appendChild(div2);
+    if (divContainer === "experiences") {
+        console.log(data1);
+        console.log(data2);
     }
+
+    let propertyColumns1 = document.querySelectorAll(`.${divContainer}-property-1`);
+    let propertyColumns2 = document.querySelectorAll(`.${divContainer}-property-2`);
+    let valueColumns1 = document.querySelectorAll(`.${divContainer}-value-1`);
+    let valueColumns2 = document.querySelectorAll(`.${divContainer}-value-2`);
+
+    data1.forEach((item, index) => {
+        propertyColumns1[index].textContent = item.label;
+        valueColumns1[index].textContent = item.value;
+    });
+
+    data2.forEach((item, index) => {
+        propertyColumns2[index].textContent = item.label;
+        valueColumns2[index].textContent = item.value;
+    });
 }
 
+
 function displayGenericData(labels, values1, values2, property, divContainer) {
-    // for(let i = 0; i < labels.length; i++) {
-    //     console.log(
-    //         values1[i][property], 
-    //         values1[i].student_count, 
-    //         values2[i][property],
-    //         values2[i].student_count);
-    // }
 
-    let htmlContainer1 = document.getElementById(divContainer)
-    let htmlContainer2 = document.getElementById(divContainer + "-2")
+    let propertyColumns1 = document.querySelectorAll(`.${divContainer}-property-1`);
 
-    for (let i = 0; i < labels.length; i++) {
-        let div1 = document.createElement("div");
-        let div2 = document.createElement("div");
-        let span1 = document.createElement("span");
-        let span2 = document.createElement("span");
-        let span3 = document.createElement("span");
-        let span4 = document.createElement("span");
+    let propertyColumns2 = document.querySelectorAll(`.${divContainer}-property-2`);
 
-        span2.textContent = `${values1[i][property]} - ${values1[i].student_count}`;
+    let valueColumns1 = document.querySelectorAll(`.${divContainer}-value-1`);
 
-        span4.textContent = `${values2[i][property]} - ${values2[i].student_count}`;
+    let valueColumns2 = document.querySelectorAll(`.${divContainer}-value-2`);
 
-        div1.appendChild(span1);
-        div1.appendChild(span2);
 
-        div2.appendChild(span3);
-        div2.appendChild(span4);
-
-        console.log(
-            values1[i][property], 
-            values1[i].student_count, 
-            values2[i][property],
-            values2[i].student_count);
+    // TODO: FIX 0 VALUES, MADE IT RETURN N/A IN THE MEANTIME
+    propertyColumns1.forEach((element, index) => {
+        if (values1[index]) {
+            element.textContent = `${values1[index][property]}`;
+        } else {
+            element.textContent = "N/A";
+        }
+    });
     
-        // Append div to the levelsContainer
-        htmlContainer1.appendChild(div1);
-        htmlContainer2.appendChild(div2);
-    }
+    propertyColumns2.forEach((element, index) => {
+        if (values2[index]) {
+            element.textContent = `${values2[index][property]}`;
+        } else {
+            element.textContent = "N/A";
+        }
+    });
+    
+    valueColumns1.forEach((element, index) => {
+        if (values1[index]) {
+            element.textContent = `${values1[index].student_count}`;
+        } else {
+            element.textContent = "N/A";
+        }
+    });
+    
+    valueColumns2.forEach((element, index) => {
+        if (values2[index]) {
+            element.textContent = `${values2[index].student_count}`;
+        } else {
+            element.textContent = "N/A";
+        }
+    });
+
 }
