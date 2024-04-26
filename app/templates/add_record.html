@@ -44,7 +44,7 @@
             <div class="double-column">
               <div>
                 <label for="fname">First name:</label>
-                <input type="text" name="first_name" id="first_name" placeholder="First Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="first_name" id="first_name" placeholder="First Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
               </div>
               <div>
                 <label for="studNumber">Student Number:</label>
@@ -55,11 +55,11 @@
             <div class="double-column">
               <div>
                 <label for="course">Last Name:</label>
-                <input type="text" name="last_name" id="last_name" placeholder="Last Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
               </div>
               <div>
                 <label for="studNumber">Campus:</label>
-                <select name="campus" id="campusDropDown">
+                <select name="campus" id="campusDropDown" required>
                   <option disabled>-Select Campus-</option>
                   <option value="Boni" selected>Boni</option>
                   <option value="Pasig">Pasig</option>
@@ -96,7 +96,7 @@
 
               <div>
                 <label for="course">Course/Strand:</label>
-                <select name="course" id="courseDropDown">
+                <select name="course" id="courseDropDown" required>
                   <option disabled selected>-Select Course/Strand-</option>
                 </select>
               </div>
@@ -104,7 +104,7 @@
             <div class="single-column">
               <div>
                 <label for="yearlevel">Grade/Yr Level:</label>
-                <select name="year_level" id="year_level">
+                <select name="year_level" id="year_level" required>
                   <option disabled selected>-Select Year Level-</option>
                 </select>
               </div>
@@ -114,17 +114,17 @@
               <div>
                 <label for="dob">Date of Birth:</label>
                 {{ form.date_of_birth(placeholder='Date of Birth',
-                onchange='setAge()', id='dob', value="") }}
+                onchange='setAge()', id='dob', value="", required='required') }}
               </div>
               <div>
                 <label for="age">Age:</label>
-                {{ form.age(placeholder='Age', id='age') }}
+                {{ form.age(placeholder='Age', id='age', required='required') }}
               </div>
             </div>
             <div class="double-column">
               <div>
                 <label for="gender">Gender:</label>
-                <select name="gender" id="gender">
+                <select name="gender" id="gender" required>
                   <option value="" disabled selected>-Select Gender-</option>
                   <option value="Female">Female</option>
                   <option value="Male">Male</option>
@@ -150,7 +150,7 @@
             <div class="double-column">
               <div>
                 <label for="nationality">Nationality:</label>
-                <input type="text" name="nationality" id="nationality" placeholder="Nationality" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="nationality" id="nationality" placeholder="Nationality" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
               </div>
               <div>
                 <label for="religion">Religion:</label>
@@ -195,7 +195,7 @@
             <div class="double-column">
               <div>
                 <label for="email">Email Address:</label>
-                {{ form.email_address(placeholder='Email Address') }}
+                {{ form.email_address(placeholder='Email Address', required='required') }}
               </div>
               <div>
                 <label for="cnumber">Cellphone Number:</label>
