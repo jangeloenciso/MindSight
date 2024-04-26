@@ -88,19 +88,25 @@ option {
     display: grid;
     grid-template-columns: calc(60% - 7.5px) calc(40% - 7.5px);
     grid-gap: 15px;
-    height: 100%;
+    height: auto;
     /* adjust the height to "auto" to make the content adaptable and visually contained within the parent div */
 }
 
-.analytics-container section {
-    /* background-color: rgb(255 0 0 / 16.4%); */
+p {
+    font-family: Lexend-Bold;
+    font-size: 1.2em;
+    margin-top: 0;
 }
 
+
+.col-1 article, .col-2 article {
+    background-color: var(--white);
+}
 
 /* main container for column 1 */
 .col-1 {
     display: grid;
-    grid-template-rows: calc(70% - 7.5px) calc(30% - 7.5px);
+    grid-template-rows: min-content calc(1fr - min-content);
     grid-gap: 15px;
 }
 
@@ -115,7 +121,7 @@ option {
 /* main container for column 2 */
 .col-2 {
     display: grid;
-    grid-template-rows: calc(40% - 10px) calc(25% - 10px) calc(35% - 10px);
+    grid-template-rows: min-content calc(1fr - min-content) calc(1fr - min-content);
 
     /* NOTE: The grid gap total is 30px, due from the existence of two existing gaps, meaning (2 gaps * 15 (grid-gap) = 30px).
     So, 10px must be subtracted from each box in the grid template. 
@@ -131,4 +137,76 @@ option {
     border: 3px solid var(--bg-orange);
     border-radius: 10px;
     padding: 1em;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* START: table style */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid var(--bg-orange);
+}
+
+th, td {
+    padding: 0.5em 1em;
+}
+
+td {
+    background-color: #FFF;
+}
+
+td:nth-child(3) {
+    border-left: 1px solid var(--bg-orange);
+
+}
+
+/* align right table data to right */
+td:last-child {
+    text-align: right;
+}
+
+th {
+    background-color: var(--subtle-orange);
+    text-align: left;
+    width: 50%;
+}
+
+.header-sub-text {
+    font-family: Lexend-Regular;
+    font-weight: normal;
+}
+
+/* numbers */
+.value-column {
+    width: 10%;
+    font-family: Lexend-Bold;
+    text-align: center;
+}
+
+/* END: table style */
+
+
+
+
+
+
+/* Sidebar active indicator */
+.sidebar-buttons #analytics-container::before {
+    content: "";
+    position: relative;
+    left: 0;
+    height: 25px;
+    border-left: 7px solid var(--bg-orange);
+    border-radius: 0 3px 3px 0;
+    transform: translateX(-25px);
+}
+
+#analytics-container img, #analytics-container span {
+    transform: translateX(-7px);
 }
