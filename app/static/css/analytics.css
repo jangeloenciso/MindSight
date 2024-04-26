@@ -177,6 +177,10 @@ th {
     width: 50%;
 }
 
+.header-number{
+    font-size: 1.5em;
+}
+
 .header-sub-text {
     font-family: Lexend-Regular;
     font-weight: normal;
