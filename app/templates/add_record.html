@@ -44,7 +44,7 @@
             <div class="double-column">
               <div>
                 <label for="fname">First name:</label>
-                {{ form.first_name(placeholder='First Name') }}
+                <input type="text" name="first_name" id="first_name" placeholder="First Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
               <div>
                 <label for="studNumber">Student Number:</label>
@@ -55,7 +55,7 @@
             <div class="double-column">
               <div>
                 <label for="course">Last Name:</label>
-                {{ form.last_name(placeholder='Last Name') }}
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
               <div>
                 <label for="studNumber">Campus:</label>
@@ -150,7 +150,7 @@
             <div class="double-column">
               <div>
                 <label for="nationality">Nationality:</label>
-                {{ form.nationality(placeholder='Nationality') }}
+                <input type="text" name="nationality" id="nationality" placeholder="Nationality" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
               <div>
                 <label for="religion">Religion:</label>
@@ -209,7 +209,7 @@
             <div class="double-column">
               <div>
                 <label for="guardian">Name of Guardian:</label>
-                {{ form.guardian_name(placeholder='Name of Guardian') }}
+                <input type="text" name="guardian_name" id="guardian_name" placeholder="Name of Guardian" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
               <div>
                 <label for="gcnumber">Guardian's Contact No.:</label>
@@ -242,7 +242,7 @@
                   >
                 </div></label
               >
-              {{ form.referral_source(placeholder='', class='form-width100') }}
+              <input class='form-width100' type="text" name="referral_source" id="referral_source" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </div>
 
@@ -268,11 +268,11 @@
             <div class="double-column">
               <div>
                 <label for="emername">Name:</label>
-                {{ form.emergency_name(placeholder='Name') }}
+                <input type="text" name="emergency_name" id="emergency_name" placeholder="Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
               <div>
                 <label for="emerrel">Relationship:</label>
-                {{ form.emergency_relationship(placeholder='Relationship') }}
+                <input type="text" name="emergency_relationship" id="emergency_relationship" placeholder="Relationship" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </div>
             </div>
             <div class="double-column">
@@ -317,8 +317,8 @@
                 </div>
                 <div>
                   <!-- REMOVED RADIO BUTTON -->
-                  <label for="otherOption">Other</label>{{
-                  form.information_provider }}
+                  <label for="otherOption">Other</label>
+                  <input type="text" name="information_provider" id="information_provider" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@
                   >
                 </div></label
               >
-              {{ form.current_problem(class='form-width100') }}
+              <input class='form-width100' type="text" name="current_problem" id="current_problem" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="problem2"
@@ -354,7 +354,7 @@
                   >
                 </div></label
               >
-              {{ form.problem_length(class='form-width100') }}
+              <input class='form-width100' type="text" name="problem_length" id="problem_length" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="problem3"
@@ -369,7 +369,7 @@
                   >
                 </div></label
               >
-              {{ form.stressors(class='form-width100') }}
+              <input class='form-width100' type="text" name="stressors" id="stressors" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
 
             <!-- long checkbox form -->
@@ -660,7 +660,8 @@
                   style="width: auto !important; padding-right: 10px"
                   for="exp44"
                   >Other</label
-                >{{ form.other_history }}
+                >
+                <input type="text" name="other_history" id="other_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
               </li>
             </ul>
           </div>
@@ -699,8 +700,7 @@
                   >
                 </div></label
               >
-              {{ form.previous_treatments_likes_dislikes(class='form-width100')
-              }}
+              <input class='form-width100' type="text" name="previous_treatments_likes_dislikes" id="previous_treatments_likes_dislikes" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="prevtreatment2"
@@ -715,7 +715,7 @@
                   >
                 </div></label
               >
-              {{ form.previous_treatments_learned(class='form-width100') }}
+              <input class='form-width100' type="text" name="previous_treatments_learned" id="previous_treatments_learned" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="prevtreatment3"
@@ -730,9 +730,7 @@
                   >
                 </div></label
               >
-              {{
-              form.previous_treatments_like_to_continue(class='form-width100')
-              }}
+              <input class='form-width100' type="text" name="previous_treatments_like_to_continue" id="previous_treatments_like_to_continue" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
 
             <div class="left-align">
@@ -904,7 +902,7 @@
               <label for="allergies" style="width: 310px !important"
                 >List any allergies you have:</label
               >
-              {{ form.allergies(class='form-width100 single-column-span') }}
+              <input class='form-width100 single-column-span' type="text" name="allergies" id="allergies" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
 
             <div class="left-align">
@@ -978,8 +976,7 @@
               <div>
                 <div class="left-align single-column-span">
                   <label for="physname">Name:</label>
-                  {{ form.physician_name(class='form-width100
-                  single-column-span') }}
+                  <input class='form-width100 single-column-span' type="text" name="physician_name" id="physician_name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
               <div>
@@ -1050,7 +1047,8 @@
                     style="width: auto !important; padding-right: 10px"
                     for="raisedother"
                     >Other</label
-                  >{{ form.raised_by }}
+                  >
+                  <input type="text" name="raised_by" id="raised_by" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
             </div>
@@ -1107,7 +1105,8 @@
                     style="width: auto !important; padding-right: 10px"
                     for="relmotherother"
                     >Other</label
-                  >{{ form.rel_qual_mother }}
+                  >
+                  <input type="text" name="rel_qual_mother" id="rel_qual_mother" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
             </div>
@@ -1156,7 +1155,8 @@
                     style="width: auto !important; padding-right: 10px"
                     for="relfatherother"
                     >Other</label
-                  >{{ form.rel_qual_father }}
+                  >
+                  <input type="text" name="rel_qual_father" id="rel_qual_father" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
             </div>
@@ -1209,7 +1209,8 @@
                     style="width: auto !important; padding-right: 10px"
                     for="relstepparentother"
                     >Other</label
-                  >{{ form.rel_qual_step_parent }}
+                  >
+                  <input type="text" name="rel_qual_step_parent" id="rel_qual_step_parent" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </div>
               </div>
             </div>
@@ -1219,8 +1220,7 @@
               <label for="relparent" style="width: 80px !important"
                 >Other:</label
               >
-              {{ form.rel_qual_other(class='form-width100 single-column-span')
-              }}
+              <input class='form-width100 single-column-span' type="text" name="rel_qual_other" id="rel_qual_other" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
 
             <div class="left-align">
@@ -1240,14 +1240,11 @@
               </tr>
               <tr id="siblingRow">
                 <td>
-                  <input
-                    class="form-width100 single-column-span"
-                    id="siblingName"
-                    name="siblingName"
-                  />
+                  <input class='form-width100 single-column-span' type="text" name="siblingName" id="siblingName" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                 </td>
                 <td>
                   <input
+                    type="number"
                     class="form-width100 single-column-span"
                     id="siblingAge"
                     name="siblingAge"
@@ -1258,6 +1255,7 @@
                     class="form-width100 single-column-span"
                     id="siblingGender"
                     name="siblingGender"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')"
                   />
                 </td>
                 <td>
@@ -1295,20 +1293,20 @@
                 >Any history of neglect, and/o physical, verbal, emotional,
                 spiritual, or sexual abuse?
               </label>
-              {{ form.family_abuse_history(class='form-width100') }}
+              <input class='form-width100' type="text" name="family_abuse_history" id="family_abuse_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="famhistoryneglect2"
                 >Any family history of substance abuse, mental illness, suicide,
                 or violence?
               </label>
-              {{ form.family_mental_history(class='form-width100') }}
+              <input class='form-width100' type="text" name="family_mental_history" id="family_mental_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="famhistoryneglect3"
                 >Any Additional Family Information:
               </label>
-              {{ form.additional_information_family(class='form-width100') }}
+              <input class='form-width100' type="text" name="additional_information_family" id="additional_information_family" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
 
@@ -1328,7 +1326,7 @@
                   >
                 </div></label
               >
-              {{ form.relationship_with_peers(class='form-width100') }}
+              <input class='form-width100' type="text" name="relationship_with_peers" id="relationship_with_peers" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="sochistory2"
@@ -1341,7 +1339,7 @@
                   >
                 </div></label
               >
-              {{ form.social_support_network(class='form-width100') }}
+              <input class='form-width100' type="text" name="social_support_network" id="social_support_network" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="sochistory3"
@@ -1356,7 +1354,7 @@
                   >
                 </div></label
               >
-              {{ form.hobbies_or_interests(class='form-width100') }}
+              <input class='form-width100' type="text" name="hobbies_or_interests" id="hobbies_or_interests" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="sochistory4"
@@ -1370,7 +1368,7 @@
                   >
                 </div></label
               >
-              {{ form.cultural_concerns(class='form-width100') }}
+              <input class='form-width100' type="text" name="cultural_concerns" id="cultural_concerns" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
 
@@ -1438,7 +1436,7 @@
                   >
                 </div></label
               >
-              {{ form.additional_information_education(class='form-width100') }}
+              <input class='form-width100' type="text" name="additional_information_education" id="additional_information_education" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
           <!-- end: Educational History -->
@@ -1481,11 +1479,11 @@
               <label for="employmentsatis"
                 >Are you satisfied with your employment? why?
               </label>
-              {{ form.satisfaction(class='form-width100') }}
+              <input class='form-width100' type="text" name="satisfaction" id="satisfaction" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="employmentsatisifnot">If not, why? </label>
-              {{ form.satisfaction_reason(class='form-width100') }}
+              <input class='form-width100' type="text" name="satisfaction_reason" id="satisfaction_reason" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
 
@@ -1959,7 +1957,7 @@
                   >
                 </div>
               </label>
-              {{ form.treatment_outcome(class='form-width100') }}
+              <input class='form-width100' type="text" name="treatment_outcome" id="treatment_outcome" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
           <!-- end: Substance Abuse History -->
@@ -2093,7 +2091,7 @@
                   >
                 </div>
               </label>
-              {{ form.to_work_on(class='form-width100') }}
+              <input class='form-width100' type="text" name="to_work_on" id="to_work_on" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="additionalinfo2"
@@ -2106,13 +2104,13 @@
                   >
                 </div>
               </label>
-              {{ form.expectations(class='form-width100') }}
+              <input class='form-width100' type="text" name="expectations" id="expectations" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="additionalinfo3"
                 >Name 3 things you would like to change about yourself.
               </label>
-              {{ form.things_to_change(class='form-width100') }}
+              <input class='form-width100' type="text" name="things_to_change" id="things_to_change" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
             <div class="left-align">
               <label for="additionalinfo4"
@@ -2120,7 +2118,7 @@
                 important for your counselor to know in order to provide you
                 with the best care possible?
               </label>
-              {{ form.other_information(class='form-width100') }}
+              <input class='form-width100' type="text" name="other_information" id="other_information" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
             </div>
           </section>
           <!-- end: Additional Information -->
