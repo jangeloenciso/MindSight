@@ -24,7 +24,6 @@ document.getElementById('confirmation_forgot').addEventListener('submit', functi
                 title: 'OTP Sent!',
                 text: 'Please check your email for the OTP.',
                 iconHtml: '<img class="custom-icon" src="static/popup.png">',
-                showConfirmButton: true,
                 customClass: {
                     confirmButton: 'confirm-button-class'
                 }

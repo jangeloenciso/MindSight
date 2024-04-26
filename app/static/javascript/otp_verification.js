@@ -17,7 +17,14 @@ document.getElementById('confirmation_otp').addEventListener('submit', function(
             swal.fire({
                 title: 'Error!',
                 text: 'OTP is not correct, please try again.',
-                icon: 'error'
+                iconHtml: '<img class="custom-icon" src="static/exclamation.png">',
+                customClass: {
+                    confirmButton: 'confirm-button-class'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
             });
         } else {
             window.location.assign('/reset-password');
