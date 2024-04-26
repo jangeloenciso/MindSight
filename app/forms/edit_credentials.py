@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class EditCredentials(FlaskForm):
@@ -10,5 +10,13 @@ class EditCredentials(FlaskForm):
     password = PasswordField('New password', validators=[DataRequired(message="Please enter your new password"), Length(min=7, message="Password must be at least 7 characters long")])
     confirm = PasswordField('Confirm new password', validators=[DataRequired(message="Please confirm your new password"), EqualTo('password', message="Passwords must match")])
     current_password = PasswordField('Old password', validators=[DataRequired(message="Please enter your old password")])
+    security_question = SelectField('Security Question', choices=[
+        ('question1', 'In what city did your parents meet?'),
+        ('question2', 'Where did you go on your first solo trip?'),
+        ('question3', 'What was the first dish you learned to cook?'),
+        ('question4', 'What was the name of your first stuffed toy?'),
+        ('question5', 'What was the title of the first book you read?')
+    ], validators=[DataRequired()])
+    security_answer = StringField('Security Answer', validators=[DataRequired()])
     submit = SubmitField('Update')
     

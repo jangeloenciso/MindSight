@@ -43,12 +43,40 @@ endblock %} {% block styles %}
               <input
                 type="number"
                 id="otp"
-                placeholder="Enter OTP"
                 autocomplete="off"
                 required
               />
             </div>
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+            <div class="single-row">
+              <label for="security_question">Security Question</label>
+              <select name="security_question" required>
+                <option value="" disabled {% if not current_user.security_question %} selected {% endif %}>
+                  Select Security Question
+                </option>
+                <option value="question1" {% if current_user.security_question == 'question1' %} selected {% endif %}>
+                  In what city did your parents meet?
+                </option>
+                <option value="question2" {% if current_user.security_question == 'question2' %} selected {% endif %}>
+                  Where did you go on your first solo trip?
+                </option>
+                <option value="question3" {% if current_user.security_question == 'question3' %} selected {% endif %}>
+                  What was the first dish you learned to cook?
+                </option>
+                <option value="question4" {% if current_user.security_question == 'question4' %} selected {% endif %}>
+                  What was the name of your first stuffed toy?
+                </option>
+                <option value="question5" {% if current_user.security_question == 'question5' %} selected {% endif %}>
+                  What was the title of the first book you read?
+                </option>
+              </select>
+            </div>
+
+            <div class="single-row">
+              <label for="security_answer">Security Answer</label>
+              {{ form.security_answer(autocomplete='off') }}
+            </div>
 
             <div class="single-row">
               <label for="password">New password</label>

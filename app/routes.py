@@ -437,7 +437,7 @@ def settings():
         form.last_name.data = current_user.last_name
         form.username.data = current_user.username 
         form.email.data = current_user.email
-        
+        form.security_question.data = current_user.security_question
 
     if form.validate_on_submit():
         if not bcrypt.check_password_hash(current_user.password, form.current_password.data):
@@ -448,10 +448,15 @@ def settings():
         current_user.username = form.username.data
         current_user.email = form.email.data
         current_user.confirm = form.confirm.data
+        current_user.security_question = form.security_question.data
 
         if form.password.data:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             current_user.password = hashed_password
+        
+        if form.security_answer.data:
+            hashed_security_answer = bcrypt.generate_password_hash(form.security_answer.data).decode('utf-8')
+            current_user.security_answer = hashed_security_answer
 
         # Commit changes to the database
         db.session.commit()
