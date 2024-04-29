@@ -44,7 +44,7 @@
             <div class="double-column">
               <div>
                 <label for="fname">First name:</label>
-                <input type="text" name="first_name" id="first_name" placeholder="First Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                <input type="text" name="first_name" id="first_name" placeholder="First Name" oninput="validateInput(this)" required>
               </div>
               <div>
                 <label for="studNumber">Student Number:</label>
@@ -55,7 +55,7 @@
             <div class="double-column">
               <div>
                 <label for="course">Last Name:</label>
-                <input type="text" name="last_name" id="last_name" placeholder="Last Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name" oninput="validateInput(this)" required>
               </div>
               <div>
                 <label for="studNumber">Campus:</label>
@@ -150,7 +150,7 @@
             <div class="double-column">
               <div>
                 <label for="nationality">Nationality:</label>
-                <input type="text" name="nationality" id="nationality" placeholder="Nationality" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                <input type="text" name="nationality" id="nationality" placeholder="Nationality" oninput="validateInput(this)" required>
               </div>
               <div>
                 <label for="religion">Religion:</label>
@@ -209,7 +209,7 @@
             <div class="double-column">
               <div>
                 <label for="guardian">Name of Guardian:</label>
-                <input type="text" name="guardian_name" id="guardian_name" placeholder="Name of Guardian" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="guardian_name" id="guardian_name" placeholder="Name of Guardian" oninput="validateInput(this)">
               </div>
               <div>
                 <label for="gcnumber">Guardian's Contact No.:</label>
@@ -242,7 +242,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="referral_source" id="referral_source" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="referral_source" id="referral_source" oninput="validateInput(this)">
             </div>
           </div>
 
@@ -268,11 +268,11 @@
             <div class="double-column">
               <div>
                 <label for="emername">Name:</label>
-                <input type="text" name="emergency_name" id="emergency_name" placeholder="Name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="emergency_name" id="emergency_name" placeholder="Name" oninput="validateInput(this)">
               </div>
               <div>
                 <label for="emerrel">Relationship:</label>
-                <input type="text" name="emergency_relationship" id="emergency_relationship" placeholder="Relationship" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="emergency_relationship" id="emergency_relationship" placeholder="Relationship" oninput="validateInput(this)">
               </div>
             </div>
             <div class="double-column">
@@ -318,7 +318,7 @@
                 <div>
                   <!-- REMOVED RADIO BUTTON -->
                   <label for="otherOption">Other</label>
-                  <input type="text" name="information_provider" id="information_provider" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input type="text" name="information_provider" id="information_provider" oninput="validateInput(this)">
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="current_problem" id="current_problem" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="current_problem" id="current_problem" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="problem2"
@@ -354,7 +354,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="problem_length" id="problem_length" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="problem_length" id="problem_length" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="problem3"
@@ -369,7 +369,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="stressors" id="stressors" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="stressors" id="stressors" oninput="validateInput(this)">
             </div>
 
             <!-- long checkbox form -->
@@ -661,7 +661,7 @@
                   for="exp44"
                   >Other</label
                 >
-                <input type="text" name="other_history" id="other_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                <input type="text" name="other_history" id="other_history" oninput="validateInput(this)">
               </li>
             </ul>
           </div>
@@ -700,7 +700,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="previous_treatments_likes_dislikes" id="previous_treatments_likes_dislikes" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="previous_treatments_likes_dislikes" id="previous_treatments_likes_dislikes" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="prevtreatment2"
@@ -715,7 +715,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="previous_treatments_learned" id="previous_treatments_learned" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="previous_treatments_learned" id="previous_treatments_learned" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="prevtreatment3"
@@ -730,7 +730,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="previous_treatments_like_to_continue" id="previous_treatments_like_to_continue" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="previous_treatments_like_to_continue" id="previous_treatments_like_to_continue" oninput="validateInput(this)">
             </div>
 
             <div class="left-align">
@@ -902,7 +902,7 @@
               <label for="allergies" style="width: 310px !important"
                 >List any allergies you have:</label
               >
-              <input class='form-width100 single-column-span' type="text" name="allergies" id="allergies" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100 single-column-span' type="text" name="allergies" id="allergies" oninput="validateInput(this)">
             </div>
 
             <div class="left-align">
@@ -976,7 +976,7 @@
               <div>
                 <div class="left-align single-column-span">
                   <label for="physname">Name:</label>
-                  <input class='form-width100 single-column-span' type="text" name="physician_name" id="physician_name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input class='form-width100 single-column-span' type="text" name="physician_name" id="physician_name" oninput="validateInput(this)">
                 </div>
               </div>
               <div>
@@ -1048,7 +1048,7 @@
                     for="raisedother"
                     >Other</label
                   >
-                  <input type="text" name="raised_by" id="raised_by" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input type="text" name="raised_by" id="raised_by" oninput="validateInput(this)">
                 </div>
               </div>
             </div>
@@ -1106,7 +1106,7 @@
                     for="relmotherother"
                     >Other</label
                   >
-                  <input type="text" name="rel_qual_mother" id="rel_qual_mother" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input type="text" name="rel_qual_mother" id="rel_qual_mother" oninput="validateInput(this)">
                 </div>
               </div>
             </div>
@@ -1156,7 +1156,7 @@
                     for="relfatherother"
                     >Other</label
                   >
-                  <input type="text" name="rel_qual_father" id="rel_qual_father" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input type="text" name="rel_qual_father" id="rel_qual_father" oninput="validateInput(this)">
                 </div>
               </div>
             </div>
@@ -1210,7 +1210,7 @@
                     for="relstepparentother"
                     >Other</label
                   >
-                  <input type="text" name="rel_qual_step_parent" id="rel_qual_step_parent" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input type="text" name="rel_qual_step_parent" id="rel_qual_step_parent" oninput="validateInput(this)">
                 </div>
               </div>
             </div>
@@ -1220,7 +1220,7 @@
               <label for="relparent" style="width: 80px !important"
                 >Other:</label
               >
-              <input class='form-width100 single-column-span' type="text" name="rel_qual_other" id="rel_qual_other" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100 single-column-span' type="text" name="rel_qual_other" id="rel_qual_other" oninput="validateInput(this)">
             </div>
 
             <div class="left-align">
@@ -1240,7 +1240,7 @@
               </tr>
               <tr id="siblingRow">
                 <td>
-                  <input class='form-width100 single-column-span' type="text" name="siblingName" id="siblingName" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                  <input class='form-width100 single-column-span' type="text" name="siblingName" id="siblingName" oninput="validateInput(this)">
                 </td>
                 <td>
                   <input
@@ -1293,20 +1293,20 @@
                 >Any history of neglect, and/o physical, verbal, emotional,
                 spiritual, or sexual abuse?
               </label>
-              <input class='form-width100' type="text" name="family_abuse_history" id="family_abuse_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="family_abuse_history" id="family_abuse_history" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="famhistoryneglect2"
                 >Any family history of substance abuse, mental illness, suicide,
                 or violence?
               </label>
-              <input class='form-width100' type="text" name="family_mental_history" id="family_mental_history" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="family_mental_history" id="family_mental_history" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="famhistoryneglect3"
                 >Any Additional Family Information:
               </label>
-              <input class='form-width100' type="text" name="additional_information_family" id="additional_information_family" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="additional_information_family" id="additional_information_family" oninput="validateInput(this)">
             </div>
           </section>
 
@@ -1326,7 +1326,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="relationship_with_peers" id="relationship_with_peers" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="relationship_with_peers" id="relationship_with_peers" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="sochistory2"
@@ -1339,7 +1339,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="social_support_network" id="social_support_network" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="social_support_network" id="social_support_network" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="sochistory3"
@@ -1354,7 +1354,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="hobbies_or_interests" id="hobbies_or_interests" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="hobbies_or_interests" id="hobbies_or_interests" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="sochistory4"
@@ -1368,7 +1368,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="cultural_concerns" id="cultural_concerns" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="cultural_concerns" id="cultural_concerns" oninput="validateInput(this)">
             </div>
           </section>
 
@@ -1436,7 +1436,7 @@
                   >
                 </div></label
               >
-              <input class='form-width100' type="text" name="additional_information_education" id="additional_information_education" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="additional_information_education" id="additional_information_education" oninput="validateInput(this)">
             </div>
           </section>
           <!-- end: Educational History -->
@@ -1479,11 +1479,11 @@
               <label for="employmentsatis"
                 >Are you satisfied with your employment? why?
               </label>
-              <input class='form-width100' type="text" name="satisfaction" id="satisfaction" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="satisfaction" id="satisfaction" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="employmentsatisifnot">If not, why? </label>
-              <input class='form-width100' type="text" name="satisfaction_reason" id="satisfaction_reason" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="satisfaction_reason" id="satisfaction_reason" oninput="validateInput(this)">
             </div>
           </section>
 
@@ -1957,7 +1957,7 @@
                   >
                 </div>
               </label>
-              <input class='form-width100' type="text" name="treatment_outcome" id="treatment_outcome" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="treatment_outcome" id="treatment_outcome" oninput="validateInput(this)">
             </div>
           </section>
           <!-- end: Substance Abuse History -->
@@ -2091,7 +2091,7 @@
                   >
                 </div>
               </label>
-              <input class='form-width100' type="text" name="to_work_on" id="to_work_on" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="to_work_on" id="to_work_on" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="additionalinfo2"
@@ -2104,13 +2104,13 @@
                   >
                 </div>
               </label>
-              <input class='form-width100' type="text" name="expectations" id="expectations" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="expectations" id="expectations" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="additionalinfo3"
                 >Name 3 things you would like to change about yourself.
               </label>
-              <input class='form-width100' type="text" name="things_to_change" id="things_to_change" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="things_to_change" id="things_to_change" oninput="validateInput(this)">
             </div>
             <div class="left-align">
               <label for="additionalinfo4"
@@ -2118,7 +2118,7 @@
                 important for your counselor to know in order to provide you
                 with the best care possible?
               </label>
-              <input class='form-width100' type="text" name="other_information" id="other_information" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+              <input class='form-width100' type="text" name="other_information" id="other_information" oninput="validateInput(this)">
             </div>
           </section>
           <!-- end: Additional Information -->
@@ -2213,6 +2213,11 @@
           document.getElementById('signatureCanvasInput').value = encodedData;
           console.log(encodedData)
           alert("Signature updated successfully!")
+      }
+    </script>
+    <script>
+      function validateInput(input) {
+          input.value = input.value.replace(/[^a-zA-Z\s-]/g, '');
       }
     </script>
   </body>
