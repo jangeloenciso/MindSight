@@ -60,6 +60,7 @@ def login():
 
 
 @app.route('/signup', methods=['POST', 'GET'])
+@login_required
 def signup():
 
     form = SignupForm()
